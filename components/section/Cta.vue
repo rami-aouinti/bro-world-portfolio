@@ -1,4 +1,5 @@
 <script setup>
+import { CTA, NAVLINKS } from '~/utils/content'
 </script>
 
 <template>
