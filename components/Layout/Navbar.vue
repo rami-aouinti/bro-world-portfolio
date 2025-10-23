@@ -49,23 +49,6 @@ const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', local
     />
   </v-app-bar>
 
-  <v-navigation-drawer v-model="drawer" temporary location="top" width="100%">
-    <v-list nav>
-      <v-list-item
-        v-for="link in links"
-        :key="link.url"
-        :to="link.to"
-        @click="drawer = false"
-      >
-        <v-list-item-title>{{ link.label }}</v-list-item-title>
-      </v-list-item>
-    </v-list>
-    <div class="pa-4">
-      <v-btn block color="primary" :to="contactLink" class="text-none" @click="drawer = false">
-        Connect Me
-      </v-btn>
-    </div>
-  </v-navigation-drawer>
 </template>
 
 <style scoped>
