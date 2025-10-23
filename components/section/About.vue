@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ABOUT, PROFILE } from '~/utils/content'
+</script>
 
 <template>
  <LayoutScrollSmooth>
@@ -20,7 +22,7 @@
         <Button
           class="mt-8"
           label="Connect Me"
-          to="#contact"
+          to="/contact#contact"
           variant="btn-dark"
         />
       </div>

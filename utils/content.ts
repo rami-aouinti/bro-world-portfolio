@@ -1,10 +1,10 @@
-export const NAVLINKS= [
+export const NAVLINKS = [
   {
-    label: 'Home',
+    label: 'Start',
     url: '#hero'
   },
   {
-    label : 'About',
+    label: 'Über mich',
     url: '#about'
   },
   {
@@ -24,47 +24,49 @@ export const NAVLINKS= [
     url: '#work'
   },
   {
-    label : 'Service',
-    url: '/#service'
+    label: 'Kompetenzen',
+    url: '#service'
   },
 
 ]
 
 export const PROFILE = {
-  firstname : 'Muhamad',
-  lastname: 'Raul Iqbal',
+  firstname: 'Mohamed Rami',
+  lastname: 'Aouinti',
   get fullname() {
     return `${this.firstname} ${this.lastname}`
   },
-  role : 'Front-End Developer & UI Designer',
+  role: 'Backend Developer (PHP & Symfony)',
   avatar: '/images/profile.jpg'
 }
 
 export const HERO = {
-  badge: 'Available for freelance',
-  headline: `Hey, I'm ${PROFILE.lastname}. I'm a ${PROFILE.role}`,
-  subline : "I am a developer and designer who has a passion for building responsive, cool looking, and easy to visit website applications."
+  badge: 'Bereit für neue Herausforderungen',
+  headline: `Hallo, ich bin ${PROFILE.lastname} – ${PROFILE.role}`,
+  subline:
+    'Ich entwickle sichere, performante Backend-Lösungen mit PHP 8, Symfony, RESTful APIs, Docker und CI/CD-Pipelines.'
 }
 
 export const SERVICE = {
-  label: 'service',
-  headline: 'Custom design solutions for your requirements.',
-  subline: 'I specialize in crafting user-centered solutions for businesses and individuals. Let’s create something extraordinary together.',
+  label: 'Kompetenzen',
+  headline: 'Stabile Backend-Architekturen für anspruchsvolle Anwendungen.',
+  subline:
+    'Ich entwickle skalierbare Services, optimiere Datenbanken und stelle mit Tests, Monitoring und Automatisierung eine hohe Softwarequalität sicher.',
   services: [
     {
-      name: "Web Development",
+      name: 'API- & Microservice-Entwicklung',
       icon: 'Scroll',
-      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit cum distinctio dolores!',
-      thumbnails: ''
+      description:
+        'Konzeption und Implementierung von RESTful APIs, Microservices und Integrationen von Drittanbieter-Systemen mit Symfony.'
     },
     {
-      name: "Mobile Development",
+      name: 'Datenbankdesign & Performance',
       icon: 'MobileProgramming',
-      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit cum distinctio dolores!',
-      thumbnails: 'https://cdn.dribbble.com/userupload/36796487/file/original-436c64a72733941273f9fd1f4d994883.jpg?resize=752x&vertical=center'
+      description:
+        'Modellierung relationaler Datenbanken, Optimierung komplexer SQL-Abfragen sowie Einsatz von Caching-Lösungen wie Redis.'
     },
     {
-      name: "UI/UX Designer",
+      name: 'Qualitätssicherung & DevOps',
       icon: 'PenTool2',
       description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit cum distinctio dolores!',
       thumbnails: ''
@@ -74,60 +76,68 @@ export const SERVICE = {
 }
 
 export const WORK = {
-  label: 'work',
-  headline: 'Custom design solutions for your requirements.',
-  subline: 'I specialize in crafting user-centered solutions for businesses and individuals. Let’s create something extraordinary together.',
+  label: 'Erfahrung',
+  headline: 'Ausgewählte Stationen aus meiner Karriere.',
+  subline:
+    'Von E-Commerce-Plattformen bis zu Microservice-Landschaften – ich liefere robuste Backend-Lösungen, die Geschäftserfolge ermöglichen.',
   works: [
     {
-      name: "Cafe Street - Landing Page",
+      name: 'Symfony-Microservices für TKDeutschland GmbH',
       live_demo: '#',
-      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit cum distinctio dolores.',
-      thumbnails: 'cafestreet-landingpage.webp',
-      type: 'landing page'
-    },
-    {
-      name: "FurniLux",
-      live_demo: '#',
-      description: 'Make your home comfortable with best furniture.',
-      thumbnails: 'furnilux-landingpage.webp',
-      type: 'landing page'
-    },
-    {
-      name: "Let's Food UI Kit",
-      live_demo: '#',
-      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit cum distinctio dolores.',
-      thumbnails: 'letsfood-landingpage.webp',
-      type: 'Web Design'
-    },
-    {
-      name: "Creative Agency",
-      live_demo: '#',
-      description: 'This website is to improve your business as a software house and reach more customers.',
+      description:
+        'Entwicklung sicherer, skalierbarer Services, Integration von Drittanbieter-APIs und Aufbau von Authentifizierungs-Workflows.',
       thumbnails: 'creativeagency-landingpage.webp',
-      type: 'Web Company'
+      type: 'Symfony 6 · REST APIs'
     },
     {
-      name: "Login Register Design",
+      name: 'E-Commerce Plattformen bei Hinke GmbH',
       live_demo: '#',
-      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit cum distinctio dolores.',
+      description:
+        'Implementierung komplexer Shop-Funktionen, Web-Analytics-Setups und kontinuierliche Performance-Optimierung.',
+      thumbnails: 'furnilux-landingpage.webp',
+      type: 'Full Stack · Shopware'
+    },
+    {
+      name: 'Shopware-Integrationen für Wizmo GmbH',
+      live_demo: '#',
+      description:
+        'Entwicklung von RESTful APIs, Plugin-Erweiterungen und datengetriebenen Tools für internationale Kunden.',
+      thumbnails: 'cafestreet-landingpage.webp',
+      type: 'PHP · Laravel'
+    },
+    {
+      name: 'Monitoring & Analytics Automatisierung',
+      live_demo: '#',
+      description:
+        'Konfiguration von Google Analytics, Erstellung belastbarer Dashboards und Ableitung technischer Optimierungen.',
+      thumbnails: 'letsfood-landingpage.webp',
+      type: 'Analytics · Automation'
+    },
+    {
+      name: 'Leistungsoptimierung für Legacy-Systeme',
+      live_demo: '#',
+      description:
+        'Refactoring bestehender Codebasen, Reduzierung von Antwortzeiten und Verbesserung der Wartbarkeit.',
       thumbnails: 'loginregister-design.webp',
-      type: 'UI Design'
+      type: 'Refactoring · Testing'
     },
     {
-      name: "IRATOON - Streaming App",
+      name: 'Dockerisierte Entwicklungsumgebungen',
       live_demo: '#',
-      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit cum distinctio dolores.',
+      description:
+        'Aufbau containerisierter Workflows, um CI/CD-Prozesse zu vereinheitlichen und Deployments zu beschleunigen.',
       thumbnails: 'iratoon-mobileapp.webp',
-      type: 'Mobile App'
-    },
+      type: 'Docker · CI/CD'
+    }
   ]
 }
 
 export const ABOUT = {
-  label: 'Let me introduce my self',
+  label: 'Über mich',
   introduce: [
-    `My name is ${PROFILE.fullname}, and I am a passionate ${PROFILE.role}. I specialize in creating seamless and visually appealing user interfaces, combining design and development to enhance user experiences.`,
-    "I love turning ideas into interactive and functional web applications. Excited to collaborate and build amazing digital products together!"
+    `Ich bin ${PROFILE.fullname}, ${PROFILE.role} mit mehrjähriger Erfahrung in der Entwicklung, Optimierung und Wartung moderner Webanwendungen.`,
+    'Meine Schwerpunkte liegen in PHP 8, Symfony, Laravel, Datenbankmodellierung mit MySQL und PostgreSQL sowie in der Integration skalierbarer CI/CD-Prozesse.',
+    'Ich arbeite strukturiert, qualitätsorientiert und gerne im Team, um anspruchsvolle Produkte zuverlässig in die Produktion zu bringen.'
   ]
 }
 
