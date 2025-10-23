@@ -1,8 +1,11 @@
 <template>
   <v-app>
-    <LayoutNavbar />
+    <Navbar />
     <v-main>
       <slot />
     </v-main>
   </v-app>
 </template>
+<script setup lang="ts">
+import Navbar from "~/components/Layout/Navbar.vue";
+</script>
