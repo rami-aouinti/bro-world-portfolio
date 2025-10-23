@@ -1,24 +1,25 @@
 <script setup lang="ts">
-import { SERVICE } from '~/utils/content'
+const { data: service } = useContentBlock('service')
+const content = computed(() => service.value)
 </script>
 
 <template>
   <LayoutScrollSmooth>
-    <section id="service" class="container">
+    <section id="service" class="container" v-if="content">
     <!-- Content -->
-    <p class="badge">{{ SERVICE.label }}</p>
+    <p class="badge">{{ content.label }}</p>
     <h2
       class="section-title"
     >
-      {{ SERVICE.headline }}
+      {{ content.headline }}
     </h2>
     <p class="paragraph mt-4 max-w-xl">
-      {{ SERVICE.subline }}
+      {{ content.subline }}
     </p>
 
     <!-- Services List -->
     <div class="grid md:grid-cols-3 gap-6 mt-16">
-      <div class="card relative flex items-center p-10" v-for="item in SERVICE.services">
+      <div class="card relative flex items-center p-10" v-for="item in content.services" :key="item.name">
        <div>
         <div>
           <div class="inline-flex p-2 rounded-lg border border-primary shadow-[0px_0px_15px_-3px_rgba(85,_132,_255,_0.5)]">
@@ -30,7 +31,7 @@ import { SERVICE } from '~/utils/content'
               />
             </div>
         </div>
-       
+
           <div class="mt-5">
             <h4 class="text-xl font-semibold tracking-wide text-white">{{ item.name }}</h4>
             <p class="text-white/50 mt-2">{{ item.description }}</p>

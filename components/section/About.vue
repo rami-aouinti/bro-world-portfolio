@@ -1,21 +1,31 @@
 <script setup lang="ts">
-import { ABOUT, PROFILE } from '~/utils/content'
+const { data: about } = useContentBlock('about')
+const { data: profile } = useContentBlock('profile')
+
+const aboutContent = computed(() => about.value)
+const profileContent = computed(() => profile.value)
+const fullname = computed(() => {
+  if (!profileContent.value) {
+    return ''
+  }
+  return `${profileContent.value.firstname} ${profileContent.value.lastname}`
+})
 </script>
 
 <template>
  <LayoutScrollSmooth>
-  <section id="about" class="container">
+  <section id="about" class="container" v-if="aboutContent">
     <div class="grid items-center grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- Content -->
       <div>
-        <p class="badge">{{ ABOUT.label }}</p>
+        <p class="badge">{{ aboutContent.label }}</p>
         <h2
           class="section-title"
         >
-          {{ PROFILE.fullname }}
+          {{ fullname || ' ' }}
         </h2>
 
-        <p class="paragraph mt-4" v-for="intro in ABOUT.introduce">
+        <p class="paragraph mt-4" v-for="intro in aboutContent.introduce" :key="intro">
           {{ intro }}
         </p>
 
@@ -28,7 +38,7 @@ import { ABOUT, PROFILE } from '~/utils/content'
       </div>
 
       <!-- Image -->
-      <div class="p-3 border bg-[#0b061a]/40 justify-center backdrop-blur-sm border-white/10 rounded-2xl relative flex items-center group">
+      <div class="p-3 border bg-[#0b061a]/40 justify-center backdrop-blur-sm border-white/10 rounded-2xl relative flex items-center group" v-if="profileContent">
         <!-- Remove if u want -->
         <p class="absolute top-4 text-white/20 font-medium p-2">
               Photo by
@@ -46,10 +56,10 @@ import { ABOUT, PROFILE } from '~/utils/content'
           <div>
             <img
               class="rounded-lg"
-              :src="PROFILE.avatar"
-              :alt="`${PROFILE.fullname} - ${PROFILE.role}`"
+              :src="profileContent.avatar"
+              :alt="`${fullname} - ${profileContent.role}`"
             />
-            
+
           </div>
         </div>
         <div

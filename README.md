@@ -27,42 +27,52 @@
 
 <h2 id="started">🚀 Getting started</h2>
 
-Here you describe how to run your project locally
-
-<h3>Prerequisites</h3>
-
-Here you list all prerequisites necessary for running your project. For example:
+### Prerequisites
 
 - [Node JS](https://nodejs.org/)
 - [Git](https://git-scm.com/)
 - [PNPM](https://pnpm.io/installation)
 
-<h3>Cloning</h3>
-
-How to clone your project
+### Cloning
 
 ```bash
 git clone https://github.com/Rauliqbal/super-portfolio.git --branch main
 ```
 
-<h3>Starting</h3>
-
-How to start your project
+### Starting the app
 
 ```bash
 cd super-portfolio
 
-# Install Dependencies
+# Install dependencies
 pnpm install
-# or
-npm install
 
-# Running on Development
+# Run the Nuxt dev server
 pnpm dev
-# or
-npm run dev
 ```
-Open on your browser http://localhost:3000
+
+Open the application at http://localhost:3000.
+
+### Persistent content & admin space
+
+- The portfolio content is stored in `server/storage/` via Nuxt Nitro’s file-based storage. These files are ignored by Git so every environment keeps its own data.
+- Default blocks are seeded from `utils/content.ts` during server start. Deleting a JSON file under `server/storage/content` will recreate it with the default values.
+- Visit `/admin` to access the administration area. Use the default credentials `admin@example.com` / `ChangeMe123!` or override them with the `ADMIN_EMAIL` and `ADMIN_PASSWORD` environment variables.
+- Forms validate data with Zod on the client and server before persisting updates. API endpoints live under `/api/content/*` and `/api/auth/*` (mutations require the session cookie plus the `X-CSRF-Token` header handled automatically in the admin UI).
+
+#### Environment variables
+
+Set these variables if you need to customise the defaults:
+
+```
+SESSION_COOKIE_NAME=bro_world_session
+CSRF_COOKIE_NAME=bro_world_csrf
+SESSION_MAX_AGE=86400
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=ChangeMe123!
+```
+
+All variables have fallbacks, so the app runs without additional configuration.
 
 <h2 id="colab">🤝 Collaborators</h2>
 

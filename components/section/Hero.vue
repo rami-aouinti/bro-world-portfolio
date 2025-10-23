@@ -1,22 +1,26 @@
 <script setup lang="ts">
-import { HERO, WORK } from '~/utils/content'
+const { data: hero } = useContentBlock('hero')
+const { data: work } = useContentBlock('work')
+
+const heroContent = computed(() => hero.value)
+const workItems = computed(() => work.value?.works ?? [])
 </script>
 
 <template>
   <div id="hero" class="container relative py-40">
     <!-- Content -->
     <div class="z-10 relative flex flex-col items-center">
-    <div class="badge  flex items-center gap-2"> 
-      <div class="animate-pulse w-2 h-2 bg-primary rounded-full"></div> 
-      <p class="text-center">{{ HERO.badge }}</p>
+    <div class="badge  flex items-center gap-2" v-if="heroContent">
+      <div class="animate-pulse w-2 h-2 bg-primary rounded-full"></div>
+      <p class="text-center">{{ heroContent.badge }}</p>
     </div>
     <h1
       class="max-w-4xl mx-auto text-center text-4xl md:text-5xl lg:text-6xl text-white font-bold mt-4 !leading-snug"
     >
-      {{ HERO.headline }}
+      {{ heroContent?.headline }}
     </h1>
     <p class="paragraph mt-4 text-center max-w-xl mx-auto">
-      {{ HERO.subline }}
+      {{ heroContent?.subline }}
     </p>
     <div class="flex gap-4 items-center mt-8">
       <Button label="View Work" to="#work" />
@@ -25,7 +29,7 @@ import { HERO, WORK } from '~/utils/content'
     </div>
 
     <!-- Selected Work -->
-    <div class="w-full inline-flex flex-nowrap relative overflow-hidden mt-16">
+    <div class="w-full inline-flex flex-nowrap relative overflow-hidden mt-16" v-if="workItems.length">
       <div
         class="h-full w-24 bg-gradient-to-r from-dark to-transparent left-0 inset-y-0 absolute z-10"
       ></div>
@@ -35,21 +39,23 @@ import { HERO, WORK } from '~/utils/content'
       <ul
         class="flex items-center justify-center md:justify-start [&_li]:mx-2 [&_img]:max-w-none animate-infinite-scroll hover:animate-pause"
       >
-        <li v-for="item in WORK.works" class="overflow-hidden group">
+        <li v-for="item in workItems" :key="item.name" class="overflow-hidden group">
           <img
             class="h-[300px] rounded-xl group-hover:scale-105 group-hover:opacity-70 transition-all"
             :src="'/images/work/' + item.thumbnails"
+            :alt="item.name"
           />
         </li>
 
-        <li v-for="item in WORK.works" class="overflow-hidden group" aria-hidden="true">
+        <li v-for="item in workItems" :key="`ghost-${item.name}`" class="overflow-hidden group" aria-hidden="true">
           <img
             class="h-[300px] rounded-xl group-hover:scale-105 group-hover:opacity-70 transition-all"
             :src="'/images/work/' + item.thumbnails"
+            :alt="item.name"
           />
         </li>
       </ul>
-     
+
     </div>
 
     <div class="absolute -top-40 right-40 rotate-45 w-14 h-[800px] bg-blue-700 blur-[100px]"></div>
