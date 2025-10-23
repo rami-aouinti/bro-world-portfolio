@@ -27,6 +27,7 @@
     "@pinia/nuxt": "^0.11.2",
     "@splinetool/runtime": "^1.10.85",
     "@studio-freight/lenis": "^1.0.42",
+    "@tailwindcss/postcss": "^4.1.16",
     "@tinymce/tinymce-vue": "^6.3.0",
     "@types/lodash.template": "^4.5.3",
     "@uiw/color-convert": "^2.9.0",
