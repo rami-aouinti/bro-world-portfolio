@@ -16,9 +16,10 @@ export const NAVLINKS = [
     url: '#service'
   },
   {
-    label: 'Kontakt',
-    url: '#contact'
-  }
+    label: 'Contact',
+    url: '/contact'
+  },
+
 ]
 
 export const PROFILE = {

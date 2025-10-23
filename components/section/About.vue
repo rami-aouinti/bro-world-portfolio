@@ -19,8 +19,8 @@
 
         <Button
           class="mt-8"
-          label="Kontakt aufnehmen"
-          to="#contact"
+          label="Connect Me"
+          to="/contact#contact"
           variant="btn-dark"
         />
       </div>

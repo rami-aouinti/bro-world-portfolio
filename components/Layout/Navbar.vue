@@ -65,7 +65,7 @@ function navActive() {
         <!-- Connect Me -->
         <NuxtLink
           class="lg:hidden text-white group text-xl lg:text-base"
-          to="#contact"
+          to="/contact#contact"
         >
           <div class="relative overflow-hidden">
             <p
@@ -84,8 +84,8 @@ function navActive() {
      <div>
       <Button
         class="rounded-full hidden lg:block shadow-none"
-        label="Kontakt"
-        to="#contact"
+        label="Connect Me"
+        to="/contact#contact"
         variant="btn-dark"
       />
       <button @click="navActive" class="lg:hidden btn-dark px-4 py-2 rounded-full group">
