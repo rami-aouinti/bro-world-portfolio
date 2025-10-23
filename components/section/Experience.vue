@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const { data: experiences } = useContentBlock('experiences')
 
 const experiencesContent = computed(() => experiences.value)
@@ -6,30 +8,42 @@ const experiencesContent = computed(() => experiences.value)
 
 <template>
   <LayoutScrollSmooth>
-    <section class="container" v-if="experiencesContent">
-      <p class="badge">{{ experiencesContent.label }}</p>
-      <h2 class="section-title">{{ experiencesContent.headline }}</h2>
+    <v-container v-if="experiencesContent" class="py-16">
+      <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
+        {{ experiencesContent.label }}
+      </v-chip>
+      <h2 class="text-h4 font-weight-semibold">{{ experiencesContent.headline }}</h2>
 
-      <div class="flex flex-col gap-6 mt-12">
-        <div
-          class="card"
+      <v-timeline class="mt-10" density="compact">
+        <v-timeline-item
           v-for="position in experiencesContent.positions"
           :key="position.role + position.company"
+          dot-color="primary"
         >
-          <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
-            <div>
-              <h3 class="text-2xl font-semibold text-white">{{ position.role }}</h3>
-              <p class="text-white/60">{{ position.company }}</p>
-            </div>
-            <p class="text-sm font-medium text-white/50 md:text-right">{{ position.timeframe }}</p>
-          </div>
-          <ul class="mt-6 space-y-3 list-disc list-inside text-white/70">
-            <li v-for="achievement in position.achievements" :key="achievement">
-              {{ achievement }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+          <v-card elevation="1">
+            <v-card-title class="d-flex flex-column flex-sm-row align-sm-start justify-space-between">
+              <div>
+                <div class="text-h6">{{ position.role }}</div>
+                <div class="text-medium-emphasis">{{ position.company }}</div>
+              </div>
+              <div class="text-caption text-medium-emphasis mt-2 mt-sm-0">
+                {{ position.timeframe }}
+              </div>
+            </v-card-title>
+            <v-card-text>
+              <v-list density="compact">
+                <v-list-item
+                  v-for="achievement in position.achievements"
+                  :key="achievement"
+                  prepend-icon="mdi-check-circle-outline"
+                >
+                  <v-list-item-title>{{ achievement }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-card-text>
+          </v-card>
+        </v-timeline-item>
+      </v-timeline>
+    </v-container>
   </LayoutScrollSmooth>
 </template>

@@ -64,45 +64,51 @@ async function handleLogout() {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[#02010c] px-4 py-10">
-    <div class="mx-auto flex w-full max-w-5xl flex-col gap-8">
-      <header class="flex flex-col gap-3 rounded-3xl border border-white/10 bg-[#0b061a]/70 p-8 backdrop-blur-md md:flex-row md:items-center md:justify-between">
-        <div>
-          <h1 class="text-3xl font-semibold text-white">Tableau de bord</h1>
-          <p class="text-white/60 text-sm">
-            Gérez l’ensemble des contenus affichés sur le portfolio.
-          </p>
-        </div>
-        <div class="flex flex-col items-start gap-2 text-sm text-white/60 md:items-end">
-          <p v-if="session?.user">Connecté en tant que <span class="text-white">{{ session.user.email }}</span></p>
-          <button
-            class="rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white transition hover:border-primary hover:text-primary"
-            @click="handleLogout"
-          >
-            Déconnexion
-          </button>
-        </div>
-      </header>
-
-      <div class="grid gap-6 md:grid-cols-2">
-        <article
-          v-for="section in sections"
-          :key="section.slug"
-          class="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-[#0f0a1f]/80 p-6 text-white shadow-lg shadow-primary/5"
-        >
-          <div class="space-y-2">
-            <h2 class="text-xl font-semibold">{{ section.title }}</h2>
-            <p class="text-sm text-white/60">{{ section.description }}</p>
+  <v-container class="py-12">
+    <v-row justify="center">
+      <v-col cols="12" lg="10" class="d-flex flex-column" style="gap: 24px;">
+        <v-card elevation="2" class="pa-6">
+          <div class="d-flex flex-column flex-md-row" style="gap: 16px; align-items: center;">
+            <div class="flex-grow-1">
+              <h1 class="text-h4 font-weight-semibold mb-2">Tableau de bord</h1>
+              <p class="text-body-2 text-medium-emphasis">
+                Gérez l’ensemble des contenus affichés sur le portfolio.
+              </p>
+            </div>
+            <div class="text-body-2 text-medium-emphasis" style="text-align: right;">
+              <p v-if="session?.user">
+                Connecté en tant que
+                <strong>{{ session.user.email }}</strong>
+              </p>
+              <v-btn color="primary" variant="tonal" class="text-none mt-2" @click="handleLogout">
+                Déconnexion
+              </v-btn>
+            </div>
           </div>
-          <NuxtLink
-            :to="`/admin/content/${section.slug}`"
-            class="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary/80 px-4 py-2 text-sm font-semibold text-white transition hover:bg-primary"
-          >
-            Modifier
-            <VsxIcon iconName="ArrowRight" type="linear" :size="18" />
-          </NuxtLink>
-        </article>
-      </div>
-    </div>
-  </div>
+        </v-card>
+
+        <v-row dense>
+          <v-col v-for="section in sections" :key="section.slug" cols="12" md="6">
+            <v-card elevation="1" class="h-100 d-flex flex-column">
+              <v-card-text>
+                <h2 class="text-h6 font-weight-semibold mb-2">{{ section.title }}</h2>
+                <p class="text-body-2 text-medium-emphasis">{{ section.description }}</p>
+              </v-card-text>
+              <v-card-actions class="mt-auto">
+                <v-btn
+                  :to="`/admin/content/${section.slug}`"
+                  color="primary"
+                  variant="text"
+                  class="text-none"
+                >
+                  Modifier
+                  <v-icon icon="mdi-arrow-right" class="ml-2" />
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>

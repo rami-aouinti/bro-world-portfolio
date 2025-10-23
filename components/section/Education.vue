@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const { data: education } = useContentBlock('education')
 
 const educationContent = computed(() => education.value)
@@ -6,22 +8,22 @@ const educationContent = computed(() => education.value)
 
 <template>
   <LayoutScrollSmooth>
-    <section class="container" v-if="educationContent">
-      <p class="badge">{{ educationContent.label }}</p>
-      <h2 class="section-title">{{ educationContent.headline }}</h2>
+    <v-container v-if="educationContent" class="py-16">
+      <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
+        {{ educationContent.label }}
+      </v-chip>
+      <h2 class="text-h4 font-weight-semibold">{{ educationContent.headline }}</h2>
 
-      <div class="grid gap-6 mt-12 md:grid-cols-2">
-        <div
-          class="card h-full"
-          v-for="school in educationContent.schools"
-          :key="school.degree + school.institution"
-        >
-          <p class="text-sm font-semibold uppercase text-white/50">{{ school.timeframe }}</p>
-          <h3 class="mt-3 text-2xl font-semibold text-white">{{ school.degree }}</h3>
-          <p class="text-white/60">{{ school.institution }}</p>
-          <p class="paragraph mt-4">{{ school.details }}</p>
-        </div>
-      </div>
-    </section>
+      <v-row class="mt-10" dense>
+        <v-col v-for="school in educationContent.schools" :key="school.degree + school.institution" cols="12" md="6">
+          <v-card elevation="1" class="h-100">
+            <v-card-subtitle class="text-uppercase text-caption">{{ school.timeframe }}</v-card-subtitle>
+            <v-card-title>{{ school.degree }}</v-card-title>
+            <v-card-subtitle>{{ school.institution }}</v-card-subtitle>
+            <v-card-text>{{ school.details }}</v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </LayoutScrollSmooth>
 </template>

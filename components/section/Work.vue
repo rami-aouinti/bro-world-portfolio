@@ -1,57 +1,40 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const { data: work } = useContentBlock('work')
 const content = computed(() => work.value)
 </script>
 
 <template>
- <LayoutScrollSmooth>
-  <section id="work" class="container" v-if="content">
-    <!-- Content -->
-    <p class="badge">{{ content.label }}</p>
-    <h2
-      class="section-title"
-    >
-      {{ content.headline }}
-    </h2>
-    <p class="paragraph mt-4 max-w-xl">
-      {{ content.subline }}
-    </p>
+  <LayoutScrollSmooth>
+    <v-container v-if="content" class="py-16">
+      <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
+        {{ content.label }}
+      </v-chip>
+      <h2 class="text-h4 font-weight-semibold">{{ content.headline }}</h2>
+      <p class="text-body-1 text-medium-emphasis mt-4" style="max-width: 600px;">
+        {{ content.subline }}
+      </p>
 
-    <!-- Works List -->
-    <div class="grid md:grid-cols-2 gap-6 mt-16">
-
-      <div class="p-3 border bg-[#0b061a]/40 backdrop-blur-sm border-white/10 rounded-2xl relative flex items-center group" v-for="item in content.works" :key="item.name">
-        <div class="overflow-hidden aspect-[4/3] rounded-lg ">
-          <img class="group-hover:scale-105 transition-all duration-500 w-full h-full object-cover" :src="'/images/work/' + item.thumbnails" :alt="'Thumbnail ' + item.name ">
-        </div>
-
-        <div class="absolute bottom-6 scale-90  opacity-0 group-hover:scale-100 group-hover:opacity-100 inset-x-6  bg-gradient-to-t bg-black/90 backdrop-blur-sm transition-all duration-500 rounded-xl overflow-hidden p-4">
-          <div>
-           <div class="flex items-center justify-between">
-            <div>
-              <h3 class="text-white text-lg lg:text-xl tracking-wide font-bold ">{{ item.name }}</h3>
-              <p class=" font-medium uppercase tracking-wide text-gray-600">{{item.type}}</p>
-            </div>
-           <NuxtLink :to="item.live_demo">
-            <VsxIcon class="text-gray-400" iconName="ExportSquare" :size="24"  type="linear" />
-           </NuxtLink>
-           </div>
-          <div class="bg-gradient-to-r w-44 h-[1px] from-transparent via-blue-500 to-transparent my-2"></div>
-          <p class="paragpraph text-gray-400">
-            {{ item.description }}
-          </p>
-          </div>
-
-        </div>
-
-        <div
-          class="absolute  bottom-0 w-60 h-[1px] z-10 bg-gradient-to-r from-[#0b50e5]/0 via-[#0b50e5] to-[#0b50e5]/0"
-        ></div>
-      </div>
-    </div>
-
-
-
-  </section>
- </LayoutScrollSmooth>
+      <v-row class="mt-12" dense>
+        <v-col v-for="item in content.works" :key="item.name" cols="12" md="6">
+          <v-card elevation="2" class="h-100 d-flex flex-column">
+            <v-img :src="`/images/work/${item.thumbnails}`" :alt="`Thumbnail ${item.name}`" height="220" cover />
+            <v-card-title class="d-flex flex-column" style="align-items: flex-start;">
+              <span class="text-h6">{{ item.name }}</span>
+              <span class="text-caption text-medium-emphasis">{{ item.type }}</span>
+            </v-card-title>
+            <v-card-text class="text-body-2 text-medium-emphasis">
+              {{ item.description }}
+            </v-card-text>
+            <v-card-actions class="mt-auto">
+              <v-btn :to="item.live_demo" target="_blank" color="primary" variant="text" class="text-none">
+                View live demo
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </LayoutScrollSmooth>
 </template>
