@@ -1,7 +1,276 @@
-import type { PluginOption, ResolvedConfig } from "vite";
+import { promises as fs, type Dirent } from "node:fs";
+import * as path from "node:path";
+import { createRequire } from "node:module";
+
 import tailwindcss from "@tailwindcss/vite";
+import { normalizePath, type PluginOption, type ResolvedConfig } from "vite";
 import compression from "vite-plugin-compression";
 import vuetify from "vite-plugin-vuetify";
+
+const require = createRequire(import.meta.url);
+const dayjsEsmIndexPath = normalizePath(require.resolve("dayjs/esm/index.js"));
+const dayjsEsmDir = path.dirname(dayjsEsmIndexPath);
+
+const resolvePath = (...segments: string[]): string => path.resolve(...segments);
+
+const CLASS_ATTRIBUTE_REGEX = /class(?:Name)?\s*=\s*(["'`])([^"'`]*?)\1/g;
+const DYNAMIC_CLASS_OBJECT_REGEX = /['"`]([^'"`{}]+?)['"`]\s*:/g;
+const ARRAY_CLASS_REGEX = /['"`]([^'"`\s]+?)['"`]/g;
+
+function extractClassCandidates(source: string): string[] {
+  const candidates = new Set<string>();
+
+  let attributeMatch: RegExpExecArray | null;
+  while ((attributeMatch = CLASS_ATTRIBUTE_REGEX.exec(source)) !== null) {
+    for (const token of attributeMatch[2].split(/\s+/g)) {
+      const normalized = normalizeCandidate(token);
+      if (normalized) {
+        candidates.add(normalized);
+        candidates.add(unescapeCandidate(normalized));
+      }
+    }
+  }
+
+  let objectMatch: RegExpExecArray | null;
+  while ((objectMatch = DYNAMIC_CLASS_OBJECT_REGEX.exec(source)) !== null) {
+    const normalized = normalizeCandidate(objectMatch[1]);
+    if (normalized) {
+      candidates.add(normalized);
+      candidates.add(unescapeCandidate(normalized));
+    }
+  }
+
+  let arrayMatch: RegExpExecArray | null;
+  while ((arrayMatch = ARRAY_CLASS_REGEX.exec(source)) !== null) {
+    const normalized = normalizeCandidate(arrayMatch[1]);
+    if (normalized) {
+      candidates.add(normalized);
+      candidates.add(unescapeCandidate(normalized));
+    }
+  }
+
+  return Array.from(candidates);
+}
+
+function normalizeCandidate(candidate: string): string | null {
+  const trimmed = candidate.trim();
+  if (!trimmed) {
+    return null;
+  }
+
+  const sanitized = trimmed.replace(/^['"`]|['"`]$/g, "");
+
+  if (!sanitized) {
+    return null;
+  }
+
+  return sanitized;
+}
+
+function unescapeCandidate(candidate: string): string {
+  return candidate.replace(/\\:/g, ":").replace(/\\\//g, "/");
+}
+
+function purgeCss(
+    css: string,
+    usedClasses: Set<string>,
+    selectorSafelist: RegExp[],
+): string {
+  let result = "";
+  let index = 0;
+
+  while (index < css.length) {
+    const openBrace = css.indexOf("{", index);
+    if (openBrace === -1) {
+      result += css.slice(index);
+      break;
+    }
+
+    const selector = css.slice(index, openBrace).trim();
+    const closeBrace = findMatchingBrace(css, openBrace);
+    if (closeBrace === -1) {
+      result += css.slice(index);
+      break;
+    }
+
+    const blockContent = css.slice(openBrace + 1, closeBrace);
+
+    if (selector.startsWith("@")) {
+      const purgedBlock = purgeCss(blockContent, usedClasses, selectorSafelist);
+      if (purgedBlock.trim().length > 0 || !selector.startsWith("@media")) {
+        result += `${selector}{${purgedBlock}}`;
+      }
+    } else if (shouldKeepRule(selector, usedClasses, selectorSafelist)) {
+      result += `${selector}{${blockContent}}`;
+    }
+
+    index = closeBrace + 1;
+  }
+
+  return result;
+}
+
+function shouldKeepRule(
+    selector: string,
+    usedClasses: Set<string>,
+    selectorSafelist: RegExp[],
+): boolean {
+  const selectors = selector
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+  if (!selectors.length) {
+    return false;
+  }
+
+  return selectors.some((singleSelector) => {
+    if (selectorSafelist.some((pattern) => pattern.test(singleSelector))) {
+      return true;
+    }
+
+    const classMatches = singleSelector.match(/\.(-?[_a-zA-Z]+[_a-zA-Z0-9-]*)/g);
+
+    if (!classMatches) {
+      return true;
+    }
+
+    return classMatches.some((match) => {
+      const className = match.slice(1);
+      const normalized = unescapeCandidate(className);
+      return usedClasses.has(className) || usedClasses.has(normalized);
+    });
+  });
+}
+
+function findMatchingBrace(source: string, openIndex: number): number {
+  let depth = 0;
+
+  for (let index = openIndex; index < source.length; index += 1) {
+    const character = source[index];
+    if (character === "{") {
+      depth += 1;
+    } else if (character === "}") {
+      depth -= 1;
+      if (depth === 0) {
+        return index;
+      }
+    }
+  }
+
+  return -1;
+}
+
+async function expandGlobs(patterns: string[], rootDir: string): Promise<string[]> {
+  const files = new Set<string>();
+
+  for (const pattern of patterns) {
+    if (!pattern.includes("*")) {
+      const absolutePath = path.resolve(rootDir, pattern);
+      try {
+        const stats = await fs.stat(absolutePath);
+        if (stats.isFile()) {
+          files.add(absolutePath);
+        }
+      } catch {
+        // Ignore missing files
+      }
+      continue;
+    }
+
+    const parsedPattern = parseGlobPattern(pattern);
+    if (!parsedPattern) {
+      continue;
+    }
+
+    const { baseDir, extensions } = parsedPattern;
+    try {
+      const absoluteBase = path.resolve(rootDir, baseDir);
+      const stats = await fs.stat(absoluteBase);
+      if (!stats.isDirectory()) {
+        continue;
+      }
+
+      await walkDirectory(absoluteBase, extensions, files);
+    } catch {
+      // Ignore directories that cannot be read
+    }
+  }
+
+  return Array.from(files);
+}
+
+function parseGlobPattern(pattern: string): {
+  baseDir: string;
+  extensions: Set<string> | null;
+} | null {
+  const normalizedPattern = pattern.replace(/\\/g, "/");
+  const splitIndex = normalizedPattern.indexOf("**/");
+
+  if (splitIndex === -1) {
+    return null;
+  }
+
+  const baseDir = normalizedPattern.slice(0, splitIndex).replace(/\/$/, "") || ".";
+  const filePattern = normalizedPattern.slice(splitIndex + 3);
+
+  if (!filePattern || filePattern === "*") {
+    return { baseDir, extensions: null };
+  }
+
+  if (filePattern.startsWith("*.")) {
+    const extensionPart = filePattern.slice(2);
+    if (extensionPart.startsWith("{") && extensionPart.endsWith("}")) {
+      const extensions = extensionPart
+          .slice(1, -1)
+          .split(",")
+          .map((value) => value.trim().replace(/^[.]/, ""))
+          .filter(Boolean);
+      return { baseDir, extensions: new Set(extensions) };
+    }
+
+    return { baseDir, extensions: new Set([extensionPart.replace(/^[.]/, "")]) };
+  }
+
+  return { baseDir, extensions: null };
+}
+
+async function walkDirectory(
+    directory: string,
+    extensions: Set<string> | null,
+    files: Set<string>,
+): Promise<void> {
+  let entries: Dirent[];
+  try {
+    entries = await fs.readdir(directory, { withFileTypes: true });
+  } catch {
+    return;
+  }
+
+  await Promise.all(
+      entries.map(async (entry) => {
+        const fullPath = path.join(directory, entry.name);
+        if (entry.isDirectory()) {
+          await walkDirectory(fullPath, extensions, files);
+        } else if (entry.isFile()) {
+          const extension = getExtension(entry.name);
+          if (!extensions || extensions.has(extension)) {
+            files.add(fullPath);
+          }
+        }
+      }),
+  );
+}
+
+function getExtension(filename: string): string {
+  const dotIndex = filename.lastIndexOf(".");
+  if (dotIndex === -1) {
+    return "";
+  }
+
+  return filename.slice(dotIndex + 1);
+}
+
 type SafelistEntry = string | RegExp;
 const vuetifyPlugin = vuetify({
   autoImport: false,
@@ -44,7 +313,12 @@ export function simplePurgeCssPlugin(options: SimplePurgeCssOptions): PluginOpti
   const normalizedStandard = new Set<string>();
 
   for (const entry of safelist.standard ?? []) {
-    selectorSafelist.push(entry);
+    if (typeof entry === "string") {
+      normalizedStandard.add(entry);
+      normalizedStandard.add(entry.replace(/\\:/g, ":").replace(/\\\//g, "/"));
+    } else {
+      selectorSafelist.push(entry);
+    }
   }
 
   for (const entry of safelist.deep ?? []) {
@@ -69,7 +343,7 @@ export function simplePurgeCssPlugin(options: SimplePurgeCssOptions): PluginOpti
       }
 
       const rootDir = resolvedConfig?.root ?? process.cwd();
-      const files = await fg(content, { cwd: rootDir, absolute: true });
+      const files = await expandGlobs(content, rootDir);
 
       await Promise.all(
           files.map(async (file) => {
