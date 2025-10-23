@@ -1,25 +1,26 @@
 <script setup lang="ts">
-import { WORK } from '~/utils/content'
+const { data: work } = useContentBlock('work')
+const content = computed(() => work.value)
 </script>
 
 <template>
  <LayoutScrollSmooth>
-  <section class="container">
+  <section id="work" class="container" v-if="content">
     <!-- Content -->
-    <p class="badge">{{ WORK.label }}</p>
+    <p class="badge">{{ content.label }}</p>
     <h2
       class="section-title"
     >
-      {{ WORK.headline }}
+      {{ content.headline }}
     </h2>
     <p class="paragraph mt-4 max-w-xl">
-      {{ WORK.subline }}
+      {{ content.subline }}
     </p>
 
     <!-- Works List -->
     <div class="grid md:grid-cols-2 gap-6 mt-16">
 
-      <div class="p-3 border bg-[#0b061a]/40 backdrop-blur-sm border-white/10 rounded-2xl relative flex items-center group" v-for="item in WORK.works">
+      <div class="p-3 border bg-[#0b061a]/40 backdrop-blur-sm border-white/10 rounded-2xl relative flex items-center group" v-for="item in content.works" :key="item.name">
         <div class="overflow-hidden aspect-[4/3] rounded-lg ">
           <img class="group-hover:scale-105 transition-all duration-500 w-full h-full object-cover" :src="'/images/work/' + item.thumbnails" :alt="'Thumbnail ' + item.name ">
         </div>
@@ -40,7 +41,7 @@ import { WORK } from '~/utils/content'
             {{ item.description }}
           </p>
           </div>
-         
+
         </div>
 
         <div

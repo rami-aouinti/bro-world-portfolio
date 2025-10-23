@@ -130,6 +130,9 @@ export interface SimplePurgeCssOptions {
 }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const sessionCookieName = process.env.SESSION_COOKIE_NAME || 'bro_world_session'
+const csrfCookieName = process.env.CSRF_COOKIE_NAME || 'bro_world_csrf'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-10-01',
   devtools: { enabled: true },
@@ -257,175 +260,36 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Poppins: [300, 400, 500, 600, 700], 
+      Poppins: [300, 400, 500, 600, 700]
     },
-    display: 'swap', 
+    display: 'swap'
   },
-
-  routeRules: {
-    "/": { isr: 60 },
-    "/about": { isr: 300 },
-    "/contact": { isr: 300 },
-    "/help": { isr: 300 },
-    "/api/auth/**": {
-      // Auth endpoints need to write cookies, avoid SWR background cache.
-      cache: false,
-    },
-    "/api/**": { swr: 60 },
-    "/_nuxt/**": {
-      headers: {
-        "cache-control": "public, max-age=31536000, immutable",
+  nitro: {
+    storage: {
+      content: {
+        driver: 'fs',
+        base: './server/storage/content'
       },
-    },
-    "/_ipx/**": {
-      headers: {
-        "cache-control": "public, max-age=31536000, immutable",
-      },
-    },
-    "/img/**": {
-      headers: {
-        "cache-control": "public, max-age=31536000, immutable",
-      },
-    },
-    "/images/**": {
-      headers: {
-        "cache-control": "public, max-age=31536000, immutable",
-      },
-    },
-    "/icons/**": {
-      headers: {
-        "cache-control": "public, max-age=31536000, immutable",
-      },
-    },
-    "/scripts/**": {
-      headers: {
-        "cache-control": "public, max-age=31536000, immutable",
-      },
-    },
-    "/*.{png,svg,webp,ico}": {
-      headers: {
-        "cache-control": "public, max-age=31536000, immutable",
-      },
-    },
+      auth: {
+        driver: 'fs',
+        base: './server/storage/auth'
+      }
+    }
   },
-
-  ui: {
-    icons: ["heroicons", "lucide"],
-    safelistColors: ["primary", "red", "orange", "green"],
-  },
-
-  experimental: {
-    typedPages: true,
-    payloadExtraction: true,
-    renderJsonPayloads: true,
-  },
-
-  typescript: {
-    shim: false,
-    strict: true,
-  },
-
-  vue: {
-    propsDestructure: true,
-  },
-
-  vuetify: {
-    moduleOptions: {
-      ssrClientHints: {
-        viewportSize: true,
-        prefersColorScheme: true,
-        prefersColorSchemeOptions: {},
-        reloadOnFirstRequest: true,
-      },
+  runtimeConfig: {
+    auth: {
+      sessionCookieName,
+      csrfCookieName,
+      sessionMaxAge: Number.parseInt(process.env.SESSION_MAX_AGE ?? '', 10) || 60 * 60 * 24
     },
-  },
-
-  image: {
-    format: ["webp", "avif"],
-    dir: "public",
-    domains: [
-      "images.unsplash.com",
-      "bro-world-space.com",
-      "bro-world.org",
-      "avatars.githubusercontent.com",
-    ],
-    screens: {
-      sm: 320,
-      md: 640,
-      lg: 1024,
-      xl: 1280,
+    admin: {
+      defaultEmail: process.env.ADMIN_EMAIL || 'admin@example.com',
+      defaultPassword: process.env.ADMIN_PASSWORD || 'ChangeMe123!'
     },
-    quality: 80,
-    ipx: {
-      dir: "public",
-      allowFiles: true,
-      domains: [
-        "images.unsplash.com",
-        "bro-world-space.com",
-        "bro-world.org",
-        "avatars.githubusercontent.com",
-      ],
-    },
-    presets: {
-      lcp: {
-        modifiers: {
-          format: "webp",
-          quality: 80,
-        },
-      },
-    },
-  },
-
-  ignore: ["components/**/index.ts", "components/**/shaders.ts", "components/**/types.ts"],
-
-
-  eslint: {
-    config: {
-      standalone: false,
-    },
-  },
-
-  llms: {
-    domain: "https://broworld.com/",
-    title: "BroWorld",
-    description:
-        "BroWorld is a free and open-source Vue.js component library that provides a collection of beautiful and customizable components for building modern web applications.",
-    full: {
-      title: "BroWorld Documentation",
-      description: "The complete BroWorld documentation.",
-    },
-  },
-  gtag: {
-    initMode: "manual",
-    loadingStrategy: "defer",
-  },
-  fonts: {
-    defaults: {
-      preload: true,
-      styles: ["normal"],
-      subsets: ["latin"],
-      weights: [400, 600],
-    },
-    families: [
-      {
-        name: "Plus Jakarta Sans",
-        provider: "google",
-      },
-      {
-        name: "Space Grotesk",
-        provider: "google",
-      },
-      {
-        name: "JetBrains Mono",
-        provider: "google",
-      },
-    ],
-    provider: "google",
-    providers: {
-      bunny: false,
-      fontshare: false,
-      fontsource: false,
-      googleicons: false,
-    },
-  },
+    public: {
+      auth: {
+        csrfCookieName
+      }
+    }
+  }
 })

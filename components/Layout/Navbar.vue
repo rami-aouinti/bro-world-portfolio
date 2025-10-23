@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { NAVLINKS } from '~/utils/content'
+const { data: navlinks } = useContentBlock('navlinks')
 
 const isActive = ref(false)
+
+const links = computed(() => navlinks.value ?? [])
 
 function navActive() {
   isActive.value = !isActive.value
 }
-
 </script>
 
 <template>
@@ -48,7 +49,8 @@ function navActive() {
 
         <NuxtLink
           class="text-white group text-xl lg:text-base"
-          v-for="link in NAVLINKS"
+          v-for="link in links"
+          :key="link.url"
           :to="link.url"
         >
           <div class="relative overflow-hidden">
