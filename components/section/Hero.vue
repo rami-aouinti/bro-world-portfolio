@@ -7,7 +7,7 @@ const workItems = computed(() => work.value?.works ?? [])
 </script>
 
 <template>
-  <div id="hero" class="container relative py-40">
+  <div class="container relative py-40">
     <!-- Content -->
     <div class="z-10 relative flex flex-col items-center">
     <div class="badge  flex items-center gap-2" v-if="heroContent">
@@ -23,8 +23,8 @@ const workItems = computed(() => work.value?.works ?? [])
       {{ heroContent?.subline }}
     </p>
     <div class="flex gap-4 items-center mt-8">
-      <Button label="View Work" to="#work" />
-      <Button label="Contact Me" to="/contact#contact" variant="btn-dark" />
+      <Button label="View Work" to="/work" />
+      <Button label="Contact Me" to="/contact" variant="btn-dark" />
     </div>
     </div>
 

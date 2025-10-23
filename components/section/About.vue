@@ -32,7 +32,7 @@ const fullname = computed(() => {
         <Button
           class="mt-8"
           label="Connect Me"
-          to="/contact#contact"
+          to="/contact"
           variant="btn-dark"
         />
       </div>

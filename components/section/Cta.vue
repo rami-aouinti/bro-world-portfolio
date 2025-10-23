@@ -22,7 +22,7 @@ const profileName = computed(() => {
         <p class="paragraph max-w-xl text-center mt-8">
           {{ ctaContent.description }}
         </p>
-        <Button class="mt-10" to="/contact#contact" variant="btn-primary" label="Start Collaboration"/>
+        <Button class="mt-10" to="/contact" variant="btn-primary" label="Start Collaboration"/>
 
         <div class="my-8 w-4/5 h-[1px] bg-gradient-to-r from-white/0 via-white/20 to-white/0 "></div>
 
