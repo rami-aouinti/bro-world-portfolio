@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const { data: about } = useContentBlock('about')
 const { data: profile } = useContentBlock('profile')
 
@@ -13,61 +15,35 @@ const fullname = computed(() => {
 </script>
 
 <template>
- <LayoutScrollSmooth>
-  <section id="about" class="container" v-if="aboutContent">
-    <div class="grid items-center grid-cols-1 lg:grid-cols-2 gap-8">
-      <!-- Content -->
-      <div>
-        <p class="badge">{{ aboutContent.label }}</p>
-        <h2
-          class="section-title"
-        >
-          {{ fullname || ' ' }}
-        </h2>
-
-        <p class="paragraph mt-4" v-for="intro in aboutContent.introduce" :key="intro">
-          {{ intro }}
-        </p>
-
-        <Button
-          class="mt-8"
-          label="Connect Me"
-          to="/contact"
-          variant="btn-dark"
-        />
-      </div>
-
-      <!-- Image -->
-      <div class="p-3 border bg-[#0b061a]/40 justify-center backdrop-blur-sm border-white/10 rounded-2xl relative flex items-center group" v-if="profileContent">
-        <!-- Remove if u want -->
-        <p class="absolute top-4 text-white/20 font-medium p-2">
-              Photo by
-              <a
-                href="https://unsplash.com/@sooprun?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
-                >Alex Suprun</a
-              >
-              on
-              <a
-                href="https://unsplash.com/photos/a-man-standing-in-front-of-a-purple-wall-1RAZcvtAxkk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
-                >Unsplash</a
-              >
+  <LayoutScrollSmooth>
+    <v-container v-if="aboutContent" class="py-16">
+      <v-row align="center" justify="center" class="g-8">
+        <v-col cols="12" md="6">
+          <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
+            {{ aboutContent.label }}
+          </v-chip>
+          <h2 class="text-h4 font-weight-semibold mb-4">{{ fullname || ' ' }}</h2>
+          <div class="text-body-1 text-medium-emphasis d-flex flex-column" style="gap: 12px;">
+            <p v-for="intro in aboutContent.introduce" :key="intro">
+              {{ intro }}
             </p>
-        <div>
-          <div>
-            <img
-              class="rounded-lg"
+          </div>
+          <Button class="mt-8" label="Connect Me" to="/contact" variant="btn-dark" />
+        </v-col>
+        <v-col cols="12" md="6" v-if="profileContent">
+          <v-card elevation="2">
+            <v-img
               :src="profileContent.avatar"
               :alt="`${fullname} - ${profileContent.role}`"
+              height="360"
+              cover
             />
-
-          </div>
-        </div>
-        <div
-          class="absolute  bottom-0 w-60 h-[1px] z-10 bg-gradient-to-r from-[#0b50e5]/0 via-[#0b50e5] to-[#0b50e5]/0"
-        ></div>
-        <div class="-z-10 absolute bottom-4 w-96 bg-[#0b50e5] rounded-full blur-2xl h-40 animate-pulse"></div>
-      </div>
-    </div>
-  </section>
- </LayoutScrollSmooth>
+            <v-card-subtitle class="text-medium-emphasis pa-4">
+              {{ profileContent.role }}
+            </v-card-subtitle>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </LayoutScrollSmooth>
 </template>

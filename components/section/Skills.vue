@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const { data: skills } = useContentBlock('skills')
 
 const skillsContent = computed(() => skills.value)
@@ -6,23 +8,35 @@ const skillsContent = computed(() => skills.value)
 
 <template>
   <LayoutScrollSmooth>
-    <section class="container" v-if="skillsContent">
-      <p class="badge">{{ skillsContent.label }}</p>
-      <h2 class="section-title">{{ skillsContent.headline }}</h2>
-      <p class="paragraph mt-4 max-w-2xl">{{ skillsContent.subline }}</p>
+    <v-container v-if="skillsContent" class="py-16">
+      <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
+        {{ skillsContent.label }}
+      </v-chip>
+      <h2 class="text-h4 font-weight-semibold">{{ skillsContent.headline }}</h2>
+      <p class="text-body-1 text-medium-emphasis mt-4" style="max-width: 600px;">
+        {{ skillsContent.subline }}
+      </p>
 
-      <div class="grid gap-6 mt-12 md:grid-cols-3">
-        <div class="card h-full" v-for="category in skillsContent.categories" :key="category.name">
-          <h3 class="text-xl font-semibold text-white">{{ category.name }}</h3>
-          <ul class="flex flex-wrap gap-3 mt-6">
-            <li v-for="skill in category.skills" :key="skill">
-              <span class="inline-flex px-3 py-1 text-sm text-white/70 border border-white/10 rounded-full bg-white/5">
-                {{ skill }}
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      <v-row class="mt-10" dense>
+        <v-col v-for="category in skillsContent.categories" :key="category.name" cols="12" md="4">
+          <v-card elevation="1" class="h-100">
+            <v-card-title>{{ category.name }}</v-card-title>
+            <v-card-text>
+              <v-chip-group column>
+                <v-chip
+                  v-for="skill in category.skills"
+                  :key="skill"
+                  class="ma-1"
+                  color="primary"
+                  variant="tonal"
+                >
+                  {{ skill }}
+                </v-chip>
+              </v-chip-group>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </LayoutScrollSmooth>
 </template>

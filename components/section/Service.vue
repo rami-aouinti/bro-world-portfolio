@@ -1,49 +1,38 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const { data: service } = useContentBlock('service')
 const content = computed(() => service.value)
 </script>
 
 <template>
   <LayoutScrollSmooth>
-    <section id="service" class="container" v-if="content">
-    <!-- Content -->
-    <p class="badge">{{ content.label }}</p>
-    <h2
-      class="section-title"
-    >
-      {{ content.headline }}
-    </h2>
-    <p class="paragraph mt-4 max-w-xl">
-      {{ content.subline }}
-    </p>
+    <v-container v-if="content" class="py-16">
+      <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
+        {{ content.label }}
+      </v-chip>
+      <h2 class="text-h4 font-weight-semibold">{{ content.headline }}</h2>
+      <p class="text-body-1 text-medium-emphasis mt-4" style="max-width: 600px;">
+        {{ content.subline }}
+      </p>
 
-    <!-- Services List -->
-    <div class="grid md:grid-cols-3 gap-6 mt-16">
-      <div class="card relative flex items-center p-10" v-for="item in content.services" :key="item.name">
-       <div>
-        <div>
-          <div class="inline-flex p-2 rounded-lg border border-primary shadow-[0px_0px_15px_-3px_rgba(85,_132,_255,_0.5)]">
-              <VsxIcon
-                :iconName="item.icon"
-                :size="24"
-                color="#5584FF"
-                type="linear"
-              />
-            </div>
-        </div>
-
-          <div class="mt-5">
-            <h4 class="text-xl font-semibold tracking-wide text-white">{{ item.name }}</h4>
-            <p class="text-white/50 mt-2">{{ item.description }}</p>
-          </div>
-       </div>
-
-          <div
-          class="absolute  bottom-0 w-60 h-[1px] z-10 bg-gradient-to-r from-[#0b50e5]/0 via-[#0b50e5] to-[#0b50e5]/0"
-        ></div>
-        <div class="-z-10 absolute  bottom-0 w-40 bg-[#0b50e5] rounded-full blur-2xl h-40 animate-pulse"></div>
-      </div>
-    </div>
-  </section>
+      <v-row class="mt-12" dense>
+        <v-col v-for="item in content.services" :key="item.name" cols="12" md="4">
+          <v-card class="h-100" elevation="1">
+            <v-card-text class="d-flex flex-column" style="gap: 16px;">
+              <v-avatar color="primary" size="56">
+                <span class="text-white text-h6 font-weight-medium">
+                  {{ item.name.charAt(0) }}
+                </span>
+              </v-avatar>
+              <div>
+                <h4 class="text-h6 font-weight-semibold mb-2">{{ item.name }}</h4>
+                <p class="text-body-2 text-medium-emphasis">{{ item.description }}</p>
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </LayoutScrollSmooth>
 </template>
