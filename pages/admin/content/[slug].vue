@@ -17,7 +17,7 @@ const slug = computed(() => slugParam.value as ContentSlug)
 
 const titles: Record<ContentSlug, string> = {
   profile: 'Profil',
-  hero: 'Section Hero',
+  hero: 'Section Personal',
   service: 'Compétences',
   work: 'Projets',
   about: 'À propos',

@@ -10,7 +10,7 @@ const sections = [
   },
   {
     slug: 'hero',
-    title: 'Section Hero',
+    title: 'Section Personal',
     description: 'Badge, titre et sous-titre de l’entête.'
   },
   {
