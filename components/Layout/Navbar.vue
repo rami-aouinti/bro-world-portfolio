@@ -1,10 +1,20 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
+import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
+
 const { data: navlinks } = useContentBlock('navlinks')
 
 const drawer = ref(false)
-const links = computed(() => navlinks.value ?? [])
+const localePath = useLocalePath()
+const rawLinks = computed(() => navlinks.value ?? [])
+const links = computed(() =>
+  rawLinks.value.map((link) => ({
+    ...link,
+    to: resolveLocalizedRouteTarget(link.url, localePath)
+  })),
+)
+const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', localePath))
 </script>
 
 <template>
@@ -16,7 +26,7 @@ const links = computed(() => navlinks.value ?? [])
       <v-btn
         v-for="link in links"
         :key="link.url"
-        :to="link.url"
+        :to="link.to"
         color="primary"
         variant="text"
         class="text-none"
@@ -32,14 +42,14 @@ const links = computed(() => navlinks.value ?? [])
       <v-list-item
         v-for="link in links"
         :key="link.url"
-        :to="link.url"
+        :to="link.to"
         @click="drawer = false"
       >
         <v-list-item-title>{{ link.label }}</v-list-item-title>
       </v-list-item>
     </v-list>
     <div class="pa-4">
-      <v-btn block color="primary" :to="'/contact'" class="text-none" @click="drawer = false">
+      <v-btn block color="primary" :to="contactLink" class="text-none" @click="drawer = false">
         Connect Me
       </v-btn>
     </div>
