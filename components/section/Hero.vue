@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 const { data: hero } = useContentBlock('hero')
 const { data: work } = useContentBlock('work')
