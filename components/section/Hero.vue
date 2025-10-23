@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 const { data: hero } = useContentBlock('hero')
 const { data: work } = useContentBlock('work')
@@ -9,7 +10,7 @@ const workItems = computed(() => work.value?.works ?? [])
 </script>
 
 <template>
-  <LayoutScrollSmooth>
+  <ScrollSmooth>
     <v-container class="py-16" v-if="heroContent">
       <v-row justify="center" class="text-center">
         <v-col cols="12" md="10" lg="8">
@@ -47,5 +48,5 @@ const workItems = computed(() => work.value?.works ?? [])
         </v-slide-group-item>
       </v-slide-group>
     </v-container>
-  </LayoutScrollSmooth>
+  </ScrollSmooth>
 </template>
