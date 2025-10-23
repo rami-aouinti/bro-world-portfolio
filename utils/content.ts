@@ -8,16 +8,24 @@ export const NAVLINKS = [
     url: '#about'
   },
   {
-    label: 'Erfahrung',
+    label : 'Skills',
+    url: '#skills'
+  },
+  {
+    label : 'Experience',
+    url: '#experience'
+  },
+  {
+    label : 'Education',
+    url: '#education'
+  },
+  {
+    label : 'Works',
     url: '#work'
   },
   {
     label: 'Kompetenzen',
     url: '#service'
-  },
-  {
-    label: 'Contact',
-    url: '/contact'
   },
 
 ]
@@ -60,9 +68,10 @@ export const SERVICE = {
     {
       name: 'Qualitätssicherung & DevOps',
       icon: 'PenTool2',
-      description:
-        'Einrichtung von CI/CD-Pipelines, Erstellung von Unit- und Integrationstests sowie Containerisierung mit Docker.'
-    }
+      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit cum distinctio dolores!',
+      thumbnails: ''
+    },
+
   ]
 }
 
@@ -133,7 +142,72 @@ export const ABOUT = {
 }
 
 export const CTA = {
-  label: 'Lassen Sie uns über Ihr nächstes Backend-Projekt sprechen',
-  description:
-    'Ob Migration, Feature-Entwicklung oder Performance-Tuning – ich unterstütze Sie dabei, stabile Services schnell in Produktion zu bringen.'
+  label: 'Let’s Build Something Great Together',
+  description: 'Need a clean, functional UI? I’m here to help bring your vision to life—simple, responsive, and user-focused.'
+}
+
+export const SKILLS = {
+  label: 'skills',
+  headline: 'Tools and technologies I rely on to ship quality interfaces.',
+  subline: 'From foundational web technologies to design systems, these are the skills I apply every day to craft engaging digital experiences.',
+  categories: [
+    {
+      name: 'Frontend Development',
+      skills: ['HTML5', 'CSS3 & Tailwind CSS', 'JavaScript', 'TypeScript', 'Vue.js & Nuxt']
+    },
+    {
+      name: 'UI & Product Design',
+      skills: ['Figma', 'Design Systems', 'Prototyping', 'Accessibility', 'User Research']
+    },
+    {
+      name: 'Collaboration & Delivery',
+      skills: ['Git & GitHub', 'Agile Workflows', 'Technical Documentation', 'Code Reviews', 'Stakeholder Communication']
+    }
+  ]
+}
+
+export const EXPERIENCES = {
+  label: 'experience',
+  headline: 'Professional journey and the impact created for teams and clients.',
+  positions: [
+    {
+      role: 'Senior Front-End Developer',
+      company: 'PixelForge Studio',
+      timeframe: '2022 — Present',
+      achievements: [
+        'Led the rebuild of the company design system, reducing component delivery time by 35%.',
+        'Collaborated with product designers to launch responsive marketing sites that increased lead generation by 25%.',
+        'Mentored junior developers and introduced code review practices to improve overall code quality.'
+      ]
+    },
+    {
+      role: 'UI Engineer',
+      company: 'Brightwave Labs',
+      timeframe: '2019 — 2022',
+      achievements: [
+        'Developed reusable Vue components powering analytics dashboards for enterprise clients.',
+        'Worked closely with UX researchers to deliver accessible interfaces that met WCAG AA standards.',
+        'Automated front-end testing workflows, reducing regressions across weekly releases.'
+      ]
+    }
+  ]
+}
+
+export const EDUCATION = {
+  label: 'education',
+  headline: 'Academic background and continued learning milestones.',
+  schools: [
+    {
+      degree: 'B.Sc. in Information Technology',
+      institution: 'Jakarta Institute of Technology',
+      timeframe: '2015 — 2019',
+      details: 'Focused on software engineering, user interface design, and human-computer interaction. Graduated with honors.'
+    },
+    {
+      degree: 'Certificate, Advanced UX Design',
+      institution: 'Interaction Design Foundation',
+      timeframe: '2020',
+      details: 'Completed specialized coursework in user research methodologies, prototyping, and usability testing.'
+    }
+  ]
 }
