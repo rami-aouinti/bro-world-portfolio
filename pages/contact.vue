@@ -1,7 +1,7 @@
 <template>
   <LayoutLine />
   <LayoutScrollSmooth>
-    <section id="contact" class="container">
+    <section class="container">
       <div class="max-w-5xl mx-auto">
         <p class="badge flex items-center gap-2 w-fit">
           <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>

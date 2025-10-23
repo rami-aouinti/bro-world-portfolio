@@ -1,31 +1,31 @@
 export const NAVLINKS = [
   {
     label: 'Start',
-    url: '#hero'
+    url: '/'
   },
   {
     label: 'Über mich',
-    url: '#about'
+    url: '/about'
   },
   {
     label : 'Skills',
-    url: '#skills'
+    url: '/skills'
   },
   {
     label : 'Experience',
-    url: '#experience'
+    url: '/experience'
   },
   {
     label : 'Education',
-    url: '#education'
+    url: '/education'
   },
   {
     label : 'Works',
-    url: '#work'
+    url: '/work'
   },
   {
     label: 'Kompetenzen',
-    url: '#service'
+    url: '/service'
   },
 
 ]

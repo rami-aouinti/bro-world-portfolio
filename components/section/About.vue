@@ -4,7 +4,7 @@ import { ABOUT, PROFILE } from '~/utils/content'
 
 <template>
  <LayoutScrollSmooth>
-  <section id="about" class="container">
+  <section class="container">
     <div class="grid items-center grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- Content -->
       <div>
@@ -22,7 +22,7 @@ import { ABOUT, PROFILE } from '~/utils/content'
         <Button
           class="mt-8"
           label="Connect Me"
-          to="/contact#contact"
+          to="/contact"
           variant="btn-dark"
         />
       </div>
