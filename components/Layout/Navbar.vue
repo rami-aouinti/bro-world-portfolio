@@ -71,12 +71,12 @@ function navActive() {
             <p
               class="group-hover:-translate-y-7 duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
             >
-             Connect Me
+             Kontakt
             </p>
             <p
               class="absolute top-7 left-0 group-hover:top-0 duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
             >
-             Connect Me
+             Kontakt
             </p>
           </div>
         </NuxtLink>
@@ -84,7 +84,7 @@ function navActive() {
      <div>
       <Button
         class="rounded-full hidden lg:block shadow-none"
-        label="Connect Me"
+        label="Kontakt"
         to="#contact"
         variant="btn-dark"
       />

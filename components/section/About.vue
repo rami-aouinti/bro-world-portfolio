@@ -19,7 +19,7 @@
 
         <Button
           class="mt-8"
-          label="Connect Me"
+          label="Kontakt aufnehmen"
           to="#contact"
           variant="btn-dark"
         />
