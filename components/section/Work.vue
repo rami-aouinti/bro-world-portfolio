@@ -4,7 +4,7 @@ import { WORK } from '~/utils/content'
 
 <template>
  <LayoutScrollSmooth>
-  <section id="work" class="container">
+  <section class="container">
     <!-- Content -->
     <p class="badge">{{ WORK.label }}</p>
     <h2

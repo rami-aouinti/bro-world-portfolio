@@ -1,6 +1,6 @@
 <template>
   <LayoutScrollSmooth>
-    <section id="education" class="container">
+    <section class="container">
       <p class="badge">{{ EDUCATION.label }}</p>
       <h2 class="section-title">{{ EDUCATION.headline }}</h2>
 
