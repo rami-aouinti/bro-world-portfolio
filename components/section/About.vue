@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ABOUT, PROFILE } from '~/utils/content'
+</script>
 
 <template>
  <LayoutScrollSmooth>

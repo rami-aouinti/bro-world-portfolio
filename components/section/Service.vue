@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { SERVICE } from '~/utils/content'
+</script>
+
 <template>
   <LayoutScrollSmooth>
     <section id="service" class="container">

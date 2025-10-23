@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { HERO, WORK } from '~/utils/content'
+</script>
 
 <template>
   <div id="hero" class="container relative py-40">

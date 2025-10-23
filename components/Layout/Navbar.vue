@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { NAVLINKS } from '~/utils/content'
+
 const isActive = ref(false)
 
 function navActive() {

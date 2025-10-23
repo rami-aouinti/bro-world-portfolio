@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { WORK } from '~/utils/content'
+</script>
+
 <template>
  <LayoutScrollSmooth>
   <section id="work" class="container">
