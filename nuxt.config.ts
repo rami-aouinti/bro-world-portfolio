@@ -166,6 +166,13 @@ export default defineNuxtConfig({
     "~/assets/styles/index.css",
   ],
 
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
   build: {
     transpile: ["vuetify"],
   },
