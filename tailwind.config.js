@@ -89,6 +89,17 @@ export default {
         "Courier New",
         "monospace",
       ],
+      poppins: [
+        "Poppins",
+        "Plus Jakarta Sans",
+        "system-ui",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif",
+      ],
     },
     extend: {
       fontSize: {
@@ -164,6 +175,7 @@ export default {
         ],
       },
       colors: {
+        dark: "#0B061A",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
