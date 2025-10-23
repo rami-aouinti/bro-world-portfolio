@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const el = ref(null)
-const { isVisible } = useInView(el)
+const { isVisible } = useElementInView(el)
 </script>
 
 <template>

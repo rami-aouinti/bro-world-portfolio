@@ -1,4 +1,4 @@
-export function useInView(targetRef: Ref<HTMLElement | null>) {
+export function useElementInView(targetRef: Ref<HTMLElement | null>) {
   const isVisible = ref(false)
 
   onMounted(() => {
