@@ -560,7 +560,7 @@ export default defineNuxtConfig({
 
   i18n: {
     lazy: true,
-    langDir: "locales/",
+    langDir: "i18n/locales/",
     defaultLocale: "en",
     strategy: "prefix_except_default",
     detectBrowserLanguage: {
@@ -584,6 +584,7 @@ export default defineNuxtConfig({
     bundle: {
       optimizeTranslationDirective: false,
     },
+    vueI18n: "./i18n/i18n.config.ts",
   },
 
   runtimeConfig: {
