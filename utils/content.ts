@@ -4,7 +4,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
   navlinks: [
     {
       label: 'Start',
-      url: '#hero'
+      url: '#personal'
     },
     {
       label: 'Über mich',

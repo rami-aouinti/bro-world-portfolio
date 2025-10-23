@@ -18,7 +18,13 @@ const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', local
 </script>
 
 <template>
-  <v-app-bar color="surface" flat density="comfortable">
+  <v-app-bar
+    class="hero-app-bar"
+    color="transparent"
+    flat
+    density="comfortable"
+    height="80"
+  >
     <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer" />
     <v-toolbar-title class="font-weight-semibold">Bro World</v-toolbar-title>
     <v-spacer />
@@ -34,7 +40,13 @@ const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', local
         {{ link.label }}
       </v-btn>
     </div>
-    <Button class="d-none d-md-inline-flex" style="margin-left: 16px;" label="Connect Me" to="/contact" variant="btn-dark" />
+    <Button
+      class="d-none d-md-inline-flex hero-contact"
+      style="margin-left: 16px;"
+      label="Connect Me"
+      to="/contact"
+      variant="btn-dark"
+    />
   </v-app-bar>
 
   <v-navigation-drawer v-model="drawer" temporary location="top" width="100%">
@@ -55,3 +67,44 @@ const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', local
     </div>
   </v-navigation-drawer>
 </template>
+
+<style scoped>
+.hero-app-bar {
+  --nav-max-width: min(1040px, calc(100% - 32px));
+  background: rgba(9, 13, 25, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 999px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px -40px rgba(15, 23, 42, 0.9);
+  margin: 20px auto 0;
+  max-width: var(--nav-max-width);
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+
+.hero-app-bar :deep(.v-toolbar-title) {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #f8fafc;
+}
+
+.hero-app-bar :deep(.v-app-bar-nav-icon) {
+  color: #f8fafc;
+}
+
+.hero-app-bar :deep(.v-btn) {
+  border-radius: 999px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.hero-contact :deep(.v-btn__content) {
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 600px) {
+  .hero-app-bar {
+    border-radius: 24px;
+    margin-top: 12px;
+  }
+}
+</style>

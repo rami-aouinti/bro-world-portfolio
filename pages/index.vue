@@ -1,5 +1,5 @@
 <template>
-  <Hero />
+  <Personal />
   <Line />
   <About />
   <Line />
@@ -15,7 +15,7 @@
   <Cta />
 </template>
 <script setup lang="ts">
-import Hero from "~/components/section/Hero.vue";
+import Personal from "~/components/section/Personal.vue";
 import Line from "~/components/Layout/Line.vue";
 import About from "~/pages/about.vue";
 import Skills from "~/pages/skills.vue";
