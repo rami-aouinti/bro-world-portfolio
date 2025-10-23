@@ -17,8 +17,8 @@
       {{ HERO.subline }}
     </p>
     <div class="flex gap-4 items-center mt-8">
-      <Button label="View Work" to="#work" />
-      <Button label="Contact Me" to="#contact" variant="btn-dark" />
+      <Button label="Projekte ansehen" to="#work" />
+      <Button label="Kontakt aufnehmen" to="#contact" variant="btn-dark" />
     </div>
     </div>
 

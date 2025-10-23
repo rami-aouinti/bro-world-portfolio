@@ -3,14 +3,14 @@
 
 <template>
   <LayoutScrollSmooth>
-    <section class="max-w-5xl mx-auto px-4 lg:px-0">
+    <section id="contact" class="max-w-5xl mx-auto px-4 lg:px-0">
     <div class="mesh-gradient flex items-center flex-col rounded-3xl border bg-[#0b061a] border-white/10 p-10 relative">
         <div class="flex flex-col items-center">
           <h2 class="text-center !max-w-xl section-title ">{{ CTA.label }}</h2>
         <p class="paragraph max-w-xl text-center mt-8">
           {{ CTA.description }}
         </p>
-        <Button class="mt-10" to="#" variant="btn-primary" label="Start Collaboration"/>
+        <Button class="mt-10" to="mailto:rami.aouinti@gmail.com" variant="btn-primary" label="Kontakt aufnehmen"/>
 
         <div class="my-8 w-4/5 h-[1px] bg-gradient-to-r from-white/0 via-white/20 to-white/0 "></div>
 
@@ -36,7 +36,7 @@
         </div>
         </div>
 
-        <p class="text-sm text-white/30 text-center mt-8">&copy; Copyright <NuxtLink to="https://rauliqbal.my.id" target="_blank">Rauliqbal</NuxtLink> 2024</p>
+        <p class="text-sm text-white/30 text-center mt-8">&copy; {{ new Date().getFullYear() }} {{ PROFILE.fullname }}</p>
 
         <div
           class="absolute  bottom-0 w-60 h-[1px] z-10 bg-gradient-to-r from-[#0b50e5]/0 via-[#0b50e5] to-[#0b50e5]/0"
