@@ -1,4 +1,4 @@
-import type { VDataTable } from "vuetify/components";
+import type {VDataTable} from "vuetify/components";
 import {
   VAlert,
   VApp,
@@ -28,9 +28,9 @@ import {
   VForm,
   VHover,
   VIcon,
+  VImg,
   VItem,
   VItemGroup,
-  VImg,
   VList,
   VListItem,
   VListItemSubtitle,
@@ -52,23 +52,23 @@ import {
   VSnackbar,
   VSpacer,
   VSwitch,
-  VTextField,
   VTextarea,
+  VTextField,
   VToolbar,
   VTooltip,
 } from "vuetify/components";
-import { VCalendar } from "vuetify/labs/VCalendar";
-import { VDateInput } from "vuetify/labs/VDateInput";
-import { defineComponent, h, ref, watch } from "vue";
-import { Ripple } from "vuetify/directives";
-import { createVuetify } from "vuetify";
-import { ar, de, en, es, fr, it, ru } from "vuetify/locale";
-import { VSvgIcon, makeIconProps, type IconValue } from "vuetify/lib/composables/icons";
-import { aliases as vuetifyMdiAliases } from "vuetify/lib/iconsets/mdi-svg";
-import { normalizeHexColor } from "~/lib/theme/colors";
-import { coreProjectMdiIcons, ensureProjectMdiIcons } from "~/lib/vuetify/projectMdiIcons";
-import { withSecureCookieOptions } from "~/lib/cookies";
-import { ensureVuetifyLoading } from "~/lib/vuetify/loading";
+import {VCalendar} from "vuetify/labs/VCalendar";
+import {VDateInput} from "vuetify/labs/VDateInput";
+import {defineComponent, h, ref, watch} from "vue";
+import {Ripple} from "vuetify/directives";
+import {createVuetify} from "vuetify";
+import {ar, de, en, es, fr, it, ru} from "vuetify/locale";
+import {type IconValue, makeIconProps, VSvgIcon} from "vuetify/lib/composables/icons";
+import {aliases as vuetifyMdiAliases} from "vuetify/lib/iconsets/mdi-svg";
+import {normalizeHexColor} from "~/lib/theme/colors";
+import {coreProjectMdiIcons, ensureProjectMdiIcons} from "~/lib/vuetify/projectMdiIcons";
+import {withSecureCookieOptions} from "~/lib/cookies";
+import {ensureVuetifyLoading} from "~/lib/vuetify/loading";
 
 function withSvgPrefix(path: IconValue): IconValue {
   if (typeof path !== "string") {
@@ -866,8 +866,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     const nextLocale = context?.newLocale;
 
     if (typeof nextLocale === "string" && nextLocale.length > 0) {
-      const nextDateLocale = resolveDateLocaleValue(nextLocale) ?? fallbackDateLocale;
-      vuetify.date.instance.locale = nextDateLocale;
+      vuetify.date.instance.locale = resolveDateLocaleValue(nextLocale) ?? fallbackDateLocale;
       vuetify.locale.current.value = nextLocale;
     }
   });
