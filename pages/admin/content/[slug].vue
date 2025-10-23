@@ -179,401 +179,326 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[#02010c] px-4 py-10 text-white">
-    <div class="mx-auto flex w-full max-w-5xl flex-col gap-8">
-      <header class="flex flex-col gap-3 rounded-3xl border border-white/10 bg-[#0b061a]/70 p-6 backdrop-blur-md md:flex-row md:items-center md:justify-between">
-        <div>
-          <p class="text-sm text-white/40">
-            <NuxtLink class="underline hover:text-primary" to="/admin">Retour au tableau de bord</NuxtLink>
-          </p>
-          <h1 class="text-3xl font-semibold">{{ titles[slug] }}</h1>
-        </div>
-        <p class="text-sm text-white/50">Les modifications sont appliquées immédiatement après sauvegarde.</p>
-      </header>
-
-      <section class="rounded-3xl border border-white/10 bg-[#0f0a1f]/80 p-6 backdrop-blur-md">
-        <div v-if="pending" class="py-10 text-center text-white/60">Chargement…</div>
-        <div v-else-if="error" class="py-10 text-center text-red-400">
-          Une erreur est survenue lors du chargement du contenu.
-        </div>
-        <form v-else class="space-y-8" @submit.prevent="handleSubmit">
-          <div v-if="saveState.errors.length" class="rounded-lg border border-red-500/40 bg-red-500/10 p-4 text-sm text-red-200">
-            <p class="font-semibold">Merci de corriger les points suivants :</p>
-            <ul class="mt-2 list-disc space-y-1 pl-6">
-              <li v-for="errorMessage in saveState.errors" :key="errorMessage">{{ errorMessage }}</li>
-            </ul>
-          </div>
-          <p v-if="saveState.success" class="rounded-lg border border-emerald-500/40 bg-emerald-500/10 p-4 text-sm text-emerald-200">{{ saveState.success }}</p>
-
-          <!-- Profile -->
-          <div v-if="slug === 'profile'" class="grid gap-4 md:grid-cols-2">
-            <label class="flex flex-col gap-2 text-sm">
-              Prénom
-              <input v-model="form.firstname" type="text" class="input" required />
-            </label>
-            <label class="flex flex-col gap-2 text-sm">
-              Nom
-              <input v-model="form.lastname" type="text" class="input" required />
-            </label>
-            <label class="md:col-span-2 flex flex-col gap-2 text-sm">
-              Rôle
-              <input v-model="form.role" type="text" class="input" required />
-            </label>
-            <label class="md:col-span-2 flex flex-col gap-2 text-sm">
-              URL de l’avatar
-              <input v-model="form.avatar" type="text" class="input" required />
-            </label>
-          </div>
-
-          <!-- Hero -->
-          <div v-else-if="slug === 'hero'" class="grid gap-4">
-            <label class="flex flex-col gap-2 text-sm">
-              Badge
-              <input v-model="form.badge" type="text" class="input" required />
-            </label>
-            <label class="flex flex-col gap-2 text-sm">
-              Titre principal
-              <input v-model="form.headline" type="text" class="input" required />
-            </label>
-            <label class="flex flex-col gap-2 text-sm">
-              Description
-              <textarea v-model="form.subline" rows="3" class="input" required />
-            </label>
-          </div>
-
-          <!-- Service -->
-          <div v-else-if="slug === 'service'" class="space-y-6">
-            <div class="grid gap-4">
-              <label class="flex flex-col gap-2 text-sm">
-                Libellé
-                <input v-model="form.label" type="text" class="input" required />
-              </label>
-              <label class="flex flex-col gap-2 text-sm">
-                Titre
-                <input v-model="form.headline" type="text" class="input" required />
-              </label>
-              <label class="flex flex-col gap-2 text-sm">
-                Description
-                <textarea v-model="form.subline" rows="3" class="input" required />
-              </label>
+  <v-container class="py-12">
+    <v-row justify="center">
+      <v-col cols="12" lg="10" style="display: flex; flex-direction: column; gap: 24px;">
+        <v-card elevation="2" class="pa-6">
+          <div class="d-flex flex-column flex-md-row" style="gap: 16px; align-items: center;">
+            <div class="flex-grow-1">
+              <v-btn :to="'/admin'" variant="text" color="primary" class="text-none px-0">
+                Retour au tableau de bord
+              </v-btn>
+              <h1 class="text-h4 font-weight-semibold mt-3">{{ titles[slug] }}</h1>
             </div>
-            <div class="space-y-4">
-              <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold">Services</h2>
-                <button type="button" class="btn-secondary" @click="addService">Ajouter un service</button>
+            <p class="text-body-2 text-medium-emphasis">
+              Les modifications sont appliquées immédiatement après sauvegarde.
+            </p>
+          </div>
+        </v-card>
+
+        <v-card elevation="2" class="pa-6">
+          <div v-if="pending" class="py-10 text-center text-medium-emphasis">Chargement…</div>
+          <div v-else-if="error" class="py-10 text-center" style="color: var(--v-theme-error);">
+            Une erreur est survenue lors du chargement du contenu.
+          </div>
+          <v-form v-else @submit.prevent="handleSubmit" style="display: flex; flex-direction: column; gap: 24px;">
+            <v-alert
+              v-if="saveState.errors.length"
+              type="error"
+              variant="tonal"
+            >
+              <p class="font-weight-medium mb-2">Merci de corriger les points suivants :</p>
+              <ul style="padding-left: 20px; margin: 0;">
+                <li v-for="errorMessage in saveState.errors" :key="errorMessage">{{ errorMessage }}</li>
+              </ul>
+            </v-alert>
+            <v-alert v-if="saveState.success" type="success" variant="tonal">
+              {{ saveState.success }}
+            </v-alert>
+
+            <template v-if="slug === 'profile'">
+              <v-row dense>
+                <v-col cols="12" md="6">
+                  <v-text-field v-model="form.firstname" label="Prénom" required variant="outlined" density="comfortable" />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field v-model="form.lastname" label="Nom" required variant="outlined" density="comfortable" />
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field v-model="form.role" label="Rôle" required variant="outlined" density="comfortable" />
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field v-model="form.avatar" label="URL de l’avatar" required variant="outlined" density="comfortable" />
+                </v-col>
+              </v-row>
+            </template>
+
+            <template v-else-if="slug === 'hero'">
+              <v-text-field v-model="form.badge" label="Badge" required variant="outlined" density="comfortable" />
+              <v-text-field v-model="form.headline" label="Titre principal" required variant="outlined" density="comfortable" />
+              <v-textarea v-model="form.subline" label="Description" rows="4" required variant="outlined" density="comfortable" />
+            </template>
+
+            <template v-else-if="slug === 'service'">
+              <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
+              <v-text-field v-model="form.headline" label="Titre" required variant="outlined" density="comfortable" />
+              <v-textarea v-model="form.subline" label="Description" rows="4" required variant="outlined" density="comfortable" />
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="text-h6 font-weight-semibold mb-0">Services</h2>
+                <v-btn color="primary" variant="tonal" class="text-none" @click="addService">
+                  Ajouter un service
+                </v-btn>
               </div>
-              <div v-if="form.services?.length" class="space-y-4">
-                <div v-for="(service, index) in form.services" :key="index" class="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3">
-                  <div class="flex items-center justify-between text-sm text-white/60">
-                    <span>Service #{{ index + 1 }}</span>
-                    <button type="button" class="text-red-300 hover:text-red-200" @click="removeService(index)">Supprimer</button>
+              <div v-if="form.services?.length" style="display: flex; flex-direction: column; gap: 16px;">
+                <v-card
+                  v-for="(service, index) in form.services"
+                  :key="index"
+                  variant="tonal"
+                  color="primary"
+                  class="pa-4"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">Service #{{ index + 1 }}</span>
+                    <v-btn icon="mdi-delete" variant="text" color="error" @click="removeService(index)" />
                   </div>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Nom
-                    <input v-model="service.name" type="text" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Icône (Iconsax)
-                    <input v-model="service.icon" type="text" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Description
-                    <textarea v-model="service.description" rows="3" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Image (optionnelle)
-                    <input v-model="service.thumbnails" type="text" class="input" />
-                  </label>
-                </div>
+                  <v-text-field v-model="service.name" label="Nom" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="service.icon" label="Icône" required variant="outlined" density="comfortable" />
+                  <v-textarea v-model="service.description" label="Description" rows="3" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="service.thumbnails" label="Image (optionnelle)" variant="outlined" density="comfortable" />
+                </v-card>
               </div>
-              <p v-else class="text-sm text-white/50">Aucun service. Ajoutez-en un pour commencer.</p>
-            </div>
-          </div>
+              <p v-else class="text-body-2 text-medium-emphasis">Aucun service. Ajoutez-en un pour commencer.</p>
+            </template>
 
-          <!-- Work -->
-          <div v-else-if="slug === 'work'" class="space-y-6">
-            <div class="grid gap-4">
-              <label class="flex flex-col gap-2 text-sm">
-                Libellé
-                <input v-model="form.label" type="text" class="input" required />
-              </label>
-              <label class="flex flex-col gap-2 text-sm">
-                Titre
-                <input v-model="form.headline" type="text" class="input" required />
-              </label>
-              <label class="flex flex-col gap-2 text-sm">
-                Description
-                <textarea v-model="form.subline" rows="3" class="input" required />
-              </label>
-            </div>
-            <div class="space-y-4">
-              <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold">Projets</h2>
-                <button type="button" class="btn-secondary" @click="addWork">Ajouter un projet</button>
+            <template v-else-if="slug === 'work'">
+              <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
+              <v-text-field v-model="form.headline" label="Titre" required variant="outlined" density="comfortable" />
+              <v-textarea v-model="form.subline" label="Description" rows="4" required variant="outlined" density="comfortable" />
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="text-h6 font-weight-semibold mb-0">Projets</h2>
+                <v-btn color="primary" variant="tonal" class="text-none" @click="addWork">
+                  Ajouter un projet
+                </v-btn>
               </div>
-              <div v-if="form.works?.length" class="space-y-4">
-                <div v-for="(project, index) in form.works" :key="index" class="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3">
-                  <div class="flex items-center justify-between text-sm text-white/60">
-                    <span>Projet #{{ index + 1 }}</span>
-                    <button type="button" class="text-red-300 hover:text-red-200" @click="removeWork(index)">Supprimer</button>
+              <div v-if="form.works?.length" style="display: flex; flex-direction: column; gap: 16px;">
+                <v-card
+                  v-for="(project, index) in form.works"
+                  :key="index"
+                  variant="tonal"
+                  color="primary"
+                  class="pa-4"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">Projet #{{ index + 1 }}</span>
+                    <v-btn icon="mdi-delete" variant="text" color="error" @click="removeWork(index)" />
                   </div>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Nom
-                    <input v-model="project.name" type="text" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Lien de démonstration
-                    <input v-model="project.live_demo" type="text" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Description
-                    <textarea v-model="project.description" rows="3" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Image
-                    <input v-model="project.thumbnails" type="text" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Type
-                    <input v-model="project.type" type="text" class="input" required />
-                  </label>
-                </div>
+                  <v-text-field v-model="project.name" label="Nom" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="project.live_demo" label="Lien de démonstration" required variant="outlined" density="comfortable" />
+                  <v-textarea v-model="project.description" label="Description" rows="3" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="project.thumbnails" label="Image" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="project.type" label="Type" required variant="outlined" density="comfortable" />
+                </v-card>
               </div>
-              <p v-else class="text-sm text-white/50">Aucun projet enregistré.</p>
-            </div>
-          </div>
+              <p v-else class="text-body-2 text-medium-emphasis">Aucun projet enregistré.</p>
+            </template>
 
-          <!-- About -->
-          <div v-else-if="slug === 'about'" class="space-y-6">
-            <label class="flex flex-col gap-2 text-sm">
-              Libellé
-              <input v-model="form.label" type="text" class="input" required />
-            </label>
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold">Paragraphes</h2>
-                <button type="button" class="btn-secondary" @click="addIntroduce">Ajouter un paragraphe</button>
+            <template v-else-if="slug === 'about'">
+              <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="text-h6 font-weight-semibold mb-0">Paragraphes</h2>
+                <v-btn color="primary" variant="tonal" class="text-none" @click="addIntroduce">
+                  Ajouter un paragraphe
+                </v-btn>
               </div>
-              <div v-if="form.introduce?.length" class="space-y-4">
-                <div v-for="(paragraph, index) in form.introduce" :key="index" class="space-y-2">
-                  <label class="flex flex-col gap-2 text-sm">
-                    Paragraphe #{{ index + 1 }}
-                    <textarea v-model="form.introduce[index]" rows="3" class="input" required />
-                  </label>
-                  <button type="button" class="text-sm text-red-300 hover:text-red-200" @click="removeIntroduce(index)">Supprimer</button>
-                </div>
-              </div>
-              <p v-else class="text-sm text-white/50">Ajoutez un paragraphe pour commencer.</p>
-            </div>
-          </div>
-
-          <!-- CTA -->
-          <div v-else-if="slug === 'cta'" class="space-y-4">
-            <label class="flex flex-col gap-2 text-sm">
-              Libellé
-              <input v-model="form.label" type="text" class="input" required />
-            </label>
-            <label class="flex flex-col gap-2 text-sm">
-              Description
-              <textarea v-model="form.description" rows="3" class="input" required />
-            </label>
-          </div>
-
-          <!-- Navigation -->
-          <div v-else-if="slug === 'navlinks'" class="space-y-4">
-            <div class="flex items-center justify-between">
-              <h2 class="text-lg font-semibold">Liens de navigation</h2>
-              <button type="button" class="btn-secondary" @click="addNavlink">Ajouter un lien</button>
-            </div>
-            <div v-if="form.navlinks?.length" class="space-y-4">
-              <div v-for="(link, index) in form.navlinks" :key="index" class="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3">
-                <div class="flex items-center justify-between text-sm text-white/60">
-                  <span>Lien #{{ index + 1 }}</span>
-                  <button type="button" class="text-red-300 hover:text-red-200" @click="removeNavlink(index)">Supprimer</button>
-                </div>
-                <label class="flex flex-col gap-2 text-sm">
-                  Libellé
-                  <input v-model="link.label" type="text" class="input" required />
-                </label>
-                <label class="flex flex-col gap-2 text-sm">
-                  URL
-                  <input v-model="link.url" type="text" class="input" required />
-                </label>
-              </div>
-            </div>
-            <p v-else class="text-sm text-white/50">Aucun lien n’est encore configuré.</p>
-          </div>
-
-          <!-- Skills -->
-          <div v-else-if="slug === 'skills'" class="space-y-6">
-            <div class="grid gap-4">
-              <label class="flex flex-col gap-2 text-sm">
-                Libellé
-                <input v-model="form.label" type="text" class="input" required />
-              </label>
-              <label class="flex flex-col gap-2 text-sm">
-                Titre
-                <input v-model="form.headline" type="text" class="input" required />
-              </label>
-              <label class="flex flex-col gap-2 text-sm">
-                Description
-                <textarea v-model="form.subline" rows="3" class="input" required />
-              </label>
-            </div>
-            <div class="space-y-4">
-              <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold">Catégories</h2>
-                <button type="button" class="btn-secondary" @click="addSkillCategory">Ajouter une catégorie</button>
-              </div>
-              <div v-if="form.categories?.length" class="space-y-4">
-                <div v-for="(category, categoryIndex) in form.categories" :key="categoryIndex" class="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3">
-                  <div class="flex items-center justify-between text-sm text-white/60">
-                    <span>Catégorie #{{ categoryIndex + 1 }}</span>
-                    <button type="button" class="text-red-300 hover:text-red-200" @click="removeSkillCategory(categoryIndex)">Supprimer</button>
+              <div v-if="form.introduce?.length" style="display: flex; flex-direction: column; gap: 16px;">
+                <v-card
+                  v-for="(paragraph, index) in form.introduce"
+                  :key="index"
+                  variant="tonal"
+                  color="primary"
+                  class="pa-4"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">Paragraphe #{{ index + 1 }}</span>
+                    <v-btn icon="mdi-delete" variant="text" color="error" @click="removeIntroduce(index)" />
                   </div>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Nom de la catégorie
-                    <input v-model="category.name" type="text" class="input" required />
-                  </label>
-                  <div class="space-y-2">
-                    <div class="flex items-center justify-between text-sm">
-                      <span>Compétences</span>
-                      <button type="button" class="text-primary hover:text-primary/80" @click="addSkill(categoryIndex)">Ajouter</button>
+                  <v-textarea v-model="form.introduce[index]" label="Contenu" rows="3" required variant="outlined" density="comfortable" />
+                </v-card>
+              </div>
+              <p v-else class="text-body-2 text-medium-emphasis">Ajoutez un paragraphe pour commencer.</p>
+            </template>
+
+            <template v-else-if="slug === 'cta'">
+              <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
+              <v-textarea v-model="form.description" label="Description" rows="4" required variant="outlined" density="comfortable" />
+            </template>
+
+            <template v-else-if="slug === 'navlinks'">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="text-h6 font-weight-semibold mb-0">Liens de navigation</h2>
+                <v-btn color="primary" variant="tonal" class="text-none" @click="addNavlink">
+                  Ajouter un lien
+                </v-btn>
+              </div>
+              <div v-if="form.navlinks?.length" style="display: flex; flex-direction: column; gap: 16px;">
+                <v-card
+                  v-for="(link, index) in form.navlinks"
+                  :key="index"
+                  variant="tonal"
+                  color="primary"
+                  class="pa-4"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">Lien #{{ index + 1 }}</span>
+                    <v-btn icon="mdi-delete" variant="text" color="error" @click="removeNavlink(index)" />
+                  </div>
+                  <v-text-field v-model="link.label" label="Libellé" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="link.url" label="URL" required variant="outlined" density="comfortable" />
+                </v-card>
+              </div>
+              <p v-else class="text-body-2 text-medium-emphasis">Aucun lien n’est encore configuré.</p>
+            </template>
+
+            <template v-else-if="slug === 'skills'">
+              <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
+              <v-text-field v-model="form.headline" label="Titre" required variant="outlined" density="comfortable" />
+              <v-textarea v-model="form.subline" label="Description" rows="4" required variant="outlined" density="comfortable" />
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="text-h6 font-weight-semibold mb-0">Catégories</h2>
+                <v-btn color="primary" variant="tonal" class="text-none" @click="addSkillCategory">
+                  Ajouter une catégorie
+                </v-btn>
+              </div>
+              <div v-if="form.categories?.length" style="display: flex; flex-direction: column; gap: 16px;">
+                <v-card
+                  v-for="(category, categoryIndex) in form.categories"
+                  :key="categoryIndex"
+                  variant="tonal"
+                  color="primary"
+                  class="pa-4"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">Catégorie #{{ categoryIndex + 1 }}</span>
+                    <v-btn icon="mdi-delete" variant="text" color="error" @click="removeSkillCategory(categoryIndex)" />
+                  </div>
+                  <v-text-field v-model="category.name" label="Nom de la catégorie" required variant="outlined" density="comfortable" />
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="text-body-2">Compétences</span>
+                    <v-btn icon="mdi-plus" variant="text" color="primary" @click="addSkill(categoryIndex)" />
+                  </div>
+                  <div v-if="category.skills?.length" style="display: flex; flex-direction: column; gap: 12px;">
+                    <div v-for="(skill, skillIndex) in category.skills" :key="skillIndex" class="d-flex" style="gap: 12px;">
+                      <v-text-field
+                        v-model="category.skills[skillIndex]"
+                        label="Nom de la compétence"
+                        required
+                        variant="outlined"
+                        density="comfortable"
+                        class="flex-grow-1"
+                      />
+                      <v-btn icon="mdi-delete" variant="text" color="error" @click="removeSkill(categoryIndex, skillIndex)" />
                     </div>
-                    <div v-if="category.skills?.length" class="space-y-2">
-                      <div v-for="(skill, skillIndex) in category.skills" :key="skillIndex" class="flex items-center gap-2">
-                        <input v-model="category.skills[skillIndex]" type="text" class="input flex-1" required />
-                        <button type="button" class="text-red-300 hover:text-red-200" @click="removeSkill(categoryIndex, skillIndex)">Retirer</button>
-                      </div>
-                    </div>
-                    <p v-else class="text-sm text-white/50">Aucune compétence.</p>
                   </div>
-                </div>
+                  <p v-else class="text-body-2 text-medium-emphasis">Aucune compétence.</p>
+                </v-card>
               </div>
-              <p v-else class="text-sm text-white/50">Aucune catégorie définie.</p>
-            </div>
-          </div>
+              <p v-else class="text-body-2 text-medium-emphasis">Aucune catégorie définie.</p>
+            </template>
 
-          <!-- Experiences -->
-          <div v-else-if="slug === 'experiences'" class="space-y-6">
-            <div class="grid gap-4">
-              <label class="flex flex-col gap-2 text-sm">
-                Libellé
-                <input v-model="form.label" type="text" class="input" required />
-              </label>
-              <label class="flex flex-col gap-2 text-sm">
-                Titre
-                <input v-model="form.headline" type="text" class="input" required />
-              </label>
-            </div>
-            <div class="space-y-4">
-              <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold">Expériences</h2>
-                <button type="button" class="btn-secondary" @click="addExperience">Ajouter une expérience</button>
+            <template v-else-if="slug === 'experiences'">
+              <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
+              <v-text-field v-model="form.headline" label="Titre" required variant="outlined" density="comfortable" />
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="text-h6 font-weight-semibold mb-0">Expériences</h2>
+                <v-btn color="primary" variant="tonal" class="text-none" @click="addExperience">
+                  Ajouter une expérience
+                </v-btn>
               </div>
-              <div v-if="form.positions?.length" class="space-y-4">
-                <div v-for="(position, index) in form.positions" :key="index" class="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3">
-                  <div class="flex items-center justify-between text-sm text-white/60">
-                    <span>Expérience #{{ index + 1 }}</span>
-                    <button type="button" class="text-red-300 hover:text-red-200" @click="removeExperience(index)">Supprimer</button>
+              <div v-if="form.positions?.length" style="display: flex; flex-direction: column; gap: 16px;">
+                <v-card
+                  v-for="(position, index) in form.positions"
+                  :key="index"
+                  variant="tonal"
+                  color="primary"
+                  class="pa-4"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">Expérience #{{ index + 1 }}</span>
+                    <v-btn icon="mdi-delete" variant="text" color="error" @click="removeExperience(index)" />
                   </div>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Rôle
-                    <input v-model="position.role" type="text" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Entreprise
-                    <input v-model="position.company" type="text" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Période
-                    <input v-model="position.timeframe" type="text" class="input" required />
-                  </label>
-                  <div class="space-y-2">
-                    <div class="flex items-center justify-between text-sm">
-                      <span>Réalisations</span>
-                      <button type="button" class="text-primary hover:text-primary/80" @click="addAchievement(index)">Ajouter</button>
+                  <v-text-field v-model="position.role" label="Rôle" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="position.company" label="Entreprise" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="position.timeframe" label="Période" required variant="outlined" density="comfortable" />
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="text-body-2">Réalisations</span>
+                    <v-btn icon="mdi-plus" variant="text" color="primary" @click="addAchievement(index)" />
+                  </div>
+                  <div v-if="position.achievements?.length" style="display: flex; flex-direction: column; gap: 12px;">
+                    <div
+                      v-for="(achievement, achievementIndex) in position.achievements"
+                      :key="achievementIndex"
+                      class="d-flex"
+                      style="gap: 12px;"
+                    >
+                      <v-textarea
+                        v-model="position.achievements[achievementIndex]"
+                        label="Détail"
+                        rows="2"
+                        required
+                        variant="outlined"
+                        density="comfortable"
+                        class="flex-grow-1"
+                      />
+                      <v-btn icon="mdi-delete" variant="text" color="error" @click="removeAchievement(index, achievementIndex)" />
                     </div>
-                    <div v-if="position.achievements?.length" class="space-y-2">
-                      <div v-for="(achievement, achievementIndex) in position.achievements" :key="achievementIndex" class="flex items-center gap-2">
-                        <textarea v-model="position.achievements[achievementIndex]" rows="2" class="input flex-1" required />
-                        <button type="button" class="text-red-300 hover:text-red-200" @click="removeAchievement(index, achievementIndex)">Retirer</button>
-                      </div>
-                    </div>
-                    <p v-else class="text-sm text-white/50">Aucune réalisation.</p>
                   </div>
-                </div>
+                  <p v-else class="text-body-2 text-medium-emphasis">Aucune réalisation.</p>
+                </v-card>
               </div>
-              <p v-else class="text-sm text-white/50">Aucune expérience.</p>
-            </div>
-          </div>
+              <p v-else class="text-body-2 text-medium-emphasis">Aucune expérience.</p>
+            </template>
 
-          <!-- Education -->
-          <div v-else-if="slug === 'education'" class="space-y-6">
-            <div class="grid gap-4">
-              <label class="flex flex-col gap-2 text-sm">
-                Libellé
-                <input v-model="form.label" type="text" class="input" required />
-              </label>
-              <label class="flex flex-col gap-2 text-sm">
-                Titre
-                <input v-model="form.headline" type="text" class="input" required />
-              </label>
-            </div>
-            <div class="space-y-4">
-              <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold">Formations</h2>
-                <button type="button" class="btn-secondary" @click="addEducation">Ajouter une formation</button>
+            <template v-else-if="slug === 'education'">
+              <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
+              <v-text-field v-model="form.headline" label="Titre" required variant="outlined" density="comfortable" />
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="text-h6 font-weight-semibold mb-0">Formations</h2>
+                <v-btn color="primary" variant="tonal" class="text-none" @click="addEducation">
+                  Ajouter une formation
+                </v-btn>
               </div>
-              <div v-if="form.schools?.length" class="space-y-4">
-                <div v-for="(school, index) in form.schools" :key="index" class="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3">
-                  <div class="flex items-center justify-between text-sm text-white/60">
-                    <span>Formation #{{ index + 1 }}</span>
-                    <button type="button" class="text-red-300 hover:text-red-200" @click="removeEducation(index)">Supprimer</button>
+              <div v-if="form.schools?.length" style="display: flex; flex-direction: column; gap: 16px;">
+                <v-card
+                  v-for="(school, index) in form.schools"
+                  :key="index"
+                  variant="tonal"
+                  color="primary"
+                  class="pa-4"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">Formation #{{ index + 1 }}</span>
+                    <v-btn icon="mdi-delete" variant="text" color="error" @click="removeEducation(index)" />
                   </div>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Diplôme
-                    <input v-model="school.degree" type="text" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Établissement
-                    <input v-model="school.institution" type="text" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Période
-                    <input v-model="school.timeframe" type="text" class="input" required />
-                  </label>
-                  <label class="flex flex-col gap-2 text-sm">
-                    Détails
-                    <textarea v-model="school.details" rows="3" class="input" required />
-                  </label>
-                </div>
+                  <v-text-field v-model="school.degree" label="Diplôme" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="school.institution" label="Établissement" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="school.timeframe" label="Période" required variant="outlined" density="comfortable" />
+                  <v-textarea v-model="school.details" label="Détails" rows="3" required variant="outlined" density="comfortable" />
+                </v-card>
               </div>
-              <p v-else class="text-sm text-white/50">Aucune formation.</p>
-            </div>
-          </div>
+              <p v-else class="text-body-2 text-medium-emphasis">Aucune formation.</p>
+            </template>
 
-          <div class="flex items-center justify-end gap-3 border-t border-white/10 pt-6">
-            <NuxtLink to="/admin" class="btn-secondary">Annuler</NuxtLink>
-            <button type="submit" :disabled="saveState.isSaving" class="btn-primary">
-              <span v-if="!saveState.isSaving">Enregistrer</span>
-              <span v-else>Sauvegarde…</span>
-            </button>
-          </div>
-        </form>
-      </section>
-    </div>
-  </div>
+            <div class="d-flex justify-end" style="gap: 12px;">
+              <v-btn :to="'/admin'" variant="tonal" color="primary" class="text-none">
+                Annuler
+              </v-btn>
+              <v-btn type="submit" color="primary" class="text-none" :loading="saveState.isSaving">
+                Enregistrer
+              </v-btn>
+            </div>
+          </v-form>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
-
-<style scoped>
-.input {
-  @apply w-full rounded-lg border border-white/10 bg-black/40 px-4 py-2 text-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40;
-}
-.btn-primary {
-  @apply inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:bg-primary/60;
-}
-.btn-secondary {
-  @apply inline-flex items-center justify-center rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white transition hover:border-primary hover:text-primary;
-}
-</style>

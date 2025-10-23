@@ -35,59 +35,53 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="min-h-screen flex items-center justify-center px-4 py-16 bg-[#02010c]">
-    <div class="w-full max-w-md rounded-3xl border border-white/10 bg-[#0b061a]/80 backdrop-blur-md p-10 space-y-6">
-      <div class="space-y-2 text-center">
-        <h1 class="text-2xl font-semibold text-white">Espace administrateur</h1>
-        <p class="text-white/60 text-sm">
-          Connectez-vous pour gérer le contenu du portfolio.
-        </p>
-      </div>
+  <v-container class="py-16">
+    <v-row justify="center">
+      <v-col cols="12" sm="8" md="5">
+        <v-card elevation="2" class="pa-6" style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="text-center">
+            <h1 class="text-h5 font-weight-semibold mb-2">Espace administrateur</h1>
+            <p class="text-body-2 text-medium-emphasis">
+              Connectez-vous pour gérer le contenu du portfolio.
+            </p>
+          </div>
 
-      <form class="space-y-4" @submit.prevent="handleSubmit">
-        <div class="space-y-2">
-          <label class="block text-sm font-medium text-white/70" for="email">Adresse e-mail</label>
-          <input
-            id="email"
-            v-model="email"
-            type="email"
-            required
-            class="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-2 text-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
-            placeholder="admin@example.com"
-            autocomplete="email"
-          />
-        </div>
+          <v-form @submit.prevent="handleSubmit" style="display: flex; flex-direction: column; gap: 16px;">
+            <v-text-field
+              v-model="email"
+              label="Adresse e-mail"
+              type="email"
+              required
+              autocomplete="email"
+              variant="outlined"
+              density="comfortable"
+            />
+            <v-text-field
+              v-model="password"
+              label="Mot de passe"
+              type="password"
+              required
+              autocomplete="current-password"
+              variant="outlined"
+              density="comfortable"
+            />
 
-        <div class="space-y-2">
-          <label class="block text-sm font-medium text-white/70" for="password">Mot de passe</label>
-          <input
-            id="password"
-            v-model="password"
-            type="password"
-            required
-            class="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-2 text-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
-            placeholder="••••••••"
-            autocomplete="current-password"
-          />
-        </div>
+            <v-alert v-if="errorMessage" type="error" variant="tonal">
+              {{ errorMessage }}
+            </v-alert>
 
-        <p v-if="errorMessage" class="text-sm text-red-400">{{ errorMessage }}</p>
+            <v-btn type="submit" color="primary" class="text-none" :loading="isSubmitting">
+              Se connecter
+            </v-btn>
+          </v-form>
 
-        <button
-          type="submit"
-          :disabled="isSubmitting"
-          class="w-full rounded-lg bg-primary px-4 py-2 font-semibold text-white transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:bg-primary/60"
-        >
-          <span v-if="!isSubmitting">Se connecter</span>
-          <span v-else>Connexion…</span>
-        </button>
-      </form>
-
-      <div class="rounded-lg bg-white/5 p-4 text-xs text-white/60">
-        <p class="font-medium text-white">Identifiants par défaut</p>
-        <p>Utilisateur : <code>admin@example.com</code></p>
-        <p>Mot de passe : <code>ChangeMe123!</code></p>
-      </div>
-    </div>
-  </div>
+          <v-alert type="info" variant="tonal">
+            <p class="font-weight-medium mb-1">Identifiants par défaut</p>
+            <p>Utilisateur : <code>admin@example.com</code></p>
+            <p>Mot de passe : <code>ChangeMe123!</code></p>
+          </v-alert>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
