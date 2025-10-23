@@ -198,6 +198,10 @@ html.dark {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 }
 
+section[id] {
+  scroll-margin-top: 96px;
+}
+
 .v-theme--light.v-icon--clickable,
 .v-theme--light.v-btn--icon {
   color: rgba(0, 0, 0, 0.54);
