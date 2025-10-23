@@ -20,7 +20,7 @@
         <Button
           class="mt-8"
           label="Connect Me"
-          to="#contact"
+          to="/contact#contact"
           variant="btn-dark"
         />
       </div>

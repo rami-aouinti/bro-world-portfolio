@@ -18,7 +18,7 @@
     </p>
     <div class="flex gap-4 items-center mt-8">
       <Button label="View Work" to="#work" />
-      <Button label="Contact Me" to="#contact" variant="btn-dark" />
+      <Button label="Contact Me" to="/contact#contact" variant="btn-dark" />
     </div>
     </div>
 
