@@ -36,14 +36,6 @@ const personalCards = computed(() =>
       <v-container class="personal__container py-6 my-auto py-md-24" v-if="personalContent">
         <v-row justify="center" class="text-center">
           <v-col cols="12" md="10" lg="8" class="personal__content">
-            <v-chip
-              v-if="personalContent?.badge"
-              color="primary"
-              variant="outlined"
-              class="personal__badge text-uppercase"
-            >
-              {{ personalContent.badge }}
-            </v-chip>
             <Text3d
                 class="text-8xl font-bold max-md:text-7xl"
                 shadow-color="blueviolet"
@@ -67,6 +59,14 @@ const personalCards = computed(() =>
                 variant="btn-dark"
               />
             </div>
+            <v-chip
+                v-if="personalContent?.badge"
+                color="primary"
+                variant="outlined"
+                class="personal__badge text-uppercase"
+            >
+              {{ personalContent.badge }}
+            </v-chip>
           </v-col>
         </v-row>
 

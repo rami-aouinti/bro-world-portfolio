@@ -81,7 +81,7 @@ async function handleLogout() {
 </script>
 
 <template>
-  <v-container class="admin-dashboard py-12">
+  <v-container class="admin-dashboard mt-10">
     <v-row justify="center">
       <v-col cols="12" lg="10" class="d-flex flex-column" style="gap: 32px;">
         <v-card class="dashboard-hero" elevation="0" rounded="xl">

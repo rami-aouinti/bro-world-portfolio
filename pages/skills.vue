@@ -6,7 +6,5 @@ definePageMeta(LOCALIZED_PAGE_META.skills)
 </script>
 
 <template>
-  <Line />
   <Skills />
-  <Line />
 </template>

@@ -23,10 +23,7 @@ const skillCards = computed(() => {
 <template>
   <section id="skills">
     <ScrollSmooth>
-      <v-container v-if="skillsContent" class="py-6">
-        <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
-          {{ skillsContent.label }}
-        </v-chip>
+      <v-container v-if="skillsContent" class="mt-10">
         <h2 class="text-h4 text-foreground">{{ skillsContent.headline }}</h2>
         <p class="text-body-1 text-foreground mt-4" style="max-width: 600px;">
           {{ skillsContent.subline }}

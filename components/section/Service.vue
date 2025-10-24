@@ -60,10 +60,7 @@ const serviceCards = computed(() => {
 <template>
   <section id="service">
     <ScrollSmooth>
-      <v-container v-if="content" class="py-6">
-        <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
-          {{ content.label }}
-        </v-chip>
+      <v-container v-if="content" class="mt-10">
         <h2 class="text-h4 text-foreground">{{ content.headline }}</h2>
         <p class="text-body-1 text-foreground mt-4" style="max-width: 600px;">
           {{ content.subline }}

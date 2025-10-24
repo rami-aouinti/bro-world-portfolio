@@ -34,6 +34,7 @@ const localeItems = SUPPORTED_LOCALES.map((code) => ({
 const selectedLocale = ref<LocaleCode>(DEFAULT_LOCALE)
 
 const titles: Record<ContentSlug, string> = {
+  contact: "Contact",
   profile: 'Profil',
   hero: 'Section personnelle',
   service: 'Compétences',
@@ -205,7 +206,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <v-container class="py-12">
+  <v-container class="mt-10">
     <v-row justify="center">
       <v-col cols="12" lg="10" style="display: flex; flex-direction: column; gap: 24px;">
         <v-card elevation="2" class="pa-6">

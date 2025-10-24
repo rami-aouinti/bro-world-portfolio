@@ -31,7 +31,7 @@ const contactMethods = computed(() => [
 
 <template>
   <ScrollSmooth>
-    <v-container class="py-6">
+    <v-container class="mt-10">
       <v-row justify="center" align="stretch" style="row-gap: 32px;">
         <v-col cols="12" md="7">
           <h1 class="text-h4 text-foreground font-weight-bold">
