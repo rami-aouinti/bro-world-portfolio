@@ -4133,7 +4133,7 @@
       "methods": {
         "email": {
           "label": "E-mail",
-          "value": "hello@broworld.dev"
+          "value": "helloAtbroworld.dev"
         },
         "location": {
           "label": "Location",
