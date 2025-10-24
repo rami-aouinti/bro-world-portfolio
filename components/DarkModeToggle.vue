@@ -1,7 +1,9 @@
 <template>
-  <button
+  <UiButton
+    variant="ghost"
+    size="icon"
     type="button"
-    :class="toggleButtonClass"
+    :class="buttonClass"
     aria-label="Toggle color mode"
     :disabled="!isToggleAllowed"
     :aria-disabled="!isToggleAllowed"
@@ -18,27 +20,21 @@
       size="18"
     />
     <span class="sr-only">Toggle theme</span>
-  </button>
+  </UiButton>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 import { useCookieColorMode } from "#imports";
 import { useSiteSettingsState } from "~/composables/useSiteSettingsState";
-import { uiButtonClass } from "~/utils/ui/button";
 
 const props = defineProps<{ buttonClass?: string }>();
+
+const buttonClass = computed(() => props.buttonClass ?? "");
 
 const colorMode = useCookieColorMode();
 const siteSettings = useSiteSettingsState();
 const isToggleAllowed = computed(() => siteSettings.value?.ui.allowThemeSwitching !== false);
-const toggleButtonClass = computed(() =>
-  uiButtonClass({
-    variant: "ghost",
-    size: "icon",
-    className: props.buttonClass,
-  }),
-);
 const resolvedMode = computed<"light" | "dark">(() => {
   if (colorMode.value === "dark" || colorMode.value === "light") {
     return colorMode.value;
