@@ -71,6 +71,7 @@ watchEffect(() => {
   justify-content: center;
   gap: 8px;
   margin-inline: auto;
+  flex: 1;
 }
 
 .hero-app-bar :deep(.v-toolbar-title) {
