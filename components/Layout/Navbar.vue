@@ -71,7 +71,6 @@ watchEffect(() => {
 .hero-app-bar__content {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: clamp(12px, 3vw, 24px);
   width: 100%;
 }
@@ -80,7 +79,7 @@ watchEffect(() => {
   display: flex;
   justify-content: center;
   gap: 8px;
-  flex: 1;
+  margin-inline: auto;
 }
 
 .hero-app-bar :deep(.v-toolbar-title) {
