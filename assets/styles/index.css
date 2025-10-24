@@ -23,6 +23,18 @@ body {
     Arial,
     sans-serif
   );
+  background-color: #050816;
+  background-image: radial-gradient(circle at 20% 10%, rgba(59, 130, 246, 0.22), transparent 55%),
+    radial-gradient(circle at 82% 8%, rgba(236, 72, 153, 0.18), transparent 52%),
+    radial-gradient(circle at 50% 82%, rgba(129, 140, 248, 0.12), transparent 60%),
+    radial-gradient(2px 2px at 20px 20px, rgba(255, 255, 255, 0.22), transparent 60%),
+    radial-gradient(1.6px 1.6px at 140px 80px, rgba(148, 163, 184, 0.18), transparent 65%),
+    radial-gradient(1px 1px at 80px 140px, rgba(94, 234, 212, 0.22), transparent 70%);
+  background-attachment: fixed;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat, repeat;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 220px 220px, 260px 260px, 180px 180px;
+  color: #e2e8f0;
+  position: relative;
   --ui-radius: var(--radius, var(--ui-radius-md));
   --v-radius-md: var(--radius, var(--v-radius-md));
   --v-btn-border-radius: var(--radius, var(--ui-radius));
@@ -31,6 +43,18 @@ body {
   --v-card-border-radius: var(--radius, var(--ui-card-radius));
   --v-sheet-border-radius: var(--radius, var(--ui-radius));
   --v-navigation-drawer-border-radius: var(--radius, var(--ui-card-radius));
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 12% 18%, rgba(59, 130, 246, 0.35), transparent 60%),
+    radial-gradient(circle at 88% 28%, rgba(236, 72, 153, 0.24), transparent 62%),
+    radial-gradient(circle at 36% 78%, rgba(56, 189, 248, 0.16), transparent 70%);
+  opacity: 0.35;
+  z-index: 0;
 }
 
 body.ltr {
@@ -184,6 +208,13 @@ label.btn {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+:where(#app, #__nuxt, .v-application, .v-application--wrap, .v-main) {
+  background-color: transparent !important;
+  color: inherit;
+  position: relative;
+  z-index: 1;
 }
 
 html {
