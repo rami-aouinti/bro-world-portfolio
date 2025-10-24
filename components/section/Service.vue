@@ -79,7 +79,7 @@ const serviceCards = computed(() => {
               padding="clamp(22px, 3vw, 28px)"
               border-radius="26px"
               outline-color="rgba(148, 163, 184, 0.18)"
-              gradient-sheen-angle="140"
+              :gradient-sheen-angle="140"
               :gradient-sheen-opacity="0.55"
             >
               <template #footer>
