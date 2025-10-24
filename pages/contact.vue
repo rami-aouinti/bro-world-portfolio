@@ -95,11 +95,14 @@ const contactMethods = computed(() => [
             <template #footer>
               <div class="contact__footer">
                 <span class="contact__footer-label">{{ t('portfolio.contact.card.footerLabel') }}</span>
-                <Button
-                  to="https://cal.com/aouinti-rami"
+                <v-btn
+                  href="https://cal.com/aouinti-rami"
                   :label="t('portfolio.contact.card.footerCta')"
-                  variant="btn-dark"
-                />
+                  target="_blank"
+                  variant="flat"
+                  rounded="pill"
+                  class="app-button text-none"
+                > {{ t('portfolio.contact.card.footerCta') }} </v-btn>
               </div>
             </template>
           </CustomGlowCard>
