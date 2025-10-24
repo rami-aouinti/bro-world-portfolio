@@ -45,7 +45,7 @@ const personalCards = computed(() =>
               </h1>
             </Text3d>
 
-            <p class="personal__description">
+            <p class="personal__description text-foreground">
               {{ personalContent.subline }}
             </p>
             <div class="personal__actions">
@@ -218,7 +218,6 @@ const personalCards = computed(() =>
 
 .personal__description {
   max-width: 680px;
-  color: rgba(226, 232, 240, 0.82);
   font-size: clamp(1.05rem, 1vw + 1rem, 1.25rem);
   line-height: 1.7;
 }
