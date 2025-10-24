@@ -837,7 +837,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       Ripple,
     },
     theme: {
-      defaultTheme: "light",
+      defaultTheme: "dark",
       themes: {
         light: lightTheme,
         dark: darkTheme,
