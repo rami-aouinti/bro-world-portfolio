@@ -3154,86 +3154,86 @@
       }
     },
     "settings": {
-      "metaTitle": "Site settings",
+      "metaTitle": "Seiteneinstellungen",
       "page": {
-        "title": "Site settings",
-        "subtitle": "Configure the brand, theme palette, and navigation structure for your community."
+        "title": "Seiteneinstellungen",
+        "subtitle": "Konfigurieren Sie Marke, Themenpalette und Navigationsstruktur Ihrer Community."
       },
       "navigation": {
-        "title": "Sections"
+        "title": "Abschnitte"
       },
       "sections": {
         "general": {
-          "title": "Brand identity",
-          "subtitle": "Update the site name and tagline displayed across the workspace.",
-          "badge": "Core"
+          "title": "Markenidentität",
+          "subtitle": "Aktualisieren Sie den Seitennamen und den Slogan, die im gesamten Workspace angezeigt werden.",
+          "badge": "Kern"
         },
         "theme": {
-          "title": "Themes",
-          "subtitle": "Curate available themes and choose which one is active by default.",
-          "active": "Default theme"
+          "title": "Designs",
+          "subtitle": "Kuratieren Sie verfügbare Themes und wählen Sie das standardmäßig aktive aus.",
+          "active": "Standard-Theme"
         },
         "profile": {
-          "title": "Profile personalisation",
-          "subtitle": "Control how members can customise their public profile.",
-          "badge": "Profiles"
+          "title": "Profilpersonalisierung",
+          "subtitle": "Steuern Sie, wie Mitglieder ihr öffentliches Profil anpassen können.",
+          "badge": "Profile"
         },
         "appearance": {
-          "title": "Theme mode",
-          "subtitle": "Set the default mode and manage the theme toggle behaviour.",
-          "badge": "Display"
+          "title": "Themenmodus",
+          "subtitle": "Legen Sie den Standardmodus fest und steuern Sie das Verhalten des Theme-Umschalters.",
+          "badge": "Darstellung"
         },
         "pages": {
-          "title": "Static pages",
-          "subtitle": "Edit the hero content displayed on About, Contact, and Help.",
-          "badge": "Content",
+          "title": "Statische Seiten",
+          "subtitle": "Bearbeiten Sie den Hero-Content auf Über uns, Kontakt und Hilfe.",
+          "badge": "Inhalte",
           "labels": {
-            "about": "About page",
-            "contact": "Contact page",
-            "help": "Help centre"
+            "about": "Über-uns-Seite",
+            "contact": "Kontaktseite",
+            "help": "Hilfecenter"
           },
           "descriptions": {
-            "about": "Update the mission statement and introduction shown on the About page.",
-            "contact": "Customise the hero copy for your support and contact information.",
-            "help": "Define the messaging that appears at the top of the help centre."
+            "about": "Aktualisieren Sie Mission und Einleitungstext auf der Über-uns-Seite.",
+            "contact": "Passen Sie den Hero-Text für Support- und Kontaktinformationen an.",
+            "help": "Definieren Sie die Nachricht, die oben im Hilfecenter erscheint."
           }
         },
         "navigation": {
-          "title": "Navigation menu",
-          "subtitle": "Add, reorder, and secure sidebar entries for every audience.",
-          "badge": "Menus",
-          "children": "Child links"
+          "title": "Navigationsmenü",
+          "subtitle": "Fügen Sie Einträge hinzu, ordnen Sie sie neu und sichern Sie die Seitenleiste für jedes Publikum.",
+          "badge": "Menüs",
+          "children": "Unterlinks"
         }
       },
       "fields": {
-        "siteName": "Site name",
+        "siteName": "Name der Seite",
         "language": "Inhaltssprache",
-        "tagline": "Tagline",
-        "themeName": "Theme name",
-        "themeDescription": "Description",
-        "themePrimary": "Primary color",
-        "themeAccent": "Accent color",
-        "themeSurface": "Surface color",
-        "menuLabel": "Menu label",
-        "menuPath": "Destination path",
-        "menuIcon": "Icon (optional)",
-        "menuAdmin": "Admin only",
-        "menuVisible": "Visible",
-        "profileAllowCustomization": "Allow profile customization",
-        "profileAllowThemeSelection": "Allow profile theme selection",
-        "profileAllowAvatarUploads": "Allow avatar uploads",
-        "profileAllowCoverUploads": "Allow cover uploads",
-        "profileShowContact": "Show contact section",
-        "profileShowDetails": "Show details section",
-        "profileShowSocial": "Show social insights",
-        "profileDefaultBio": "Default bio fallback",
-        "uiAllowThemeSwitching": "Allow visitors to toggle theme",
-        "themeModeSystem": "Follow system",
-        "themeModeLight": "Light mode",
-        "themeModeDark": "Dark mode",
-        "pageTitle": "Title",
-        "pageSubtitle": "Subtitle",
-        "pageBody": "Body content"
+        "tagline": "Slogan",
+        "themeName": "Name des Themes",
+        "themeDescription": "Beschreibung",
+        "themePrimary": "Primärfarbe",
+        "themeAccent": "Akzentfarbe",
+        "themeSurface": "Flächenfarbe",
+        "menuLabel": "Menübezeichnung",
+        "menuPath": "Zielpfad",
+        "menuIcon": "Symbol (optional)",
+        "menuAdmin": "Nur Admin",
+        "menuVisible": "Sichtbar",
+        "profileAllowCustomization": "Profilanpassung erlauben",
+        "profileAllowThemeSelection": "Theme-Auswahl im Profil erlauben",
+        "profileAllowAvatarUploads": "Avatar-Uploads erlauben",
+        "profileAllowCoverUploads": "Titelbild-Uploads erlauben",
+        "profileShowContact": "Kontaktbereich anzeigen",
+        "profileShowDetails": "Detailbereich anzeigen",
+        "profileShowSocial": "Soziale Einblicke anzeigen",
+        "profileDefaultBio": "Standardbiografie (Fallback)",
+        "uiAllowThemeSwitching": "Besuchern das Umschalten des Themes erlauben",
+        "themeModeSystem": "System folgen",
+        "themeModeLight": "Hellmodus",
+        "themeModeDark": "Dunkelmodus",
+        "pageTitle": "Titel",
+        "pageSubtitle": "Untertitel",
+        "pageBody": "Hauptinhalt"
       },
       "themeCustomizer": {
         "title": "Anpassen",
@@ -3245,32 +3245,32 @@
         "system": "System"
       },
       "helpers": {
-        "themeModeSystem": "Automatically adapts to each visitor's device preference.",
-        "themeModeLight": "Always display the interface in light mode.",
-        "themeModeDark": "Always display the interface in dark mode."
+        "themeModeSystem": "Passt sich automatisch der Gerätepräferenz jedes Besuchers an.",
+        "themeModeLight": "Zeigt die Oberfläche immer im Hellmodus an.",
+        "themeModeDark": "Zeigt die Oberfläche immer im Dunkelmodus an."
       },
       "placeholders": {
-        "siteName": "Enter a public site name",
-        "tagline": "Describe your mission in one sentence"
+        "siteName": "Öffentlichen Seitennamen eingeben",
+        "tagline": "Beschreiben Sie Ihre Mission in einem Satz"
       },
       "actions": {
-        "save": "Save settings",
-        "reset": "Discard changes",
-        "addTheme": "Add theme",
-        "addMenu": "Add menu",
-        "addChild": "Add child link",
-        "removeMenu": "Remove",
-        "moveUp": "Move up",
-        "moveDown": "Move down"
+        "save": "Einstellungen speichern",
+        "reset": "Änderungen verwerfen",
+        "addTheme": "Theme hinzufügen",
+        "addMenu": "Menü hinzufügen",
+        "addChild": "Unterlink hinzufügen",
+        "removeMenu": "Entfernen",
+        "moveUp": "Nach oben verschieben",
+        "moveDown": "Nach unten verschieben"
       },
       "feedback": {
-        "saved": "Site configuration updated successfully.",
-        "error": "We couldn't update the configuration. Try again later."
+        "saved": "Seiteneinstellungen wurden erfolgreich aktualisiert.",
+        "error": "Die Konfiguration konnte nicht aktualisiert werden. Versuchen Sie es später erneut."
       },
       "defaults": {
-        "themeName": "New theme",
-        "menuLabel": "New menu",
-        "submenuLabel": "New submenu"
+        "themeName": "Neues Theme",
+        "menuLabel": "Neues Menü",
+        "submenuLabel": "Neues Untermenü"
       }
     },
     "userManagement": {
