@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { createError } from '#app'
+import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const route = useRoute()
 const slug = computed(() => route.params.slug?.toString() ?? '')
+const localePath = useLocalePath()
 
 if (!slug.value) {
   throw createError({ statusCode: 404, statusMessage: 'Projet introuvable.' })
@@ -11,6 +13,8 @@ if (!slug.value) {
 const { data: work } = await useContentBlock('work')
 
 const sectionLabel = computed(() => work.value?.label ?? 'Projets')
+
+const backLink = computed(() => resolveLocalizedRouteTarget('/work', localePath))
 
 const projectDetails = computed(() => {
   const entry = work.value?.works.find((item) => item.slug === slug.value)
@@ -34,7 +38,7 @@ useSeoMeta(() => ({
   <section class="detail-page">
     <v-container class="py-12 detail-page__container">
       <v-btn
-        :to="'/work'"
+        :to="backLink"
         variant="text"
         color="primary"
         class="text-none detail-page__back"
