@@ -586,6 +586,7 @@ export default defineNuxtConfig({
     },
     vueI18n: "./i18n/i18n.config.ts",
   },
+  extends: ["shadcn-docs-nuxt"],
 
   runtimeConfig: {
     auth: {
