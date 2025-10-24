@@ -4148,6 +4148,16 @@
         }
       }
     },
+    "blog": {
+      "badge": "Blog",
+      "title": "Einblicke, Notizen und technische Deep-Dives.",
+      "description": "Bald finden Sie hier ausführliche Artikel über Backend-Architektur, Symfony-Best-Practices und Produktivitätstipps.",
+      "empty": {
+        "title": "Der erste Beitrag ist unterwegs",
+        "description": "Ich bereite Fallstudien und Tutorials vor, die ich in Kürze veröffentlichen werde. Schreiben Sie mir gern, wenn Sie über Ihr Projekt sprechen möchten.",
+        "cta": "Kontakt aufnehmen"
+      }
+    },
     "experience": {
       "fallbackSummary": "Wichtige Beiträge bei {company}"
     },

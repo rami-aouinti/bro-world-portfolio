@@ -4148,6 +4148,16 @@
         }
       }
     },
+    "blog": {
+      "badge": "Blog",
+      "title": "Approfondimenti, appunti e analisi tecniche.",
+      "description": "Presto pubblicherò articoli approfonditi su architettura backend, pratiche Symfony e consigli di produttività.",
+      "empty": {
+        "title": "Il primo articolo è in arrivo",
+        "description": "Sto preparando casi di studio e tutorial da condividere a breve. Nel frattempo, scrivimi per parlare del tuo progetto.",
+        "cta": "Contattami"
+      }
+    },
     "experience": {
       "fallbackSummary": "Contributi chiave presso {company}"
     },

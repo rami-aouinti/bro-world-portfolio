@@ -34,6 +34,10 @@ const EN_CONTENT: ContentRecord = {
       url: "/service",
     },
     {
+      label: "Blog",
+      url: "/blog",
+    },
+    {
       label: "Contact",
       url: "/contact",
     },
@@ -261,6 +265,14 @@ const FR_CONTENT: ContentRecord = {
     {
       label: "Services",
       url: "/service",
+    },
+    {
+      label: "Blog",
+      url: "/blog",
+    },
+    {
+      label: "Contact",
+      url: "/contact",
     },
   ],
   profile: {

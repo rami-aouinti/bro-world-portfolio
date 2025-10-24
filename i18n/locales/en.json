@@ -4145,6 +4145,16 @@
         }
       }
     },
+    "blog": {
+      "badge": "Blog",
+      "title": "Insights, notes, and technical deep-dives.",
+      "description": "Stay tuned for long-form articles about backend architecture, Symfony practices, and productivity tips.",
+      "empty": {
+        "title": "The first post is on its way",
+        "description": "I am curating case studies and tutorials to share soon. In the meantime, feel free to reach out and let's talk about your project.",
+        "cta": "Contact me"
+      }
+    },
     "experience": {
       "fallbackSummary": "Key contributions at {company}"
     },
