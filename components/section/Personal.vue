@@ -5,6 +5,7 @@ import ScrollSmooth from '~/components/Layout/ScrollSmooth.vue'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import { glowCardVariantCycle } from '~/utils/glowCardVariants'
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
+import Text3d from "~/components/Ui/ Text3d.vue";
 
 const { data: personal } = useContentBlock('hero')
 const { data: work } = useContentBlock('work')
@@ -43,9 +44,15 @@ const personalCards = computed(() =>
             >
               {{ personalContent.badge }}
             </v-chip>
-            <h1 class="personal__headline">
-              {{ personalContent.headline }}
-            </h1>
+            <Text3d
+                class="text-8xl font-bold max-md:text-7xl"
+                shadow-color="blueviolet"
+            >
+              <h1 class="personal__headline">
+                {{ personalContent.headline }}
+              </h1>
+            </Text3d>
+
             <p class="personal__description">
               {{ personalContent.subline }}
             </p>

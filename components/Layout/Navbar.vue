@@ -97,14 +97,11 @@ watchEffect(() => {
               >
                 {{ currentLanguage?.code?.toUpperCase() }}
               </span>
-              <span class="hero-app-bar__language-label">
-                {{ currentLanguage?.name ?? t('portfolio.navbar.languageFallback') }}
-              </span>
               <v-icon icon="mdi-menu-down" size="16" class="hero-app-bar__language-icon" />
             </v-btn>
           </template>
 
-          <v-list class="hero-app-bar__language-list" density="compact">
+          <v-list class="hero-app-bar__language-list" density="compact" style="background-color: rgba(255, 255, 255, 0.08);">
             <v-list-item
               v-for="language in languageItems"
               :key="language.code"
@@ -126,7 +123,6 @@ watchEffect(() => {
                 >
                   {{ language.code.toUpperCase() }}
                 </span>
-                <span class="hero-app-bar__language-name">{{ language.name }}</span>
               </div>
             </v-list-item>
           </v-list>
@@ -211,7 +207,7 @@ watchEffect(() => {
 }
 
 .hero-app-bar__language-list {
-  min-width: 160px;
+  min-width: 20px;
   padding-block: 4px;
 }
 
@@ -222,7 +218,7 @@ watchEffect(() => {
 .hero-app-bar__language-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .hero-app-bar__language-name {
