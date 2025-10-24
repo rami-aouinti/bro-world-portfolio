@@ -36,7 +36,7 @@ const workCards = computed(() => {
                   class="absolute inset-0 z-0 text-center"
                   :aria-label="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
                 />
-                <div class="relative z-10 flex h-full flex-col gap-5">
+                <div class="work-card-content relative z-10 flex h-full flex-col gap-5">
                   <CardItem
                     as="div"
                     :translateZ="60"
@@ -46,7 +46,7 @@ const workCards = computed(() => {
                       :src="`/images/work/${card.item.thumbnails}`"
                       :alt="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
                       height="220"
-                      cover
+                      class="work-card-image"
                     />
                   </CardItem>
                   <div class="flex flex-col gap-3">
@@ -108,6 +108,9 @@ const workCards = computed(() => {
   position: relative;
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
   border-radius: 28px;
   border: 1px solid;
   padding: 1.5rem;
@@ -115,15 +118,32 @@ const workCards = computed(() => {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-color: hsl(var(--border) / 0.4);
-  background-color: hsl(var(--background) / 0.8);
+  background-color: hsl(var(--muted) / 0.2);
+}
+
+.work-card-content {
+  flex: 1;
 }
 
 .work-card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border-radius: 1rem;
   border: 1px solid;
+  min-height: 220px;
   box-shadow: 0 20px 45px -35px rgba(15, 23, 42, 0.75);
   border-color: hsl(var(--border) / 0.4);
+  background-color: hsl(var(--background) / 0.35);
+}
+
+.work-card-image {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .work-card-badge {
