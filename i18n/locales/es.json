@@ -1452,7 +1452,11 @@
             "type": "Full-time",
             "salary": "€58k - €72k · 0.05% equity",
             "description": "Shape multi-platform experiences for recruiters and candidates across web and mobile.",
-            "tags": ["Design Systems", "Figma", "User Research"],
+            "tags": [
+              "Design Systems",
+              "Figma",
+              "User Research"
+            ],
             "apply": {
               "label": "Apply now",
               "aria": "Apply to the Senior Product Designer role",
@@ -1466,7 +1470,11 @@
             "type": "Full-time",
             "salary": "€70k - €90k · bonus eligible",
             "description": "Build AI copilots that automate sourcing, screening, and scheduling flows.",
-            "tags": ["Python", "LangChain", "Hiring Ops"],
+            "tags": [
+              "Python",
+              "LangChain",
+              "Hiring Ops"
+            ],
             "apply": {
               "label": "Apply now",
               "aria": "Apply to the AI Recruiter Strategist role",
@@ -1480,7 +1488,11 @@
             "type": "Full-time",
             "salary": "€65k base · 50% variable",
             "description": "Lead pipeline generation and coach AEs through complex enterprise deals.",
-            "tags": ["B2B SaaS", "Enterprise Sales", "Forecasting"],
+            "tags": [
+              "B2B SaaS",
+              "Enterprise Sales",
+              "Forecasting"
+            ],
             "apply": {
               "label": "Apply now",
               "aria": "Apply to the Enterprise Sales Lead role",
@@ -1494,7 +1506,11 @@
             "type": "Full-time",
             "salary": "€45k - €55k",
             "description": "Guide talent teams as they onboard, launch workflows, and measure adoption.",
-            "tags": ["Implementation", "Change Management", "ATS Integrations"],
+            "tags": [
+              "Implementation",
+              "Change Management",
+              "ATS Integrations"
+            ],
             "apply": {
               "label": "Apply now",
               "aria": "Apply to the Customer Success Partner role",
@@ -3576,25 +3592,41 @@
           "content": {
             "title": "Gestión de contenido",
             "description": "Planifica, publica y archiva artículos, eventos y recursos formativos.",
-            "tags": ["Flujo editorial", "Validación", "Programación"],
+            "tags": [
+              "Flujo editorial",
+              "Validación",
+              "Programación"
+            ],
             "status": "12 contenidos requieren revisión editorial."
           },
           "community": {
             "title": "Comunidad y moderación",
             "description": "Configura las reglas de moderación, gestiona reportes y sanciones.",
-            "tags": ["Reportes", "Sanciones", "Mensajes privados"],
+            "tags": [
+              "Reportes",
+              "Sanciones",
+              "Mensajes privados"
+            ],
             "status": "Tiempo medio de respuesta: 1 h 42."
           },
           "commerce": {
             "title": "Monetización y ofertas",
             "description": "Administra suscripciones, códigos promocionales y alianzas comerciales.",
-            "tags": ["Suscripciones", "Facturación", "Cupones"],
+            "tags": [
+              "Suscripciones",
+              "Facturación",
+              "Cupones"
+            ],
             "status": "La tasa de conversión subió un 3,4% esta semana."
           },
           "governance": {
             "title": "Gobernanza y cumplimiento",
             "description": "Audita accesos, gestiona roles privilegiados y prepara informes de cumplimiento.",
-            "tags": ["Auditoría", "Roles", "Trazabilidad"],
+            "tags": [
+              "Auditoría",
+              "Roles",
+              "Trazabilidad"
+            ],
             "status": "Última auditoría completa realizada hace 5 días."
           }
         }
@@ -4062,6 +4094,44 @@
       "actions": "Acciones",
       "file": "Archivo",
       "folder": "Carpeta"
+    }
+  },
+  "portfolio": {
+    "navbar": {
+      "contact": "Contacto",
+      "languageFallback": "Idioma"
+    },
+    "about": {
+      "fallbackProfileDescription": "Diseño backends confiables con PHP, Symfony y arquitecturas bien planificadas.",
+      "cta": "Contáctame"
+    },
+    "cta": {
+      "eyebrow": "Listo para colaborar",
+      "primaryCta": "Iniciar una colaboración"
+    },
+    "personal": {
+      "viewProjects": "Ver mis proyectos",
+      "contact": "Contáctame",
+      "viewProjectLabel": "Ver proyecto",
+      "viewProjectCta": "Explorar"
+    },
+    "experience": {
+      "fallbackSummary": "Contribuciones clave en {company}"
+    },
+    "service": {
+      "eyebrowPrefix": "Servicio",
+      "footerLabel": "Experiencia:",
+      "footerFallback": "Experiencia en backend",
+      "footerStatus": "Listo"
+    },
+    "skills": {
+      "badge": "{count} habilidad | {count} habilidades",
+      "cardDescription": "Herramientas y tecnologías destacadas."
+    },
+    "work": {
+      "thumbnailAlt": "Miniatura de {name}",
+      "footerLabel": "Proyecto en línea",
+      "liveDemo": "Ver demostración en vivo"
     }
   }
 }

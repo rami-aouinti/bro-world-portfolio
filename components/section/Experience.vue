@@ -4,8 +4,11 @@ import { computed } from 'vue'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import { glowCardVariantCycle, glowCardVariants } from '~/utils/glowCardVariants'
 import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: experiences } = useContentBlock('experiences')
+const { t } = useI18n()
+const localePath = useLocalePath()
 
 const experiencesContent = computed(() => experiences.value)
 const experienceCards = computed(() => {
@@ -16,9 +19,10 @@ const experienceCards = computed(() => {
 
     return {
       position,
-      route: `/experience/${position.slug}`,
+      route: resolveLocalizedRouteTarget(`/experience/${position.slug}`, localePath),
       variant,
-      accent: glowCardVariants[variant].accent
+      accent: glowCardVariants[variant].accent,
+      fallbackSummary: t('portfolio.experience.fallbackSummary', { company: position.company })
     }
   })
 })
@@ -41,7 +45,7 @@ const experienceCards = computed(() => {
           >
             <CustomGlowCard
               :title="card.position.role"
-              :description="card.position.summary ?? `Key contributions at ${card.position.company}`"
+              :description="card.position.summary ?? card.fallbackSummary"
               :eyebrow="card.position.company"
               :badge="card.position.timeframe"
               :to="card.route"

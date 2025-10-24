@@ -4,9 +4,12 @@ import ScrollSmooth from '~/components/Layout/ScrollSmooth.vue'
 
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import { glowCardVariantCycle } from '~/utils/glowCardVariants'
+import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: personal } = useContentBlock('hero')
 const { data: work } = useContentBlock('work')
+const { t } = useI18n()
+const localePath = useLocalePath()
 
 const personalContent = computed(() => personal.value)
 const workItems = computed(() => work.value?.works ?? [])
@@ -47,8 +50,15 @@ const personalCards = computed(() =>
               {{ personalContent.subline }}
             </p>
             <div class="personal__actions">
-              <Button label="View Work" to="/work" />
-              <Button label="Contact Me" to="/contact" variant="btn-dark" />
+              <Button
+                :label="t('portfolio.personal.viewProjects')"
+                :to="resolveLocalizedRouteTarget('/work', localePath)"
+              />
+              <Button
+                :label="t('portfolio.personal.contact')"
+                :to="resolveLocalizedRouteTarget('/contact', localePath)"
+                variant="btn-dark"
+              />
             </div>
           </v-col>
         </v-row>
@@ -72,7 +82,7 @@ const personalCards = computed(() =>
               </template>
               <template #footer>
                 <div class="personal__footer">
-                  <span class="personal__footer-label">See project</span>
+                  <span class="personal__footer-label">{{ t('portfolio.personal.viewProjectLabel') }}</span>
                   <v-btn
                     :to="card.item.live_demo"
                     target="_blank"
@@ -80,7 +90,7 @@ const personalCards = computed(() =>
                     variant="text"
                     class="text-none"
                   >
-                    Explore
+                    {{ t('portfolio.personal.viewProjectCta') }}
                   </v-btn>
                 </div>
               </template>

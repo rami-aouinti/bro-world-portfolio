@@ -10,7 +10,7 @@ if (!slug.value) {
 
 const { data: education } = await useContentBlock('education')
 
-const sectionLabel = computed(() => education.value?.label ?? 'Education')
+const sectionLabel = computed(() => education.value?.label ?? 'Formations')
 
 const schoolDetails = computed(() => {
   const entry = education.value?.schools.find((school) => school.slug === slug.value)

@@ -6,6 +6,7 @@ import { glowCardVariantCycle } from '~/utils/glowCardVariants'
 import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 const { data: skills } = useContentBlock('skills')
+const { t } = useI18n()
 
 const skillsContent = computed(() => skills.value)
 const skillCards = computed(() => {
@@ -14,7 +15,7 @@ const skillCards = computed(() => {
   return categories.map((category, index) => ({
     category,
     variant: glowCardVariantCycle[index % glowCardVariantCycle.length],
-    badge: `${category.skills.length} skills`
+    badge: t('portfolio.skills.badge', category.skills.length, { count: category.skills.length })
   }))
 })
 </script>
@@ -38,7 +39,7 @@ const skillCards = computed(() => {
               :title="card.category.name"
               :variant="card.variant"
               :badge="card.badge"
-              description="Highlighted tools and technologies."
+              :description="t('portfolio.skills.cardDescription')"
             >
               <div class="skills__chips">
                 <v-chip

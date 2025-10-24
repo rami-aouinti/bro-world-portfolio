@@ -8,6 +8,7 @@ import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 const { data: cta } = useContentBlock('cta')
 const { data: navlinks } = useContentBlock('navlinks')
 const { data: profile } = useContentBlock('profile')
+const { t } = useI18n()
 
 const localePath = useLocalePath()
 const ctaContent = computed(() => cta.value)
@@ -36,10 +37,14 @@ const profileName = computed(() => {
             :title="ctaContent.label"
             :description="ctaContent.description"
             variant="indigo"
-            eyebrow="Let's collaborate"
+            :eyebrow="t('portfolio.cta.eyebrow')"
           >
             <div class="cta__actions">
-              <Button to="/contact" variant="btn-dark" label="Start Collaboration" />
+              <Button
+                :to="resolveLocalizedRouteTarget('/contact', localePath)"
+                variant="btn-dark"
+                :label="t('portfolio.cta.primaryCta')"
+              />
             </div>
             <v-divider class="cta__divider" />
             <div class="cta__links">

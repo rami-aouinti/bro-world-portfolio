@@ -5,6 +5,7 @@ import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 const { data: service } = useContentBlock('service')
 const content = computed(() => service.value)
+const { t } = useI18n()
 
 const accentPalette = ['#7c3aed', '#0ea5e9', '#f97316', '#22d3ee', '#f472b6', '#34d399']
 
@@ -42,13 +43,14 @@ const serviceCards = computed(() => {
 
   return items.map((item, index) => {
     const accent = accentPalette[index % accentPalette.length]
+    const prefix = t('portfolio.service.eyebrowPrefix')
 
     return {
       item,
       accent,
       background: `linear-gradient(135deg, rgba(15, 23, 42, 0.94) 0%, ${hexToRgba(accent, 0.35)} 100%)`,
       glow: hexToRgba(accent, 0.55),
-      eyebrow: `Service ${String(index + 1).padStart(2, '0')}`,
+      eyebrow: `${prefix} ${String(index + 1).padStart(2, '0')}`,
       badge: formatBadge(item.icon)
     }
   })
@@ -85,8 +87,11 @@ const serviceCards = computed(() => {
             >
               <template #footer>
                 <div class="d-flex align-center justify-space-between text-caption text-high-emphasis">
-                  <span>Focus: {{ card.item.icon ? card.badge : 'Backend Excellence' }}</span>
-                  <span class="text-uppercase" style="letter-spacing: 0.08em;">Ready</span>
+                  <span>
+                    {{ t('portfolio.service.footerLabel') }}
+                    {{ card.item.icon ? card.badge : t('portfolio.service.footerFallback') }}
+                  </span>
+                  <span class="text-uppercase" style="letter-spacing: 0.08em;">{{ t('portfolio.service.footerStatus') }}</span>
                 </div>
               </template>
             </CustomGlowCard>

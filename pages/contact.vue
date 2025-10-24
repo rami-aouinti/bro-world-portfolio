@@ -9,19 +9,19 @@ definePageMeta(LOCALIZED_PAGE_META.contact)
 const contactMethods = [
   {
     icon: 'mdi-email-outline',
-    label: 'Email',
+    label: 'E-mail',
     value: 'hello@broworld.dev',
     href: 'mailto:hello@broworld.dev'
   },
   {
     icon: 'mdi-map-marker',
-    label: 'Location',
-    value: 'Jakarta, Indonesia'
+    label: 'Localisation',
+    value: 'Jakarta, Indonésie'
   },
   {
     icon: 'mdi-clock-outline',
-    label: 'Availability',
-    value: 'Weekdays, 9am – 6pm (GMT+7)'
+    label: 'Disponibilité',
+    value: 'Du lundi au vendredi, 9h – 18h (GMT+7)'
   }
 ]
 </script>
@@ -34,38 +34,38 @@ const contactMethods = [
         <v-col cols="12" md="7">
           <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">Contact</v-chip>
           <h1 class="text-h4 text-white font-weight-bold">
-            Let’s create something remarkable together.
+            Créons quelque chose de remarquable ensemble.
           </h1>
           <p class="text-body-1 text-white mt-4">
-            Whether you have a question, a project idea, or just want to say hello, feel free to reach out. I’m always excited to collaborate on new challenges and craft intuitive experiences.
+            Une question, une idée de projet ou simplement l’envie d’échanger ? Écrivez-moi. J’adore relever de nouveaux défis et concevoir des expériences intuitives.
           </p>
           <v-form class="mt-8 text-white" @submit.prevent>
             <v-row align="stretch" style="row-gap: 16px;">
               <v-col cols="12" md="6">
-                <v-text-field label="Name" autocomplete="name" variant="outlined" density="comfortable" />
+                <v-text-field label="Nom" autocomplete="name" variant="outlined" density="comfortable" />
               </v-col>
               <v-col cols="12" md="6">
-                <v-text-field label="Email" type="email" autocomplete="email" variant="outlined" density="comfortable" />
+                <v-text-field label="E-mail" type="email" autocomplete="email" variant="outlined" density="comfortable" />
               </v-col>
             </v-row>
             <v-textarea
-              label="Project Details"
+              label="Détails du projet"
               rows="6"
               variant="outlined"
               density="comfortable"
-              placeholder="Tell me more about your project, timeline, and goals."
+              placeholder="Parlez-moi de votre projet, du calendrier et des objectifs."
             />
             <v-btn type="submit" color="primary" class="text-none mt-4">
-              Send Message
+              Envoyer le message
             </v-btn>
           </v-form>
         </v-col>
         <v-col cols="12" md="5">
           <CustomGlowCard
             class="contact__card"
-            title="Direct Contact"
-            description="Prefer a quick chat? Drop me a message and I’ll get back to you within one business day."
-            badge="Let's talk"
+            title="Contact direct"
+            description="Besoin d’un échange rapide ? Laissez-moi un message et je vous répondrai sous un jour ouvré."
+            badge="Discutons"
             variant="rose"
           >
             <div class="contact__methods">
@@ -82,8 +82,8 @@ const contactMethods = [
             </div>
             <template #footer>
               <div class="contact__footer">
-                <span class="contact__footer-label">Schedule a call</span>
-                <Button to="https://cal.com/" label="Let's connect" variant="btn-dark" />
+                <span class="contact__footer-label">Planifier un appel</span>
+                <Button to="https://cal.com/" label="Restons en contact" variant="btn-dark" />
               </div>
             </template>
           </CustomGlowCard>
