@@ -42,12 +42,12 @@ const workCards = computed(() => {
                     :translateZ="60"
                     class="work-card-media"
                   >
-                    <v-img
+                    <NuxtImg
                       :src="`/images/work/${card.item.thumbnails}`"
                       :alt="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
                       height="220"
+                      width="520"
                       cover
-                      class="h-full w-full object-cover"
                     />
                   </CardItem>
                   <div class="flex flex-col gap-3">
