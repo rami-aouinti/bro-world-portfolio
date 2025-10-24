@@ -28,12 +28,14 @@ const workCards = computed(() => {
         </p>
 
         <v-row class="mt-12" dense>
-          <v-col v-for="card in workCards" :key="card.item.slug" cols="12" md="4">
-            <CardContainer class="w-full">
+          <v-col v-for="card in workCards" :key="card.item.slug" cols="12" md="4" class="gap-3">
+            <CardContainer>
               <CardBody class="work-card-body">
-                <NuxtLink
+                <NuxtImg
                   :to="card.route"
-                  class="absolute inset-0 z-0 text-center"
+                  width="1000"
+                  heigth="320"
+                  class="h-90 w-full rounded-xl object-cover group-hover/card:shadow-xl"
                   :aria-label="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
                 />
                 <div class="work-card-content relative z-10 flex h-full flex-col gap-5">
@@ -110,10 +112,10 @@ const workCards = computed(() => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 520px;
+  min-height: 620px;
   border-radius: 28px;
   border: 1px solid;
-  padding: 1.5rem;
+  padding: 2.5rem;
   box-shadow: 0 20px 60px -30px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
