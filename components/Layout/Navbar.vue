@@ -1,18 +1,37 @@
 <script setup lang="ts">
 import { useDisplay } from "vuetify";
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target"
+
+import type { LocaleObject } from "@nuxtjs/i18n";
 
 const { data: navlinks } = useContentBlock('navlinks')
 
 const drawer = ref(false)
 const display = useDisplay()
 const localePath = useLocalePath()
+const switchLocalePath = useSwitchLocalePath()
+const { locales, locale } = useI18n()
 const rawLinks = computed(() => navlinks.value ?? [])
 const links = computed(() =>
   rawLinks.value.map((link) => ({
     ...link,
     to: resolveLocalizedRouteTarget(link.url, localePath)
   })),
+)
+
+type LanguageItem = LocaleObject & { to: string }
+
+const languageItems = computed<LanguageItem[]>(() => {
+  const availableLocales = (locales.value ?? []) as LocaleObject[]
+
+  return availableLocales.map((language) => ({
+    ...language,
+    to: switchLocalePath(language.code) ?? localePath("/"),
+  }))
+})
+
+const currentLanguage = computed(() =>
+  languageItems.value.find((language) => language.code === locale.value),
 )
 
 watchEffect(() => {
@@ -56,14 +75,62 @@ watchEffect(() => {
         </v-btn>
       </div>
       <div class="hero-app-bar__side hero-app-bar__side--right">
-        <v-btn
-          class="hero-app-bar__button hero-app-bar__button--right"
-          color="primary"
-          variant="outlined"
-          to="/contact"
-        >
-          Language
-        </v-btn>
+        <v-menu transition="fade-transition" :offset="[0, 8]">
+          <template #activator="{ props }">
+            <v-btn
+              class="hero-app-bar__button hero-app-bar__button--right hero-app-bar__language-button"
+              color="primary"
+              variant="outlined"
+              v-bind="props"
+            >
+              <span
+                v-if="currentLanguage?.icon"
+                class="hero-app-bar__language-flag"
+                aria-hidden="true"
+              >
+                <span class="fi" :class="currentLanguage.icon" />
+              </span>
+              <span
+                v-else
+                class="hero-app-bar__language-code"
+                aria-hidden="true"
+              >
+                {{ currentLanguage?.code?.toUpperCase() }}
+              </span>
+              <span class="hero-app-bar__language-label">
+                {{ currentLanguage?.name ?? "Language" }}
+              </span>
+              <v-icon icon="mdi-menu-down" size="16" class="hero-app-bar__language-icon" />
+            </v-btn>
+          </template>
+
+          <v-list class="hero-app-bar__language-list" density="compact">
+            <v-list-item
+              v-for="language in languageItems"
+              :key="language.code"
+              :to="language.to"
+              class="hero-app-bar__language-list-item"
+            >
+              <div class="hero-app-bar__language-item">
+                <span
+                  v-if="language.icon"
+                  class="hero-app-bar__language-flag"
+                  aria-hidden="true"
+                >
+                  <span class="fi" :class="language.icon" />
+                </span>
+                <span
+                  v-else
+                  class="hero-app-bar__language-code"
+                  aria-hidden="true"
+                >
+                  {{ language.code.toUpperCase() }}
+                </span>
+                <span class="hero-app-bar__language-name">{{ language.name }}</span>
+              </div>
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </div>
     </div>
   </v-app-bar>
@@ -96,6 +163,70 @@ watchEffect(() => {
   border-radius: 999px;
   font-weight: 600;
   letter-spacing: 0.02em;
+}
+
+.hero-app-bar__language-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 16px;
+}
+
+.hero-app-bar__language-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.hero-app-bar__language-flag .fi {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-app-bar__language-code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.hero-app-bar__language-label {
+  font-weight: 600;
+}
+
+.hero-app-bar__language-icon {
+  margin-left: 4px;
+}
+
+.hero-app-bar__language-list {
+  min-width: 160px;
+  padding-block: 4px;
+}
+
+.hero-app-bar__language-list-item {
+  min-height: unset;
+}
+
+.hero-app-bar__language-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-app-bar__language-name {
+  font-weight: 500;
 }
 
 .hero-app-bar__links {
