@@ -7,7 +7,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
       url: '/'
     },
     {
-      label: 'Über mich',
+      label: 'About',
       url: '/about'
     },
     {
@@ -23,11 +23,11 @@ export const DEFAULT_CONTENT: ContentRecord = {
       url: '/education'
     },
     {
-      label: 'Works',
+      label: 'Work',
       url: '/work'
     },
     {
-      label: 'Kompetenzen',
+      label: 'Services',
       url: '/service'
     }
   ],
@@ -38,148 +38,148 @@ export const DEFAULT_CONTENT: ContentRecord = {
     avatar: '/images/profile.jpg'
   },
   hero: {
-    badge: 'Bereit für neue Herausforderungen',
-    headline: 'Hallo, ich bin Aouinti – Backend Developer (PHP & Symfony)',
+    badge: 'Ready for new challenges',
+    headline: "Hi, I'm Aouinti — Backend Developer (PHP & Symfony)",
     subline:
-      'Ich entwickle sichere, performante Backend-Lösungen mit PHP 8, Symfony, RESTful APIs, Docker und CI/CD-Pipelines.'
+      'I craft secure, high-performance backends with PHP 8, Symfony, REST APIs, Docker, and CI/CD pipelines.'
   },
   service: {
-    label: 'Kompetenzen',
-    headline: 'Stabile Backend-Architekturen für anspruchsvolle Anwendungen.',
+    label: 'Services',
+    headline: 'Reliable backend architectures for your critical applications.',
     subline:
-      'Ich entwickle skalierbare Services, optimiere Datenbanken und stelle mit Tests, Monitoring und Automatisierung eine hohe Softwarequalität sicher.',
+      'I design scalable services, optimize databases, and safeguard quality through testing, monitoring, and automation.',
     services: [
       {
-        name: 'API- & Microservice-Entwicklung',
+        name: 'API & microservice development',
         icon: 'Scroll',
         description:
-          'Konzeption und Implementierung von RESTful APIs, Microservices und Integrationen von Drittanbieter-Systemen mit Symfony.',
+          'Architect and ship RESTful APIs, microservices, and third-party integrations with Symfony.',
         thumbnails: ''
       },
       {
-        name: 'Datenbankdesign & Performance',
+        name: 'Database modeling & performance',
         icon: 'MobileProgramming',
         description:
-          'Modellierung relationaler Datenbanken, Optimierung komplexer SQL-Abfragen sowie Einsatz von Caching-Lösungen wie Redis.',
+          'Model relational schemas, tune complex SQL queries, and leverage caching layers like Redis.',
         thumbnails: ''
       },
       {
-        name: 'Qualitätssicherung & DevOps',
+        name: 'Quality assurance & DevOps',
         icon: 'PenTool2',
         description:
-          'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit cum distinctio dolores!',
+          'Automate testing, CI/CD pipelines, and observability to enable confident releases.',
         thumbnails: ''
       }
     ]
   },
   work: {
-    label: 'Erfahrung',
-    headline: 'Ausgewählte Stationen aus meiner Karriere.',
+    label: 'Projects',
+    headline: 'Highlighted projects and engagements.',
     subline:
-      'Von E-Commerce-Plattformen bis zu Microservice-Landschaften – ich liefere robuste Backend-Lösungen, die Geschäftserfolge ermöglichen.',
+      'From e-commerce platforms to microservice ecosystems, I deliver robust backends that help teams grow.',
     works: [
       {
-        name: 'Microservices für TKDeutschland',
+        name: 'Microservices for TKDeutschland',
         slug: 'microservices-tkdeutschland',
         live_demo: '#',
         description:
-          'Entwicklung sicherer, skalierbarer Services, Integration von Drittanbieter-APIs und Aufbau von Authentifizierungs-Workflows.',
+          'Built secure, scalable services, integrated third-party APIs, and designed authentication workflows.',
         thumbnails: 'creativeagency-landingpage.webp',
         type: 'Symfony 6 · REST APIs'
       },
       {
-        name: 'E-Commerce Plattformen bei Hinke GmbH',
+        name: 'E-commerce platforms for Hinke GmbH',
         slug: 'ecommerce-plattformen-hinke-gmbh',
         live_demo: '#',
         description:
-          'Implementierung komplexer Shop-Funktionen, Web-Analytics-Setups und kontinuierliche Performance-Optimierung.',
+          'Implemented advanced e-commerce features, configured analytics, and continuously optimized performance.',
         thumbnails: 'furnilux-landingpage.webp',
         type: 'Full Stack · Shopware'
       },
       {
-        name: 'Shopware-Integrationen für Wizmo GmbH',
+        name: 'Shopware integrations for Wizmo GmbH',
         slug: 'shopware-integrationen-wizmo-gmbh',
         live_demo: '#',
         description:
-          'Entwicklung von RESTful APIs, Plugin-Erweiterungen und datengetriebenen Tools für internationale Kunden.',
+          'Developed RESTful APIs, plugin extensions, and data tooling for international clients.',
         thumbnails: 'cafestreet-landingpage.webp',
         type: 'PHP · Laravel'
       },
       {
-        name: 'Monitoring & Analytics Automatisierung',
+        name: 'Monitoring & analytics automation',
         slug: 'monitoring-analytics-automatisierung',
         live_demo: '#',
         description:
-          'Konfiguration von Google Analytics, Erstellung belastbarer Dashboards und Ableitung technischer Optimierungen.',
+          'Configured Google Analytics, built trustworthy dashboards, and uncovered actionable technical improvements.',
         thumbnails: 'letsfood-landingpage.webp',
         type: 'Analytics · Automation'
       },
       {
-        name: 'Leistungsoptimierung für Legacy-Systeme',
+        name: 'Performance tuning for legacy systems',
         slug: 'leistungsoptimierung-legacy-systeme',
         live_demo: '#',
         description:
-          'Refactoring bestehender Codebasen, Reduzierung von Antwortzeiten und Verbesserung der Wartbarkeit.',
+          'Refactored existing codebases, reduced response times, and boosted maintainability.',
         thumbnails: 'loginregister-design.webp',
         type: 'Refactoring · Testing'
       },
       {
-        name: 'Dockerisierte Entwicklungsumgebungen',
+        name: 'Dockerized development environments',
         slug: 'dockerisierte-entwicklungsumgebungen',
         live_demo: '#',
         description:
-          'Aufbau containerisierter Workflows, um CI/CD-Prozesse zu vereinheitlichen und Deployments zu beschleunigen.',
+          'Established containerized workflows to standardize CI/CD and accelerate releases.',
         thumbnails: 'iratoon-mobileapp.webp',
         type: 'Docker · CI/CD'
       }
     ]
   },
   about: {
-    label: 'Über mich',
+    label: 'About',
     introduce: [
-      'Ich bin Mohamed Rami Aouinti, Backend Developer (PHP & Symfony) mit mehrjähriger Erfahrung in der Entwicklung, Optimierung und Wartung moderner Webanwendungen.',
-      'Meine Schwerpunkte liegen in PHP 8, Symfony, Laravel, Datenbankmodellierung mit MySQL und PostgreSQL sowie in der Integration skalierbarer CI/CD-Prozesse.',
-      'Ich arbeite strukturiert, qualitätsorientiert und gerne im Team, um anspruchsvolle Produkte zuverlässig in die Produktion zu bringen.'
+      'I am Mohamed Rami Aouinti, a backend developer (PHP & Symfony) with several years of experience designing, optimizing, and maintaining modern web applications.',
+      'My toolkit spans PHP 8, Symfony, Laravel, MySQL and PostgreSQL data modeling, plus scalable CI/CD pipelines.',
+      'I focus on rigor, quality, and teamwork to deliver reliable, future-proof products.'
     ]
   },
   cta: {
-    label: 'Let’s Build Something Great Together',
+    label: 'Build something remarkable together',
     description:
-      'Need a clean, functional UI? I’m here to help bring your vision to life—simple, responsive, and user-focused.'
+      'Need a clear, effective interface? I help transform your vision into simple, fast, user-centered experiences.'
   },
   skills: {
-    label: 'skills',
-    headline: 'Tools and technologies I rely on to ship quality interfaces.',
+    label: 'Skills',
+    headline: 'Tools and technologies I rely on to ship dependable interfaces.',
     subline:
-      'From foundational web technologies to design systems, these are the skills I apply every day to craft engaging digital experiences.',
+      'From core web technologies to design systems, these are the skills I apply every day to craft engaging digital experiences.',
     categories: [
       {
-        name: 'Frontend Development',
+        name: 'Frontend development',
         skills: ['HTML5', 'CSS3 & Tailwind CSS', 'JavaScript', 'TypeScript', 'Vue.js & Nuxt']
       },
       {
-        name: 'UI & Product Design',
+        name: 'Product design',
         skills: ['Figma', 'Design Systems', 'Prototyping', 'Accessibility', 'User Research']
       },
       {
-        name: 'Collaboration & Delivery',
+        name: 'Collaboration & delivery',
         skills: ['Git & GitHub', 'Agile Workflows', 'Technical Documentation', 'Code Reviews', 'Stakeholder Communication']
       }
     ]
   },
   experiences: {
-    label: 'experience',
-    headline: 'Professional journey and the impact created for teams and clients.',
+    label: 'Experience',
+    headline: 'Professional journey and the impact delivered to teams and clients.',
     positions: [
       {
         slug: 'senior-front-end-developer-pixelforge-studio',
-        role: 'Senior Front-End Developer',
+        role: 'Senior Frontend Developer',
         company: 'PixelForge Studio',
         timeframe: '2022 — Present',
         achievements: [
-          'Led the rebuild of the company design system, reducing component delivery time by 35%.',
-          'Collaborated with product designers to launch responsive marketing sites that increased lead generation by 25%.',
-          'Mentored junior developers and introduced code review practices to improve overall code quality.'
+          'Led the redesign of the internal design system, cutting component delivery time by 35%.',
+          'Partnered closely with product designers to launch responsive marketing sites that increased leads by 25%.',
+          'Mentored junior developers and introduced structured code reviews to raise overall quality.'
         ]
       },
       {
@@ -188,32 +188,32 @@ export const DEFAULT_CONTENT: ContentRecord = {
         company: 'Brightwave Labs',
         timeframe: '2019 — 2022',
         achievements: [
-          'Developed reusable Vue components powering analytics dashboards for enterprise clients.',
-          'Worked closely with UX researchers to deliver accessible interfaces that met WCAG AA standards.',
-          'Automated front-end testing workflows, reducing regressions across weekly releases.'
+          'Built reusable Vue components powering analytics dashboards for enterprise clients.',
+          'Collaborated with UX teams to ship accessible interfaces compliant with WCAG AA.',
+          'Automated frontend testing flows and reduced regressions across weekly releases.'
         ]
       }
     ]
   },
   education: {
-    label: 'education',
-    headline: 'Academic background and continued learning milestones.',
+    label: 'Education',
+    headline: 'Academic background and continuous learning.',
     schools: [
       {
         slug: 'bsc-information-technology',
-        degree: 'B.Sc. in Information Technology',
+        degree: 'BSc in Information Technology',
         institution: 'Jakarta Institute of Technology',
         timeframe: '2015 — 2019',
         details:
-          'Focused on software engineering, user interface design, and human-computer interaction. Graduated with honors.'
+          'Specialised in software engineering, interface design, and human-computer interaction. Graduated with honours.'
       },
       {
         slug: 'certificate-advanced-ux-design',
-        degree: 'Certificate, Advanced UX Design',
+        degree: 'Advanced UX Design Certificate',
         institution: 'Interaction Design Foundation',
         timeframe: '2020',
         details:
-          'Completed specialized coursework in user research methodologies, prototyping, and usability testing.'
+          'Focused on user research, prototyping, and usability testing in fast-paced product teams.'
       }
     ]
   }

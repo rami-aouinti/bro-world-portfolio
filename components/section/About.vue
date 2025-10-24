@@ -3,9 +3,12 @@ import { computed } from 'vue'
 
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: about } = useContentBlock('about')
 const { data: profile } = useContentBlock('profile')
+const { t } = useI18n()
+const localePath = useLocalePath()
 
 const aboutContent = computed(() => about.value)
 const profileContent = computed(() => profile.value)
@@ -22,7 +25,7 @@ const profileDescription = computed(() => {
 
   return (
     aboutContent.value?.introduce?.[0] ??
-    'Building reliable backend systems with PHP, Symfony, and clean architecture.'
+    t('portfolio.about.fallbackProfileDescription')
   )
 })
 </script>
@@ -42,7 +45,12 @@ const profileDescription = computed(() => {
                 {{ intro }}
               </p>
             </div>
-            <Button class="mt-8" label="Connect Me" to="/contact" variant="btn-dark" />
+            <Button
+              class="mt-8"
+              :label="t('portfolio.about.cta')"
+              :to="resolveLocalizedRouteTarget('/contact', localePath)"
+              variant="btn-dark"
+            />
           </v-col>
           <v-col cols="12" md="6" v-if="profileContent">
             <CustomGlowCard

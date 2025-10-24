@@ -10,8 +10,8 @@ const sections = [
   },
   {
     slug: 'hero',
-    title: 'Section Personal',
-    description: 'Badge, titre et sous-titre de l’entête.'
+    title: 'Section personnelle',
+    description: 'Badge, titre et sous-titre de l’en-tête.'
   },
   {
     slug: 'service',
@@ -21,7 +21,7 @@ const sections = [
   {
     slug: 'work',
     title: 'Projets',
-    description: 'Projets présentés dans la section “Works”.'
+    description: 'Projets présentés dans la section « Projets ».'
   },
   {
     slug: 'about',
@@ -40,7 +40,7 @@ const sections = [
   },
   {
     slug: 'skills',
-    title: 'Skills',
+    title: 'Compétences',
     description: 'Catégories de compétences.'
   },
   {

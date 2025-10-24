@@ -248,75 +248,75 @@
     }
   },
   "buttons": {
-    "more": "Show more",
-    "less": "Show less",
-    "continue": "Continue",
-    "back": "Back",
-    "cancel": "Cancel"
+    "more": "Afficher plus",
+    "less": "Afficher moins",
+    "continue": "Continuer",
+    "back": "Retour",
+    "cancel": "Annuler"
   },
   "job": {
     "job": "Emploi",
-    "create": "Create job",
-    "createdSuccess": "Job created successfully.",
-    "createError": "Unable to create the job. Please try again.",
-    "search": "Search jobs",
-    "location": "Location",
-    "filterByExperience": "Filter by experience",
-    "workType": "Work mode",
-    "contractType": "Contract type",
-    "salaryRange": "Salary range",
-    "skills": "Skills",
-    "noSkills": "No skills listed.",
-    "apply": "Apply",
-    "noMatch": "No jobs match your filters.",
-    "unknownCompany": "Unknown company",
-    "locationUnknown": "Location not specified",
-    "salaryUnknown": "Salary not specified",
+    "create": "Créer une offre",
+    "createdSuccess": "Offre créée avec succès.",
+    "createError": "Impossible de créer l'offre. Veuillez réessayer.",
+    "search": "Rechercher des offres",
+    "location": "Lieu",
+    "filterByExperience": "Filtrer par expérience",
+    "workType": "Mode de travail",
+    "contractType": "Type de contrat",
+    "salaryRange": "Fourchette salariale",
+    "skills": "Compétences",
+    "noSkills": "Aucune compétence indiquée.",
+    "apply": "Postuler",
+    "noMatch": "Aucune offre ne correspond à vos filtres.",
+    "unknownCompany": "Entreprise inconnue",
+    "locationUnknown": "Lieu non précisé",
+    "salaryUnknown": "Salaire non précisé",
     "description": "Description",
-    "noDescription": "No description provided.",
-    "work": "Responsibilities",
-    "noWork": "No responsibilities provided.",
-    "requirements": "Requirements",
-    "benefits": "Benefits",
-    "addLanguage": "Add language",
-    "details": "Job details",
-    "additional": "Additional information",
-    "others": "Other information",
-    "company": "Company",
-    "experience": "Experience",
-    "workTypeLabel": "Work type",
-    "contractTypeLabel": "Contract",
-    "languages": "Languages"
+    "noDescription": "Aucune description fournie.",
+    "work": "Responsabilités",
+    "noWork": "Aucune responsabilité fournie.",
+    "requirements": "Exigences",
+    "benefits": "Avantages",
+    "addLanguage": "Ajouter une langue",
+    "details": "Détails du poste",
+    "additional": "Informations supplémentaires",
+    "others": "Autres informations",
+    "company": "Entreprise",
+    "experience": "Expérience",
+    "workTypeLabel": "Type de travail",
+    "contractTypeLabel": "Contrat",
+    "languages": "Langues"
   },
   "applicant": {
     "applicant": "Candidat",
-    "create": "Create applicant",
-    "createdSuccess": "Applicant saved successfully.",
-    "createError": "Unable to create the applicant.",
-    "submit": "Submit",
-    "submitError": "Unable to submit the application.",
-    "submitSuccess": "Application submitted.",
-    "selectError": "Select an applicant before submitting.",
-    "upload": "Upload",
-    "uploadResume": "Upload resume",
-    "uploadError": "Unable to upload the resume.",
-    "uploadSuccess": "Resume uploaded successfully.",
-    "noResume": "no resume",
-    "noFile": "Choose a file before uploading.",
-    "name": "Name",
-    "contactEmail": "Contact email",
-    "preferences": "Job preferences",
-    "resume": "Resume"
+    "create": "Créer un candidat",
+    "createdSuccess": "Candidat enregistré avec succès.",
+    "createError": "Impossible de créer le candidat.",
+    "submit": "Envoyer",
+    "submitError": "Impossible d’envoyer la candidature.",
+    "submitSuccess": "Candidature envoyée.",
+    "selectError": "Sélectionnez un candidat avant d’envoyer.",
+    "upload": "Téléverser",
+    "uploadResume": "Téléverser le CV",
+    "uploadError": "Impossible de téléverser le CV.",
+    "uploadSuccess": "CV téléversé avec succès.",
+    "noResume": "pas de CV",
+    "noFile": "Choisissez un fichier avant le téléversement.",
+    "name": "Nom",
+    "contactEmail": "E-mail de contact",
+    "preferences": "Préférences de poste",
+    "resume": "CV"
   },
   "company": {
-    "title": "Company",
-    "create": "Create company",
-    "createSuccess": "Company saved successfully.",
-    "createError": "Unable to create the company.",
-    "name": "Company name",
-    "description": "Company description",
-    "website": "Website",
-    "submit": "Save"
+    "title": "Entreprise",
+    "create": "Créer une entreprise",
+    "createSuccess": "Entreprise enregistrée avec succès.",
+    "createError": "Impossible de créer l'entreprise.",
+    "name": "Nom de l'entreprise",
+    "description": "Description de l'entreprise",
+    "website": "Site web",
+    "submit": "Enregistrer"
   },
   "messenger": {
     "searchPlaceholder": "Rechercher une conversation",
@@ -1452,7 +1452,11 @@
             "type": "CDI",
             "salary": "58k€ - 72k€ · 0,05 % BSPCE",
             "description": "Imaginez des expériences multi-plateformes pour les recruteurs et les candidats, web et mobile.",
-            "tags": ["Design System", "Figma", "Recherche utilisateur"],
+            "tags": [
+              "Design System",
+              "Figma",
+              "Recherche utilisateur"
+            ],
             "apply": {
               "label": "Postuler",
               "aria": "Postuler au poste de Senior Product Designer",
@@ -1466,7 +1470,11 @@
             "type": "CDI",
             "salary": "70k€ - 90k€ · bonus",
             "description": "Construisez des copilotes IA qui automatisent le sourcing, le screening et la planification.",
-            "tags": ["Python", "LangChain", "Hiring Ops"],
+            "tags": [
+              "Python",
+              "LangChain",
+              "Hiring Ops"
+            ],
             "apply": {
               "label": "Postuler",
               "aria": "Postuler au poste d'AI Recruiter Strategist",
@@ -1480,7 +1488,11 @@
             "type": "CDI",
             "salary": "65k€ fixe · 50 % variable",
             "description": "Pilotez la génération de pipeline et accompagnez les AEs sur des deals complexes.",
-            "tags": ["B2B SaaS", "Vente Enterprise", "Forecast"],
+            "tags": [
+              "B2B SaaS",
+              "Vente Enterprise",
+              "Forecast"
+            ],
             "apply": {
               "label": "Postuler",
               "aria": "Postuler au poste d'Enterprise Sales Lead",
@@ -1494,7 +1506,11 @@
             "type": "CDI",
             "salary": "45k€ - 55k€",
             "description": "Accompagnez les équipes Talent lors de l'onboarding, du lancement des workflows et du suivi d'adoption.",
-            "tags": ["Implementation", "Conduite du changement", "Intégrations ATS"],
+            "tags": [
+              "Implementation",
+              "Conduite du changement",
+              "Intégrations ATS"
+            ],
             "apply": {
               "label": "Postuler",
               "aria": "Postuler au poste de Customer Success Partner",
@@ -3576,25 +3592,41 @@
           "content": {
             "title": "Gestion du contenu",
             "description": "Planifiez, publiez et archivez les articles, événements et ressources pédagogiques.",
-            "tags": ["Workflow éditorial", "Validation", "Programmation"],
+            "tags": [
+              "Workflow éditorial",
+              "Validation",
+              "Programmation"
+            ],
             "status": "12 contenus nécessitent une revue éditoriale."
           },
           "community": {
             "title": "Communauté & modération",
             "description": "Paramétrez les règles de modération, gérez les signalements et les sanctions.",
-            "tags": ["Signalements", "Sanctions", "Messages privés"],
+            "tags": [
+              "Signalements",
+              "Sanctions",
+              "Messages privés"
+            ],
             "status": "Temps moyen de réponse : 1 h 42."
           },
           "commerce": {
             "title": "Monétisation & offres",
             "description": "Administrez les abonnements, codes promotionnels et partenariats commerciaux.",
-            "tags": ["Abonnements", "Facturation", "Coupons"],
+            "tags": [
+              "Abonnements",
+              "Facturation",
+              "Coupons"
+            ],
             "status": "Taux de conversion en hausse de 3,4 % cette semaine."
           },
           "governance": {
             "title": "Gouvernance & conformité",
             "description": "Auditez les accès, gérez les rôles sensibles et préparez les rapports de conformité.",
-            "tags": ["Audit", "Rôles", "Traçabilité"],
+            "tags": [
+              "Audit",
+              "Rôles",
+              "Traçabilité"
+            ],
             "status": "Dernier audit complet réalisé il y a 5 jours."
           }
         }
@@ -4062,6 +4094,44 @@
       "actions": "Actions",
       "file": "Fichier",
       "folder": "Dossier"
+    }
+  },
+  "portfolio": {
+    "navbar": {
+      "contact": "Contact",
+      "languageFallback": "Langue"
+    },
+    "about": {
+      "fallbackProfileDescription": "Conception de backends fiables avec PHP, Symfony et une architecture soignée.",
+      "cta": "Me contacter"
+    },
+    "cta": {
+      "eyebrow": "Prêts à collaborer",
+      "primaryCta": "Lancer une collaboration"
+    },
+    "personal": {
+      "viewProjects": "Voir mes projets",
+      "contact": "Me contacter",
+      "viewProjectLabel": "Voir le projet",
+      "viewProjectCta": "Explorer"
+    },
+    "experience": {
+      "fallbackSummary": "Contributions clés chez {company}"
+    },
+    "service": {
+      "eyebrowPrefix": "Service",
+      "footerLabel": "Expertise :",
+      "footerFallback": "Expertise back-end",
+      "footerStatus": "Prêt"
+    },
+    "skills": {
+      "badge": "{count} compétence | {count} compétences",
+      "cardDescription": "Outils et technologies mis en avant."
+    },
+    "work": {
+      "thumbnailAlt": "Miniature {name}",
+      "footerLabel": "Projet en ligne",
+      "liveDemo": "Voir la démo en direct"
     }
   }
 }

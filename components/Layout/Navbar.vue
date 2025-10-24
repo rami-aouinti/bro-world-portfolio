@@ -10,7 +10,7 @@ const drawer = ref(false)
 const display = useDisplay()
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
-const { locales, locale } = useI18n()
+const { locales, locale, t } = useI18n()
 const rawLinks = computed(() => navlinks.value ?? [])
 const links = computed(() =>
   rawLinks.value.map((link) => ({
@@ -56,9 +56,9 @@ watchEffect(() => {
           class="hero-app-bar__button hero-app-bar__button--left"
           color="primary"
           variant="outlined"
-          to="/contact"
+          :to="localePath('/contact')"
         >
-          Contact
+          {{ t('portfolio.navbar.contact') }}
         </v-btn>
         <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer" />
       </div>
@@ -98,7 +98,7 @@ watchEffect(() => {
                 {{ currentLanguage?.code?.toUpperCase() }}
               </span>
               <span class="hero-app-bar__language-label">
-                {{ currentLanguage?.name ?? "Language" }}
+                {{ currentLanguage?.name ?? t('portfolio.navbar.languageFallback') }}
               </span>
               <v-icon icon="mdi-menu-down" size="16" class="hero-app-bar__language-icon" />
             </v-btn>

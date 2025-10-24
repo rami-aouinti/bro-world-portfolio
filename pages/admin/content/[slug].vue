@@ -17,13 +17,13 @@ const slug = computed(() => slugParam.value as ContentSlug)
 
 const titles: Record<ContentSlug, string> = {
   profile: 'Profil',
-  hero: 'Section Personal',
+  hero: 'Section personnelle',
   service: 'Compétences',
   work: 'Projets',
   about: 'À propos',
   cta: 'Appel à l’action',
   navlinks: 'Navigation',
-  skills: 'Skills',
+  skills: 'Compétences',
   experiences: 'Expériences',
   education: 'Formations'
 }
@@ -300,7 +300,13 @@ async function handleSubmit() {
                     <v-btn icon="mdi-delete" variant="text" color="error" @click="removeWork(index)" />
                   </div>
                   <v-text-field v-model="project.name" label="Nom" required variant="outlined" density="comfortable" />
-                  <v-text-field v-model="project.slug" label="Slug" required variant="outlined" density="comfortable" />
+                  <v-text-field
+                    v-model="project.slug"
+                    label="Identifiant (slug)"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                  />
                   <v-text-field v-model="project.live_demo" label="Lien de démonstration" required variant="outlined" density="comfortable" />
                   <v-textarea v-model="project.description" label="Description" rows="3" required variant="outlined" density="comfortable" />
                   <v-text-field v-model="project.thumbnails" label="Image" required variant="outlined" density="comfortable" />
@@ -435,7 +441,13 @@ async function handleSubmit() {
                     <v-btn icon="mdi-delete" variant="text" color="error" @click="removeExperience(index)" />
                   </div>
                   <v-text-field v-model="position.role" label="Rôle" required variant="outlined" density="comfortable" />
-                  <v-text-field v-model="position.slug" label="Slug" required variant="outlined" density="comfortable" />
+                  <v-text-field
+                    v-model="position.slug"
+                    label="Identifiant (slug)"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                  />
                   <v-text-field v-model="position.company" label="Entreprise" required variant="outlined" density="comfortable" />
                   <v-text-field v-model="position.timeframe" label="Période" required variant="outlined" density="comfortable" />
                   <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -489,7 +501,13 @@ async function handleSubmit() {
                     <v-btn icon="mdi-delete" variant="text" color="error" @click="removeEducation(index)" />
                   </div>
                   <v-text-field v-model="school.degree" label="Diplôme" required variant="outlined" density="comfortable" />
-                  <v-text-field v-model="school.slug" label="Slug" required variant="outlined" density="comfortable" />
+                  <v-text-field
+                    v-model="school.slug"
+                    label="Identifiant (slug)"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                  />
                   <v-text-field v-model="school.institution" label="Établissement" required variant="outlined" density="comfortable" />
                   <v-text-field v-model="school.timeframe" label="Période" required variant="outlined" density="comfortable" />
                   <v-textarea v-model="school.details" label="Détails" rows="3" required variant="outlined" density="comfortable" />

@@ -4,15 +4,18 @@ import { computed } from 'vue'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import { glowCardVariantCycle } from '~/utils/glowCardVariants'
 import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: work } = useContentBlock('work')
+const { t } = useI18n()
+const localePath = useLocalePath()
 const content = computed(() => work.value)
 const workCards = computed(() => {
   const items = content.value?.works ?? []
 
   return items.map((item, index) => ({
     item,
-    route: `/work/${item.slug}`,
+    route: resolveLocalizedRouteTarget(`/work/${item.slug}`, localePath),
     variant: glowCardVariantCycle[index % glowCardVariantCycle.length]
   }))
 })
@@ -43,7 +46,7 @@ const workCards = computed(() => {
               <template #media>
                 <v-img
                   :src="`/images/work/${card.item.thumbnails}`"
-                  :alt="`Thumbnail ${card.item.name}`"
+                  :alt="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
                   height="220"
                   cover
                   class="work__image"
@@ -51,7 +54,7 @@ const workCards = computed(() => {
               </template>
               <template #footer>
                 <div class="work__footer">
-                  <span class="work__footer-label">Live project</span>
+                  <span class="work__footer-label">{{ t('portfolio.work.footerLabel') }}</span>
                   <v-btn
                     :to="card.item.live_demo"
                     target="_blank"
@@ -61,7 +64,7 @@ const workCards = computed(() => {
                     @click.stop
                     @keydown.stop
                   >
-                    View live demo
+                    {{ t('portfolio.work.liveDemo') }}
                   </v-btn>
                 </div>
               </template>
