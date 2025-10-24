@@ -97,16 +97,22 @@ watchEffect(() => {
               >
                 {{ currentLanguage?.code?.toUpperCase() }}
               </span>
+              <span v-if="currentLanguage?.name" class="hero-app-bar__language-label">
+                {{ currentLanguage.name }}
+              </span>
               <v-icon icon="mdi-menu-down" size="16" class="hero-app-bar__language-icon" />
             </v-btn>
           </template>
 
-          <v-list class="hero-app-bar__language-list" density="compact" style="background-color: rgba(255, 255, 255, 0.08);">
+          <v-list class="hero-app-bar__language-list" density="compact">
             <v-list-item
               v-for="language in languageItems"
               :key="language.code"
               :to="language.to"
               class="hero-app-bar__language-list-item"
+              :class="{
+                'hero-app-bar__language-list-item--active': language.code === locale,
+              }"
             >
               <div class="hero-app-bar__language-item">
                 <span
@@ -123,6 +129,16 @@ watchEffect(() => {
                 >
                   {{ language.code.toUpperCase() }}
                 </span>
+                <div class="hero-app-bar__language-info">
+                  <span class="hero-app-bar__language-name">{{ language.name }}</span>
+                  <span class="hero-app-bar__language-short-code">{{ language.code.toUpperCase() }}</span>
+                </div>
+                <v-icon
+                  v-if="language.code === locale"
+                  icon="mdi-check"
+                  size="16"
+                  class="hero-app-bar__language-check"
+                />
               </div>
             </v-list-item>
           </v-list>
@@ -168,6 +184,11 @@ watchEffect(() => {
   padding-inline: 16px;
 }
 
+.hero-app-bar__language-button .hero-app-bar__language-label {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
 .hero-app-bar__language-flag {
   display: inline-flex;
   align-items: center;
@@ -207,22 +228,61 @@ watchEffect(() => {
 }
 
 .hero-app-bar__language-list {
+  --menu-background: rgba(15, 23, 42, 0.6);
   min-width: 20px;
   padding-block: 4px;
+  background: linear-gradient(135deg, rgba(94, 234, 212, 0.12), rgba(59, 130, 246, 0.08));
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 20px 45px -20px rgba(15, 23, 42, 0.65);
 }
 
 .hero-app-bar__language-list-item {
   min-height: unset;
+  border-radius: 12px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-app-bar__language-list-item:hover {
+  background-color: rgba(148, 163, 184, 0.1);
+  transform: translateX(4px);
+}
+
+.hero-app-bar__language-list-item--active {
+  background: rgba(94, 234, 212, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(94, 234, 212, 0.35);
 }
 
 .hero-app-bar__language-item {
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 100%;
 }
 
 .hero-app-bar__language-name {
   font-weight: 500;
+}
+
+.hero-app-bar__language-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  line-height: 1.1;
+}
+
+.hero-app-bar__language-short-code {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.72);
+}
+
+.hero-app-bar__language-check {
+  margin-left: auto;
+  color: rgba(94, 234, 212, 0.85);
 }
 
 .hero-app-bar__links {
