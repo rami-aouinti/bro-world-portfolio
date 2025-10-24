@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
+import { useDisplay } from 'vuetify'
 
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: navlinks } = useContentBlock('navlinks')
 
 const drawer = ref(false)
+const display = useDisplay()
 const localePath = useLocalePath()
 const rawLinks = computed(() => navlinks.value ?? [])
 const links = computed(() =>
@@ -15,6 +17,12 @@ const links = computed(() =>
   })),
 )
 const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', localePath))
+
+watchEffect(() => {
+  if (display.mdAndUp.value) {
+    drawer.value = false
+  }
+})
 </script>
 
 <template>
@@ -48,8 +56,6 @@ const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', local
       variant="btn-dark"
     />
   </v-app-bar>
-
-</template>
 
 <style scoped>
 .hero-app-bar {
