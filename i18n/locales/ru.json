@@ -3154,86 +3154,86 @@
       }
     },
     "settings": {
-      "metaTitle": "Site settings",
+      "metaTitle": "Настройки сайта",
       "page": {
-        "title": "Site settings",
-        "subtitle": "Configure the brand, theme palette, and navigation structure for your community."
+        "title": "Настройки сайта",
+        "subtitle": "Настройте бренд, цветовую палитру темы и структуру навигации вашего сообщества."
       },
       "navigation": {
-        "title": "Sections"
+        "title": "Разделы"
       },
       "sections": {
         "general": {
-          "title": "Brand identity",
-          "subtitle": "Update the site name and tagline displayed across the workspace.",
-          "badge": "Core"
+          "title": "Идентичность бренда",
+          "subtitle": "Обновите название сайта и слоган, отображающиеся по всей рабочей области.",
+          "badge": "Основное"
         },
         "theme": {
-          "title": "Themes",
-          "subtitle": "Curate available themes and choose which one is active by default.",
-          "active": "Default theme"
+          "title": "Темы",
+          "subtitle": "Подберите доступные темы и выберите активную по умолчанию.",
+          "active": "Тема по умолчанию"
         },
         "profile": {
-          "title": "Profile personalisation",
-          "subtitle": "Control how members can customise their public profile.",
-          "badge": "Profiles"
+          "title": "Персонализация профиля",
+          "subtitle": "Управляйте тем, как участники настраивают свой публичный профиль.",
+          "badge": "Профили"
         },
         "appearance": {
-          "title": "Theme mode",
-          "subtitle": "Set the default mode and manage the theme toggle behaviour.",
-          "badge": "Display"
+          "title": "Режим темы",
+          "subtitle": "Задайте режим по умолчанию и настройте работу переключателя темы.",
+          "badge": "Отображение"
         },
         "pages": {
-          "title": "Static pages",
-          "subtitle": "Edit the hero content displayed on About, Contact, and Help.",
-          "badge": "Content",
+          "title": "Статичные страницы",
+          "subtitle": "Измените главный блок на страницах «О нас», «Контакты» и «Помощь».",
+          "badge": "Контент",
           "labels": {
-            "about": "About page",
-            "contact": "Contact page",
-            "help": "Help centre"
+            "about": "Страница «О нас»",
+            "contact": "Страница «Контакты»",
+            "help": "Центр помощи"
           },
           "descriptions": {
-            "about": "Update the mission statement and introduction shown on the About page.",
-            "contact": "Customise the hero copy for your support and contact information.",
-            "help": "Define the messaging that appears at the top of the help centre."
+            "about": "Обновите миссию и вступительный текст на странице «О нас».",
+            "contact": "Настройте основной текст для информации о поддержке и контактах.",
+            "help": "Определите сообщение, отображаемое в верхней части центра помощи."
           }
         },
         "navigation": {
-          "title": "Navigation menu",
-          "subtitle": "Add, reorder, and secure sidebar entries for every audience.",
-          "badge": "Menus",
-          "children": "Child links"
+          "title": "Меню навигации",
+          "subtitle": "Добавляйте, переупорядочивайте и защищайте элементы боковой панели для каждой аудитории.",
+          "badge": "Меню",
+          "children": "Дочерние ссылки"
         }
       },
       "fields": {
-        "siteName": "Site name",
-        "language": "Язык содержимого",
-        "tagline": "Tagline",
-        "themeName": "Theme name",
-        "themeDescription": "Description",
-        "themePrimary": "Primary color",
-        "themeAccent": "Accent color",
-        "themeSurface": "Surface color",
-        "menuLabel": "Menu label",
-        "menuPath": "Destination path",
-        "menuIcon": "Icon (optional)",
-        "menuAdmin": "Admin only",
-        "menuVisible": "Visible",
-        "profileAllowCustomization": "Allow profile customization",
-        "profileAllowThemeSelection": "Allow profile theme selection",
-        "profileAllowAvatarUploads": "Allow avatar uploads",
-        "profileAllowCoverUploads": "Allow cover uploads",
-        "profileShowContact": "Show contact section",
-        "profileShowDetails": "Show details section",
-        "profileShowSocial": "Show social insights",
-        "profileDefaultBio": "Default bio fallback",
-        "uiAllowThemeSwitching": "Allow visitors to toggle theme",
-        "themeModeSystem": "Follow system",
-        "themeModeLight": "Light mode",
-        "themeModeDark": "Dark mode",
-        "pageTitle": "Title",
-        "pageSubtitle": "Subtitle",
-        "pageBody": "Body content"
+        "siteName": "Название сайта",
+        "language": "Язык контента",
+        "tagline": "Слоган",
+        "themeName": "Название темы",
+        "themeDescription": "Описание",
+        "themePrimary": "Основной цвет",
+        "themeAccent": "Акцентный цвет",
+        "themeSurface": "Цвет поверхности",
+        "menuLabel": "Подпись меню",
+        "menuPath": "Путь назначения",
+        "menuIcon": "Иконка (опционально)",
+        "menuAdmin": "Только для администраторов",
+        "menuVisible": "Видимый",
+        "profileAllowCustomization": "Разрешить настройку профиля",
+        "profileAllowThemeSelection": "Разрешить выбор темы профиля",
+        "profileAllowAvatarUploads": "Разрешить загрузку аватаров",
+        "profileAllowCoverUploads": "Разрешить загрузку обложек",
+        "profileShowContact": "Показывать раздел контактов",
+        "profileShowDetails": "Показывать раздел деталей",
+        "profileShowSocial": "Показывать соц. статистику",
+        "profileDefaultBio": "Стандартная биография (резерв)",
+        "uiAllowThemeSwitching": "Разрешить посетителям переключать тему",
+        "themeModeSystem": "Следовать системе",
+        "themeModeLight": "Светлая тема",
+        "themeModeDark": "Тёмная тема",
+        "pageTitle": "Заголовок",
+        "pageSubtitle": "Подзаголовок",
+        "pageBody": "Основной контент"
       },
       "themeCustomizer": {
         "title": "Настроить",
@@ -3245,32 +3245,32 @@
         "system": "Система"
       },
       "helpers": {
-        "themeModeSystem": "Automatically adapts to each visitor's device preference.",
-        "themeModeLight": "Always display the interface in light mode.",
-        "themeModeDark": "Always display the interface in dark mode."
+        "themeModeSystem": "Автоматически подстраивается под предпочтения устройства посетителя.",
+        "themeModeLight": "Всегда отображать интерфейс в светлой теме.",
+        "themeModeDark": "Всегда отображать интерфейс в тёмной теме."
       },
       "placeholders": {
-        "siteName": "Enter a public site name",
-        "tagline": "Describe your mission in one sentence"
+        "siteName": "Введите публичное название сайта",
+        "tagline": "Опишите свою миссию одним предложением"
       },
       "actions": {
-        "save": "Save settings",
-        "reset": "Discard changes",
-        "addTheme": "Add theme",
-        "addMenu": "Add menu",
-        "addChild": "Add child link",
-        "removeMenu": "Remove",
-        "moveUp": "Move up",
-        "moveDown": "Move down"
+        "save": "Сохранить настройки",
+        "reset": "Отменить изменения",
+        "addTheme": "Добавить тему",
+        "addMenu": "Добавить меню",
+        "addChild": "Добавить дочернюю ссылку",
+        "removeMenu": "Удалить",
+        "moveUp": "Переместить вверх",
+        "moveDown": "Переместить вниз"
       },
       "feedback": {
-        "saved": "Site configuration updated successfully.",
-        "error": "We couldn't update the configuration. Try again later."
+        "saved": "Конфигурация сайта успешно обновлена.",
+        "error": "Не удалось обновить конфигурацию. Попробуйте позже."
       },
       "defaults": {
-        "themeName": "New theme",
-        "menuLabel": "New menu",
-        "submenuLabel": "New submenu"
+        "themeName": "Новая тема",
+        "menuLabel": "Новое меню",
+        "submenuLabel": "Новый подпункт"
       }
     },
     "userManagement": {

@@ -3154,86 +3154,86 @@
       }
     },
     "settings": {
-      "metaTitle": "Site settings",
+      "metaTitle": "站点设置",
       "page": {
-        "title": "Site settings",
-        "subtitle": "Configure the brand, theme palette, and navigation structure for your community."
+        "title": "站点设置",
+        "subtitle": "为社区配置品牌、主题配色和导航结构。"
       },
       "navigation": {
-        "title": "Sections"
+        "title": "部分"
       },
       "sections": {
         "general": {
-          "title": "Brand identity",
-          "subtitle": "Update the site name and tagline displayed across the workspace.",
-          "badge": "Core"
+          "title": "品牌形象",
+          "subtitle": "更新整个工作区显示的站点名称和标语。",
+          "badge": "核心"
         },
         "theme": {
-          "title": "Themes",
-          "subtitle": "Curate available themes and choose which one is active by default.",
-          "active": "Default theme"
+          "title": "主题",
+          "subtitle": "管理可用主题并选择默认启用的主题。",
+          "active": "默认主题"
         },
         "profile": {
-          "title": "Profile personalisation",
-          "subtitle": "Control how members can customise their public profile.",
-          "badge": "Profiles"
+          "title": "个人资料个性化",
+          "subtitle": "控制成员如何自定义其公开资料。",
+          "badge": "个人资料"
         },
         "appearance": {
-          "title": "Theme mode",
-          "subtitle": "Set the default mode and manage the theme toggle behaviour.",
-          "badge": "Display"
+          "title": "主题模式",
+          "subtitle": "设置默认模式并管理主题切换的行为。",
+          "badge": "显示"
         },
         "pages": {
-          "title": "Static pages",
-          "subtitle": "Edit the hero content displayed on About, Contact, and Help.",
-          "badge": "Content",
+          "title": "静态页面",
+          "subtitle": "编辑“关于”“联系”“帮助”页面的头部内容。",
+          "badge": "内容",
           "labels": {
-            "about": "About page",
-            "contact": "Contact page",
-            "help": "Help centre"
+            "about": "关于页面",
+            "contact": "联系页面",
+            "help": "帮助中心"
           },
           "descriptions": {
-            "about": "Update the mission statement and introduction shown on the About page.",
-            "contact": "Customise the hero copy for your support and contact information.",
-            "help": "Define the messaging that appears at the top of the help centre."
+            "about": "更新“关于”页面显示的使命宣言与介绍。",
+            "contact": "自定义支持和联系信息的主视觉文案。",
+            "help": "定义显示在帮助中心顶部的消息。"
           }
         },
         "navigation": {
-          "title": "Navigation menu",
-          "subtitle": "Add, reorder, and secure sidebar entries for every audience.",
-          "badge": "Menus",
-          "children": "Child links"
+          "title": "导航菜单",
+          "subtitle": "为不同受众添加、重新排序并保护侧边栏条目。",
+          "badge": "菜单",
+          "children": "子链接"
         }
       },
       "fields": {
-        "siteName": "Site name",
+        "siteName": "站点名称",
         "language": "内容语言",
-        "tagline": "Tagline",
-        "themeName": "Theme name",
-        "themeDescription": "Description",
-        "themePrimary": "Primary color",
-        "themeAccent": "Accent color",
-        "themeSurface": "Surface color",
-        "menuLabel": "Menu label",
-        "menuPath": "Destination path",
-        "menuIcon": "Icon (optional)",
-        "menuAdmin": "Admin only",
-        "menuVisible": "Visible",
-        "profileAllowCustomization": "Allow profile customization",
-        "profileAllowThemeSelection": "Allow profile theme selection",
-        "profileAllowAvatarUploads": "Allow avatar uploads",
-        "profileAllowCoverUploads": "Allow cover uploads",
-        "profileShowContact": "Show contact section",
-        "profileShowDetails": "Show details section",
-        "profileShowSocial": "Show social insights",
-        "profileDefaultBio": "Default bio fallback",
-        "uiAllowThemeSwitching": "Allow visitors to toggle theme",
-        "themeModeSystem": "Follow system",
-        "themeModeLight": "Light mode",
-        "themeModeDark": "Dark mode",
-        "pageTitle": "Title",
-        "pageSubtitle": "Subtitle",
-        "pageBody": "Body content"
+        "tagline": "标语",
+        "themeName": "主题名称",
+        "themeDescription": "描述",
+        "themePrimary": "主色",
+        "themeAccent": "强调色",
+        "themeSurface": "表面颜色",
+        "menuLabel": "菜单标签",
+        "menuPath": "目标路径",
+        "menuIcon": "图标（可选）",
+        "menuAdmin": "仅限管理员",
+        "menuVisible": "可见",
+        "profileAllowCustomization": "允许自定义个人资料",
+        "profileAllowThemeSelection": "允许选择个人资料主题",
+        "profileAllowAvatarUploads": "允许上传头像",
+        "profileAllowCoverUploads": "允许上传封面",
+        "profileShowContact": "显示联系信息部分",
+        "profileShowDetails": "显示详情部分",
+        "profileShowSocial": "显示社交洞察",
+        "profileDefaultBio": "默认简介兜底",
+        "uiAllowThemeSwitching": "允许访客切换主题",
+        "themeModeSystem": "跟随系统",
+        "themeModeLight": "浅色模式",
+        "themeModeDark": "深色模式",
+        "pageTitle": "标题",
+        "pageSubtitle": "副标题",
+        "pageBody": "正文内容"
       },
       "themeCustomizer": {
         "title": "自定义",
@@ -3245,32 +3245,32 @@
         "system": "系统"
       },
       "helpers": {
-        "themeModeSystem": "Automatically adapts to each visitor's device preference.",
-        "themeModeLight": "Always display the interface in light mode.",
-        "themeModeDark": "Always display the interface in dark mode."
+        "themeModeSystem": "自动适配每位访客的设备偏好。",
+        "themeModeLight": "始终以浅色模式显示界面。",
+        "themeModeDark": "始终以深色模式显示界面。"
       },
       "placeholders": {
-        "siteName": "Enter a public site name",
-        "tagline": "Describe your mission in one sentence"
+        "siteName": "输入公开的站点名称",
+        "tagline": "用一句话描述你的使命"
       },
       "actions": {
-        "save": "Save settings",
-        "reset": "Discard changes",
-        "addTheme": "Add theme",
-        "addMenu": "Add menu",
-        "addChild": "Add child link",
-        "removeMenu": "Remove",
-        "moveUp": "Move up",
-        "moveDown": "Move down"
+        "save": "保存设置",
+        "reset": "放弃更改",
+        "addTheme": "新增主题",
+        "addMenu": "新增菜单",
+        "addChild": "新增子链接",
+        "removeMenu": "移除",
+        "moveUp": "上移",
+        "moveDown": "下移"
       },
       "feedback": {
-        "saved": "Site configuration updated successfully.",
-        "error": "We couldn't update the configuration. Try again later."
+        "saved": "站点配置已成功更新。",
+        "error": "无法更新配置，请稍后重试。"
       },
       "defaults": {
-        "themeName": "New theme",
-        "menuLabel": "New menu",
-        "submenuLabel": "New submenu"
+        "themeName": "新主题",
+        "menuLabel": "新菜单",
+        "submenuLabel": "新子菜单"
       }
     },
     "userManagement": {

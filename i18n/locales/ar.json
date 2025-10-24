@@ -3154,86 +3154,86 @@
       }
     },
     "settings": {
-      "metaTitle": "Site settings",
+      "metaTitle": "إعدادات الموقع",
       "page": {
-        "title": "Site settings",
-        "subtitle": "Configure the brand, theme palette, and navigation structure for your community."
+        "title": "إعدادات الموقع",
+        "subtitle": "اضبط الهوية البصرية ولوحة ألوان السمة وبنية التنقل لمجتمعك."
       },
       "navigation": {
-        "title": "Sections"
+        "title": "الأقسام"
       },
       "sections": {
         "general": {
-          "title": "Brand identity",
-          "subtitle": "Update the site name and tagline displayed across the workspace.",
-          "badge": "Core"
+          "title": "هوية العلامة",
+          "subtitle": "حدّث اسم الموقع والشعار المعروضين عبر مساحة العمل.",
+          "badge": "أساسي"
         },
         "theme": {
-          "title": "Themes",
-          "subtitle": "Curate available themes and choose which one is active by default.",
-          "active": "Default theme"
+          "title": "السمات",
+          "subtitle": "نسّق السمات المتاحة واختر السمة النشطة بشكل افتراضي.",
+          "active": "السمة الافتراضية"
         },
         "profile": {
-          "title": "Profile personalisation",
-          "subtitle": "Control how members can customise their public profile.",
-          "badge": "Profiles"
+          "title": "تخصيص الملف الشخصي",
+          "subtitle": "تحكم في كيفية تمكن الأعضاء من تخصيص ملفاتهم العامة.",
+          "badge": "ملفات"
         },
         "appearance": {
-          "title": "Theme mode",
-          "subtitle": "Set the default mode and manage the theme toggle behaviour.",
-          "badge": "Display"
+          "title": "وضع السمة",
+          "subtitle": "عيّن الوضع الافتراضي وأدر سلوك مفتاح تبديل السمة.",
+          "badge": "العرض"
         },
         "pages": {
-          "title": "Static pages",
-          "subtitle": "Edit the hero content displayed on About, Contact, and Help.",
-          "badge": "Content",
+          "title": "الصفحات الثابتة",
+          "subtitle": "حرر محتوى البطل الظاهر في صفحات التعريف والتواصل والمساعدة.",
+          "badge": "المحتوى",
           "labels": {
-            "about": "About page",
-            "contact": "Contact page",
-            "help": "Help centre"
+            "about": "صفحة التعريف",
+            "contact": "صفحة التواصل",
+            "help": "مركز المساعدة"
           },
           "descriptions": {
-            "about": "Update the mission statement and introduction shown on the About page.",
-            "contact": "Customise the hero copy for your support and contact information.",
-            "help": "Define the messaging that appears at the top of the help centre."
+            "about": "حدّث رسالة المهمة والمقدمة المعروضة في صفحة التعريف.",
+            "contact": "خصّص نص البطل لمعلومات الدعم والتواصل.",
+            "help": "حدد الرسالة التي تظهر في أعلى مركز المساعدة."
           }
         },
         "navigation": {
-          "title": "Navigation menu",
-          "subtitle": "Add, reorder, and secure sidebar entries for every audience.",
-          "badge": "Menus",
-          "children": "Child links"
+          "title": "قائمة التنقل",
+          "subtitle": "أضف عناصر الشريط الجانبي وأعد ترتيبها وقم بتأمينها لكل فئة من الزوار.",
+          "badge": "القوائم",
+          "children": "روابط فرعية"
         }
       },
       "fields": {
-        "siteName": "Site name",
+        "siteName": "اسم الموقع",
         "language": "لغة المحتوى",
-        "tagline": "Tagline",
-        "themeName": "Theme name",
-        "themeDescription": "Description",
-        "themePrimary": "Primary color",
-        "themeAccent": "Accent color",
-        "themeSurface": "Surface color",
-        "menuLabel": "Menu label",
-        "menuPath": "Destination path",
-        "menuIcon": "Icon (optional)",
-        "menuAdmin": "Admin only",
-        "menuVisible": "Visible",
-        "profileAllowCustomization": "Allow profile customization",
-        "profileAllowThemeSelection": "Allow profile theme selection",
-        "profileAllowAvatarUploads": "Allow avatar uploads",
-        "profileAllowCoverUploads": "Allow cover uploads",
-        "profileShowContact": "Show contact section",
-        "profileShowDetails": "Show details section",
-        "profileShowSocial": "Show social insights",
-        "profileDefaultBio": "Default bio fallback",
-        "uiAllowThemeSwitching": "Allow visitors to toggle theme",
-        "themeModeSystem": "Follow system",
-        "themeModeLight": "Light mode",
-        "themeModeDark": "Dark mode",
-        "pageTitle": "Title",
-        "pageSubtitle": "Subtitle",
-        "pageBody": "Body content"
+        "tagline": "الشعار",
+        "themeName": "اسم السمة",
+        "themeDescription": "الوصف",
+        "themePrimary": "اللون الأساسي",
+        "themeAccent": "لون التمييز",
+        "themeSurface": "لون السطح",
+        "menuLabel": "تسمية القائمة",
+        "menuPath": "مسار الوجهة",
+        "menuIcon": "أيقونة (اختياري)",
+        "menuAdmin": "للمشرفين فقط",
+        "menuVisible": "مرئي",
+        "profileAllowCustomization": "السماح بتخصيص الملف الشخصي",
+        "profileAllowThemeSelection": "السماح باختيار السمة في الملف",
+        "profileAllowAvatarUploads": "السماح برفع الصور الرمزية",
+        "profileAllowCoverUploads": "السماح برفع صور الغلاف",
+        "profileShowContact": "إظهار قسم التواصل",
+        "profileShowDetails": "إظهار قسم التفاصيل",
+        "profileShowSocial": "إظهار مؤشرات التواصل الاجتماعي",
+        "profileDefaultBio": "نبذة افتراضية احتياطية",
+        "uiAllowThemeSwitching": "السماح للزوار بتبديل السمة",
+        "themeModeSystem": "اتباع النظام",
+        "themeModeLight": "الوضع الفاتح",
+        "themeModeDark": "الوضع الداكن",
+        "pageTitle": "العنوان",
+        "pageSubtitle": "العنوان الفرعي",
+        "pageBody": "المحتوى الرئيسي"
       },
       "themeCustomizer": {
         "title": "تخصيص",
@@ -3245,32 +3245,32 @@
         "system": "النظام"
       },
       "helpers": {
-        "themeModeSystem": "Automatically adapts to each visitor's device preference.",
-        "themeModeLight": "Always display the interface in light mode.",
-        "themeModeDark": "Always display the interface in dark mode."
+        "themeModeSystem": "يتكيف تلقائيًا مع تفضيل جهاز كل زائر.",
+        "themeModeLight": "اعرض الواجهة دائمًا في الوضع الفاتح.",
+        "themeModeDark": "اعرض الواجهة دائمًا في الوضع الداكن."
       },
       "placeholders": {
-        "siteName": "Enter a public site name",
-        "tagline": "Describe your mission in one sentence"
+        "siteName": "أدخل اسمًا عامًا للموقع",
+        "tagline": "صف مهمتك في جملة واحدة"
       },
       "actions": {
-        "save": "Save settings",
-        "reset": "Discard changes",
-        "addTheme": "Add theme",
-        "addMenu": "Add menu",
-        "addChild": "Add child link",
-        "removeMenu": "Remove",
-        "moveUp": "Move up",
-        "moveDown": "Move down"
+        "save": "حفظ الإعدادات",
+        "reset": "تجاهل التغييرات",
+        "addTheme": "إضافة سمة",
+        "addMenu": "إضافة قائمة",
+        "addChild": "إضافة رابط فرعي",
+        "removeMenu": "إزالة",
+        "moveUp": "تحريك للأعلى",
+        "moveDown": "تحريك للأسفل"
       },
       "feedback": {
-        "saved": "Site configuration updated successfully.",
-        "error": "We couldn't update the configuration. Try again later."
+        "saved": "تم تحديث إعدادات الموقع بنجاح.",
+        "error": "تعذّر تحديث الإعدادات. يرجى المحاولة لاحقًا."
       },
       "defaults": {
-        "themeName": "New theme",
-        "menuLabel": "New menu",
-        "submenuLabel": "New submenu"
+        "themeName": "سمة جديدة",
+        "menuLabel": "قائمة جديدة",
+        "submenuLabel": "قائمة فرعية جديدة"
       }
     },
     "userManagement": {

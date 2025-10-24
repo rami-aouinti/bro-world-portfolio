@@ -2744,7 +2744,7 @@
       "details": {
         "title": "How to reach us",
         "description": "Choose the channel that works best for your question.",
-        "email": "Email",
+        "email": "Correo electrónico",
         "emailDescription": "Message the core team for private or account-related topics.",
         "emailCta": "Send us an email",
         "emailCtaLabel": "Compose an email to the BroWorld team",
@@ -2802,7 +2802,7 @@
         },
         "states": {
           "default": "Default",
-          "disabled": "Disabled",
+          "disabled": "Deshabilitado",
           "loading": "Loading",
           "leadingIcon": "Leading icon",
           "trailingIcon": "Trailing icon",
@@ -2815,7 +2815,7 @@
         },
         "inputTypes": {
           "text": "Text",
-          "email": "Email",
+          "email": "Correo electrónico",
           "password": "Password",
           "number": "Number",
           "search": "Search",
@@ -2878,7 +2878,7 @@
           "longerText": "This textarea grows as you type so reviewers can stress-test the auto-grow behaviour."
         },
         "selectOptions": {
-          "email": "Email",
+          "email": "Correo electrónico",
           "sms": "SMS",
           "push": "Push notification",
           "alpha": "Alpha",
@@ -2895,7 +2895,7 @@
         },
         "labels": {
           "fullName": "Full name",
-          "email": "Email",
+          "email": "Correo electrónico",
           "preferences": "Preferences"
         },
         "groups": {
@@ -3154,86 +3154,86 @@
       }
     },
     "settings": {
-      "metaTitle": "Site settings",
+      "metaTitle": "Configuración del sitio",
       "page": {
-        "title": "Site settings",
-        "subtitle": "Configure the brand, theme palette, and navigation structure for your community."
+        "title": "Configuración del sitio",
+        "subtitle": "Configura la marca, la paleta del tema y la estructura de navegación de tu comunidad."
       },
       "navigation": {
-        "title": "Sections"
+        "title": "Secciones"
       },
       "sections": {
         "general": {
-          "title": "Brand identity",
-          "subtitle": "Update the site name and tagline displayed across the workspace.",
-          "badge": "Core"
+          "title": "Identidad de marca",
+          "subtitle": "Actualiza el nombre del sitio y el eslogan que se muestran en todo el espacio de trabajo.",
+          "badge": "Núcleo"
         },
         "theme": {
-          "title": "Themes",
-          "subtitle": "Curate available themes and choose which one is active by default.",
-          "active": "Default theme"
+          "title": "Temas",
+          "subtitle": "Selecciona los temas disponibles y elige cuál estará activo por defecto.",
+          "active": "Tema predeterminado"
         },
         "profile": {
-          "title": "Profile personalisation",
-          "subtitle": "Control how members can customise their public profile.",
-          "badge": "Profiles"
+          "title": "Personalización del perfil",
+          "subtitle": "Controla cómo pueden personalizar los miembros su perfil público.",
+          "badge": "Perfiles"
         },
         "appearance": {
-          "title": "Theme mode",
-          "subtitle": "Set the default mode and manage the theme toggle behaviour.",
-          "badge": "Display"
+          "title": "Modo del tema",
+          "subtitle": "Define el modo predeterminado y gestiona el comportamiento del selector de tema.",
+          "badge": "Visualización"
         },
         "pages": {
-          "title": "Static pages",
-          "subtitle": "Edit the hero content displayed on About, Contact, and Help.",
-          "badge": "Content",
+          "title": "Páginas estáticas",
+          "subtitle": "Edita el contenido destacado que se muestra en Acerca de, Contacto y Ayuda.",
+          "badge": "Contenido",
           "labels": {
-            "about": "About page",
-            "contact": "Contact page",
-            "help": "Help centre"
+            "about": "Página Acerca de",
+            "contact": "Página de contacto",
+            "help": "Centro de ayuda"
           },
           "descriptions": {
-            "about": "Update the mission statement and introduction shown on the About page.",
-            "contact": "Customise the hero copy for your support and contact information.",
-            "help": "Define the messaging that appears at the top of the help centre."
+            "about": "Actualiza la declaración de misión y la introducción que se muestran en la página Acerca de.",
+            "contact": "Personaliza el texto destacado para tu soporte e información de contacto.",
+            "help": "Define el mensaje que aparece en la parte superior del centro de ayuda."
           }
         },
         "navigation": {
-          "title": "Navigation menu",
-          "subtitle": "Add, reorder, and secure sidebar entries for every audience.",
-          "badge": "Menus",
-          "children": "Child links"
+          "title": "Menú de navegación",
+          "subtitle": "Añade, reordena y protege las entradas de la barra lateral para cada audiencia.",
+          "badge": "Menús",
+          "children": "Enlaces secundarios"
         }
       },
       "fields": {
-        "siteName": "Site name",
-        "language": "Content language",
-        "tagline": "Tagline",
-        "themeName": "Theme name",
-        "themeDescription": "Description",
-        "themePrimary": "Primary color",
-        "themeAccent": "Accent color",
-        "themeSurface": "Surface color",
-        "menuLabel": "Menu label",
-        "menuPath": "Destination path",
-        "menuIcon": "Icon (optional)",
-        "menuAdmin": "Admin only",
+        "siteName": "Nombre del sitio",
+        "language": "Idioma del contenido",
+        "tagline": "Eslogan",
+        "themeName": "Nombre del tema",
+        "themeDescription": "Descripción",
+        "themePrimary": "Color principal",
+        "themeAccent": "Color de acento",
+        "themeSurface": "Color de superficie",
+        "menuLabel": "Etiqueta del menú",
+        "menuPath": "Ruta de destino",
+        "menuIcon": "Ícono (opcional)",
+        "menuAdmin": "Solo administrador",
         "menuVisible": "Visible",
-        "profileAllowCustomization": "Allow profile customization",
-        "profileAllowThemeSelection": "Allow profile theme selection",
-        "profileAllowAvatarUploads": "Allow avatar uploads",
-        "profileAllowCoverUploads": "Allow cover uploads",
-        "profileShowContact": "Show contact section",
-        "profileShowDetails": "Show details section",
-        "profileShowSocial": "Show social insights",
-        "profileDefaultBio": "Default bio fallback",
-        "uiAllowThemeSwitching": "Allow visitors to toggle theme",
-        "themeModeSystem": "Follow system",
-        "themeModeLight": "Light mode",
-        "themeModeDark": "Dark mode",
-        "pageTitle": "Title",
-        "pageSubtitle": "Subtitle",
-        "pageBody": "Body content"
+        "profileAllowCustomization": "Permitir la personalización del perfil",
+        "profileAllowThemeSelection": "Permitir la selección de tema del perfil",
+        "profileAllowAvatarUploads": "Permitir subir avatares",
+        "profileAllowCoverUploads": "Permitir subir portadas",
+        "profileShowContact": "Mostrar la sección de contacto",
+        "profileShowDetails": "Mostrar la sección de detalles",
+        "profileShowSocial": "Mostrar información social",
+        "profileDefaultBio": "Biografía predeterminada de respaldo",
+        "uiAllowThemeSwitching": "Permitir que los visitantes cambien el tema",
+        "themeModeSystem": "Seguir el sistema",
+        "themeModeLight": "Modo claro",
+        "themeModeDark": "Modo oscuro",
+        "pageTitle": "Título",
+        "pageSubtitle": "Subtítulo",
+        "pageBody": "Contenido principal"
       },
       "themeCustomizer": {
         "title": "Personalizar",
@@ -3245,50 +3245,50 @@
         "system": "Sistema"
       },
       "helpers": {
-        "themeModeSystem": "Automatically adapts to each visitor's device preference.",
-        "themeModeLight": "Always display the interface in light mode.",
-        "themeModeDark": "Always display the interface in dark mode."
+        "themeModeSystem": "Se adapta automáticamente a la preferencia del dispositivo de cada visitante.",
+        "themeModeLight": "Muestra siempre la interfaz en modo claro.",
+        "themeModeDark": "Muestra siempre la interfaz en modo oscuro."
       },
       "placeholders": {
-        "siteName": "Enter a public site name",
-        "tagline": "Describe your mission in one sentence"
+        "siteName": "Introduce un nombre público para el sitio",
+        "tagline": "Describe tu misión en una frase"
       },
       "actions": {
-        "save": "Save settings",
-        "reset": "Discard changes",
-        "addTheme": "Add theme",
-        "addMenu": "Add menu",
-        "addChild": "Add child link",
-        "removeMenu": "Remove",
-        "moveUp": "Move up",
-        "moveDown": "Move down"
+        "save": "Guardar configuración",
+        "reset": "Descartar cambios",
+        "addTheme": "Agregar tema",
+        "addMenu": "Agregar menú",
+        "addChild": "Agregar enlace secundario",
+        "removeMenu": "Eliminar",
+        "moveUp": "Mover arriba",
+        "moveDown": "Mover abajo"
       },
       "feedback": {
-        "saved": "Site configuration updated successfully.",
-        "error": "We couldn't update the configuration. Try again later."
+        "saved": "Configuración del sitio actualizada correctamente.",
+        "error": "No pudimos actualizar la configuración. Inténtalo de nuevo más tarde."
       },
       "defaults": {
-        "themeName": "New theme",
-        "menuLabel": "New menu",
-        "submenuLabel": "New submenu"
+        "themeName": "Nuevo tema",
+        "menuLabel": "Nuevo menú",
+        "submenuLabel": "Nuevo submenú"
       }
     },
     "userManagement": {
-      "title": "User management",
-      "subtitle": "Invite, update, or deactivate accounts in real-time.",
+      "title": "Gestión de usuarios",
+      "subtitle": "Invita, actualiza o desactiva cuentas en tiempo real.",
       "actions": {
-        "add": "Invite user"
+        "add": "Invitar usuario"
       },
       "table": {
-        "search": "Search users",
-        "empty": "No users found.",
+        "search": "Buscar usuarios",
+        "empty": "No se encontraron usuarios.",
         "columns": {
-          "user": "User",
-          "email": "Email",
-          "status": "Status",
+          "user": "Usuario",
+          "email": "Correo electrónico",
+          "status": "Estado",
           "roles": "Roles",
-          "updatedAt": "Last update",
-          "actions": "Actions"
+          "updatedAt": "Última actualización",
+          "actions": "Acciones"
         }
       },
       "errors": {
@@ -3296,85 +3296,85 @@
         "generic": "No pudimos cargar la lista de usuarios. Inténtalo de nuevo más tarde."
       },
       "status": {
-        "active": "Active",
-        "disabled": "Disabled"
+        "active": "Activo",
+        "disabled": "Deshabilitado"
       },
       "dialogs": {
         "create": {
-          "title": "Invite a new user",
-          "submit": "Create user"
+          "title": "Invitar a un nuevo usuario",
+          "submit": "Crear usuario"
         },
         "edit": {
-          "title": "Update user",
-          "submit": "Save changes"
+          "title": "Actualizar usuario",
+          "submit": "Guardar cambios"
         },
         "delete": {
-          "title": "Remove user",
-          "description": "Are you sure you want to remove {name}? This action cannot be undone.",
-          "confirm": "Delete",
-          "cancel": "Cancel"
+          "title": "Eliminar usuario",
+          "description": "¿Seguro que deseas eliminar a {name}? Esta acción no se puede deshacer.",
+          "confirm": "Eliminar",
+          "cancel": "Cancelar"
         }
       },
       "form": {
-        "username": "Username",
-        "email": "Email",
-        "firstName": "First name",
-        "lastName": "Last name",
+        "username": "Nombre de usuario",
+        "email": "Correo electrónico",
+        "firstName": "Nombre",
+        "lastName": "Apellido",
         "roles": "Roles",
-        "rolesHint": "Select one or more roles",
-        "enabled": "Account enabled"
+        "rolesHint": "Selecciona uno o más roles",
+        "enabled": "Cuenta habilitada"
       },
       "validation": {
-        "username": "Username is required.",
-        "email": "A valid email address is required.",
-        "roles": "Select at least one role."
+        "username": "El nombre de usuario es obligatorio.",
+        "email": "Se requiere una dirección de correo válida.",
+        "roles": "Selecciona al menos un rol."
       },
       "sections": {
         "data": {
-          "metaTitle": "User data",
+          "metaTitle": "Datos de usuarios",
           "page": {
-            "title": "User data",
-            "subtitle": "Review datasets powering identity, permissions, and engagement analytics."
+            "title": "Datos de usuarios",
+            "subtitle": "Revisa los conjuntos de datos que impulsan la identidad, los permisos y las analíticas de participación."
           },
           "table": {
-            "search": "Search dataset",
+            "search": "Buscar en los datos",
             "columns": {
-              "username": "Username",
-              "firstName": "First name",
-              "lastName": "Last name",
-              "email": "Email",
-              "language": "Language",
-              "locale": "Locale",
-              "timezone": "Timezone",
-              "enabled": "Status",
-              "actions": "Actions"
+              "username": "Nombre de usuario",
+              "firstName": "Nombre",
+              "lastName": "Apellido",
+              "email": "Correo electrónico",
+              "language": "Idioma",
+              "locale": "Configuración regional",
+              "timezone": "Zona horaria",
+              "enabled": "Estado",
+              "actions": "Acciones"
             },
-            "empty": "No user records found."
+            "empty": "No se encontraron registros de usuarios."
           },
           "actions": {
-            "refresh": "Refresh"
+            "refresh": "Actualizar"
           },
           "details": {
-            "title": "User details",
-            "close": "Close",
-            "empty": "Select a user to inspect their profile.",
+            "title": "Detalles del usuario",
+            "close": "Cerrar",
+            "empty": "Selecciona un usuario para revisar su perfil.",
             "fields": {
-              "username": "Username",
-              "email": "Email",
-              "firstName": "First name",
-              "lastName": "Last name",
-              "language": "Language",
-              "locale": "Locale",
-              "timezone": "Timezone",
-              "enabled": "Status"
+              "username": "Nombre de usuario",
+              "email": "Correo electrónico",
+              "firstName": "Nombre",
+              "lastName": "Apellido",
+              "language": "Idioma",
+              "locale": "Configuración regional",
+              "timezone": "Zona horaria",
+              "enabled": "Estado"
             }
           }
         },
         "crons": {
-          "metaTitle": "User crons",
+          "metaTitle": "Automatizaciones de usuarios",
           "page": {
-            "title": "Scheduled automations",
-            "subtitle": "Monitor background jobs that sync accounts, cleanse inactive users, and dispatch notifications."
+            "title": "Automatizaciones programadas",
+            "subtitle": "Supervisa los procesos en segundo plano que sincronizan cuentas, depuran usuarios inactivos y envían notificaciones."
           }
         }
       }
@@ -3387,109 +3387,109 @@
       },
       "sections": {
         "data": {
-          "metaTitle": "Blog data",
+          "metaTitle": "Datos del blog",
           "page": {
-            "title": "Content data",
-            "subtitle": "Inspect metrics, search indexes, and data feeds powering editorial workflows."
+            "title": "Datos de contenido",
+            "subtitle": "Inspecciona métricas, índices de búsqueda y fuentes de datos que impulsan los flujos editoriales."
           }
         },
         "crons": {
-          "metaTitle": "Blog crons",
+          "metaTitle": "Automatizaciones del blog",
           "page": {
-            "title": "Scheduled publishing",
-            "subtitle": "Audit cron jobs responsible for imports, social pushes, and automated publishing windows."
+            "title": "Publicaciones programadas",
+            "subtitle": "Audita los trabajos programados responsables de las importaciones, los envíos a redes sociales y las ventanas de publicación automática."
           }
         }
       }
     },
     "jobManagement": {
-      "metaTitle": "Job management",
+      "metaTitle": "Gestión de empleos",
       "page": {
-        "title": "Job management",
-        "subtitle": "Configure hiring workflows and maintain every job listing from one hub."
+        "title": "Gestión de empleos",
+        "subtitle": "Configura los flujos de contratación y mantén todas las ofertas en un solo lugar."
       },
       "sections": {
         "data": {
-          "metaTitle": "Job data",
+          "metaTitle": "Datos de empleos",
           "page": {
-            "title": "Job data",
-            "subtitle": "Explore applicant pipelines, sourcing channels, and automated scoring datasets."
+            "title": "Datos de empleos",
+            "subtitle": "Explora canalizaciones de candidatos, fuentes de talento y conjuntos de datos de puntuación automatizada."
           }
         },
         "crons": {
-          "metaTitle": "Job crons",
+          "metaTitle": "Automatizaciones de empleos",
           "page": {
-            "title": "Scheduled routines",
-            "subtitle": "Keep an eye on exports, reminders, and follow-up sequences running on a schedule."
+            "title": "Rutinas programadas",
+            "subtitle": "Supervisa las exportaciones, recordatorios y secuencias de seguimiento que se ejecutan de forma planificada."
           }
         }
       }
     },
     "ecommerceManagement": {
-      "metaTitle": "E-commerce management",
+      "metaTitle": "Gestión de comercio electrónico",
       "page": {
-        "title": "E-commerce management",
-        "subtitle": "Control catalogue updates, storefront configuration, and transactional operations."
+        "title": "Gestión de comercio electrónico",
+        "subtitle": "Controla las actualizaciones del catálogo, la configuración de la tienda y las operaciones transaccionales."
       },
       "sections": {
         "data": {
-          "metaTitle": "E-commerce data",
+          "metaTitle": "Datos de comercio electrónico",
           "page": {
-            "title": "Commerce data",
-            "subtitle": "Analyse inventory feeds, order exports, and financial reconciliation reports."
+            "title": "Datos comerciales",
+            "subtitle": "Analiza inventarios, exportaciones de pedidos e informes de conciliación financiera."
           }
         },
         "crons": {
-          "metaTitle": "E-commerce crons",
+          "metaTitle": "Automatizaciones de comercio electrónico",
           "page": {
-            "title": "Automated jobs",
-            "subtitle": "Track synchronisation jobs for inventory, fulfilment, and payment notifications."
+            "title": "Procesos automatizados",
+            "subtitle": "Controla los trabajos de sincronización de inventario, cumplimiento y notificaciones de pago."
           }
         }
       }
     },
     "educationManagement": {
-      "metaTitle": "Education management",
+      "metaTitle": "Gestión educativa",
       "page": {
-        "title": "Education management",
-        "subtitle": "Manage courses, cohorts, and learning experiences offered to your community."
+        "title": "Gestión educativa",
+        "subtitle": "Gestiona cursos, cohortes y experiencias de aprendizaje para tu comunidad."
       },
       "sections": {
         "data": {
-          "metaTitle": "Education data",
+          "metaTitle": "Datos educativos",
           "page": {
-            "title": "Learning data",
-            "subtitle": "Review enrolments, assessments, and progress datasets for academic insight."
+            "title": "Datos de aprendizaje",
+            "subtitle": "Revisa inscripciones, evaluaciones y conjuntos de progreso para obtener información académica."
           }
         },
         "crons": {
-          "metaTitle": "Education crons",
+          "metaTitle": "Automatizaciones educativas",
           "page": {
-            "title": "Learning automations",
-            "subtitle": "Supervise scheduled reminders, curriculum releases, and evaluation pipelines."
+            "title": "Automatizaciones de aprendizaje",
+            "subtitle": "Supervisa los recordatorios programados, los lanzamientos de planes de estudio y los flujos de evaluación."
           }
         }
       }
     },
     "gameManagement": {
-      "metaTitle": "Game management",
+      "metaTitle": "Gestión de juegos",
       "page": {
-        "title": "Game management",
-        "subtitle": "Oversee game catalogues, live events, and engagement loops in one place."
+        "title": "Gestión de juegos",
+        "subtitle": "Supervisa catálogos de juegos, eventos en vivo y bucles de participación desde un solo lugar."
       },
       "sections": {
         "data": {
-          "metaTitle": "Game data",
+          "metaTitle": "Datos de juegos",
           "page": {
-            "title": "Gameplay data",
-            "subtitle": "Dive into leaderboards, match telemetry, and monetisation analytics."
+            "title": "Datos de juego",
+            "subtitle": "Profundiza en tablas de clasificación, telemetría de partidas y analíticas de monetización."
           }
         },
         "crons": {
-          "metaTitle": "Game crons",
+          "metaTitle": "Automatizaciones de juegos",
           "page": {
-            "title": "Scheduled operations",
-            "subtitle": "Validate cron jobs that rotate events, refresh rewards, and broadcast updates."
+            "title": "Operaciones programadas",
+            "subtitle": "Verifica los procesos programados que rotan eventos, actualizan recompensas y envían actualizaciones."
           }
         }
       }
@@ -3721,7 +3721,7 @@
           "publishedAt": "Published",
           "reactions": "Reactions",
           "comments": "Comments",
-          "actions": "Actions"
+          "actions": "Acciones"
         },
         "optimisticBadge": "Pending sync",
         "noSummary": "No summary provided.",
@@ -3741,7 +3741,7 @@
         },
         "edit": {
           "title": "Edit post",
-          "submit": "Save changes"
+          "submit": "Guardar cambios"
         },
         "preview": {
           "title": "Quick preview",
@@ -3752,8 +3752,8 @@
         "delete": {
           "title": "Delete post",
           "description": "This action cannot be undone. The post will be removed from the blog.",
-          "confirm": "Delete",
-          "cancel": "Cancel"
+          "confirm": "Eliminar",
+          "cancel": "Cancelar"
         },
         "form": {
           "titleLabel": "Title",
@@ -3773,17 +3773,17 @@
       },
       "sections": {
         "data": {
-          "metaTitle": "Blog data",
+          "metaTitle": "Datos del blog",
           "page": {
-            "title": "Content data",
-            "subtitle": "Inspect metrics, search indexes, and data feeds powering editorial workflows."
+            "title": "Datos de contenido",
+            "subtitle": "Inspecciona métricas, índices de búsqueda y fuentes de datos que impulsan los flujos editoriales."
           }
         },
         "crons": {
-          "metaTitle": "Blog crons",
+          "metaTitle": "Automatizaciones del blog",
           "page": {
-            "title": "Scheduled publishing",
-            "subtitle": "Audit cron jobs responsible for imports, social pushes, and automated publishing windows."
+            "title": "Publicaciones programadas",
+            "subtitle": "Audita los trabajos programados responsables de las importaciones, los envíos a redes sociales y las ventanas de publicación automática."
           }
         }
       }
@@ -3919,9 +3919,9 @@
         "placeOrder": "Place order",
         "browseMore": "Browse more products",
         "fields": {
-          "firstName": "First name",
-          "lastName": "Last name",
-          "email": "Email",
+          "firstName": "Nombre",
+          "lastName": "Apellido",
+          "email": "Correo electrónico",
           "address": "Address",
           "city": "City",
           "postalCode": "Postal code",
