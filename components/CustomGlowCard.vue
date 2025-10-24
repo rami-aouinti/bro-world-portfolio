@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
 
 import { glowCardVariants } from '~/utils/glowCardVariants'
 
@@ -19,6 +20,7 @@ type GlowCardProps = {
   outlineColor?: string
   gradientSheenAngle?: number
   gradientSheenOpacity?: number
+  to?: RouteLocationRaw
 }
 
 const props = withDefaults(defineProps<GlowCardProps>(), {
@@ -64,6 +66,8 @@ const cssVars = computed(() => {
 
 const initial = computed(() => props.title?.charAt(0)?.toUpperCase() ?? '')
 
+const isNavigable = computed(() => Boolean(props.to))
+
 const setPointerPosition = (event: PointerEvent) => {
   if (!cardRef.value) {
     return
@@ -88,17 +92,44 @@ const resetPointerPosition = () => {
 onMounted(() => {
   resetPointerPosition()
 })
+
+const handleCardClick = async (event: MouseEvent) => {
+  if (!isNavigable.value || !props.to) {
+    return
+  }
+
+  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+    return
+  }
+
+  await navigateTo(props.to)
+}
+
+const handleCardKeydown = async (event: KeyboardEvent) => {
+  if (!isNavigable.value || !props.to) {
+    return
+  }
+
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault()
+    await navigateTo(props.to)
+  }
+}
 </script>
 
 <template>
   <article
     ref="cardRef"
-    class="glow-card"
+    :class="['glow-card', { 'glow-card--link': isNavigable }]"
     :style="cssVars"
     tabindex="0"
+    :role="isNavigable ? 'link' : undefined"
     @pointermove="setPointerPosition"
     @pointerleave="resetPointerPosition"
     @focus="resetPointerPosition"
+    @click="handleCardClick"
+    @keydown.enter="handleCardKeydown"
+    @keydown.space.prevent="handleCardKeydown"
   >
     <div class="glow-card__halo" aria-hidden="true" />
     <div class="glow-card__surface" aria-hidden="true" />
@@ -305,5 +336,13 @@ onMounted(() => {
   .glow-card:hover {
     transform: none;
   }
+}
+
+.glow-card--link {
+  cursor: pointer;
+}
+
+.glow-card--link:focus-visible {
+  cursor: pointer;
 }
 </style>

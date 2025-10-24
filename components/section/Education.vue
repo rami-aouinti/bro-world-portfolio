@@ -13,6 +13,7 @@ const educationCards = computed(() => {
 
   return schools.map((school, index) => ({
     school,
+    route: `/education/${school.slug}`,
     variant: glowCardVariantCycle[index % glowCardVariantCycle.length]
   }))
 })
@@ -28,13 +29,14 @@ const educationCards = computed(() => {
         <h2 class="text-h4 text-white">{{ educationContent.headline }}</h2>
 
         <v-row class="mt-10" dense>
-          <v-col v-for="card in educationCards" :key="card.school.degree + card.school.institution" cols="12" md="6">
+          <v-col v-for="card in educationCards" :key="card.school.slug" cols="12" md="6">
             <CustomGlowCard
               class="education__card"
               :title="card.school.degree"
               :description="card.school.details"
               :eyebrow="card.school.institution"
               :badge="card.school.timeframe"
+              :to="card.route"
               :variant="card.variant"
             />
           </v-col>

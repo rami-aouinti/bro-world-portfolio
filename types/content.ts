@@ -34,6 +34,7 @@ export const serviceSchema = z.object({
 
 const workItemSchema = z.object({
   name: z.string().trim().min(1, 'Le nom du projet est requis.'),
+  slug: z.string().trim().min(1, 'Le slug est requis.'),
   live_demo: z.string().trim().min(1, 'Le lien est requis.'),
   description: z.string().trim().min(1, 'La description est requise.'),
   thumbnails: z.string().trim().min(1, 'L’image est requise.'),
@@ -70,6 +71,7 @@ export const skillsSchema = z.object({
 })
 
 const experienceSchema = z.object({
+  slug: z.string().trim().min(1, 'Le slug est requis.'),
   role: z.string().trim().min(1, 'Le rôle est requis.'),
   company: z.string().trim().min(1, 'L’entreprise est requise.'),
   timeframe: z.string().trim().min(1, 'La période est requise.'),
@@ -83,6 +85,7 @@ export const experiencesSchema = z.object({
 })
 
 const educationItemSchema = z.object({
+  slug: z.string().trim().min(1, 'Le slug est requis.'),
   degree: z.string().trim().min(1, 'Le diplôme est requis.'),
   institution: z.string().trim().min(1, 'L’établissement est requis.'),
   timeframe: z.string().trim().min(1, 'La période est requise.'),

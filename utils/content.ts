@@ -80,6 +80,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
     works: [
       {
         name: 'Microservices für TKDeutschland',
+        slug: 'microservices-tkdeutschland',
         live_demo: '#',
         description:
           'Entwicklung sicherer, skalierbarer Services, Integration von Drittanbieter-APIs und Aufbau von Authentifizierungs-Workflows.',
@@ -88,6 +89,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
       },
       {
         name: 'E-Commerce Plattformen bei Hinke GmbH',
+        slug: 'ecommerce-plattformen-hinke-gmbh',
         live_demo: '#',
         description:
           'Implementierung komplexer Shop-Funktionen, Web-Analytics-Setups und kontinuierliche Performance-Optimierung.',
@@ -96,6 +98,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
       },
       {
         name: 'Shopware-Integrationen für Wizmo GmbH',
+        slug: 'shopware-integrationen-wizmo-gmbh',
         live_demo: '#',
         description:
           'Entwicklung von RESTful APIs, Plugin-Erweiterungen und datengetriebenen Tools für internationale Kunden.',
@@ -104,6 +107,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
       },
       {
         name: 'Monitoring & Analytics Automatisierung',
+        slug: 'monitoring-analytics-automatisierung',
         live_demo: '#',
         description:
           'Konfiguration von Google Analytics, Erstellung belastbarer Dashboards und Ableitung technischer Optimierungen.',
@@ -112,6 +116,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
       },
       {
         name: 'Leistungsoptimierung für Legacy-Systeme',
+        slug: 'leistungsoptimierung-legacy-systeme',
         live_demo: '#',
         description:
           'Refactoring bestehender Codebasen, Reduzierung von Antwortzeiten und Verbesserung der Wartbarkeit.',
@@ -120,6 +125,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
       },
       {
         name: 'Dockerisierte Entwicklungsumgebungen',
+        slug: 'dockerisierte-entwicklungsumgebungen',
         live_demo: '#',
         description:
           'Aufbau containerisierter Workflows, um CI/CD-Prozesse zu vereinheitlichen und Deployments zu beschleunigen.',
@@ -166,6 +172,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
     headline: 'Professional journey and the impact created for teams and clients.',
     positions: [
       {
+        slug: 'senior-front-end-developer-pixelforge-studio',
         role: 'Senior Front-End Developer',
         company: 'PixelForge Studio',
         timeframe: '2022 — Present',
@@ -176,6 +183,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
         ]
       },
       {
+        slug: 'ui-engineer-brightwave-labs',
         role: 'UI Engineer',
         company: 'Brightwave Labs',
         timeframe: '2019 — 2022',
@@ -192,6 +200,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
     headline: 'Academic background and continued learning milestones.',
     schools: [
       {
+        slug: 'bsc-information-technology',
         degree: 'B.Sc. in Information Technology',
         institution: 'Jakarta Institute of Technology',
         timeframe: '2015 — 2019',
@@ -199,6 +208,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
           'Focused on software engineering, user interface design, and human-computer interaction. Graduated with honors.'
       },
       {
+        slug: 'certificate-advanced-ux-design',
         degree: 'Certificate, Advanced UX Design',
         institution: 'Interaction Design Foundation',
         timeframe: '2020',

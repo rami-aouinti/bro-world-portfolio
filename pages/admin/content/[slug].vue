@@ -86,6 +86,7 @@ function addWork() {
   form.works ??= []
   form.works.push({
     name: '',
+    slug: '',
     live_demo: '',
     description: '',
     thumbnails: '',
@@ -125,7 +126,7 @@ function removeSkill(categoryIndex: number, skillIndex: number) {
 
 function addExperience() {
   form.positions ??= []
-  form.positions.push({ role: '', company: '', timeframe: '', achievements: [''] })
+  form.positions.push({ slug: '', role: '', company: '', timeframe: '', achievements: [''] })
 }
 
 function removeExperience(index: number) {
@@ -142,7 +143,7 @@ function removeAchievement(positionIndex: number, achievementIndex: number) {
 
 function addEducation() {
   form.schools ??= []
-  form.schools.push({ degree: '', institution: '', timeframe: '', details: '' })
+  form.schools.push({ slug: '', degree: '', institution: '', timeframe: '', details: '' })
 }
 
 function removeEducation(index: number) {
@@ -289,7 +290,7 @@ async function handleSubmit() {
               <div v-if="form.works?.length" style="display: flex; flex-direction: column; gap: 16px;">
                 <v-card
                   v-for="(project, index) in form.works"
-                  :key="index"
+                  :key="project.slug || index"
                   variant="tonal"
                   color="primary"
                   class="pa-4"
@@ -299,6 +300,7 @@ async function handleSubmit() {
                     <v-btn icon="mdi-delete" variant="text" color="error" @click="removeWork(index)" />
                   </div>
                   <v-text-field v-model="project.name" label="Nom" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="project.slug" label="Slug" required variant="outlined" density="comfortable" />
                   <v-text-field v-model="project.live_demo" label="Lien de démonstration" required variant="outlined" density="comfortable" />
                   <v-textarea v-model="project.description" label="Description" rows="3" required variant="outlined" density="comfortable" />
                   <v-text-field v-model="project.thumbnails" label="Image" required variant="outlined" density="comfortable" />
@@ -423,7 +425,7 @@ async function handleSubmit() {
               <div v-if="form.positions?.length" style="display: flex; flex-direction: column; gap: 16px;">
                 <v-card
                   v-for="(position, index) in form.positions"
-                  :key="index"
+                  :key="position.slug || index"
                   variant="tonal"
                   color="primary"
                   class="pa-4"
@@ -433,6 +435,7 @@ async function handleSubmit() {
                     <v-btn icon="mdi-delete" variant="text" color="error" @click="removeExperience(index)" />
                   </div>
                   <v-text-field v-model="position.role" label="Rôle" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="position.slug" label="Slug" required variant="outlined" density="comfortable" />
                   <v-text-field v-model="position.company" label="Entreprise" required variant="outlined" density="comfortable" />
                   <v-text-field v-model="position.timeframe" label="Période" required variant="outlined" density="comfortable" />
                   <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -476,7 +479,7 @@ async function handleSubmit() {
               <div v-if="form.schools?.length" style="display: flex; flex-direction: column; gap: 16px;">
                 <v-card
                   v-for="(school, index) in form.schools"
-                  :key="index"
+                  :key="school.slug || index"
                   variant="tonal"
                   color="primary"
                   class="pa-4"
@@ -486,6 +489,7 @@ async function handleSubmit() {
                     <v-btn icon="mdi-delete" variant="text" color="error" @click="removeEducation(index)" />
                   </div>
                   <v-text-field v-model="school.degree" label="Diplôme" required variant="outlined" density="comfortable" />
+                  <v-text-field v-model="school.slug" label="Slug" required variant="outlined" density="comfortable" />
                   <v-text-field v-model="school.institution" label="Établissement" required variant="outlined" density="comfortable" />
                   <v-text-field v-model="school.timeframe" label="Période" required variant="outlined" density="comfortable" />
                   <v-textarea v-model="school.details" label="Détails" rows="3" required variant="outlined" density="comfortable" />
