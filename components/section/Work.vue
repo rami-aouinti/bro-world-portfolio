@@ -28,12 +28,12 @@ const workCards = computed(() => {
         </p>
 
         <v-row class="mt-12" dense>
-          <v-col v-for="card in workCards" :key="card.item.slug" cols="12" md="6">
+          <v-col v-for="card in workCards" :key="card.item.slug" cols="12" md="4">
             <CardContainer class="w-full">
               <CardBody class="work-card-body">
                 <NuxtLink
                   :to="card.route"
-                  class="absolute inset-0 z-0"
+                  class="absolute inset-0 z-0 text-center"
                   :aria-label="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
                 />
                 <div class="relative z-10 flex h-full flex-col gap-5">
@@ -46,7 +46,6 @@ const workCards = computed(() => {
                       :src="`/images/work/${card.item.thumbnails}`"
                       :alt="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
                       height="220"
-                      width="520"
                       cover
                     />
                   </CardItem>
