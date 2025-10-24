@@ -3,6 +3,7 @@ import { computed } from 'vue'
 
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 const { data: cta } = useContentBlock('cta')
 const { data: navlinks } = useContentBlock('navlinks')
@@ -26,8 +27,8 @@ const profileName = computed(() => {
 </script>
 
 <template>
-  <LayoutScrollSmooth>
-    <v-container class="py-16" v-if="ctaContent">
+  <ScrollSmooth>
+    <v-container class="py-6" v-if="ctaContent">
       <v-row justify="center">
         <v-col cols="12" md="8">
           <CustomGlowCard
@@ -58,7 +59,7 @@ const profileName = computed(() => {
         </v-col>
       </v-row>
     </v-container>
-  </LayoutScrollSmooth>
+  </ScrollSmooth>
 </template>
 
 <style scoped>

@@ -3,6 +3,7 @@ import { computed } from 'vue'
 
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import { glowCardVariantCycle } from '~/utils/glowCardVariants'
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 const { data: work } = useContentBlock('work')
 const content = computed(() => work.value)
@@ -18,13 +19,13 @@ const workCards = computed(() => {
 
 <template>
   <section id="work">
-    <LayoutScrollSmooth>
-      <v-container v-if="content" class="py-16">
+    <ScrollSmooth>
+      <v-container v-if="content" class="py-6">
         <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
           {{ content.label }}
         </v-chip>
-        <h2 class="text-h4 font-weight-semibold">{{ content.headline }}</h2>
-        <p class="text-body-1 text-medium-emphasis mt-4" style="max-width: 600px;">
+        <h2 class="text-h4 text-white">{{ content.headline }}</h2>
+        <p class="text-body-1 text-white mt-4" style="max-width: 600px;">
           {{ content.subline }}
         </p>
 
@@ -64,7 +65,7 @@ const workCards = computed(() => {
           </v-col>
         </v-row>
       </v-container>
-    </LayoutScrollSmooth>
+    </ScrollSmooth>
   </section>
 </template>
 

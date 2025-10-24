@@ -14,7 +14,6 @@ const links = computed(() =>
     to: resolveLocalizedRouteTarget(link.url, localePath)
   })),
 )
-const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', localePath))
 
 watchEffect(() => {
   if (display.mdAndUp.value) {
@@ -25,15 +24,14 @@ watchEffect(() => {
 
 <template>
   <v-app-bar
-    class="hero-app-bar"
+    class="hero-app-bar px-16"
     color="transparent"
     flat
     density="compact"
-    height="64"
+    height="72"
   >
     <div class="hero-app-bar__content">
       <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer" />
-      <v-toolbar-title class="font-weight-semibold">Bro World</v-toolbar-title>
       <div class="hero-app-bar__links d-none d-md-flex align-center">
         <v-btn
           v-for="link in links"
@@ -46,29 +44,19 @@ watchEffect(() => {
           {{ link.label }}
         </v-btn>
       </div>
-      <Button
-        class="d-none d-md-inline-flex hero-contact"
-        label="Connect Me"
-        to="/contact"
-        variant="btn-dark"
-      />
     </div>
   </v-app-bar>
 </template>
 <style scoped>
 .hero-app-bar {
-  --nav-max-width: min(900px, calc(100% - 24px));
   background: rgba(9, 13, 25, 0.78);
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 999px;
   backdrop-filter: blur(18px);
   box-shadow: 0 24px 60px -40px rgba(15, 23, 42, 0.9);
-  margin: 16px auto 0;
+  margin: 6px auto 0;
   padding-inline: clamp(12px, 3vw, 24px);
-  width: var(--nav-max-width);
   inset-inline: auto;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .hero-app-bar__content {

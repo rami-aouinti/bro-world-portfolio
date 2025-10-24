@@ -28,7 +28,7 @@ const personalCards = computed(() =>
       <span class="personal__spark personal__spark--two"></span>
       <span class="personal__spark personal__spark--three"></span>
     </div>
-    <LayoutScrollSmooth>
+    <ScrollSmooth>
       <v-container class="personal__container py-16 py-md-24" v-if="personalContent">
         <v-row justify="center" class="text-center">
           <v-col cols="12" md="10" lg="8" class="personal__content">
@@ -89,7 +89,7 @@ const personalCards = computed(() =>
           </v-slide-group-item>
         </v-slide-group>
       </v-container>
-    </LayoutScrollSmooth>
+    </ScrollSmooth>
   </section>
 </template>
 

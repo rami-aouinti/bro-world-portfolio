@@ -89,10 +89,23 @@ const educationItemSchema = z.object({
   details: z.string().trim().min(1, 'Les détails sont requis.')
 })
 
+const contactItemSchema = z.object({
+  degree: z.string().trim().min(1, 'Le diplôme est requis.'),
+  institution: z.string().trim().min(1, 'L’établissement est requis.'),
+  timeframe: z.string().trim().min(1, 'La période est requise.'),
+  details: z.string().trim().min(1, 'Les détails sont requis.')
+})
+
 export const educationSchema = z.object({
   label: z.string().trim().min(1, 'Le libellé est requis.'),
   headline: z.string().trim().min(1, 'Le titre est requis.'),
   schools: z.array(educationItemSchema).min(1, 'Ajoutez au moins une formation.')
+})
+
+export const contactSchema = z.object({
+  label: z.string().trim().min(1, 'Le libellé est requis.'),
+  headline: z.string().trim().min(1, 'Le titre est requis.'),
+  contact: z.array(contactItemSchema).min(1, 'Ajoutez au moins une formation.')
 })
 
 const schemas = {
@@ -105,21 +118,11 @@ const schemas = {
   cta: ctaSchema,
   skills: skillsSchema,
   experiences: experiencesSchema,
-  education: educationSchema
+  education: educationSchema,
+  contact: contactSchema
 } as const satisfies Record<string, ZodTypeAny>
 
 export type ContentSlug = keyof typeof schemas
-
-export type NavLinksContent = z.infer<typeof schemas.navlinks>
-export type ProfileContent = z.infer<typeof schemas.profile>
-export type HeroContent = z.infer<typeof schemas.hero>
-export type ServiceContent = z.infer<typeof schemas.service>
-export type WorkContent = z.infer<typeof schemas.work>
-export type AboutContent = z.infer<typeof schemas.about>
-export type CtaContent = z.infer<typeof schemas.cta>
-export type SkillsContent = z.infer<typeof schemas.skills>
-export type ExperiencesContent = z.infer<typeof schemas.experiences>
-export type EducationContent = z.infer<typeof schemas.education>
 
 export type ContentRecord = {
   [K in ContentSlug]: z.infer<(typeof schemas)[K]>
