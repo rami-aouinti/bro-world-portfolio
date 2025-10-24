@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import { RainbowButton } from '~/components/Ui/rainbow-button'
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const props = withDefaults(
@@ -18,13 +19,25 @@ const localePath = useLocalePath()
 
 const to = computed(() => resolveLocalizedRouteTarget(props.to, localePath))
 
+const isRainbowVariant = computed(() => props.variant !== 'btn-dark')
+
 const appearance = computed(() =>
   props.variant === 'btn-dark' ? 'app-button--ghost' : 'app-button--primary',
 )
 </script>
 
 <template>
+  <RainbowButton
+    v-if="isRainbowVariant"
+    is="NuxtLink"
+    :to="to"
+    class="app-button app-button--rainbow"
+    :class="appearance"
+  >
+    {{ props.label }}
+  </RainbowButton>
   <v-btn
+    v-else
     :to="to"
     variant="flat"
     rounded="pill"
@@ -36,6 +49,7 @@ const appearance = computed(() =>
 </template>
 
 <style scoped>
+
 .app-button {
   align-items: center;
   border: 1px solid transparent;
@@ -44,18 +58,21 @@ const appearance = computed(() =>
   display: inline-flex;
   font-size: 0.95rem;
   font-weight: 600;
-  height: 52px;
   letter-spacing: 0.045em;
   min-width: auto;
-  padding-inline: clamp(20px, 5vw, 32px);
   text-transform: none;
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease,
     border-color 0.25s ease, background 0.25s ease;
 }
 
+.app-button--rainbow {
+  border-radius: 999px;
+  color: #f8fafc;
+  height: 52px;
+  padding-inline: clamp(20px, 5vw, 32px);
+}
+
 .app-button--primary {
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  box-shadow: 0 18px 46px -20px rgba(99, 102, 241, 0.8);
   color: #f8fafc;
 }
 
@@ -90,8 +107,11 @@ const appearance = computed(() =>
 @media (max-width: 600px) {
   .app-button {
     font-size: 0.9rem;
-    height: 48px;
     letter-spacing: 0.04em;
+  }
+
+  .app-button--rainbow {
+    height: 48px;
     padding-inline: clamp(18px, 6vw, 28px);
   }
 }
