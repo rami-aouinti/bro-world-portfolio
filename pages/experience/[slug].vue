@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { createError } from '#app'
+import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const route = useRoute()
 const slug = computed(() => route.params.slug?.toString() ?? '')
+const localePath = useLocalePath()
 
 if (!slug.value) {
   throw createError({ statusCode: 404, statusMessage: 'Expérience introuvable.' })
@@ -11,6 +13,8 @@ if (!slug.value) {
 const { data: experiences } = await useContentBlock('experiences')
 
 const sectionLabel = computed(() => experiences.value?.label ?? 'Expériences')
+
+const backLink = computed(() => resolveLocalizedRouteTarget('/experience', localePath))
 
 const experienceDetails = computed(() => {
   const entry = experiences.value?.positions.find((position) => position.slug === slug.value)
@@ -33,7 +37,7 @@ useSeoMeta(() => ({
   <section class="detail-page">
     <v-container class="py-12 detail-page__container">
       <v-btn
-        :to="'/experience'"
+        :to="backLink"
         variant="text"
         color="primary"
         class="text-none detail-page__back"

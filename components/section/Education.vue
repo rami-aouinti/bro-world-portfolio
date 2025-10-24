@@ -4,8 +4,10 @@ import { computed } from 'vue'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import { glowCardVariantCycle } from '~/utils/glowCardVariants'
 import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: education } = useContentBlock('education')
+const localePath = useLocalePath()
 
 const educationContent = computed(() => education.value)
 const educationCards = computed(() => {
@@ -13,7 +15,7 @@ const educationCards = computed(() => {
 
   return schools.map((school, index) => ({
     school,
-    route: `/education/${school.slug}`,
+    route: resolveLocalizedRouteTarget(`/education/${school.slug}`, localePath),
     variant: glowCardVariantCycle[index % glowCardVariantCycle.length]
   }))
 })
