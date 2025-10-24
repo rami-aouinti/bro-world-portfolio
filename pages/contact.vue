@@ -96,7 +96,7 @@ const contactMethods = computed(() => [
               <div class="contact__footer">
                 <span class="contact__footer-label">{{ t('portfolio.contact.card.footerLabel') }}</span>
                 <Button
-                  to="https://cal.com/"
+                  to="https://cal.com/aouinti-rami"
                   :label="t('portfolio.contact.card.footerCta')"
                   variant="btn-dark"
                 />
