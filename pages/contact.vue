@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 
 import { LOCALIZED_PAGE_META } from '~/utils/i18n/routes'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
