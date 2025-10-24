@@ -62,7 +62,14 @@
       <div class="absolute inset-auto z-40 h-44 w-full translate-y-[-12.5rem] bg-slate-950"></div>
     </div>
 
-    <div class="relative z-50 flex -translate-y-80 flex-col items-center px-5">
+    <div
+      :class="
+        cn(
+          'relative z-50 flex -translate-y-80 flex-col items-center px-5',
+          $props.contentClass,
+        )
+      "
+    >
       <slot />
     </div>
   </div>
@@ -76,11 +83,13 @@ interface LampEffectProps {
   delay?: number;
   duration?: number;
   class?: HTMLAttributes["class"];
+  contentClass?: HTMLAttributes["class"];
 }
 
 const props = withDefaults(defineProps<LampEffectProps>(), {
   delay: 0.5,
   duration: 0.8,
+  contentClass: undefined,
 });
 
 const durationInSeconds = computed(() => `${props.duration}s`);
