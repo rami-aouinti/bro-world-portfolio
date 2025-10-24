@@ -23,6 +23,7 @@ export default defineConfig({
       "#imports": fileURLToPath(new URL("./tests/mocks/nuxt-imports.ts", import.meta.url)),
       "#i18n": fileURLToPath(new URL("./tests/mocks/nuxt-i18n.ts", import.meta.url)),
       "#components": fileURLToPath(new URL("./tests/mocks/nuxt-components.ts", import.meta.url)),
+      h3: fileURLToPath(new URL("./tests/mocks/h3.ts", import.meta.url)),
     },
   },
 });

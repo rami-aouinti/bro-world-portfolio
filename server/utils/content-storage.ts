@@ -49,16 +49,18 @@ export async function readContent<TSlug extends ContentSlug>(slug: TSlug) {
     return fallback
   }
 
-  try {
-    return parseContentBySlug(slug, raw)
+  const schema = contentSchemas[slug]
+  const parsed = schema.safeParse(raw)
+
+  if (parsed.success) {
+    return parsed.data
   }
-  catch (error) {
-    throw createError({
-      statusCode: 500,
-      statusMessage: `Impossible de valider le bloc “${slug}”.`,
-      data: error
-    })
-  }
+
+  console.error(`Impossible de valider le bloc “${slug}”.`, parsed.error)
+
+  const fallback = DEFAULT_CONTENT[slug]
+  await storage.setItem(key, fallback)
+  return fallback
 }
 
 export async function writeContent<TSlug extends ContentSlug>(slug: TSlug, payload: unknown) {
