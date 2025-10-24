@@ -2,6 +2,7 @@ import { computed, watch, watchEffect } from "vue";
 import { useColorMode } from "@vueuse/core";
 import { useCookie, useHead, useRequestHeaders } from "#imports";
 import { withSecureCookieOptions } from "~/lib/cookies";
+import { useTheme } from "vuetify";
 
 type ColorModeValue = "light" | "dark" | "auto";
 
@@ -85,6 +86,28 @@ export function useCookieColorMode() {
 
     return colorMode.value === "dark" ? "dark" : "light";
   });
+
+  const vuetifyTheme = (() => {
+    try {
+      return useTheme();
+    } catch {
+      return null;
+    }
+  })();
+
+  if (vuetifyTheme && import.meta.client) {
+    watch(
+      resolvedMode,
+      (mode) => {
+        const target = mode === "dark" ? "dark" : "light";
+
+        if (vuetifyTheme.global.name.value !== target) {
+          vuetifyTheme.global.name.value = target;
+        }
+      },
+      { immediate: true },
+    );
+  }
 
   useHead({
     htmlAttrs: computed(() => {
