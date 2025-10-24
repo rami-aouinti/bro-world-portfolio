@@ -55,14 +55,6 @@ watchEffect(() => {
   >
     <div class="hero-app-bar__content">
       <div class="hero-app-bar__side hero-app-bar__side--left">
-        <v-btn
-          class="hero-app-bar__button hero-app-bar__button--left"
-          color="primary"
-          variant="outlined"
-          :to="localePath('/contact')"
-        >
-          {{ t('portfolio.navbar.contact') }}
-        </v-btn>
         <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer" />
       </div>
       <div class="hero-app-bar__links d-none d-md-flex align-center">

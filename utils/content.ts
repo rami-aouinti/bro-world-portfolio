@@ -33,6 +33,10 @@ const EN_CONTENT: ContentRecord = {
       label: "Services",
       url: "/service",
     },
+    {
+      label: "Contact",
+      url: "/contact",
+    },
   ],
   profile: {
     firstname: "Mohamed Rami",
