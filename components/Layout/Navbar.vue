@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
+import { useDisplay } from 'vuetify'
 
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: navlinks } = useContentBlock('navlinks')
 
 const drawer = ref(false)
+const display = useDisplay()
 const localePath = useLocalePath()
 const rawLinks = computed(() => navlinks.value ?? [])
 const links = computed(() =>
@@ -15,6 +17,12 @@ const links = computed(() =>
   })),
 )
 const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', localePath))
+
+watchEffect(() => {
+  if (display.mdAndUp.value) {
+    drawer.value = false
+  }
+})
 </script>
 
 <template>
@@ -49,7 +57,13 @@ const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', local
     />
   </v-app-bar>
 
-  <v-navigation-drawer v-model="drawer" temporary location="top" width="100%">
+  <v-navigation-drawer
+    v-if="!display.mdAndUp"
+    v-model="drawer"
+    temporary
+    location="top"
+    width="100%"
+  >
     <v-list nav>
       <v-list-item
         v-for="link in links"
