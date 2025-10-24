@@ -31,7 +31,16 @@ watchEffect(() => {
     height="60"
   >
     <div class="hero-app-bar__content">
-      <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer" />
+      <div class="hero-app-bar__side hero-app-bar__side--left">
+        <v-btn
+          class="hero-app-bar__button hero-app-bar__button--left"
+          color="primary"
+          variant="outlined"
+        >
+          Left Button
+        </v-btn>
+        <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer" />
+      </div>
       <div class="hero-app-bar__links d-none d-md-flex align-center">
         <v-btn
           v-for="link in links"
@@ -42,6 +51,15 @@ watchEffect(() => {
           class="text-none"
         >
           {{ link.label }}
+        </v-btn>
+      </div>
+      <div class="hero-app-bar__side hero-app-bar__side--right">
+        <v-btn
+          class="hero-app-bar__button hero-app-bar__button--right"
+          color="primary"
+          variant="flat"
+        >
+          Right Button
         </v-btn>
       </div>
     </div>
@@ -62,8 +80,23 @@ watchEffect(() => {
 .hero-app-bar__content {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 3vw, 24px);
   width: 100%;
+}
+
+.hero-app-bar__side {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-app-bar__side--right {
+  margin-left: auto;
+}
+
+.hero-app-bar__button {
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .hero-app-bar__links {
@@ -71,6 +104,7 @@ watchEffect(() => {
   justify-content: center;
   gap: 8px;
   margin-inline: auto;
+  flex: 1;
 }
 
 .hero-app-bar :deep(.v-toolbar-title) {
