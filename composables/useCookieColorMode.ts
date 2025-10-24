@@ -10,11 +10,11 @@ export function useCookieColorMode() {
     "color-mode",
     withSecureCookieOptions({
       sameSite: "lax",
-      default: () => "auto",
+      default: () => "dark",
     }),
   );
 
-  const initialValue = colorModeCookie.value ?? "auto";
+  const initialValue = colorModeCookie.value ?? "dark";
 
   const colorMode = useColorMode<ColorModeValue>({
     storageKey: "color-mode",
