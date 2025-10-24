@@ -64,8 +64,11 @@ watchEffect(() => {
   backdrop-filter: blur(18px);
   box-shadow: 0 24px 60px -40px rgba(15, 23, 42, 0.9);
   margin: 16px auto 0;
-  max-width: var(--nav-max-width);
   padding-inline: clamp(12px, 3vw, 24px);
+  width: var(--nav-max-width);
+  inset-inline: auto;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .hero-app-bar__content {
@@ -111,6 +114,9 @@ watchEffect(() => {
   .hero-app-bar {
     border-radius: 24px;
     margin-top: 12px;
+    width: calc(100% - 24px);
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .hero-app-bar__content {
