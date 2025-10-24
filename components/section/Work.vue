@@ -104,19 +104,47 @@ const workCards = computed(() => {
 </template>
 
 <style scoped>
+@reference "../../assets/styles/index.css";
 .work-card-body {
-  @apply relative h-full w-full rounded-[28px] border border-border/40 bg-background/80 p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.45)] backdrop-blur;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 28px;
+  border: 1px solid;
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px -30px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: hsl(var(--border) / 0.4);
+  background-color: hsl(var(--background) / 0.8);
 }
 
 .work-card-media {
-  @apply overflow-hidden rounded-2xl border border-border/40 shadow-[0_20px_45px_-35px_rgba(15,23,42,0.75)];
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid;
+  box-shadow: 0 20px 45px -35px rgba(15, 23, 42, 0.75);
+  border-color: hsl(var(--border) / 0.4);
 }
 
 .work-card-badge {
-  @apply w-fit rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-primary;
+  width: fit-content;
+  border-radius: 9999px;
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: hsl(var(--primary));
+  background-color: hsl(var(--primary) / 0.1);
 }
 
 .work-card-footer-label {
-  @apply text-xs uppercase tracking-[0.35em] text-muted-foreground;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: hsl(var(--muted-foreground));
 }
 </style>
