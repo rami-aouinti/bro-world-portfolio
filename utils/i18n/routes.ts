@@ -1,8 +1,6 @@
-const SUPPORTED_LOCALES = ["en", "fr", "de", "es", "it", "ru", "ar"] as const;
+import { SUPPORTED_LOCALES, type LocaleCode } from "~/utils/i18n/locales";
 
-type SupportedLocale = typeof SUPPORTED_LOCALES[number];
-
-type LocalizedPaths = Record<SupportedLocale, `/${string}`>;
+type LocalizedPaths = Record<LocaleCode, `/${string}`>;
 
 type RouteKey =
   | "about"
@@ -86,3 +84,5 @@ export const LOCALIZED_PAGE_META = Object.freeze(
 );
 
 export type LocalizedRouteKey = RouteKey;
+
+export const LOCALIZED_LOCALES: readonly LocaleCode[] = SUPPORTED_LOCALES;

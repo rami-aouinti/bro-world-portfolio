@@ -1,7 +1,5 @@
 import en from "./locales/en.json";
-
-const DEFAULT_LOCALE = "en";
-const SUPPORTED_LOCALES = ["en", "fr", "de", "es", "it", "ru", "ar"] as const;
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "~/utils/i18n/locales";
 
 export default defineI18nConfig(() => ({
   legacy: false,
