@@ -410,11 +410,6 @@ const csrfCookieName = process.env.CSRF_COOKIE_NAME || 'bro_world_csrf'
 export default defineNuxtConfig({
   compatibilityDate: '2025-10-01',
   devtools: { enabled: true },
-  app: {
-    head: {
-      title: 'Mohamed Rami Aouinti | Backend Developer (PHP & Symfony)'
-    }
-  },
   modules: [
     '@nuxtjs/google-fonts',
     '@nuxt/image',
@@ -557,7 +552,24 @@ export default defineNuxtConfig({
       }
     }
   },
+  eslint: {
+    config: {
+      standalone: false,
+    },
+  },
 
+  app: {
+    head: {
+      title: 'Mohamed Rami Aouinti | Backend Developer (PHP & Symfony)',
+      meta: [
+        {
+          name: "google-adsense-account",
+          content: process.env.NUXT_ADSENSE_ACCOUNT,
+        },
+      ],
+    },
+    baseURL: process.env.NODE_ENV === "development" ? "/" : "/docs/",
+  },
   i18n: {
     lazy: true,
     langDir: "locales/",

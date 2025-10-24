@@ -8,6 +8,7 @@ const { data: navlinks } = useContentBlock('navlinks')
 
 const drawer = ref(false)
 const display = useDisplay()
+const config = useConfig();
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const { locales, locale, t } = useI18n()
@@ -75,6 +76,8 @@ watchEffect(() => {
         </v-btn>
       </div>
       <div class="hero-app-bar__side hero-app-bar__side--right">
+        <ThemePopover v-if="config.theme.customizable" />
+        <DarkModeToggle v-if="config.header.darkModeToggle" />
         <v-menu transition="fade-transition" :offset="[0, 8]">
           <template #activator="{ props }">
             <v-btn
