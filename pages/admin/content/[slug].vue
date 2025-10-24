@@ -2,6 +2,7 @@
 import { ZodError } from 'zod'
 import { showError } from '#app'
 import { contentSchemas, isContentSlug, type ContentSlug } from '~/types/content'
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type LocaleCode } from '~/utils/i18n/locales'
 
 definePageMeta({ middleware: 'auth' })
 
@@ -14,6 +15,23 @@ if (!isContentSlug(slugParam.value)) {
 }
 
 const slug = computed(() => slugParam.value as ContentSlug)
+
+const localeLabels: Record<LocaleCode, string> = {
+  en: 'English',
+  fr: 'Français',
+  de: 'Deutsch',
+  es: 'Español',
+  it: 'Italiano',
+  ru: 'Русский',
+  ar: 'العربية'
+}
+
+const localeItems = SUPPORTED_LOCALES.map((code) => ({
+  value: code,
+  title: localeLabels[code] ?? code.toUpperCase()
+}))
+
+const selectedLocale = ref<LocaleCode>(DEFAULT_LOCALE)
 
 const titles: Record<ContentSlug, string> = {
   profile: 'Profil',
@@ -29,9 +47,9 @@ const titles: Record<ContentSlug, string> = {
 }
 
 const { data, pending, refresh, error } = await useAsyncData(
-  () => `admin-content-${slug.value}`,
-  () => $fetch(`/api/content/${slug.value}`),
-  { watch: [slug] }
+  () => `admin-content-${slug.value}-${selectedLocale.value}`,
+  () => $fetch(`/api/content/${slug.value}`, { query: { locale: selectedLocale.value } }),
+  { watch: [slug, selectedLocale] }
 )
 
 const form = reactive<Record<string, any>>({})
@@ -161,6 +179,7 @@ async function handleSubmit() {
     await $fetch(`/api/content/${slug.value}`, {
       method: 'PUT',
       body: payload,
+      query: { locale: selectedLocale.value },
       headers: {
         'x-csrf-token': csrfCookie.value ?? ''
       }
@@ -197,9 +216,22 @@ async function handleSubmit() {
               </v-btn>
               <h1 class="text-h4 font-weight-semibold mt-3">{{ titles[slug] }}</h1>
             </div>
-            <p class="text-body-2 text-medium-emphasis">
-              Les modifications sont appliquées immédiatement après sauvegarde.
-            </p>
+            <div class="d-flex flex-column align-end" style="gap: 12px;">
+              <p class="text-body-2 text-medium-emphasis text-end">
+                Les modifications sont appliquées immédiatement après sauvegarde.
+              </p>
+              <v-select
+                v-model="selectedLocale"
+                :items="localeItems"
+                item-title="title"
+                item-value="value"
+                label="Langue du contenu"
+                density="comfortable"
+                variant="outlined"
+                hide-details
+                style="min-width: 220px;"
+              />
+            </div>
           </div>
         </v-card>
 
