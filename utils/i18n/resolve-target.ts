@@ -23,13 +23,25 @@ function isExternal(target: string): boolean {
 }
 
 export function resolveLocalizedRouteTarget(target: string, localePath: LocalePathResolver): string {
-  const normalized = target.trim();
+  let normalized = target.trim();
 
-  if (!normalized || normalized === '#') {
+  if (!normalized) {
     return normalized;
   }
 
-  if (normalized.startsWith('#') || isExternal(normalized)) {
+  if (normalized === '#') {
+    return localePath({ name: 'index' });
+  }
+
+  if (normalized.startsWith('#')) {
+    normalized = normalized.slice(1).trim();
+  }
+
+  if (!normalized) {
+    return localePath({ name: 'index' });
+  }
+
+  if (isExternal(normalized)) {
     return normalized;
   }
 
@@ -46,11 +58,9 @@ export function resolveLocalizedRouteTarget(target: string, localePath: LocalePa
     queryIndex !== -1 && (hashIndex === -1 || queryIndex < hashIndex)
       ? normalized.slice(queryIndex, hashIndex === -1 ? normalized.length : hashIndex)
       : '';
-  const hash = hashIndex !== -1 ? normalized.slice(hashIndex) : '';
-
   const routeName = toRouteName(path);
 
   const resolvedPath = localePath({ name: routeName });
 
-  return `${resolvedPath}${query}${hash}`;
+  return `${resolvedPath}${query}`;
 }
