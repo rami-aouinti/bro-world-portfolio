@@ -67,6 +67,7 @@ const cssVars = computed(() => {
 const initial = computed(() => props.title?.charAt(0)?.toUpperCase() ?? '')
 
 const isNavigable = computed(() => Boolean(props.to))
+const hasBadge = computed(() => Boolean(props.badge))
 
 const setPointerPosition = (event: PointerEvent) => {
   if (!cardRef.value) {
@@ -120,7 +121,7 @@ const handleCardKeydown = async (event: KeyboardEvent) => {
 <template>
   <article
     ref="cardRef"
-    :class="['glow-card', { 'glow-card--link': isNavigable }]"
+    :class="['glow-card', { 'glow-card--link': isNavigable, 'glow-card--with-badge': hasBadge }]"
     :style="cssVars"
     tabindex="0"
     :role="isNavigable ? 'link' : undefined"
@@ -241,6 +242,10 @@ const handleCardKeydown = async (event: KeyboardEvent) => {
   flex-direction: column;
   gap: clamp(14px, 2vw, 20px);
   z-index: 1;
+}
+
+.glow-card--with-badge .glow-card__content {
+  padding-top: 12px;
 }
 
 .glow-card__media {
