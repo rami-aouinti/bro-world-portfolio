@@ -102,7 +102,7 @@ export function useCookieColorMode() {
         const target = mode === "dark" ? "dark" : "light";
 
         if (vuetifyTheme.global.name.value !== target) {
-          vuetifyTheme.global.name.value = target;
+          vuetifyTheme.change(target);
         }
       },
       { immediate: true },

@@ -27,6 +27,7 @@
 import { computed } from "vue";
 import { useCookieColorMode } from "#imports";
 import { useSiteSettingsState } from "~/composables/useSiteSettingsState";
+import UiButton from "~/components/UiButton.vue";
 
 const props = defineProps<{ buttonClass?: string }>();
 
