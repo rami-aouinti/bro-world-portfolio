@@ -28,7 +28,7 @@ watchEffect(() => {
     color="transparent"
     flat
     density="compact"
-    height="72"
+    height="60"
   >
     <div class="hero-app-bar__content">
       <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer" />
