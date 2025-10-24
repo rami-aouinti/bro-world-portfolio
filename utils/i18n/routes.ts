@@ -3,6 +3,7 @@ import { SUPPORTED_LOCALES, type LocaleCode } from "~/utils/i18n/locales";
 type LocalizedPaths = Record<LocaleCode, `/${string}`>;
 
 type RouteKey =
+  | "blog"
   | "about"
   | "contact"
   | "education"
@@ -12,6 +13,15 @@ type RouteKey =
   | "work";
 
 const LOCALIZED_ROUTE_PATHS: Record<RouteKey, LocalizedPaths> = {
+  blog: {
+    en: "/blog",
+    fr: "/blog",
+    de: "/blog",
+    es: "/blog",
+    it: "/blog",
+    ru: "/blog",
+    ar: "/blog",
+  },
   about: {
     en: "/about",
     fr: "/a-propos",
