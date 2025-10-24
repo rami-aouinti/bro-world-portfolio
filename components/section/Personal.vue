@@ -5,7 +5,7 @@ import ScrollSmooth from '~/components/Layout/ScrollSmooth.vue'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import { glowCardVariantCycle } from '~/utils/glowCardVariants'
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-import Text3d from "~/components/Ui/ Text3d.vue";
+import {Text3d} from "../Ui/text-3d";
 
 const { data: personal } = useContentBlock('hero')
 const { data: work } = useContentBlock('work')
@@ -242,7 +242,6 @@ const personalCards = computed(() =>
 
 .personal__image {
   border-radius: 18px;
-  margin-top: 40px;
 }
 
 .personal__footer {

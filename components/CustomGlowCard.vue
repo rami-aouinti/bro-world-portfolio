@@ -245,7 +245,7 @@ const handleCardKeydown = async (event: KeyboardEvent) => {
 }
 
 .glow-card--with-badge .glow-card__content {
-  padding-top: 12px;
+  padding-top: 30px;
 }
 
 .glow-card__media {

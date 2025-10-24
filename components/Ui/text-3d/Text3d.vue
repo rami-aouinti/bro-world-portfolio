@@ -1,6 +1,6 @@
 <template>
   <div
-      :class="
+    :class="
       cn('text-3d flex items-center justify-center', animate ? 'animate-text-3d' : '', props.class)
     "
   >
@@ -64,8 +64,8 @@ const animationDurationInMs = computed(() => {
   letter-spacing: v-bind(letterSpacingInCh);
   -webkit-text-stroke: v-bind(strokeSizeInPx) v-bind(strokeColor);
   text-shadow:
-      v-bind(shadow1SizeInPx) v-bind(shadow1SizeInPx) 0px v-bind(strokeColor),
-      v-bind(shadow2SizeInPx) v-bind(shadow2SizeInPx) 0px v-bind(shadowColor);
+    v-bind(shadow1SizeInPx) v-bind(shadow1SizeInPx) 0px v-bind(strokeColor),
+    v-bind(shadow2SizeInPx) v-bind(shadow2SizeInPx) 0px v-bind(shadowColor);
   color: v-bind(textColor);
 }
 
