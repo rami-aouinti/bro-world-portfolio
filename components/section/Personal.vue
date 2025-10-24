@@ -29,7 +29,7 @@ const personalCards = computed(() =>
       <span class="personal__spark personal__spark--three"></span>
     </div>
     <ScrollSmooth>
-      <v-container class="personal__container py-16 py-md-24" v-if="personalContent">
+      <v-container class="personal__container py-6 my-auto py-md-24" v-if="personalContent">
         <v-row justify="center" class="text-center">
           <v-col cols="12" md="10" lg="8" class="personal__content">
             <v-chip
@@ -58,7 +58,6 @@ const personalCards = computed(() =>
             <CustomGlowCard
               class="personal__card"
               :title="card.item.name"
-              :description="card.item.description"
               :badge="card.item.type"
               :variant="card.variant"
             >
@@ -216,7 +215,6 @@ const personalCards = computed(() =>
 
 .personal__carousel {
   margin-top: clamp(32px, 6vw, 64px);
-  padding-bottom: 32px;
 }
 
 .personal__card {
@@ -227,6 +225,7 @@ const personalCards = computed(() =>
 
 .personal__image {
   border-radius: 18px;
+  margin-top: 40px;
 }
 
 .personal__footer {

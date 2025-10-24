@@ -5,7 +5,7 @@ import { glowCardVariants } from '~/utils/glowCardVariants'
 
 type GlowCardProps = {
   title: string
-  description: string
+  description?: string
   eyebrow?: string
   badge?: string
   variant?: keyof typeof glowCardVariants

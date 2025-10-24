@@ -79,7 +79,7 @@ export const DEFAULT_CONTENT: ContentRecord = {
       'Von E-Commerce-Plattformen bis zu Microservice-Landschaften – ich liefere robuste Backend-Lösungen, die Geschäftserfolge ermöglichen.',
     works: [
       {
-        name: 'Symfony-Microservices für TKDeutschland GmbH',
+        name: 'Microservices für TKDeutschland',
         live_demo: '#',
         description:
           'Entwicklung sicherer, skalierbarer Services, Integration von Drittanbieter-APIs und Aufbau von Authentifizierungs-Workflows.',
