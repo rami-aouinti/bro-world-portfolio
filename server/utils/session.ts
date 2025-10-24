@@ -61,7 +61,7 @@ export async function createSession(event: Parameters<typeof setCookie>[0], user
   return session
 }
 
-export async function getSession(event: Parameters<typeof getCookie>[0]) {
+export async function getAuthSession(event: Parameters<typeof getCookie>[0]) {
   const config = useRuntimeConfig()
   const storage = getSessionStorage()
   const token = getCookie(event, config.auth.sessionCookieName)
@@ -95,7 +95,7 @@ export async function getSession(event: Parameters<typeof getCookie>[0]) {
 }
 
 export async function requireAdminSession(event: Parameters<typeof getCookie>[0]) {
-  const session = await getSession(event)
+  const session = await getAuthSession(event)
   if (!session || session.user.role !== 'admin') {
     throw createError({ statusCode: 401, statusMessage: 'Authentification requise.' })
   }
