@@ -4,7 +4,6 @@ import { createVuetify } from "vuetify";
 import * as vuetifyComponents from "vuetify/components";
 import * as vuetifyDirectives from "vuetify/directives";
 import "vuetify/styles";
-import UserAvatar from "~/components/UserAvatar.vue";
 
 const vuetify = createVuetify({
   components: vuetifyComponents,
@@ -50,6 +49,22 @@ const IconStub = defineComponent({
           class: ["icon-stub", attrs.class].filter(Boolean),
           role: (attrs.role as string | undefined) ?? "img",
           "aria-hidden": attrs["aria-hidden"] ?? "true",
+        },
+        slots.default?.() ?? [],
+      );
+  },
+});
+
+const UserAvatar = defineComponent({
+  name: "UserAvatar",
+  inheritAttrs: false,
+  setup(_, { attrs, slots }) {
+    return () =>
+      h(
+        "div",
+        {
+          ...attrs,
+          class: ["user-avatar-stub", attrs.class].filter(Boolean),
         },
         slots.default?.() ?? [],
       );
