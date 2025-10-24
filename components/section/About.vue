@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import CustomGlowCard from '~/components/CustomGlowCard.vue'
+
 const { data: about } = useContentBlock('about')
 const { data: profile } = useContentBlock('profile')
 
@@ -11,6 +13,16 @@ const fullname = computed(() => {
     return ''
   }
   return `${profileContent.value.firstname} ${profileContent.value.lastname}`
+})
+const profileDescription = computed(() => {
+  if (!profileContent.value) {
+    return ''
+  }
+
+  return (
+    aboutContent.value?.introduce?.[0] ??
+    'Building reliable backend systems with PHP, Symfony, and clean architecture.'
+  )
 })
 </script>
 
@@ -32,20 +44,36 @@ const fullname = computed(() => {
             <Button class="mt-8" label="Connect Me" to="/contact" variant="btn-dark" />
           </v-col>
           <v-col cols="12" md="6" v-if="profileContent">
-            <v-card elevation="2">
-              <v-img
-                :src="profileContent.avatar"
-                :alt="`${fullname} - ${profileContent.role}`"
-                height="360"
-                cover
-              />
-              <v-card-subtitle class="text-medium-emphasis pa-4">
-                {{ profileContent.role }}
-              </v-card-subtitle>
-            </v-card>
+            <CustomGlowCard
+              class="about__card"
+              :title="profileContent.role"
+              :eyebrow="fullname"
+              :description="profileDescription"
+              variant="teal"
+            >
+              <template #media>
+                <v-img
+                  :src="profileContent.avatar"
+                  :alt="`${fullname} - ${profileContent.role}`"
+                  height="360"
+                  cover
+                  class="about__image"
+                />
+              </template>
+            </CustomGlowCard>
           </v-col>
         </v-row>
       </v-container>
     </LayoutScrollSmooth>
   </section>
 </template>
+
+<style scoped>
+.about__card {
+  height: 100%;
+}
+
+.about__image {
+  border-radius: 18px;
+}
+</style>

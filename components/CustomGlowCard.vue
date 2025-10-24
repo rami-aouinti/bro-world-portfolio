@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 
+import { glowCardVariants } from '~/utils/glowCardVariants'
+
 type GlowCardProps = {
   title: string
   description: string
   eyebrow?: string
   badge?: string
+  variant?: keyof typeof glowCardVariants
   accentColor?: string
   background?: string
   glowColor?: string
@@ -21,32 +24,43 @@ type GlowCardProps = {
 const props = withDefaults(defineProps<GlowCardProps>(), {
   eyebrow: undefined,
   badge: undefined,
-  accentColor: '#7c3aed',
-  background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(124, 58, 237, 0.32) 100%)',
-  glowColor: 'rgba(124, 58, 237, 0.55)',
+  variant: 'violet',
+  accentColor: undefined,
+  background: undefined,
+  glowColor: undefined,
   glowIntensity: 0.8,
   padding: '24px',
   borderRadius: '24px',
-  textColor: '#f8fafc',
-  outlineColor: 'rgba(148, 163, 184, 0.28)',
+  textColor: undefined,
+  outlineColor: undefined,
   gradientSheenAngle: 125,
   gradientSheenOpacity: 0.45
 })
 
 const cardRef = ref<HTMLElement | null>(null)
 
-const cssVars = computed(() => ({
-  '--card-accent': props.accentColor,
-  '--card-background': props.background,
-  '--card-padding': props.padding,
-  '--card-border-radius': props.borderRadius,
-  '--card-text-color': props.textColor,
-  '--card-glow-color': props.glowColor,
-  '--card-glow-opacity': props.glowIntensity.toString(),
-  '--card-outline-color': props.outlineColor,
-  '--card-sheen-angle': `${props.gradientSheenAngle}deg`,
-  '--card-sheen-opacity': props.gradientSheenOpacity.toString()
-}))
+const variantConfig = computed(() => glowCardVariants[props.variant] ?? glowCardVariants.violet)
+
+const cssVars = computed(() => {
+  const accent = props.accentColor ?? variantConfig.value.accent
+  const background = props.background ?? variantConfig.value.background
+  const glow = props.glowColor ?? variantConfig.value.glow
+  const text = props.textColor ?? variantConfig.value.text
+  const outline = props.outlineColor ?? variantConfig.value.outline
+
+  return {
+    '--card-accent': accent,
+    '--card-background': background,
+    '--card-padding': props.padding,
+    '--card-border-radius': props.borderRadius,
+    '--card-text-color': text,
+    '--card-glow-color': glow,
+    '--card-glow-opacity': props.glowIntensity.toString(),
+    '--card-outline-color': outline,
+    '--card-sheen-angle': `${props.gradientSheenAngle}deg`,
+    '--card-sheen-opacity': props.gradientSheenOpacity.toString()
+  }
+})
 
 const initial = computed(() => props.title?.charAt(0)?.toUpperCase() ?? '')
 
@@ -94,6 +108,9 @@ onMounted(() => {
     </div>
 
     <div class="glow-card__content">
+      <div v-if="$slots.media" class="glow-card__media">
+        <slot name="media" />
+      </div>
       <header class="glow-card__header">
         <div class="glow-card__avatar" aria-hidden="true">
           <span>{{ initial }}</span>
@@ -104,9 +121,13 @@ onMounted(() => {
         </div>
       </header>
 
-      <p class="glow-card__description">
-        {{ description }}
-      </p>
+      <div class="glow-card__body">
+        <slot>
+          <p class="glow-card__description">
+            {{ description }}
+          </p>
+        </slot>
+      </div>
 
       <footer v-if="$slots.footer" class="glow-card__footer">
         <slot name="footer" />
@@ -191,6 +212,12 @@ onMounted(() => {
   z-index: 1;
 }
 
+.glow-card__media {
+  border-radius: calc(var(--card-border-radius) - 10px);
+  overflow: hidden;
+  box-shadow: 0 18px 38px -28px rgba(15, 23, 42, 0.88);
+}
+
 .glow-card__header {
   display: flex;
   align-items: center;
@@ -235,6 +262,12 @@ onMounted(() => {
   font-size: clamp(0.95rem, 2.3vw, 1rem);
   line-height: 1.6;
   color: color-mix(in srgb, var(--card-text-color) 75%, black 25%);
+}
+
+.glow-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .glow-card__footer {

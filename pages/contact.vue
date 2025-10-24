@@ -1,7 +1,27 @@
 <script setup lang="ts">
 import { LOCALIZED_PAGE_META } from '~/utils/i18n/routes'
+import CustomGlowCard from '~/components/CustomGlowCard.vue'
 
 definePageMeta(LOCALIZED_PAGE_META.contact)
+
+const contactMethods = [
+  {
+    icon: 'mdi-email-outline',
+    label: 'Email',
+    value: 'hello@broworld.dev',
+    href: 'mailto:hello@broworld.dev'
+  },
+  {
+    icon: 'mdi-map-marker',
+    label: 'Location',
+    value: 'Jakarta, Indonesia'
+  },
+  {
+    icon: 'mdi-clock-outline',
+    label: 'Availability',
+    value: 'Weekdays, 9am – 6pm (GMT+7)'
+  }
+]
 </script>
 
 <template>
@@ -39,51 +59,94 @@ definePageMeta(LOCALIZED_PAGE_META.contact)
           </v-form>
         </v-col>
         <v-col cols="12" md="5">
-          <v-card elevation="2" class="h-100 d-flex flex-column" style="gap: 24px; padding: 24px;">
-            <div class="text-start">
-              <h2 class="text-h5 font-weight-semibold">Direct Contact</h2>
-              <p class="text-body-2 text-medium-emphasis mt-2">
-                Prefer a quick chat? Drop me a message and I’ll get back to you within one business day.
-              </p>
+          <CustomGlowCard
+            class="contact__card"
+            title="Direct Contact"
+            description="Prefer a quick chat? Drop me a message and I’ll get back to you within one business day."
+            badge="Let's talk"
+            variant="rose"
+          >
+            <div class="contact__methods">
+              <div v-for="method in contactMethods" :key="method.label" class="contact__method">
+                <v-icon :icon="method.icon" class="contact__icon" size="26" />
+                <div>
+                  <p class="contact__method-label">{{ method.label }}</p>
+                  <p class="contact__method-value">
+                    <a v-if="method.href" :href="method.href">{{ method.value }}</a>
+                    <span v-else>{{ method.value }}</span>
+                  </p>
+                </div>
+              </div>
             </div>
-            <v-list lines="two" density="comfortable">
-              <v-list-item>
-                <template #prepend>
-                  <v-avatar color="primary" size="40">
-                    <v-icon icon="mdi-email-outline" />
-                  </v-avatar>
-                </template>
-                <v-list-item-title>Email</v-list-item-title>
-                <v-list-item-subtitle>
-                  <a href="mailto:hello@broworld.dev">hello@broworld.dev</a>
-                </v-list-item-subtitle>
-              </v-list-item>
-              <v-list-item>
-                <template #prepend>
-                  <v-avatar color="primary" size="40">
-                    <v-icon icon="mdi-map-marker" />
-                  </v-avatar>
-                </template>
-                <v-list-item-title>Location</v-list-item-title>
-                <v-list-item-subtitle>Jakarta, Indonesia</v-list-item-subtitle>
-              </v-list-item>
-              <v-list-item>
-                <template #prepend>
-                  <v-avatar color="primary" size="40">
-                    <v-icon icon="mdi-clock-outline" />
-                  </v-avatar>
-                </template>
-                <v-list-item-title>Availability</v-list-item-title>
-                <v-list-item-subtitle>Weekdays, 9am – 6pm (GMT+7)</v-list-item-subtitle>
-              </v-list-item>
-            </v-list>
-            <div class="mt-auto">
-              <Button to="https://cal.com/" label="Schedule a Call" variant="btn-dark" />
-            </div>
-          </v-card>
+            <template #footer>
+              <div class="contact__footer">
+                <span class="contact__footer-label">Schedule a call</span>
+                <Button to="https://cal.com/" label="Let's connect" variant="btn-dark" />
+              </div>
+            </template>
+          </CustomGlowCard>
         </v-col>
       </v-row>
     </v-container>
   </LayoutScrollSmooth>
   <LayoutLine />
 </template>
+
+<style scoped>
+.contact__card {
+  height: 100%;
+}
+
+.contact__methods {
+  display: grid;
+  gap: 18px;
+}
+
+.contact__method {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.contact__icon {
+  color: var(--card-accent);
+  background: color-mix(in srgb, var(--card-accent) 25%, transparent);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.contact__method-label {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.contact__method-value {
+  margin: 4px 0 0;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+.contact__method-value a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact__method-value a:hover {
+  text-decoration: underline;
+}
+
+.contact__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.contact__footer-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--card-text-color) 65%, white 35%);
+}
+</style>

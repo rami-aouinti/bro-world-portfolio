@@ -1,12 +1,21 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import ScrollSmooth from '~/components/Layout/ScrollSmooth.vue'
+
+import CustomGlowCard from '~/components/CustomGlowCard.vue'
+import { glowCardVariantCycle } from '~/utils/glowCardVariants'
 
 const { data: personal } = useContentBlock('hero')
 const { data: work } = useContentBlock('work')
 
 const personalContent = computed(() => personal.value)
 const workItems = computed(() => work.value?.works ?? [])
+const personalCards = computed(() =>
+  workItems.value.map((item, index) => ({
+    item,
+    variant: glowCardVariantCycle[index % glowCardVariantCycle.length]
+  }))
+)
 </script>
 
 <template>
@@ -45,20 +54,38 @@ const workItems = computed(() => work.value?.works ?? [])
         </v-row>
 
         <v-slide-group show-arrows class="personal__carousel">
-          <v-slide-group-item v-for="item in workItems" :key="item.name">
-            <v-card class="personal__card">
-              <v-img :src="`/images/work/${item.thumbnails}`" :alt="item.name" height="200" cover />
-              <v-card-title>{{ item.name }}</v-card-title>
-              <v-card-subtitle>{{ item.type }}</v-card-subtitle>
-              <v-card-text class="text-body-2">
-                {{ item.description }}
-              </v-card-text>
-              <v-card-actions>
-                <v-btn :to="item.live_demo" target="_blank" color="primary" variant="text" class="text-none">
-                  See project
-                </v-btn>
-              </v-card-actions>
-            </v-card>
+          <v-slide-group-item v-for="card in personalCards" :key="card.item.name">
+            <CustomGlowCard
+              class="personal__card"
+              :title="card.item.name"
+              :description="card.item.description"
+              :badge="card.item.type"
+              :variant="card.variant"
+            >
+              <template #media>
+                <v-img
+                  :src="`/images/work/${card.item.thumbnails}`"
+                  :alt="card.item.name"
+                  height="200"
+                  cover
+                  class="personal__image"
+                />
+              </template>
+              <template #footer>
+                <div class="personal__footer">
+                  <span class="personal__footer-label">See project</span>
+                  <v-btn
+                    :to="card.item.live_demo"
+                    target="_blank"
+                    color="primary"
+                    variant="text"
+                    class="text-none"
+                  >
+                    Explore
+                  </v-btn>
+                </div>
+              </template>
+            </CustomGlowCard>
           </v-slide-group-item>
         </v-slide-group>
       </v-container>
@@ -194,25 +221,28 @@ const workItems = computed(() => work.value?.works ?? [])
 }
 
 .personal__card {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.15);
-  border-radius: 24px;
+  display: block;
   margin: 12px;
-  max-width: 320px;
-  backdrop-filter: blur(12px);
-  color: #e2e8f0;
+  width: clamp(260px, 58vw, 320px);
 }
 
-.personal__card :deep(.v-card-title) {
-  font-weight: 700;
+.personal__image {
+  border-radius: 18px;
 }
 
-.personal__card :deep(.v-card-subtitle) {
-  color: rgba(148, 163, 184, 0.85);
+.personal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.personal__card :deep(.v-btn) {
-  text-transform: none;
+.personal__footer-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--card-text-color) 60%, white 40%);
 }
 
 @keyframes twinkle {
