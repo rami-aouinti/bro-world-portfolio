@@ -142,15 +142,15 @@
       "subtitle": "Verfügbar in {count} Sprachen"
     },
     "search": {
-      "placeholder": "Search..."
+      "placeholder": "Suchen…"
     },
     "appIcons": {
       "academy": "Akademie",
       "briefcase": "Arbeit",
       "store": "Shop",
       "database": "Daten",
-      "ecommerce": "E-commerce",
-      "education": "Education",
+      "ecommerce": "E-Commerce",
+      "education": "Bildung",
       "quiz": "Quiz",
       "game": "Spiele & Quiz"
     },
@@ -162,17 +162,17 @@
         "apps": "Apps",
         "calendar": "Kalender",
         "cv": "Lebenslauf",
-        "createWorld": "Create world",
+        "createWorld": "Welt erstellen",
         "jobs": "Jobs",
         "messenger": "Messenger",
         "game": "Spiele & Quiz",
         "crm": "CRM-Arbeitsbereich",
-        "ecommerce": "E-commerce",
+        "ecommerce": "E-Commerce",
         "ecommerceOverview": "Übersicht",
         "ecommerceCatalog": "Produktkatalog",
         "ecommerceCart": "Warenkorb",
         "ecommerceCheckout": "Kasse",
-        "education": "Education",
+        "education": "Bildung",
         "quiz": "Quiz",
         "academy": "Akademie",
         "performance": "Leistung",
@@ -248,75 +248,75 @@
     }
   },
   "buttons": {
-    "more": "Show more",
-    "less": "Show less",
-    "continue": "Continue",
-    "back": "Back",
-    "cancel": "Cancel"
+    "more": "Mehr anzeigen",
+    "less": "Weniger anzeigen",
+    "continue": "Weiter",
+    "back": "Zurück",
+    "cancel": "Abbrechen"
   },
   "job": {
     "job": "Job",
-    "create": "Create job",
-    "createdSuccess": "Job created successfully.",
-    "createError": "Unable to create the job. Please try again.",
-    "search": "Search jobs",
-    "location": "Location",
-    "filterByExperience": "Filter by experience",
-    "workType": "Work mode",
-    "contractType": "Contract type",
-    "salaryRange": "Salary range",
-    "skills": "Skills",
-    "noSkills": "No skills listed.",
-    "apply": "Apply",
-    "noMatch": "No jobs match your filters.",
-    "unknownCompany": "Unknown company",
-    "locationUnknown": "Location not specified",
-    "salaryUnknown": "Salary not specified",
-    "description": "Description",
-    "noDescription": "No description provided.",
-    "work": "Responsibilities",
-    "noWork": "No responsibilities provided.",
-    "requirements": "Requirements",
-    "benefits": "Benefits",
-    "addLanguage": "Add language",
-    "details": "Job details",
-    "additional": "Additional information",
-    "others": "Other information",
-    "company": "Company",
-    "experience": "Experience",
-    "workTypeLabel": "Work type",
-    "contractTypeLabel": "Contract",
-    "languages": "Languages"
+    "create": "Stelle erstellen",
+    "createdSuccess": "Stelle erfolgreich erstellt.",
+    "createError": "Stelle konnte nicht erstellt werden. Bitte versuche es erneut.",
+    "search": "Stellen suchen",
+    "location": "Standort",
+    "filterByExperience": "Nach Erfahrung filtern",
+    "workType": "Arbeitsmodus",
+    "contractType": "Vertragsart",
+    "salaryRange": "Gehaltsbereich",
+    "skills": "Fähigkeiten",
+    "noSkills": "Keine Fähigkeiten angegeben.",
+    "apply": "Bewerben",
+    "noMatch": "Keine Stellen entsprechen deinen Filtern.",
+    "unknownCompany": "Unbekanntes Unternehmen",
+    "locationUnknown": "Standort nicht angegeben",
+    "salaryUnknown": "Gehalt nicht angegeben",
+    "description": "Beschreibung",
+    "noDescription": "Keine Beschreibung verfügbar.",
+    "work": "Aufgaben",
+    "noWork": "Keine Aufgaben angegeben.",
+    "requirements": "Anforderungen",
+    "benefits": "Vorteile",
+    "addLanguage": "Sprache hinzufügen",
+    "details": "Stellendetails",
+    "additional": "Weitere Informationen",
+    "others": "Sonstige Informationen",
+    "company": "Unternehmen",
+    "experience": "Erfahrung",
+    "workTypeLabel": "Arbeitsmodell",
+    "contractTypeLabel": "Vertrag",
+    "languages": "Sprachen"
   },
   "applicant": {
-    "applicant": "Applicant",
-    "create": "Create applicant",
-    "createdSuccess": "Applicant saved successfully.",
-    "createError": "Unable to create the applicant.",
-    "submit": "Submit",
-    "submitError": "Unable to submit the application.",
-    "submitSuccess": "Application submitted.",
-    "selectError": "Select an applicant before submitting.",
-    "upload": "Upload",
-    "uploadResume": "Upload resume",
-    "uploadError": "Unable to upload the resume.",
-    "uploadSuccess": "Resume uploaded successfully.",
-    "noResume": "no resume",
-    "noFile": "Choose a file before uploading.",
+    "applicant": "Bewerber",
+    "create": "Bewerber erstellen",
+    "createdSuccess": "Bewerber erfolgreich gespeichert.",
+    "createError": "Bewerber konnte nicht erstellt werden.",
+    "submit": "Senden",
+    "submitError": "Bewerbung konnte nicht eingereicht werden.",
+    "submitSuccess": "Bewerbung eingereicht.",
+    "selectError": "Wähle vor dem Einreichen einen Bewerber aus.",
+    "upload": "Hochladen",
+    "uploadResume": "Lebenslauf hochladen",
+    "uploadError": "Lebenslauf konnte nicht hochgeladen werden.",
+    "uploadSuccess": "Lebenslauf erfolgreich hochgeladen.",
+    "noResume": "kein Lebenslauf",
+    "noFile": "Wähle eine Datei, bevor du hochlädst.",
     "name": "Name",
-    "contactEmail": "Contact email",
-    "preferences": "Job preferences",
-    "resume": "Resume"
+    "contactEmail": "Kontakt-E-Mail",
+    "preferences": "Jobpräferenzen",
+    "resume": "Lebenslauf"
   },
   "company": {
-    "title": "Company",
-    "create": "Create company",
-    "createSuccess": "Company saved successfully.",
-    "createError": "Unable to create the company.",
-    "name": "Company name",
-    "description": "Company description",
+    "title": "Unternehmen",
+    "create": "Unternehmen erstellen",
+    "createSuccess": "Unternehmen erfolgreich gespeichert.",
+    "createError": "Unternehmen konnte nicht erstellt werden.",
+    "name": "Unternehmensname",
+    "description": "Unternehmensbeschreibung",
     "website": "Website",
-    "submit": "Save"
+    "submit": "Speichern"
   },
   "messenger": {
     "searchPlaceholder": "Konversationen durchsuchen",
@@ -407,9 +407,9 @@
       }
     },
     "auth": {
-      "postRequired": "Sign in to share what's on your mind.",
-      "reactionRequired": "Sign in to react to posts.",
-      "commentRequired": "Sign in to join the discussion."
+      "postRequired": "Melde dich an, um zu teilen, was dich beschäftigt.",
+      "reactionRequired": "Melde dich an, um auf Beiträge zu reagieren.",
+      "commentRequired": "Melde dich an, um an der Diskussion teilzunehmen."
     },
     "reactions": {
       "post": {
@@ -1165,182 +1165,182 @@
       }
     },
     "createWorld": {
-      "title": "Create a new world",
-      "subtitle": "Assemble the foundation, governance, and live experiences your community needs—all in one guided workspace.",
+      "title": "Eine neue Welt erstellen",
+      "subtitle": "Stelle Fundament, Governance und Live-Erlebnisse zusammen, die deine Community braucht – alles in einem geführten Arbeitsbereich.",
       "form": {
-        "title": "World blueprint",
-        "subtitle": "Define the identity, launch plan, and access controls before inviting your first residents.",
+        "title": "Welt-Blueprint",
+        "subtitle": "Definiere Identität, Launch-Plan und Zugriffskontrollen, bevor du deine ersten Bewohner einlädst.",
         "actions": {
-          "preview": "Preview",
-          "previewAria": "Preview the world configuration",
-          "publish": "Publish world",
-          "publishAria": "Publish the world configuration"
+          "preview": "Vorschau",
+          "previewAria": "Weltkonfiguration in der Vorschau anzeigen",
+          "publish": "Welt veröffentlichen",
+          "publishAria": "Weltkonfiguration veröffentlichen"
         },
         "basicInfo": {
-          "title": "Core details",
-          "subtitle": "Give your world a clear identity so members instantly understand where they are."
+          "title": "Kerndaten",
+          "subtitle": "Gib deiner Welt eine klare Identität, damit Mitglieder sofort wissen, wo sie sind."
         },
         "fields": {
-          "name": "World name",
-          "namePlaceholder": "E.g. Aurora Station",
-          "slug": "Public URL",
+          "name": "Name der Welt",
+          "namePlaceholder": "Z. B. Aurora Station",
+          "slug": "Öffentliche URL",
           "slugPlaceholder": "aurora-station",
-          "description": "Description",
-          "descriptionPlaceholder": "Describe the story, purpose, and experiences players can expect.",
-          "visibility": "Visibility",
+          "description": "Beschreibung",
+          "descriptionPlaceholder": "Beschreibe Geschichte, Zweck und Erlebnisse, die Spieler erwarten können.",
+          "visibility": "Sichtbarkeit",
           "visibilityOptions": {
-            "public": "Public",
-            "private": "Private"
+            "public": "Öffentlich",
+            "private": "Privat"
           },
-          "visibilityHint": "Choose whether your world is listed in the public explorer or invitation only.",
-          "theme": "Theme preset",
-          "region": "Primary region",
-          "regionHint": "Helps us route latency-optimised infrastructure for your players.",
-          "launchDate": "Launch date",
-          "launchDateHint": "Share your planned go-live to coordinate testing windows and announcements.",
+          "visibilityHint": "Wähle, ob deine Welt im öffentlichen Explorer erscheint oder nur auf Einladung zugänglich ist.",
+          "theme": "Theme-Voreinstellung",
+          "region": "Primäre Region",
+          "regionHint": "Hilft uns, latenzoptimierte Infrastruktur für deine Spieler bereitzustellen.",
+          "launchDate": "Launch-Datum",
+          "launchDateHint": "Teile den geplanten Go-Live, um Testfenster und Ankündigungen zu koordinieren.",
           "tags": "Tags",
-          "tagsPlaceholder": "Add descriptive keywords",
-          "tagsHint": "Use up to five tags to help members find the right activities.",
-          "guidelines": "Community guidelines",
-          "guidelinesPlaceholder": "Outline tone, expectations, and escalation policies for everyone who joins."
+          "tagsPlaceholder": "Beschreibende Schlüsselwörter hinzufügen",
+          "tagsHint": "Nutze bis zu fünf Tags, damit Mitglieder passende Aktivitäten finden.",
+          "guidelines": "Community-Richtlinien",
+          "guidelinesPlaceholder": "Lege Ton, Erwartungen und Eskalationsrichtlinien für alle fest, die beitreten."
         },
         "themeOptions": {
           "aurora": "Aurora",
           "midnight": "Midnight",
           "sunrise": "Sunrise",
-          "custom": "Custom theme"
+          "custom": "Eigenes Theme"
         },
         "regionOptions": {
           "global": "Global",
-          "americas": "Americas",
+          "americas": "Amerika",
           "emea": "EMEA",
           "apac": "APAC"
         },
         "tagSuggestions": {
-          "coOp": "Co-op missions",
-          "roleplay": "Roleplay",
-          "competitive": "Competitive league",
-          "casual": "Casual hangout",
-          "modded": "Modded adventures"
+          "coOp": "Koop-Missionen",
+          "roleplay": "Rollenspiel",
+          "competitive": "Wettkampfliga",
+          "casual": "Entspannter Treff",
+          "modded": "Modded-Abenteuer"
         },
         "advanced": {
-          "title": "Advanced controls",
-          "subtitle": "Fine-tune monetisation, integrations, and access policies.",
-          "monetization": "Enable monetisation systems",
-          "integrations": "Activate partner integrations",
-          "verification": "Require account verification",
-          "guests": "Allow guest spectators",
-          "guestsHint": "Guests can browse without creating an account but cannot interact."
+          "title": "Erweiterte Steuerung",
+          "subtitle": "Optimiere Monetarisierung, Integrationen und Zugriffsrichtlinien.",
+          "monetization": "Monetarisierungssysteme aktivieren",
+          "integrations": "Partnerintegrationen aktivieren",
+          "verification": "Kontoverifizierung erforderlich",
+          "guests": "Zuschauer ohne Konto zulassen",
+          "guestsHint": "Gäste können stöbern, ohne ein Konto zu erstellen, aber nicht interagieren."
         }
       },
       "plugins": {
-        "title": "Curate your plugin stack",
-        "subtitle": "Mix social, economic, and safety plugins to craft the experience your community deserves.",
+        "title": "Stelle deinen Plugin-Stack zusammen",
+        "subtitle": "Kombiniere soziale, wirtschaftliche und Sicherheits-Plugins, um das Erlebnis deiner Community zu gestalten.",
         "categories": {
           "community": {
-            "title": "Community presence",
-            "description": "Welcome members, broadcast announcements, and host social spaces.",
+            "title": "Community-Präsenz",
+            "description": "Heiße Mitglieder willkommen, veröffentliche Ankündigungen und richte soziale Bereiche ein.",
             "plugins": {
               "lobby": {
-                "name": "Interactive lobby",
-                "tag": "Core",
-                "description": "Guide newcomers with custom zones, featured posts, and smart onboarding.",
+                "name": "Interaktive Lobby",
+                "tag": "Kern",
+                "description": "Führe Neulinge mit individuellen Zonen, empfohlenen Beiträgen und smartem Onboarding.",
                 "points": [
-                  "Build modular landing rooms with drag-and-drop widgets.",
-                  "Highlight trending events, moderators, and creator spotlights.",
-                  "Schedule dynamic greetings that adapt to time zones."
+                  "Erstelle modulare Startbereiche mit Drag-and-drop-Widgets.",
+                  "Hebe aktuelle Events, Moderatoren und Creator-Highlights hervor.",
+                  "Plane dynamische Begrüßungen, die sich an Zeitzonen anpassen."
                 ]
               },
               "events": {
-                "name": "Event orchestration",
+                "name": "Event-Orchestrierung",
                 "tag": "Live",
-                "description": "Plan tournaments, premieres, and collaborative quests with automated reminders.",
+                "description": "Plane Turniere, Premieren und kollaborative Quests mit automatischen Erinnerungen.",
                 "points": [
-                  "Coordinate multi-stage brackets and RSVPs in one dashboard.",
-                  "Sync calendars, ticketing, and broadcast overlays automatically.",
-                  "Unlock post-event recaps with stats, clips, and rewards."
+                  "Koordiniere mehrstufige Turnierbäume und Zusagen in einem Dashboard.",
+                  "Synchronisiere Kalender, Ticketing und Broadcast-Overlays automatisch.",
+                  "Erstelle Recaps nach dem Event mit Statistiken, Clips und Belohnungen."
                 ]
               },
               "streams": {
-                "name": "Creator streams",
+                "name": "Creator-Streams",
                 "tag": "Engage",
-                "description": "Embed live streams, watch parties, and backstage chats without leaving your world.",
+                "description": "Bette Livestreams, Watch-Partys und Backstage-Chats ein, ohne deine Welt zu verlassen.",
                 "points": [
-                  "Support multi-platform streaming with adaptive quality.",
-                  "Unlock co-streaming rooms for community commentators.",
-                  "Capture highlights and publish recap reels instantly."
+                  "Unterstütze Multi-Plattform-Streaming mit adaptiver Qualität.",
+                  "Schalte Co-Streaming-Räume für Community-Kommentatoren frei.",
+                  "Halte Highlights fest und veröffentliche Recap-Reels sofort."
                 ]
               }
             }
           },
           "economy": {
-            "title": "Economy & progression",
-            "description": "Design progression loops, trading systems, and reward paths tailored to your world.",
+            "title": "Ökonomie & Fortschritt",
+            "description": "Gestalte Fortschrittsschleifen, Handelssysteme und Belohnungspfade, die zu deiner Welt passen.",
             "plugins": {
               "market": {
-                "name": "Marketplace hub",
+                "name": "Marktplatz-Hub",
                 "tag": "Commerce",
-                "description": "Launch safe trading for cosmetics, crafting materials, and time-limited drops.",
+                "description": "Starte sicheren Handel für Kosmetik, Crafting-Materialien und zeitlich begrenzte Drops.",
                 "points": [
-                  "List items with rarity, seasonality, and bundle options.",
-                  "Protect transactions with escrow, tax, and fraud tooling.",
-                  "Publish merchandising campaigns with dynamic pricing rules."
+                  "Stelle Items mit Seltenheit, Saisonalität und Bundle-Optionen ein.",
+                  "Schütze Transaktionen mit Treuhand, Steuern und Betrugserkennung.",
+                  "Veröffentliche Merchandising-Kampagnen mit dynamischen Preisregeln."
                 ]
               },
               "crafting": {
-                "name": "Crafting simulator",
-                "tag": "Systems",
-                "description": "Author recipes, resource nodes, and crafting stations with live balancing.",
+                "name": "Crafting-Simulator",
+                "tag": "Systeme",
+                "description": "Erstelle Rezepte, Ressourcenpunkte und Crafting-Stationen mit Live-Balancing.",
                 "points": [
-                  "Define ingredient trees and skill requirements visually.",
-                  "Simulate yield, cooldowns, and fail states before release.",
-                  "Link crafting outputs to quests, vendors, or marketplace listings."
+                  "Definiere Zutatenbäume und Fähigkeitsanforderungen visuell.",
+                  "Simuliere Ertrag, Abklingzeiten und Fehlversuche vor dem Release.",
+                  "Verknüpfe Crafting-Ergebnisse mit Quests, Händlern oder Marktplatz-Angeboten."
                 ]
               },
               "rewards": {
-                "name": "Rewards engine",
+                "name": "Belohnungs-Engine",
                 "tag": "Loyalty",
-                "description": "Reward cohorts with quests, achievements, and season passes.",
+                "description": "Belohne Zielgruppen mit Quests, Erfolgen und Season-Pässen.",
                 "points": [
-                  "Segment milestones by player type, region, or platform.",
-                  "Automate reward delivery with fraud-safe claims.",
-                  "Track redemption analytics and churn risk in real time."
+                  "Segmentiere Meilensteine nach Spielertyp, Region oder Plattform.",
+                  "Automatisiere die Belohnungsauslieferung mit betrugssicheren Claims.",
+                  "Verfolge Einlöseanalysen und Abwanderungsrisiken in Echtzeit."
                 ]
               }
             }
           },
           "governance": {
-            "title": "Governance & safety",
-            "description": "Empower trusted teams with moderation, safety, and insight workflows.",
+            "title": "Governance & Sicherheit",
+            "description": "Statte vertraute Teams mit Moderations-, Sicherheits- und Analyse-Workflows aus.",
             "plugins": {
               "moderation": {
-                "name": "Moderation console",
+                "name": "Moderationskonsole",
                 "tag": "Trust",
-                "description": "Resolve reports, escalations, and appeals with collaborative tooling.",
+                "description": "Bearbeite Meldungen, Eskalationen und Einsprüche mit kollaborativen Tools.",
                 "points": [
-                  "Route cases automatically by severity and language.",
-                  "Surface evidence timelines with chat, clips, and audit logs.",
-                  "Assign playbooks, sanctions, and cooldown windows in context."
+                  "Leite Fälle automatisch nach Schweregrad und Sprache weiter.",
+                  "Zeige Beweisverläufe mit Chats, Clips und Audit-Logs an.",
+                  "Ordne Playbooks, Sanktionen und Cooldown-Zeiträume im Kontext zu."
                 ]
               },
               "safety": {
-                "name": "Safety automation",
+                "name": "Safety-Automatisierung",
                 "tag": "AI",
-                "description": "Detect toxicity, spam, and suspicious behaviour before it spreads.",
+                "description": "Erkenne Toxicity, Spam und verdächtiges Verhalten, bevor es sich verbreitet.",
                 "points": [
-                  "Deploy ML classifiers tuned for your community norms.",
-                  "Set up adaptive rate limits and content filters.",
-                  "Notify guardians and caretakers with role-based alerts."
+                  "Setze ML-Klassifikatoren ein, die auf deine Community-Normen abgestimmt sind.",
+                  "Richte adaptive Ratenbegrenzungen und Inhaltsfilter ein.",
+                  "Informiere Vertrauenspersonen mit rollenbasierten Benachrichtigungen."
                 ]
               },
               "analytics": {
-                "name": "Governance analytics",
+                "name": "Governance-Analysen",
                 "tag": "Insights",
-                "description": "Measure health, retention, and policy impact across every world surface.",
+                "description": "Miss Gesundheit, Bindung und Policy-Wirkung über alle Flächen deiner Welt hinweg.",
                 "points": [
-                  "Monitor safety KPIs with real-time dashboards.",
-                  "Correlate moderation actions with engagement outcomes.",
-                  "Export compliance-ready reports for stakeholders."
+                  "Überwache Safety-KPIs mit Echtzeit-Dashboards.",
+                  "Setze Moderationsmaßnahmen in Beziehung zu Engagement-Ergebnissen.",
+                  "Exportiere compliance-fertige Berichte für Stakeholder."
                 ]
               }
             }
@@ -1349,101 +1349,101 @@
       },
       "sidebar": {
         "plugins": {
-          "selectedTitle": "Selected plugins",
-          "emptyTitle": "No plugins selected yet",
-          "selectedDescription": "The following plugins will be included in your provisioning request:",
-          "emptyDescription": "Choose plugins to preview the capabilities that will be provisioned.",
-          "emptyHint": "Toggle plugins in the list to build your stack."
+          "selectedTitle": "Ausgewählte Plugins",
+          "emptyTitle": "Noch keine Plugins ausgewählt",
+          "selectedDescription": "Die folgenden Plugins werden in deine Bereitstellungsanfrage aufgenommen:",
+          "emptyDescription": "Wähle Plugins aus, um die bereitgestellten Funktionen in der Vorschau zu sehen.",
+          "emptyHint": "Aktiviere Plugins in der Liste, um deinen Stack zu erstellen."
         }
       },
       "workflow": {
-        "title": "Launch with confidence",
-        "subtitle": "Follow a proven cadence from vision to expansion.",
-        "stepLabel": "Step {number}",
+        "title": "Mit Zuversicht starten",
+        "subtitle": "Folge einem erprobten Ablauf von der Vision bis zur Expansion.",
+        "stepLabel": "Schritt {number}",
         "steps": {
           "vision": {
-            "title": "Shape your vision",
-            "description": "Align on pillars, tone, and success metrics with stakeholders and creators."
+            "title": "Vision schärfen",
+            "description": "Stimme Säulen, Tonalität und Erfolgskennzahlen mit Stakeholdern und Creators ab."
           },
           "launch": {
-            "title": "Launch with momentum",
-            "description": "Coordinate marketing beats, early access waves, and go-live checklists."
+            "title": "Mit Schwung starten",
+            "description": "Koordiniere Marketing-Momente, Early-Access-Phasen und Go-Live-Checklisten."
           },
           "expand": {
-            "title": "Expand sustainably",
-            "description": "Iterate on feedback, scale to new regions, and grow ambassador programmes."
+            "title": "Nachhaltig skalieren",
+            "description": "Iteriere anhand von Feedback, skaliere in neue Regionen und erweitere Botschafterprogramme."
           }
         }
       },
       "cta": {
-        "title": "Need a hand activating your world?",
-        "description": "Our team can help you architect governance models, migration plans, and live operations tailored to your audience.",
-        "button": "Talk with our team",
-        "buttonAria": "Open the contact page"
+        "title": "Brauchst du Unterstützung beim Aktivieren deiner Welt?",
+        "description": "Unser Team hilft dir bei Governance-Modellen, Migrationsplänen und Live-Operations, die auf dein Publikum zugeschnitten sind.",
+        "button": "Mit unserem Team sprechen",
+        "buttonAria": "Kontaktseite öffnen"
       }
     },
     "job": {
       "title": "Jobs",
-      "subtitle": "Centralise every step of your recruiting funnel to move from sourcing to signing with clarity.",
-      "featuresTitle": "Build a confident hiring pipeline",
+      "subtitle": "Bündle jeden Schritt deines Recruiting-Funnels und behalte vom Sourcing bis zur Zusage den Überblick.",
+      "featuresTitle": "Baue eine verlässliche Hiring-Pipeline auf",
       "features": {
         "matching": {
-          "title": "Spot the right talent faster",
-          "description": "Aggregate sourcing activity and prioritise applicants automatically.",
+          "title": "Finde passende Talente schneller",
+          "description": "Führe Sourcing-Aktivitäten zusammen und priorisiere Bewerbende automatisch.",
           "points": [
-            "Sync job boards, referrals, and internal mobility into one view.",
-            "Score applications with configurable criteria and bias safeguards.",
-            "Highlight talent pools ready for nurture or re-engagement."
+            "Synchronisiere Jobbörsen, Empfehlungen und interne Mobilität in einer Ansicht.",
+            "Bewerte Bewerbungen mit konfigurierbaren Kriterien und Bias-Schutz.",
+            "Hebe Talentpools hervor, die für Nurturing oder Reaktivierung bereit sind."
           ]
         },
         "automation": {
-          "title": "Automate team coordination",
-          "description": "Give recruiters, interviewers, and hiring managers a shared command centre.",
+          "title": "Koordination im Team automatisieren",
+          "description": "Biete Recruitern, Interviewern und Hiring-Managern ein gemeinsames Kontrollzentrum.",
           "points": [
-            "Trigger interview kits and reminders in the right timezone.",
-            "Share structured feedback templates that surface signal over noise.",
-            "Notify stakeholders the moment a candidate advances or stalls."
+            "Starte Interview-Kits und Erinnerungen in der richtigen Zeitzone.",
+            "Teile strukturierte Feedback-Vorlagen, die Signale von Rauschen trennen.",
+            "Informiere Stakeholder sofort, wenn Kandidat:innen vorankommen oder stocken."
           ]
         },
         "insights": {
-          "title": "Measure hiring impact",
-          "description": "Understand conversion, velocity, and quality without exporting spreadsheets.",
+          "title": "Recruiting-Erfolg messen",
+          "description": "Verstehe Conversion, Geschwindigkeit und Qualität ohne Excel-Exporte.",
           "points": [
-            "Track time-to-fill, diversity ratios, and offer acceptance in real time.",
-            "Visualise bottlenecks across regions or job families instantly.",
-            "Share live dashboards with leadership and partners securely."
+            "Verfolge Time-to-Fill, Diversity-Verhältnisse und Angebotsannahmen in Echtzeit.",
+            "Visualisiere Engpässe über Regionen oder Jobfamilien hinweg sofort.",
+            "Teile Live-Dashboards sicher mit Führungskräften und Partnern."
           ]
         }
       },
-      "workflowTitle": "Your hiring rhythm, visualised",
+      "workflowTitle": "Dein Hiring-Rhythmus visualisiert",
       "workflow": {
         "steps": {
           "publish": {
-            "title": "Publish with confidence",
-            "description": "Launch branded job pages and syndicated listings with reusable templates."
+            "title": "Souverän veröffentlichen",
+            "description": "Starte gebrandete Jobseiten und syndizierte Anzeigen mit wiederverwendbaren Vorlagen."
           },
           "review": {
-            "title": "Review together",
-            "description": "Collaborate on feedback, calibrate scorecards, and keep the loop accountable."
+            "title": "Gemeinsam bewerten",
+            "description": "Arbeite kollaborativ am Feedback, kalibriere Scorecards und halte den Prozess transparent."
           },
           "hire": {
-            "title": "Hire and onboard",
-            "description": "Secure approvals, generate offers, and pass context to onboarding seamlessly."
+            "title": "Einstellen und Onboarding",
+            "description": "Sichere Freigaben, erstelle Angebote und übergib Kontext nahtlos an das Onboarding."
           }
         }
       },
-      "stepLabel": "Step {number}",
+      "stepLabel": "Schritt {number}",
       "cta": {
-        "title": "Design a hiring experience candidates love",
-        "description": "Let our team help you tailor BroWorld to your recruitment stack, processes, and compliance needs.",
-        "button": "Talk to us",
-        "buttonAria": "Open the contact page"
+        "title": "Gestalte ein Hiring-Erlebnis, das Kandidat:innen lieben",
+        "description": "Unser Team hilft dir, BroWorld auf deinen Recruiting-Stack, deine Prozesse und Compliance-Anforderungen zuzuschneiden.",
+        "button": "Sprich mit uns",
+        "buttonAria": "Kontaktseite öffnen"
       },
       "openings": {
-        "title": "Current openings",
-        "subtitle": "Explore the roles we're actively hiring for and get a feel for the work you'll lead from day one.",
-        "updated": "Updated weekly",
-        "updatedLabel": "Job listings refresh cadence",
+        "title": "Aktuelle Stellen",
+        "subtitle": "Entdecke Rollen, für die wir aktiv einstellen, und erhalte ein Gefühl für deine Aufgaben ab Tag eins.",
+        "updated": "Wöchentlich aktualisiert",
+        "updatedLabel": "Aktualisierungsrhythmus der Stellenausschreibungen",
         "items": {
           "productDesigner": {
             "title": "Senior Product Designer",
@@ -1451,16 +1451,16 @@
             "location": "Paris, France (Hybrid)",
             "type": "Full-time",
             "salary": "€58k - €72k · 0.05% equity",
-            "description": "Shape multi-platform experiences for recruiters and candidates across web and mobile.",
+            "description": "Gestalte plattformübergreifende Erlebnisse für Recruiter und Kandidat:innen auf Web und Mobile.",
             "tags": [
               "Design Systems",
               "Figma",
               "User Research"
             ],
             "apply": {
-              "label": "Apply now",
-              "aria": "Apply to the Senior Product Designer role",
-              "hint": "Portfolio link required"
+              "label": "Jetzt bewerben",
+              "aria": "Auf die Stelle als Senior Product Designer bewerben",
+              "hint": "Portfolio-Link erforderlich"
             }
           },
           "aiRecruiter": {
@@ -1469,16 +1469,16 @@
             "location": "Remote - EMEA",
             "type": "Full-time",
             "salary": "€70k - €90k · bonus eligible",
-            "description": "Build AI copilots that automate sourcing, screening, and scheduling flows.",
+            "description": "Entwickle KI-Copiloten, die Sourcing-, Screening- und Scheduling-Flows automatisieren.",
             "tags": [
               "Python",
               "LangChain",
               "Hiring Ops"
             ],
             "apply": {
-              "label": "Apply now",
-              "aria": "Apply to the AI Recruiter Strategist role",
-              "hint": "Experience with LLM workflows"
+              "label": "Jetzt bewerben",
+              "aria": "Auf die Stelle als AI Recruiter Strategist bewerben",
+              "hint": "Erfahrung mit LLM-Workflows"
             }
           },
           "salesLead": {
@@ -1487,16 +1487,16 @@
             "location": "Lyon, France",
             "type": "Full-time",
             "salary": "€65k base · 50% variable",
-            "description": "Lead pipeline generation and coach AEs through complex enterprise deals.",
+            "description": "Verantworte Pipeline-Aufbau und coache AEs durch komplexe Enterprise-Deals.",
             "tags": [
               "B2B SaaS",
               "Enterprise Sales",
               "Forecasting"
             ],
             "apply": {
-              "label": "Apply now",
-              "aria": "Apply to the Enterprise Sales Lead role",
-              "hint": "French & English proficiency"
+              "label": "Jetzt bewerben",
+              "aria": "Auf die Stelle als Enterprise Sales Lead bewerben",
+              "hint": "Französisch- und Englischkenntnisse"
             }
           },
           "customerSuccess": {
@@ -1505,44 +1505,44 @@
             "location": "Marseille, France",
             "type": "Full-time",
             "salary": "€45k - €55k",
-            "description": "Guide talent teams as they onboard, launch workflows, and measure adoption.",
+            "description": "Begleite Talent-Teams beim Onboarding, beim Start von Workflows und beim Messen der Adoption.",
             "tags": [
               "Implementation",
               "Change Management",
               "ATS Integrations"
             ],
             "apply": {
-              "label": "Apply now",
-              "aria": "Apply to the Customer Success Partner role",
-              "hint": "Experience supporting HRIS/ATS rollouts"
+              "label": "Jetzt bewerben",
+              "aria": "Auf die Stelle als Customer Success Partner bewerben",
+              "hint": "Erfahrung mit HRIS/ATS-Einführungen"
             }
           }
         }
       },
       "application": {
-        "title": "Submit your application",
-        "subtitle": "Share a few details and our talent team will reach out with next steps.",
+        "title": "Sende deine Bewerbung",
+        "subtitle": "Teile ein paar Details und unser Talent-Team meldet sich mit den nächsten Schritten.",
         "highlights": [
-          "A tailored walkthrough of BroWorld based on your hiring maturity.",
-          "Introductions to the team members you'll collaborate with.",
-          "A response within two business days—even if we are not moving forward yet."
+          "Ein maßgeschneiderter Rundgang durch BroWorld basierend auf deiner Hiring-Reife.",
+          "Vorstellungen der Teammitglieder, mit denen du zusammenarbeiten wirst.",
+          "Eine Antwort innerhalb von zwei Werktagen – auch wenn wir noch nicht weitermachen."
         ],
         "form": {
-          "nameLabel": "Full name",
+          "nameLabel": "Vollständiger Name",
           "namePlaceholder": "Elisa Dupont",
-          "emailLabel": "Work email",
+          "emailLabel": "Geschäftliche E-Mail",
           "emailPlaceholder": "elisa.dupont(at)company.com",
-          "roleLabel": "Role you're interested in",
-          "rolePlaceholder": "e.g. Product Designer",
-          "messageLabel": "Tell us about your experience",
-          "messagePlaceholder": "Share recent projects, achievements, or what excites you about BroWorld.",
-          "consentLabel": "I agree to be contacted about current and future opportunities at BroWorld.",
-          "submit": "Send application",
-          "success": "Thank you! Our talent team will review your profile and be in touch shortly.",
+          "roleLabel": "Rolle, die dich interessiert",
+          "rolePlaceholder": "z. B. Product Designer",
+          "messageLabel": "Erzähle uns von deiner Erfahrung",
+          "messagePlaceholder": "Teile aktuelle Projekte, Erfolge oder was dich an BroWorld begeistert.",
+          "consentLabel": "Ich bin einverstanden, zu aktuellen und zukünftigen Chancen bei BroWorld kontaktiert zu werden.",
+          "submit": "Bewerbung senden",
+          "success": "Danke! Unser Talent-Team prüft dein Profil und meldet sich in Kürze.",
           "rules": {
-            "required": "This field is required.",
-            "email": "Enter a valid email address.",
-            "consent": "Please confirm we can contact you."
+            "required": "Dieses Feld ist erforderlich.",
+            "email": "Gib eine gültige E-Mail-Adresse ein.",
+            "consent": "Bitte bestätige, dass wir dich kontaktieren dürfen."
           }
         }
       }
