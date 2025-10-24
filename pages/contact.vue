@@ -30,21 +30,17 @@ const contactMethods = computed(() => [
 </script>
 
 <template>
-  <Line />
   <ScrollSmooth>
     <v-container class="py-6">
       <v-row justify="center" align="stretch" style="row-gap: 32px;">
         <v-col cols="12" md="7">
-          <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
-            {{ t('portfolio.contact.badge') }}
-          </v-chip>
-          <h1 class="text-h4 text-white font-weight-bold">
+          <h1 class="text-h4 text-foreground font-weight-bold">
             {{ t('portfolio.contact.title') }}
           </h1>
-          <p class="text-body-1 text-white mt-4">
+          <p class="text-body-1 text-foreground mt-4">
             {{ t('portfolio.contact.description') }}
           </p>
-          <v-form class="mt-8 text-white" @submit.prevent>
+          <v-form class="mt-8 text-foreground" @submit.prevent>
             <v-row align="stretch" style="row-gap: 16px;">
               <v-col cols="12" md="6">
                 <v-text-field
@@ -111,7 +107,6 @@ const contactMethods = computed(() => [
       </v-row>
     </v-container>
   </ScrollSmooth>
-  <Line />
 </template>
 
 <style scoped>

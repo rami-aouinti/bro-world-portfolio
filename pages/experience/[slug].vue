@@ -43,15 +43,10 @@ useSeoMeta(() => ({
         class="text-none detail-page__back"
         prepend-icon="mdi-arrow-left"
       >
-        Retour aux expériences
+        Go back
       </v-btn>
-
-      <v-chip color="primary" variant="outlined" class="text-uppercase align-self-start">
-        {{ sectionLabel }}
-      </v-chip>
-
       <div class="detail-page__header">
-        <h1 class="text-h3 text-white mb-2">{{ experienceDetails.role }}</h1>
+        <h1 class="text-h3 text-foreground mb-2">{{ experienceDetails.role }}</h1>
         <p class="detail-page__lead">{{ experienceDetails.company }}</p>
       </div>
 
@@ -67,7 +62,7 @@ useSeoMeta(() => ({
       </div>
 
       <v-card variant="tonal" color="primary" class="detail-page__card pa-6">
-        <h2 class="text-h6 text-white mb-4">Principales réalisations</h2>
+        <h2 class="text-h6 text-foreground mb-4">Principales réalisations</h2>
         <ul class="detail-page__list">
           <li v-for="achievement in experienceDetails.achievements" :key="achievement" class="detail-page__list-item">
             <v-icon icon="mdi-check-circle-outline" size="20" class="detail-page__icon" />

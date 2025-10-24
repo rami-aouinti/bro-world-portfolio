@@ -90,20 +90,17 @@ async function handleLogout() {
             style="gap: 32px; align-items: center;"
           >
             <div class="flex-grow-1">
-              <v-chip color="primary" variant="flat" prepend-icon="mdi-monitor-dashboard" class="text-none mb-4">
-                Espace administration
-              </v-chip>
-              <h1 class="text-h4 text-white mb-2">Tableau de bord</h1>
-              <p class="text-body-1 text-white text-high-emphasis">
+              <h1 class="text-h4 text-foreground mb-2">Tableau de bord</h1>
+              <p class="text-body-1 text-foreground text-high-emphasis">
                 Pilotez toutes les sections du portfolio, mettez-les à jour en quelques clics et suivez l’impact de vos modifications.
               </p>
             </div>
-            <div class="dashboard-session text-white text-end">
+            <div class="dashboard-session text-foreground text-end">
               <v-avatar size="64" color="white" class="mb-3">
                 <v-icon icon="mdi-shield-account" color="primary" size="36" />
               </v-avatar>
               <p class="text-subtitle-2 mb-1 text-high-emphasis">{{ userDisplayName }}</p>
-              <p class="text-body-2 text-white text-medium-emphasis">Administrateur</p>
+              <p class="text-body-2 text-foreground text-medium-emphasis">Administrateur</p>
               <v-btn color="white" variant="outlined" class="text-none mt-4" prepend-icon="mdi-logout" @click="handleLogout">
                 Déconnexion
               </v-btn>

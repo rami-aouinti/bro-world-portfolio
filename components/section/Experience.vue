@@ -35,7 +35,7 @@ const experienceCards = computed(() => {
         <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
           {{ experiencesContent.label }}
         </v-chip>
-        <h2 class="text-h4 text-white">{{ experiencesContent.headline }}</h2>
+        <h2 class="text-h4 text-foreground">{{ experiencesContent.headline }}</h2>
 
         <v-timeline class="mt-10" density="compact">
           <v-timeline-item

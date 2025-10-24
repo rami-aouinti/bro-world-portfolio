@@ -39,8 +39,8 @@ const profileDescription = computed(() => {
             <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
               {{ aboutContent.label }}
             </v-chip>
-            <h2 class="text-h4 text-white mb-4">{{ fullname || ' ' }}</h2>
-            <div class="text-body-1 text-white d-flex flex-column" style="gap: 12px;">
+            <h2 class="text-h4 text-foreground mb-4">{{ fullname || ' ' }}</h2>
+            <div class="text-body-1 text-foreground d-flex flex-column" style="gap: 12px;">
               <p v-for="intro in aboutContent.introduce" :key="intro">
                 {{ intro }}
               </p>

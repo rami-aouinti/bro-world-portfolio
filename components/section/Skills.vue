@@ -27,8 +27,8 @@ const skillCards = computed(() => {
         <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
           {{ skillsContent.label }}
         </v-chip>
-        <h2 class="text-h4 text-white">{{ skillsContent.headline }}</h2>
-        <p class="text-body-1 text-white mt-4" style="max-width: 600px;">
+        <h2 class="text-h4 text-foreground">{{ skillsContent.headline }}</h2>
+        <p class="text-body-1 text-foreground mt-4" style="max-width: 600px;">
           {{ skillsContent.subline }}
         </p>
 

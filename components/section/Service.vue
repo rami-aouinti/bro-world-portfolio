@@ -64,8 +64,8 @@ const serviceCards = computed(() => {
         <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
           {{ content.label }}
         </v-chip>
-        <h2 class="text-h4 text-white">{{ content.headline }}</h2>
-        <p class="text-body-1 text-white mt-4" style="max-width: 600px;">
+        <h2 class="text-h4 text-foreground">{{ content.headline }}</h2>
+        <p class="text-body-1 text-foreground mt-4" style="max-width: 600px;">
           {{ content.subline }}
         </p>
 

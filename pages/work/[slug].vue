@@ -44,15 +44,11 @@ useSeoMeta(() => ({
         class="text-none detail-page__back"
         prepend-icon="mdi-arrow-left"
       >
-        Retour aux projets
+        Go to projects
       </v-btn>
 
-      <v-chip color="primary" variant="outlined" class="text-uppercase align-self-start">
-        {{ sectionLabel }}
-      </v-chip>
-
       <div class="detail-page__header">
-        <h1 class="text-h3 text-white mb-2">{{ projectDetails.name }}</h1>
+        <h1 class="text-h3 text-foreground mb-2">{{ projectDetails.name }}</h1>
         <p class="detail-page__lead">{{ projectDetails.type }}</p>
       </div>
 

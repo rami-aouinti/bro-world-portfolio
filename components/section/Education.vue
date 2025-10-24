@@ -28,7 +28,7 @@ const educationCards = computed(() => {
         <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
           {{ educationContent.label }}
         </v-chip>
-        <h2 class="text-h4 text-white">{{ educationContent.headline }}</h2>
+        <h2 class="text-h4 text-foreground">{{ educationContent.headline }}</h2>
 
         <v-row class="mt-10" dense>
           <v-col v-for="card in educationCards" :key="card.school.slug" cols="12" md="6">

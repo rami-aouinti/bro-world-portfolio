@@ -45,13 +45,8 @@ useSeoMeta(() => ({
       >
         Retour aux formations
       </v-btn>
-
-      <v-chip color="primary" variant="outlined" class="text-uppercase align-self-start">
-        {{ sectionLabel }}
-      </v-chip>
-
       <div class="detail-page__header">
-        <h1 class="text-h3 text-white mb-2">{{ schoolDetails.degree }}</h1>
+        <h1 class="text-h3 text-foreground mb-2">{{ schoolDetails.degree }}</h1>
         <p class="detail-page__lead">{{ schoolDetails.institution }}</p>
       </div>
 
