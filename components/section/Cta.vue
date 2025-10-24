@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
+import CustomGlowCard from '~/components/CustomGlowCard.vue'
 
 const { data: cta } = useContentBlock('cta')
 const { data: navlinks } = useContentBlock('navlinks')
@@ -14,7 +15,7 @@ const links = computed(() =>
   rawLinks.value.map((link) => ({
     ...link,
     to: resolveLocalizedRouteTarget(link.url, localePath)
-  })),
+  }))
 )
 const profileName = computed(() => {
   if (!profile.value) {
@@ -29,16 +30,18 @@ const profileName = computed(() => {
     <v-container class="py-16" v-if="ctaContent">
       <v-row justify="center">
         <v-col cols="12" md="8">
-          <v-card elevation="2" class="text-center" style="padding: 48px 24px;">
-            <h2 class="text-h4 font-weight-semibold">{{ ctaContent.label }}</h2>
-            <p class="text-body-1 text-medium-emphasis mt-4">
-              {{ ctaContent.description }}
-            </p>
-            <div class="mt-8">
+          <CustomGlowCard
+            class="cta__card"
+            :title="ctaContent.label"
+            :description="ctaContent.description"
+            variant="indigo"
+            eyebrow="Let's collaborate"
+          >
+            <div class="cta__actions">
               <Button to="/contact" variant="btn-dark" label="Start Collaboration" />
             </div>
-            <v-divider class="my-8" />
-            <div class="d-flex flex-wrap justify-center" style="gap: 16px;">
+            <v-divider class="cta__divider" />
+            <div class="cta__links">
               <v-btn
                 v-for="link in links"
                 :key="link.url"
@@ -50,10 +53,37 @@ const profileName = computed(() => {
                 {{ link.label }}
               </v-btn>
             </div>
-            <p class="text-caption text-medium-emphasis mt-8">&copy; {{ new Date().getFullYear() }} {{ profileName }}</p>
-          </v-card>
+            <p class="cta__caption">&copy; {{ new Date().getFullYear() }} {{ profileName }}</p>
+          </CustomGlowCard>
         </v-col>
       </v-row>
     </v-container>
   </LayoutScrollSmooth>
 </template>
+
+<style scoped>
+.cta__card {
+  text-align: center;
+}
+
+.cta__actions {
+  margin-top: clamp(24px, 4vw, 32px);
+}
+
+.cta__divider {
+  margin-block: clamp(24px, 4vw, 32px);
+}
+
+.cta__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cta__caption {
+  margin-top: clamp(24px, 4vw, 32px);
+  font-size: 0.8rem;
+  color: rgba(203, 213, 225, 0.85);
+}
+</style>

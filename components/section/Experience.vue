@@ -1,9 +1,25 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import CustomGlowCard from '~/components/CustomGlowCard.vue'
+import { glowCardVariantCycle, glowCardVariants } from '~/utils/glowCardVariants'
+
 const { data: experiences } = useContentBlock('experiences')
 
 const experiencesContent = computed(() => experiences.value)
+const experienceCards = computed(() => {
+  const positions = experiencesContent.value?.positions ?? []
+
+  return positions.map((position, index) => {
+    const variant = glowCardVariantCycle[index % glowCardVariantCycle.length]
+
+    return {
+      position,
+      variant,
+      accent: glowCardVariants[variant].accent
+    }
+  })
+})
 </script>
 
 <template>
@@ -17,35 +33,51 @@ const experiencesContent = computed(() => experiences.value)
 
         <v-timeline class="mt-10" density="compact">
           <v-timeline-item
-            v-for="position in experiencesContent.positions"
-            :key="position.role + position.company"
-            dot-color="primary"
+            v-for="card in experienceCards"
+            :key="card.position.role + card.position.company"
+            :dot-color="card.accent"
           >
-            <v-card elevation="1">
-              <v-card-title class="d-flex flex-column flex-sm-row align-sm-start justify-space-between">
-                <div>
-                  <div class="text-h6">{{ position.role }}</div>
-                  <div class="text-medium-emphasis">{{ position.company }}</div>
-                </div>
-                <div class="text-caption text-medium-emphasis mt-2 mt-sm-0">
-                  {{ position.timeframe }}
-                </div>
-              </v-card-title>
-              <v-card-text>
-                <v-list density="compact">
-                  <v-list-item
-                    v-for="achievement in position.achievements"
-                    :key="achievement"
-                    prepend-icon="mdi-check-circle-outline"
-                  >
-                    <v-list-item-title>{{ achievement }}</v-list-item-title>
-                  </v-list-item>
-                </v-list>
-              </v-card-text>
-            </v-card>
+            <CustomGlowCard
+              :title="card.position.role"
+              :description="card.position.summary ?? `Key contributions at ${card.position.company}`"
+              :eyebrow="card.position.company"
+              :badge="card.position.timeframe"
+              :variant="card.variant"
+            >
+              <ul class="experience__list">
+                <li v-for="achievement in card.position.achievements" :key="achievement" class="experience__list-item">
+                  <v-icon icon="mdi-check-circle-outline" size="18" class="experience__icon" />
+                  <span>{{ achievement }}</span>
+                </li>
+              </ul>
+            </CustomGlowCard>
           </v-timeline-item>
         </v-timeline>
       </v-container>
     </LayoutScrollSmooth>
   </section>
 </template>
+
+<style scoped>
+.experience__list {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.experience__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(226, 232, 240, 0.9);
+}
+
+.experience__icon {
+  color: currentColor;
+  margin-top: 2px;
+}
+</style>
