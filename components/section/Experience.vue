@@ -16,6 +16,7 @@ const experienceCards = computed(() => {
 
     return {
       position,
+      route: `/experience/${position.slug}`,
       variant,
       accent: glowCardVariants[variant].accent
     }
@@ -35,7 +36,7 @@ const experienceCards = computed(() => {
         <v-timeline class="mt-10" density="compact">
           <v-timeline-item
             v-for="card in experienceCards"
-            :key="card.position.role + card.position.company"
+            :key="card.position.slug"
             :dot-color="card.accent"
           >
             <CustomGlowCard
@@ -43,6 +44,7 @@ const experienceCards = computed(() => {
               :description="card.position.summary ?? `Key contributions at ${card.position.company}`"
               :eyebrow="card.position.company"
               :badge="card.position.timeframe"
+              :to="card.route"
               :variant="card.variant"
             >
               <ul class="experience__list">

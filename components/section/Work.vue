@@ -12,6 +12,7 @@ const workCards = computed(() => {
 
   return items.map((item, index) => ({
     item,
+    route: `/work/${item.slug}`,
     variant: glowCardVariantCycle[index % glowCardVariantCycle.length]
   }))
 })
@@ -30,12 +31,13 @@ const workCards = computed(() => {
         </p>
 
         <v-row class="mt-12" dense>
-          <v-col v-for="card in workCards" :key="card.item.name" cols="12" md="6">
+          <v-col v-for="card in workCards" :key="card.item.slug" cols="12" md="6">
             <CustomGlowCard
               class="work__card"
               :title="card.item.name"
               :description="card.item.description"
               :badge="card.item.type"
+              :to="card.route"
               :variant="card.variant"
             >
               <template #media>
@@ -56,6 +58,8 @@ const workCards = computed(() => {
                     color="primary"
                     variant="text"
                     class="text-none"
+                    @click.stop
+                    @keydown.stop
                   >
                     View live demo
                   </v-btn>
