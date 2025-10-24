@@ -46,19 +46,6 @@ const profileName = computed(() => {
                 :label="t('portfolio.cta.primaryCta')"
               />
             </div>
-            <v-divider class="cta__divider" />
-            <div class="cta__links">
-              <v-btn
-                v-for="link in links"
-                :key="link.url"
-                :to="link.to"
-                variant="text"
-                color="primary"
-                class="text-none"
-              >
-                {{ link.label }}
-              </v-btn>
-            </div>
             <p class="cta__caption">&copy; {{ new Date().getFullYear() }} {{ profileName }}</p>
           </CustomGlowCard>
         </v-col>
