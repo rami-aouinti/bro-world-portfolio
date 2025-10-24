@@ -1,9 +1,11 @@
 <template>
   <ClientOnly>
     <template #fallback>
-      <button
+      <UiButton
+        variant="ghost"
+        size="icon"
+        :class="triggerClass"
         type="button"
-        :class="disabledTriggerClass"
         aria-label="Toggle theme customization"
         aria-disabled="true"
         disabled
@@ -12,20 +14,15 @@
           name="lucide:paintbrush"
           size="16"
         />
-      </button>
+      </UiButton>
     </template>
-    <VMenu
-      v-model="isMenuOpen"
-      :close-on-content-click="false"
-      :location="menuLocation"
-      :offset="12"
-      transition="scale-transition"
-    >
-      <template #activator="{ props: activatorProps }">
-        <button
+    <UiPopover>
+      <UiPopoverTrigger as-child>
+        <UiButton
+          variant="ghost"
+          size="icon"
+          :class="triggerClass"
           type="button"
-          v-bind="activatorProps"
-          :class="triggerButtonClass"
           aria-label="Toggle theme customization"
           @click="handleTriggerInteraction"
           @focus="handleTriggerInteraction"
@@ -35,11 +32,11 @@
             name="lucide:paintbrush"
             size="16"
           />
-        </button>
-      </template>
-      <VCard
-        class="w-[min(33rem,90vw)] bg-background text-card-foreground rounded-xl"
-        elevation="8"
+        </UiButton>
+      </UiPopoverTrigger>
+      <UiPopoverContent
+        class="w-[33rem] bg-background text-card-foreground rounded-xl"
+        :align="breakpoints.isGreaterOrEqual('md') ? 'end' : 'center'"
       >
         <template v-if="shouldRenderCustomizer">
           <Suspense>
@@ -59,16 +56,15 @@
         >
           Preparing theme tools…
         </div>
-      </VCard>
-    </VMenu>
+      </UiPopoverContent>
+    </UiPopover>
   </ClientOnly>
 </template>
 
 <script setup lang="ts">
-import { computed, defineAsyncComponent, onMounted, ref, watch } from "vue";
+import { computed, defineAsyncComponent, onMounted, ref } from "vue";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 import Icon from "./Icon.vue";
-import { uiButtonClass } from "~/utils/ui/button";
 
 const props = defineProps<{ triggerClass?: string }>();
 
@@ -79,7 +75,6 @@ const breakpoints = useBreakpoints(breakpointsTailwind);
 const ThemeCustomizer = defineAsyncComponent(() => import("./ThemeCustomizer.vue"));
 
 const shouldRenderCustomizer = ref(false);
-const isMenuOpen = ref(false);
 
 function ensureCustomizerReady() {
   if (shouldRenderCustomizer.value) {
@@ -92,32 +87,6 @@ function ensureCustomizerReady() {
 function handleTriggerInteraction() {
   ensureCustomizerReady();
 }
-
-const triggerButtonClass = computed(() =>
-  uiButtonClass({
-    variant: "ghost",
-    size: "icon",
-    className: triggerClass.value,
-  }),
-);
-
-const disabledTriggerClass = computed(() =>
-  uiButtonClass({
-    variant: "ghost",
-    size: "icon",
-    className: [triggerClass.value, "cursor-not-allowed"],
-  }),
-);
-
-const menuLocation = computed(() =>
-  breakpoints.isGreaterOrEqual("md") ? "bottom end" : "bottom", 
-);
-
-watch(isMenuOpen, (open) => {
-  if (open) {
-    ensureCustomizerReady();
-  }
-});
 
 onMounted(() => {
   if (typeof window === "undefined") {

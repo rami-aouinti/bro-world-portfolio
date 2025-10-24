@@ -16,16 +16,12 @@
         v-if="darkModeToggle"
         class="space-y-1.5"
       >
-        <p class="text-sm font-medium text-muted-foreground">
-          {{ $t("admin.settings.themeCustomizer.theme") }}
-        </p>
+        <UiLabel>{{ $t("admin.settings.themeCustomizer.theme") }}</UiLabel>
         <div class="grid grid-cols-3 gap-2 border-primary border-2 pa-2 rounded">
-          <button
-            type="button"
-            :class="[
-              uiButtonClass({ variant: 'outline', className: 'justify-center gap-2' }),
-              { 'border-primary border-2': activeMode === 'light' },
-            ]"
+          <UiButton
+            class="justify-center gap-2"
+            variant="outline"
+            :class="{ 'border-primary border-2': activeMode === 'light' }"
             @click="setColorPreference('light')"
           >
             <Icon
@@ -33,13 +29,11 @@
               size="16"
             />
             <span class="text-xs capitalize">{{ $t("admin.settings.themeCustomizer.light") }}</span>
-          </button>
-          <button
-            type="button"
-            :class="[
-              uiButtonClass({ variant: 'outline', className: 'justify-center gap-2' }),
-              { 'border-primary border-2': activeMode === 'dark' },
-            ]"
+          </UiButton>
+          <UiButton
+            class="justify-center gap-2"
+            variant="outline"
+            :class="{ 'border-primary border-2': activeMode === 'dark' }"
             @click="setColorPreference('dark')"
           >
             <Icon
@@ -47,13 +41,11 @@
               size="16"
             />
             <span class="text-xs capitalize">{{ $t("admin.settings.themeCustomizer.dark") }}</span>
-          </button>
-          <button
-            type="button"
-            :class="[
-              uiButtonClass({ variant: 'outline', className: 'justify-center gap-2' }),
-              { 'border-primary border-2': activeMode === 'system' },
-            ]"
+          </UiButton>
+          <UiButton
+            class="justify-center gap-2"
+            variant="outline"
+            :class="{ 'border-primary border-2': activeMode === 'system' }"
             @click="setColorPreference('system')"
           >
             <Icon
@@ -63,24 +55,20 @@
             <span class="text-xs capitalize">{{
               $t("admin.settings.themeCustomizer.system")
             }}</span>
-          </button>
+          </UiButton>
         </div>
       </div>
       <div class="space-y-1">
-        <p class="text-sm font-medium text-muted-foreground">
-          {{ $t("admin.settings.themeCustomizer.color") }}
-        </p>
+        <UiLabel>{{ $t("admin.settings.themeCustomizer.color") }}</UiLabel>
         <div class="grid grid-cols-4 gap-2 border-primary border-2 pa-2 rounded-lg">
           <template
             v-for="color in allColors"
             :key="color"
           >
-            <button
-              type="button"
-              :class="[
-                uiButtonClass({ variant: 'outline', className: 'justify-start gap-2' }),
-                { 'border-primary border-2': theme === color },
-              ]"
+            <UiButton
+              class="justify-start gap-2"
+              variant="outline"
+              :class="{ 'border-primary border-2': theme === color }"
               @click="setTheme(color)"
             >
               <span
@@ -95,47 +83,40 @@
                 />
               </span>
               <span class="text-xs capitalize">{{ color }}</span>
-            </button>
+            </UiButton>
           </template>
         </div>
       </div>
       <div class="space-y-1">
-        <p class="text-sm font-medium text-muted-foreground">
-          {{ $t("admin.settings.themeCustomizer.radius") }}
-        </p>
+        <UiLabel>{{ $t("admin.settings.themeCustomizer.radius") }}</UiLabel>
         <div class="grid grid-cols-5 gap-2 border-primary border-2 pa-2 rounded-lg">
           <template
             v-for="r in RADII"
             :key="r"
           >
-            <button
-              type="button"
-              :class="[
-                uiButtonClass({ variant: 'outline', className: 'justify-center gap-2' }),
-                { 'border-primary border-2': radius === r },
-              ]"
+            <UiButton
+              class="justify-center gap-2"
+              variant="outline"
+              :class="{ 'border-primary border-2': radius === r }"
               @click="setRadius(r)"
             >
               <span class="text-xs capitalize">{{ r }}</span>
-            </button>
+            </UiButton>
           </template>
         </div>
       </div>
       <div class="space-y-1">
-        <p class="text-sm font-medium text-muted-foreground">
-          {{ $t("admin.settings.fields.themePrimary") }}
-        </p>
+        <UiLabel>{{ $t("admin.settings.fields.themePrimary") }}</UiLabel>
         <div class="grid grid-cols-4 gap-2 border-primary border-2 pa-2 rounded-lg">
           <template
             v-for="option in primaryColorOptions"
             :key="option.hex"
           >
-            <button
+            <UiButton
+              class="justify-start gap-2"
+              variant="outline"
+              :class="{ 'border-primary border-2': selectedPrimaryHex === option.hex }"
               type="button"
-              :class="[
-                uiButtonClass({ variant: 'outline', className: 'justify-start gap-2' }),
-                { 'border-primary border-2': selectedPrimaryHex === option.hex },
-              ]"
               @click="handleSelectPrimary(option.hex)"
             >
               <span
@@ -150,24 +131,21 @@
                 />
               </span>
               <span class="text-xs capitalize">{{ option.label }}</span>
-            </button>
+            </UiButton>
           </template>
         </div>
         <div class="flex items-center justify-between">
           <span class="text-xs font-mono uppercase text-muted-foreground">{{
             selectedPrimaryHex
           }}</span>
-          <button
+          <UiButton
+            variant="outline"
             type="button"
             :disabled="!isCustomPrimary"
-            :class="uiButtonClass({
-              variant: 'outline',
-              className: 'disabled:cursor-not-allowed',
-            })"
             @click="handleResetPrimary"
           >
             {{ $t("admin.settings.actions.reset") }}
-          </button>
+          </UiButton>
         </div>
       </div>
     </div>
@@ -180,7 +158,6 @@ import type { Theme } from "shadcn-docs-nuxt/lib/themes";
 import { themes } from "shadcn-docs-nuxt/lib/themes";
 import Icon from "./Icon.vue";
 import { hasInjectionContext, tryUseNuxtApp } from "#imports";
-import { uiButtonClass } from "~/utils/ui/button";
 
 const {
   themeClass,
