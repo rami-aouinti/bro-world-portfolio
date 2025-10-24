@@ -1,6 +1,6 @@
 <template>
   <span
-    v-safe-html="iconContent"
+    v-html="iconContent"
     v-bind="forwardedAttrs"
     :class="['inline-flex items-center justify-center align-middle', attrs.class]"
     :style="mergedStyle"
