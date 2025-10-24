@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed, ref, watchEffect } from 'vue'
-import { useDisplay } from 'vuetify'
 
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
