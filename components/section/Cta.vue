@@ -1,12 +1,21 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
+
 const { data: cta } = useContentBlock('cta')
 const { data: navlinks } = useContentBlock('navlinks')
 const { data: profile } = useContentBlock('profile')
 
+const localePath = useLocalePath()
 const ctaContent = computed(() => cta.value)
-const links = computed(() => navlinks.value ?? [])
+const rawLinks = computed(() => navlinks.value ?? [])
+const links = computed(() =>
+  rawLinks.value.map((link) => ({
+    ...link,
+    to: resolveLocalizedRouteTarget(link.url, localePath)
+  })),
+)
 const profileName = computed(() => {
   if (!profile.value) {
     return ''
@@ -33,7 +42,7 @@ const profileName = computed(() => {
               <v-btn
                 v-for="link in links"
                 :key="link.url"
-                :to="link.url"
+                :to="link.to"
                 variant="text"
                 color="primary"
                 class="text-none"
