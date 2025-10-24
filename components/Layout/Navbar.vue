@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+import { useDisplay } from "vuetify";
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: navlinks } = useContentBlock('navlinks')
@@ -54,7 +54,7 @@ watchEffect(() => {
       />
     </div>
   </v-app-bar>
-
+</template>
 <style scoped>
 .hero-app-bar {
   --nav-max-width: min(900px, calc(100% - 24px));
