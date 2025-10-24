@@ -47,9 +47,15 @@ watch(data, (value) => {
   }
   saveState.success = ''
   saveState.errors = []
-  const clone = typeof structuredClone === 'function'
-    ? structuredClone(value)
-    : JSON.parse(JSON.stringify(value))
+  let clone: Record<string, any>
+  try {
+    clone = typeof structuredClone === 'function'
+      ? structuredClone(value)
+      : JSON.parse(JSON.stringify(value))
+  }
+  catch {
+    clone = JSON.parse(JSON.stringify(value))
+  }
   Object.keys(form).forEach((key) => {
     delete form[key]
   })
