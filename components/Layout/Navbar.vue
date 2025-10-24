@@ -24,11 +24,12 @@ watchEffect(() => {
 
 <template>
   <v-app-bar
-    class="hero-app-bar px-16"
+    class="hero-app-bar mx-auto"
     color="transparent"
     density="compact"
     height="60"
     :elevation="0"
+    rounded="xl"
   >
     <div class="hero-app-bar__content">
       <div class="hero-app-bar__side hero-app-bar__side--left">
