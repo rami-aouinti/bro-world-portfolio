@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { LOCALIZED_PAGE_META } from '~/utils/i18n/routes'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
+import Line from "~/components/Layout/Line.vue";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 definePageMeta(LOCALIZED_PAGE_META.contact)
 
@@ -25,19 +27,19 @@ const contactMethods = [
 </script>
 
 <template>
-  <LayoutLine />
-  <LayoutScrollSmooth>
-    <v-container class="py-16">
+  <Line />
+  <ScrollSmooth>
+    <v-container class="py-6">
       <v-row justify="center" align="stretch" style="row-gap: 32px;">
         <v-col cols="12" md="7">
           <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">Contact</v-chip>
-          <h1 class="text-h4 font-weight-semibold">
+          <h1 class="text-h4 text-white font-weight-bold">
             Let’s create something remarkable together.
           </h1>
-          <p class="text-body-1 text-medium-emphasis mt-4">
+          <p class="text-body-1 text-white mt-4">
             Whether you have a question, a project idea, or just want to say hello, feel free to reach out. I’m always excited to collaborate on new challenges and craft intuitive experiences.
           </p>
-          <v-form class="mt-8" @submit.prevent>
+          <v-form class="mt-8 text-white" @submit.prevent>
             <v-row align="stretch" style="row-gap: 16px;">
               <v-col cols="12" md="6">
                 <v-text-field label="Name" autocomplete="name" variant="outlined" density="comfortable" />
@@ -88,8 +90,8 @@ const contactMethods = [
         </v-col>
       </v-row>
     </v-container>
-  </LayoutScrollSmooth>
-  <LayoutLine />
+  </ScrollSmooth>
+  <Line />
 </template>
 
 <style scoped>

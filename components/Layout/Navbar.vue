@@ -26,9 +26,9 @@ watchEffect(() => {
   <v-app-bar
     class="hero-app-bar px-16"
     color="transparent"
-    flat
     density="compact"
     height="60"
+    :elevation="0"
   >
     <div class="hero-app-bar__content">
       <div class="hero-app-bar__side hero-app-bar__side--left">
@@ -36,8 +36,9 @@ watchEffect(() => {
           class="hero-app-bar__button hero-app-bar__button--left"
           color="primary"
           variant="outlined"
+          to="/contact"
         >
-          Left Button
+          Contact
         </v-btn>
         <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer" />
       </div>
@@ -57,9 +58,10 @@ watchEffect(() => {
         <v-btn
           class="hero-app-bar__button hero-app-bar__button--right"
           color="primary"
-          variant="flat"
+          variant="outlined"
+          to="/contact"
         >
-          Right Button
+          Language
         </v-btn>
       </div>
     </div>
@@ -67,11 +69,7 @@ watchEffect(() => {
 </template>
 <style scoped>
 .hero-app-bar {
-  background: rgba(9, 13, 25, 0.78);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: 999px;
-  backdrop-filter: blur(18px);
-  box-shadow: 0 24px 60px -40px rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(38px);
   margin: 6px auto 0;
   padding-inline: clamp(12px, 3vw, 24px);
   inset-inline: auto;

@@ -3,7 +3,7 @@ import type { ContentRecord } from '~/types/content'
 export const DEFAULT_CONTENT: ContentRecord = {
   navlinks: [
     {
-      label: 'Start',
+      label: 'Home',
       url: '/'
     },
     {
