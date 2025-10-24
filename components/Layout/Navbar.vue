@@ -3,6 +3,8 @@ import { useDisplay } from "vuetify";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target"
 
 import type { LocaleObject } from "@nuxtjs/i18n";
+import ThemePopover from "~/components/ThemePopover.vue";
+import DarkModeToggle from "~/components/DarkModeToggle.vue";
 
 const { data: navlinks } = useContentBlock('navlinks')
 
