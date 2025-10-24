@@ -40,39 +40,37 @@ const contactMethods = computed(() => [
           <p class="text-body-1 text-foreground mt-4">
             {{ t('portfolio.contact.description') }}
           </p>
-          <ClientOnly>
-            <v-form class="mt-8 text-foreground" @submit.prevent>
-              <v-row align="stretch" style="row-gap: 16px;">
-                <v-col cols="12" md="6">
-                  <v-text-field
-                    :label="t('portfolio.contact.form.nameLabel')"
-                    autocomplete="name"
-                    variant="outlined"
-                    density="comfortable"
-                  />
-                </v-col>
-                <v-col cols="12" md="6">
-                  <v-text-field
-                    :label="t('portfolio.contact.form.emailLabel')"
-                    type="email"
-                    autocomplete="email"
-                    variant="outlined"
-                    density="comfortable"
-                  />
-                </v-col>
-              </v-row>
-              <v-textarea
-                :label="t('portfolio.contact.form.projectDetailsLabel')"
-                rows="6"
-                variant="outlined"
-                density="comfortable"
-                :placeholder="t('portfolio.contact.form.projectDetailsPlaceholder')"
-              />
-              <v-btn type="submit" color="primary" class="text-none mt-4">
-                {{ t('portfolio.contact.form.submit') }}
-              </v-btn>
-            </v-form>
-          </ClientOnly>
+          <v-form class="mt-8 text-foreground" @submit.prevent>
+            <v-row align="stretch" style="row-gap: 16px;">
+              <v-col cols="12" md="6">
+                <v-text-field
+                  :label="t('portfolio.contact.form.nameLabel')"
+                  autocomplete="name"
+                  variant="outlined"
+                  density="comfortable"
+                />
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  :label="t('portfolio.contact.form.emailLabel')"
+                  type="email"
+                  autocomplete="email"
+                  variant="outlined"
+                  density="comfortable"
+                />
+              </v-col>
+            </v-row>
+            <v-textarea
+              :label="t('portfolio.contact.form.projectDetailsLabel')"
+              rows="6"
+              variant="outlined"
+              density="comfortable"
+              :placeholder="t('portfolio.contact.form.projectDetailsPlaceholder')"
+            />
+            <v-btn type="submit" color="primary" class="text-none mt-4">
+              {{ t('portfolio.contact.form.submit') }}
+            </v-btn>
+          </v-form>
         </v-col>
         <v-col cols="12" md="5">
           <CustomGlowCard
