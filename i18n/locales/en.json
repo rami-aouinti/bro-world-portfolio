@@ -4112,6 +4112,39 @@
       "viewProjectLabel": "View project",
       "viewProjectCta": "Explore"
     },
+    "contact": {
+      "badge": "Contact",
+      "title": "Let's build something remarkable together.",
+      "description": "Have a question, a project idea, or just want to connect? Drop me a line. I love tackling new challenges and designing intuitive experiences.",
+      "form": {
+        "nameLabel": "Name",
+        "emailLabel": "E-mail",
+        "projectDetailsLabel": "Project details",
+        "projectDetailsPlaceholder": "Tell me about your project, timeline, and goals.",
+        "submit": "Send message"
+      },
+      "card": {
+        "title": "Direct contact",
+        "description": "Need a quick chat? Leave me a message and I'll get back to you within one business day.",
+        "badge": "Let's talk",
+        "footerLabel": "Schedule a call",
+        "footerCta": "Stay in touch"
+      },
+      "methods": {
+        "email": {
+          "label": "E-mail",
+          "value": "hello@broworld.dev"
+        },
+        "location": {
+          "label": "Location",
+          "value": "Jakarta, Indonesia"
+        },
+        "availability": {
+          "label": "Availability",
+          "value": "Monday to Friday, 9am – 6pm (GMT+7)"
+        }
+      }
+    },
     "experience": {
       "fallbackSummary": "Key contributions at {company}"
     },
