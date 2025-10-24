@@ -416,6 +416,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "nuxt-gtag",
     "@nuxt/ui",
+    "shadcn-nuxt",
     "@nuxt/eslint",
     "@nuxt/scripts",
     "motion-v/nuxt",
