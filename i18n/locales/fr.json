@@ -1665,60 +1665,60 @@
     },
     "ecommerce": {
       "title": "E-commerce",
-      "subtitle": "Craft immersive storefronts, orchestrate fulfilment, and personalise campaigns across every channel.",
-      "featuresTitle": "Modern retail, one toolkit",
+      "subtitle": "Imaginez des vitrines immersives, orchestrez la logistique et personnalisez les campagnes sur chaque canal.",
+      "featuresTitle": "Commerce moderne, une seule boîte à outils",
       "features": {
         "catalog": {
-          "title": "Unify your catalogue",
-          "description": "Manage product variants, rich storytelling, and merchandising in one workspace.",
+          "title": "Unifiez votre catalogue",
+          "description": "Gérez les variantes de produits, un storytelling riche et le merchandising dans un seul espace de travail.",
           "points": [
-            "Support digital, physical, and subscription products side by side.",
-            "Optimise imagery, copy, and translations with collaborative reviews.",
-            "Launch curated collections with scheduling and inventory safeguards."
+            "Prenez en charge les produits numériques, physiques et par abonnement côte à côte.",
+            "Optimisez les visuels, textes et traductions grâce à des revues collaboratives.",
+            "Lancez des collections personnalisées avec une planification et des garde-fous sur les stocks."
           ]
         },
         "checkout": {
-          "title": "Delight at checkout",
-          "description": "Reduce friction with fast, accessible, and trusted purchase flows.",
+          "title": "Offrez une expérience d’achat fluide",
+          "description": "Réduisez les frictions avec des parcours d’achat rapides, accessibles et fiables.",
           "points": [
-            "Offer local payments, wallets, and instalments without custom code.",
-            "Embed fraud checks, taxes, and duties that scale globally.",
-            "Give support teams live context to resolve orders instantly."
+            "Proposez des paiements locaux, des portefeuilles et des échéanciers sans code spécifique.",
+            "Intégrez des contrôles anti-fraude, des taxes et des droits qui passent à l’échelle mondiale.",
+            "Offrez aux équipes support un contexte en direct pour résoudre instantanément les commandes."
           ]
         },
         "marketing": {
-          "title": "Personalise every campaign",
-          "description": "Coordinate lifecycle messaging, loyalty, and analytics together.",
+          "title": "Personnalisez chaque campagne",
+          "description": "Coordonnez les messages du cycle de vie, la fidélisation et les analyses dans un même espace.",
           "points": [
-            "Segment audiences with zero-party and behavioural data respectfully.",
-            "Trigger automations tied to launches, restocks, and VIP moments.",
-            "Attribute revenue accurately with multi-touch insights."
+            "Segmentez les audiences avec des données déclaratives et comportementales dans le respect de la vie privée.",
+            "Déclenchez des automatisations pour les lancements, les réassorts et les attentions VIP.",
+            "Attribuez les revenus avec précision grâce à des insights multi-touch."
           ]
         }
       },
-      "workflowTitle": "From concept to scale",
+      "workflowTitle": "Du concept à la montée en puissance",
       "workflow": {
         "steps": {
           "launch": {
-            "title": "Launch",
-            "description": "Prototype storefronts, test merchandising, and go live confidently."
+            "title": "Lancement",
+            "description": "Prototypiez vos vitrines, testez le merchandising et mettez en ligne sereinement."
           },
           "optimize": {
-            "title": "Optimise",
-            "description": "Iterate on conversion, retention, and operations with actionable insights."
+            "title": "Optimisation",
+            "description": "Faites évoluer la conversion, la rétention et les opérations à partir d’insights actionnables."
           },
           "scale": {
-            "title": "Scale",
-            "description": "Expand to new regions, channels, and partnerships with built-in governance."
+            "title": "Changement d’échelle",
+            "description": "Étendez-vous à de nouvelles régions, canaux et partenariats avec une gouvernance intégrée."
           }
         }
       },
       "stepLabel": "Phase {number}",
       "cta": {
-        "title": "Transform your retail roadmap",
-        "description": "Explore how BroWorld adapts to your commerce stack, fulfilment partners, and customer promises.",
-        "button": "Connect with sales",
-        "buttonAria": "Open the contact page"
+        "title": "Transformez votre feuille de route retail",
+        "description": "Découvrez comment BroWorld s’adapte à votre stack e-commerce, à vos partenaires logistiques et à vos promesses clients.",
+        "button": "Contacter l’équipe commerciale",
+        "buttonAria": "Ouvrir la page de contact"
       }
     },
     "education": {
@@ -3002,25 +3002,25 @@
       "title": "E-commerce",
       "description": "Lancez et faites évoluer des parcours de vente modernes.",
       "catalog": {
-        "title": "Product catalog",
-        "description": "Explore curated workspace, wellbeing, and travel essentials."
+        "title": "Catalogue produits",
+        "description": "Explorez une sélection d’espaces de travail modulaires, de solutions bien-être et d’essentiels de voyage."
       },
       "product": {
-        "title": "Product detail",
-        "description": "Discover detailed specs, pricing, and availability across the demo range."
+        "title": "Fiche produit",
+        "description": "Découvrez les caractéristiques, les prix et la disponibilité dans toute la gamme démo."
       },
       "cart": {
-        "title": "Cart",
-        "description": "Review selected items, adjust quantities, and prepare for checkout."
+        "title": "Panier",
+        "description": "Passez en revue vos articles, ajustez les quantités et préparez la commande."
       },
       "checkout": {
-        "title": "Checkout",
-        "description": "Complete shipping, payment, and review steps before placing your order."
+        "title": "Paiement",
+        "description": "Renseignez la livraison, le paiement et la vérification avant de finaliser la commande."
       }
     },
     "quiz": {
-      "title": "Quiz experiences",
-      "description": "Design interactive quiz journeys with adaptive question banks."
+      "title": "Expériences de quiz",
+      "description": "Concevez des parcours de quiz interactifs avec des banques de questions adaptatives."
     },
     "education": {
       "title": "Éducation",
@@ -3032,7 +3032,7 @@
     },
     "performance": {
       "title": "Instantané de la qualité d'expérience",
-      "description": "Track the budgets and audits keeping BroWorld fast for every community."
+      "description": "Suivez les budgets et audits qui gardent BroWorld performant pour chaque communauté."
     },
     "crm": {
       "title": "Espace CRM",
@@ -3815,199 +3815,199 @@
   "demo": {
     "ecommerce": {
       "actions": {
-        "addToCart": "Add to cart",
-        "viewDetails": "View details"
+        "addToCart": "Ajouter au panier",
+        "viewDetails": "Voir les détails"
       },
       "badges": {
-        "bestseller": "Bestseller",
-        "new": "New arrival",
-        "staffPick": "Team favourite",
-        "limited": "Limited run"
+        "bestseller": "Meilleure vente",
+        "new": "Nouvelle arrivée",
+        "staffPick": "Coup de cœur de l’équipe",
+        "limited": "Édition limitée"
       },
       "specifications": {
-        "power": "Power",
-        "material": "Material",
+        "power": "Puissance",
+        "material": "Matériaux",
         "dimensions": "Dimensions",
-        "capacity": "Capacity",
-        "compatibility": "Compatibility",
-        "connectivity": "Connectivity"
+        "capacity": "Capacité",
+        "compatibility": "Compatibilité",
+        "connectivity": "Connectivité"
       },
       "inventory": {
-        "inStock": "{count} units in stock",
-        "lowStock": "Only {count} left",
-        "outOfStock": "Out of stock",
-        "defaultMessage": "Check availability with our team"
+        "inStock": "{count} unités en stock",
+        "lowStock": "Plus que {count} restants",
+        "outOfStock": "Rupture de stock",
+        "defaultMessage": "Vérifiez la disponibilité auprès de notre équipe."
       },
       "summary": {
-        "title": "Order summary",
-        "quantity": "Qty: {count}",
-        "subtotal": "Subtotal",
-        "tax": "Estimated tax",
-        "shipping": "Shipping",
+        "title": "Récapitulatif de commande",
+        "quantity": "Qté : {count}",
+        "subtotal": "Sous-total",
+        "tax": "Taxes estimées",
+        "shipping": "Livraison",
         "total": "Total"
       },
       "catalog": {
-        "title": "Discover the demo storefront",
-        "subtitle": "Browse modular workspace companions, mindful wellbeing tech, and elevated travel gear in one place.",
-        "backToOverview": "Return to overview",
-        "goToCart": "View cart ({count})",
+        "title": "Découvrez la vitrine démo",
+        "subtitle": "Parcourez des accessoires de bureau modulaires, des technologies bien-être et des bagages haut de gamme réunis en un seul endroit.",
+        "backToOverview": "Retour à l’aperçu",
+        "goToCart": "Voir le panier ({count})",
         "filters": {
-          "all": "All categories"
+          "all": "Toutes les catégories"
         },
-        "searchLabel": "Search catalog",
-        "emptyTitle": "No products match",
-        "emptySubtitle": "We couldn’t find any items matching “{query}”. Reset your filters to explore the full demo range.",
-        "resetFilters": "Reset filters",
-        "breadcrumb": "Catalog"
+        "searchLabel": "Rechercher dans le catalogue",
+        "emptyTitle": "Aucun produit ne correspond",
+        "emptySubtitle": "Nous n’avons trouvé aucun article correspondant à « {query} ». Réinitialisez vos filtres pour explorer l’intégralité de la démo.",
+        "resetFilters": "Réinitialiser les filtres",
+        "breadcrumb": "Catalogue"
       },
       "product": {
-        "rating": "{rating} ★ ({reviews} reviews)",
-        "quantityLabel": "Quantity",
-        "viewCart": "View cart",
-        "detailsTitle": "Why it works",
-        "specificationsTitle": "Specifications",
-        "goToCheckout": "Proceed to checkout",
-        "backToCatalog": "Back to catalog"
+        "rating": "{rating} ★ ({reviews} avis)",
+        "quantityLabel": "Quantité",
+        "viewCart": "Voir le panier",
+        "detailsTitle": "Pourquoi cela fonctionne",
+        "specificationsTitle": "Caractéristiques",
+        "goToCheckout": "Passer à la caisse",
+        "backToCatalog": "Retour au catalogue"
       },
       "cart": {
-        "title": "Your cart",
-        "subtitle": "Keep building your bundle or head straight to checkout when you’re ready.",
-        "breadcrumb": "Cart",
+        "title": "Votre panier",
+        "subtitle": "Complétez votre sélection ou passez directement à la commande quand vous êtes prêt.",
+        "breadcrumb": "Panier",
         "table": {
-          "product": "Product",
-          "quantity": "Quantity",
-          "price": "Unit price",
-          "total": "Line total",
-          "actions": "Remove item"
+          "product": "Produit",
+          "quantity": "Quantité",
+          "price": "Prix unitaire",
+          "total": "Total ligne",
+          "actions": "Retirer l’article"
         },
-        "nextStepsTitle": "Next steps",
-        "nextStepsDescription": "Complete checkout or continue exploring the catalog for more add-ons.",
-        "continueShopping": "Continue shopping",
-        "proceedToCheckout": "Proceed to checkout",
-        "checkoutCta": "Go to checkout",
-        "clearCart": "Clear cart",
-        "emptyTitle": "Your cart is empty",
-        "emptySubtitle": "Add products from the catalog to see them listed here.",
-        "shopNow": "Shop the catalog"
+        "nextStepsTitle": "Étapes suivantes",
+        "nextStepsDescription": "Validez la commande ou continuez d’explorer le catalogue pour ajouter d’autres options.",
+        "continueShopping": "Poursuivre les achats",
+        "proceedToCheckout": "Passer à la commande",
+        "checkoutCta": "Aller au paiement",
+        "clearCart": "Vider le panier",
+        "emptyTitle": "Votre panier est vide",
+        "emptySubtitle": "Ajoutez des produits depuis le catalogue pour les voir apparaître ici.",
+        "shopNow": "Explorer le catalogue"
       },
       "checkout": {
-        "title": "Secure checkout",
-        "subtitle": "Confirm delivery, payment, and review details to wrap up your demo order.",
-        "breadcrumb": "Checkout",
-        "empty": "There are no items in your cart yet.",
-        "shopLink": "Browse catalog",
+        "title": "Paiement sécurisé",
+        "subtitle": "Confirmez la livraison, le paiement et vérifiez les détails pour finaliser votre commande démo.",
+        "breadcrumb": "Paiement",
+        "empty": "Votre panier ne contient pas encore d’articles.",
+        "shopLink": "Parcourir le catalogue",
         "steps": {
-          "shipping": "Shipping",
-          "shippingSubtitle": "Address and delivery",
-          "payment": "Payment",
-          "paymentSubtitle": "Billing details",
-          "review": "Review",
-          "reviewSubtitle": "Confirm & submit"
+          "shipping": "Livraison",
+          "shippingSubtitle": "Adresse et mode de livraison",
+          "payment": "Paiement",
+          "paymentSubtitle": "Informations de facturation",
+          "review": "Vérification",
+          "reviewSubtitle": "Confirmer et envoyer"
         },
-        "shippingTitle": "Delivery information",
-        "paymentTitle": "Payment method",
-        "reviewTitle": "Final review",
-        "reviewShipping": "Shipping",
-        "reviewPayment": "Payment",
-        "reviewHint": "Everything look good? You can always return to previous steps before placing the order.",
-        "backToCart": "Back to cart",
-        "continueToPayment": "Continue to payment",
-        "backToShipping": "Back to shipping",
-        "reviewOrder": "Review order",
-        "summaryContinue": "Review order",
-        "backToPayment": "Back to payment",
-        "placeOrder": "Place order",
-        "browseMore": "Browse more products",
+        "shippingTitle": "Informations de livraison",
+        "paymentTitle": "Mode de paiement",
+        "reviewTitle": "Dernière vérification",
+        "reviewShipping": "Livraison",
+        "reviewPayment": "Paiement",
+        "reviewHint": "Tout est correct ? Vous pouvez revenir aux étapes précédentes avant de passer la commande.",
+        "backToCart": "Retour au panier",
+        "continueToPayment": "Continuer vers le paiement",
+        "backToShipping": "Retour à la livraison",
+        "reviewOrder": "Vérifier la commande",
+        "summaryContinue": "Vérifier la commande",
+        "backToPayment": "Retour au paiement",
+        "placeOrder": "Passer la commande",
+        "browseMore": "Voir plus de produits",
         "fields": {
-          "firstName": "First name",
-          "lastName": "Last name",
-          "email": "Email",
-          "address": "Address",
-          "city": "City",
-          "postalCode": "Postal code",
-          "country": "Country",
-          "delivery": "Delivery option",
-          "notes": "Order notes",
-          "cardNumber": "Card number",
-          "expiry": "Expiry",
+          "firstName": "Prénom",
+          "lastName": "Nom",
+          "email": "E-mail",
+          "address": "Adresse",
+          "city": "Ville",
+          "postalCode": "Code postal",
+          "country": "Pays",
+          "delivery": "Option de livraison",
+          "notes": "Notes de commande",
+          "cardNumber": "Numéro de carte",
+          "expiry": "Expiration",
           "cvc": "CVC",
-          "saveCard": "Securely save this card for next time"
+          "saveCard": "Enregistrer cette carte en toute sécurité pour la prochaine fois"
         },
         "delivery": {
-          "standard": "Standard (free, 3-5 days)",
-          "express": "Express (paid, 24-48h)"
+          "standard": "Standard (gratuit, 3-5 jours)",
+          "express": "Express (payant, 24-48 h)"
         },
-        "exampleOrdersTitle": "Recent demo orders",
-        "maskedCard": "Visa ending ••••{last4}"
+        "exampleOrdersTitle": "Commandes démo récentes",
+        "maskedCard": "Visa se terminant par ••••{last4}"
       },
       "orders": {
         "status": {
-          "processing": "Processing",
-          "fulfilled": "Fulfilled",
-          "cancelled": "Cancelled",
-          "draft": "Draft"
+          "processing": "En cours de traitement",
+          "fulfilled": "Expédiée",
+          "cancelled": "Annulée",
+          "draft": "Brouillon"
         },
         "primary": {
           "customer": "Jamie Ortiz · Paris, France",
-          "notes": "Repeat customer restock of workplace favourites."
+          "notes": "Réassort récurrent des indispensables pour le bureau."
         },
         "restock": {
-          "customer": "Taylor Singh · Copenhagen, Denmark",
-          "notes": "Event gifting set scheduled for warehouse dispatch."
+          "customer": "Taylor Singh · Copenhague, Danemark",
+          "notes": "Coffret cadeaux pour événement, expédition planifiée depuis l’entrepôt."
         }
       },
       "categories": {
         "workspace": {
-          "name": "Workspace",
-          "description": "Lighting, ergonomics, and focus rituals for hybrid teams."
+          "name": "Espace de travail",
+          "description": "Éclairage, ergonomie et rituels de concentration pour les équipes hybrides."
         },
         "wellbeing": {
-          "name": "Wellbeing",
-          "description": "Support healthy routines with adaptive tech and insights."
+          "name": "Bien-être",
+          "description": "Soutenez des routines saines avec une technologie adaptable et des insights."
         },
         "travel": {
-          "name": "Travel",
-          "description": "Go-anywhere carry essentials for the modern explorer."
+          "name": "Voyage",
+          "description": "L’essentiel du nomadisme moderne, prêt à vous accompagner partout."
         }
       },
       "products": {
         "auroraDeskLamp": {
-          "name": "Aurora adaptive desk lamp",
-          "summary": "Dynamic lighting scenes that sync with circadian rhythms and deep work blocks.",
-          "description": "Aurora blends ambient LEDs with warm task lighting, adaptive brightness, and voice control. Teams personalise presets for focus sessions or cosy after-hours.",
+          "name": "Lampe de bureau adaptative Aurora",
+          "summary": "Des scènes lumineuses dynamiques synchronisées sur les rythmes circadiens et les sessions de deep work.",
+          "description": "Aurora combine LED d’ambiance et éclairage de tâche chaleureux, luminosité adaptative et contrôle vocal. Les équipes personnalisent des préréglages pour les sessions de concentration ou les soirées confort.",
           "specs": {
-            "power": "18W LED array",
-            "material": "Anodised aluminium and recycled polymer",
+            "power": "Matrice LED 18 W",
+            "material": "Aluminium anodisé et polymère recyclé",
             "dimensions": "45 × 12 × 38 cm"
           }
         },
         "focusHubPro": {
           "name": "Focus Hub Pro",
-          "summary": "Modular workspace dock with wireless charging, acoustic shielding, and ambient soundscapes.",
-          "description": "Focus Hub Pro anchors hot desks with integrated power, device cradles, and configurable dividers. Built-in soundscapes and white noise adapt to busy floors.",
+          "summary": "Station de travail modulaire avec recharge sans fil, isolation acoustique et ambiances sonores.",
+          "description": "Focus Hub Pro dynamise les bureaux flexibles avec alimentation intégrée, supports pour appareils et cloisons configurables. Des ambiances sonores et du bruit blanc intégrés s’adaptent aux plateaux animés.",
           "specs": {
-            "connectivity": "Dual USB-C, 2× Qi wireless pads, Wi-Fi 6 hub",
+            "connectivity": "Double USB-C, 2× pads Qi sans fil, hub Wi-Fi 6",
             "dimensions": "52 × 22 × 18 cm",
-            "material": "Felt acoustic panels and alloy frame"
+            "material": "Panneaux acoustiques en feutre et châssis en alliage"
           }
         },
         "pulseSmartBottle": {
-          "name": "Pulse smart hydration bottle",
-          "summary": "Hydration tracking with adaptive reminders, mineral insights, and team challenges.",
-          "description": "Pulse keeps crews energised with sip detection, mineral analysis, and app nudges. Sync hydration streaks with wellbeing programmes to boost morale.",
+          "name": "Gourde connectée Pulse",
+          "summary": "Suivi d’hydratation avec rappels adaptatifs, analyses minérales et défis d’équipe.",
+          "description": "Pulse stimule les équipes grâce à la détection des gorgées, l’analyse des minéraux et des notifications applicatives. Synchronisez les séries d’hydratation avec les programmes bien-être pour renforcer le moral.",
           "specs": {
             "capacity": "750 ml",
-            "material": "Double-wall stainless steel",
-            "compatibility": "iOS, Android, and BroWorld wellbeing dashboards"
+            "material": "Acier inoxydable double paroi",
+            "compatibility": "iOS, Android et tableaux de bord bien-être BroWorld"
           }
         },
         "atlasWeekender": {
-          "name": "Atlas recycled weekender",
-          "summary": "Cabin-friendly carry crafted from regenerated ocean plastic with modular packing cubes.",
-          "description": "Atlas keeps teams travel-ready with quick-access tech pockets, convertible straps, and padded laptop storage. Each bag reuses 28 plastic bottles.",
+          "name": "Sac week-end recyclé Atlas",
+          "summary": "Bagage cabine conçu en plastique océanique régénéré avec cubes d’organisation modulaires.",
+          "description": "Atlas garde les équipes prêtes à partir grâce à ses poches techniques à accès rapide, ses sangles convertibles et son compartiment ordinateur rembourré. Chaque sac réutilise 28 bouteilles en plastique.",
           "specs": {
             "capacity": "38 L",
-            "material": "Recycled ocean-bound nylon",
+            "material": "Nylon recyclé issu des océans",
             "dimensions": "55 × 26 × 24 cm"
           }
         }
