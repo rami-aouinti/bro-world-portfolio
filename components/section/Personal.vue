@@ -2,10 +2,9 @@
 import { computed } from 'vue'
 import ScrollSmooth from '~/components/Layout/ScrollSmooth.vue'
 
-import CustomGlowCard from '~/components/CustomGlowCard.vue'
-import { glowCardVariantCycle } from '~/utils/glowCardVariants'
+import { AppleCardCarousel, AppleCard } from '~/components/Ui/apple-card-carousel'
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-import {Text3d} from "../Ui/text-3d";
+import { Text3d } from '../Ui/text-3d'
 
 const { data: personal } = useContentBlock('hero')
 const { data: work } = useContentBlock('work')
@@ -14,11 +13,94 @@ const localePath = useLocalePath()
 
 const personalContent = computed(() => personal.value)
 const workItems = computed(() => work.value?.works ?? [])
-const personalCards = computed(() =>
-  workItems.value.map((item, index) => ({
-    item,
-    variant: glowCardVariantCycle[index % glowCardVariantCycle.length]
-  }))
+
+const enrichedWorkDetails: Record<string, {
+  description: string
+  highlights: string[]
+  impact?: string
+}> = {
+  "microservices-tkdeutschland": {
+    description:
+      "Designed a distributed Symfony microservice platform for TKDeutschland’s insurance back office, aligning internal tooling with partner-facing APIs.",
+    highlights: [
+      "Modeled asynchronous messaging with Symfony Messenger and RabbitMQ to keep services resilient under peak load.",
+      "Implemented OAuth2 security, audit logging, and fine-grained permissions for partner integrations.",
+      "Containerized workloads with Docker and GitLab CI to ensure predictable deployments across environments.",
+    ],
+    impact: "Impact: 30% faster partner onboarding and zero-downtime releases.",
+  },
+  "ecommerce-plattformen-hinke-gmbh": {
+    description:
+      "Delivered modular e-commerce storefronts for Hinke GmbH using Shopware and Symfony, tailored for B2B buyers and marketing teams.",
+    highlights: [
+      "Customized catalogue, pricing tiers, and checkout flows to match complex procurement journeys.",
+      "Integrated ERP inventory feeds and automated fulfillment notifications to keep logistics in sync.",
+      "Profiled SQL hotspots and added Redis caching to sustain product launches without slowdowns.",
+    ],
+    impact: "Impact: Revenue-critical flows stayed below 200ms even during campaign surges.",
+  },
+  "shopware-integrationen-wizmo-gmbh": {
+    description:
+      "Developed a suite of Shopware extensions for Wizmo GmbH’s international clients with a focus on reliability and reuse.",
+    highlights: [
+      "Engineered REST connectors that synchronized orders and customer data with external CRMs.",
+      "Published reusable plugin scaffolding with comprehensive unit and integration tests.",
+      "Set up observability dashboards and alerting to monitor plugin health after release.",
+    ],
+    impact: "Impact: Reduced integration lead time from weeks to just a few days.",
+  },
+  "monitoring-analytics-automatisierung": {
+    description:
+      "Automated marketing analytics and observability pipelines so growth teams could respond to live customer behaviour.",
+    highlights: [
+      "Implemented event streaming from web properties into Google Analytics 4 and BigQuery.",
+      "Delivered Looker Studio dashboards with actionable health metrics for marketing stakeholders.",
+      "Built alerting workflows that surfaced anomalies before campaigns were affected.",
+    ],
+    impact: "Impact: Teams detected conversion drops within minutes instead of hours.",
+  },
+  "leistungsoptimierung-legacy-systeme": {
+    description:
+      "Stabilized and modernized legacy PHP and Symfony services without disrupting day-to-day operations.",
+    highlights: [
+      "Refactored brittle modules into well-tested, service-oriented components.",
+      "Introduced static analysis, PHPStan, and regression suites to guard against regressions.",
+      "Optimized critical SQL queries and added caching to cut response times dramatically.",
+    ],
+    impact: "Impact: Average API latency dropped by 45% while boosting developer confidence.",
+  },
+  "dockerisierte-entwicklungsumgebungen": {
+    description:
+      "Standardized containerized development environments that mirrored production for distributed teams.",
+    highlights: [
+      "Composed Docker setups covering web, worker, and database services for fast onboarding.",
+      "Scripted CI pipelines that ran unit, integration, and smoke tests in parallel.",
+      "Documented health checks and playbooks enabling self-service troubleshooting.",
+    ],
+    impact: "Impact: New engineers shipped production-ready code in their first sprint.",
+  },
+}
+
+const carouselCards = computed(() =>
+  workItems.value.map((item) => {
+    const enriched = enrichedWorkDetails[item.slug] ?? {
+      description: item.description,
+      highlights: [],
+    }
+
+    return {
+      card: {
+        src: `/images/work/${item.thumbnails}`,
+        title: item.name,
+        category: item.type,
+      },
+      description: enriched.description ?? item.description,
+      highlights: enriched.highlights ?? [],
+      impact: enriched.impact,
+      demo: item.live_demo,
+      caseStudy: resolveLocalizedRouteTarget(`/work/${item.slug}`, localePath),
+    }
+  }),
 )
 </script>
 
@@ -70,29 +152,52 @@ const personalCards = computed(() =>
           </v-col>
         </v-row>
 
-        <v-slide-group show-arrows class="personal__carousel">
-          <v-slide-group-item v-for="card in personalCards" :key="card.item.name">
-            <CustomGlowCard
-              class="personal__card"
-              :title="card.item.name"
-              :badge="card.item.type"
-              :variant="card.variant"
+        <div v-if="carouselCards.length" class="personal__carousel-wrapper">
+          <AppleCardCarousel>
+            <AppleCard
+              v-for="(card, index) in carouselCards"
+              :key="card.card.title"
+              :card="card.card"
+              :index="index"
+              layout
             >
-              <template #media>
-                <v-img
-                  :src="`/images/work/${card.item.thumbnails}`"
-                  :alt="card.item.name"
-                  height="200"
-                  cover
-                  class="personal__image"
-                />
-              </template>
-              <template #footer>
-                <div class="personal__footer">
-                  <span class="personal__footer-label">{{ t('portfolio.personal.viewProjectLabel') }}</span>
+              <div class="space-y-6 text-left">
+                <p class="text-base leading-relaxed text-neutral-700 dark:text-neutral-200">
+                  {{ card.description }}
+                </p>
+                <ul
+                  v-if="card.highlights.length"
+                  class="space-y-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300"
+                >
+                  <li
+                    v-for="point in card.highlights"
+                    :key="point"
+                    class="flex gap-3"
+                  >
+                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary"></span>
+                    <span>{{ point }}</span>
+                  </li>
+                </ul>
+                <p
+                  v-if="card.impact"
+                  class="text-xs font-semibold uppercase tracking-[0.35em] text-primary"
+                >
+                  {{ card.impact }}
+                </p>
+                <div class="flex flex-wrap gap-3 pt-4">
                   <v-btn
-                    :to="card.item.live_demo"
+                    :to="card.caseStudy"
+                    color="primary"
+                    variant="elevated"
+                    class="text-none"
+                  >
+                    {{ t('portfolio.personal.viewProjectLabel') }}
+                  </v-btn>
+                  <v-btn
+                    v-if="card.demo && card.demo !== '#'"
+                    :href="card.demo"
                     target="_blank"
+                    rel="noopener"
                     color="primary"
                     variant="text"
                     class="text-none"
@@ -100,10 +205,10 @@ const personalCards = computed(() =>
                     {{ t('portfolio.personal.viewProjectCta') }}
                   </v-btn>
                 </div>
-              </template>
-            </CustomGlowCard>
-          </v-slide-group-item>
-        </v-slide-group>
+              </div>
+            </AppleCard>
+          </AppleCardCarousel>
+        </div>
       </v-container>
     </ScrollSmooth>
   </section>
@@ -229,33 +334,8 @@ const personalCards = computed(() =>
   gap: 18px;
 }
 
-.personal__carousel {
-  margin-top: clamp(32px, 6vw, 64px);
-}
-
-.personal__card {
-  display: block;
-  margin: 12px;
-  width: clamp(260px, 58vw, 320px);
-}
-
-.personal__image {
-  border-radius: 18px;
-}
-
-.personal__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.personal__footer-label {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.75rem;
-  color: color-mix(in srgb, var(--card-text-color) 60%, white 40%);
+.personal__carousel-wrapper {
+  margin-top: clamp(32px, 6vw, 72px);
 }
 
 @keyframes twinkle {
