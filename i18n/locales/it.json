@@ -4115,6 +4115,39 @@
       "viewProjectLabel": "Vedi progetto",
       "viewProjectCta": "Esplora"
     },
+    "contact": {
+      "badge": "Contatto",
+      "title": "Creiamo qualcosa di straordinario insieme.",
+      "description": "Hai una domanda, un’idea di progetto o vuoi semplicemente entrare in contatto? Scrivimi. Amo affrontare nuove sfide e progettare esperienze intuitive.",
+      "form": {
+        "nameLabel": "Nome",
+        "emailLabel": "E-mail",
+        "projectDetailsLabel": "Dettagli del progetto",
+        "projectDetailsPlaceholder": "Parlami del tuo progetto, della tempistica e degli obiettivi.",
+        "submit": "Invia messaggio"
+      },
+      "card": {
+        "title": "Contatto diretto",
+        "description": "Hai bisogno di una chiamata rapida? Lasciami un messaggio e ti risponderò entro un giorno lavorativo.",
+        "badge": "Parliamone",
+        "footerLabel": "Pianifica una chiamata",
+        "footerCta": "Rimaniamo in contatto"
+      },
+      "methods": {
+        "email": {
+          "label": "E-mail",
+          "value": "hello@broworld.dev"
+        },
+        "location": {
+          "label": "Località",
+          "value": "Giacarta, Indonesia"
+        },
+        "availability": {
+          "label": "Disponibilità",
+          "value": "Dal lunedì al venerdì, 9:00 – 18:00 (GMT+7)"
+        }
+      }
+    },
     "experience": {
       "fallbackSummary": "Contributi chiave presso {company}"
     },

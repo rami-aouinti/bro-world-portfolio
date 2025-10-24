@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import { LOCALIZED_PAGE_META } from '~/utils/i18n/routes'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import Line from "~/components/Layout/Line.vue";
@@ -6,24 +8,26 @@ import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 definePageMeta(LOCALIZED_PAGE_META.contact)
 
-const contactMethods = [
+const { t } = useI18n()
+
+const contactMethods = computed(() => [
   {
     icon: 'mdi-email-outline',
-    label: 'E-mail',
-    value: 'hello@broworld.dev',
+    label: t('portfolio.contact.methods.email.label'),
+    value: t('portfolio.contact.methods.email.value'),
     href: 'mailto:hello@broworld.dev'
   },
   {
     icon: 'mdi-map-marker',
-    label: 'Localisation',
-    value: 'Jakarta, Indonésie'
+    label: t('portfolio.contact.methods.location.label'),
+    value: t('portfolio.contact.methods.location.value')
   },
   {
     icon: 'mdi-clock-outline',
-    label: 'Disponibilité',
-    value: 'Du lundi au vendredi, 9h – 18h (GMT+7)'
+    label: t('portfolio.contact.methods.availability.label'),
+    value: t('portfolio.contact.methods.availability.value')
   }
-]
+])
 </script>
 
 <template>
@@ -32,40 +36,53 @@ const contactMethods = [
     <v-container class="py-6">
       <v-row justify="center" align="stretch" style="row-gap: 32px;">
         <v-col cols="12" md="7">
-          <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">Contact</v-chip>
+          <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
+            {{ t('portfolio.contact.badge') }}
+          </v-chip>
           <h1 class="text-h4 text-white font-weight-bold">
-            Créons quelque chose de remarquable ensemble.
+            {{ t('portfolio.contact.title') }}
           </h1>
           <p class="text-body-1 text-white mt-4">
-            Une question, une idée de projet ou simplement l’envie d’échanger ? Écrivez-moi. J’adore relever de nouveaux défis et concevoir des expériences intuitives.
+            {{ t('portfolio.contact.description') }}
           </p>
           <v-form class="mt-8 text-white" @submit.prevent>
             <v-row align="stretch" style="row-gap: 16px;">
               <v-col cols="12" md="6">
-                <v-text-field label="Nom" autocomplete="name" variant="outlined" density="comfortable" />
+                <v-text-field
+                  :label="t('portfolio.contact.form.nameLabel')"
+                  autocomplete="name"
+                  variant="outlined"
+                  density="comfortable"
+                />
               </v-col>
               <v-col cols="12" md="6">
-                <v-text-field label="E-mail" type="email" autocomplete="email" variant="outlined" density="comfortable" />
+                <v-text-field
+                  :label="t('portfolio.contact.form.emailLabel')"
+                  type="email"
+                  autocomplete="email"
+                  variant="outlined"
+                  density="comfortable"
+                />
               </v-col>
             </v-row>
             <v-textarea
-              label="Détails du projet"
+              :label="t('portfolio.contact.form.projectDetailsLabel')"
               rows="6"
               variant="outlined"
               density="comfortable"
-              placeholder="Parlez-moi de votre projet, du calendrier et des objectifs."
+              :placeholder="t('portfolio.contact.form.projectDetailsPlaceholder')"
             />
             <v-btn type="submit" color="primary" class="text-none mt-4">
-              Envoyer le message
+              {{ t('portfolio.contact.form.submit') }}
             </v-btn>
           </v-form>
         </v-col>
         <v-col cols="12" md="5">
           <CustomGlowCard
             class="contact__card"
-            title="Contact direct"
-            description="Besoin d’un échange rapide ? Laissez-moi un message et je vous répondrai sous un jour ouvré."
-            badge="Discutons"
+            :title="t('portfolio.contact.card.title')"
+            :description="t('portfolio.contact.card.description')"
+            :badge="t('portfolio.contact.card.badge')"
             variant="rose"
           >
             <div class="contact__methods">
@@ -82,8 +99,12 @@ const contactMethods = [
             </div>
             <template #footer>
               <div class="contact__footer">
-                <span class="contact__footer-label">Planifier un appel</span>
-                <Button to="https://cal.com/" label="Restons en contact" variant="btn-dark" />
+                <span class="contact__footer-label">{{ t('portfolio.contact.card.footerLabel') }}</span>
+                <Button
+                  to="https://cal.com/"
+                  :label="t('portfolio.contact.card.footerCta')"
+                  variant="btn-dark"
+                />
               </div>
             </template>
           </CustomGlowCard>

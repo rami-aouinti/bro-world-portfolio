@@ -4115,6 +4115,39 @@
       "viewProjectLabel": "عرض المشروع",
       "viewProjectCta": "استكشف"
     },
+    "contact": {
+      "badge": "تواصل",
+      "title": "لنبتكر شيئًا مميزًا معًا.",
+      "description": "هل لديك سؤال، فكرة مشروع أو ترغب فقط في التواصل؟ أرسل لي رسالة. أستمتع بخوض التحديات الجديدة وتصميم تجارب بديهية.",
+      "form": {
+        "nameLabel": "الاسم",
+        "emailLabel": "البريد الإلكتروني",
+        "projectDetailsLabel": "تفاصيل المشروع",
+        "projectDetailsPlaceholder": "حدّثني عن مشروعك، الجدول الزمني والأهداف.",
+        "submit": "إرسال الرسالة"
+      },
+      "card": {
+        "title": "تواصل مباشر",
+        "description": "هل تحتاج إلى محادثة سريعة؟ اترك لي رسالة وسأرد عليك خلال يوم عمل واحد.",
+        "badge": "لنتحدث",
+        "footerLabel": "جدولة مكالمة",
+        "footerCta": "لنبقَ على تواصل"
+      },
+      "methods": {
+        "email": {
+          "label": "البريد الإلكتروني",
+          "value": "hello@broworld.dev"
+        },
+        "location": {
+          "label": "الموقع",
+          "value": "جاكرتا، إندونيسيا"
+        },
+        "availability": {
+          "label": "التوافر",
+          "value": "من الاثنين إلى الجمعة، 9 صباحًا – 6 مساءً (GMT+7)"
+        }
+      }
+    },
     "experience": {
       "fallbackSummary": "أبرز المساهمات في {company}"
     },
