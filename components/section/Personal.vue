@@ -70,9 +70,7 @@ const workItems = computed(() => work.value?.works ?? [])
 .personal {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 55%),
-    radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.18), transparent 50%),
-    #050816;
+  background: transparent;
   color: #f8fafc;
 }
 
@@ -80,6 +78,7 @@ const workItems = computed(() => work.value?.works ?? [])
   inset: 0;
   pointer-events: none;
   position: absolute;
+  z-index: 0;
 }
 
 .personal__glow {
