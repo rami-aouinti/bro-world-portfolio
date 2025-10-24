@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import ThemePopover from '~/components/ThemePopover.vue'
 
 definePageMeta({ middleware: 'auth' })
 
 const router = useRouter()
+const { t } = useI18n()
 
 const sections = [
   {
@@ -101,9 +103,23 @@ async function handleLogout() {
               </v-avatar>
               <p class="text-subtitle-2 mb-1 text-high-emphasis">{{ userDisplayName }}</p>
               <p class="text-body-2 text-foreground text-medium-emphasis">Administrateur</p>
-              <v-btn color="white" variant="outlined" class="text-none mt-4" prepend-icon="mdi-logout" @click="handleLogout">
-                Déconnexion
-              </v-btn>
+              <div class="dashboard-session-actions">
+                <div class="dashboard-theme">
+                  <p class="dashboard-theme__label text-caption text-high-emphasis">
+                    {{ t('admin.settings.siteSettings') }}
+                  </p>
+                  <ThemePopover trigger-class="dashboard-theme__trigger" />
+                </div>
+                <v-btn
+                  color="white"
+                  variant="outlined"
+                  class="text-none"
+                  prepend-icon="mdi-logout"
+                  @click="handleLogout"
+                >
+                  Déconnexion
+                </v-btn>
+              </div>
             </div>
           </v-card-text>
         </v-card>
@@ -200,6 +216,45 @@ async function handleLogout() {
   min-width: 220px;
 }
 
+.dashboard-session-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+  margin-top: 16px;
+}
+
+.dashboard-theme {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.dashboard-theme__label {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:deep(.dashboard-theme__trigger) {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+:deep(.dashboard-theme__trigger:hover),
+:deep(.dashboard-theme__trigger:focus-visible) {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 30px -12px rgba(15, 23, 42, 0.45);
+}
+
+:deep(.dashboard-theme__trigger:focus-visible) {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 3px;
+}
+
 .dashboard-grid {
   row-gap: 24px !important;
 }
@@ -220,6 +275,11 @@ async function handleLogout() {
 @media (max-width: 959px) {
   .dashboard-session {
     text-align: left !important;
+  }
+
+  .dashboard-session-actions,
+  .dashboard-theme {
+    align-items: flex-start;
   }
 }
 </style>
