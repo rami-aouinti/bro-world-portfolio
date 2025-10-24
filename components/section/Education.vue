@@ -24,10 +24,7 @@ const educationCards = computed(() => {
 <template>
   <section id="education">
     <ScrollSmooth>
-      <v-container v-if="educationContent" class="py-6">
-        <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
-          {{ educationContent.label }}
-        </v-chip>
+      <v-container v-if="educationContent" class="mt-10">
         <h2 class="text-h4 text-foreground">{{ educationContent.headline }}</h2>
 
         <v-row class="mt-10" dense>

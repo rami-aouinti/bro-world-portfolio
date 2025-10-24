@@ -31,10 +31,7 @@ const experienceCards = computed(() => {
 <template>
   <section id="experience">
     <ScrollSmooth>
-      <v-container v-if="experiencesContent" class="py-6">
-        <v-chip color="primary" variant="outlined" class="text-uppercase mb-4">
-          {{ experiencesContent.label }}
-        </v-chip>
+      <v-container v-if="experiencesContent" class="mt-10">
         <h2 class="text-h4 text-foreground">{{ experiencesContent.headline }}</h2>
 
         <v-timeline class="mt-10" density="compact">
