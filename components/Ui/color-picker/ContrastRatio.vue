@@ -24,26 +24,24 @@
       </div>
     </div>
     <div class="flex items-center justify-end gap-1 *:select-none">
-      <UiBadge
-        :variant="isAccessible.aa ? 'default' : 'secondary'"
-        class="gap-1"
+      <span
+        :class="badgeClass(isAccessible.aa ? 'default' : 'secondary')"
       >
         <Icon
           :name="isAccessible.aa ? 'lucide:check' : 'lucide:x'"
           :size="12"
         />
         AA
-      </UiBadge>
-      <UiBadge
-        :variant="isAccessible.aaa ? 'default' : 'secondary'"
-        class="gap-1"
+      </span>
+      <span
+        :class="badgeClass(isAccessible.aaa ? 'default' : 'secondary')"
       >
         <Icon
           :name="isAccessible.aaa ? 'lucide:check' : 'lucide:x'"
           :size="12"
         />
         AAA
-      </UiBadge>
+      </span>
     </div>
   </div>
 </template>
@@ -52,6 +50,7 @@
 import { watch, ref, computed } from "vue";
 import type { HsvaColor } from "@uiw/color-convert";
 import { hsvaToRgba } from "@uiw/color-convert";
+import { cn } from "~/lib/utils";
 
 export interface ContrastRatioProps {
   color: HsvaColor;
@@ -93,6 +92,17 @@ const isAccessible = computed(() => {
     aaa: currentContrastRatio.value >= 7,
   };
 });
+
+function badgeClass(variant: "default" | "secondary") {
+  const base =
+    "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+  const styles =
+    variant === "default"
+      ? "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80"
+      : "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80";
+
+  return cn(base, styles);
+}
 
 function calculateContrastRatios(color: HsvaColor) {
   const rgb = hsvaToRgba(color);
