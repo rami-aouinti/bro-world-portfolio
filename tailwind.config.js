@@ -1,15 +1,21 @@
 import animate from "tailwindcss-animate";
 import { setupInspiraUI } from "@inspira-ui/plugins";
 
-/** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class',
+  darkMode: "selector",
+  safelist: ["dark"],
+  prefix: "",
   content: [
-    './components/**/*.{vue,js,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './app.vue',
-    './plugins/**/*.{js,ts}',
+    "./app.vue",
+    "./components/**/*.{vue,js,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./composables/**/*.{js,ts}",
+    "./content/**/*.{md,mdx,json,yml,yaml}",
+    "./lib/**/*.{js,ts,vue}",
+    "./plugins/**/*.{js,ts}",
+    "./stores/**/*.{js,ts}",
+    "./utils/**/*.{js,ts}",
   ],
   theme: {
     container: {
@@ -89,17 +95,6 @@ export default {
         "Courier New",
         "monospace",
       ],
-      poppins: [
-        "Poppins",
-        "Plus Jakarta Sans",
-        "system-ui",
-        "-apple-system",
-        "BlinkMacSystemFont",
-        "Segoe UI",
-        "Helvetica Neue",
-        "Arial",
-        "sans-serif",
-      ],
     },
     extend: {
       fontSize: {
@@ -175,7 +170,6 @@ export default {
         ],
       },
       colors: {
-        dark: "#0B061A",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -245,6 +239,4 @@ export default {
   },
 
   plugins: [animate, setupInspiraUI],
-
-}
-
+};

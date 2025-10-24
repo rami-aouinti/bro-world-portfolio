@@ -38,7 +38,7 @@ const personalCards = computed(() =>
           <v-col cols="12" md="10" lg="8" class="personal__content">
             <Text3d
                 class="text-8xl font-bold max-md:text-7xl"
-                shadow-color="blueviolet"
+                shadow-color="skyblue"
             >
               <h1 class="personal__headline">
                 {{ personalContent.headline }}
