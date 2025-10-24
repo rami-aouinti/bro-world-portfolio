@@ -35,10 +35,10 @@ const personalCards = computed(() =>
     <ScrollSmooth>
       <v-container class="personal__container py-6 my-auto py-md-24" v-if="personalContent">
         <v-row justify="center" class="text-center">
-          <v-col cols="12" md="10" lg="8" class="personal__content">
+          <v-col cols="12" md="10" lg="8" class="personal__content mt-8">
             <Text3d
                 class="text-8xl font-bold max-md:text-7xl"
-                shadow-color="skyblue"
+                shadow-color="primary"
             >
               <h1 class="personal__headline">
                 {{ personalContent.headline }}
