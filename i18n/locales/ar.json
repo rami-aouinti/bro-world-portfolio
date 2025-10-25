@@ -93,7 +93,10 @@
     }
   },
   "navigation": {
-    "language": "تغيير اللغة"
+    "language": "تغيير اللغة",
+    "openMenu": "فتح قائمة التنقل",
+    "closeMenu": "إغلاق قائمة التنقل",
+    "title": "التنقل"
   },
   "admin": {
     "settings": {

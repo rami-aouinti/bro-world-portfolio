@@ -93,7 +93,10 @@
     }
   },
   "navigation": {
-    "language": "切换语言"
+    "language": "切换语言",
+    "openMenu": "打开导航菜单",
+    "closeMenu": "关闭导航菜单",
+    "title": "导航"
   },
   "admin": {
     "settings": {

@@ -93,7 +93,10 @@
     }
   },
   "navigation": {
-    "language": "Sprache ändern"
+    "language": "Sprache ändern",
+    "openMenu": "Navigationsmenü öffnen",
+    "closeMenu": "Navigationsmenü schließen",
+    "title": "Navigation"
   },
   "admin": {
     "settings": {
