@@ -2,6 +2,7 @@
 // Do not edit manually unless updating icon usage.
 import {
   mdiAccount,
+  mdiAccountBadgeOutline,
   mdiAccountBoxMultipleOutline,
   mdiAccountBoxOutline,
   mdiAccountCircleOutline,
@@ -118,6 +119,7 @@ import {
   mdiEarthPlus,
   mdiEmail,
   mdiEmailEditOutline,
+  mdiEmailFastOutline,
   mdiEmailOutline,
   mdiEmoticonHappyOutline,
   mdiEmoticonSadOutline,
@@ -151,6 +153,7 @@ import {
   mdiGoogle,
   mdiHistory,
   mdiHomeMapMarker,
+  mdiHomeVariantOutline,
   mdiImageFilterHdr,
   mdiImageMultiple,
   mdiImageMultipleOutline,
@@ -235,6 +238,7 @@ import {
   mdiSquareEditOutline,
   mdiStar,
   mdiStarHalfFull,
+  mdiStarCircleOutline,
   mdiStarOutline,
   mdiStoreOutline,
   mdiStorefrontOutline,
@@ -273,6 +277,7 @@ import {
 
 export const fullProjectMdiIcons = {
   "mdi-account": mdiAccount,
+  "mdi-account-badge-outline": mdiAccountBadgeOutline,
   "mdi-account-box-multiple-outline": mdiAccountBoxMultipleOutline,
   "mdi-account-box-outline": mdiAccountBoxOutline,
   "mdi-account-circle-outline": mdiAccountCircleOutline,
@@ -389,6 +394,7 @@ export const fullProjectMdiIcons = {
   "mdi-earth-plus": mdiEarthPlus,
   "mdi-email": mdiEmail,
   "mdi-email-edit-outline": mdiEmailEditOutline,
+  "mdi-email-fast-outline": mdiEmailFastOutline,
   "mdi-email-outline": mdiEmailOutline,
   "mdi-emoticon-happy-outline": mdiEmoticonHappyOutline,
   "mdi-emoticon-sad-outline": mdiEmoticonSadOutline,
@@ -422,6 +428,7 @@ export const fullProjectMdiIcons = {
   "mdi-google": mdiGoogle,
   "mdi-history": mdiHistory,
   "mdi-home-map-marker": mdiHomeMapMarker,
+  "mdi-home-variant-outline": mdiHomeVariantOutline,
   "mdi-image-filter-hdr": mdiImageFilterHdr,
   "mdi-image-multiple": mdiImageMultiple,
   "mdi-image-multiple-outline": mdiImageMultipleOutline,
@@ -506,6 +513,7 @@ export const fullProjectMdiIcons = {
   "mdi-square-edit-outline": mdiSquareEditOutline,
   "mdi-star": mdiStar,
   "mdi-star-half-full": mdiStarHalfFull,
+  "mdi-star-circle-outline": mdiStarCircleOutline,
   "mdi-star-outline": mdiStarOutline,
   "mdi-store-outline": mdiStoreOutline,
   "mdi-storefront-outline": mdiStorefrontOutline,

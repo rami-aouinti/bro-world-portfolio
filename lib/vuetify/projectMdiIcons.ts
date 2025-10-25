@@ -3,6 +3,7 @@
 // exported from `projectMdiIcons.full.ts` so they can be code-split and loaded on demand.
 import {
   mdiAccount,
+  mdiAccountBadgeOutline,
   mdiAccountOutline,
   mdiArrowLeft,
   mdiBellOutline,
@@ -13,9 +14,11 @@ import {
   mdiChevronRight,
   mdiClose,
   mdiDotsVertical,
+  mdiEmailFastOutline,
   mdiEmoticonHappyOutline,
   mdiFormatAlignJustify,
   mdiForumOutline,
+  mdiHomeVariantOutline,
   mdiImageMultiple,
   mdiLoading,
   mdiMagnify,
@@ -27,12 +30,14 @@ import {
   mdiRefresh,
   mdiShareOutline,
   mdiShoppingOutline,
+  mdiStarCircleOutline,
   mdiThumbUpOutline,
   mdiVideo,
 } from "@mdi/js";
 
 export const coreProjectMdiIcons: Record<string, string> = {
   "mdi-account": mdiAccount,
+  "mdi-account-badge-outline": mdiAccountBadgeOutline,
   "mdi-account-outline": mdiAccountOutline,
   "mdi-arrow-left": mdiArrowLeft,
   "mdi-bell-outline": mdiBellOutline,
@@ -43,9 +48,11 @@ export const coreProjectMdiIcons: Record<string, string> = {
   "mdi-chevron-right": mdiChevronRight,
   "mdi-close": mdiClose,
   "mdi-dots-vertical": mdiDotsVertical,
+  "mdi-email-fast-outline": mdiEmailFastOutline,
   "mdi-emoticon-happy-outline": mdiEmoticonHappyOutline,
   "mdi-format-align-justify": mdiFormatAlignJustify,
   "mdi-forum-outline": mdiForumOutline,
+  "mdi-home-variant-outline": mdiHomeVariantOutline,
   "mdi-image-multiple": mdiImageMultiple,
   "mdi-loading": mdiLoading,
   "mdi-magnify": mdiMagnify,
@@ -57,6 +64,7 @@ export const coreProjectMdiIcons: Record<string, string> = {
   "mdi-refresh": mdiRefresh,
   "mdi-share-outline": mdiShareOutline,
   "mdi-shopping-outline": mdiShoppingOutline,
+  "mdi-star-circle-outline": mdiStarCircleOutline,
   "mdi-thumb-up-outline": mdiThumbUpOutline,
   "mdi-video": mdiVideo,
 };
