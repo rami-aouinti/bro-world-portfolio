@@ -130,12 +130,6 @@ useSeoMeta(() => ({
               {{ entry.skill.summary }}
             </p>
 
-            <div class="skill-card__actions">
-              <v-btn :to="entry.link" color="primary" variant="tonal" class="text-none">
-                {{ t('portfolio.skills.viewSkillDetails') }}
-              </v-btn>
-            </div>
-
             <div class="skill-card__projects">
               <h3 class="skill-card__projects-title">
                 {{ t('portfolio.skills.projectsTitle', { skill: entry.skill.name }) }}
@@ -197,12 +191,35 @@ useSeoMeta(() => ({
 
 .skill-card {
   height: 100%;
-  background: rgba(15, 23, 42, 0.6);
-  border-radius: 20px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  position: relative;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(30, 41, 59, 0.58));
+  border-radius: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
+  overflow: hidden;
+  transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20%;
+  background: radial-gradient(circle at var(--glow-x, 30%) 30%, rgba(99, 102, 241, 0.18), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(129, 140, 248, 0.45);
+  box-shadow: 0 38px 70px -45px rgba(79, 70, 229, 0.55);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
 }
 
 .skill-card__header {
@@ -210,6 +227,22 @@ useSeoMeta(() => ({
   justify-content: space-between;
   gap: 16px;
   align-items: flex-start;
+  padding-bottom: 12px;
+  position: relative;
+}
+
+.skill-card__header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -12px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.35), transparent);
+  opacity: 0.6;
+  transition: opacity 0.45s ease;
+}
+
+.skill-card:hover .skill-card__header::after {
+  opacity: 1;
 }
 
 .skill-card__title {
@@ -217,11 +250,13 @@ useSeoMeta(() => ({
   font-weight: 600;
   color: #f8fafc;
   text-decoration: none;
+  transition: color 0.35s ease;
 }
 
 .skill-card__title:hover,
 .skill-card__title:focus {
   text-decoration: underline;
+  color: #c7d2fe;
 }
 
 .skill-card__level {
@@ -244,11 +279,7 @@ useSeoMeta(() => ({
   margin: 0;
   color: rgba(226, 232, 240, 0.86);
   line-height: 1.6;
-}
-
-.skill-card__actions {
-  display: flex;
-  gap: 12px;
+  font-size: 0.98rem;
 }
 
 .skill-card__projects {
