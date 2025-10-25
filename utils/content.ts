@@ -152,6 +152,11 @@ const EN_CONTENT: ContentRecord = {
       "My toolkit spans PHP 8, Symfony, Laravel, MySQL and PostgreSQL data modeling, plus scalable CI/CD pipelines.",
       "I focus on rigor, quality, and teamwork to deliver reliable, future-proof products.",
     ],
+    hobbies: [
+      "Reading technical books",
+      "Playing chess",
+      "Exploring new cuisines",
+    ],
   },
   cta: {
     label: "Build something remarkable together",
@@ -183,6 +188,7 @@ const EN_CONTENT: ContentRecord = {
         ],
       },
     ],
+    languages: ["English", "French", "Arabic"],
   },
   experiences: {
     label: "Experience",
@@ -385,6 +391,11 @@ const FR_CONTENT: ContentRecord = {
       "Mon quotidien combine PHP 8, Symfony, Laravel, la modélisation de données MySQL et PostgreSQL ainsi que des pipelines CI/CD évolutifs.",
       "J’accorde une grande importance à la rigueur, à la qualité et au travail d’équipe pour livrer des produits fiables et pérennes.",
     ],
+    hobbies: [
+      "Lecture d’ouvrages techniques",
+      "Parties d’échecs",
+      "Découverte de nouvelles cuisines",
+    ],
   },
   cta: {
     label: "Construisons quelque chose de remarquable ensemble",
@@ -416,6 +427,7 @@ const FR_CONTENT: ContentRecord = {
         ],
       },
     ],
+    languages: ["Français", "Anglais", "Arabe"],
   },
   experiences: {
     label: "Expériences",

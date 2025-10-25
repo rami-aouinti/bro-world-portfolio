@@ -58,7 +58,10 @@
     },
     "skills": {
       "badge": "{count} навык | {count} навыка | {count} навыков",
-      "cardDescription": "Ключевые инструменты и технологии."
+      "cardDescription": "Ключевые инструменты и технологии.",
+      "languagesTitle": "Языки",
+      "languagesDescription": "Языки устного и письменного общения для совместной работы.",
+      "languagesBadge": "{count} язык | {count} языка | {count} языков"
     },
     "cta": {
       "eyebrow": "Готов к сотрудничеству",
@@ -66,7 +69,8 @@
     },
     "about": {
       "fallbackProfileDescription": "Создаю надёжные backend-системы на PHP, Symfony и продуманной архитектуре.",
-      "cta": "Связаться со мной"
+      "cta": "Связаться со мной",
+      "hobbiesTitle": "Хобби и интересы"
     },
     "service": {
       "eyebrowPrefix": "Услуга",

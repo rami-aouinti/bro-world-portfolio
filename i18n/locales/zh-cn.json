@@ -58,7 +58,10 @@
     },
     "skills": {
       "badge": "{count} 项技能",
-      "cardDescription": "重点工具与技术。"
+      "cardDescription": "重点工具与技术。",
+      "languagesTitle": "语言",
+      "languagesDescription": "用于协作的口语和书面语言。",
+      "languagesBadge": "{count} 种语言"
     },
     "cta": {
       "eyebrow": "准备好合作",
@@ -66,7 +69,8 @@
     },
     "about": {
       "fallbackProfileDescription": "使用 PHP、Symfony 和精心设计的架构打造可靠的后端。",
-      "cta": "联系我"
+      "cta": "联系我",
+      "hobbiesTitle": "爱好与兴趣"
     },
     "service": {
       "eyebrowPrefix": "服务",

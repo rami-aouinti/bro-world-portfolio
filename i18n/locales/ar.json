@@ -58,7 +58,10 @@
     },
     "skills": {
       "badge": "لا مهارات | مهارة واحدة | مهارتان | {count} مهارات | {count} مهارة | {count} مهارة",
-      "cardDescription": "أدوات وتقنيات مميزة."
+      "cardDescription": "أدوات وتقنيات مميزة.",
+      "languagesTitle": "اللغات",
+      "languagesDescription": "اللغات المحكية والمكتوبة للتعاون.",
+      "languagesBadge": "لا لغات | لغة واحدة | لغتان | {count} لغات | {count} لغة | {count} لغة"
     },
     "cta": {
       "eyebrow": "جاهز للتعاون",
@@ -66,7 +69,8 @@
     },
     "about": {
       "fallbackProfileDescription": "أصمم أنظمة خلفية موثوقة باستخدام PHP وSymfony وهندسة مدروسة.",
-      "cta": "تواصل معي"
+      "cta": "تواصل معي",
+      "hobbiesTitle": "الهوايات والاهتمامات"
     },
     "service": {
       "eyebrowPrefix": "خدمة",

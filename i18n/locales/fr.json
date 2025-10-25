@@ -58,7 +58,10 @@
     },
     "skills": {
       "badge": "{count} compétence | {count} compétences",
-      "cardDescription": "Outils et technologies mis en avant."
+      "cardDescription": "Outils et technologies mis en avant.",
+      "languagesTitle": "Langues",
+      "languagesDescription": "Langues parlées et écrites pour collaborer efficacement.",
+      "languagesBadge": "{count} langue | {count} langues"
     },
     "cta": {
       "eyebrow": "Prêts à collaborer",
@@ -66,7 +69,8 @@
     },
     "about": {
       "fallbackProfileDescription": "Conception de backends fiables avec PHP, Symfony et une architecture soignée.",
-      "cta": "Me contacter"
+      "cta": "Me contacter",
+      "hobbiesTitle": "Passions et centres d’intérêt"
     },
     "service": {
       "eyebrowPrefix": "Service",

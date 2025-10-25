@@ -18,6 +18,22 @@ const skillCards = computed(() => {
     badge: t('portfolio.skills.badge', category.skills.length, { count: category.skills.length })
   }))
 })
+
+const languageCard = computed(() => {
+  const languages = skillsContent.value?.languages ?? []
+
+  if (!languages.length) {
+    return null
+  }
+
+  const variantIndex = skillCards.value.length % glowCardVariantCycle.length
+
+  return {
+    variant: glowCardVariantCycle[variantIndex],
+    badge: t('portfolio.skills.languagesBadge', languages.length, { count: languages.length }),
+    languages,
+  }
+})
 </script>
 
 <template>
@@ -48,6 +64,28 @@ const skillCards = computed(() => {
                   size="small"
                 >
                   {{ skill }}
+                </v-chip>
+              </div>
+            </CustomGlowCard>
+          </v-col>
+          <v-col v-if="languageCard" cols="12" md="4">
+            <CustomGlowCard
+              class="skills__card"
+              :title="t('portfolio.skills.languagesTitle')"
+              :variant="languageCard.variant"
+              :badge="languageCard.badge"
+              :description="t('portfolio.skills.languagesDescription')"
+            >
+              <div class="skills__chips">
+                <v-chip
+                  v-for="language in languageCard.languages"
+                  :key="language"
+                  class="skills__chip"
+                  color="primary"
+                  variant="tonal"
+                  size="small"
+                >
+                  {{ language }}
                 </v-chip>
               </div>
             </CustomGlowCard>
