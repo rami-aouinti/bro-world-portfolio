@@ -92,6 +92,9 @@
       "fallbackSummary": "Основные достижения в компании {company}"
     }
   },
+  "navigation": {
+    "language": "Сменить язык"
+  },
   "admin": {
     "settings": {
       "themeCustomizer": {
