@@ -86,6 +86,15 @@ const skillCategorySchema = z.object({
   skills: z.array(skillItemSchema).min(1, 'Ajoutez au moins une compétence.')
 })
 
+const languageProficiencySchema = z.object({
+  name: z.string().trim().min(1, 'Le nom de la langue est requis.'),
+  proficiency: z
+    .number({ invalid_type_error: 'Le pourcentage doit être un nombre.' })
+    .int('Le pourcentage doit être un entier.')
+    .min(0, 'La maîtrise minimale est 0 %.')
+    .max(100, 'La maîtrise maximale est 100 %.')
+})
+
 export const skillsSchema = z.object({
   label: z.string().trim().min(1, 'Le libellé est requis.'),
   headline: z.string().trim().min(1, 'Le titre est requis.'),
@@ -93,6 +102,10 @@ export const skillsSchema = z.object({
   categories: z.array(skillCategorySchema).min(1, 'Ajoutez au moins une catégorie.'),
   languages: z
     .array(z.string().trim().min(1, 'La langue est requise.'))
+    .optional()
+    .default([]),
+  languageProficiencies: z
+    .array(languageProficiencySchema)
     .optional()
     .default([])
 })

@@ -161,6 +161,15 @@ function removeLanguage(index: number) {
   form.languages.splice(index, 1)
 }
 
+function addLanguageProficiency() {
+  form.languageProficiencies ??= []
+  form.languageProficiencies.push({ name: '', proficiency: 0 })
+}
+
+function removeLanguageProficiency(index: number) {
+  form.languageProficiencies.splice(index, 1)
+}
+
 function addExperience() {
   form.positions ??= []
   form.positions.push({ slug: '', role: '', company: '', timeframe: '', achievements: [''] })
@@ -526,6 +535,45 @@ async function handleSubmit() {
                 </v-card>
               </div>
               <p v-else class="text-body-2 text-medium-emphasis">Aucune langue définie.</p>
+              <div class="editor-section__heading mt-6">
+                <h2 class="editor-section__title">Niveaux de langues</h2>
+                <v-btn color="primary" variant="tonal" class="text-none" @click="addLanguageProficiency">
+                  Ajouter un niveau
+                </v-btn>
+              </div>
+              <div v-if="form.languageProficiencies?.length" class="editor-collection">
+                <v-card
+                  v-for="(entry, index) in form.languageProficiencies"
+                  :key="index"
+                  variant="tonal"
+                  color="primary"
+                  class="editor-subcard"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">Langue #{{ index + 1 }}</span>
+                    <v-btn icon="mdi-delete" variant="text" color="error" @click="removeLanguageProficiency(index)" />
+                  </div>
+                  <v-text-field
+                    v-model="form.languageProficiencies[index].name"
+                    label="Nom de la langue"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                  />
+                  <v-text-field
+                    v-model.number="form.languageProficiencies[index].proficiency"
+                    type="number"
+                    label="Maîtrise (%)"
+                    min="0"
+                    max="100"
+                    step="5"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                  />
+                </v-card>
+              </div>
+              <p v-else class="text-body-2 text-medium-emphasis">Aucun niveau de langue défini.</p>
             </template>
 
             <template v-else-if="slug === 'experiences'">

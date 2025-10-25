@@ -62,6 +62,12 @@
       "languagesTitle": "Langues",
       "languagesDescription": "Langues parlées et écrites pour collaborer efficacement.",
       "languagesBadge": "{count} langue | {count} langues",
+      "languagesPage": {
+        "title": "Maîtrise des langues",
+        "description": "Mon niveau de confort pour collaborer dans chaque langue.",
+        "proficiencyLabel": "{value} % de maîtrise",
+        "empty": "Les niveaux de langue seront bientôt disponibles."
+      },
       "backToOverview": "Retour aux compétences",
       "viewSkillDetails": "Voir les détails de la compétence",
       "projectsTitle": "Projets utilisant {skill}",

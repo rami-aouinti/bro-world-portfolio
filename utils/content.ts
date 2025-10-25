@@ -404,6 +404,12 @@ const EN_CONTENT: ContentRecord = {
       },
     ],
     languages: ["English", "French", "German", "Arabic"],
+    languageProficiencies: [
+      { name: "Arabic", proficiency: 100 },
+      { name: "French", proficiency: 100 },
+      { name: "English", proficiency: 80 },
+      { name: "German", proficiency: 80 },
+    ],
   },
   experiences: {
     label: "Experience",
@@ -875,6 +881,12 @@ const FR_CONTENT: ContentRecord = {
       },
     ],
     languages: ["Français", "Anglais", "Allemand", "Arabe"],
+    languageProficiencies: [
+      { name: "Arabe", proficiency: 100 },
+      { name: "Français", proficiency: 100 },
+      { name: "Anglais", proficiency: 80 },
+      { name: "Allemand", proficiency: 80 },
+    ],
   },
   experiences: {
     label: "Expériences",
