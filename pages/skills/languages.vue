@@ -1,7 +1,6 @@
 <template>
-  <LayoutLine />
   <section class="language-skills">
-    <v-container class="py-12 language-skills__container">
+    <v-container class="language-skills__container">
       <v-btn
         :to="backLink"
         variant="text"
@@ -28,7 +27,7 @@
           v-for="language in languages"
           :key="language.name"
           cols="12"
-          md="6"
+          md="3"
         >
           <v-card
             variant="tonal"
@@ -69,7 +68,6 @@
       </v-alert>
     </v-container>
   </section>
-  <LayoutLine />
 </template>
 
 <script setup lang="ts">
