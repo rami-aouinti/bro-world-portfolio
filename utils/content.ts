@@ -152,11 +152,7 @@ const EN_CONTENT: ContentRecord = {
       "My toolkit spans PHP 8, Symfony, Laravel, MySQL and PostgreSQL data modeling, plus scalable CI/CD pipelines.",
       "I focus on rigor, quality, and teamwork to deliver reliable, future-proof products.",
     ],
-    hobbies: [
-      "Reading technical books",
-      "Playing chess",
-      "Exploring new cuisines",
-    ],
+    hobbies: ["Reading technical books", "Playing chess", "Exploring new cuisines"],
   },
   cta: {
     label: "Build something remarkable together",
@@ -273,8 +269,7 @@ const EN_CONTENT: ContentRecord = {
             name: "Symfony 6",
             level: "Expert",
             rating: 5,
-            summary:
-              "Domain-driven backends, reusable bundles, and rock-solid API platforms.",
+            summary: "Domain-driven backends, reusable bundles, and rock-solid API platforms.",
             projects: [
               { slug: "microservices-tkdeutschland" },
               { slug: "shopware-integrationen-wizmo-gmbh" },
@@ -293,8 +288,7 @@ const EN_CONTENT: ContentRecord = {
             name: "ZendFramework 2",
             level: "Advanced",
             rating: 3,
-            summary:
-              "Stabilising and extending legacy modules while preparing migration paths.",
+            summary: "Stabilising and extending legacy modules while preparing migration paths.",
             projects: [{ slug: "leistungsoptimierung-legacy-systeme" }],
           },
         ],
@@ -367,7 +361,8 @@ const EN_CONTENT: ContentRecord = {
             name: "SQL",
             level: "Expert",
             rating: 5,
-            summary: "Schema design, query optimisation, and migration strategies for OLTP systems.",
+            summary:
+              "Schema design, query optimisation, and migration strategies for OLTP systems.",
             projects: [
               { slug: "microservices-tkdeutschland" },
               { slug: "ecommerce-plattformen-hinke-gmbh" },
@@ -750,8 +745,7 @@ const FR_CONTENT: ContentRecord = {
             name: "Symfony 6",
             level: "Expert",
             rating: 5,
-            summary:
-              "Backends orientés domaine, bundles réutilisables et API stables.",
+            summary: "Backends orientés domaine, bundles réutilisables et API stables.",
             projects: [
               { slug: "microservices-tkdeutschland" },
               { slug: "shopware-integrationen-wizmo-gmbh" },
@@ -1098,8 +1092,7 @@ const AR_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
         degree: "هندسة الشبكات الحاسوبية والاتصالات",
         institution: "جامعة إنسات، تونس",
         timeframe: "سبتمبر 2008 — أغسطس 2013",
-        details:
-          "منهج شامل يغطي شبكات الحاسوب، والاتصالات، وأساسيات تقنيات المعلومات.",
+        details: "منهج شامل يغطي شبكات الحاسوب، والاتصالات، وأساسيات تقنيات المعلومات.",
       },
     ],
   },

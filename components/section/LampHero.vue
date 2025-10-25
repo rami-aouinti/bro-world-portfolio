@@ -1,26 +1,24 @@
-<script setup lang="ts">
-import { computed } from "vue";
-
-import { LampEffect } from "~/components/Ui/lamp-effect";
-import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
-
-const { data: personal } = useContentBlock("hero");
-const { t } = useI18n();
-const localePath = useLocalePath();
-
-const personalContent = computed(() => personal.value);
-</script>
-
 <template>
-  <section v-if="personalContent" id="lamp-hero" class="lamp-hero">
+  <section
+    v-if="personalContent"
+    id="lamp-hero"
+    class="lamp-hero"
+  >
     <LampEffect
       class="lamp-hero__wrapper"
       content-class="lamp-hero__content"
       :delay="0.25"
       :duration="1"
     >
-      <div class="lamp-hero__badge" v-if="personalContent.badge">
-        <v-chip color="primary" variant="flat" size="small">
+      <div
+        v-if="personalContent.badge"
+        class="lamp-hero__badge"
+      >
+        <v-chip
+          color="primary"
+          variant="flat"
+          size="small"
+        >
           {{ personalContent.badge }}
         </v-chip>
       </div>
@@ -47,6 +45,19 @@ const personalContent = computed(() => personal.value);
     </LampEffect>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+
+import { LampEffect } from "~/components/Ui/lamp-effect";
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+const { data: personal } = useContentBlock("hero");
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+const personalContent = computed(() => personal.value);
+</script>
 
 <style scoped>
 .lamp-hero {

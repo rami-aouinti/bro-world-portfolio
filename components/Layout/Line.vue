@@ -1,3 +1,28 @@
+<template>
+  <v-container class="section-divider">
+    <div
+      class="section-divider__inner"
+      role="separator"
+      :aria-label="normalizedSectionName || undefined"
+    >
+      <span
+        class="section-divider__stroke"
+        aria-hidden="true"
+      />
+      <span
+        v-if="normalizedSectionName"
+        class="section-divider__label"
+      >
+        <span
+          class="section-divider__label-background"
+          aria-hidden="true"
+        />
+        <span class="section-divider__label-text">{{ normalizedSectionName }}</span>
+      </span>
+    </div>
+  </v-container>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 
@@ -12,22 +37,6 @@ const props = withDefaults(
 
 const normalizedSectionName = computed(() => props.sectionName?.trim() ?? "");
 </script>
-
-<template>
-  <v-container class="section-divider">
-    <div
-      class="section-divider__inner"
-      role="separator"
-      :aria-label="normalizedSectionName || undefined"
-    >
-      <span class="section-divider__stroke" aria-hidden="true" />
-      <span v-if="normalizedSectionName" class="section-divider__label">
-        <span class="section-divider__label-background" aria-hidden="true" />
-        <span class="section-divider__label-text">{{ normalizedSectionName }}</span>
-      </span>
-    </div>
-  </v-container>
-</template>
 
 <style scoped>
 .section-divider {
@@ -73,11 +82,7 @@ const normalizedSectionName = computed(() => props.sectionName?.trim() ?? "");
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  background: linear-gradient(
-    135deg,
-    rgba(var(--v-theme-primary), 0.18),
-    rgba(59, 130, 246, 0.08)
-  );
+  background: linear-gradient(135deg, rgba(var(--v-theme-primary), 0.18), rgba(59, 130, 246, 0.08));
   border: 1px solid rgba(148, 163, 184, 0.24);
   box-shadow:
     0 18px 42px -28px rgba(15, 23, 42, 0.95),

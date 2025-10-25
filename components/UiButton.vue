@@ -1,15 +1,19 @@
+<template>
+  <button
+    :type="props.type"
+    :class="resolvedClass"
+    v-bind="forwardedAttrs"
+  >
+    <slot />
+  </button>
+</template>
+
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 
 defineOptions({ inheritAttrs: false });
 
-type ButtonVariant =
-  | "default"
-  | "destructive"
-  | "outline"
-  | "secondary"
-  | "ghost"
-  | "link";
+type ButtonVariant = "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
 
 type ButtonSize = "default" | "sm" | "lg" | "icon";
 
@@ -64,13 +68,3 @@ const forwardedAttrs = computed(() => {
   return rest;
 });
 </script>
-
-<template>
-  <button
-    :type="props.type"
-    :class="resolvedClass"
-    v-bind="forwardedAttrs"
-  >
-    <slot />
-  </button>
-</template>

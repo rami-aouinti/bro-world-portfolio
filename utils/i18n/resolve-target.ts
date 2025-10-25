@@ -1,4 +1,4 @@
-import type { RouteLocationRaw } from 'vue-router';
+import type { RouteLocationRaw } from "vue-router";
 
 type LocalePathResolver = (route: RouteLocationRaw) => string;
 
@@ -8,20 +8,23 @@ function isExternal(target: string): boolean {
   return EXTERNAL_PATTERN.test(target);
 }
 
-export function resolveLocalizedRouteTarget(target: string, localePath: LocalePathResolver): string {
+export function resolveLocalizedRouteTarget(
+  target: string,
+  localePath: LocalePathResolver,
+): string {
   let normalized = target.trim();
 
   if (!normalized) {
     return normalized;
   }
 
-  if (normalized === '#') {
-    return localePath({ name: 'index' });
+  if (normalized === "#") {
+    return localePath({ name: "index" });
   }
 
-  if (normalized.startsWith('#')) {
+  if (normalized.startsWith("#")) {
     const hash = normalized.slice(1).trim();
-    const base = localePath({ name: 'index' });
+    const base = localePath({ name: "index" });
 
     return hash ? `${base}#${hash}` : base;
   }
@@ -30,15 +33,15 @@ export function resolveLocalizedRouteTarget(target: string, localePath: LocalePa
     return normalized;
   }
 
-  const hashIndex = normalized.indexOf('#');
-  let hash = '';
+  const hashIndex = normalized.indexOf("#");
+  let hash = "";
 
   if (hashIndex !== -1) {
     hash = normalized.slice(hashIndex);
     normalized = normalized.slice(0, hashIndex);
   }
 
-  const routePath = normalized.startsWith('/') ? normalized : `/${normalized}`;
+  const routePath = normalized.startsWith("/") ? normalized : `/${normalized}`;
   const resolvedPath = localePath(routePath);
 
   return `${resolvedPath}${hash}`;

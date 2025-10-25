@@ -80,14 +80,17 @@ export async function readContent<TSlug extends ContentSlug>(slug: TSlug, locale
   return fallback;
 }
 
-export async function writeContent<TSlug extends ContentSlug>(slug: TSlug, locale: LocaleCode, payload: unknown) {
+export async function writeContent<TSlug extends ContentSlug>(
+  slug: TSlug,
+  locale: LocaleCode,
+  payload: unknown,
+) {
   const storage = getContentStorage();
   try {
     const parsed = parseContentBySlug(slug, payload);
     await storage.setItem(getContentKey(locale, slug), parsed);
     return parsed;
-  }
-  catch (error) {
+  } catch (error) {
     throw createError({
       statusCode: 400,
       statusMessage: `Le contenu fourni pour “${slug}” est invalide.`,

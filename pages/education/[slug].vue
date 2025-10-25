@@ -1,37 +1,3 @@
-<script setup lang="ts">
-import { createError } from '#app'
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-
-const route = useRoute()
-const slug = computed(() => route.params.slug?.toString() ?? '')
-const localePath = useLocalePath()
-
-if (!slug.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Formation introuvable.' })
-}
-
-const { data: education } = await useContentBlock('education')
-
-const sectionLabel = computed(() => education.value?.label ?? 'Formations')
-
-const backLink = computed(() => resolveLocalizedRouteTarget('/education', localePath))
-
-const schoolDetails = computed(() => {
-  const entry = education.value?.schools.find((school) => school.slug === slug.value)
-
-  if (!entry) {
-    throw createError({ statusCode: 404, statusMessage: 'Formation introuvable.' })
-  }
-
-  return entry
-})
-
-useSeoMeta(() => ({
-  title: `${schoolDetails.value.degree} · ${sectionLabel.value}`,
-  description: schoolDetails.value.details
-}))
-</script>
-
 <template>
   <section class="detail-page">
     <v-container class="py-12 detail-page__container">
@@ -60,7 +26,11 @@ useSeoMeta(() => ({
         </div>
       </div>
 
-      <v-card variant="tonal" color="primary" class="detail-page__card pa-6">
+      <v-card
+        variant="tonal"
+        color="primary"
+        class="detail-page__card pa-6"
+      >
         <p class="detail-page__description">
           {{ schoolDetails.details }}
         </p>
@@ -68,6 +38,40 @@ useSeoMeta(() => ({
     </v-container>
   </section>
 </template>
+
+<script setup lang="ts">
+import { createError } from "#app";
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+const route = useRoute();
+const slug = computed(() => route.params.slug?.toString() ?? "");
+const localePath = useLocalePath();
+
+if (!slug.value) {
+  throw createError({ statusCode: 404, statusMessage: "Formation introuvable." });
+}
+
+const { data: education } = await useContentBlock("education");
+
+const sectionLabel = computed(() => education.value?.label ?? "Formations");
+
+const backLink = computed(() => resolveLocalizedRouteTarget("/education", localePath));
+
+const schoolDetails = computed(() => {
+  const entry = education.value?.schools.find((school) => school.slug === slug.value);
+
+  if (!entry) {
+    throw createError({ statusCode: 404, statusMessage: "Formation introuvable." });
+  }
+
+  return entry;
+});
+
+useSeoMeta(() => ({
+  title: `${schoolDetails.value.degree} · ${sectionLabel.value}`,
+  description: schoolDetails.value.details,
+}));
+</script>
 
 <style scoped>
 .detail-page__container {

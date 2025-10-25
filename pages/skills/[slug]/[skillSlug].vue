@@ -1,86 +1,3 @@
-<script setup lang="ts">
-import { createError } from '#app'
-
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-
-definePageMeta({
-  i18n: {
-    paths: {
-      en: '/skills/[slug]/[skillSlug]',
-      fr: '/competences/[slug]/[skillSlug]',
-      de: '/kompetenzen/[slug]/[skillSlug]',
-      es: '/habilidades/[slug]/[skillSlug]',
-      it: '/competenze/[slug]/[skillSlug]',
-      ru: '/navyki/[slug]/[skillSlug]',
-      ar: '/maharat/[slug]/[skillSlug]'
-    }
-  }
-})
-
-const route = useRoute()
-const categorySlug = computed(() => route.params.slug?.toString() ?? '')
-const skillSlug = computed(() => route.params.skillSlug?.toString() ?? '')
-
-if (!categorySlug.value || !skillSlug.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Skill not found.' })
-}
-
-const { data: skills } = await useContentBlock('skills')
-const { data: work } = await useContentBlock('work')
-const { t } = useI18n()
-const localePath = useLocalePath()
-
-const skillsContent = computed(() => skills.value)
-const sectionLabel = computed(() => skillsContent.value?.label ?? 'Skills')
-
-const category = computed(() => skillsContent.value?.categories.find((entry) => entry.slug === categorySlug.value))
-
-if (!category.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Skill not found.' })
-}
-
-const skill = computed(() => category.value?.skills.find((entry) => entry.slug === skillSlug.value))
-
-if (!skill.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Skill not found.' })
-}
-
-const projectLookup = computed(() => {
-  const projects = work.value?.works ?? []
-  return new Map(projects.map((project) => [project.slug, project]))
-})
-
-const projects = computed(() => {
-  const currentSkill = skill.value
-
-  if (!currentSkill) {
-    return []
-  }
-
-  return currentSkill.projects
-    .map(({ slug }) => {
-      const project = projectLookup.value.get(slug)
-
-      if (!project) {
-        return null
-      }
-
-      return {
-        ...project,
-        link: resolveLocalizedRouteTarget(`/work/${project.slug}`, localePath)
-      }
-    })
-    .filter((project): project is NonNullable<typeof project> => Boolean(project))
-})
-
-const categoryLink = computed(() => resolveLocalizedRouteTarget(`/skills/${category.value?.slug ?? ''}`, localePath))
-
-useSeoMeta(() => ({
-  title: `${skill.value?.name} · ${category.value?.name} · ${sectionLabel.value}`,
-  description: skill.value?.summary ?? ''
-}))
-</script>
-
 <template>
   <section class="skill-detail">
     <v-container class="py-12 skill-detail__container">
@@ -91,7 +8,7 @@ useSeoMeta(() => ({
         class="text-none skill-detail__back"
         prepend-icon="mdi-arrow-left"
       >
-        {{ t('portfolio.skills.backToCategory', { category: category?.name ?? '' }) }}
+        {{ t("portfolio.skills.backToCategory", { category: category?.name ?? "" }) }}
       </v-btn>
 
       <header class="skill-detail__header">
@@ -101,11 +18,11 @@ useSeoMeta(() => ({
         </p>
         <div class="skill-detail__meta">
           <div class="skill-detail__meta-item">
-            <span class="skill-detail__meta-label">{{ t('portfolio.skills.levelLabel') }}</span>
+            <span class="skill-detail__meta-label">{{ t("portfolio.skills.levelLabel") }}</span>
             <span class="skill-detail__meta-value">{{ skill?.level }}</span>
           </div>
           <div class="skill-detail__meta-item">
-            <span class="skill-detail__meta-label">{{ t('portfolio.skills.ratingLabel') }}</span>
+            <span class="skill-detail__meta-label">{{ t("portfolio.skills.ratingLabel") }}</span>
             <v-rating
               :model-value="skill?.rating ?? 0"
               length="5"
@@ -121,13 +38,16 @@ useSeoMeta(() => ({
 
       <section class="skill-detail__projects">
         <h2 class="skill-detail__projects-title">
-          {{ t('portfolio.skills.projectsHeading', { skill: skill?.name ?? '' }) }}
+          {{ t("portfolio.skills.projectsHeading", { skill: skill?.name ?? "" }) }}
         </h2>
         <p class="skill-detail__projects-lead">
-          {{ t('portfolio.skills.projectsDescription') }}
+          {{ t("portfolio.skills.projectsDescription") }}
         </p>
 
-        <div v-if="projects.length" class="skill-detail__project-list">
+        <div
+          v-if="projects.length"
+          class="skill-detail__project-list"
+        >
           <v-card
             v-for="project in projects"
             :key="project.slug"
@@ -148,18 +68,110 @@ useSeoMeta(() => ({
                 class="text-none"
                 append-icon="mdi-arrow-top-right"
               >
-                {{ t('portfolio.skills.viewProject') }}
+                {{ t("portfolio.skills.viewProject") }}
               </v-btn>
             </div>
           </v-card>
         </div>
-        <p v-else class="skill-detail__no-projects">
-          {{ t('portfolio.skills.noProjects') }}
+        <p
+          v-else
+          class="skill-detail__no-projects"
+        >
+          {{ t("portfolio.skills.noProjects") }}
         </p>
       </section>
     </v-container>
   </section>
 </template>
+
+<script setup lang="ts">
+import { createError } from "#app";
+
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+definePageMeta({
+  i18n: {
+    paths: {
+      en: "/skills/[slug]/[skillSlug]",
+      fr: "/competences/[slug]/[skillSlug]",
+      de: "/kompetenzen/[slug]/[skillSlug]",
+      es: "/habilidades/[slug]/[skillSlug]",
+      it: "/competenze/[slug]/[skillSlug]",
+      ru: "/navyki/[slug]/[skillSlug]",
+      ar: "/maharat/[slug]/[skillSlug]",
+    },
+  },
+});
+
+const route = useRoute();
+const categorySlug = computed(() => route.params.slug?.toString() ?? "");
+const skillSlug = computed(() => route.params.skillSlug?.toString() ?? "");
+
+if (!categorySlug.value || !skillSlug.value) {
+  throw createError({ statusCode: 404, statusMessage: "Skill not found." });
+}
+
+const { data: skills } = await useContentBlock("skills");
+const { data: work } = await useContentBlock("work");
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+const skillsContent = computed(() => skills.value);
+const sectionLabel = computed(() => skillsContent.value?.label ?? "Skills");
+
+const category = computed(() =>
+  skillsContent.value?.categories.find((entry) => entry.slug === categorySlug.value),
+);
+
+if (!category.value) {
+  throw createError({ statusCode: 404, statusMessage: "Skill not found." });
+}
+
+const skill = computed(() =>
+  category.value?.skills.find((entry) => entry.slug === skillSlug.value),
+);
+
+if (!skill.value) {
+  throw createError({ statusCode: 404, statusMessage: "Skill not found." });
+}
+
+const projectLookup = computed(() => {
+  const projects = work.value?.works ?? [];
+  return new Map(projects.map((project) => [project.slug, project]));
+});
+
+const projects = computed(() => {
+  const currentSkill = skill.value;
+
+  if (!currentSkill) {
+    return [];
+  }
+
+  return currentSkill.projects
+    .map(({ slug }) => {
+      const project = projectLookup.value.get(slug);
+
+      if (!project) {
+        return null;
+      }
+
+      return {
+        ...project,
+        link: resolveLocalizedRouteTarget(`/work/${project.slug}`, localePath),
+      };
+    })
+    .filter((project): project is NonNullable<typeof project> => Boolean(project));
+});
+
+const categoryLink = computed(() =>
+  resolveLocalizedRouteTarget(`/skills/${category.value?.slug ?? ""}`, localePath),
+);
+
+useSeoMeta(() => ({
+  title: `${skill.value?.name} · ${category.value?.name} · ${sectionLabel.value}`,
+  description: skill.value?.summary ?? "",
+}));
+</script>
 
 <style scoped>
 .skill-detail__container {
