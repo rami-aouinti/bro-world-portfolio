@@ -43,39 +43,19 @@ const particlesColor = computed(() => (isDark.value ? "#FFFFFF" : "#0F172A"));
 .app-layout {
   position: relative;
   min-height: 100vh;
-  background: transparent;
-  background-color: transparent !important;
 }
 
 .app-layout__shell {
   position: relative;
   min-height: 100vh;
-  background: transparent !important;
-  background-color: transparent !important;
 }
 
 .app-layout__content {
   position: relative;
   z-index: 1;
-  background: transparent;
-  background-color: transparent !important;
 }
 
 .app-layout :deep(.v-application) {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-.app-layout :deep(.v-application__wrap) {
-  background: transparent !important;
-}
-
-.app-layout :deep(.v-main) {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-.app-layout :deep(.v-main__wrap) {
   background: transparent !important;
 }
 

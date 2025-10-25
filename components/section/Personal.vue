@@ -322,7 +322,6 @@ const enrichedWorkDetails: Record<
 }
 
 .personal__glow--one {
-  background: rgba(59, 130, 246, 0.6);
   height: 420px;
   width: 420px;
   top: -120px;
@@ -330,7 +329,6 @@ const enrichedWorkDetails: Record<
 }
 
 .personal__glow--two {
-  background: rgba(14, 165, 233, 0.55);
   height: 320px;
   width: 320px;
   top: 180px;
@@ -338,7 +336,6 @@ const enrichedWorkDetails: Record<
 }
 
 .personal__glow--three {
-  background: rgba(168, 85, 247, 0.45);
   height: 260px;
   width: 260px;
   bottom: 80px;
