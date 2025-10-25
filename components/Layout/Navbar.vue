@@ -442,7 +442,6 @@ function isActiveLink(target: string) {
   border-radius: 999px;
   padding: 0;
   color: #e2e8f0;
-  background: rgba(148, 163, 184, 0.12);
   text-decoration: none;
   transition: all 0.2s ease;
 }
@@ -481,7 +480,6 @@ function isActiveLink(target: string) {
   width: 56px;
   height: 56px;
   border-radius: 999px;
-  background: rgba(148, 163, 184, 0.12);
   color: #e2e8f0;
   border: none;
   font-weight: 600;
