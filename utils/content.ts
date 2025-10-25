@@ -403,7 +403,7 @@ const EN_CONTENT: ContentRecord = {
         ],
       },
     ],
-    languages: ["English", "French", "Arabic"],
+    languages: ["English", "French", "German", "Arabic"],
   },
   experiences: {
     label: "Experience",
@@ -874,7 +874,7 @@ const FR_CONTENT: ContentRecord = {
         ],
       },
     ],
-    languages: ["Français", "Anglais", "Arabe"],
+    languages: ["Français", "Anglais", "Allemand", "Arabe"],
   },
   experiences: {
     label: "Expériences",
