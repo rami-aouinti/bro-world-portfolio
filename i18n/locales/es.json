@@ -66,7 +66,7 @@
         "title": "Dominio de idiomas",
         "description": "Qué tan cómodo me siento colaborando en cada idioma que hablo.",
         "proficiencyLabel": "{value}% de dominio",
-        "empty": "Los detalles del dominio de idiomas aparecerán aquí pronto."
+        "empty": "Los detalles sobre el dominio de idiomas aparecerán aquí pronto."
       },
       "backToOverview": "Volver a las habilidades",
       "viewSkillDetails": "Ver detalles de la habilidad",

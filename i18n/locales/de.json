@@ -64,8 +64,8 @@
       "languagesBadge": "{count} Sprache | {count} Sprachen",
       "languagesPage": {
         "title": "Sprachkenntnisse",
-        "description": "Wie wohl ich mich fühle, in jeder Sprache zu kollaborieren, die ich spreche.",
-        "proficiencyLabel": "{value}% Sprachkenntnisse",
+        "description": "Wie sicher ich mich in jeder Sprache bei der Zusammenarbeit fühle.",
+        "proficiencyLabel": "{value}% Sprachkompetenz",
         "empty": "Details zu meinen Sprachkenntnissen folgen in Kürze."
       },
       "backToOverview": "Zurück zur Kompetenzübersicht",

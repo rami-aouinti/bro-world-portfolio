@@ -64,9 +64,9 @@
       "languagesBadge": "لا لغات | لغة واحدة | لغتان | {count} لغات | {count} لغة | {count} لغة",
       "languagesPage": {
         "title": "إتقان اللغات",
-        "description": "مدى راحتي في التعاون بكل لغة أتحدثها.",
-        "proficiencyLabel": "إجادة بنسبة {value}٪",
-        "empty": "ستظهر هنا قريبًا تفاصيل مستوى إجادة اللغات."
+        "description": "مدى راحتي في التعاون بكل لغة أتحدث بها.",
+        "proficiencyLabel": "نسبة الإتقان {value}٪",
+        "empty": "ستظهر تفاصيل مستوى اللغة قريبًا."
       },
       "backToOverview": "العودة إلى صفحة المهارات",
       "viewSkillDetails": "عرض تفاصيل المهارة",

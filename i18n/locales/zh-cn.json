@@ -64,9 +64,9 @@
       "languagesBadge": "{count} 种语言",
       "languagesPage": {
         "title": "语言熟练度",
-        "description": "我在每种会说的语言中协作的舒适程度。",
+        "description": "我在每种会说的语言中协作时的自如程度。",
         "proficiencyLabel": "{value}% 熟练度",
-        "empty": "语言熟练度详情即将上线。"
+        "empty": "语言熟练度详情即将推出。"
       },
       "backToOverview": "返回技能概览",
       "viewSkillDetails": "查看技能详情",
