@@ -31,13 +31,19 @@ const workCards = computed(() => {
           <v-col v-for="card in workCards" :key="card.item.slug" cols="12" md="4" class="gap-3">
             <CardContainer>
               <CardBody class="work-card-body">
-                <NuxtImg
+                <NuxtLink
                   :to="card.route"
-                  width="1000"
-                  heigth="320"
-                  class="h-90 w-full rounded-xl object-cover group-hover/card:shadow-xl"
+                  class="work-card-thumbnail"
                   :aria-label="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
-                />
+                >
+                  <NuxtImg
+                    :src="`/images/work/${card.item.thumbnails}`"
+                    :alt="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
+                    width="1000"
+                    height="320"
+                    class="work-card-thumbnail-image"
+                  />
+                </NuxtLink>
                 <div class="work-card-content relative z-10 flex h-full flex-col gap-5">
                   <CardItem
                     as="div"
@@ -121,6 +127,26 @@ const workCards = computed(() => {
   -webkit-backdrop-filter: blur(8px);
   border-color: hsl(var(--border) / 0.4);
   background-color: hsl(var(--muted) / 0.2);
+}
+
+.work-card-thumbnail {
+  display: block;
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+
+.work-card-thumbnail-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.work-card-thumbnail:focus-visible .work-card-thumbnail-image,
+.work-card-thumbnail:hover .work-card-thumbnail-image {
+  transform: scale(1.03);
 }
 
 .work-card-content {
