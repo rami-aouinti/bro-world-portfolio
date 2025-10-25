@@ -27,7 +27,7 @@ export default defineEventHandler(async () => {
   });
 
   return repos
-    .filter((repo) => !repo.fork)
+    .filter((repo) => !repo.fork && repo.description && repo.description.trim().length > 0)
     .map((repo) => ({
       slug: repo.name,
       name: repo.name,
