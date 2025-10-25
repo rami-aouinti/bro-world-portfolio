@@ -3151,6 +3151,7 @@
       }
     },
     "settings": {
+      "siteSettings": "Site settings",
       "metaTitle": "Site settings",
       "page": {
         "title": "Site settings",
