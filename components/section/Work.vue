@@ -3,16 +3,18 @@
     <ScrollSmooth>
       <v-container
         v-if="content"
-        class="mt-10"
+        class="mt-2 text-center"
       >
-        <h2 class="text-h4 text-foreground">{{ content.headline }}</h2>
-        <p
-          class="text-body-1 text-foreground mt-4"
-          style="max-width: 600px"
+        <BlurReveal
+          :delay="0.5"
+          :duration="0.75"
+          class="p-8"
         >
-          {{ content.subline }}
-        </p>
-
+          <h2 class="text-h4 text-foreground">{{ content.headline }}</h2>
+          <p class="text-body-1 text-foreground mt-4">
+            {{ content.subline }}
+          </p>
+        </BlurReveal>
         <v-row
           class="mt-12"
           dense
@@ -99,6 +101,7 @@ import { computed } from "vue";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 import { CardBody, CardContainer, CardItem } from "~/components/ui/card-3d";
+import { BlurReveal } from "~/components/ui/blur-reveal";
 
 const { data: work } = useContentBlock("work");
 const { t } = useI18n();

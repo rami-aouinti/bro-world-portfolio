@@ -3,9 +3,15 @@
     <ScrollSmooth>
       <v-container
         v-if="educationContent"
-        class="mt-10"
+        class="mt-2 text-center"
       >
-        <h2 class="text-h4 text-foreground">{{ educationContent.headline }}</h2>
+        <BlurReveal
+          :delay="0.5"
+          :duration="0.75"
+          class="p-8"
+        >
+          <h2 class="text-h4 text-foreground">{{ educationContent.headline }}</h2>
+        </BlurReveal>
         <v-timeline
           class="education__timeline mt-10"
           :density="timelineDensity"
@@ -49,6 +55,7 @@ import CustomGlowCard from "~/components/CustomGlowCard.vue";
 import { glowCardVariantCycle, glowCardVariants } from "~/utils/glowCardVariants";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+import { BlurReveal } from "~/components/ui/blur-reveal";
 
 const { data: education } = useContentBlock("education");
 const localePath = useLocalePath();

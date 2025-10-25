@@ -3,15 +3,18 @@
     <ScrollSmooth>
       <v-container
         v-if="skillsContent"
-        class="mt-10"
+        class="mt-2 text-center"
       >
-        <h2 class="text-h4 text-foreground">{{ skillsContent.headline }}</h2>
-        <p
-          class="text-body-1 text-foreground mt-4"
-          style="max-width: 600px"
+        <BlurReveal
+          :delay="0.5"
+          :duration="0.75"
+          class="p-8"
         >
-          {{ skillsContent.subline }}
-        </p>
+          <h2 class="text-h4 text-foreground">{{ skillsContent.headline }}</h2>
+          <p class="text-body-1 text-foreground mt-4">
+            {{ skillsContent.subline }}
+          </p>
+        </BlurReveal>
 
         <v-row
           class="mt-10"
@@ -97,6 +100,7 @@ import CustomGlowCard from "~/components/CustomGlowCard.vue";
 import { glowCardVariantCycle } from "~/utils/glowCardVariants";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+import { BlurReveal } from "~/components/ui/blur-reveal";
 
 type RawLanguageEntry =
   | string

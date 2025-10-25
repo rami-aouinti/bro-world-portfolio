@@ -2,17 +2,17 @@
   <div class="app-layout">
     <v-app class="app-layout__shell">
       <ParticlesBg
-          class="app-layout__particles"
-          :color="particlesColor"
-          :quantity="160"
-          :staticity="55"
-          :ease="45"
+        class="app-layout__particles"
+        :color="particlesColor"
+        :quantity="160"
+        :staticity="55"
+        :ease="45"
       />
       <Navbar />
       <v-main class="app-layout__content">
         <div
-            class="personal__background"
-            aria-hidden="true"
+          class="personal__background"
+          aria-hidden="true"
         >
           <span class="personal__glow personal__glow--one"></span>
           <span class="personal__glow personal__glow--two"></span>

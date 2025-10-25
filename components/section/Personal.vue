@@ -233,7 +233,7 @@ const enrichedWorkDetails: Record<
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 10px;
+  padding: 20px;
   gap: 18px;
 }
 
