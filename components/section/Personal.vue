@@ -21,6 +21,10 @@
             <Text3d
               class="text-8xl font-bold max-md:text-7xl"
               shadow-color="primary"
+              :stroke-size="headlineStrokeSize"
+              :shadow1-size="headlineShadowOneSize"
+              :shadow2-size="headlineShadowTwoSize"
+              :letter-spacing="headlineLetterSpacing"
             >
               <h1 class="personal__headline">
                 {{ personalContent.headline }}
@@ -100,6 +104,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import { useMediaQuery } from "@vueuse/core";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
@@ -118,6 +123,15 @@ const personalCards = computed(() =>
     item,
     variant: glowCardVariantCycle[index % glowCardVariantCycle.length],
   })),
+);
+
+const isCompactViewport = useMediaQuery("(max-width: 640px)");
+
+const headlineStrokeSize = computed(() => (isCompactViewport.value ? 8 : 20));
+const headlineShadowOneSize = computed(() => (isCompactViewport.value ? 4 : 7));
+const headlineShadowTwoSize = computed(() => (isCompactViewport.value ? 6 : 10));
+const headlineLetterSpacing = computed(() =>
+  isCompactViewport.value ? -0.05 : -0.1,
 );
 const enrichedWorkDetails: Record<
   string,
@@ -216,14 +230,14 @@ const enrichedWorkDetails: Record<
 }
 
 .personal__headline {
-  font-size: clamp(2.5rem, 4vw + 1rem, 4.75rem);
+  font-size: clamp(2.2rem, 5vw + 1.1rem, 4.75rem);
   line-height: 1.1;
   font-weight: 800;
   text-shadow: 0 16px 36px rgba(15, 23, 42, 0.6);
 }
 
 .personal__description {
-  padding: 30px;
+  padding: clamp(16px, 6vw, 30px);
   max-width: 680px;
   font-size: clamp(1.05rem, 1vw + 1rem, 1.25rem);
   line-height: 1.7;
@@ -233,7 +247,7 @@ const enrichedWorkDetails: Record<
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
+  padding: clamp(12px, 4vw, 20px);
   gap: 18px;
 }
 
