@@ -93,7 +93,10 @@
     }
   },
   "navigation": {
-    "language": "Сменить язык"
+    "language": "Сменить язык",
+    "openMenu": "Открыть меню навигации",
+    "closeMenu": "Закрыть меню навигации",
+    "title": "Навигация"
   },
   "admin": {
     "settings": {

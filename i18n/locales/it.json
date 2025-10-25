@@ -93,7 +93,10 @@
     }
   },
   "navigation": {
-    "language": "Cambia lingua"
+    "language": "Cambia lingua",
+    "openMenu": "Apri il menu di navigazione",
+    "closeMenu": "Chiudi il menu di navigazione",
+    "title": "Navigazione"
   },
   "admin": {
     "settings": {

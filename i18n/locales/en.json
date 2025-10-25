@@ -99,7 +99,10 @@
     }
   },
   "navigation": {
-    "language": "Change language"
+    "language": "Change language",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "title": "Navigation"
   },
   "admin": {
     "settings": {
