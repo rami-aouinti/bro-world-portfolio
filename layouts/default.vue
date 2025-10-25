@@ -1,13 +1,13 @@
 <template>
   <div class="app-layout">
-    <ParticlesBg
-      class="app-layout__particles"
-      :color="particlesColor"
-      :quantity="160"
-      :staticity="55"
-      :ease="45"
-    />
     <v-app class="app-layout__shell">
+      <ParticlesBg
+          class="app-layout__particles"
+          :color="particlesColor"
+          :quantity="160"
+          :staticity="55"
+          :ease="45"
+      />
       <Navbar />
       <v-main class="app-layout__content">
         <slot />
@@ -53,10 +53,6 @@ const particlesColor = computed(() => (isDark.value ? "#FFFFFF" : "#0F172A"));
 .app-layout__content {
   position: relative;
   z-index: 1;
-}
-
-.app-layout :deep(.v-application) {
-  background: transparent !important;
 }
 
 .app-layout__particles {
