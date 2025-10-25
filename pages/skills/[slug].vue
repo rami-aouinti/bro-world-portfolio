@@ -29,8 +29,7 @@
           md="6"
         >
           <v-card
-            variant="tonal"
-            color="primary"
+            variant="flat"
             class="skill-card pa-6"
           >
             <header class="skill-card__header">
@@ -210,12 +209,18 @@ useSeoMeta(() => ({
   margin-top: 8px;
 }
 
+
 .skill-card {
   height: 100%;
   position: relative;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(30, 41, 59, 0.58));
-  border-radius: 22px;
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  background:
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.14), transparent 55%),
+    radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.1), transparent 60%),
+    linear-gradient(145deg, rgba(15, 23, 42, 0.88), rgba(30, 41, 59, 0.8));
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.26);
+  backdrop-filter: blur(22px);
+  box-shadow: 0 22px 45px -32px rgba(15, 23, 42, 0.85);
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -223,31 +228,47 @@ useSeoMeta(() => ({
   transition:
     transform 0.45s ease,
     box-shadow 0.45s ease,
-    border-color 0.45s ease;
+    border-color 0.45s ease,
+    background 0.6s ease;
 }
 
 .skill-card::before {
   content: "";
   position: absolute;
-  inset: -40% -20%;
-  background: radial-gradient(
-    circle at var(--glow-x, 30%) 30%,
-    rgba(99, 102, 241, 0.18),
-    transparent 60%
-  );
+  inset: -35% -15% auto -15%;
+  height: 75%;
+  background: conic-gradient(from 120deg at 30% 30%, rgba(129, 140, 248, 0.32), transparent 70%);
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease;
   pointer-events: none;
 }
 
+.skill-card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  pointer-events: none;
+  transition: border-color 0.45s ease;
+}
+
 .skill-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(129, 140, 248, 0.45);
-  box-shadow: 0 38px 70px -45px rgba(79, 70, 229, 0.55);
+  transform: translateY(-12px);
+  border-color: rgba(129, 140, 248, 0.55);
+  background:
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.24), transparent 60%),
+    radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.18), transparent 65%),
+    linear-gradient(155deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.86));
+  box-shadow: 0 34px 72px -28px rgba(59, 130, 246, 0.45);
 }
 
 .skill-card:hover::before {
   opacity: 1;
+}
+
+.skill-card:hover::after {
+  border-color: rgba(129, 140, 248, 0.3);
 }
 
 .skill-card__header {
@@ -274,23 +295,29 @@ useSeoMeta(() => ({
 }
 
 .skill-card__title {
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   font-weight: 600;
   color: #f8fafc;
   text-decoration: none;
-  transition: color 0.35s ease;
+  letter-spacing: 0.01em;
+  transition:
+    color 0.35s ease,
+    text-shadow 0.35s ease;
 }
 
 .skill-card__title:hover,
 .skill-card__title:focus {
   text-decoration: underline;
   color: #c7d2fe;
+  text-shadow: 0 8px 22px rgba(129, 140, 248, 0.4);
 }
+
 
 .skill-card__level {
   margin: 6px 0 0;
-  color: rgba(226, 232, 240, 0.72);
+  color: rgba(226, 232, 240, 0.75);
   font-size: 0.95rem;
+  letter-spacing: 0.02em;
 }
 
 .skill-card__level span {
@@ -303,11 +330,12 @@ useSeoMeta(() => ({
   --v-rating-background-opacity: 0.25;
 }
 
+
 .skill-card__summary {
   margin: 0;
-  color: rgba(226, 232, 240, 0.86);
-  line-height: 1.6;
-  font-size: 0.98rem;
+  color: rgba(226, 232, 240, 0.9);
+  line-height: 1.65;
+  font-size: 1rem;
 }
 
 .skill-card__projects {
@@ -316,21 +344,38 @@ useSeoMeta(() => ({
   gap: 12px;
 }
 
+
 .skill-card__projects-title {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.02rem;
   font-weight: 600;
-  color: rgba(226, 232, 240, 0.9);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.88);
 }
+
 
 .skill-card__project-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
 .skill-card__project-chip {
   text-transform: none;
+  background: rgba(129, 140, 248, 0.16) !important;
+  border: 1px solid rgba(129, 140, 248, 0.28) !important;
+  color: #e0e7ff !important;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.skill-card__project-chip:hover {
+  transform: translateY(-2px);
+  background: rgba(99, 102, 241, 0.3) !important;
+  border-color: rgba(165, 180, 252, 0.6) !important;
 }
 
 .skill-card__empty {
