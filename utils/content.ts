@@ -148,7 +148,7 @@ const EN_CONTENT: ContentRecord = {
   about: {
     label: "About",
     introduce: [
-      "I am Mohamed Rami Aouinti, a backend developer (PHP & Symfony) with several years of experience designing, optimizing, and maintaining modern web applications.",
+      "I am Mohamed Rami Aouinti, a backend developer ((PHP & Vue)) with several years of experience designing, optimizing, and maintaining modern web applications.",
       "My toolkit spans PHP 8, Symfony, Laravel, MySQL and PostgreSQL data modeling, plus scalable CI/CD pipelines.",
       "I focus on rigor, quality, and teamwork to deliver reliable, future-proof products.",
     ],
@@ -517,12 +517,12 @@ const FR_CONTENT: ContentRecord = {
   profile: {
     firstname: "Mohamed Rami",
     lastname: "Aouinti",
-    role: "Développeur backend (PHP & Symfony)",
+    role: "Développeur backend ((PHP & Vue))",
     avatar: "/images/profile.jpg",
   },
   hero: {
     badge: "Prêt pour de nouveaux défis",
-    headline: "Bonjour, je suis Rami développeur backend (PHP & Symfony)",
+    headline: "Bonjour, je suis Rami développeur backend ((PHP & Vue))",
     subline:
       "Je conçois des backends sécurisés et performants avec PHP 8, Symfony, des API REST, Docker et des pipelines CI/CD.",
   },
@@ -620,7 +620,7 @@ const FR_CONTENT: ContentRecord = {
   about: {
     label: "À propos",
     introduce: [
-      "Je suis Mohamed Rami Aouinti, développeur backend (PHP & Symfony) avec plusieurs années d’expérience dans la conception, l’optimisation et la maintenance d’applications web modernes.",
+      "Je suis Mohamed Rami Aouinti, développeur backend ((PHP & Vue)) avec plusieurs années d’expérience dans la conception, l’optimisation et la maintenance d’applications web modernes.",
       "Mon quotidien combine PHP 8, Symfony, Laravel, la modélisation de données MySQL et PostgreSQL ainsi que des pipelines CI/CD évolutifs.",
       "J’accorde une grande importance à la rigueur, à la qualité et au travail d’équipe pour livrer des produits fiables et pérennes.",
     ],
