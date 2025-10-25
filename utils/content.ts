@@ -223,20 +223,20 @@ const EN_CONTENT: ContentRecord = {
     headline: "Academic background and continuous learning.",
     schools: [
       {
-        slug: "bsc-information-technology",
-        degree: "BSc in Information Technology",
-        institution: "Jakarta Institute of Technology",
-        timeframe: "2015 — 2019",
+        slug: "msc-telecommunications-information-technology",
+        degree: "MSc in Telecommunications and Information Technology",
+        institution: "Beuth Hochschule für Technik, Berlin",
+        timeframe: "Oct 2016 — Aug 2018",
         details:
-          "Specialised in software engineering, interface design, and human-computer interaction. Graduated with honours.",
+          "Specialised in advanced telecommunications systems, network infrastructure, and applied information technology engineering.",
       },
       {
-        slug: "certificate-advanced-ux-design",
-        degree: "Advanced UX Design Certificate",
-        institution: "Interaction Design Foundation",
-        timeframe: "2020",
+        slug: "engineering-computer-networks-telecommunications-insat",
+        degree: "Engineering Degree in Computer Networks and Telecommunications",
+        institution: "Université INSAT, Tunis",
+        timeframe: "Sep 2008 — Aug 2013",
         details:
-          "Focused on user research, prototyping, and usability testing in fast-paced product teams.",
+          "Comprehensive curriculum covering computer networking, telecommunications, and information technology fundamentals.",
       },
     ],
   },
@@ -462,28 +462,181 @@ const FR_CONTENT: ContentRecord = {
     headline: "Parcours académique et apprentissage continu.",
     schools: [
       {
-        slug: "bsc-information-technology",
-        degree: "Licence en technologies de l’information",
-        institution: "Jakarta Institute of Technology",
-        timeframe: "2015 — 2019",
+        slug: "msc-telecommunications-information-technology",
+        degree: "Master en télécommunications et technologies de l’information",
+        institution: "Beuth Hochschule für Technik, Berlin",
+        timeframe: "Oct. 2016 — Août 2018",
         details:
-          "Spécialisation en génie logiciel, design d’interface et interaction humain-machine. Diplômé avec mention.",
+          "Spécialisation en systèmes de télécommunications avancés, infrastructures réseau et ingénierie des technologies de l’information.",
       },
       {
-        slug: "certificate-advanced-ux-design",
-        degree: "Certificat en UX design avancé",
-        institution: "Interaction Design Foundation",
-        timeframe: "2020",
+        slug: "engineering-computer-networks-telecommunications-insat",
+        degree: "Diplôme d’ingénieur en réseaux informatiques et télécommunications",
+        institution: "Université INSAT, Tunis",
+        timeframe: "Sept. 2008 — Août 2013",
         details:
-          "Approfondissement de la recherche utilisateur, du prototypage et des tests d’utilisabilité dans des équipes produit réactives.",
+          "Formation approfondie en réseaux informatiques, télécommunications et technologies de l’information appliquées.",
       },
     ],
   },
 };
 
+type EducationLocalization = {
+  navEducationLabel: string;
+  education: ContentRecord["education"];
+};
+
+function createLocalizedEducationContent(
+  base: ContentRecord,
+  overrides: EducationLocalization,
+): ContentRecord {
+  return {
+    ...base,
+    navlinks: base.navlinks.map((link) =>
+      link.url === "/education" ? { ...link, label: overrides.navEducationLabel } : link,
+    ),
+    education: overrides.education,
+  };
+}
+
+const DE_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
+  navEducationLabel: "Ausbildung",
+  education: {
+    label: "Ausbildung",
+    headline: "Akademischer Hintergrund und kontinuierliches Lernen.",
+    schools: [
+      {
+        slug: "msc-telecommunications-information-technology",
+        degree: "Master of Science in Telekommunikation und Informationstechnik",
+        institution: "Beuth Hochschule für Technik, Berlin",
+        timeframe: "Okt. 2016 — Aug. 2018",
+        details:
+          "Spezialisierung auf fortgeschrittene Telekommunikationssysteme, Netzwerkinfrastrukturen und angewandte Informationstechnik.",
+      },
+      {
+        slug: "engineering-computer-networks-telecommunications-insat",
+        degree: "Ingenieurabschluss in Rechnernetzen und Telekommunikation",
+        institution: "Université INSAT, Tunis",
+        timeframe: "Sep. 2008 — Aug. 2013",
+        details:
+          "Umfassendes Programm zu Rechnernetzwerken, Telekommunikation und Grundlagen der Informationstechnologie.",
+      },
+    ],
+  },
+});
+
+const ES_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
+  navEducationLabel: "Formación",
+  education: {
+    label: "Formación",
+    headline: "Trayectoria académica y aprendizaje continuo.",
+    schools: [
+      {
+        slug: "msc-telecommunications-information-technology",
+        degree: "Máster en Telecomunicaciones y Tecnología de la Información",
+        institution: "Beuth Hochschule für Technik, Berlín",
+        timeframe: "Oct. 2016 — Ago. 2018",
+        details:
+          "Especialización en sistemas de telecomunicaciones avanzados, infraestructura de redes e ingeniería de tecnologías de la información aplicadas.",
+      },
+      {
+        slug: "engineering-computer-networks-telecommunications-insat",
+        degree: "Ingeniería en Redes Informáticas y Telecomunicaciones",
+        institution: "Université INSAT, Túnez",
+        timeframe: "Sep. 2008 — Ago. 2013",
+        details:
+          "Plan de estudios integral sobre redes informáticas, telecomunicaciones y fundamentos de las tecnologías de la información.",
+      },
+    ],
+  },
+});
+
+const IT_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
+  navEducationLabel: "Formazione",
+  education: {
+    label: "Formazione",
+    headline: "Percorso accademico e apprendimento continuo.",
+    schools: [
+      {
+        slug: "msc-telecommunications-information-technology",
+        degree: "Laurea Magistrale in Telecomunicazioni e Tecnologie dell'Informazione",
+        institution: "Beuth Hochschule für Technik, Berlino",
+        timeframe: "Ott. 2016 — Ago. 2018",
+        details:
+          "Specializzazione in sistemi di telecomunicazione avanzati, infrastrutture di rete e ingegneria delle tecnologie dell'informazione applicate.",
+      },
+      {
+        slug: "engineering-computer-networks-telecommunications-insat",
+        degree: "Laurea in Ingegneria delle Reti Informatiche e delle Telecomunicazioni",
+        institution: "Université INSAT, Tunisi",
+        timeframe: "Set. 2008 — Ago. 2013",
+        details:
+          "Programma completo su reti informatiche, telecomunicazioni e fondamenti delle tecnologie dell'informazione.",
+      },
+    ],
+  },
+});
+
+const RU_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
+  navEducationLabel: "Образование",
+  education: {
+    label: "Образование",
+    headline: "Академический путь и непрерывное обучение.",
+    schools: [
+      {
+        slug: "msc-telecommunications-information-technology",
+        degree: "Магистр телекоммуникаций и информационных технологий",
+        institution: "Beuth Hochschule für Technik, Берлин",
+        timeframe: "Окт. 2016 — Авг. 2018",
+        details:
+          "Специализация на передовых телекоммуникационных системах, сетевой инфраструктуре и прикладной инженерии информационных технологий.",
+      },
+      {
+        slug: "engineering-computer-networks-telecommunications-insat",
+        degree: "Инженер по компьютерным сетям и телекоммуникациям",
+        institution: "Université INSAT, Тунис",
+        timeframe: "Сен. 2008 — Авг. 2013",
+        details:
+          "Комплексная программа по компьютерным сетям, телекоммуникациям и основам информационных технологий.",
+      },
+    ],
+  },
+});
+
+const AR_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
+  navEducationLabel: "التعليم",
+  education: {
+    label: "التعليم",
+    headline: "المسار الأكاديمي والتعلم المستمر.",
+    schools: [
+      {
+        slug: "msc-telecommunications-information-technology",
+        degree: "ماجستير في الاتصالات وتكنولوجيا المعلومات",
+        institution: "جامعة بويث للعلوم التطبيقية، برلين",
+        timeframe: "أكتوبر 2016 — أغسطس 2018",
+        details:
+          "تخصص في أنظمة الاتصالات المتقدمة، والبنية التحتية للشبكات، وهندسة تكنولوجيا المعلومات التطبيقية.",
+      },
+      {
+        slug: "engineering-computer-networks-telecommunications-insat",
+        degree: "هندسة الشبكات الحاسوبية والاتصالات",
+        institution: "جامعة إنسات، تونس",
+        timeframe: "سبتمبر 2008 — أغسطس 2013",
+        details:
+          "منهج شامل يغطي شبكات الحاسوب، والاتصالات، وأساسيات تقنيات المعلومات.",
+      },
+    ],
+  },
+});
+
 const LOCALIZED_CONTENT: Partial<Record<LocaleCode, ContentRecord>> = {
   en: EN_CONTENT,
   fr: FR_CONTENT,
+  de: DE_CONTENT,
+  es: ES_CONTENT,
+  it: IT_CONTENT,
+  ru: RU_CONTENT,
+  ar: AR_CONTENT,
 };
 
 export const DEFAULT_CONTENT: LocalizedContentRecord = Object.fromEntries(
