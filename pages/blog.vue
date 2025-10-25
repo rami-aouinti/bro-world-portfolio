@@ -1,42 +1,53 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-
-import { LOCALIZED_PAGE_META } from '~/utils/i18n/routes'
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-import ScrollSmooth from '~/components/Layout/ScrollSmooth.vue'
-
-definePageMeta(LOCALIZED_PAGE_META.blog)
-
-const { t } = useI18n()
-const localePath = useLocalePath()
-
-const contactLink = computed(() => resolveLocalizedRouteTarget('/contact', localePath))
-</script>
-
 <template>
   <ScrollSmooth>
     <v-container class="blog-page py-16">
       <div class="blog-page__header text-foreground">
-        <span class="blog-page__badge">{{ t('portfolio.blog.badge') }}</span>
-        <h1 class="blog-page__title">{{ t('portfolio.blog.title') }}</h1>
+        <span class="blog-page__badge">{{ t("portfolio.blog.badge") }}</span>
+        <h1 class="blog-page__title">{{ t("portfolio.blog.title") }}</h1>
         <p class="blog-page__description">
-          {{ t('portfolio.blog.description') }}
+          {{ t("portfolio.blog.description") }}
         </p>
       </div>
 
-      <v-sheet class="blog-page__empty" elevation="0">
-        <v-icon icon="mdi-notebook-outline" size="48" class="blog-page__empty-icon" />
-        <h2 class="blog-page__empty-title">{{ t('portfolio.blog.empty.title') }}</h2>
+      <v-sheet
+        class="blog-page__empty"
+        elevation="0"
+      >
+        <v-icon
+          icon="mdi-notebook-outline"
+          size="48"
+          class="blog-page__empty-icon"
+        />
+        <h2 class="blog-page__empty-title">{{ t("portfolio.blog.empty.title") }}</h2>
         <p class="blog-page__empty-description">
-          {{ t('portfolio.blog.empty.description') }}
+          {{ t("portfolio.blog.empty.description") }}
         </p>
-        <v-btn :to="contactLink" color="primary" class="text-none blog-page__empty-cta">
-          {{ t('portfolio.blog.empty.cta') }}
+        <v-btn
+          :to="contactLink"
+          color="primary"
+          class="text-none blog-page__empty-cta"
+        >
+          {{ t("portfolio.blog.empty.cta") }}
         </v-btn>
       </v-sheet>
     </v-container>
   </ScrollSmooth>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+
+import { LOCALIZED_PAGE_META } from "~/utils/i18n/routes";
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+
+definePageMeta(LOCALIZED_PAGE_META.blog);
+
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+const contactLink = computed(() => resolveLocalizedRouteTarget("/contact", localePath));
+</script>
 
 <style scoped>
 .blog-page {

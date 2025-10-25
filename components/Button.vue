@@ -1,35 +1,7 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-
-import { RainbowButton } from '~/components/Ui/rainbow-button'
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-
-const props = withDefaults(
-  defineProps<{
-    label: string
-    to: string
-    variant?: string
-  }>(),
-  {
-    variant: 'primary'
-  }
-)
-
-const localePath = useLocalePath()
-
-const to = computed(() => resolveLocalizedRouteTarget(props.to, localePath))
-
-const isRainbowVariant = computed(() => props.variant !== 'btn-dark')
-
-const appearance = computed(() =>
-  props.variant === 'btn-dark' ? 'app-button--ghost' : 'app-button--primary',
-)
-</script>
-
 <template>
   <RainbowButton
-    v-if="isRainbowVariant"
     is="NuxtLink"
+    v-if="isRainbowVariant"
     :to="to"
     class="app-button app-button--rainbow bg-primary/50 hover:bg-primary/50"
     :class="appearance"
@@ -48,8 +20,35 @@ const appearance = computed(() =>
   </v-btn>
 </template>
 
-<style scoped>
+<script setup lang="ts">
+import { computed } from "vue";
 
+import { RainbowButton } from "~/components/Ui/rainbow-button";
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+const props = withDefaults(
+  defineProps<{
+    label: string;
+    to: string;
+    variant?: string;
+  }>(),
+  {
+    variant: "primary",
+  },
+);
+
+const localePath = useLocalePath();
+
+const to = computed(() => resolveLocalizedRouteTarget(props.to, localePath));
+
+const isRainbowVariant = computed(() => props.variant !== "btn-dark");
+
+const appearance = computed(() =>
+  props.variant === "btn-dark" ? "app-button--ghost" : "app-button--primary",
+);
+</script>
+
+<style scoped>
 .app-button {
   align-items: center;
   border: 1px solid transparent;
@@ -61,8 +60,12 @@ const appearance = computed(() =>
   letter-spacing: 0.045em;
   min-width: auto;
   text-transform: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease,
-    border-color 0.25s ease, background 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
 }
 
 .app-button--rainbow {
@@ -100,7 +103,8 @@ const appearance = computed(() =>
 
 .app-button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--v-theme-primary)),
+  box-shadow:
+    0 0 0 3px rgba(var(--v-theme-primary)),
     0 22px 52px -20px rgba(var(--v-theme-primary));
 }
 

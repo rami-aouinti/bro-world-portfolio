@@ -1,25 +1,9 @@
-<script setup lang="ts">
-import { computed } from "vue";
-
-import { LampEffect } from "~/components/Ui/lamp-effect";
-import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
-
-const { data: cta } = useContentBlock("cta");
-const { data: navlinks } = useContentBlock("navlinks");
-const { t } = useI18n();
-const localePath = useLocalePath();
-
-const ctaContent = computed(() => cta.value);
-const links = computed(() =>
-  (navlinks.value ?? []).map((link) => ({
-    ...link,
-    to: resolveLocalizedRouteTarget(link.url, localePath),
-  })),
-);
-</script>
-
 <template>
-  <section v-if="ctaContent" id="lamp-callout" class="lamp-callout">
+  <section
+    v-if="ctaContent"
+    id="lamp-callout"
+    class="lamp-callout"
+  >
     <LampEffect
       class="lamp-callout__wrapper"
       content-class="lamp-callout__content"
@@ -40,14 +24,44 @@ const links = computed(() =>
         />
       </div>
 
-      <ul v-if="links.length" class="lamp-callout__links">
-        <li v-for="link in links" :key="link.title">
-          <NuxtLink :to="link.to" class="lamp-callout__link">{{ link.title }}</NuxtLink>
+      <ul
+        v-if="links.length"
+        class="lamp-callout__links"
+      >
+        <li
+          v-for="link in links"
+          :key="link.title"
+        >
+          <NuxtLink
+            :to="link.to"
+            class="lamp-callout__link"
+            >{{ link.title }}</NuxtLink
+          >
         </li>
       </ul>
     </LampEffect>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+
+import { LampEffect } from "~/components/Ui/lamp-effect";
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+const { data: cta } = useContentBlock("cta");
+const { data: navlinks } = useContentBlock("navlinks");
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+const ctaContent = computed(() => cta.value);
+const links = computed(() =>
+  (navlinks.value ?? []).map((link) => ({
+    ...link,
+    to: resolveLocalizedRouteTarget(link.url, localePath),
+  })),
+);
+</script>
 
 <style scoped>
 .lamp-callout {

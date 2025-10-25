@@ -2,11 +2,7 @@ import type { AsyncDataOptions } from "#app";
 import type { WatchSource } from "vue";
 import type { ContentRecord, ContentSlug } from "~/types/content";
 import { DEFAULT_CONTENT } from "~/utils/content";
-import {
-  DEFAULT_LOCALE,
-  resolveLocale,
-  type LocaleCode,
-} from "~/utils/i18n/locales";
+import { DEFAULT_LOCALE, resolveLocale, type LocaleCode } from "~/utils/i18n/locales";
 
 function resolveFallbackContent<TSlug extends ContentSlug>(
   slug: TSlug,
@@ -27,13 +23,11 @@ export function useContentBlock<TSlug extends ContentSlug>(
 
   if (watchOption === false) {
     watchSources = false;
-  }
-  else {
+  } else {
     const normalized: WatchSource[] = [];
     if (Array.isArray(watchOption)) {
       normalized.push(...watchOption);
-    }
-    else if (watchOption) {
+    } else if (watchOption) {
       normalized.push(watchOption as WatchSource);
     }
     normalized.push(locale);
@@ -51,8 +45,7 @@ export function useContentBlock<TSlug extends ContentSlug>(
         });
 
         return payload ?? resolveFallbackContent(slug, localeCode);
-      }
-      catch (error) {
+      } catch (error) {
         if (import.meta.dev) {
           console.warn(
             `[useContentBlock] Failed to load "${slug}" content for locale "${localeCode}". Falling back to defaults.`,

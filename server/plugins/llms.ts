@@ -1,6 +1,6 @@
 // https://github.com/nuxtlabs/nuxt-llms
 
-import { resolve, relative, join } from "pathe";
+import { resolve, relative, join } from "node:path";
 import { readdirSync, statSync, readFileSync, existsSync } from "fs";
 import yaml from "yaml";
 import type { NitroApp } from "nitropack";

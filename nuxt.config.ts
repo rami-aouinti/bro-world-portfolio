@@ -73,11 +73,7 @@ function unescapeCandidate(candidate: string): string {
   return candidate.replace(/\\:/g, ":").replace(/\\\//g, "/");
 }
 
-function purgeCss(
-    css: string,
-    usedClasses: Set<string>,
-    selectorSafelist: RegExp[],
-): string {
+function purgeCss(css: string, usedClasses: Set<string>, selectorSafelist: RegExp[]): string {
   let result = "";
   let index = 0;
 
@@ -113,14 +109,14 @@ function purgeCss(
 }
 
 function shouldKeepRule(
-    selector: string,
-    usedClasses: Set<string>,
-    selectorSafelist: RegExp[],
+  selector: string,
+  usedClasses: Set<string>,
+  selectorSafelist: RegExp[],
 ): boolean {
   const selectors = selector
-      .split(",")
-      .map((item) => item.trim())
-      .filter(Boolean);
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
 
   if (!selectors.length) {
     return false;
@@ -224,10 +220,10 @@ function parseGlobPattern(pattern: string): {
     const extensionPart = filePattern.slice(2);
     if (extensionPart.startsWith("{") && extensionPart.endsWith("}")) {
       const extensions = extensionPart
-          .slice(1, -1)
-          .split(",")
-          .map((value) => value.trim().replace(/^[.]/, ""))
-          .filter(Boolean);
+        .slice(1, -1)
+        .split(",")
+        .map((value) => value.trim().replace(/^[.]/, ""))
+        .filter(Boolean);
       return { baseDir, extensions: new Set(extensions) };
     }
 
@@ -238,9 +234,9 @@ function parseGlobPattern(pattern: string): {
 }
 
 async function walkDirectory(
-    directory: string,
-    extensions: Set<string> | null,
-    files: Set<string>,
+  directory: string,
+  extensions: Set<string> | null,
+  files: Set<string>,
 ): Promise<void> {
   let entries: Dirent[];
   try {
@@ -250,17 +246,17 @@ async function walkDirectory(
   }
 
   await Promise.all(
-      entries.map(async (entry) => {
-        const fullPath = path.join(directory, entry.name);
-        if (entry.isDirectory()) {
-          await walkDirectory(fullPath, extensions, files);
-        } else if (entry.isFile()) {
-          const extension = getExtension(entry.name);
-          if (!extensions || extensions.has(extension)) {
-            files.add(fullPath);
-          }
+    entries.map(async (entry) => {
+      const fullPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        await walkDirectory(fullPath, extensions, files);
+      } else if (entry.isFile()) {
+        const extension = getExtension(entry.name);
+        if (!extensions || extensions.has(extension)) {
+          files.add(fullPath);
         }
-      }),
+      }
+    }),
   );
 }
 
@@ -348,18 +344,18 @@ export function simplePurgeCssPlugin(options: SimplePurgeCssOptions): PluginOpti
       const files = await expandGlobs(content, rootDir);
 
       await Promise.all(
-          files.map(async (file) => {
-            try {
-              const source = await fs.readFile(file, "utf8");
-              for (const token of extractClassCandidates(source)) {
-                usedClasses.add(token);
-              }
-            } catch (error) {
-              this.warn(
-                  `simple-purgecss: unable to read ${path.relative(rootDir, file)} - ${(error as Error).message}`,
-              );
+        files.map(async (file) => {
+          try {
+            const source = await fs.readFile(file, "utf8");
+            for (const token of extractClassCandidates(source)) {
+              usedClasses.add(token);
             }
-          }),
+          } catch (error) {
+            this.warn(
+              `simple-purgecss: unable to read ${path.relative(rootDir, file)} - ${(error as Error).message}`,
+            );
+          }
+        }),
       );
 
       for (const entry of normalizedStandard) {
@@ -381,9 +377,9 @@ export function simplePurgeCssPlugin(options: SimplePurgeCssOptions): PluginOpti
         }
 
         const rawSource =
-            typeof chunk.source === "string"
-                ? chunk.source
-                : Buffer.from(chunk.source).toString("utf8");
+          typeof chunk.source === "string"
+            ? chunk.source
+            : Buffer.from(chunk.source).toString("utf8");
         if (!include.test(chunk.fileName) && !/Vuetify Material Dashboard/i.test(rawSource)) {
           continue;
         }
@@ -406,15 +402,15 @@ export interface SimplePurgeCssOptions {
 }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const sessionCookieName = process.env.SESSION_COOKIE_NAME || 'bro_world_session'
-const csrfCookieName = process.env.CSRF_COOKIE_NAME || 'bro_world_csrf'
+const sessionCookieName = process.env.SESSION_COOKIE_NAME || "bro_world_session";
+const csrfCookieName = process.env.CSRF_COOKIE_NAME || "bro_world_csrf";
 
 export default defineNuxtConfig({
-  compatibilityDate: '2025-10-01',
+  compatibilityDate: "2025-10-01",
   devtools: { enabled: true },
   modules: [
-    '@nuxtjs/google-fonts',
-    '@nuxt/image',
+    "@nuxtjs/google-fonts",
+    "@nuxt/image",
     "@nuxt/image",
     "nuxt-gtag",
     "@nuxt/ui",
@@ -427,9 +423,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "nuxt-llms",
   ],
-  plugins: [
-    "~/plugins/vuetify",
-  ],
+  plugins: ["~/plugins/vuetify"],
 
   css: [
     "vuetify/styles",
@@ -539,21 +533,21 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Poppins: [300, 400, 500, 600, 700]
+      Poppins: [300, 400, 500, 600, 700],
     },
-    display: 'swap'
+    display: "swap",
   },
   nitro: {
     storage: {
       content: {
-        driver: 'fs',
-        base: './server/storage/content'
+        driver: "fs",
+        base: "./server/storage/content",
       },
       auth: {
-        driver: 'fs',
-        base: './server/storage/auth'
-      }
-    }
+        driver: "fs",
+        base: "./server/storage/auth",
+      },
+    },
   },
   eslint: {
     config: {
@@ -563,7 +557,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Mohamed Rami Aouinti | Backend Developer (PHP & Symfony)',
+      title: "Mohamed Rami Aouinti | Backend Developer (PHP & Symfony)",
       meta: [
         {
           name: "google-adsense-account",
@@ -606,16 +600,16 @@ export default defineNuxtConfig({
     auth: {
       sessionCookieName,
       csrfCookieName,
-      sessionMaxAge: Number.parseInt(process.env.SESSION_MAX_AGE ?? '', 10) || 60 * 60 * 24
+      sessionMaxAge: Number.parseInt(process.env.SESSION_MAX_AGE ?? "", 10) || 60 * 60 * 24,
     },
     admin: {
-      defaultEmail: process.env.ADMIN_EMAIL || 'admin@example.com',
-      defaultPassword: process.env.ADMIN_PASSWORD || 'ChangeMe123!'
+      defaultEmail: process.env.ADMIN_EMAIL || "admin@example.com",
+      defaultPassword: process.env.ADMIN_PASSWORD || "ChangeMe123!",
     },
     public: {
       auth: {
-        csrfCookieName
-      }
-    }
-  }
-})
+        csrfCookieName,
+      },
+    },
+  },
+});

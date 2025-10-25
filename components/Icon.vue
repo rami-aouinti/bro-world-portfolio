@@ -6,6 +6,7 @@
     :style="mergedStyle"
     role="img"
     aria-hidden="true"
+    v-html="iconContent"
   />
 </template>
 

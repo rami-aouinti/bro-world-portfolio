@@ -1,37 +1,14 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-import CustomGlowCard from '~/components/CustomGlowCard.vue'
-import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
-
-const { data: cta } = useContentBlock('cta')
-const { data: navlinks } = useContentBlock('navlinks')
-const { data: profile } = useContentBlock('profile')
-const { t } = useI18n()
-
-const localePath = useLocalePath()
-const ctaContent = computed(() => cta.value)
-const rawLinks = computed(() => navlinks.value ?? [])
-const links = computed(() =>
-  rawLinks.value.map((link) => ({
-    ...link,
-    to: resolveLocalizedRouteTarget(link.url, localePath)
-  }))
-)
-const profileName = computed(() => {
-  if (!profile.value) {
-    return ''
-  }
-  return `${profile.value.firstname} ${profile.value.lastname}`
-})
-</script>
-
 <template>
   <ScrollSmooth>
-    <v-container class="py-6" v-if="ctaContent">
+    <v-container
+      v-if="ctaContent"
+      class="py-6"
+    >
       <v-row justify="center">
-        <v-col cols="12" md="8">
+        <v-col
+          cols="12"
+          md="8"
+        >
           <CustomGlowCard
             class="cta__card"
             :title="ctaContent.label"
@@ -53,6 +30,35 @@ const profileName = computed(() => {
     </v-container>
   </ScrollSmooth>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+import CustomGlowCard from "~/components/CustomGlowCard.vue";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+
+const { data: cta } = useContentBlock("cta");
+const { data: navlinks } = useContentBlock("navlinks");
+const { data: profile } = useContentBlock("profile");
+const { t } = useI18n();
+
+const localePath = useLocalePath();
+const ctaContent = computed(() => cta.value);
+const rawLinks = computed(() => navlinks.value ?? []);
+const links = computed(() =>
+  rawLinks.value.map((link) => ({
+    ...link,
+    to: resolveLocalizedRouteTarget(link.url, localePath),
+  })),
+);
+const profileName = computed(() => {
+  if (!profile.value) {
+    return "";
+  }
+  return `${profile.value.firstname} ${profile.value.lastname}`;
+});
+</script>
 
 <style scoped>
 .cta__card {

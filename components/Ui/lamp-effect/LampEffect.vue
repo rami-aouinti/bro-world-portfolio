@@ -64,10 +64,7 @@
 
     <div
       :class="
-        cn(
-          'relative z-50 flex -translate-y-80 flex-col items-center px-5',
-          $props.contentClass,
-        )
+        cn('relative z-50 flex -translate-y-80 flex-col items-center px-5', $props.contentClass)
       "
     >
       <slot />

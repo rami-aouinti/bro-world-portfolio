@@ -1,123 +1,3 @@
-<script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
-
-import { glowCardVariants } from '~/utils/glowCardVariants'
-
-type GlowCardProps = {
-  title: string
-  description?: string
-  eyebrow?: string
-  badge?: string
-  variant?: keyof typeof glowCardVariants
-  accentColor?: string
-  background?: string
-  glowColor?: string
-  glowIntensity?: number
-  padding?: string
-  borderRadius?: string
-  textColor?: string
-  outlineColor?: string
-  gradientSheenAngle?: number
-  gradientSheenOpacity?: number
-  to?: RouteLocationRaw
-}
-
-const props = withDefaults(defineProps<GlowCardProps>(), {
-  eyebrow: undefined,
-  badge: undefined,
-  variant: 'violet',
-  accentColor: undefined,
-  background: undefined,
-  glowColor: undefined,
-  glowIntensity: 0.8,
-  padding: '24px',
-  borderRadius: '24px',
-  textColor: undefined,
-  outlineColor: undefined,
-  gradientSheenAngle: 125,
-  gradientSheenOpacity: 0.45
-})
-
-const cardRef = ref<HTMLElement | null>(null)
-
-const variantConfig = computed(() => glowCardVariants[props.variant] ?? glowCardVariants.violet)
-
-const cssVars = computed(() => {
-  const accent = props.accentColor ?? variantConfig.value.accent
-  const background = props.background ?? variantConfig.value.background
-  const glow = props.glowColor ?? variantConfig.value.glow
-  const text = props.textColor ?? variantConfig.value.text
-  const outline = props.outlineColor ?? variantConfig.value.outline
-
-  return {
-    '--card-accent': accent,
-    '--card-background': background,
-    '--card-padding': props.padding,
-    '--card-border-radius': props.borderRadius,
-    '--card-text-color': text,
-    '--card-glow-color': glow,
-    '--card-glow-opacity': props.glowIntensity.toString(),
-    '--card-outline-color': outline,
-    '--card-sheen-angle': `${props.gradientSheenAngle}deg`,
-    '--card-sheen-opacity': props.gradientSheenOpacity.toString()
-  }
-})
-
-const initial = computed(() => props.title?.charAt(0)?.toUpperCase() ?? '')
-
-const isNavigable = computed(() => Boolean(props.to))
-const hasBadge = computed(() => Boolean(props.badge))
-
-function setPointerPosition(event: PointerEvent) {
-  if (!cardRef.value) {
-    return
-  }
-
-  const bounds = cardRef.value.getBoundingClientRect()
-  const x = ((event.clientX - bounds.left) / bounds.width) * 100
-  const y = ((event.clientY - bounds.top) / bounds.height) * 100
-  cardRef.value.style.setProperty('--pointer-x', `${x}%`)
-  cardRef.value.style.setProperty('--pointer-y', `${y}%`)
-}
-
-function resetPointerPosition() {
-  if (!cardRef.value) {
-    return
-  }
-
-  cardRef.value.style.setProperty('--pointer-x', '50%')
-  cardRef.value.style.setProperty('--pointer-y', '50%')
-}
-
-onMounted(() => {
-  resetPointerPosition()
-})
-
-async function handleCardClick(event: MouseEvent) {
-  if (!isNavigable.value || !props.to) {
-    return
-  }
-
-  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-    return
-  }
-
-  await navigateTo(props.to)
-}
-
-async function handleCardKeydown(event: KeyboardEvent) {
-  if (!isNavigable.value || !props.to) {
-    return
-  }
-
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault()
-    await navigateTo(props.to)
-  }
-}
-</script>
-
 <template>
   <article
     ref="cardRef"
@@ -132,23 +12,43 @@ async function handleCardKeydown(event: KeyboardEvent) {
     @keydown.enter="handleCardKeydown"
     @keydown.space.prevent="handleCardKeydown"
   >
-    <div class="glow-card__halo" aria-hidden="true" />
-    <div class="glow-card__surface" aria-hidden="true" />
+    <div
+      class="glow-card__halo"
+      aria-hidden="true"
+    />
+    <div
+      class="glow-card__surface"
+      aria-hidden="true"
+    />
 
-    <div class="glow-card__badge" v-if="badge">
+    <div
+      v-if="badge"
+      class="glow-card__badge"
+    >
       <span>{{ badge }}</span>
     </div>
 
     <div class="glow-card__content">
-      <div v-if="$slots.media" class="glow-card__media">
+      <div
+        v-if="$slots.media"
+        class="glow-card__media"
+      >
         <slot name="media" />
       </div>
       <header class="glow-card__header">
-        <div class="glow-card__avatar" aria-hidden="true">
+        <div
+          class="glow-card__avatar"
+          aria-hidden="true"
+        >
           <span>{{ initial }}</span>
         </div>
         <div class="glow-card__headline">
-          <p v-if="eyebrow" class="glow-card__eyebrow">{{ eyebrow }}</p>
+          <p
+            v-if="eyebrow"
+            class="glow-card__eyebrow"
+          >
+            {{ eyebrow }}
+          </p>
           <h3 class="glow-card__title">{{ title }}</h3>
         </div>
       </header>
@@ -161,12 +61,142 @@ async function handleCardKeydown(event: KeyboardEvent) {
         </slot>
       </div>
 
-      <footer v-if="$slots.footer" class="glow-card__footer">
+      <footer
+        v-if="$slots.footer"
+        class="glow-card__footer"
+      >
         <slot name="footer" />
       </footer>
     </div>
   </article>
 </template>
+
+<script setup lang="ts">
+import { computed, onMounted, ref } from "vue";
+import type { RouteLocationRaw } from "vue-router";
+
+import { glowCardVariants } from "~/utils/glowCardVariants";
+
+type GlowCardProps = {
+  title: string;
+  description?: string;
+  eyebrow?: string;
+  badge?: string;
+  variant?: keyof typeof glowCardVariants;
+  accentColor?: string;
+  background?: string;
+  glowColor?: string;
+  glowIntensity?: number;
+  padding?: string;
+  borderRadius?: string;
+  textColor?: string;
+  outlineColor?: string;
+  gradientSheenAngle?: number;
+  gradientSheenOpacity?: number;
+  to?: RouteLocationRaw;
+};
+
+const props = withDefaults(defineProps<GlowCardProps>(), {
+  eyebrow: undefined,
+  badge: undefined,
+  variant: "violet",
+  accentColor: undefined,
+  background: undefined,
+  glowColor: undefined,
+  glowIntensity: 0.8,
+  padding: "24px",
+  borderRadius: "24px",
+  textColor: undefined,
+  outlineColor: undefined,
+  gradientSheenAngle: 125,
+  gradientSheenOpacity: 0.45,
+});
+
+const cardRef = ref<HTMLElement | null>(null);
+
+const variantConfig = computed(() => glowCardVariants[props.variant] ?? glowCardVariants.violet);
+
+const cssVars = computed(() => {
+  const accent = props.accentColor ?? variantConfig.value.accent;
+  const background = props.background ?? variantConfig.value.background;
+  const glow = props.glowColor ?? variantConfig.value.glow;
+  const text = props.textColor ?? variantConfig.value.text;
+  const outline = props.outlineColor ?? variantConfig.value.outline;
+
+  return {
+    "--card-accent": accent,
+    "--card-background": background,
+    "--card-padding": props.padding,
+    "--card-border-radius": props.borderRadius,
+    "--card-text-color": text,
+    "--card-glow-color": glow,
+    "--card-glow-opacity": props.glowIntensity.toString(),
+    "--card-outline-color": outline,
+    "--card-sheen-angle": `${props.gradientSheenAngle}deg`,
+    "--card-sheen-opacity": props.gradientSheenOpacity.toString(),
+  };
+});
+
+const initial = computed(() => props.title?.charAt(0)?.toUpperCase() ?? "");
+
+const isNavigable = computed(() => Boolean(props.to));
+const hasBadge = computed(() => Boolean(props.badge));
+
+function setPointerPosition(event: PointerEvent) {
+  if (!cardRef.value) {
+    return;
+  }
+
+  const bounds = cardRef.value.getBoundingClientRect();
+  const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+  const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+  cardRef.value.style.setProperty("--pointer-x", `${x}%`);
+  cardRef.value.style.setProperty("--pointer-y", `${y}%`);
+};
+
+function resetPointerPosition() {
+  if (!cardRef.value) {
+    return;
+  }
+
+  cardRef.value.style.setProperty("--pointer-x", "50%");
+  cardRef.value.style.setProperty("--pointer-y", "50%");
+};
+
+onMounted(() => {
+  resetPointerPosition();
+});
+
+async function handleCardClick(event: MouseEvent) {
+  if (!isNavigable.value || !props.to) {
+    return;
+  }
+
+  if (
+    event.defaultPrevented ||
+    event.button !== 0 ||
+    event.metaKey ||
+    event.ctrlKey ||
+    event.shiftKey ||
+    event.altKey
+  ) {
+    return;
+  }
+
+  await navigateTo(props.to);
+};
+
+async function handleCardKeydown(event: KeyboardEvent) {
+  if (!isNavigable.value || !props.to) {
+    return;
+  }
+
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    await navigateTo(props.to);
+  }
+};
+</script>
 
 <style scoped>
 .glow-card {
@@ -182,7 +212,10 @@ async function handleCardKeydown(event: KeyboardEvent) {
   background: var(--card-background);
   border: 1px solid var(--card-outline-color);
   overflow: hidden;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
   box-shadow: 0 25px 60px -35px rgba(15, 23, 42, 0.85);
 }
 
@@ -198,7 +231,9 @@ async function handleCardKeydown(event: KeyboardEvent) {
   border-radius: inherit;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s ease, transform 0.5s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s ease;
 }
 
 .glow-card__halo {
@@ -213,11 +248,7 @@ async function handleCardKeydown(event: KeyboardEvent) {
 
 .glow-card__surface {
   z-index: -1;
-  background: linear-gradient(
-    var(--card-sheen-angle),
-    rgba(255, 255, 255, 0.35),
-    transparent 55%
-  );
+  background: linear-gradient(var(--card-sheen-angle), rgba(255, 255, 255, 0.35), transparent 55%);
   mix-blend-mode: screen;
 }
 
@@ -267,8 +298,14 @@ async function handleCardKeydown(event: KeyboardEvent) {
   width: 56px;
   flex-shrink: 0;
   border-radius: 18px;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--card-accent) 75%, #312e81 25%), rgba(15, 23, 42, 0.85));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 12px 25px -12px var(--card-accent);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--card-accent) 75%, #312e81 25%),
+    rgba(15, 23, 42, 0.85)
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 12px 25px -12px var(--card-accent);
   font-weight: 600;
   font-size: 1.5rem;
 }

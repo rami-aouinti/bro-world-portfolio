@@ -1,124 +1,17 @@
-<script setup lang="ts">
-import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
-
-definePageMeta({
-  middleware: 'auth',
-  layout: 'admin'
-})
-
-const router = useRouter()
-const { t } = useI18n()
-
-const openSetting = ref(false);
-
-const ThemeCustomizer = defineAsyncComponent(() => import('~/components/ThemeCustomizer.vue'))
-const shouldRenderThemeCustomizer = ref(false)
-
-function activateThemeCustomizer() {
-  if (shouldRenderThemeCustomizer.value) {
-    return
-  }
-
-  shouldRenderThemeCustomizer.value = true
-}
-
-onMounted(() => {
-  if (typeof window === 'undefined') {
-    return
-  }
-
-  const { requestIdleCallback } = window as Window & {
-    requestIdleCallback?: (callback: () => void) => number
-  }
-
-  if (typeof requestIdleCallback === 'function') {
-    requestIdleCallback(activateThemeCustomizer)
-    return
-  }
-
-  window.setTimeout(activateThemeCustomizer, 300)
-})
-
-const sections = [
-  {
-    slug: 'profile',
-    title: 'Profil',
-    description: 'Nom, rôle et avatar affichés sur le site.',
-    icon: 'mdi-account-circle-outline'
-  },
-  {
-    slug: 'hero',
-    title: 'Section personnelle',
-    description: 'Badge, titre et sous-titre de l’en-tête.',
-    icon: 'mdi-star'
-  },
-  {
-    slug: 'service',
-    title: 'Compétences',
-    description: 'Liste des services et compétences clés.',
-    icon: 'mdi-clipboard-check-outline'
-  },
-  {
-    slug: 'work',
-    title: 'Projets',
-    description: 'Projets présentés dans la section « Projets ».',
-    icon: 'mdi-rocket-launch-outline'
-  },
-  {
-    slug: 'about',
-    title: 'À propos',
-    description: 'Paragraphe de présentation personnelle.',
-    icon: 'mdi-text-box-outline'
-  },
-  {
-    slug: 'cta',
-    title: 'Appel à l’action',
-    description: 'Bloc contact/CTA du bas de page.',
-    icon: 'mdi-email-outline'
-  },
-  {
-    slug: 'navlinks',
-    title: 'Navigation',
-    description: 'Liens affichés dans le menu et le CTA.',
-    icon: 'mdi-compass-outline'
-  },
-  {
-    slug: 'skills',
-    title: 'Compétences',
-    description: 'Catégories de compétences.',
-    icon: 'mdi-lightbulb-on-outline'
-  },
-  {
-    slug: 'experiences',
-    title: 'Expériences',
-    description: 'Historique des expériences professionnelles.',
-    icon: 'mdi-briefcase-search-outline'
-  },
-  {
-    slug: 'education',
-    title: 'Formations',
-    description: 'Parcours académique et certifications.',
-    icon: 'mdi-school-outline'
-  }
-] as const
-
-const { data: session } = await useAsyncData('admin-session', () => $fetch('/api/auth/session'))
-
-const userDisplayName = computed(
-  () => session.value?.user?.name || session.value?.user?.email || 'Utilisateur connecté'
-)
-
-async function handleLogout() {
-  await $fetch('/api/auth/logout', { method: 'POST' })
-  await router.replace('/admin/login')
-}
-</script>
-
 <template>
   <v-container class="admin-dashboard mt-5">
     <v-row justify="center">
-      <v-col cols="12" lg="10" class="d-flex flex-column" style="gap: 32px;">
-        <v-card class="dashboard-hero" elevation="0" rounded="xl">
+      <v-col
+        cols="12"
+        lg="10"
+        class="d-flex flex-column"
+        style="gap: 32px"
+      >
+        <v-card
+          class="dashboard-hero"
+          elevation="0"
+          rounded="xl"
+        >
           <div class="dashboard-hero__glow" />
           <v-card-text class="dashboard-hero__content">
             <div class="dashboard-hero__intro">
@@ -128,13 +21,22 @@ async function handleLogout() {
               </div>
               <h1 class="dashboard-hero__title">Tableau de bord</h1>
               <p class="dashboard-hero__subtitle">
-                Pilotez toutes les sections du portfolio, mettez-les à jour en quelques clics et suivez l’impact de vos modifications.
+                Pilotez toutes les sections du portfolio, mettez-les à jour en quelques clics et
+                suivez l’impact de vos modifications.
               </p>
             </div>
             <div class="dashboard-session text-foreground text-end">
               <div class="dashboard-session__avatar">
-                <v-avatar size="64" color="white" class="mb-3">
-                  <v-icon icon="mdi-shield-account" color="primary" size="36" />
+                <v-avatar
+                  size="64"
+                  color="white"
+                  class="mb-3"
+                >
+                  <v-icon
+                    icon="mdi-shield-account"
+                    color="primary"
+                    size="36"
+                  />
                 </v-avatar>
                 <span class="dashboard-session__status">
                   <span class="dashboard-session__status-dot" />
@@ -158,26 +60,43 @@ async function handleLogout() {
           </v-card-text>
         </v-card>
 
-        <v-row class="dashboard-grid" dense>
+        <v-row
+          class="dashboard-grid"
+          dense
+        >
           <v-col cols="12">
-            <v-card class="site-settings-card" elevation="0" rounded="xl">
+            <v-card
+              class="site-settings-card"
+              elevation="0"
+              rounded="xl"
+            >
               <div class="site-settings-card__glow" />
               <v-card-text class="site-settings-card__content">
                 <div class="site-settings-card__header">
                   <div>
                     <p class="site-settings-card__eyebrow text-caption">
-                      {{ t('admin.settings.siteSettings') }}
+                      {{ t("admin.settings.siteSettings") }}
                     </p>
-                    <h2 class="site-settings-card__title">{{ t('admin.settings.themeCustomizer.title') }}</h2>
+                    <h2 class="site-settings-card__title">
+                      {{ t("admin.settings.themeCustomizer.title") }}
+                    </h2>
                     <p class="site-settings-card__subtitle">
                       Personnalisez les couleurs, le rayon et le thème global du site en temps réel.
                     </p>
                   </div>
                   <div class="site-settings-card__icon">
-                    <v-icon @click="openSetting = !openSetting" icon="mdi-tune" size="28" color="primary" />
+                    <v-icon
+                      icon="mdi-tune"
+                      size="28"
+                      color="primary"
+                      @click="openSetting = !openSetting"
+                    />
                   </div>
                 </div>
-                <div v-if="openSetting" class="site-settings-card__customizer">
+                <div
+                  v-if="openSetting"
+                  class="site-settings-card__customizer"
+                >
                   <ClientOnly>
                     <template #fallback>
                       <div class="site-settings-card__loading">
@@ -187,7 +106,10 @@ async function handleLogout() {
                     <Suspense>
                       <template #default>
                         <ThemeCustomizer v-if="shouldRenderThemeCustomizer" />
-                        <div v-else class="site-settings-card__loading">
+                        <div
+                          v-else
+                          class="site-settings-card__loading"
+                        >
                           Préparation des outils de thème…
                         </div>
                       </template>
@@ -202,7 +124,13 @@ async function handleLogout() {
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col v-for="section in sections" :key="section.slug" cols="12" md="6" xl="4">
+          <v-col
+            v-for="section in sections"
+            :key="section.slug"
+            cols="12"
+            md="6"
+            xl="4"
+          >
             <v-hover v-slot="{ isHovering, props }">
               <v-card
                 v-bind="props"
@@ -214,9 +142,18 @@ async function handleLogout() {
                 <v-card-text class="flex-grow-1">
                   <div class="dashboard-card__head">
                     <div class="dashboard-card__icon">
-                      <v-icon :icon="section.icon" color="primary" size="28" />
+                      <v-icon
+                        :icon="section.icon"
+                        color="primary"
+                        size="28"
+                      />
                     </div>
-                    <v-chip color="primary" variant="tonal" size="small" class="text-none dashboard-card__chip">
+                    <v-chip
+                      color="primary"
+                      variant="tonal"
+                      size="small"
+                      class="text-none dashboard-card__chip"
+                    >
                       Section
                     </v-chip>
                   </div>
@@ -247,16 +184,130 @@ async function handleLogout() {
   </v-container>
 </template>
 
-<style scoped>
+<script setup lang="ts">
+import { computed, defineAsyncComponent, onMounted, ref } from "vue";
 
+definePageMeta({
+  middleware: "auth",
+  layout: "admin",
+});
+
+const router = useRouter();
+const { t } = useI18n();
+
+const openSetting = ref(false);
+
+const ThemeCustomizer = defineAsyncComponent(() => import("~/components/ThemeCustomizer.vue"));
+const shouldRenderThemeCustomizer = ref(false);
+
+function activateThemeCustomizer() {
+  if (shouldRenderThemeCustomizer.value) {
+    return;
+  }
+
+  shouldRenderThemeCustomizer.value = true;
+}
+
+onMounted(() => {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const { requestIdleCallback } = window as Window & {
+    requestIdleCallback?: (callback: () => void) => number;
+  };
+
+  if (typeof requestIdleCallback === "function") {
+    requestIdleCallback(activateThemeCustomizer);
+    return;
+  }
+
+  window.setTimeout(activateThemeCustomizer, 300);
+});
+
+const sections = [
+  {
+    slug: "profile",
+    title: "Profil",
+    description: "Nom, rôle et avatar affichés sur le site.",
+    icon: "mdi-account-circle-outline",
+  },
+  {
+    slug: "hero",
+    title: "Section personnelle",
+    description: "Badge, titre et sous-titre de l’en-tête.",
+    icon: "mdi-star",
+  },
+  {
+    slug: "service",
+    title: "Compétences",
+    description: "Liste des services et compétences clés.",
+    icon: "mdi-clipboard-check-outline",
+  },
+  {
+    slug: "work",
+    title: "Projets",
+    description: "Projets présentés dans la section « Projets ».",
+    icon: "mdi-rocket-launch-outline",
+  },
+  {
+    slug: "about",
+    title: "À propos",
+    description: "Paragraphe de présentation personnelle.",
+    icon: "mdi-text-box-outline",
+  },
+  {
+    slug: "cta",
+    title: "Appel à l’action",
+    description: "Bloc contact/CTA du bas de page.",
+    icon: "mdi-email-outline",
+  },
+  {
+    slug: "navlinks",
+    title: "Navigation",
+    description: "Liens affichés dans le menu et le CTA.",
+    icon: "mdi-compass-outline",
+  },
+  {
+    slug: "skills",
+    title: "Compétences",
+    description: "Catégories de compétences.",
+    icon: "mdi-lightbulb-on-outline",
+  },
+  {
+    slug: "experiences",
+    title: "Expériences",
+    description: "Historique des expériences professionnelles.",
+    icon: "mdi-briefcase-search-outline",
+  },
+  {
+    slug: "education",
+    title: "Formations",
+    description: "Parcours académique et certifications.",
+    icon: "mdi-school-outline",
+  },
+] as const;
+
+const { data: session } = await useAsyncData("admin-session", () => $fetch("/api/auth/session"));
+
+const userDisplayName = computed(
+  () => session.value?.user?.name || session.value?.user?.email || "Utilisateur connecté",
+);
+
+async function handleLogout() {
+  await $fetch("/api/auth/logout", { method: "POST" });
+  await router.replace("/admin/login");
+}
+</script>
+
+<style scoped>
 .admin-dashboard__decor,
 .admin-dashboard::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
-
 
 .admin-dashboard > * {
   position: relative;
@@ -272,7 +323,8 @@ async function handleLogout() {
 .dashboard-hero__glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.25), transparent 50%),
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.25), transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.3), transparent 55%);
   mix-blend-mode: screen;
   pointer-events: none;
@@ -473,7 +525,10 @@ async function handleLogout() {
 .dashboard-card {
   position: relative;
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
   border: 1px solid rgba(37, 99, 235, 0.12);
   background: linear-gradient(160deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.88));
 }
@@ -512,7 +567,9 @@ async function handleLogout() {
   height: 56px;
   border-radius: 18px;
   background: rgba(37, 99, 235, 0.16);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 35px -28px rgba(37, 99, 235, 0.9);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 35px -28px rgba(37, 99, 235, 0.9);
 }
 
 .dashboard-card__chip {

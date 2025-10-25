@@ -22,14 +22,29 @@ const workCards = computed(() => {
 <template>
   <section id="work">
     <ScrollSmooth>
-      <v-container v-if="content" class="mt-10">
+      <v-container
+        v-if="content"
+        class="mt-10"
+      >
         <h2 class="text-h4 text-foreground">{{ content.headline }}</h2>
-        <p class="text-body-1 text-foreground mt-4" style="max-width: 600px;">
+        <p
+          class="text-body-1 text-foreground mt-4"
+          style="max-width: 600px"
+        >
           {{ content.subline }}
         </p>
 
-        <v-row class="mt-12" dense>
-          <v-col v-for="card in workCards" :key="card.item.slug" cols="12" md="4" class="gap-3">
+        <v-row
+          class="mt-12"
+          dense
+        >
+          <v-col
+            v-for="card in workCards"
+            :key="card.item.slug"
+            cols="12"
+            md="4"
+            class="gap-3"
+          >
             <CardContainer>
               <CardBody class="work-card-body">
                 <NuxtLink
@@ -75,7 +90,7 @@ const workCards = computed(() => {
                     class="mt-auto flex items-center justify-between gap-4 pt-4"
                   >
                     <span class="work-card-footer-label">
-                      {{ t('portfolio.work.footerLabel') }}
+                      {{ t("portfolio.work.footerLabel") }}
                     </span>
                     <v-btn
                       :to="card.item.live_demo"
@@ -86,7 +101,7 @@ const workCards = computed(() => {
                       @click.stop
                       @keydown.stop
                     >
-                      {{ t('portfolio.work.liveDemo') }}
+                      {{ t("portfolio.work.liveDemo") }}
                     </v-btn>
                   </CardItem>
                 </div>
@@ -98,6 +113,27 @@ const workCards = computed(() => {
     </ScrollSmooth>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+import { CardBody, CardContainer, CardItem } from "~/components/Ui/card-3d";
+
+const { data: work } = useContentBlock("work");
+const { t } = useI18n();
+const localePath = useLocalePath();
+const content = computed(() => work.value);
+const workCards = computed(() => {
+  const items = content.value?.works ?? [];
+
+  return items.map((item) => ({
+    item,
+    route: resolveLocalizedRouteTarget(`/work/${item.slug}`, localePath),
+  }));
+});
+</script>
 
 <style scoped>
 @reference "../../assets/styles/index.css";

@@ -1,23 +1,115 @@
-<script setup lang="ts">
-import { computed } from 'vue'
+<template>
+  <section id="skills">
+    <ScrollSmooth>
+      <v-container
+        v-if="skillsContent"
+        class="mt-10"
+      >
+        <h2 class="text-h4 text-foreground">{{ skillsContent.headline }}</h2>
+        <p
+          class="text-body-1 text-foreground mt-4"
+          style="max-width: 600px"
+        >
+          {{ skillsContent.subline }}
+        </p>
 
-import CustomGlowCard from '~/components/CustomGlowCard.vue'
-import { glowCardVariantCycle } from '~/utils/glowCardVariants'
+        <v-row
+          class="mt-10"
+          dense
+        >
+          <v-col
+            v-for="card in skillCards"
+            :key="card.category.name"
+            cols="12"
+            md="4"
+          >
+            <CustomGlowCard
+              class="skills__card"
+              :title="card.category.name"
+              :variant="card.variant"
+              :badge="card.badge"
+              :description="card.description"
+              :to="card.link"
+            >
+              <div class="skills__card">
+                <v-chip
+                  v-for="(skill, skillIndex) in card.skills"
+                  :key="skill.slug"
+                  class="skills__chip"
+                  color="primary"
+                  variant="tonal"
+                  size="small"
+                >
+                  <NuxtLink :to="skill.link">
+                    {{ skill.name }}
+                  </NuxtLink>
+                </v-chip>
+              </div>
+            </CustomGlowCard>
+          </v-col>
+          <v-col
+            v-if="languageCard"
+            cols="12"
+            md="4"
+          >
+            <CustomGlowCard
+              class="skills__card"
+              :title="t('portfolio.skills.languagesTitle')"
+              :variant="languageCard.variant"
+              :badge="languageCard.badge"
+              :description="t('portfolio.skills.languagesDescription')"
+              :to="languageCard.link"
+            >
+              <div class="skills__chips">
+                <v-chip
+                  v-for="language in languageCard.languages"
+                  :key="language.label"
+                  class="skills__chip skills__language-chip"
+                  color="primary"
+                  variant="tonal"
+                  size="small"
+                >
+                  <span
+                    v-if="language.icon"
+                    class="skills__language-flag"
+                    aria-hidden="true"
+                  >
+                    <span
+                      class="fi"
+                      :class="language.icon"
+                    />
+                  </span>
+                  <span class="skills__language-label">{{ language.label }}</span>
+                </v-chip>
+              </div>
+            </CustomGlowCard>
+          </v-col>
+        </v-row>
+      </v-container>
+    </ScrollSmooth>
+  </section>
+</template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+
+import CustomGlowCard from "~/components/CustomGlowCard.vue";
+import { glowCardVariantCycle } from "~/utils/glowCardVariants";
 import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 
 type RawLanguageEntry =
   | string
   | {
-      label: string
-      icon?: string | null
-      code?: string | null
-    }
+      label: string;
+      icon?: string | null;
+      code?: string | null;
+    };
 
 type DisplayLanguage = {
-  label: string
-  icon?: string
-}
+  label: string;
+  icon?: string;
+};
 
 const LANGUAGE_FLAG_MAP: Partial<Record<string, string>> = {
   english: "fi-gb gb",
@@ -45,83 +137,82 @@ const LANGUAGE_FLAG_MAP: Partial<Record<string, string>> = {
   العربية: "fi-tn tn",
   ar: "fi-tn tn",
   anglais: "fi-gb gb",
-} as const
+} as const;
 
 function normaliseKey(value: string | null | undefined): string | undefined {
   if (!value) {
-    return undefined
+    return undefined;
   }
 
-  return value
-    .toString()
-    .trim()
-    .toLowerCase()
+  return value.toString().trim().toLowerCase();
 }
 
 function resolveLanguageIcon(language: RawLanguageEntry): DisplayLanguage {
-  if (typeof language === 'string') {
-    const icon = LANGUAGE_FLAG_MAP[normaliseKey(language) ?? '']
+  if (typeof language === "string") {
+    const icon = LANGUAGE_FLAG_MAP[normaliseKey(language) ?? ""];
 
     return {
       label: language,
       icon,
-    }
+    };
   }
 
-  const fallbackKey = normaliseKey(language.code) ?? normaliseKey(language.label)
-  const iconFromMap = fallbackKey ? LANGUAGE_FLAG_MAP[fallbackKey] : undefined
-  const providedIcon = language.icon?.trim() ?? ''
-  const icon = providedIcon.length ? providedIcon : iconFromMap
+  const fallbackKey = normaliseKey(language.code) ?? normaliseKey(language.label);
+  const iconFromMap = fallbackKey ? LANGUAGE_FLAG_MAP[fallbackKey] : undefined;
+  const providedIcon = language.icon?.trim() ?? "";
+  const icon = providedIcon.length ? providedIcon : iconFromMap;
 
   return {
     label: language.label,
     icon: icon ?? undefined,
-  }
+  };
 }
 
-const { data: skills } = useContentBlock('skills')
-const { t } = useI18n()
-const localePath = useLocalePath()
+const { data: skills } = useContentBlock("skills");
+const { t } = useI18n();
+const localePath = useLocalePath();
 
-const skillsContent = computed(() => skills.value)
+const skillsContent = computed(() => skills.value);
 const skillCards = computed(() => {
-  const categories = skillsContent.value?.categories ?? []
-  const fallbackDescription = t('portfolio.skills.cardDescription')
+  const categories = skillsContent.value?.categories ?? [];
+  const fallbackDescription = t("portfolio.skills.cardDescription");
 
   return categories.map((category, index) => ({
     category,
     variant: glowCardVariantCycle[index % glowCardVariantCycle.length],
-    badge: t('portfolio.skills.badge', category.skills.length, { count: category.skills.length }),
+    badge: t("portfolio.skills.badge", category.skills.length, { count: category.skills.length }),
     description: category.description || fallbackDescription,
     link: resolveLocalizedRouteTarget(`/skills/${category.slug}`, localePath),
     skills: category.skills.map((skill) => ({
       ...skill,
-      link: resolveLocalizedRouteTarget(`/skills/${category.slug}/${skill.slug}`, localePath)
+      link: resolveLocalizedRouteTarget(`/skills/${category.slug}/${skill.slug}`, localePath),
     })),
-  }))
-})
+  }));
+});
 
 const languageCard = computed(() => {
-  const languages = skillsContent.value?.languages ?? []
-  const languageProficiencies = skillsContent.value?.languageProficiencies ?? []
+  const languages = skillsContent.value?.languages ?? [];
+  const languageProficiencies = skillsContent.value?.languageProficiencies ?? [];
   const resolvedLanguages: RawLanguageEntry[] = languages.length
     ? languages
-    : languageProficiencies.map((entry) => entry.name)
-  const displayLanguages = resolvedLanguages.map((entry) => resolveLanguageIcon(entry))
+    : languageProficiencies.map((entry) => entry.name);
+  const displayLanguages = resolvedLanguages.map((entry) => resolveLanguageIcon(entry));
 
   if (!displayLanguages.length) {
-    return null
+    return null;
   }
 
-  const variantIndex = skillCards.value.length % glowCardVariantCycle.length
+  const variantIndex = skillCards.value.length % glowCardVariantCycle.length;
 
   return {
     variant: glowCardVariantCycle[variantIndex],
-    badge: t('portfolio.skills.languagesBadge', displayLanguages.length, { count: displayLanguages.length }),
+    badge: t("portfolio.skills.languagesBadge", displayLanguages.length, {
+      count: displayLanguages.length,
+    }),
     languages: displayLanguages,
-    link: resolveLocalizedRouteTarget('/skills/languages', localePath),
-  }
-})
+    link: resolveLocalizedRouteTarget("/skills/languages", localePath),
+  };
+});
 </script>
 
 <template>
@@ -200,7 +291,9 @@ const languageCard = computed(() => {
   height: 100%;
   position: relative;
   overflow: visible;
-  transition: transform 0.45s ease, box-shadow 0.45s ease;
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
 }
 
 .skills__card:hover {
@@ -228,7 +321,10 @@ const languageCard = computed(() => {
   box-shadow: 0 18px 40px -32px rgba(15, 23, 42, 0.8);
   animation: skills-item-fade 0.6s ease both;
   animation-delay: var(--skill-delay);
-  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .skills__item:hover {

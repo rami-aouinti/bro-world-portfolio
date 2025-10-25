@@ -1,29 +1,143 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-import ScrollSmooth from '~/components/Layout/ScrollSmooth.vue'
+<template>
+  <section
+    id="personal"
+    class="personal"
+  >
+    <div
+      class="personal__background"
+      aria-hidden="true"
+    >
+      <span class="personal__glow personal__glow--one"></span>
+      <span class="personal__glow personal__glow--two"></span>
+      <span class="personal__glow personal__glow--three"></span>
+      <span class="personal__spark personal__spark--one"></span>
+      <span class="personal__spark personal__spark--two"></span>
+      <span class="personal__spark personal__spark--three"></span>
+    </div>
+    <ScrollSmooth>
+      <v-container
+        v-if="personalContent"
+        class="personal__container py-6 my-auto py-md-24"
+      >
+        <v-row
+          justify="center"
+          class="text-center"
+        >
+          <v-col
+            cols="12"
+            md="10"
+            lg="8"
+            class="personal__content mt-8"
+          >
+            <Text3d
+              class="text-8xl font-bold max-md:text-7xl"
+              shadow-color="primary"
+            >
+              <h1 class="personal__headline">
+                {{ personalContent.headline }}
+              </h1>
+            </Text3d>
 
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-import { Text3d } from '../Ui/text-3d'
+            <p class="personal__description text-foreground">
+              {{ personalContent.subline }}
+            </p>
+            <div class="personal__actions">
+              <Button
+                :label="t('portfolio.personal.viewProjects')"
+                :to="resolveLocalizedRouteTarget('/work', localePath)"
+              />
+              <Button
+                :label="t('portfolio.personal.contact')"
+                :to="resolveLocalizedRouteTarget('/contact', localePath)"
+              />
+            </div>
+            <v-chip
+              v-if="personalContent?.badge"
+              color="primary"
+              variant="outlined"
+              class="personal__badge text-uppercase"
+            >
+              {{ personalContent.badge }}
+            </v-chip>
+          </v-col>
+        </v-row>
+
+        <v-slide-group
+          show-arrows
+          class="personal__carousel"
+        >
+          <v-slide-group-item
+            v-for="card in personalCards"
+            :key="card.item.name"
+          >
+            <CustomGlowCard
+              class="personal__card"
+              :title="card.item.name"
+              :badge="card.item.type"
+              :variant="card.variant"
+            >
+              <template #media>
+                <v-img
+                  :src="`/images/work/${card.item.thumbnails}`"
+                  :alt="card.item.name"
+                  height="200"
+                  cover
+                  class="personal__image"
+                />
+              </template>
+              <template #footer>
+                <div class="personal__footer">
+                  <span class="personal__footer-label">{{
+                    t("portfolio.personal.viewProjectLabel")
+                  }}</span>
+                  <v-btn
+                    :to="card.item.live_demo"
+                    target="_blank"
+                    color="primary"
+                    variant="text"
+                    class="text-none"
+                  >
+                    {{ t("portfolio.personal.viewProjectCta") }}
+                  </v-btn>
+                </div>
+              </template>
+            </CustomGlowCard>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-container>
+    </ScrollSmooth>
+  </section>
+</template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+import { Text3d } from "../Ui/text-3d";
 import CustomGlowCard from "~/components/CustomGlowCard.vue";
 
-const { data: personal } = useContentBlock('hero')
-const { data: work } = useContentBlock('work')
-const { t } = useI18n()
-const localePath = useLocalePath()
+const { data: personal } = useContentBlock("hero");
+const { data: work } = useContentBlock("work");
+const { t } = useI18n();
+const localePath = useLocalePath();
 
-const personalContent = computed(() => personal.value)
-const workItems = computed(() => work.value?.works ?? [])
+const personalContent = computed(() => personal.value);
+const workItems = computed(() => work.value?.works ?? []);
 const personalCards = computed(() =>
-    workItems.value.map((item, index) => ({
-      item,
-      variant: glowCardVariantCycle[index % glowCardVariantCycle.length]
-    }))
-)
-const enrichedWorkDetails: Record<string, {
-  description: string
-  highlights: string[]
-  impact?: string
-}> = {
+  workItems.value.map((item, index) => ({
+    item,
+    variant: glowCardVariantCycle[index % glowCardVariantCycle.length],
+  })),
+);
+const enrichedWorkDetails: Record<
+  string,
+  {
+    description: string;
+    highlights: string[];
+    impact?: string;
+  }
+> = {
   "microservices-tkdeutschland": {
     description:
       "Designed a distributed Symfony microservice platform for TKDeutschland’s insurance back office, aligning internal tooling with partner-facing APIs.",
@@ -84,102 +198,14 @@ const enrichedWorkDetails: Record<string, {
     ],
     impact: "Impact: New engineers shipped production-ready code in their first sprint.",
   },
-}
+};
 </script>
 
-<template>
-<section id="personal" class="personal">
-    <div class="personal__background" aria-hidden="true">
-      <span class="personal__glow personal__glow--one"></span>
-      <span class="personal__glow personal__glow--two"></span>
-      <span class="personal__glow personal__glow--three"></span>
-      <span class="personal__spark personal__spark--one"></span>
-      <span class="personal__spark personal__spark--two"></span>
-      <span class="personal__spark personal__spark--three"></span>
-    </div>
-    <ScrollSmooth>
-      <v-container class="personal__container py-6 my-auto py-md-24" v-if="personalContent">
-        <v-row justify="center" class="text-center">
-          <v-col cols="12" md="10" lg="8" class="personal__content mt-8">
-            <Text3d
-                class="text-8xl font-bold max-md:text-7xl"
-                shadow-color="primary"
-            >
-              <h1 class="personal__headline">
-                {{ personalContent.headline }}
-              </h1>
-            </Text3d>
-
-            <p class="personal__description text-foreground">
-              {{ personalContent.subline }}
-            </p>
-            <div class="personal__actions">
-              <Button
-                :label="t('portfolio.personal.viewProjects')"
-                :to="resolveLocalizedRouteTarget('/work', localePath)"
-              />
-              <Button
-                :label="t('portfolio.personal.contact')"
-                :to="resolveLocalizedRouteTarget('/contact', localePath)"
-              />
-            </div>
-            <v-chip
-                v-if="personalContent?.badge"
-                color="primary"
-                variant="outlined"
-                class="personal__badge text-uppercase"
-            >
-              {{ personalContent.badge }}
-            </v-chip>
-          </v-col>
-        </v-row>
-
-        <v-slide-group show-arrows class="personal__carousel">
-          <v-slide-group-item v-for="card in personalCards" :key="card.item.name">
-            <CustomGlowCard
-                class="personal__card"
-                :title="card.item.name"
-                :badge="card.item.type"
-                :variant="card.variant"
-            >
-              <template #media>
-                <v-img
-                    :src="`/images/work/${card.item.thumbnails}`"
-                    :alt="card.item.name"
-                    height="200"
-                    cover
-                    class="personal__image"
-                />
-              </template>
-              <template #footer>
-                <div class="personal__footer">
-                  <span class="personal__footer-label">{{ t('portfolio.personal.viewProjectLabel') }}</span>
-                  <v-btn
-                      :to="card.item.live_demo"
-                      target="_blank"
-                      color="primary"
-                      variant="text"
-                      class="text-none"
-                  >
-                    {{ t('portfolio.personal.viewProjectCta') }}
-                  </v-btn>
-                </div>
-              </template>
-            </CustomGlowCard>
-          </v-slide-group-item>
-        </v-slide-group>
-      </v-container>
-    </ScrollSmooth>
-  </section>
-</template>
-
 <style scoped>
-
 .personal {
   position: relative;
   overflow-x: hidden;
 }
-
 
 .personal__spark--one {
   top: 28%;
@@ -207,8 +233,6 @@ const enrichedWorkDetails: Record<string, {
   position: relative;
   z-index: 1;
 }
-
-
 
 .personal__badge {
   align-items: center;
