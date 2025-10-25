@@ -19,7 +19,7 @@
         }
       },
       "title": "Lassen Sie uns gemeinsam etwas Bemerkenswertes schaffen.",
-      "description": "Sie haben eine Frage, eine Projektidee oder möchten einfach in Kontakt treten? Schreiben Sie mir. Ich liebe es, neue Herausforderungen anzunehmen und intuitive Erlebnisse zu gestalten.",
+      "description": "Sie haben eine Frage, eine Projektidee oder möchten einfach in Kontakt treten? Schreiben Sie mir eine Nachricht. Ich freue mich darauf, neue Herausforderungen anzunehmen und intuitive Erlebnisse zu gestalten.",
       "form": {
         "nameLabel": "Name",
         "emailLabel": "E-Mail",
@@ -29,16 +29,16 @@
       },
       "card": {
         "title": "Direkter Kontakt",
-        "description": "Sie benötigen ein kurzes Gespräch? Hinterlassen Sie mir eine Nachricht und ich melde mich innerhalb eines Werktags.",
+        "description": "Brauchen Sie ein kurzes Gespräch? Hinterlassen Sie mir eine Nachricht, und ich melde mich innerhalb eines Werktags.",
         "badge": "Lassen Sie uns sprechen",
         "footerLabel": "Ein Gespräch planen",
-        "footerCta": "In Kontakt bleiben"
+        "footerCta": "In Verbindung bleiben"
       }
     },
     "blog": {
       "badge": "Blog",
       "title": "Einblicke, Notizen und technische Deep-Dives.",
-      "description": "Bald finden Sie hier ausführliche Artikel über Backend-Architektur, Symfony-Best-Practices und Produktivitätstipps.",
+      "description": "Bleiben Sie dran für ausführliche Artikel über Backend-Architektur, Symfony-Best-Practices und Produktivitätstipps.",
       "empty": {
         "title": "Der erste Beitrag ist unterwegs",
         "description": "Ich bereite Fallstudien und Tutorials vor, die ich in Kürze veröffentlichen werde. Schreiben Sie mir gern, wenn Sie über Ihr Projekt sprechen möchten.",
@@ -47,7 +47,7 @@
     },
     "personal": {
       "viewProjects": "Meine Projekte ansehen",
-      "contact": "Kontaktiere mich",
+      "contact": "Kontaktieren Sie mich",
       "viewProjectLabel": "Projekt ansehen",
       "viewProjectCta": "Entdecken"
     },
@@ -58,18 +58,18 @@
     },
     "skills": {
       "badge": "{count} Fähigkeit | {count} Fähigkeiten",
-      "cardDescription": "Hervorgehobene Tools und Technologien.",
+      "cardDescription": "Ausgewählte Tools und Technologien.",
       "languagesTitle": "Sprachen",
       "languagesDescription": "Gesprochene und geschriebene Sprachen für die Zusammenarbeit.",
       "languagesBadge": "{count} Sprache | {count} Sprachen"
     },
     "cta": {
-      "eyebrow": "Bereit zur Zusammenarbeit",
-      "primaryCta": "Eine Zusammenarbeit starten"
+      "eyebrow": "Bereit für eine Zusammenarbeit",
+      "primaryCta": "Eine Zusammenarbeit beginnen"
     },
     "about": {
       "fallbackProfileDescription": "Ich entwickle zuverlässige Backends mit PHP, Symfony und durchdachten Architekturen.",
-      "cta": "Kontaktiere mich",
+      "cta": "Kontaktieren Sie mich",
       "hobbiesTitle": "Hobbys und Interessen"
     },
     "service": {
