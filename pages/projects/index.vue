@@ -52,52 +52,123 @@
           {{ t("portfolio.githubProjects.empty") }}
         </v-alert>
 
-        <v-row
-          v-else
-          dense
-          class="github-projects__grid"
+      <v-row
+        v-else
+        dense
+        class="github-projects__grid"
+      >
+        <v-col
+          v-for="(project, index) in projectsWithHighlights"
+          :key="project.slug"
+          cols="12"
+          md="6"
+          lg="4"
         >
-          <v-col
-            v-for="project in projects"
-            :key="project.slug"
-            cols="12"
-            md="6"
-            lg="4"
+          <Motion
+            :initial="{ opacity: 0, y: 24 }"
+            :while-in-view="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }"
+            :viewport="{ once: true, amount: 0.4 }"
           >
-            <v-card
-              variant="tonal"
-              color="primary"
+            <article
               class="github-projects__card"
+              :aria-labelledby="`project-${project.slug}`"
             >
-              <v-card-title class="github-projects__card-title">
-                {{ project.name }}
-              </v-card-title>
+              <span class="github-projects__card-glow" aria-hidden="true" />
 
-              <v-card-subtitle class="github-projects__card-subtitle">
-                {{ formatDate(project.updatedAt) }} · {{ project.primaryLanguage ?? t("portfolio.githubProjects.languageUnknown") }}
-              </v-card-subtitle>
+              <header class="github-projects__card-header">
+                <div class="github-projects__card-heading">
+                  <h2
+                    :id="`project-${project.slug}`"
+                    class="github-projects__card-title"
+                  >
+                    {{ project.name }}
+                  </h2>
+                  <p class="github-projects__card-subtitle">
+                    {{ formatDate(project.updatedAt) }} ·
+                    {{ project.primaryLanguage ?? t("portfolio.githubProjects.languageUnknown") }}
+                  </p>
+                </div>
 
-              <v-card-text class="github-projects__card-text">
-                {{ project.description || t("portfolio.githubProjects.noDescription") }}
-              </v-card-text>
+                <span
+                  v-if="project.primaryLanguage"
+                  class="github-projects__language"
+                >
+                  {{ project.primaryLanguage }}
+                </span>
+              </header>
+
+              <ul class="github-projects__stats">
+                <li>
+                  <v-icon
+                    icon="mdi-star-outline"
+                    size="18"
+                    class="github-projects__stat-icon"
+                    aria-hidden="true"
+                  />
+                  <div class="github-projects__stat-text">
+                    <span class="github-projects__stat-value">{{ project.stars }}</span>
+                    <span class="github-projects__stat-label">{{ t("portfolio.githubProjects.stars") }}</span>
+                  </div>
+                </li>
+                <li>
+                  <v-icon
+                    icon="mdi-source-fork"
+                    size="18"
+                    class="github-projects__stat-icon"
+                    aria-hidden="true"
+                  />
+                  <div class="github-projects__stat-text">
+                    <span class="github-projects__stat-value">{{ project.forks }}</span>
+                    <span class="github-projects__stat-label">{{ t("portfolio.githubProjects.forks") }}</span>
+                  </div>
+                </li>
+                <li>
+                  <v-icon
+                    icon="mdi-clock-outline"
+                    size="18"
+                    class="github-projects__stat-icon"
+                    aria-hidden="true"
+                  />
+                  <div class="github-projects__stat-text">
+                    <span class="github-projects__stat-value">{{ formatDate(project.updatedAt) }}</span>
+                    <span class="github-projects__stat-label">{{ t("portfolio.githubProjects.updatedAt") }}</span>
+                  </div>
+                </li>
+              </ul>
 
               <div
-                v-if="project.topics.length"
+                v-if="project.displayTopics.length"
                 class="github-projects__topics"
               >
-                <v-chip
-                  v-for="topic in project.topics"
+                <Motion
+                  v-for="(topic, topicIndex) in project.displayTopics"
                   :key="topic"
-                  label
-                  size="small"
-                  class="github-projects__topic"
-                  variant="outlined"
+                  as="div"
+                  class="github-projects__topic-motion"
+                  :initial="{ opacity: 0, y: 12 }"
+                  :while-in-view="{ opacity: 1, y: 0 }"
+                  :transition="{ duration: 0.35, delay: 0.15 + topicIndex * 0.05 }"
+                  :viewport="{ once: true }"
                 >
-                  #{{ topic }}
-                </v-chip>
+                  <v-chip
+                    label
+                    size="small"
+                    class="github-projects__topic"
+                    variant="outlined"
+                  >
+                    #{{ topic }}
+                  </v-chip>
+                </Motion>
+                <span
+                  v-if="project.hiddenTopics > 0"
+                  class="github-projects__topic github-projects__topic--more"
+                >
+                  +{{ project.hiddenTopics }}
+                </span>
               </div>
 
-              <v-card-actions class="github-projects__actions">
+              <footer class="github-projects__actions">
                 <v-btn
                   :to="projectDetailRoute(project.slug)"
                   variant="flat"
@@ -117,10 +188,11 @@
                 >
                   {{ t("portfolio.githubProjects.viewOnGithub") }}
                 </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-        </v-row>
+              </footer>
+            </article>
+          </Motion>
+        </v-col>
+      </v-row>
       </div>
     </v-container>
   </section>
@@ -128,6 +200,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import { Motion } from "motion-v";
 import { LOCALIZED_PAGE_META } from "~/utils/i18n/routes";
 
 interface GithubProjectListItem {
@@ -153,6 +226,19 @@ const { data, status, error } = await useAsyncData<GithubProjectListItem[]>(
 );
 
 const projects = computed(() => data.value ?? []);
+
+const projectsWithHighlights = computed(() =>
+  projects.value.map((project) => {
+    const displayTopics = project.topics.slice(0, 4);
+    const hiddenTopics = Math.max(project.topics.length - displayTopics.length, 0);
+
+    return {
+      ...project,
+      displayTopics,
+      hiddenTopics,
+    };
+  }),
+);
 
 function projectDetailRoute(slug: string) {
   return localePath({ name: "projects-slug", params: { slug } });
@@ -221,44 +307,171 @@ useSeoMeta(() => ({
 }
 
 .github-projects__card {
-  height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
+  gap: 24px;
+  height: 100%;
+  padding: 28px;
+  border-radius: 28px;
+  border: 1px solid hsl(var(--border) / 0.35);
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.18), rgba(14, 165, 233, 0.08));
+  background-color: hsl(var(--muted) / 0.12);
+  box-shadow: 0 24px 45px -32px rgba(15, 23, 42, 0.55);
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.github-projects__card:hover,
+.github-projects__card:focus-within {
+  transform: translateY(-6px);
+  border-color: hsl(var(--primary) / 0.6);
+  box-shadow: 0 32px 60px -28px rgba(59, 130, 246, 0.45);
+}
+
+.github-projects__card-glow {
+  position: absolute;
+  inset: -40% -20% auto;
+  height: 180px;
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.35), transparent 70%);
+  opacity: 0.7;
+  transition: opacity 0.4s ease;
+}
+
+.github-projects__card:hover .github-projects__card-glow,
+.github-projects__card:focus-within .github-projects__card-glow {
+  opacity: 1;
+}
+
+.github-projects__card-header {
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.github-projects__card-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .github-projects__card-title {
+  font-size: 1.25rem;
   font-weight: 600;
+  margin: 0;
 }
 
 .github-projects__card-subtitle {
   font-size: 0.85rem;
-  opacity: 0.8;
+  opacity: 0.75;
+  margin: 0;
 }
 
-.github-projects__card-text {
-  flex: 1;
-  white-space: pre-line;
+.github-projects__language {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(226, 232, 240, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.github-projects__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.github-projects__stats li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.github-projects__stat-icon {
+  color: hsl(var(--primary));
+}
+
+.github-projects__stat-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.github-projects__stat-value {
+  font-weight: 600;
+}
+
+.github-projects__stat-label {
+  font-size: 0.75rem;
+  opacity: 0.7;
 }
 
 .github-projects__topics {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 0 16px 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.github-projects__topic-motion {
+  display: inline-flex;
 }
 
 .github-projects__topic {
   text-transform: none;
+  border-color: rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.35);
+  color: inherit;
+}
+
+.github-projects__topic--more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px dashed rgba(148, 163, 184, 0.4);
 }
 
 .github-projects__actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  gap: 8px;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1280px) {
+  .github-projects__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 960px) {
