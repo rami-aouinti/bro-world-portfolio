@@ -32,6 +32,11 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
             "Development mode shows example content so you can review the blog layout. Feel free to get in touch about your project.",
         },
       },
+      githubProjects: {
+        description: "Mock repositories are displayed while developing locally.",
+        empty: "Example GitHub projects appear here in development builds.",
+        metaDescription: "Browse placeholder GitHub repositories available in local development mode.",
+      },
     },
   },
   fr: {
@@ -62,6 +67,11 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
           description:
             "En développement, nous affichons des exemples pour vérifier la mise en page du blog. Contactez-moi pour discuter de votre projet.",
         },
+      },
+      githubProjects: {
+        description: "Des dépôts fictifs s'affichent pendant le développement local.",
+        empty: "Des projets GitHub d'exemple apparaissent ici en mode développement.",
+        metaDescription: "Consultez des dépôts GitHub factices disponibles en environnement local.",
       },
     },
   },
@@ -95,6 +105,11 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
             "Im Entwicklungsmodus zeigen wir Beispieldaten, um das Blog-Layout zu prüfen. Melde dich gern, um über dein Projekt zu sprechen.",
         },
       },
+      githubProjects: {
+        description: "Während der lokalen Entwicklung werden Platzhalter-Repositories angezeigt.",
+        empty: "Beispielhafte GitHub-Projekte erscheinen hier im Entwicklungsmodus.",
+        metaDescription: "Entdecke Platzhalter-GitHub-Repositories, die in der lokalen Entwicklung verfügbar sind.",
+      },
     },
   },
   es: {
@@ -126,6 +141,11 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
           description:
             "En desarrollo mostramos datos de ejemplo para revisar el diseño del blog. Escríbeme cuando quieras hablar de tu proyecto.",
         },
+      },
+      githubProjects: {
+        description: "Durante el desarrollo local se muestran repositorios de ejemplo.",
+        empty: "En modo desarrollo aparecerán aquí proyectos de GitHub de demostración.",
+        metaDescription: "Explora repositorios de GitHub ficticios disponibles en el entorno local de desarrollo.",
       },
     },
   },
@@ -159,6 +179,11 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
             "In sviluppo mostriamo dati di esempio per verificare il layout del blog. Scrivimi quando vuoi parlare del tuo progetto.",
         },
       },
+      githubProjects: {
+        description: "Durante lo sviluppo locale vengono mostrati repository di esempio.",
+        empty: "In modalità sviluppo qui compaiono progetti GitHub dimostrativi.",
+        metaDescription: "Esplora repository GitHub fittizi disponibili nell'ambiente di sviluppo locale.",
+      },
     },
   },
   ru: {
@@ -191,6 +216,11 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
             "В режиме разработки мы показываем пример данных, чтобы проверить макет блога. Пишите, если хотите обсудить свой проект.",
         },
       },
+      githubProjects: {
+        description: "Во время локальной разработки отображаются демонстрационные репозитории.",
+        empty: "В режиме разработки здесь появятся демонстрационные проекты GitHub.",
+        metaDescription: "Просмотрите демонстрационные репозитории GitHub, доступные в локальной среде разработки.",
+      },
     },
   },
   ar: {
@@ -219,6 +249,11 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
           description:
             "في وضع التطوير نعرض بيانات مثال لمراجعة تخطيط المدونة. لا تتردد في التواصل لمناقشة مشروعك.",
         },
+      },
+      githubProjects: {
+        description: "أثناء التطوير المحلي تُعرض مستودعات تجريبية.",
+        empty: "في وضع التطوير ستظهر هنا مشاريع GitHub تجريبية.",
+        metaDescription: "استعرض مستودعات GitHub تجريبية متاحة في بيئة التطوير المحلية.",
       },
     },
   },
