@@ -45,18 +45,6 @@ const workCards = computed(() => {
                   />
                 </NuxtLink>
                 <div class="work-card-content relative z-10 flex h-full flex-col gap-5">
-                  <CardItem
-                    as="div"
-                    :translateZ="60"
-                    class="work-card-media"
-                  >
-                    <NuxtImg
-                      :src="`/images/work/${card.item.thumbnails}`"
-                      :alt="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
-                      height="220"
-                      class="work-card-image"
-                    />
-                  </CardItem>
                   <div class="flex flex-col gap-3">
                     <CardItem
                       as="span"
@@ -118,7 +106,7 @@ const workCards = computed(() => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 620px;
+  min-height: 500px;
   border-radius: 28px;
   border: 1px solid;
   padding: 2.5rem;
