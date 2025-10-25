@@ -13,6 +13,7 @@ const config = useConfig();
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const { locales, locale, t } = useI18n()
+const route = useRoute()
 const rawLinks = computed(() => navlinks.value ?? [])
 const links = computed(() =>
   rawLinks.value.map((link) => ({
@@ -41,6 +42,13 @@ watchEffect(() => {
     drawer.value = false
   }
 })
+
+watch(
+  () => route.fullPath,
+  () => {
+    drawer.value = false
+  },
+)
 </script>
 
 <template>
@@ -137,6 +145,30 @@ watchEffect(() => {
       </div>
     </div>
   </v-app-bar>
+  <v-navigation-drawer
+    v-model="drawer"
+    class="hero-app-drawer"
+    color="transparent"
+    location="left"
+    temporary
+  >
+    <div class="hero-app-drawer__content">
+      <nav class="hero-app-drawer__nav">
+        <v-btn
+          v-for="link in links"
+          :key="link.url"
+          :to="link.to"
+          block
+          class="hero-app-drawer__link"
+          color="primary"
+          variant="text"
+          @click="drawer = false"
+        >
+          {{ link.label }}
+        </v-btn>
+      </nav>
+    </div>
+  </v-navigation-drawer>
 </template>
 <style scoped>
 .hero-app-bar {
@@ -300,6 +332,31 @@ watchEffect(() => {
   border-radius: 999px;
   font-weight: 600;
   text-transform: none;
+}
+
+.hero-app-drawer {
+  backdrop-filter: blur(22px);
+  background: linear-gradient(
+    135deg,
+    rgba(30, 41, 59, 0.92),
+    rgba(15, 23, 42, 0.82)
+  );
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  border-inline: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.hero-app-drawer__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 20px;
+}
+
+.hero-app-drawer__link {
+  justify-content: flex-start;
+  border-radius: 16px;
+  font-weight: 600;
 }
 
 .hero-contact :deep(.v-btn__content) {
