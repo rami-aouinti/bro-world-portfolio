@@ -61,7 +61,17 @@
       "cardDescription": "Hervorgehobene Tools und Technologien.",
       "languagesTitle": "Sprachen",
       "languagesDescription": "Gesprochene und geschriebene Sprachen für die Zusammenarbeit.",
-      "languagesBadge": "{count} Sprache | {count} Sprachen"
+      "languagesBadge": "{count} Sprache | {count} Sprachen",
+      "backToOverview": "Zurück zur Kompetenzübersicht",
+      "viewSkillDetails": "Kompetenzdetails ansehen",
+      "projectsTitle": "Projekte mit {skill}",
+      "noProjects": "Noch keine hervorgehobenen Projekte.",
+      "levelLabel": "Niveau",
+      "viewProject": "Projekt ansehen",
+      "ratingLabel": "Kompetenzgrad",
+      "projectsHeading": "Projekte mit {skill}",
+      "projectsDescription": "Ausgewählte Einsätze, in denen diese Kompetenz den Unterschied machte.",
+      "backToCategory": "Zurück zu {category}"
     },
     "cta": {
       "eyebrow": "Bereit zur Zusammenarbeit",

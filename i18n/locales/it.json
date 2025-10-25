@@ -61,7 +61,17 @@
       "cardDescription": "Strumenti e tecnologie in evidenza.",
       "languagesTitle": "Lingue",
       "languagesDescription": "Lingue parlate e scritte per collaborare.",
-      "languagesBadge": "{count} lingua | {count} lingue"
+      "languagesBadge": "{count} lingua | {count} lingue",
+      "backToOverview": "Torna alle competenze",
+      "viewSkillDetails": "Vedi dettagli della competenza",
+      "projectsTitle": "Progetti che usano {skill}",
+      "noProjects": "Nessun progetto in evidenza al momento.",
+      "levelLabel": "Livello",
+      "viewProject": "Vedi progetto",
+      "ratingLabel": "Padronanza",
+      "projectsHeading": "Progetti che usano {skill}",
+      "projectsDescription": "Selezione di progetti in cui questa competenza ha fatto la differenza.",
+      "backToCategory": "Torna a {category}"
     },
     "cta": {
       "eyebrow": "Pronto a collaborare",

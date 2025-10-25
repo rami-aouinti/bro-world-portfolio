@@ -61,7 +61,17 @@
       "cardDescription": "Herramientas y tecnologías destacadas.",
       "languagesTitle": "Idiomas",
       "languagesDescription": "Idiomas hablados y escritos para colaborar.",
-      "languagesBadge": "{count} idioma | {count} idiomas"
+      "languagesBadge": "{count} idioma | {count} idiomas",
+      "backToOverview": "Volver a las habilidades",
+      "viewSkillDetails": "Ver detalles de la habilidad",
+      "projectsTitle": "Proyectos que usan {skill}",
+      "noProjects": "Aún no hay proyectos destacados.",
+      "levelLabel": "Nivel",
+      "viewProject": "Ver proyecto",
+      "ratingLabel": "Dominio",
+      "projectsHeading": "Proyectos que usan {skill}",
+      "projectsDescription": "Selección de proyectos donde esta habilidad marcó la diferencia.",
+      "backToCategory": "Volver a {category}"
     },
     "cta": {
       "eyebrow": "Listo para colaborar",

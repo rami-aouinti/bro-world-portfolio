@@ -62,9 +62,28 @@ export const ctaSchema = z.object({
   description: z.string().trim().min(1, 'La description est requise.')
 })
 
+const skillProjectReferenceSchema = z.object({
+  slug: z.string().trim().min(1, 'Le slug du projet est requis.')
+})
+
+const skillItemSchema = z.object({
+  slug: z.string().trim().min(1, 'Le slug de la compétence est requis.'),
+  name: z.string().trim().min(1, 'Le nom de la compétence est requis.'),
+  level: z.string().trim().min(1, 'Le niveau est requis.'),
+  rating: z
+    .number({ invalid_type_error: 'La note doit être un nombre.' })
+    .int('La note doit être un entier.')
+    .min(1, 'La note minimale est 1.')
+    .max(5, 'La note maximale est 5.'),
+  summary: z.string().trim().optional().default(''),
+  projects: z.array(skillProjectReferenceSchema).optional().default([])
+})
+
 const skillCategorySchema = z.object({
+  slug: z.string().trim().min(1, 'Le slug de la catégorie est requis.'),
   name: z.string().trim().min(1, 'Le nom de la catégorie est requis.'),
-  skills: z.array(z.string().trim().min(1, 'Le nom de la compétence est requis.')).min(1, 'Ajoutez au moins une compétence.')
+  description: z.string().trim().optional().default(''),
+  skills: z.array(skillItemSchema).min(1, 'Ajoutez au moins une compétence.')
 })
 
 export const skillsSchema = z.object({

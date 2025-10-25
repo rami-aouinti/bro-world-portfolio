@@ -61,7 +61,17 @@
       "cardDescription": "Highlighted tools and technologies.",
       "languagesTitle": "Languages",
       "languagesDescription": "Spoken and written languages for collaboration.",
-      "languagesBadge": "{count} language | {count} languages"
+      "languagesBadge": "{count} language | {count} languages",
+      "backToOverview": "Back to skills overview",
+      "viewSkillDetails": "View skill details",
+      "projectsTitle": "Projects using {skill}",
+      "noProjects": "No highlighted projects yet.",
+      "levelLabel": "Level",
+      "viewProject": "View project",
+      "ratingLabel": "Proficiency",
+      "projectsHeading": "Projects using {skill}",
+      "projectsDescription": "Selected engagements where this skill made a difference.",
+      "backToCategory": "Back to {category}"
     },
     "cta": {
       "eyebrow": "Ready to collaborate",

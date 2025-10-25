@@ -61,7 +61,17 @@
       "cardDescription": "أدوات وتقنيات مميزة.",
       "languagesTitle": "اللغات",
       "languagesDescription": "اللغات المحكية والمكتوبة للتعاون.",
-      "languagesBadge": "لا لغات | لغة واحدة | لغتان | {count} لغات | {count} لغة | {count} لغة"
+      "languagesBadge": "لا لغات | لغة واحدة | لغتان | {count} لغات | {count} لغة | {count} لغة",
+      "backToOverview": "العودة إلى صفحة المهارات",
+      "viewSkillDetails": "عرض تفاصيل المهارة",
+      "projectsTitle": "المشاريع التي تستخدم ‎{skill}",
+      "noProjects": "لا توجد مشاريع بارزة بعد.",
+      "levelLabel": "المستوى",
+      "viewProject": "عرض المشروع",
+      "ratingLabel": "درجة الإتقان",
+      "projectsHeading": "المشاريع التي تستخدم ‎{skill}",
+      "projectsDescription": "مجموعة مختارة من الأعمال التي لعبت فيها هذه المهارة دورًا مهمًا.",
+      "backToCategory": "العودة إلى ‎{category}"
     },
     "cta": {
       "eyebrow": "جاهز للتعاون",

@@ -61,7 +61,17 @@
       "cardDescription": "重点工具与技术。",
       "languagesTitle": "语言",
       "languagesDescription": "用于协作的口语和书面语言。",
-      "languagesBadge": "{count} 种语言"
+      "languagesBadge": "{count} 种语言",
+      "backToOverview": "返回技能概览",
+      "viewSkillDetails": "查看技能详情",
+      "projectsTitle": "使用 {skill} 的项目",
+      "noProjects": "暂时没有精选项目。",
+      "levelLabel": "水平",
+      "viewProject": "查看项目",
+      "ratingLabel": "掌握程度",
+      "projectsHeading": "使用 {skill} 的项目",
+      "projectsDescription": "精选展示该技能发挥作用的项目。",
+      "backToCategory": "返回 {category}"
     },
     "cta": {
       "eyebrow": "准备好合作",
