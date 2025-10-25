@@ -111,7 +111,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 import { Text3d } from "../Ui/text-3d";

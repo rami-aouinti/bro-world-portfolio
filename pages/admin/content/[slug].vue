@@ -1055,7 +1055,73 @@ const { data, pending, refresh, error } = await useAsyncData(
   { watch: [slug, selectedLocale] },
 );
 
-const form = reactive<Record<string, any>>({});
+type NavLinkEntry = { label: string; url: string };
+type ServiceEntry = { name: string; icon: string; description: string; thumbnails: string };
+type WorkEntry = {
+  name: string;
+  slug: string;
+  live_demo: string;
+  description: string;
+  thumbnails: string;
+  type: string;
+};
+type CategoryEntry = { name: string; skills: string[] };
+type LanguageProficiencyEntry = { name: string; proficiency: number };
+type PositionEntry = {
+  slug: string;
+  role: string;
+  company: string;
+  timeframe: string;
+  achievements: string[];
+};
+type SchoolEntry = {
+  slug: string;
+  degree: string;
+  institution: string;
+  timeframe: string;
+  details: string;
+};
+
+interface ContentFormState extends Record<string, unknown> {
+  firstname?: string;
+  lastname?: string;
+  role?: string;
+  avatar?: string;
+  badge?: string;
+  headline?: string;
+  subline?: string;
+  label?: string;
+  navlinks?: NavLinkEntry[];
+  services?: ServiceEntry[];
+  works?: WorkEntry[];
+  introduce?: string[];
+  hobbies?: string[];
+  categories?: CategoryEntry[];
+  languages?: string[];
+  languageProficiencies?: LanguageProficiencyEntry[];
+  positions?: PositionEntry[];
+  schools?: SchoolEntry[];
+}
+
+function cloneContentForm(value: unknown): ContentFormState {
+  const rawClone =
+    typeof structuredClone === "function"
+      ? structuredClone(value)
+      : JSON.parse(JSON.stringify(value));
+
+  return (rawClone ?? {}) as ContentFormState;
+}
+
+function isFetchError(value: unknown): value is { data?: { statusMessage?: string } } {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "data" in value &&
+    typeof (value as { data?: unknown }).data === "object"
+  );
+}
+
+const form = reactive<ContentFormState>({});
 const saveState = reactive({
   isSaving: false,
   success: "",
@@ -1070,14 +1136,11 @@ watch(
     }
     saveState.success = "";
     saveState.errors = [];
-    let clone: Record<string, any>;
+    let clone: ContentFormState;
     try {
-      clone =
-        typeof structuredClone === "function"
-          ? structuredClone(value)
-          : JSON.parse(JSON.stringify(value));
+      clone = cloneContentForm(value);
     } catch {
-      clone = JSON.parse(JSON.stringify(value));
+      clone = JSON.parse(JSON.stringify(value)) as ContentFormState;
     }
     Object.keys(form).forEach((key) => {
       delete form[key];
@@ -1095,7 +1158,7 @@ function addNavlink() {
 }
 
 function removeNavlink(index: number) {
-  form.navlinks.splice(index, 1);
+  form.navlinks?.splice(index, 1);
 }
 
 function addService() {
@@ -1104,7 +1167,7 @@ function addService() {
 }
 
 function removeService(index: number) {
-  form.services.splice(index, 1);
+  form.services?.splice(index, 1);
 }
 
 function addWork() {
@@ -1120,7 +1183,7 @@ function addWork() {
 }
 
 function removeWork(index: number) {
-  form.works.splice(index, 1);
+  form.works?.splice(index, 1);
 }
 
 function addIntroduce() {
@@ -1129,7 +1192,7 @@ function addIntroduce() {
 }
 
 function removeIntroduce(index: number) {
-  form.introduce.splice(index, 1);
+  form.introduce?.splice(index, 1);
 }
 
 function addHobby() {
@@ -1138,7 +1201,7 @@ function addHobby() {
 }
 
 function removeHobby(index: number) {
-  form.hobbies.splice(index, 1);
+  form.hobbies?.splice(index, 1);
 }
 
 function addSkillCategory() {
@@ -1147,15 +1210,19 @@ function addSkillCategory() {
 }
 
 function removeSkillCategory(index: number) {
-  form.categories.splice(index, 1);
+  form.categories?.splice(index, 1);
 }
 
 function addSkill(categoryIndex: number) {
-  form.categories[categoryIndex].skills.push("");
+  if (!form.categories?.[categoryIndex]) {
+    return;
+  }
+  form.categories[categoryIndex]?.skills.push("");
 }
 
 function removeSkill(categoryIndex: number, skillIndex: number) {
-  form.categories[categoryIndex].skills.splice(skillIndex, 1);
+  const category = form.categories?.[categoryIndex];
+  category?.skills.splice(skillIndex, 1);
 }
 
 function addLanguage() {
@@ -1164,7 +1231,7 @@ function addLanguage() {
 }
 
 function removeLanguage(index: number) {
-  form.languages.splice(index, 1);
+  form.languages?.splice(index, 1);
 }
 
 function addLanguageProficiency() {
@@ -1173,7 +1240,7 @@ function addLanguageProficiency() {
 }
 
 function removeLanguageProficiency(index: number) {
-  form.languageProficiencies.splice(index, 1);
+  form.languageProficiencies?.splice(index, 1);
 }
 
 function addExperience() {
@@ -1182,15 +1249,17 @@ function addExperience() {
 }
 
 function removeExperience(index: number) {
-  form.positions.splice(index, 1);
+  form.positions?.splice(index, 1);
 }
 
 function addAchievement(positionIndex: number) {
-  form.positions[positionIndex].achievements.push("");
+  const position = form.positions?.[positionIndex];
+  position?.achievements.push("");
 }
 
 function removeAchievement(positionIndex: number, achievementIndex: number) {
-  form.positions[positionIndex].achievements.splice(achievementIndex, 1);
+  const position = form.positions?.[positionIndex];
+  position?.achievements.splice(achievementIndex, 1);
 }
 
 function addEducation() {
@@ -1199,7 +1268,7 @@ function addEducation() {
 }
 
 function removeEducation(index: number) {
-  form.schools.splice(index, 1);
+  form.schools?.splice(index, 1);
 }
 
 async function handleSubmit() {
@@ -1220,10 +1289,10 @@ async function handleSubmit() {
     });
     saveState.success = "Contenu mis à jour avec succès.";
     await refresh();
-  } catch (err: any) {
+  } catch (err: unknown) {
     if (err instanceof ZodError) {
       saveState.errors = err.errors.map((issue) => issue.message);
-    } else if (err?.data?.statusMessage) {
+    } else if (isFetchError(err) && typeof err.data?.statusMessage === "string") {
       saveState.errors = [err.data.statusMessage];
     } else {
       saveState.errors = ["Impossible d’enregistrer les modifications."];

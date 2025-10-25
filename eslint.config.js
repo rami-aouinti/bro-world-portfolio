@@ -104,4 +104,9 @@ export default withNuxt(
       ],
     },
   },
+  {
+    settings: {
+      "import/core-modules": ["vue", "@vueuse/core", "motion-v"],
+    },
+  },
 );
