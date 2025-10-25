@@ -1,17 +1,15 @@
 <template>
-  <v-app>
+  <v-app class="app-layout">
+    <ParticlesBg
+      class="app-layout__particles"
+      :color="particlesColor"
+      :quantity="160"
+      :staticity="55"
+      :ease="45"
+    />
     <Navbar />
-    <v-main class="app-layout">
-      <ParticlesBg
-        class="app-layout__particles"
-        :color="particlesColor"
-        :quantity="160"
-        :staticity="55"
-        :ease="45"
-      />
-      <div class="app-layout__content">
-        <slot />
-      </div>
+    <v-main class="app-layout__content">
+      <slot />
     </v-main>
   </v-app>
 </template>
