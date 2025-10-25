@@ -33,7 +33,6 @@ useSeoMeta(() => ({
 </script>
 
 <template>
-  <LayoutLine />
   <section class="detail-page">
     <v-container class="py-12 detail-page__container">
       <v-btn
@@ -68,7 +67,6 @@ useSeoMeta(() => ({
       </v-card>
     </v-container>
   </section>
-  <LayoutLine />
 </template>
 
 <style scoped>
