@@ -6,6 +6,79 @@ import { glowCardVariantCycle } from '~/utils/glowCardVariants'
 import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
+type RawLanguageEntry =
+  | string
+  | {
+      label: string
+      icon?: string | null
+      code?: string | null
+    }
+
+type DisplayLanguage = {
+  label: string
+  icon?: string
+}
+
+const LANGUAGE_FLAG_MAP: Partial<Record<string, string>> = {
+  english: "fi-gb gb",
+  en: "fi-gb gb",
+  french: "fi-fr fr",
+  francais: "fi-fr fr",
+  français: "fi-fr fr",
+  fr: "fi-fr fr",
+  german: "fi-de de",
+  deutsch: "fi-de de",
+  allemand: "fi-de de",
+  de: "fi-de de",
+  spanish: "fi-es es",
+  espanol: "fi-es es",
+  español: "fi-es es",
+  es: "fi-es es",
+  italian: "fi-it it",
+  italiano: "fi-it it",
+  it: "fi-it it",
+  russian: "fi-ru ru",
+  русский: "fi-ru ru",
+  ru: "fi-ru ru",
+  arabic: "fi-tn tn",
+  arabe: "fi-tn tn",
+  العربية: "fi-tn tn",
+  ar: "fi-tn tn",
+  anglais: "fi-gb gb",
+} as const
+
+function normaliseKey(value: string | null | undefined): string | undefined {
+  if (!value) {
+    return undefined
+  }
+
+  return value
+    .toString()
+    .trim()
+    .toLowerCase()
+}
+
+function resolveLanguageIcon(language: RawLanguageEntry): DisplayLanguage {
+  if (typeof language === 'string') {
+    const icon = LANGUAGE_FLAG_MAP[normaliseKey(language) ?? '']
+
+    return {
+      label: language,
+      icon,
+    }
+  }
+
+  const fallbackKey = normaliseKey(language.code) ?? normaliseKey(language.label)
+  const iconFromMap = fallbackKey ? LANGUAGE_FLAG_MAP[fallbackKey] : undefined
+  const providedIcon = language.icon?.trim() ?? ''
+  const icon = providedIcon.length ? providedIcon : iconFromMap
+
+  return {
+    label: language.label,
+    icon: icon ?? undefined,
+  }
+}
+
 const { data: skills } = useContentBlock('skills')
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -78,7 +151,7 @@ const languageCard = computed(() => {
                     variant="tonal"
                     size="small"
                 >
-                  <NuxtLink :to="skill.link" class="skills__item-name">
+                  <NuxtLink :to="skill.link">
                     {{ skill.name }}
                   </NuxtLink>
                 </v-chip>
@@ -97,13 +170,20 @@ const languageCard = computed(() => {
               <div class="skills__chips">
                 <v-chip
                   v-for="language in languageCard.languages"
-                  :key="language"
-                  class="skills__chip"
+                  :key="language.label"
+                  class="skills__chip skills__language-chip"
                   color="primary"
                   variant="tonal"
                   size="small"
                 >
-                  {{ language }}
+                  <span
+                    v-if="language.icon"
+                    class="skills__language-flag"
+                    aria-hidden="true"
+                  >
+                    <span class="fi" :class="language.icon" />
+                  </span>
+                  <span class="skills__language-label">{{ language.label }}</span>
                 </v-chip>
               </div>
             </CustomGlowCard>
@@ -178,6 +258,29 @@ const languageCard = computed(() => {
 
 .skills__chip {
   text-transform: none;
+}
+
+.skills__language-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skills__language-flag {
+  display: inline-flex;
+  align-items: center;
+}
+
+.skills__language-flag .fi {
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.25);
+}
+
+.skills__language-label {
+  display: inline-flex;
+  align-items: center;
 }
 
 @keyframes skills-item-fade {
