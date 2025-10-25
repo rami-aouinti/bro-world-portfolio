@@ -4,18 +4,27 @@ import { computed } from 'vue'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import { glowCardVariantCycle } from '~/utils/glowCardVariants'
 import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: skills } = useContentBlock('skills')
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const skillsContent = computed(() => skills.value)
 const skillCards = computed(() => {
   const categories = skillsContent.value?.categories ?? []
+  const fallbackDescription = t('portfolio.skills.cardDescription')
 
   return categories.map((category, index) => ({
     category,
     variant: glowCardVariantCycle[index % glowCardVariantCycle.length],
-    badge: t('portfolio.skills.badge', category.skills.length, { count: category.skills.length })
+    badge: t('portfolio.skills.badge', category.skills.length, { count: category.skills.length }),
+    description: category.description || fallbackDescription,
+    link: resolveLocalizedRouteTarget(`/skills/${category.slug}`, localePath),
+    skills: category.skills.map((skill) => ({
+      ...skill,
+      link: resolveLocalizedRouteTarget(`/skills/${category.slug}/${skill.slug}`, localePath)
+    })),
   }))
 })
 
@@ -52,18 +61,21 @@ const languageCard = computed(() => {
               :title="card.category.name"
               :variant="card.variant"
               :badge="card.badge"
-              :description="t('portfolio.skills.cardDescription')"
+              :description="card.description"
+              :to="card.link"
             >
               <div class="skills__chips">
                 <v-chip
-                  v-for="skill in card.category.skills"
-                  :key="skill"
+                  v-for="skill in card.skills"
+                  :key="skill.slug"
                   class="skills__chip"
                   color="primary"
                   variant="tonal"
                   size="small"
+                  :to="skill.link"
+                  append-icon="mdi-arrow-top-right"
                 >
-                  {{ skill }}
+                  {{ skill.name }}
                 </v-chip>
               </div>
             </CustomGlowCard>

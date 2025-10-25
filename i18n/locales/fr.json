@@ -61,7 +61,17 @@
       "cardDescription": "Outils et technologies mis en avant.",
       "languagesTitle": "Langues",
       "languagesDescription": "Langues parlées et écrites pour collaborer efficacement.",
-      "languagesBadge": "{count} langue | {count} langues"
+      "languagesBadge": "{count} langue | {count} langues",
+      "backToOverview": "Retour aux compétences",
+      "viewSkillDetails": "Voir les détails de la compétence",
+      "projectsTitle": "Projets utilisant {skill}",
+      "noProjects": "Aucun projet mis en avant pour le moment.",
+      "levelLabel": "Niveau",
+      "viewProject": "Voir le projet",
+      "ratingLabel": "Maîtrise",
+      "projectsHeading": "Projets utilisant {skill}",
+      "projectsDescription": "Sélection de missions où cette compétence a fait la différence.",
+      "backToCategory": "Retour vers {category}"
     },
     "cta": {
       "eyebrow": "Prêts à collaborer",

@@ -61,7 +61,17 @@
       "cardDescription": "Ключевые инструменты и технологии.",
       "languagesTitle": "Языки",
       "languagesDescription": "Языки устного и письменного общения для совместной работы.",
-      "languagesBadge": "{count} язык | {count} языка | {count} языков"
+      "languagesBadge": "{count} язык | {count} языка | {count} языков",
+      "backToOverview": "Вернуться к навыкам",
+      "viewSkillDetails": "Посмотреть подробности навыка",
+      "projectsTitle": "Проекты с {skill}",
+      "noProjects": "Пока нет отмеченных проектов.",
+      "levelLabel": "Уровень",
+      "viewProject": "Открыть проект",
+      "ratingLabel": "Степень владения",
+      "projectsHeading": "Проекты с {skill}",
+      "projectsDescription": "Выбранные проекты, где этот навык сыграл ключевую роль.",
+      "backToCategory": "Назад к {category}"
     },
     "cta": {
       "eyebrow": "Готов к сотрудничеству",
