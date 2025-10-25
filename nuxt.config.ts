@@ -560,6 +560,10 @@ export default defineNuxtConfig({
       title: "Mohamed Rami Aouinti | FullStack Developer (PHP & Vue)",
       meta: [
         {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1",
+        },
+        {
           name: "google-adsense-account",
           content: process.env.NUXT_ADSENSE_ACCOUNT,
         },

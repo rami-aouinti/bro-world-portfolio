@@ -67,12 +67,21 @@ const animationDurationInMs = computed(() => {
     v-bind(shadow1SizeInPx) v-bind(shadow1SizeInPx) 0px v-bind(strokeColor),
     v-bind(shadow2SizeInPx) v-bind(shadow2SizeInPx) 0px v-bind(shadowColor);
   color: v-bind(textColor);
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 
 .animate-text-3d {
   animation: wiggle v-bind(animationDurationInMs) ease-in-out infinite alternate;
   animation-timing-function: ease-in-out;
   transform-origin: center;
+}
+
+::v-slotted(*) {
+  width: 100%;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 
 @keyframes wiggle {
