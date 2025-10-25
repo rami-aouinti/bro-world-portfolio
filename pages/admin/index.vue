@@ -1,11 +1,38 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import ThemePopover from '~/components/ThemePopover.vue'
+import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
 
 definePageMeta({ middleware: 'auth' })
 
 const router = useRouter()
 const { t } = useI18n()
+
+const ThemeCustomizer = defineAsyncComponent(() => import('~/components/ThemeCustomizer.vue'))
+const shouldRenderThemeCustomizer = ref(false)
+
+function activateThemeCustomizer() {
+  if (shouldRenderThemeCustomizer.value) {
+    return
+  }
+
+  shouldRenderThemeCustomizer.value = true
+}
+
+onMounted(() => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  const { requestIdleCallback } = window as Window & {
+    requestIdleCallback?: (callback: () => void) => number
+  }
+
+  if (typeof requestIdleCallback === 'function') {
+    requestIdleCallback(activateThemeCustomizer)
+    return
+  }
+
+  window.setTimeout(activateThemeCustomizer, 300)
+})
 
 const sections = [
   {
@@ -113,12 +140,6 @@ async function handleLogout() {
               <p class="text-subtitle-2 mb-1 text-high-emphasis">{{ userDisplayName }}</p>
               <p class="text-body-2 text-foreground text-medium-emphasis">Administrateur</p>
               <div class="dashboard-session-actions">
-                <div class="dashboard-theme">
-                  <p class="dashboard-theme__label text-caption text-high-emphasis">
-                    {{ t('admin.settings.siteSettings') }}
-                  </p>
-                  <ThemePopover trigger-class="dashboard-theme__trigger" />
-                </div>
                 <v-btn
                   color="white"
                   variant="outlined"
@@ -134,6 +155,49 @@ async function handleLogout() {
         </v-card>
 
         <v-row class="dashboard-grid" dense>
+          <v-col cols="12">
+            <v-card class="site-settings-card" elevation="0" rounded="xl">
+              <div class="site-settings-card__glow" />
+              <v-card-text class="site-settings-card__content">
+                <div class="site-settings-card__header">
+                  <div>
+                    <p class="site-settings-card__eyebrow text-caption">
+                      {{ t('admin.settings.siteSettings') }}
+                    </p>
+                    <h2 class="site-settings-card__title">{{ t('admin.settings.themeCustomizer.title') }}</h2>
+                    <p class="site-settings-card__subtitle">
+                      Personnalisez les couleurs, le rayon et le thème global du site en temps réel.
+                    </p>
+                  </div>
+                  <div class="site-settings-card__icon">
+                    <v-icon icon="mdi-tune" size="28" color="primary" />
+                  </div>
+                </div>
+                <div class="site-settings-card__customizer">
+                  <ClientOnly>
+                    <template #fallback>
+                      <div class="site-settings-card__loading">
+                        Préparation des outils de thème…
+                      </div>
+                    </template>
+                    <Suspense>
+                      <template #default>
+                        <ThemeCustomizer v-if="shouldRenderThemeCustomizer" />
+                        <div v-else class="site-settings-card__loading">
+                          Préparation des outils de thème…
+                        </div>
+                      </template>
+                      <template #fallback>
+                        <div class="site-settings-card__loading">
+                          Chargement des outils de thème…
+                        </div>
+                      </template>
+                    </Suspense>
+                  </ClientOnly>
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-col>
           <v-col v-for="section in sections" :key="section.slug" cols="12" md="6" xl="4">
             <v-hover v-slot="{ isHovering, props }">
               <v-card
@@ -322,39 +386,106 @@ async function handleLogout() {
   margin-top: 16px;
 }
 
-.dashboard-theme {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: flex-end;
-}
-
-.dashboard-theme__label {
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-:deep(.dashboard-theme__trigger) {
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-:deep(.dashboard-theme__trigger:hover),
-:deep(.dashboard-theme__trigger:focus-visible) {
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 12px 30px -12px rgba(15, 23, 42, 0.45);
-}
-
-:deep(.dashboard-theme__trigger:focus-visible) {
-  outline: 2px solid rgba(255, 255, 255, 0.6);
-  outline-offset: 3px;
-}
-
 .dashboard-grid {
   row-gap: 24px !important;
+}
+
+.site-settings-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  background: linear-gradient(140deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.9));
+  box-shadow: 0 34px 70px -45px rgba(37, 99, 235, 0.75);
+}
+
+.site-settings-card__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(59, 130, 246, 0.35), transparent 55%),
+    radial-gradient(circle at 85% 15%, rgba(129, 140, 248, 0.25), transparent 60%),
+    radial-gradient(circle at 60% 85%, rgba(59, 130, 246, 0.2), transparent 65%);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.site-settings-card__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.site-settings-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.site-settings-card__eyebrow {
+  margin: 0 0 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.75);
+}
+
+.site-settings-card__title {
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.96);
+}
+
+.site-settings-card__subtitle {
+  margin: 0;
+  color: rgba(226, 232, 240, 0.7);
+  max-width: 520px;
+}
+
+.site-settings-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: rgba(59, 130, 246, 0.2);
+  border-radius: 20px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.site-settings-card__customizer {
+  position: relative;
+  border-radius: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(14px);
+  padding: 32px 24px;
+}
+
+.site-settings-card__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  border-radius: 20px;
+  color: rgba(226, 232, 240, 0.75);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+:deep(.site-settings-card__customizer .text-card-foreground) {
+  position: relative;
+  background: transparent;
+}
+
+.site-settings-card__customizer :deep(.absolute) {
+  z-index: 0;
+}
+
+.site-settings-card__customizer :deep(.grid) {
+  position: relative;
+  z-index: 1;
 }
 
 .dashboard-card {
@@ -455,8 +586,7 @@ async function handleLogout() {
     text-align: left !important;
   }
 
-  .dashboard-session-actions,
-  .dashboard-theme {
+  .dashboard-session-actions {
     align-items: flex-start;
   }
 
@@ -464,6 +594,11 @@ async function handleLogout() {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+
+  .site-settings-card__header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
