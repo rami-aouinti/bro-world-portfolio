@@ -38,7 +38,7 @@ const currentLanguage = computed(() =>
 
 const hasLanguageMenu = computed(() => languageItems.value.length > 0);
 const hasControls = computed(
-  () => config.header.darkModeToggle || hasLanguageMenu.value,
+  () => config.value.header.darkModeToggle || hasLanguageMenu.value,
 );
 
 const EXTERNAL_PATTERN = /^(?:[a-z][a-z+.-]*:|\/\/)/i;
