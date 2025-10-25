@@ -104,11 +104,12 @@ const skillCards = computed(() => {
 const languageCard = computed(() => {
   const languages = skillsContent.value?.languages ?? []
   const languageProficiencies = skillsContent.value?.languageProficiencies ?? []
-  const resolvedLanguages = languages.length
+  const resolvedLanguages: RawLanguageEntry[] = languages.length
     ? languages
     : languageProficiencies.map((entry) => entry.name)
+  const displayLanguages = resolvedLanguages.map((entry) => resolveLanguageIcon(entry))
 
-  if (!resolvedLanguages.length) {
+  if (!displayLanguages.length) {
     return null
   }
 
@@ -116,8 +117,8 @@ const languageCard = computed(() => {
 
   return {
     variant: glowCardVariantCycle[variantIndex],
-    badge: t('portfolio.skills.languagesBadge', resolvedLanguages.length, { count: resolvedLanguages.length }),
-    languages: resolvedLanguages,
+    badge: t('portfolio.skills.languagesBadge', displayLanguages.length, { count: displayLanguages.length }),
+    languages: displayLanguages,
     link: resolveLocalizedRouteTarget('/skills/languages', localePath),
   }
 })
