@@ -62,6 +62,12 @@
       "languagesTitle": "اللغات",
       "languagesDescription": "اللغات المحكية والمكتوبة للتعاون.",
       "languagesBadge": "لا لغات | لغة واحدة | لغتان | {count} لغات | {count} لغة | {count} لغة",
+      "languagesPage": {
+        "title": "إتقان اللغات",
+        "description": "مدى راحتي في التعاون بكل لغة أتحدثها.",
+        "proficiencyLabel": "إجادة بنسبة {value}٪",
+        "empty": "ستظهر هنا قريبًا تفاصيل مستوى إجادة اللغات."
+      },
       "backToOverview": "العودة إلى صفحة المهارات",
       "viewSkillDetails": "عرض تفاصيل المهارة",
       "projectsTitle": "المشاريع التي تستخدم ‎{skill}",

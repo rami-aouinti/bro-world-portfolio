@@ -62,6 +62,12 @@
       "languagesTitle": "Lingue",
       "languagesDescription": "Lingue parlate e scritte per collaborare.",
       "languagesBadge": "{count} lingua | {count} lingue",
+      "languagesPage": {
+        "title": "Competenza linguistica",
+        "description": "Quanto mi sento a mio agio a collaborare in ciascuna lingua che parlo.",
+        "proficiencyLabel": "Competenza al {value}%",
+        "empty": "I dettagli sulle competenze linguistiche saranno presto disponibili qui."
+      },
       "backToOverview": "Torna alle competenze",
       "viewSkillDetails": "Vedi dettagli della competenza",
       "projectsTitle": "Progetti che usano {skill}",

@@ -62,6 +62,12 @@
       "languagesTitle": "语言",
       "languagesDescription": "用于协作的口语和书面语言。",
       "languagesBadge": "{count} 种语言",
+      "languagesPage": {
+        "title": "语言熟练度",
+        "description": "我在每种会说的语言中协作的舒适程度。",
+        "proficiencyLabel": "{value}% 熟练度",
+        "empty": "语言熟练度详情即将上线。"
+      },
       "backToOverview": "返回技能概览",
       "viewSkillDetails": "查看技能详情",
       "projectsTitle": "使用 {skill} 的项目",
