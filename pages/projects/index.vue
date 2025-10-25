@@ -62,7 +62,7 @@
           :key="project.slug"
           cols="12"
           md="6"
-          lg="4"
+          lg="6"
         >
           <Motion
             :initial="{ opacity: 0, y: 24 }"
@@ -389,7 +389,7 @@ useSeoMeta(() => ({
 
 .github-projects__stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   list-style: none;
   padding: 0;
