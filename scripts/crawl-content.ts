@@ -1,5 +1,5 @@
 import type { Registry, RegistryFiles } from "~/registry/schema";
-import { readdir, readFile } from "node:fs/promises";
+import { readdir, readFile, stat } from "node:fs/promises";
 import { parseSync } from "@oxc-parser/wasm";
 import { join, resolve } from "pathe";
 import { compileScript, parse } from "vue/compiler-sfc";
@@ -52,15 +52,37 @@ export async function buildRegistry() {
   const composablesPath = resolve("composables");
 
   const [ui, block, hooks] = await Promise.all([
-    crawlUI(uiPath),
+    crawlIfExists(uiPath, crawlUI),
     // crawlExample(examplesPath),
-    crawlBlock(blocksPath),
-    crawlHook(composablesPath),
+    crawlIfExists(blocksPath, crawlBlock),
+    crawlIfExists(composablesPath, crawlHook),
   ]);
 
   registry.push(...ui, ...block, ...hooks);
 
   return registry;
+}
+
+async function pathExists(path: string) {
+  try {
+    await stat(path);
+    return true;
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return false;
+    }
+    throw error;
+  }
+}
+
+async function crawlIfExists(
+  path: string,
+  crawler: (path: string) => Promise<Registry>,
+): Promise<Registry> {
+  if (!(await pathExists(path))) {
+    return [];
+  }
+  return crawler(path);
 }
 
 async function crawlUI(rootPath: string) {
