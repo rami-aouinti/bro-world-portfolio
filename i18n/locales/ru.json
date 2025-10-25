@@ -62,6 +62,12 @@
       "languagesTitle": "Языки",
       "languagesDescription": "Языки устного и письменного общения для совместной работы.",
       "languagesBadge": "{count} язык | {count} языка | {count} языков",
+      "languagesPage": {
+        "title": "Владение языками",
+        "description": "Насколько мне комфортно сотрудничать на каждом языке, которым я владею.",
+        "proficiencyLabel": "{value}% уровня владения",
+        "empty": "Скоро здесь появится информация о владении языками."
+      },
       "backToOverview": "Вернуться к навыкам",
       "viewSkillDetails": "Посмотреть подробности навыка",
       "projectsTitle": "Проекты с {skill}",

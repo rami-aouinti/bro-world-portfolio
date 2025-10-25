@@ -62,6 +62,12 @@
       "languagesTitle": "Idiomas",
       "languagesDescription": "Idiomas hablados y escritos para colaborar.",
       "languagesBadge": "{count} idioma | {count} idiomas",
+      "languagesPage": {
+        "title": "Dominio de idiomas",
+        "description": "Qué tan cómodo me siento colaborando en cada idioma que hablo.",
+        "proficiencyLabel": "{value}% de dominio",
+        "empty": "Los detalles sobre el dominio de idiomas aparecerán aquí pronto."
+      },
       "backToOverview": "Volver a las habilidades",
       "viewSkillDetails": "Ver detalles de la habilidad",
       "projectsTitle": "Proyectos que usan {skill}",
