@@ -12,8 +12,6 @@
   <Service />
   <Line />
   <Work />
-  <Line />
-  <LampCallout />
   <Cta />
 </template>
 <script setup lang="ts">
