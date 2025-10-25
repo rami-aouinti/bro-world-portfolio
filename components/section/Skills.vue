@@ -30,8 +30,12 @@ const skillCards = computed(() => {
 
 const languageCard = computed(() => {
   const languages = skillsContent.value?.languages ?? []
+  const languageProficiencies = skillsContent.value?.languageProficiencies ?? []
+  const resolvedLanguages = languages.length
+    ? languages
+    : languageProficiencies.map((entry) => entry.name)
 
-  if (!languages.length) {
+  if (!resolvedLanguages.length) {
     return null
   }
 
@@ -39,8 +43,9 @@ const languageCard = computed(() => {
 
   return {
     variant: glowCardVariantCycle[variantIndex],
-    badge: t('portfolio.skills.languagesBadge', languages.length, { count: languages.length }),
-    languages,
+    badge: t('portfolio.skills.languagesBadge', resolvedLanguages.length, { count: resolvedLanguages.length }),
+    languages: resolvedLanguages,
+    link: resolveLocalizedRouteTarget('/skills/languages', localePath),
   }
 })
 </script>
@@ -87,6 +92,7 @@ const languageCard = computed(() => {
               :variant="languageCard.variant"
               :badge="languageCard.badge"
               :description="t('portfolio.skills.languagesDescription')"
+              :to="languageCard.link"
             >
               <div class="skills__chips">
                 <v-chip

@@ -62,6 +62,12 @@
       "languagesTitle": "Languages",
       "languagesDescription": "Spoken and written languages for collaboration.",
       "languagesBadge": "{count} language | {count} languages",
+      "languagesPage": {
+        "title": "Language proficiency",
+        "description": "How comfortable I am collaborating in each language I speak.",
+        "proficiencyLabel": "{value}% proficiency",
+        "empty": "Language proficiency details will appear here soon."
+      },
       "backToOverview": "Back to skills overview",
       "viewSkillDetails": "View skill details",
       "projectsTitle": "Projects using {skill}",
