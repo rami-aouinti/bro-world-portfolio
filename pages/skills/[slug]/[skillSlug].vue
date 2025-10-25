@@ -2,11 +2,11 @@
   <section class="skill-detail">
     <v-container class="py-12 skill-detail__container">
       <v-btn
-        :to="categoryLink"
         variant="text"
         color="primary"
         class="text-none skill-detail__back"
         prepend-icon="mdi-arrow-left"
+        @click="goBack"
       >
         {{ t("portfolio.skills.backToCategory", { category: category?.name ?? "" }) }}
       </v-btn>
@@ -115,6 +115,7 @@ const { data: skills } = await useContentBlock("skills");
 const { data: work } = await useContentBlock("work");
 const { t } = useI18n();
 const localePath = useLocalePath();
+const router = useRouter();
 
 const skillsContent = computed(() => skills.value);
 const sectionLabel = computed(() => skillsContent.value?.label ?? "Skills");
@@ -166,6 +167,15 @@ const projects = computed(() => {
 const categoryLink = computed(() =>
   resolveLocalizedRouteTarget(`/skills/${category.value?.slug ?? ""}`, localePath),
 );
+
+const goBack = () => {
+  if (import.meta.client && window.history.length > 1) {
+    router.back();
+    return;
+  }
+
+  router.push(categoryLink.value);
+};
 
 useSeoMeta(() => ({
   title: `${skill.value?.name} · ${category.value?.name} · ${sectionLabel.value}`,

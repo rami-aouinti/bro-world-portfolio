@@ -2,11 +2,11 @@
   <section class="detail-page">
     <v-container class="py-12 detail-page__container">
       <v-btn
-        :to="backLink"
         variant="text"
         color="primary"
         class="text-none detail-page__back"
         prepend-icon="mdi-arrow-left"
+        @click="goBack"
       >
         Retour aux formations
       </v-btn>
@@ -46,6 +46,7 @@ import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 const route = useRoute();
 const slug = computed(() => route.params.slug?.toString() ?? "");
 const localePath = useLocalePath();
+const router = useRouter();
 
 if (!slug.value) {
   throw createError({ statusCode: 404, statusMessage: "Formation introuvable." });
@@ -56,6 +57,15 @@ const { data: education } = await useContentBlock("education");
 const sectionLabel = computed(() => education.value?.label ?? "Formations");
 
 const backLink = computed(() => resolveLocalizedRouteTarget("/education", localePath));
+
+const goBack = () => {
+  if (import.meta.client && window.history.length > 1) {
+    router.back();
+    return;
+  }
+
+  router.push(backLink.value);
+};
 
 const schoolDetails = computed(() => {
   const entry = education.value?.schools.find((school) => school.slug === slug.value);
