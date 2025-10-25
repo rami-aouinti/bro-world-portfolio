@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-import { CardBody, CardContainer, CardItem } from "~/components/Ui/card-3d";
+import { CardBody, CardContainer, CardItem } from "~/components/ui/card-3d";
 const { data: work } = useContentBlock('work')
 const { t } = useI18n()
 const localePath = useLocalePath()

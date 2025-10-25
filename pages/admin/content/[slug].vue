@@ -56,7 +56,7 @@ const { data, pending, refresh, error } = await useAsyncData(
   { watch: [slug, selectedLocale] }
 )
 
-const form = reactive<Record<string, any>>({})
+const form = reactive<Record<string, unknown>>({})
 const saveState = reactive({
   isSaving: false,
   success: '',
@@ -69,7 +69,7 @@ watch(data, (value) => {
   }
   saveState.success = ''
   saveState.errors = []
-  let clone: Record<string, any>
+  let clone: Record<string, unknown>
   try {
     clone = typeof structuredClone === 'function'
       ? structuredClone(value)
@@ -85,6 +85,21 @@ watch(data, (value) => {
 }, { immediate: true })
 
 const csrfCookie = useCookie<string | null>(runtimeConfig.public.auth.csrfCookieName)
+
+type ErrorWithStatusMessage = {
+  data?: {
+    statusMessage?: string
+  }
+}
+
+function hasStatusMessage(error: unknown): error is ErrorWithStatusMessage {
+  if (!error || typeof error !== 'object') {
+    return false
+  }
+
+  const maybeData = (error as ErrorWithStatusMessage).data
+  return typeof maybeData?.statusMessage === 'string'
+}
 
 function addNavlink() {
   form.navlinks ??= []
@@ -218,11 +233,11 @@ async function handleSubmit() {
     saveState.success = 'Contenu mis à jour avec succès.'
     await refresh()
   }
-  catch (err: any) {
+  catch (err: unknown) {
     if (err instanceof ZodError) {
       saveState.errors = err.errors.map((issue) => issue.message)
     }
-    else if (err?.data?.statusMessage) {
+    else if (hasStatusMessage(err)) {
       saveState.errors = [err.data.statusMessage]
     }
     else {

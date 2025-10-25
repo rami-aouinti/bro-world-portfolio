@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import { LOCALIZED_PAGE_META } from '~/utils/i18n/routes'
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-import ScrollSmooth from '~/components/Layout/ScrollSmooth.vue'
+import ScrollSmooth from '~/components/layout/ScrollSmooth.vue'
 
 definePageMeta(LOCALIZED_PAGE_META.blog)
 

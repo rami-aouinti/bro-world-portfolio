@@ -41,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+import { templateRef } from "@vueuse/core";
 import { cn } from "@/lib/utils";
 import { animate } from "motion-v";
 import type { HTMLAttributes } from "vue";

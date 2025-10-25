@@ -11,7 +11,9 @@ const require = createRequire(import.meta.url);
 const dayjsEsmIndexPath = normalizePath(require.resolve("dayjs/esm/index.js"));
 const dayjsEsmDir = path.dirname(dayjsEsmIndexPath);
 
-const resolvePath = (...segments: string[]): string => path.resolve(...segments);
+function resolvePath(...segments: string[]): string {
+  return path.resolve(...segments);
+}
 
 const CLASS_ATTRIBUTE_REGEX = /class(?:Name)?\s*=\s*(["'`])([^"'`]*?)\1/g;
 const DYNAMIC_CLASS_OBJECT_REGEX = /['"`]([^'"`{}]+?)['"`]\s*:/g;

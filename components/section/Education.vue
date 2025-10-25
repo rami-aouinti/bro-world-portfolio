@@ -4,7 +4,7 @@ import { useDisplay } from 'vuetify'
 
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import { glowCardVariantCycle, glowCardVariants } from '~/utils/glowCardVariants'
-import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: education } = useContentBlock('education')

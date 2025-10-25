@@ -54,6 +54,8 @@
 </template>
 
 <script lang="ts" setup>
+import { useIntervalFn } from "@vueuse/core";
+
 interface FocusProps {
   sentence?: string;
   manualMode?: boolean;

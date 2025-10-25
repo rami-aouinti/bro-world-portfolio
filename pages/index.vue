@@ -3,7 +3,7 @@ import { computed } from "vue";
 
 import LampHero from "~/components/section/LampHero.vue";
 import Personal from "~/components/section/Personal.vue";
-import Line from "~/components/Layout/Line.vue";
+import Line from "~/components/layout/Line.vue";
 import About from "~/components/section/About.vue";
 import Skills from "~/components/section/Skills.vue";
 import Experience from "~/components/section/Experience.vue";
