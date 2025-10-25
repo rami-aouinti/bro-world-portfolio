@@ -88,7 +88,7 @@ const enrichedWorkDetails: Record<string, {
 </script>
 
 <template>
-  <section id="personal" class="personal">
+<section id="personal" class="personal">
     <div class="personal__background" aria-hidden="true">
       <span class="personal__glow personal__glow--one"></span>
       <span class="personal__glow personal__glow--two"></span>
@@ -174,6 +174,11 @@ const enrichedWorkDetails: Record<string, {
 </template>
 
 <style scoped>
+
+.personal {
+  position: relative;
+  overflow-x: hidden;
+}
 
 
 .personal__spark--one {
