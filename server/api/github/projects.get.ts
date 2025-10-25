@@ -1,8 +1,13 @@
 import type { GithubProjectListResponse } from "~/types/github";
+import { getMockGithubProjects } from "~/utils/github/mock-projects";
 
 const API_BASE_URL = "https://api.github.com";
 
 export default defineEventHandler(async () => {
+  if (import.meta.dev) {
+    return getMockGithubProjects();
+  }
+
   const config = useRuntimeConfig();
   const username = config.public?.githubUsername ?? "rami-aouinti";
   const token = config.githubToken as string | undefined;

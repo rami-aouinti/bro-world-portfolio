@@ -1,5 +1,6 @@
 import { createError, getRouterParams } from "h3";
 import type { GithubProjectDetailResponse, GithubProjectLanguagesResponse } from "~/types/github";
+import { getMockGithubProjectDetail } from "~/utils/github/mock-projects";
 
 const API_BASE_URL = "https://api.github.com";
 
@@ -8,6 +9,15 @@ export default defineEventHandler(async (event) => {
 
   if (!slug) {
     throw createError({ statusCode: 400, statusMessage: "Missing repository name" });
+  }
+
+  if (import.meta.dev) {
+    const mockProject = getMockGithubProjectDetail(slug);
+    if (mockProject) {
+      return mockProject;
+    }
+
+    throw createError({ statusCode: 404, statusMessage: "Repository not found" });
   }
 
   const config = useRuntimeConfig();
