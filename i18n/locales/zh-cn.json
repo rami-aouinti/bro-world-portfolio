@@ -3154,6 +3154,7 @@
       }
     },
     "settings": {
+      "siteSettings": "站点设置",
       "metaTitle": "站点设置",
       "page": {
         "title": "站点设置",

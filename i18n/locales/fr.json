@@ -3154,6 +3154,7 @@
       }
     },
     "settings": {
+      "siteSettings": "Paramètres du site",
       "metaTitle": "Paramètres du site",
       "page": {
         "title": "Paramètres du site",
