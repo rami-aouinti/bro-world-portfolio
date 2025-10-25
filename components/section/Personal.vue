@@ -223,6 +223,7 @@ const enrichedWorkDetails: Record<string, {
 }
 
 .personal__description {
+  padding: 30px;
   max-width: 680px;
   font-size: clamp(1.05rem, 1vw + 1rem, 1.25rem);
   line-height: 1.7;
@@ -232,8 +233,8 @@ const enrichedWorkDetails: Record<string, {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
-  gap: 38px;
+  padding: 10px;
+  gap: 18px;
 }
 
 .personal__carousel {
