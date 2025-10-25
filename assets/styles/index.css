@@ -7,10 +7,6 @@ html {
 }
 
 body {
-  min-height: 100%;
-}
-
-body {
   font-family: var(
     --v-font-family-base,
     "Plus Jakarta Sans",
@@ -31,6 +27,16 @@ body {
   --v-card-border-radius: var(--radius, var(--ui-card-radius));
   --v-sheet-border-radius: var(--radius, var(--ui-radius));
   --v-navigation-drawer-border-radius: var(--radius, var(--ui-card-radius));
+}
+
+html,
+body {
+  width: 100%;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 body.ltr {
