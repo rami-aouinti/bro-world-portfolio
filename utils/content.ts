@@ -397,6 +397,184 @@ const EN_CONTENT: ContentRecord = {
           },
         ],
       },
+      {
+        slug: "api-platform-and-integration",
+        name: "API Platform & Integration",
+        description:
+          "Tools that power REST APIs, event-driven flows, and secure authentication pipelines.",
+        skills: [
+          {
+            slug: "api-platform",
+            name: "API Platform",
+            level: "Expert",
+            rating: 5,
+            summary:
+              "Schema-first APIs with pagination, filtering, and OpenAPI documentation baked in.",
+            projects: [
+              { slug: "microservices-tkdeutschland" },
+              { slug: "shopware-integrationen-wizmo-gmbh" },
+            ],
+          },
+          {
+            slug: "doctrine-orm",
+            name: "Doctrine ORM",
+            level: "Expert",
+            rating: 5,
+            summary:
+              "Entity design, migrations, and repositories optimised for complex business domains.",
+            projects: [
+              { slug: "microservices-tkdeutschland" },
+              { slug: "ecommerce-plattformen-hinke-gmbh" },
+            ],
+          },
+          {
+            slug: "symfony-messenger",
+            name: "Symfony Messenger",
+            level: "Advanced",
+            rating: 4,
+            summary:
+              "Asynchronous processing with RabbitMQ, Redis, and Doctrine transports for resilient jobs.",
+            projects: [
+              { slug: "microservices-tkdeutschland" },
+              { slug: "dockerisierte-entwicklungsumgebungen" },
+            ],
+          },
+          {
+            slug: "lexik-jwt-authentication",
+            name: "LexikJWTAuthenticationBundle",
+            level: "Advanced",
+            rating: 4,
+            summary: "Stateless authentication with refresh tokens and role-based access control.",
+            projects: [{ slug: "microservices-tkdeutschland" }],
+          },
+        ],
+      },
+      {
+        slug: "quality-and-testing",
+        name: "Quality & Testing",
+        description: "Test suites and static analysis that keep releases confident and maintainable.",
+        skills: [
+          {
+            slug: "phpunit",
+            name: "PHPUnit",
+            level: "Expert",
+            rating: 5,
+            summary: "Unit, integration, and contract tests integrated into CI workflows.",
+            projects: [
+              { slug: "microservices-tkdeutschland" },
+              { slug: "shopware-integrationen-wizmo-gmbh" },
+            ],
+          },
+          {
+            slug: "pest",
+            name: "Pest",
+            level: "Advanced",
+            rating: 4,
+            summary: "Expressive test syntax to cover APIs, queues, and domain services.",
+            projects: [{ slug: "monitoring-analytics-automatisierung" }],
+          },
+          {
+            slug: "behat",
+            name: "Behat",
+            level: "Advanced",
+            rating: 4,
+            summary: "Behaviour-driven tests describing business scenarios in plain language.",
+            projects: [{ slug: "shopware-integrationen-wizmo-gmbh" }],
+          },
+          {
+            slug: "phpstan",
+            name: "PHPStan",
+            level: "Advanced",
+            rating: 4,
+            summary: "Static analysis enforcing type safety and guarding against regressions.",
+            projects: [{ slug: "dockerisierte-entwicklungsumgebungen" }],
+          },
+          {
+            slug: "php-cs-fixer",
+            name: "PHP CS Fixer",
+            level: "Advanced",
+            rating: 4,
+            summary: "Automated code style enforcement across multi-team repositories.",
+            projects: [{ slug: "leistungsoptimierung-legacy-systeme" }],
+          },
+        ],
+      },
+      {
+        slug: "devops-and-delivery",
+        name: "DevOps & Delivery",
+        description: "Automation, containerisation, and CI/CD for predictable deployments.",
+        skills: [
+          {
+            slug: "docker",
+            name: "Docker",
+            level: "Expert",
+            rating: 5,
+            summary: "Multi-service containers for local development, testing, and production parity.",
+            projects: [{ slug: "dockerisierte-entwicklungsumgebungen" }],
+          },
+          {
+            slug: "docker-compose",
+            name: "Docker Compose",
+            level: "Advanced",
+            rating: 4,
+            summary: "Composable service orchestration simplifying collaborative environments.",
+            projects: [
+              { slug: "dockerisierte-entwicklungsumgebungen" },
+              { slug: "microservices-tkdeutschland" },
+            ],
+          },
+          {
+            slug: "github-actions",
+            name: "GitHub Actions",
+            level: "Advanced",
+            rating: 4,
+            summary: "CI pipelines covering builds, tests, quality gates, and automated releases.",
+            projects: [{ slug: "monitoring-analytics-automatisierung" }],
+          },
+          {
+            slug: "gitlab-ci",
+            name: "GitLab CI",
+            level: "Advanced",
+            rating: 4,
+            summary: "Container-based pipelines orchestrating deployments and QA stages.",
+            projects: [{ slug: "microservices-tkdeutschland" }],
+          },
+        ],
+      },
+      {
+        slug: "monitoring-and-observability",
+        name: "Monitoring & Observability",
+        description: "Dashboards, tracing, and alerts keeping services healthy in production.",
+        skills: [
+          {
+            slug: "sentry",
+            name: "Sentry",
+            level: "Advanced",
+            rating: 4,
+            summary: "Real-time error tracking with release health metrics and alert routing.",
+            projects: [
+              { slug: "monitoring-analytics-automatisierung" },
+              { slug: "leistungsoptimierung-legacy-systeme" },
+            ],
+          },
+          {
+            slug: "elastic-stack",
+            name: "Elastic Stack",
+            level: "Advanced",
+            rating: 4,
+            summary: "Centralised logs and dashboards for audit trails and performance insights.",
+            projects: [{ slug: "microservices-tkdeutschland" }],
+          },
+          {
+            slug: "grafana",
+            name: "Grafana",
+            level: "Advanced",
+            rating: 4,
+            summary: "Operational dashboards combining metrics, traces, and alerting.",
+            projects: [{ slug: "monitoring-analytics-automatisierung" }],
+          },
+        ],
+      },
     ],
     languages: ["English", "French", "German", "Arabic"],
     languageProficiencies: [
@@ -870,6 +1048,188 @@ const FR_CONTENT: ContentRecord = {
               { slug: "microservices-tkdeutschland" },
               { slug: "dockerisierte-entwicklungsumgebungen" },
             ],
+          },
+        ],
+      },
+      {
+        slug: "api-platform-and-integration",
+        name: "API Platform & Intégration",
+        description:
+          "Outils qui alimentent les API REST, les flux événementiels et l’authentification sécurisée.",
+        skills: [
+          {
+            slug: "api-platform",
+            name: "API Platform",
+            level: "Expert",
+            rating: 5,
+            summary:
+              "API schema-first avec pagination, filtres et documentation OpenAPI intégrée.",
+            projects: [
+              { slug: "microservices-tkdeutschland" },
+              { slug: "shopware-integrationen-wizmo-gmbh" },
+            ],
+          },
+          {
+            slug: "doctrine-orm",
+            name: "Doctrine ORM",
+            level: "Expert",
+            rating: 5,
+            summary:
+              "Modélisation des entités, migrations et dépôts adaptés à des domaines métiers complexes.",
+            projects: [
+              { slug: "microservices-tkdeutschland" },
+              { slug: "ecommerce-plattformen-hinke-gmbh" },
+            ],
+          },
+          {
+            slug: "symfony-messenger",
+            name: "Symfony Messenger",
+            level: "Avancé",
+            rating: 4,
+            summary:
+              "Traitements asynchrones avec RabbitMQ, Redis et transports Doctrine pour des jobs résilients.",
+            projects: [
+              { slug: "microservices-tkdeutschland" },
+              { slug: "dockerisierte-entwicklungsumgebungen" },
+            ],
+          },
+          {
+            slug: "lexik-jwt-authentication",
+            name: "LexikJWTAuthenticationBundle",
+            level: "Avancé",
+            rating: 4,
+            summary: "Authentification stateless avec refresh tokens et contrôle d’accès par rôles.",
+            projects: [{ slug: "microservices-tkdeutschland" }],
+          },
+        ],
+      },
+      {
+        slug: "quality-and-testing",
+        name: "Qualité & Tests",
+        description:
+          "Suites de tests et analyses statiques qui garantissent des livraisons fiables et maintenables.",
+        skills: [
+          {
+            slug: "phpunit",
+            name: "PHPUnit",
+            level: "Expert",
+            rating: 5,
+            summary: "Tests unitaires, d’intégration et contractuels intégrés aux pipelines CI.",
+            projects: [
+              { slug: "microservices-tkdeutschland" },
+              { slug: "shopware-integrationen-wizmo-gmbh" },
+            ],
+          },
+          {
+            slug: "pest",
+            name: "Pest",
+            level: "Avancé",
+            rating: 4,
+            summary: "Syntaxe expressive pour couvrir API, files de messages et services métier.",
+            projects: [{ slug: "monitoring-analytics-automatisierung" }],
+          },
+          {
+            slug: "behat",
+            name: "Behat",
+            level: "Avancé",
+            rating: 4,
+            summary: "Tests BDD décrivant les scénarios métiers en langage naturel.",
+            projects: [{ slug: "shopware-integrationen-wizmo-gmbh" }],
+          },
+          {
+            slug: "phpstan",
+            name: "PHPStan",
+            level: "Avancé",
+            rating: 4,
+            summary: "Analyse statique pour renforcer la sécurité des types et prévenir les régressions.",
+            projects: [{ slug: "dockerisierte-entwicklungsumgebungen" }],
+          },
+          {
+            slug: "php-cs-fixer",
+            name: "PHP CS Fixer",
+            level: "Avancé",
+            rating: 4,
+            summary: "Mise en forme automatique du code sur des dépôts multi-équipes.",
+            projects: [{ slug: "leistungsoptimierung-legacy-systeme" }],
+          },
+        ],
+      },
+      {
+        slug: "devops-and-delivery",
+        name: "DevOps & Delivery",
+        description: "Automatisation, conteneurisation et CI/CD pour des déploiements prédictibles.",
+        skills: [
+          {
+            slug: "docker",
+            name: "Docker",
+            level: "Expert",
+            rating: 5,
+            summary:
+              "Conteneurs multi-services pour le développement local, les tests et la parité production.",
+            projects: [{ slug: "dockerisierte-entwicklungsumgebungen" }],
+          },
+          {
+            slug: "docker-compose",
+            name: "Docker Compose",
+            level: "Avancé",
+            rating: 4,
+            summary:
+              "Orchestration de services modulaires simplifiant les environnements collaboratifs.",
+            projects: [
+              { slug: "dockerisierte-entwicklungsumgebungen" },
+              { slug: "microservices-tkdeutschland" },
+            ],
+          },
+          {
+            slug: "github-actions",
+            name: "GitHub Actions",
+            level: "Avancé",
+            rating: 4,
+            summary:
+              "Pipelines CI couvrant builds, tests, contrôles qualité et releases automatisées.",
+            projects: [{ slug: "monitoring-analytics-automatisierung" }],
+          },
+          {
+            slug: "gitlab-ci",
+            name: "GitLab CI",
+            level: "Avancé",
+            rating: 4,
+            summary: "Pipelines conteneurisés orchestrant déploiements et étapes QA.",
+            projects: [{ slug: "microservices-tkdeutschland" }],
+          },
+        ],
+      },
+      {
+        slug: "monitoring-and-observability",
+        name: "Monitoring & Observabilité",
+        description: "Tableaux de bord, traces et alertes pour garder les services sains en production.",
+        skills: [
+          {
+            slug: "sentry",
+            name: "Sentry",
+            level: "Avancé",
+            rating: 4,
+            summary: "Suivi d’erreurs en temps réel avec indicateurs de santé et routage d’alertes.",
+            projects: [
+              { slug: "monitoring-analytics-automatisierung" },
+              { slug: "leistungsoptimierung-legacy-systeme" },
+            ],
+          },
+          {
+            slug: "elastic-stack",
+            name: "Elastic Stack",
+            level: "Avancé",
+            rating: 4,
+            summary: "Centralisation des logs et tableaux de bord pour audit et performance.",
+            projects: [{ slug: "microservices-tkdeutschland" }],
+          },
+          {
+            slug: "grafana",
+            name: "Grafana",
+            level: "Avancé",
+            rating: 4,
+            summary: "Tableaux opérationnels combinant métriques, traces et alerting.",
+            projects: [{ slug: "monitoring-analytics-automatisierung" }],
           },
         ],
       },
