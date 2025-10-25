@@ -3,6 +3,164 @@ import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type LocaleCode } from "~/utils/i18n
 
 export type LocalizedContentRecord = Record<LocaleCode, ContentRecord>;
 
+function createMockContentRecord(record: ContentRecord): ContentRecord {
+  const navlinks = record.navlinks.map((link, index) => ({
+    ...link,
+    label: `Section ${index + 1}`,
+  }));
+
+  const profile = {
+    ...record.profile,
+    firstname: "Alex",
+    lastname: "Dev",
+    role: "Fullstack Developer",
+  };
+
+  const hero = {
+    badge: "Development preview",
+    headline: "This is mock hero content",
+    subline: "Placeholder copy is shown while working in development mode.",
+  };
+
+  const service = {
+    label: record.service.label,
+    headline: "Mock service catalogue",
+    subline: "These entries illustrate the layout while the real content is hidden.",
+    services: record.service.services.map((item, index) => ({
+      ...item,
+      name: `Service ${index + 1}`,
+      description: `Description for mock service ${index + 1}.`,
+      thumbnails: item.thumbnails ?? "",
+    })),
+  };
+
+  const work = {
+    label: record.work.label,
+    headline: "Highlighted mock projects",
+    subline: "Use these placeholder projects to validate UI behaviour locally.",
+    works: record.work.works.map((item, index) => ({
+      ...item,
+      name: `Project ${index + 1}`,
+      description: `Description for mock project ${index + 1}.`,
+      live_demo: "#",
+      type: "Internal project",
+    })),
+  };
+
+  const about = {
+    label: record.about.label,
+    introduce: [
+      "This biography is mock data rendered in development builds.",
+      "Replace it with your story by editing the production dataset.",
+    ],
+    hobbies: ["Reading documentation", "Experimenting with prototypes"],
+  };
+
+  const cta = {
+    label: record.cta.label,
+    description: "Mock call-to-action content shown during development.",
+  };
+
+  const skills = {
+    label: record.skills.label,
+    headline: "Mock skills overview",
+    subline: "These placeholder skills help you iterate on the UI.",
+    categories: record.skills.categories.map((category, categoryIndex) => ({
+      ...category,
+      name: `Category ${categoryIndex + 1}`,
+      description: `Description for mock category ${categoryIndex + 1}.`,
+      skills: category.skills.map((skill, skillIndex) => ({
+        ...skill,
+        name: `Skill ${skillIndex + 1}`,
+        level: "Intermediate",
+        summary: `Summary for mock skill ${skillIndex + 1}.`,
+        projects: skill.projects ?? [],
+      })),
+    })),
+    languages: record.skills.languages?.map((_, index) => `Language ${index + 1}`) ?? [],
+    languageProficiencies:
+      record.skills.languageProficiencies?.map((item, index) => ({
+        ...item,
+        name: `Language ${index + 1}`,
+        proficiency: item.proficiency,
+      })) ?? [],
+  };
+
+  const experiences = {
+    label: record.experiences.label,
+    headline: "Mock professional experience",
+    positions: record.experiences.positions.map((position, index) => ({
+      ...position,
+      role: `Role ${index + 1}`,
+      company: `Company ${index + 1}`,
+      timeframe: "Jan 2020 — Present",
+      achievements: position.achievements.map(
+        (_, achievementIndex) => `Achievement ${index + 1}.${achievementIndex + 1} placeholder.`,
+      ),
+    })),
+  };
+
+  const education = {
+    label: record.education.label,
+    headline: "Mock education history",
+    schools: record.education.schools.map((school, index) => ({
+      ...school,
+      degree: `Degree ${index + 1}`,
+      institution: `Institution ${index + 1}`,
+      timeframe: "2015 — 2019",
+      details: `Details about mock education entry ${index + 1}.`,
+    })),
+  };
+
+  const sourceContact = record.contact ?? {
+    label: "Contact",
+    headline: "Mock contact information",
+    contact: [
+      {
+        degree: "Email",
+        institution: "example@dev.local",
+        timeframe: "Anytime",
+        details: "Mock contact entry available in development only.",
+      },
+    ],
+  };
+
+  const contact = {
+    label: sourceContact.label,
+    headline: "Mock contact information",
+    contact: sourceContact.contact.map((entry, index) => ({
+      ...entry,
+      degree: `Channel ${index + 1}`,
+      institution: `Contact option ${index + 1}`,
+      timeframe: "Always available",
+      details: `Mock contact details ${index + 1}.`,
+    })),
+  };
+
+  return {
+    navlinks,
+    profile,
+    hero,
+    service,
+    work,
+    about,
+    cta,
+    skills,
+    experiences,
+    education,
+    contact,
+  } satisfies ContentRecord;
+}
+
+function createMockLocalizedContent(source: LocalizedContentRecord): LocalizedContentRecord {
+  return Object.fromEntries(
+    Object.entries(source).map(([locale, record]) => [
+      locale,
+      createMockContentRecord(record as ContentRecord),
+    ]),
+  ) as LocalizedContentRecord;
+}
+
 const EN_CONTENT: ContentRecord = {
   navlinks: [
     {
@@ -1466,7 +1624,7 @@ const AR_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
   },
 });
 
-const LOCALIZED_CONTENT: Partial<Record<LocaleCode, ContentRecord>> = {
+const PROD_LOCALIZED_CONTENT: Partial<Record<LocaleCode, ContentRecord>> = {
   en: EN_CONTENT,
   fr: FR_CONTENT,
   de: DE_CONTENT,
@@ -1476,9 +1634,17 @@ const LOCALIZED_CONTENT: Partial<Record<LocaleCode, ContentRecord>> = {
   ar: AR_CONTENT,
 };
 
-export const DEFAULT_CONTENT: LocalizedContentRecord = Object.fromEntries(
+const PROD_CONTENT: LocalizedContentRecord = Object.fromEntries(
   SUPPORTED_LOCALES.map((locale) => {
-    const localized = LOCALIZED_CONTENT[locale] ?? LOCALIZED_CONTENT[DEFAULT_LOCALE];
+    const localized =
+      PROD_LOCALIZED_CONTENT[locale] ?? PROD_LOCALIZED_CONTENT[DEFAULT_LOCALE];
     return [locale, localized as ContentRecord];
   }),
 ) as LocalizedContentRecord;
+
+const DEV_CONTENT = createMockLocalizedContent(PROD_CONTENT);
+
+export const DEFAULT_CONTENT = import.meta.dev ? DEV_CONTENT : PROD_CONTENT;
+
+export const LIVE_CONTENT = PROD_CONTENT;
+export const MOCK_CONTENT = DEV_CONTENT;
