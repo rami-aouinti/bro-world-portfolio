@@ -64,18 +64,20 @@ const languageCard = computed(() => {
               :description="card.description"
               :to="card.link"
             >
-              <ul class="skills__list">
-                <li
-                  v-for="(skill, skillIndex) in card.skills"
-                  :key="skill.slug"
-                  class="skills__item"
-                  :style="{ '--skill-delay': `${skillIndex * 60}ms` }"
+              <div class="skills__card">
+                <v-chip
+                    v-for="(skill, skillIndex) in card.skills"
+                    :key="skill.slug"
+                    class="skills__chip"
+                    color="primary"
+                    variant="tonal"
+                    size="small"
                 >
                   <NuxtLink :to="skill.link" class="skills__item-name">
                     {{ skill.name }}
                   </NuxtLink>
-                </li>
-              </ul>
+                </v-chip>
+              </div>
             </CustomGlowCard>
           </v-col>
           <v-col v-if="languageCard" cols="12" md="4">
