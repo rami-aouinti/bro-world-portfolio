@@ -82,7 +82,6 @@ useSeoMeta(() => ({
 </script>
 
 <template>
-  <LayoutLine />
   <section class="skill-category">
     <v-container class="py-12 skill-category__container">
       <v-btn
@@ -156,7 +155,6 @@ useSeoMeta(() => ({
       </v-row>
     </v-container>
   </section>
-  <LayoutLine />
 </template>
 
 <style scoped>
