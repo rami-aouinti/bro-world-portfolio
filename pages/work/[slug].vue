@@ -2,11 +2,11 @@
   <section class="detail-page">
     <v-container class="py-12 detail-page__container">
       <v-btn
-        :to="backLink"
         variant="text"
         color="primary"
         class="text-none detail-page__back"
         prepend-icon="mdi-arrow-left"
+        @click="goBack"
       >
         Go to projects
       </v-btn>
@@ -71,6 +71,7 @@ import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 const route = useRoute();
 const slug = computed(() => route.params.slug?.toString() ?? "");
 const localePath = useLocalePath();
+const router = useRouter();
 
 if (!slug.value) {
   throw createError({ statusCode: 404, statusMessage: "Projet introuvable." });
@@ -81,6 +82,15 @@ const { data: work } = await useContentBlock("work");
 const sectionLabel = computed(() => work.value?.label ?? "Projets");
 
 const backLink = computed(() => resolveLocalizedRouteTarget("/work", localePath));
+
+const goBack = () => {
+  if (import.meta.client && window.history.length > 1) {
+    router.back();
+    return;
+  }
+
+  router.push(backLink.value);
+};
 
 const projectDetails = computed(() => {
   const entry = work.value?.works.find((item) => item.slug === slug.value);
