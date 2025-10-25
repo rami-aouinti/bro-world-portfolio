@@ -50,7 +50,7 @@ const EN_CONTENT: ContentRecord = {
   },
   hero: {
     badge: "Ready for new challenges",
-    headline: "Hi, I'm Rami — Backend Developer (PHP & Symfony)",
+    headline: "Hi, I'm Rami Backend Developer (PHP & Symfony)",
     subline:
       "I craft secure, high-performance backends with PHP 8, Symfony, REST APIs, Docker, and CI/CD pipelines.",
   },
@@ -283,7 +283,7 @@ const FR_CONTENT: ContentRecord = {
   },
   hero: {
     badge: "Prêt pour de nouveaux défis",
-    headline: "Bonjour, je suis Aouinti — développeur backend (PHP & Symfony)",
+    headline: "Bonjour, je suis Rami développeur backend (PHP & Symfony)",
     subline:
       "Je conçois des backends sécurisés et performants avec PHP 8, Symfony, des API REST, Docker et des pipelines CI/CD.",
   },
