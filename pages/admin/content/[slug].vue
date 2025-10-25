@@ -126,6 +126,15 @@ function removeIntroduce(index: number) {
   form.introduce.splice(index, 1)
 }
 
+function addHobby() {
+  form.hobbies ??= []
+  form.hobbies.push('')
+}
+
+function removeHobby(index: number) {
+  form.hobbies.splice(index, 1)
+}
+
 function addSkillCategory() {
   form.categories ??= []
   form.categories.push({ name: '', skills: [''] })
@@ -141,6 +150,15 @@ function addSkill(categoryIndex: number) {
 
 function removeSkill(categoryIndex: number, skillIndex: number) {
   form.categories[categoryIndex].skills.splice(skillIndex, 1)
+}
+
+function addLanguage() {
+  form.languages ??= []
+  form.languages.push('')
+}
+
+function removeLanguage(index: number) {
+  form.languages.splice(index, 1)
 }
 
 function addExperience() {
@@ -373,6 +391,34 @@ async function handleSubmit() {
                 </v-card>
               </div>
               <p v-else class="text-body-2 text-medium-emphasis">Ajoutez un paragraphe pour commencer.</p>
+              <div style="display: flex; justify-content: space-between; align-items: center;" class="mt-6">
+                <h2 class="text-h6 font-weight-semibold mb-0">Hobbies</h2>
+                <v-btn color="primary" variant="tonal" class="text-none" @click="addHobby">
+                  Ajouter un hobby
+                </v-btn>
+              </div>
+              <div v-if="form.hobbies?.length" style="display: flex; flex-direction: column; gap: 16px;">
+                <v-card
+                  v-for="(hobby, index) in form.hobbies"
+                  :key="index"
+                  variant="tonal"
+                  color="primary"
+                  class="pa-4"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">Hobby #{{ index + 1 }}</span>
+                    <v-btn icon="mdi-delete" variant="text" color="error" @click="removeHobby(index)" />
+                  </div>
+                  <v-text-field
+                    v-model="form.hobbies[index]"
+                    label="Nom du hobby"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                  />
+                </v-card>
+              </div>
+              <p v-else class="text-body-2 text-medium-emphasis">Ajoutez un hobby pour commencer.</p>
             </template>
 
             <template v-else-if="slug === 'cta'">
@@ -450,6 +496,34 @@ async function handleSubmit() {
                 </v-card>
               </div>
               <p v-else class="text-body-2 text-medium-emphasis">Aucune catégorie définie.</p>
+              <div style="display: flex; justify-content: space-between; align-items: center;" class="mt-6">
+                <h2 class="text-h6 font-weight-semibold mb-0">Langues</h2>
+                <v-btn color="primary" variant="tonal" class="text-none" @click="addLanguage">
+                  Ajouter une langue
+                </v-btn>
+              </div>
+              <div v-if="form.languages?.length" style="display: flex; flex-direction: column; gap: 16px;">
+                <v-card
+                  v-for="(language, index) in form.languages"
+                  :key="index"
+                  variant="tonal"
+                  color="primary"
+                  class="pa-4"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">Langue #{{ index + 1 }}</span>
+                    <v-btn icon="mdi-delete" variant="text" color="error" @click="removeLanguage(index)" />
+                  </div>
+                  <v-text-field
+                    v-model="form.languages[index]"
+                    label="Nom de la langue"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                  />
+                </v-card>
+              </div>
+              <p v-else class="text-body-2 text-medium-emphasis">Aucune langue définie.</p>
             </template>
 
             <template v-else-if="slug === 'experiences'">

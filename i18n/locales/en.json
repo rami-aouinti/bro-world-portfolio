@@ -58,7 +58,10 @@
     },
     "skills": {
       "badge": "{count} skill | {count} skills",
-      "cardDescription": "Highlighted tools and technologies."
+      "cardDescription": "Highlighted tools and technologies.",
+      "languagesTitle": "Languages",
+      "languagesDescription": "Spoken and written languages for collaboration.",
+      "languagesBadge": "{count} language | {count} languages"
     },
     "cta": {
       "eyebrow": "Ready to collaborate",
@@ -66,7 +69,8 @@
     },
     "about": {
       "fallbackProfileDescription": "Designing reliable backends with PHP, Symfony, and well-architected systems.",
-      "cta": "Contact me"
+      "cta": "Contact me",
+      "hobbiesTitle": "Hobbies & interests"
     },
     "service": {
       "eyebrowPrefix": "Service",

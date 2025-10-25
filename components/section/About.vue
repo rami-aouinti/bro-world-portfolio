@@ -12,6 +12,7 @@ const localePath = useLocalePath()
 
 const aboutContent = computed(() => about.value)
 const profileContent = computed(() => profile.value)
+const hobbies = computed(() => aboutContent.value?.hobbies ?? [])
 const fullname = computed(() => {
   if (!profileContent.value) {
     return ''
@@ -41,6 +42,23 @@ const profileDescription = computed(() => {
               <p v-for="intro in aboutContent.introduce" :key="intro">
                 {{ intro }}
               </p>
+            </div>
+            <div v-if="hobbies.length" class="about__hobbies">
+              <h3 class="text-subtitle-1 text-foreground mb-3">
+                {{ t('portfolio.about.hobbiesTitle') }}
+              </h3>
+              <div class="about__chips">
+                <v-chip
+                  v-for="hobby in hobbies"
+                  :key="hobby"
+                  color="primary"
+                  variant="tonal"
+                  size="small"
+                  class="about__chip"
+                >
+                  {{ hobby }}
+                </v-chip>
+              </div>
             </div>
             <Button
               class="mt-8"
@@ -77,6 +95,20 @@ const profileDescription = computed(() => {
 <style scoped>
 .about__card {
   height: 100%;
+}
+
+.about__hobbies {
+  margin-top: 32px;
+}
+
+.about__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about__chip {
+  text-transform: none;
 }
 
 .about__image {

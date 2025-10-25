@@ -50,7 +50,11 @@ export const workSchema = z.object({
 
 export const aboutSchema = z.object({
   label: z.string().trim().min(1, 'Le libellé est requis.'),
-  introduce: z.array(z.string().trim().min(1, 'Le paragraphe est requis.')).min(1, 'Ajoutez au moins un paragraphe.')
+  introduce: z.array(z.string().trim().min(1, 'Le paragraphe est requis.')).min(1, 'Ajoutez au moins un paragraphe.'),
+  hobbies: z
+    .array(z.string().trim().min(1, 'Le hobby est requis.'))
+    .optional()
+    .default([])
 })
 
 export const ctaSchema = z.object({
@@ -67,7 +71,11 @@ export const skillsSchema = z.object({
   label: z.string().trim().min(1, 'Le libellé est requis.'),
   headline: z.string().trim().min(1, 'Le titre est requis.'),
   subline: z.string().trim().min(1, 'La description est requise.'),
-  categories: z.array(skillCategorySchema).min(1, 'Ajoutez au moins une catégorie.')
+  categories: z.array(skillCategorySchema).min(1, 'Ajoutez au moins une catégorie.'),
+  languages: z
+    .array(z.string().trim().min(1, 'La langue est requise.'))
+    .optional()
+    .default([])
 })
 
 const experienceSchema = z.object({
