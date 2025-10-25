@@ -15,318 +15,399 @@ export interface PluginRegistryEntry {
   quickLaunch?: PluginQuickLaunchDefinition | PluginQuickLaunchDefinition[];
 }
 
-const pluginRegistry: readonly [{
-  menuItems: readonly [{
-    icon: "mdi:message-text-outline";
+const pluginRegistry: readonly [
+  {
+    menuItems: readonly [
+      {
+        icon: "mdi:message-text-outline";
+        id: "messenger";
+        label: "layout.sidebar.items.messenger";
+        to: "/messenger";
+        isVisible: false;
+        translate: true;
+        order: 0;
+      },
+    ];
     id: "messenger";
-    label: "layout.sidebar.items.messenger";
-    to: "/messenger";
-    isVisible: false;
-    translate: true;
-    order: 0
-  }];
-  id: "messenger"
-}, {
-  menuItems: readonly [{
-    icon: "mdi:briefcase-search";
-    id: "jobs";
-    label: "layout.sidebar.items.jobs";
-    to: "/job";
-    isVisible: true;
-    translate: true;
-    order: 0
-  }, {
-    children: readonly [{
-      requiresAdmin: true;
-      children: readonly [{
-        requiresAdmin: true;
-        icon: "mdi:tune";
-        id: "admin-job-general";
-        label: "layout.sidebar.items.adminGeneralSetting";
-        to: "/admin/job-management";
+  },
+  {
+    menuItems: readonly [
+      {
+        icon: "mdi:briefcase-search";
+        id: "jobs";
+        label: "layout.sidebar.items.jobs";
+        to: "/job";
         isVisible: true;
         translate: true;
-        order: 0
-      }, {
-        requiresAdmin: true;
-        icon: "mdi:database-outline";
-        id: "admin-job-data";
-        label: "layout.sidebar.items.adminData";
-        to: "/admin/job-management/data";
-        isVisible: true;
-        translate: true;
-        order: 1
-      }, {
-        requiresAdmin: true;
-        icon: "mdi:clock-outline";
-        id: "admin-job-crons";
-        label: "layout.sidebar.items.adminCrons";
-        to: "/admin/job-management/crons";
-        isVisible: true;
-        translate: true;
-        order: 2
-      }];
-      icon: "mdi:briefcase-outline";
-      id: "admin-job-management";
-      label: "layout.sidebar.items.adminJobManagement";
-      isVisible: true;
-      translate: true;
-      order: 3
-    }];
-    id: "admin"
-  }];
-  id: "job"
-}, {
-  quickLaunch: { icon: "mdi:gamepad-variant-outline"; label: "layout.appIcons.game"; to: "/game"; order: 2 };
-  menuItems: readonly [{
-    icon: "mdi:gamepad-variant-outline";
-    id: "game";
-    label: "layout.sidebar.items.game";
-    to: "/game";
-    isVisible: true;
-    translate: true;
-    order: 1
-  }, {
-    children: readonly [{
-      requiresAdmin: true;
-      children: readonly [{
-        requiresAdmin: true;
-        icon: "mdi:tune";
-        id: "admin-game-general";
-        label: "layout.sidebar.items.adminGeneralSetting";
-        to: "/admin/game-management";
-        isVisible: true;
-        translate: true;
-        order: 0
-      }, {
-        requiresAdmin: true;
-        icon: "mdi:database-outline";
-        id: "admin-game-data";
-        label: "layout.sidebar.items.adminData";
-        to: "/admin/game-management/data";
-        isVisible: true;
-        translate: true;
-        order: 1
-      }, {
-        requiresAdmin: true;
-        icon: "mdi:clock-outline";
-        id: "admin-game-crons";
-        label: "layout.sidebar.items.adminCrons";
-        to: "/admin/game-management/crons";
-        isVisible: true;
-        translate: true;
-        order: 2
-      }];
+        order: 0;
+      },
+      {
+        children: readonly [
+          {
+            requiresAdmin: true;
+            children: readonly [
+              {
+                requiresAdmin: true;
+                icon: "mdi:tune";
+                id: "admin-job-general";
+                label: "layout.sidebar.items.adminGeneralSetting";
+                to: "/admin/job-management";
+                isVisible: true;
+                translate: true;
+                order: 0;
+              },
+              {
+                requiresAdmin: true;
+                icon: "mdi:database-outline";
+                id: "admin-job-data";
+                label: "layout.sidebar.items.adminData";
+                to: "/admin/job-management/data";
+                isVisible: true;
+                translate: true;
+                order: 1;
+              },
+              {
+                requiresAdmin: true;
+                icon: "mdi:clock-outline";
+                id: "admin-job-crons";
+                label: "layout.sidebar.items.adminCrons";
+                to: "/admin/job-management/crons";
+                isVisible: true;
+                translate: true;
+                order: 2;
+              },
+            ];
+            icon: "mdi:briefcase-outline";
+            id: "admin-job-management";
+            label: "layout.sidebar.items.adminJobManagement";
+            isVisible: true;
+            translate: true;
+            order: 3;
+          },
+        ];
+        id: "admin";
+      },
+    ];
+    id: "job";
+  },
+  {
+    quickLaunch: {
       icon: "mdi:gamepad-variant-outline";
-      id: "admin-game-management";
-      label: "layout.sidebar.items.adminGameManagement";
-      isVisible: true;
-      translate: true;
-      order: 6
-    }];
-    id: "admin"
-  }];
-  id: "game"
-}, {
-  menuItems: readonly [{
-    icon: "mdi:account-box-multiple-outline";
-    id: "crm";
-    label: "layout.sidebar.items.crm";
-    to: "/crm";
-    isVisible: true;
-    translate: true;
-    order: 2
-  }, {
-    children: readonly [{
-      children: readonly [{
-        requiresAdmin: true;
+      label: "layout.appIcons.game";
+      to: "/game";
+      order: 2;
+    };
+    menuItems: readonly [
+      {
+        icon: "mdi:gamepad-variant-outline";
+        id: "game";
+        label: "layout.sidebar.items.game";
+        to: "/game";
+        isVisible: true;
+        translate: true;
+        order: 1;
+      },
+      {
+        children: readonly [
+          {
+            requiresAdmin: true;
+            children: readonly [
+              {
+                requiresAdmin: true;
+                icon: "mdi:tune";
+                id: "admin-game-general";
+                label: "layout.sidebar.items.adminGeneralSetting";
+                to: "/admin/game-management";
+                isVisible: true;
+                translate: true;
+                order: 0;
+              },
+              {
+                requiresAdmin: true;
+                icon: "mdi:database-outline";
+                id: "admin-game-data";
+                label: "layout.sidebar.items.adminData";
+                to: "/admin/game-management/data";
+                isVisible: true;
+                translate: true;
+                order: 1;
+              },
+              {
+                requiresAdmin: true;
+                icon: "mdi:clock-outline";
+                id: "admin-game-crons";
+                label: "layout.sidebar.items.adminCrons";
+                to: "/admin/game-management/crons";
+                isVisible: true;
+                translate: true;
+                order: 2;
+              },
+            ];
+            icon: "mdi:gamepad-variant-outline";
+            id: "admin-game-management";
+            label: "layout.sidebar.items.adminGameManagement";
+            isVisible: true;
+            translate: true;
+            order: 6;
+          },
+        ];
+        id: "admin";
+      },
+    ];
+    id: "game";
+  },
+  {
+    menuItems: readonly [
+      {
         icon: "mdi:account-box-multiple-outline";
-        id: "admin-general-crm";
-        label: "layout.sidebar.items.adminCrm";
-        to: "/admin/crm";
+        id: "crm";
+        label: "layout.sidebar.items.crm";
+        to: "/crm";
         isVisible: true;
         translate: true;
-        order: 3
-      }];
-      id: "admin-general"
-    }];
-    id: "admin"
-  }];
-  id: "crm"
-}, {
-  quickLaunch: { icon: "mdi:shopping-outline"; label: "layout.appIcons.ecommerce"; to: "/ecommerce"; order: 0 };
-  menuItems: readonly [{
-    children: readonly [{
-      icon: "mdi:view-dashboard-outline";
-      id: "ecommerce-overview";
-      label: "layout.sidebar.items.ecommerceOverview";
-      to: "/ecommerce";
-      translate: true;
-      order: 0
-    }, {
-      icon: "mdi:view-grid-outline";
-      id: "ecommerce-catalog";
-      label: "layout.sidebar.items.ecommerceCatalog";
-      to: "/ecommerce/catalog";
-      translate: true;
-      order: 1
-    }, {
-      icon: "mdi:cart";
-      id: "ecommerce-cart";
-      label: "layout.sidebar.items.ecommerceCart";
-      to: "/ecommerce/cart";
-      translate: true;
-      order: 2
-    }, {
-      icon: "mdi:credit-card-check-outline";
-      id: "ecommerce-checkout";
-      label: "layout.sidebar.items.ecommerceCheckout";
-      to: "/ecommerce/checkout";
-      translate: true;
-      order: 3
-    }];
-    icon: "mdi:shopping-outline";
-    id: "ecommerce";
-    label: "layout.sidebar.items.ecommerce";
-    to: "/ecommerce";
-    isVisible: true;
-    translate: true;
-    order: 3
-  }, {
-    children: readonly [{
-      requiresAdmin: true;
-      children: readonly [{
-        requiresAdmin: true;
-        icon: "mdi:tune";
-        id: "admin-ecommerce-general";
-        label: "layout.sidebar.items.adminGeneralSetting";
-        to: "/admin/ecommerce-management";
-        isVisible: true;
-        translate: true;
-        order: 0
-      }, {
-        requiresAdmin: true;
-        icon: "mdi:database-outline";
-        id: "admin-ecommerce-data";
-        label: "layout.sidebar.items.adminData";
-        to: "/admin/ecommerce-management/data";
-        isVisible: true;
-        translate: true;
-        order: 1
-      }, {
-        requiresAdmin: true;
-        icon: "mdi:clock-outline";
-        id: "admin-ecommerce-crons";
-        label: "layout.sidebar.items.adminCrons";
-        to: "/admin/ecommerce-management/crons";
-        isVisible: true;
-        translate: true;
-        order: 2
-      }];
+        order: 2;
+      },
+      {
+        children: readonly [
+          {
+            children: readonly [
+              {
+                requiresAdmin: true;
+                icon: "mdi:account-box-multiple-outline";
+                id: "admin-general-crm";
+                label: "layout.sidebar.items.adminCrm";
+                to: "/admin/crm";
+                isVisible: true;
+                translate: true;
+                order: 3;
+              },
+            ];
+            id: "admin-general";
+          },
+        ];
+        id: "admin";
+      },
+    ];
+    id: "crm";
+  },
+  {
+    quickLaunch: {
       icon: "mdi:shopping-outline";
-      id: "admin-ecommerce-management";
-      label: "layout.sidebar.items.adminEcommerceManagement";
-      isVisible: true;
-      translate: true;
-      order: 4
-    }];
-    id: "admin"
-  }];
-  id: "ecommerce"
-}, {
-  quickLaunch: { icon: "mdi:school-outline"; label: "layout.appIcons.education"; to: "/education"; order: 1 };
-  menuItems: readonly [{
-    icon: "mdi:school-outline";
-    id: "education";
-    label: "layout.sidebar.items.education";
-    to: "/education";
-    isVisible: true;
-    translate: true;
-    order: 4
-  }, {
-    children: readonly [{
-      requiresAdmin: true;
-      children: readonly [{
-        requiresAdmin: true;
-        icon: "mdi:tune";
-        id: "admin-education-general";
-        label: "layout.sidebar.items.adminGeneralSetting";
-        to: "/admin/education-management";
+      label: "layout.appIcons.ecommerce";
+      to: "/ecommerce";
+      order: 0;
+    };
+    menuItems: readonly [
+      {
+        children: readonly [
+          {
+            icon: "mdi:view-dashboard-outline";
+            id: "ecommerce-overview";
+            label: "layout.sidebar.items.ecommerceOverview";
+            to: "/ecommerce";
+            translate: true;
+            order: 0;
+          },
+          {
+            icon: "mdi:view-grid-outline";
+            id: "ecommerce-catalog";
+            label: "layout.sidebar.items.ecommerceCatalog";
+            to: "/ecommerce/catalog";
+            translate: true;
+            order: 1;
+          },
+          {
+            icon: "mdi:cart";
+            id: "ecommerce-cart";
+            label: "layout.sidebar.items.ecommerceCart";
+            to: "/ecommerce/cart";
+            translate: true;
+            order: 2;
+          },
+          {
+            icon: "mdi:credit-card-check-outline";
+            id: "ecommerce-checkout";
+            label: "layout.sidebar.items.ecommerceCheckout";
+            to: "/ecommerce/checkout";
+            translate: true;
+            order: 3;
+          },
+        ];
+        icon: "mdi:shopping-outline";
+        id: "ecommerce";
+        label: "layout.sidebar.items.ecommerce";
+        to: "/ecommerce";
         isVisible: true;
         translate: true;
-        order: 0
-      }, {
-        requiresAdmin: true;
-        icon: "mdi:database-outline";
-        id: "admin-education-data";
-        label: "layout.sidebar.items.adminData";
-        to: "/admin/education-management/data";
-        isVisible: true;
-        translate: true;
-        order: 1
-      }, {
-        requiresAdmin: true;
-        icon: "mdi:clock-outline";
-        id: "admin-education-crons";
-        label: "layout.sidebar.items.adminCrons";
-        to: "/admin/education-management/crons";
-        isVisible: true;
-        translate: true;
-        order: 2
-      }];
+        order: 3;
+      },
+      {
+        children: readonly [
+          {
+            requiresAdmin: true;
+            children: readonly [
+              {
+                requiresAdmin: true;
+                icon: "mdi:tune";
+                id: "admin-ecommerce-general";
+                label: "layout.sidebar.items.adminGeneralSetting";
+                to: "/admin/ecommerce-management";
+                isVisible: true;
+                translate: true;
+                order: 0;
+              },
+              {
+                requiresAdmin: true;
+                icon: "mdi:database-outline";
+                id: "admin-ecommerce-data";
+                label: "layout.sidebar.items.adminData";
+                to: "/admin/ecommerce-management/data";
+                isVisible: true;
+                translate: true;
+                order: 1;
+              },
+              {
+                requiresAdmin: true;
+                icon: "mdi:clock-outline";
+                id: "admin-ecommerce-crons";
+                label: "layout.sidebar.items.adminCrons";
+                to: "/admin/ecommerce-management/crons";
+                isVisible: true;
+                translate: true;
+                order: 2;
+              },
+            ];
+            icon: "mdi:shopping-outline";
+            id: "admin-ecommerce-management";
+            label: "layout.sidebar.items.adminEcommerceManagement";
+            isVisible: true;
+            translate: true;
+            order: 4;
+          },
+        ];
+        id: "admin";
+      },
+    ];
+    id: "ecommerce";
+  },
+  {
+    quickLaunch: {
       icon: "mdi:school-outline";
-      id: "admin-education-management";
-      label: "layout.sidebar.items.adminEducationManagement";
-      isVisible: true;
-      translate: true;
-      order: 5
-    }];
-    id: "admin"
-  }];
-  id: "education"
-}, {
-  menuItems: readonly [{
-    children: readonly [{
-      requiresAdmin: true;
-      children: readonly [{
-        requiresAdmin: true;
-        icon: "mdi:tune";
-        id: "admin-blog-general";
-        label: "layout.sidebar.items.adminGeneralSetting";
-        to: "/admin/blog";
+      label: "layout.appIcons.education";
+      to: "/education";
+      order: 1;
+    };
+    menuItems: readonly [
+      {
+        icon: "mdi:school-outline";
+        id: "education";
+        label: "layout.sidebar.items.education";
+        to: "/education";
         isVisible: true;
         translate: true;
-        order: 0
-      }, {
-        requiresAdmin: true;
-        icon: "mdi:database-outline";
-        id: "admin-blog-data";
-        label: "layout.sidebar.items.adminData";
-        to: "/admin/blog/data";
-        isVisible: true;
-        translate: true;
-        order: 1
-      }, {
-        requiresAdmin: true;
-        icon: "mdi:clock-outline";
-        id: "admin-blog-crons";
-        label: "layout.sidebar.items.adminCrons";
-        to: "/admin/blog/crons";
-        isVisible: true;
-        translate: true;
-        order: 2
-      }];
-      icon: "mdi:post-outline";
-      id: "admin-blog-management";
-      label: "layout.sidebar.items.adminBlogManagement";
-      isVisible: true;
-      translate: true;
-      order: 1
-    }];
-    id: "admin"
-  }];
-  id: "blog"
-}] = [
+        order: 4;
+      },
+      {
+        children: readonly [
+          {
+            requiresAdmin: true;
+            children: readonly [
+              {
+                requiresAdmin: true;
+                icon: "mdi:tune";
+                id: "admin-education-general";
+                label: "layout.sidebar.items.adminGeneralSetting";
+                to: "/admin/education-management";
+                isVisible: true;
+                translate: true;
+                order: 0;
+              },
+              {
+                requiresAdmin: true;
+                icon: "mdi:database-outline";
+                id: "admin-education-data";
+                label: "layout.sidebar.items.adminData";
+                to: "/admin/education-management/data";
+                isVisible: true;
+                translate: true;
+                order: 1;
+              },
+              {
+                requiresAdmin: true;
+                icon: "mdi:clock-outline";
+                id: "admin-education-crons";
+                label: "layout.sidebar.items.adminCrons";
+                to: "/admin/education-management/crons";
+                isVisible: true;
+                translate: true;
+                order: 2;
+              },
+            ];
+            icon: "mdi:school-outline";
+            id: "admin-education-management";
+            label: "layout.sidebar.items.adminEducationManagement";
+            isVisible: true;
+            translate: true;
+            order: 5;
+          },
+        ];
+        id: "admin";
+      },
+    ];
+    id: "education";
+  },
+  {
+    menuItems: readonly [
+      {
+        children: readonly [
+          {
+            requiresAdmin: true;
+            children: readonly [
+              {
+                requiresAdmin: true;
+                icon: "mdi:tune";
+                id: "admin-blog-general";
+                label: "layout.sidebar.items.adminGeneralSetting";
+                to: "/admin/blog";
+                isVisible: true;
+                translate: true;
+                order: 0;
+              },
+              {
+                requiresAdmin: true;
+                icon: "mdi:database-outline";
+                id: "admin-blog-data";
+                label: "layout.sidebar.items.adminData";
+                to: "/admin/blog/data";
+                isVisible: true;
+                translate: true;
+                order: 1;
+              },
+              {
+                requiresAdmin: true;
+                icon: "mdi:clock-outline";
+                id: "admin-blog-crons";
+                label: "layout.sidebar.items.adminCrons";
+                to: "/admin/blog/crons";
+                isVisible: true;
+                translate: true;
+                order: 2;
+              },
+            ];
+            icon: "mdi:post-outline";
+            id: "admin-blog-management";
+            label: "layout.sidebar.items.adminBlogManagement";
+            isVisible: true;
+            translate: true;
+            order: 1;
+          },
+        ];
+        id: "admin";
+      },
+    ];
+    id: "blog";
+  },
+] = [
   {
     id: "messenger",
     menuItems: [
@@ -735,7 +816,6 @@ export function getPluginMenuBlueprints(selectedPluginIds: Iterable<string>): Me
   const seen = new Set<string>();
 
   for (const pluginId of selectedPluginIds ?? []) {
-
     const normalized = pluginId.trim();
     if (!normalized || seen.has(normalized)) {
       continue;

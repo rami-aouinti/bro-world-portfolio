@@ -1,48 +1,33 @@
-<script setup lang="ts">
-
-import { LOCALIZED_PAGE_META } from '~/utils/i18n/routes'
-import CustomGlowCard from '~/components/CustomGlowCard.vue'
-import Line from "~/components/Layout/Line.vue";
-import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
-
-definePageMeta(LOCALIZED_PAGE_META.contact)
-
-const { t } = useI18n()
-
-const contactMethods = computed(() => [
-  {
-    icon: 'mdi-email-outline',
-    label: t('portfolio.contact.methods.email.label'),
-    value: t('portfolio.contact.methods.email.value'),
-    href: 'mailto:hello@broworld.dev'
-  },
-  {
-    icon: 'mdi-map-marker',
-    label: t('portfolio.contact.methods.location.label'),
-    value: t('portfolio.contact.methods.location.value')
-  },
-  {
-    icon: 'mdi-clock-outline',
-    label: t('portfolio.contact.methods.availability.label'),
-    value: t('portfolio.contact.methods.availability.value')
-  }
-])
-</script>
-
 <template>
   <ScrollSmooth>
     <v-container class="mt-10">
-      <v-row justify="center" align="stretch" style="row-gap: 32px;">
-        <v-col cols="12" md="7">
+      <v-row
+        justify="center"
+        align="stretch"
+        style="row-gap: 32px"
+      >
+        <v-col
+          cols="12"
+          md="7"
+        >
           <h1 class="text-h4 text-foreground font-weight-bold">
-            {{ t('portfolio.contact.title') }}
+            {{ t("portfolio.contact.title") }}
           </h1>
           <p class="text-body-1 text-foreground mt-4">
-            {{ t('portfolio.contact.description') }}
+            {{ t("portfolio.contact.description") }}
           </p>
-          <v-form class="mt-8 text-foreground" @submit.prevent>
-            <v-row align="stretch" style="row-gap: 16px;">
-              <v-col cols="12" md="6">
+          <v-form
+            class="mt-8 text-foreground"
+            @submit.prevent
+          >
+            <v-row
+              align="stretch"
+              style="row-gap: 16px"
+            >
+              <v-col
+                cols="12"
+                md="6"
+              >
                 <v-text-field
                   :label="t('portfolio.contact.form.nameLabel')"
                   autocomplete="name"
@@ -50,7 +35,10 @@ const contactMethods = computed(() => [
                   density="comfortable"
                 />
               </v-col>
-              <v-col cols="12" md="6">
+              <v-col
+                cols="12"
+                md="6"
+              >
                 <v-text-field
                   :label="t('portfolio.contact.form.emailLabel')"
                   type="email"
@@ -67,12 +55,19 @@ const contactMethods = computed(() => [
               density="comfortable"
               :placeholder="t('portfolio.contact.form.projectDetailsPlaceholder')"
             />
-            <v-btn type="submit" color="primary" class="text-none mt-4">
-              {{ t('portfolio.contact.form.submit') }}
+            <v-btn
+              type="submit"
+              color="primary"
+              class="text-none mt-4"
+            >
+              {{ t("portfolio.contact.form.submit") }}
             </v-btn>
           </v-form>
         </v-col>
-        <v-col cols="12" md="5">
+        <v-col
+          cols="12"
+          md="5"
+        >
           <CustomGlowCard
             class="contact__card"
             :title="t('portfolio.contact.card.title')"
@@ -81,12 +76,24 @@ const contactMethods = computed(() => [
             variant="rose"
           >
             <div class="contact__methods">
-              <div v-for="method in contactMethods" :key="method.label" class="contact__method">
-                <v-icon :icon="method.icon" class="contact__icon" size="26" />
+              <div
+                v-for="method in contactMethods"
+                :key="method.label"
+                class="contact__method"
+              >
+                <v-icon
+                  :icon="method.icon"
+                  class="contact__icon"
+                  size="26"
+                />
                 <div>
                   <p class="contact__method-label">{{ method.label }}</p>
                   <p class="contact__method-value">
-                    <a v-if="method.href" :href="method.href">{{ method.value }}</a>
+                    <a
+                      v-if="method.href"
+                      :href="method.href"
+                      >{{ method.value }}</a
+                    >
                     <span v-else>{{ method.value }}</span>
                   </p>
                 </div>
@@ -94,7 +101,9 @@ const contactMethods = computed(() => [
             </div>
             <template #footer>
               <div class="contact__footer">
-                <span class="contact__footer-label">{{ t('portfolio.contact.card.footerLabel') }}</span>
+                <span class="contact__footer-label">{{
+                  t("portfolio.contact.card.footerLabel")
+                }}</span>
                 <v-btn
                   href="https://cal.com/aouinti-rami"
                   :label="t('portfolio.contact.card.footerCta')"
@@ -102,7 +111,9 @@ const contactMethods = computed(() => [
                   variant="flat"
                   rounded="pill"
                   class="app-button text-none"
-                > {{ t('portfolio.contact.card.footerCta') }} </v-btn>
+                >
+                  {{ t("portfolio.contact.card.footerCta") }}
+                </v-btn>
               </div>
             </template>
           </CustomGlowCard>
@@ -111,6 +122,36 @@ const contactMethods = computed(() => [
     </v-container>
   </ScrollSmooth>
 </template>
+
+<script setup lang="ts">
+import { LOCALIZED_PAGE_META } from "~/utils/i18n/routes";
+import CustomGlowCard from "~/components/CustomGlowCard.vue";
+import Line from "~/components/Layout/Line.vue";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+
+definePageMeta(LOCALIZED_PAGE_META.contact);
+
+const { t } = useI18n();
+
+const contactMethods = computed(() => [
+  {
+    icon: "mdi-email-outline",
+    label: t("portfolio.contact.methods.email.label"),
+    value: t("portfolio.contact.methods.email.value"),
+    href: "mailto:hello@broworld.dev",
+  },
+  {
+    icon: "mdi-map-marker",
+    label: t("portfolio.contact.methods.location.label"),
+    value: t("portfolio.contact.methods.location.value"),
+  },
+  {
+    icon: "mdi-clock-outline",
+    label: t("portfolio.contact.methods.availability.label"),
+    value: t("portfolio.contact.methods.availability.value"),
+  },
+]);
+</script>
 
 <style scoped>
 .contact__card {

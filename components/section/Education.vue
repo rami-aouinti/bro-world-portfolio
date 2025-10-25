@@ -1,42 +1,10 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-import { useDisplay } from 'vuetify'
-
-import CustomGlowCard from '~/components/CustomGlowCard.vue'
-import { glowCardVariantCycle, glowCardVariants } from '~/utils/glowCardVariants'
-import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-
-const { data: education } = useContentBlock('education')
-const localePath = useLocalePath()
-const display = useDisplay()
-
-const educationContent = computed(() => education.value)
-const educationCards = computed(() => {
-  const schools = educationContent.value?.schools ?? []
-
-  return schools.map((school, index) => {
-    const variant = glowCardVariantCycle[index % glowCardVariantCycle.length]
-
-    return {
-      school,
-      route: resolveLocalizedRouteTarget(`/education/${school.slug}`, localePath),
-      variant,
-      accentColor: glowCardVariants[variant].accent
-    }
-  })
-})
-
-const timelineSide = computed(() => (display.mdAndUp.value ? 'end' : 'start'))
-const timelineLineInset = computed(() => (display.mdAndUp.value ? 16 : 0))
-const timelineDensity = computed(() => (display.mdAndUp.value ? 'comfortable' : 'compact'))
-const showTimelineOpposite = computed(() => display.mdAndUp.value)
-</script>
-
 <template>
   <section id="education">
     <ScrollSmooth>
-      <v-container v-if="educationContent" class="mt-10">
+      <v-container
+        v-if="educationContent"
+        class="mt-10"
+      >
         <h2 class="text-h4 text-foreground">{{ educationContent.headline }}</h2>
         <v-timeline
           class="education__timeline mt-10"
@@ -50,7 +18,10 @@ const showTimelineOpposite = computed(() => display.mdAndUp.value)
             :dot-color="card.accentColor"
             fill-dot
           >
-            <template v-if="showTimelineOpposite" #opposite>
+            <template
+              v-if="showTimelineOpposite"
+              #opposite
+            >
               <span class="education__timeline-time">{{ card.school.timeframe }}</span>
             </template>
 
@@ -69,6 +40,41 @@ const showTimelineOpposite = computed(() => display.mdAndUp.value)
     </ScrollSmooth>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { useDisplay } from "vuetify";
+
+import CustomGlowCard from "~/components/CustomGlowCard.vue";
+import { glowCardVariantCycle, glowCardVariants } from "~/utils/glowCardVariants";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+const { data: education } = useContentBlock("education");
+const localePath = useLocalePath();
+const display = useDisplay();
+
+const educationContent = computed(() => education.value);
+const educationCards = computed(() => {
+  const schools = educationContent.value?.schools ?? [];
+
+  return schools.map((school, index) => {
+    const variant = glowCardVariantCycle[index % glowCardVariantCycle.length];
+
+    return {
+      school,
+      route: resolveLocalizedRouteTarget(`/education/${school.slug}`, localePath),
+      variant,
+      accentColor: glowCardVariants[variant].accent,
+    };
+  });
+});
+
+const timelineSide = computed(() => (display.mdAndUp.value ? "end" : "start"));
+const timelineLineInset = computed(() => (display.mdAndUp.value ? 16 : 0));
+const timelineDensity = computed(() => (display.mdAndUp.value ? "comfortable" : "compact"));
+const showTimelineOpposite = computed(() => display.mdAndUp.value);
+</script>
 
 <style scoped>
 .education__card {

@@ -12,9 +12,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   if (import.meta.server) {
     nuxtApp.hook("app:rendered", () => {
-      (nuxtApp.payload as Record<string, unknown>).pinia = JSON.parse(
-        JSON.stringify(pinia.state),
-      );
+      (nuxtApp.payload as Record<string, unknown>).pinia = JSON.parse(JSON.stringify(pinia.state));
     });
   }
 

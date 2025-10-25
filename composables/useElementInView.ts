@@ -1,15 +1,18 @@
 export function useElementInView(targetRef: Ref<HTMLElement | null>) {
-  const isVisible = ref(false)
+  const isVisible = ref(false);
 
   onMounted(() => {
-    if (!targetRef.value) return
+    if (!targetRef.value) return;
 
-    const observer = new IntersectionObserver(([entry]) => {
-      isVisible.value = entry.isIntersecting
-    }, { threshold: 0.1 })
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible.value = entry.isIntersecting;
+      },
+      { threshold: 0.1 },
+    );
 
-    observer.observe(targetRef.value)
-  })
+    observer.observe(targetRef.value);
+  });
 
-  return { isVisible }
+  return { isVisible };
 }

@@ -5,11 +5,21 @@
   "version": "1.0.0",
   "author": "Rami Aouinti",
   "scripts": {
-    "build": "nuxt build",
+    "build": "pnpm build:registry && nuxt build && pnpm build:copy",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky",
+    "dev:registry": "REGISTRY_URL=http://localhost:5173/r tsx ./scripts/build-registry.mts",
+    "build:registry": "tsx ./scripts/build-registry.mts",
+    "build:copy": "mkdir -p dist && cp public/_routes.json dist/_routes.json",
+    "test": "vitest",
+    "test:unit": "vitest run"
   },
   "dependencies": {
     "@date-io/date-fns": "^3.2.1",

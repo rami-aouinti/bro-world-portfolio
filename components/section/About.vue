@@ -1,51 +1,37 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-
-import CustomGlowCard from '~/components/CustomGlowCard.vue'
-import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-
-const { data: about } = useContentBlock('about')
-const { data: profile } = useContentBlock('profile')
-const { t } = useI18n()
-const localePath = useLocalePath()
-
-const aboutContent = computed(() => about.value)
-const profileContent = computed(() => profile.value)
-const hobbies = computed(() => aboutContent.value?.hobbies ?? [])
-const fullname = computed(() => {
-  if (!profileContent.value) {
-    return ''
-  }
-  return `${profileContent.value.firstname} ${profileContent.value.lastname}`
-})
-const profileDescription = computed(() => {
-  if (!profileContent.value) {
-    return ''
-  }
-
-  return (
-    aboutContent.value?.introduce?.[0] ??
-    t('portfolio.about.fallbackProfileDescription')
-  )
-})
-</script>
-
 <template>
   <section id="about">
     <ScrollSmooth>
-      <v-container v-if="aboutContent" class="py-6">
-        <v-row align="center" justify="center" class="g-8">
-          <v-col cols="12" md="6">
-            <h2 class="text-h4 text-foreground mb-4">{{ fullname || ' ' }}</h2>
-            <div class="text-body-1 text-foreground d-flex flex-column" style="gap: 12px;">
-              <p v-for="intro in aboutContent.introduce" :key="intro">
+      <v-container
+        v-if="aboutContent"
+        class="py-6"
+      >
+        <v-row
+          align="center"
+          justify="center"
+          class="g-8"
+        >
+          <v-col
+            cols="12"
+            md="6"
+          >
+            <h2 class="text-h4 text-foreground mb-4">{{ fullname || " " }}</h2>
+            <div
+              class="text-body-1 text-foreground d-flex flex-column"
+              style="gap: 12px"
+            >
+              <p
+                v-for="intro in aboutContent.introduce"
+                :key="intro"
+              >
                 {{ intro }}
               </p>
             </div>
-            <div v-if="hobbies.length" class="about__hobbies">
+            <div
+              v-if="hobbies.length"
+              class="about__hobbies"
+            >
               <h3 class="text-subtitle-1 text-foreground mb-3">
-                {{ t('portfolio.about.hobbiesTitle') }}
+                {{ t("portfolio.about.hobbiesTitle") }}
               </h3>
               <div class="about__chips">
                 <v-chip
@@ -67,7 +53,11 @@ const profileDescription = computed(() => {
               variant="btn-dark"
             />
           </v-col>
-          <v-col cols="12" md="6" v-if="profileContent">
+          <v-col
+            v-if="profileContent"
+            cols="12"
+            md="6"
+          >
             <CustomGlowCard
               class="about__card"
               :title="profileContent.role"
@@ -91,6 +81,36 @@ const profileDescription = computed(() => {
     </ScrollSmooth>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+
+import CustomGlowCard from "~/components/CustomGlowCard.vue";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+const { data: about } = useContentBlock("about");
+const { data: profile } = useContentBlock("profile");
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+const aboutContent = computed(() => about.value);
+const profileContent = computed(() => profile.value);
+const hobbies = computed(() => aboutContent.value?.hobbies ?? []);
+const fullname = computed(() => {
+  if (!profileContent.value) {
+    return "";
+  }
+  return `${profileContent.value.firstname} ${profileContent.value.lastname}`;
+});
+const profileDescription = computed(() => {
+  if (!profileContent.value) {
+    return "";
+  }
+
+  return aboutContent.value?.introduce?.[0] ?? t("portfolio.about.fallbackProfileDescription");
+});
+</script>
 
 <style scoped>
 .about__card {
