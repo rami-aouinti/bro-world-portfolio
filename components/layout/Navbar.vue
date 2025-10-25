@@ -278,6 +278,7 @@ const navIconMap: Record<string, string> = {
   "/experience": "mdi-briefcase-outline",
   "/education": "mdi-school-outline",
   "/work": "mdi-rocket-launch-outline",
+  "/projects": "mdi-github",
   "/service": "mdi-cog-outline",
   "/blog": "mdi-post-outline",
   "/contact": "mdi-email-fast-outline",
