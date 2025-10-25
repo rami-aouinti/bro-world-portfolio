@@ -71,27 +71,9 @@ const languageCard = computed(() => {
                   class="skills__item"
                   :style="{ '--skill-delay': `${skillIndex * 60}ms` }"
                 >
-                  <div class="skills__item-header">
-                    <NuxtLink :to="skill.link" class="skills__item-name">
-                      {{ skill.name }}
-                    </NuxtLink>
-                    <div class="skills__item-meta">
-                      <span class="skills__item-level">{{ skill.level }}</span>
-                      <v-rating
-                        :model-value="skill.rating"
-                        length="5"
-                        color="amber"
-                        density="compact"
-                        size="18"
-                        half-increments
-                        readonly
-                        class="skills__item-rating"
-                      />
-                    </div>
-                  </div>
-                  <p v-if="skill.summary" class="skills__item-summary">
-                    {{ skill.summary }}
-                  </p>
+                  <NuxtLink :to="skill.link" class="skills__item-name">
+                    {{ skill.name }}
+                  </NuxtLink>
                 </li>
               </ul>
             </CustomGlowCard>
@@ -149,12 +131,11 @@ const languageCard = computed(() => {
 .skills__item {
   --skill-delay: 0ms;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 16px;
-  border-radius: 16px;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 14px;
   border: 1px solid rgba(148, 163, 184, 0.14);
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.6), rgba(30, 41, 59, 0.45));
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.55), rgba(30, 41, 59, 0.4));
   box-shadow: 0 18px 40px -32px rgba(15, 23, 42, 0.8);
   animation: skills-item-fade 0.6s ease both;
   animation-delay: var(--skill-delay);
@@ -165,13 +146,6 @@ const languageCard = computed(() => {
   transform: translateY(-4px);
   border-color: rgba(129, 140, 248, 0.55);
   box-shadow: 0 22px 40px -28px rgba(129, 140, 248, 0.55);
-}
-
-.skills__item-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
 }
 
 .skills__item-name {
@@ -188,35 +162,6 @@ const languageCard = computed(() => {
   text-decoration: underline;
 }
 
-.skills__item-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.skills__item-level {
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(99, 102, 241, 0.15);
-  color: rgba(224, 231, 255, 0.95);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-}
-
-.skills__item-rating {
-  --v-rating-background-opacity: 0.2;
-}
-
-.skills__item-summary {
-  margin: 0;
-  color: rgba(226, 232, 240, 0.82);
-  font-size: 0.92rem;
-  line-height: 1.65;
-}
-
 .skills__chips {
   display: flex;
   flex-wrap: wrap;
@@ -225,18 +170,6 @@ const languageCard = computed(() => {
 
 .skills__chip {
   text-transform: none;
-}
-
-@media (max-width: 1280px) {
-  .skills__item-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .skills__item-meta {
-    width: 100%;
-    justify-content: space-between;
-  }
 }
 
 @keyframes skills-item-fade {
