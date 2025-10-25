@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { LampEffect } from "~/components/ui/lamp-effect";
+import { LampEffect } from "~/components/Ui/lamp-effect";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 
 const { data: personal } = useContentBlock("hero");

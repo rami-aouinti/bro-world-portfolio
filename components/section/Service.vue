@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
-import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 const { data: service } = useContentBlock('service')
 const content = computed(() => service.value)

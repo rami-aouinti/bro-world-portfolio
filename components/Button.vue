@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import { RainbowButton } from '~/components/ui/rainbow-button'
+import { RainbowButton } from '~/components/Ui/rainbow-button'
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const props = withDefaults(

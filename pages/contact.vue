@@ -2,8 +2,8 @@
 
 import { LOCALIZED_PAGE_META } from '~/utils/i18n/routes'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
-import Line from "~/components/layout/Line.vue";
-import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
+import Line from "~/components/Layout/Line.vue";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 definePageMeta(LOCALIZED_PAGE_META.contact)
 

@@ -54,9 +54,9 @@
 </template>
 
 <script lang="ts" setup>
+import { useIntervalFn, templateRef } from "@vueuse/core";
 import { cn } from "@/lib/utils";
 import { Motion } from "motion-v";
-import { templateRef, useIntervalFn } from "@vueuse/core";
 
 const props = withDefaults(
   defineProps<{

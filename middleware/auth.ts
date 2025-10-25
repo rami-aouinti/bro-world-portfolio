@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware(async () => {
-  const requestFetch = process.server ? useRequestFetch() : $fetch
+  const requestFetch = import.meta.server ? useRequestFetch() : $fetch
 
   try {
     const session = await requestFetch('/api/auth/session') as { user: { role: string } | null }

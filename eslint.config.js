@@ -65,16 +65,12 @@ export default withNuxt(
       "import/newline-after-import": "error",
       "import/no-duplicates": "error",
       "import/no-unresolved": "off", //Need eslint-import-resolver-typescript, waiting for flatconfig and error fix on package side
+      "import/named": "off",
       "func-style": ["error", "declaration"],
       "vue/multi-word-component-names": "off",
       "vue/require-default-prop": "off",
       "vue/no-multiple-template-root": "off",
-      "vue/block-order": [
-        "error",
-        {
-          order: ["template", "script", "style"],
-        },
-      ],
+      "vue/block-order": "off",
       "vue/block-lang": [
         "error",
         {
@@ -84,6 +80,7 @@ export default withNuxt(
         },
       ],
       "tailwindcss/no-custom-classname": "off",
+      "vue/attributes-order": "off",
       "@typescript-eslint/no-empty-object-type": [
         "error",
         { allowInterfaces: "with-single-extends" },
@@ -100,6 +97,9 @@ export default withNuxt(
         "error",
         {
           "components/**/": "KEBAB_CASE",
+        },
+        {
+          ignoreWords: ["Layout", "Ui"],
         },
       ],
     },

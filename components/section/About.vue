@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
-import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: about } = useContentBlock('about')

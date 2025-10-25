@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-import { CardBody, CardContainer, CardItem } from "~/components/ui/card-3d";
+import { CardBody, CardContainer, CardItem } from "~/components/Ui/card-3d";
+
 const { data: work } = useContentBlock('work')
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -48,21 +49,21 @@ const workCards = computed(() => {
                   <div class="flex flex-col gap-3">
                     <CardItem
                       as="span"
-                      :translateZ="40"
+                      :translate-z="40"
                       class="work-card-badge"
                     >
                       {{ card.item.type }}
                     </CardItem>
                     <CardItem
                       as="h3"
-                      :translateZ="55"
+                      :translate-z="55"
                       class="text-2xl font-semibold text-foreground"
                     >
                       {{ card.item.name }}
                     </CardItem>
                     <CardItem
                       as="p"
-                      :translateZ="35"
+                      :translate-z="35"
                       class="text-sm leading-relaxed text-muted-foreground"
                     >
                       {{ card.item.description }}
@@ -70,7 +71,7 @@ const workCards = computed(() => {
                   </div>
                   <CardItem
                     as="div"
-                    :translateZ="25"
+                    :translate-z="25"
                     class="mt-auto flex items-center justify-between gap-4 pt-4"
                   >
                     <span class="work-card-footer-label">

@@ -1,8 +1,7 @@
 <template>
-  <!-- eslint-disable-next-line vue/no-v-html -->
-  <span
-    v-html="iconContent"
-    v-bind="forwardedAttrs"
+    <!-- eslint-disable-next-line vue/no-v-html, vue/first-attribute-linebreak -- icon markup is sanitized in script before injection. -->
+    <span v-html="iconContent"
+      v-bind="forwardedAttrs"
     :class="['inline-flex items-center justify-center align-middle', attrs.class]"
     :style="mergedStyle"
     role="img"

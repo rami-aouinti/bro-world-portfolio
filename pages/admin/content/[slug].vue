@@ -19,6 +19,38 @@ if (!isContentSlug(slugParam.value)) {
 
 const slug = computed(() => slugParam.value as ContentSlug)
 
+type ContentFormState = {
+  navlinks?: Array<{ label: string; url: string }>
+  services?: Array<{ name: string; icon: string; description: string; thumbnails: string }>
+  works?: Array<{
+    name: string
+    slug: string
+    live_demo: string
+    description: string
+    thumbnails: string
+    type: string
+  }>
+  introduce?: string[]
+  hobbies?: string[]
+  categories?: Array<{ name: string; skills: string[] }>
+  languages?: string[]
+  languageProficiencies?: Array<{ name: string; proficiency: number }>
+  positions?: Array<{
+    slug: string
+    role: string
+    company: string
+    timeframe: string
+    achievements: string[]
+  }>
+  schools?: Array<{
+    slug: string
+    degree: string
+    institution: string
+    timeframe: string
+    details: string
+  }>
+} & Record<string, unknown>
+
 const localeLabels: Record<LocaleCode, string> = {
   en: 'English',
   fr: 'Français',
@@ -56,7 +88,7 @@ const { data, pending, refresh, error } = await useAsyncData(
   { watch: [slug, selectedLocale] }
 )
 
-const form = reactive<Record<string, unknown>>({})
+const form = reactive<ContentFormState>({})
 const saveState = reactive({
   isSaving: false,
   success: '',
@@ -69,14 +101,14 @@ watch(data, (value) => {
   }
   saveState.success = ''
   saveState.errors = []
-  let clone: Record<string, unknown>
+  let clone: Partial<ContentFormState>
   try {
     clone = typeof structuredClone === 'function'
-      ? structuredClone(value)
-      : JSON.parse(JSON.stringify(value))
+      ? structuredClone(value) as Partial<ContentFormState>
+      : JSON.parse(JSON.stringify(value)) as Partial<ContentFormState>
   }
   catch {
-    clone = JSON.parse(JSON.stringify(value))
+    clone = JSON.parse(JSON.stringify(value)) as Partial<ContentFormState>
   }
   Object.keys(form).forEach((key) => {
     delete form[key]
@@ -86,19 +118,20 @@ watch(data, (value) => {
 
 const csrfCookie = useCookie<string | null>(runtimeConfig.public.auth.csrfCookieName)
 
-type ErrorWithStatusMessage = {
-  data?: {
-    statusMessage?: string
-  }
-}
-
-function hasStatusMessage(error: unknown): error is ErrorWithStatusMessage {
-  if (!error || typeof error !== 'object') {
-    return false
+function extractStatusMessage(error: unknown): string | null {
+  if (typeof error !== 'object' || error === null) {
+    return null
   }
 
-  const maybeData = (error as ErrorWithStatusMessage).data
-  return typeof maybeData?.statusMessage === 'string'
+  const candidate = error as Record<string, unknown>
+  if (typeof candidate.data !== 'object' || candidate.data === null) {
+    return null
+  }
+
+  const data = candidate.data as Record<string, unknown>
+  const statusMessage = data.statusMessage
+
+  return typeof statusMessage === 'string' ? statusMessage : null
 }
 
 function addNavlink() {
@@ -237,11 +270,14 @@ async function handleSubmit() {
     if (err instanceof ZodError) {
       saveState.errors = err.errors.map((issue) => issue.message)
     }
-    else if (hasStatusMessage(err)) {
-      saveState.errors = [err.data.statusMessage]
-    }
     else {
-      saveState.errors = ['Impossible d’enregistrer les modifications.']
+      const statusMessage = extractStatusMessage(err)
+      if (statusMessage) {
+        saveState.errors = [statusMessage]
+      }
+      else {
+        saveState.errors = ['Impossible d’enregistrer les modifications.']
+      }
     }
   }
   finally {

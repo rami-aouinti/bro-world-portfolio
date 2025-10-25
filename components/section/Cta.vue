@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
-import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
+import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
 
 const { data: cta } = useContentBlock('cta')
 const { data: navlinks } = useContentBlock('navlinks')

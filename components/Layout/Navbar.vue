@@ -4,7 +4,7 @@ import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 import { useMediaQuery } from "@vueuse/core";
 import type { LocaleObject } from "@nuxtjs/i18n";
 import DarkModeToggle from "~/components/DarkModeToggle.vue";
-import { Dock, DockIcon, DockSeparator } from "~/components/ui/dock";
+import { Dock, DockIcon, DockSeparator } from "~/components/Ui/dock";
 
 const { data: navlinks } = useContentBlock("navlinks");
 

@@ -9,21 +9,6 @@ const password = ref('')
 const errorMessage = ref('')
 const isSubmitting = ref(false)
 
-type FetchErrorWithStatusMessage = {
-  data?: {
-    statusMessage?: string
-  }
-}
-
-function hasStatusMessage(error: unknown): error is FetchErrorWithStatusMessage {
-  if (!error || typeof error !== 'object') {
-    return false
-  }
-
-  const maybeData = (error as FetchErrorWithStatusMessage).data
-  return typeof maybeData?.statusMessage === 'string'
-}
-
 const sessionCheck = await useAsyncData('admin-session-check', () => $fetch('/api/auth/session'))
 if (sessionCheck.data.value?.user) {
   await navigateTo('/admin', { replace: true })
@@ -41,12 +26,19 @@ async function handleSubmit() {
     await navigateTo('/admin', { replace: true })
   }
   catch (error: unknown) {
-    if (hasStatusMessage(error)) {
-      errorMessage.value = error.data.statusMessage
+    let statusMessage: string | null = null
+    if (typeof error === 'object' && error !== null) {
+      const candidate = error as Record<string, unknown>
+      if (typeof candidate.data === 'object' && candidate.data !== null) {
+        const data = candidate.data as Record<string, unknown>
+        const extracted = data.statusMessage
+        if (typeof extracted === 'string') {
+          statusMessage = extracted
+        }
+      }
     }
-    else {
-      errorMessage.value = 'Une erreur est survenue lors de la connexion.'
-    }
+
+    errorMessage.value = statusMessage ?? 'Une erreur est survenue lors de la connexion.'
   }
   finally {
     isSubmitting.value = false
