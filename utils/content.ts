@@ -50,7 +50,7 @@ const EN_CONTENT: ContentRecord = {
   },
   hero: {
     badge: "Ready for new challenges",
-    headline: "Hi, I'm Aouinti — Backend Developer (PHP & Symfony)",
+    headline: "Hi, I'm Rami — Backend Developer (PHP & Symfony)",
     subline:
       "I craft secure, high-performance backends with PHP 8, Symfony, REST APIs, Docker, and CI/CD pipelines.",
   },
