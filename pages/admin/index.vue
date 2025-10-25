@@ -84,23 +84,32 @@ async function handleLogout() {
 
 <template>
   <v-container class="admin-dashboard mt-10">
+    <div class="admin-dashboard__decor" />
     <v-row justify="center">
       <v-col cols="12" lg="10" class="d-flex flex-column" style="gap: 32px;">
         <v-card class="dashboard-hero" elevation="0" rounded="xl">
-          <v-card-text
-            class="d-flex flex-column flex-md-row"
-            style="gap: 32px; align-items: center;"
-          >
-            <div class="flex-grow-1">
-              <h1 class="text-h4 text-foreground mb-2">Tableau de bord</h1>
-              <p class="text-body-1 text-foreground text-high-emphasis">
+          <div class="dashboard-hero__glow" />
+          <v-card-text class="dashboard-hero__content">
+            <div class="dashboard-hero__intro">
+              <div class="dashboard-hero__eyebrow">
+                <span class="dashboard-hero__dot" />
+                <span>Administration</span>
+              </div>
+              <h1 class="dashboard-hero__title">Tableau de bord</h1>
+              <p class="dashboard-hero__subtitle">
                 Pilotez toutes les sections du portfolio, mettez-les à jour en quelques clics et suivez l’impact de vos modifications.
               </p>
             </div>
             <div class="dashboard-session text-foreground text-end">
-              <v-avatar size="64" color="white" class="mb-3">
-                <v-icon icon="mdi-shield-account" color="primary" size="36" />
-              </v-avatar>
+              <div class="dashboard-session__avatar">
+                <v-avatar size="64" color="white" class="mb-3">
+                  <v-icon icon="mdi-shield-account" color="primary" size="36" />
+                </v-avatar>
+                <span class="dashboard-session__status">
+                  <span class="dashboard-session__status-dot" />
+                  En ligne
+                </span>
+              </div>
               <p class="text-subtitle-2 mb-1 text-high-emphasis">{{ userDisplayName }}</p>
               <p class="text-body-2 text-foreground text-medium-emphasis">Administrateur</p>
               <div class="dashboard-session-actions">
@@ -130,23 +139,27 @@ async function handleLogout() {
               <v-card
                 v-bind="props"
                 class="dashboard-card h-100 d-flex flex-column"
-                :elevation="isHovering ? 10 : 2"
+                :elevation="isHovering ? 12 : 2"
                 rounded="xl"
               >
+                <div class="dashboard-card__beam" />
                 <v-card-text class="flex-grow-1">
-                  <div class="d-flex align-center justify-space-between mb-6">
-                    <v-avatar size="48" color="primary" variant="tonal">
-                      <v-icon :icon="section.icon" color="primary" />
-                    </v-avatar>
-                    <v-chip color="primary" variant="text" size="small" class="text-none">
+                  <div class="dashboard-card__head">
+                    <div class="dashboard-card__icon">
+                      <v-icon :icon="section.icon" color="primary" size="28" />
+                    </div>
+                    <v-chip color="primary" variant="tonal" size="small" class="text-none dashboard-card__chip">
                       Section
                     </v-chip>
                   </div>
-                  <h2 class="text-h6 font-weight-semibold mb-2">{{ section.title }}</h2>
-                  <p class="text-body-2 text-medium-emphasis">{{ section.description }}</p>
+                  <h2 class="dashboard-card__title">{{ section.title }}</h2>
+                  <p class="dashboard-card__description">{{ section.description }}</p>
                 </v-card-text>
-                <v-card-actions class="mt-auto justify-space-between">
-                  <div class="text-caption text-medium-emphasis">Dernière mise à jour en attente</div>
+                <v-card-actions class="dashboard-card__actions">
+                  <div class="dashboard-card__meta">
+                    <span class="dashboard-card__meta-dot" />
+                    Dernière mise à jour en attente
+                  </div>
                   <v-btn
                     :to="`/admin/content/${section.slug}`"
                     color="primary"
@@ -172,23 +185,30 @@ async function handleLogout() {
   min-height: 100vh;
   background: radial-gradient(circle at top, rgba(52, 120, 246, 0.2), transparent 60%),
     linear-gradient(180deg, rgba(10, 18, 41, 0.95), rgba(10, 18, 41, 0.7) 50%, rgba(15, 23, 42, 0.4));
-}
-
+.admin-dashboard__decor,
 .admin-dashboard::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.12), transparent 55%),
+    radial-gradient(circle at 18% 25%, rgba(255, 255, 255, 0.12), transparent 55%),
     repeating-linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0.08) 0,
-      rgba(255, 255, 255, 0.08) 2px,
+      rgba(255, 255, 255, 0.09) 0,
+      rgba(255, 255, 255, 0.09) 2px,
       transparent 2px,
-      transparent 10px
+      transparent 12px
     );
-  mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0));
   pointer-events: none;
+}
+
+.admin-dashboard__decor {
+  inset: 10% 5% 5% 8%;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(96, 165, 250, 0.3), transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.22), transparent 55%);
+  filter: blur(40px);
 }
 
 .admin-dashboard > * {
@@ -202,8 +222,7 @@ async function handleLogout() {
   box-shadow: 0 40px 80px -50px rgba(37, 99, 235, 0.75);
 }
 
-.dashboard-hero::after {
-  content: '';
+.dashboard-hero__glow {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.25), transparent 50%),
@@ -212,8 +231,86 @@ async function handleLogout() {
   pointer-events: none;
 }
 
+.dashboard-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-hero__intro {
+  flex: 1 1 0;
+}
+
+.dashboard-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.dashboard-hero__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #facc15;
+  box-shadow: 0 0 0 8px rgba(250, 204, 21, 0.15);
+}
+
+.dashboard-hero__title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.dashboard-hero__subtitle {
+  margin: 0;
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+}
+
 .dashboard-session {
   min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.dashboard-session__avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-session__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dashboard-session__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.35);
 }
 
 .dashboard-session-actions {
@@ -260,12 +357,92 @@ async function handleLogout() {
 }
 
 .dashboard-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   border: 1px solid rgba(37, 99, 235, 0.12);
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.88));
 }
 
 .dashboard-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
+}
+
+.dashboard-card__beam {
+  position: absolute;
+  inset: -30% -40% auto;
+  height: 140%;
+  background: linear-gradient(120deg, rgba(96, 165, 250, 0.25), rgba(129, 140, 248, 0.05));
+  transform: rotate(12deg);
+  filter: blur(0.5px);
+  transition: opacity 0.3s ease;
+  opacity: 0.75;
+}
+
+.dashboard-card:hover .dashboard-card__beam {
+  opacity: 1;
+}
+
+.dashboard-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.dashboard-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: rgba(37, 99, 235, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 35px -28px rgba(37, 99, 235, 0.9);
+}
+
+.dashboard-card__chip {
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+}
+
+.dashboard-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: rgba(226, 232, 240, 0.96);
+}
+
+.dashboard-card__description {
+  margin: 0;
+  color: rgba(226, 232, 240, 0.72);
+  font-size: 0.95rem;
+}
+
+.dashboard-card__actions {
+  margin-top: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 24px;
+  padding-bottom: 24px;
+}
+
+.dashboard-card__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: rgba(226, 232, 240, 0.5);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dashboard-card__meta-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.24);
 }
 
 .text-high-emphasis {
@@ -280,6 +457,23 @@ async function handleLogout() {
   .dashboard-session-actions,
   .dashboard-theme {
     align-items: flex-start;
+  }
+
+  .dashboard-card__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (min-width: 960px) {
+  .dashboard-hero__content {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .dashboard-hero__intro {
+    max-width: 560px;
   }
 }
 </style>

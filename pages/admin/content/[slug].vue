@@ -224,19 +224,20 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <v-container class="mt-10">
+  <v-container class="admin-editor mt-10">
+    <div class="admin-editor__overlay" />
     <v-row justify="center">
       <v-col cols="12" lg="10" style="display: flex; flex-direction: column; gap: 24px;">
-        <v-card elevation="2" class="pa-6">
-          <div class="d-flex flex-column flex-md-row" style="gap: 16px; align-items: center;">
+        <v-card elevation="0" class="editor-card editor-card--header">
+          <div class="editor-card__content d-flex flex-column flex-md-row" style="gap: 16px; align-items: center;">
             <div class="flex-grow-1">
-              <v-btn :to="'/admin'" variant="text" color="primary" class="text-none px-0">
+              <v-btn :to="'/admin'" variant="text" color="primary" class="text-none px-0 editor-card__back">
                 Retour au tableau de bord
               </v-btn>
-              <h1 class="text-h4 font-weight-semibold mt-3">{{ titles[slug] }}</h1>
+              <h1 class="editor-card__title">{{ titles[slug] }}</h1>
             </div>
-            <div class="d-flex flex-column align-end" style="gap: 12px;">
-              <p class="text-body-2 text-medium-emphasis text-end">
+            <div class="editor-card__aside d-flex flex-column align-end" style="gap: 12px;">
+              <p class="text-body-2 text-medium-emphasis text-end editor-card__hint">
                 Les modifications sont appliquées immédiatement après sauvegarde.
               </p>
               <v-select
@@ -248,29 +249,30 @@ async function handleSubmit() {
                 density="comfortable"
                 variant="outlined"
                 hide-details
-                style="min-width: 220px;"
+                class="editor-card__locale"
               />
             </div>
           </div>
         </v-card>
 
-        <v-card elevation="2" class="pa-6">
+        <v-card elevation="0" class="editor-card editor-card--panel">
           <div v-if="pending" class="py-10 text-center text-medium-emphasis">Chargement…</div>
-          <div v-else-if="error" class="py-10 text-center" style="color: var(--v-theme-error);">
+          <div v-else-if="error" class="py-10 text-center editor-card__error">
             Une erreur est survenue lors du chargement du contenu.
           </div>
-          <v-form v-else @submit.prevent="handleSubmit" style="display: flex; flex-direction: column; gap: 24px;">
+          <v-form v-else @submit.prevent="handleSubmit" class="editor-form">
             <v-alert
               v-if="saveState.errors.length"
               type="error"
               variant="tonal"
+              class="editor-form__alert"
             >
               <p class="font-weight-medium mb-2">Merci de corriger les points suivants :</p>
               <ul style="padding-left: 20px; margin: 0;">
                 <li v-for="errorMessage in saveState.errors" :key="errorMessage">{{ errorMessage }}</li>
               </ul>
             </v-alert>
-            <v-alert v-if="saveState.success" type="success" variant="tonal">
+            <v-alert v-if="saveState.success" type="success" variant="tonal" class="editor-form__alert">
               {{ saveState.success }}
             </v-alert>
 
@@ -301,19 +303,19 @@ async function handleSubmit() {
               <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
               <v-text-field v-model="form.headline" label="Titre" required variant="outlined" density="comfortable" />
               <v-textarea v-model="form.subline" label="Description" rows="4" required variant="outlined" density="comfortable" />
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2 class="text-h6 font-weight-semibold mb-0">Services</h2>
+              <div class="editor-section__heading">
+                <h2 class="editor-section__title">Services</h2>
                 <v-btn color="primary" variant="tonal" class="text-none" @click="addService">
                   Ajouter un service
                 </v-btn>
               </div>
-              <div v-if="form.services?.length" style="display: flex; flex-direction: column; gap: 16px;">
+              <div v-if="form.services?.length" class="editor-collection">
                 <v-card
                   v-for="(service, index) in form.services"
                   :key="index"
                   variant="tonal"
                   color="primary"
-                  class="pa-4"
+                  class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
                     <span class="text-caption">Service #{{ index + 1 }}</span>
@@ -332,19 +334,19 @@ async function handleSubmit() {
               <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
               <v-text-field v-model="form.headline" label="Titre" required variant="outlined" density="comfortable" />
               <v-textarea v-model="form.subline" label="Description" rows="4" required variant="outlined" density="comfortable" />
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2 class="text-h6 font-weight-semibold mb-0">Projets</h2>
+              <div class="editor-section__heading">
+                <h2 class="editor-section__title">Projets</h2>
                 <v-btn color="primary" variant="tonal" class="text-none" @click="addWork">
                   Ajouter un projet
                 </v-btn>
               </div>
-              <div v-if="form.works?.length" style="display: flex; flex-direction: column; gap: 16px;">
+              <div v-if="form.works?.length" class="editor-collection">
                 <v-card
                   v-for="(project, index) in form.works"
                   :key="project.slug || index"
                   variant="tonal"
                   color="primary"
-                  class="pa-4"
+                  class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
                     <span class="text-caption">Projet #{{ index + 1 }}</span>
@@ -369,19 +371,19 @@ async function handleSubmit() {
 
             <template v-else-if="slug === 'about'">
               <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2 class="text-h6 font-weight-semibold mb-0">Paragraphes</h2>
+              <div class="editor-section__heading">
+                <h2 class="editor-section__title">Paragraphes</h2>
                 <v-btn color="primary" variant="tonal" class="text-none" @click="addIntroduce">
                   Ajouter un paragraphe
                 </v-btn>
               </div>
-              <div v-if="form.introduce?.length" style="display: flex; flex-direction: column; gap: 16px;">
+              <div v-if="form.introduce?.length" class="editor-collection">
                 <v-card
                   v-for="(paragraph, index) in form.introduce"
                   :key="index"
                   variant="tonal"
                   color="primary"
-                  class="pa-4"
+                  class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
                     <span class="text-caption">Paragraphe #{{ index + 1 }}</span>
@@ -391,19 +393,19 @@ async function handleSubmit() {
                 </v-card>
               </div>
               <p v-else class="text-body-2 text-medium-emphasis">Ajoutez un paragraphe pour commencer.</p>
-              <div style="display: flex; justify-content: space-between; align-items: center;" class="mt-6">
-                <h2 class="text-h6 font-weight-semibold mb-0">Hobbies</h2>
+              <div class="editor-section__heading mt-6">
+                <h2 class="editor-section__title">Hobbies</h2>
                 <v-btn color="primary" variant="tonal" class="text-none" @click="addHobby">
                   Ajouter un hobby
                 </v-btn>
               </div>
-              <div v-if="form.hobbies?.length" style="display: flex; flex-direction: column; gap: 16px;">
+              <div v-if="form.hobbies?.length" class="editor-collection">
                 <v-card
                   v-for="(hobby, index) in form.hobbies"
                   :key="index"
                   variant="tonal"
                   color="primary"
-                  class="pa-4"
+                  class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
                     <span class="text-caption">Hobby #{{ index + 1 }}</span>
@@ -456,31 +458,31 @@ async function handleSubmit() {
               <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
               <v-text-field v-model="form.headline" label="Titre" required variant="outlined" density="comfortable" />
               <v-textarea v-model="form.subline" label="Description" rows="4" required variant="outlined" density="comfortable" />
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2 class="text-h6 font-weight-semibold mb-0">Catégories</h2>
+              <div class="editor-section__heading">
+                <h2 class="editor-section__title">Catégories</h2>
                 <v-btn color="primary" variant="tonal" class="text-none" @click="addSkillCategory">
                   Ajouter une catégorie
                 </v-btn>
               </div>
-              <div v-if="form.categories?.length" style="display: flex; flex-direction: column; gap: 16px;">
+              <div v-if="form.categories?.length" class="editor-collection">
                 <v-card
                   v-for="(category, categoryIndex) in form.categories"
                   :key="categoryIndex"
                   variant="tonal"
                   color="primary"
-                  class="pa-4"
+                  class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
                     <span class="text-caption">Catégorie #{{ categoryIndex + 1 }}</span>
                     <v-btn icon="mdi-delete" variant="text" color="error" @click="removeSkillCategory(categoryIndex)" />
                   </div>
                   <v-text-field v-model="category.name" label="Nom de la catégorie" required variant="outlined" density="comfortable" />
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div class="editor-section__heading">
                     <span class="text-body-2">Compétences</span>
                     <v-btn icon="mdi-plus" variant="text" color="primary" @click="addSkill(categoryIndex)" />
                   </div>
-                  <div v-if="category.skills?.length" style="display: flex; flex-direction: column; gap: 12px;">
-                    <div v-for="(skill, skillIndex) in category.skills" :key="skillIndex" class="d-flex" style="gap: 12px;">
+                  <div v-if="category.skills?.length" class="editor-collection editor-collection--compact">
+                    <div v-for="(skill, skillIndex) in category.skills" :key="skillIndex" class="editor-collection__item">
                       <v-text-field
                         v-model="category.skills[skillIndex]"
                         label="Nom de la compétence"
@@ -496,19 +498,19 @@ async function handleSubmit() {
                 </v-card>
               </div>
               <p v-else class="text-body-2 text-medium-emphasis">Aucune catégorie définie.</p>
-              <div style="display: flex; justify-content: space-between; align-items: center;" class="mt-6">
-                <h2 class="text-h6 font-weight-semibold mb-0">Langues</h2>
+              <div class="editor-section__heading mt-6">
+                <h2 class="editor-section__title">Langues</h2>
                 <v-btn color="primary" variant="tonal" class="text-none" @click="addLanguage">
                   Ajouter une langue
                 </v-btn>
               </div>
-              <div v-if="form.languages?.length" style="display: flex; flex-direction: column; gap: 16px;">
+              <div v-if="form.languages?.length" class="editor-collection">
                 <v-card
                   v-for="(language, index) in form.languages"
                   :key="index"
                   variant="tonal"
                   color="primary"
-                  class="pa-4"
+                  class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
                     <span class="text-caption">Langue #{{ index + 1 }}</span>
@@ -529,19 +531,19 @@ async function handleSubmit() {
             <template v-else-if="slug === 'experiences'">
               <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
               <v-text-field v-model="form.headline" label="Titre" required variant="outlined" density="comfortable" />
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2 class="text-h6 font-weight-semibold mb-0">Expériences</h2>
+              <div class="editor-section__heading">
+                <h2 class="editor-section__title">Expériences</h2>
                 <v-btn color="primary" variant="tonal" class="text-none" @click="addExperience">
                   Ajouter une expérience
                 </v-btn>
               </div>
-              <div v-if="form.positions?.length" style="display: flex; flex-direction: column; gap: 16px;">
+              <div v-if="form.positions?.length" class="editor-collection">
                 <v-card
                   v-for="(position, index) in form.positions"
                   :key="position.slug || index"
                   variant="tonal"
                   color="primary"
-                  class="pa-4"
+                  class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
                     <span class="text-caption">Expérience #{{ index + 1 }}</span>
@@ -557,17 +559,12 @@ async function handleSubmit() {
                   />
                   <v-text-field v-model="position.company" label="Entreprise" required variant="outlined" density="comfortable" />
                   <v-text-field v-model="position.timeframe" label="Période" required variant="outlined" density="comfortable" />
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div class="editor-section__heading">
                     <span class="text-body-2">Réalisations</span>
                     <v-btn icon="mdi-plus" variant="text" color="primary" @click="addAchievement(index)" />
                   </div>
-                  <div v-if="position.achievements?.length" style="display: flex; flex-direction: column; gap: 12px;">
-                    <div
-                      v-for="(achievement, achievementIndex) in position.achievements"
-                      :key="achievementIndex"
-                      class="d-flex"
-                      style="gap: 12px;"
-                    >
+                  <div v-if="position.achievements?.length" class="editor-collection editor-collection--compact">
+                    <div v-for="(achievement, achievementIndex) in position.achievements" :key="achievementIndex" class="editor-collection__item">
                       <v-textarea
                         v-model="position.achievements[achievementIndex]"
                         label="Détail"
@@ -589,19 +586,19 @@ async function handleSubmit() {
             <template v-else-if="slug === 'education'">
               <v-text-field v-model="form.label" label="Libellé" required variant="outlined" density="comfortable" />
               <v-text-field v-model="form.headline" label="Titre" required variant="outlined" density="comfortable" />
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2 class="text-h6 font-weight-semibold mb-0">Formations</h2>
+              <div class="editor-section__heading">
+                <h2 class="editor-section__title">Formations</h2>
                 <v-btn color="primary" variant="tonal" class="text-none" @click="addEducation">
                   Ajouter une formation
                 </v-btn>
               </div>
-              <div v-if="form.schools?.length" style="display: flex; flex-direction: column; gap: 16px;">
+              <div v-if="form.schools?.length" class="editor-collection">
                 <v-card
                   v-for="(school, index) in form.schools"
                   :key="school.slug || index"
                   variant="tonal"
                   color="primary"
-                  class="pa-4"
+                  class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
                     <span class="text-caption">Formation #{{ index + 1 }}</span>
@@ -623,7 +620,7 @@ async function handleSubmit() {
               <p v-else class="text-body-2 text-medium-emphasis">Aucune formation.</p>
             </template>
 
-            <div class="d-flex justify-end" style="gap: 12px;">
+            <div class="editor-form__footer">
               <v-btn :to="'/admin'" variant="tonal" color="primary" class="text-none">
                 Annuler
               </v-btn>
@@ -637,3 +634,182 @@ async function handleSubmit() {
     </v-row>
   </v-container>
 </template>
+
+<style scoped>
+.admin-editor {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  padding-bottom: 96px;
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.92), rgba(17, 24, 39, 0.88));
+  border-radius: 32px 32px 0 0;
+  overflow: hidden;
+}
+
+.admin-editor__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.25), transparent 50%),
+    radial-gradient(circle at 80% 60%, rgba(56, 189, 248, 0.18), transparent 55%),
+    linear-gradient(120deg, rgba(99, 102, 241, 0.15), transparent 70%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.admin-editor > * {
+  position: relative;
+}
+
+.editor-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: clamp(24px, 5vw, 36px);
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  box-shadow: 0 30px 60px -45px rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(18px);
+}
+
+.editor-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(140deg, rgba(59, 130, 246, 0.18), rgba(129, 140, 248, 0.08));
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.editor-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.editor-card--header {
+  display: flex;
+}
+
+.editor-card__content {
+  width: 100%;
+}
+
+.editor-card__title {
+  margin: 16px 0 0;
+  font-size: clamp(1.875rem, 3vw, 2.35rem);
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.editor-card__back {
+  align-self: flex-start;
+  letter-spacing: 0.08em;
+}
+
+.editor-card__hint {
+  max-width: 240px;
+}
+
+.editor-card__locale {
+  min-width: 220px;
+}
+
+.editor-card__aside {
+  align-items: flex-end !important;
+}
+
+.editor-card__error {
+  color: var(--v-theme-error);
+}
+
+.editor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.editor-form__alert {
+  border-radius: 20px;
+}
+
+.editor-form__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.editor-section__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.editor-section__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.92);
+}
+
+.editor-collection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.editor-collection--compact {
+  gap: 12px;
+}
+
+.editor-collection__item {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.editor-subcard {
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: rgba(37, 99, 235, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.editor-subcard :deep(.v-btn--variant-text) {
+  border-radius: 14px;
+}
+
+:deep(.editor-card .v-input .v-field) {
+  border-radius: 18px;
+}
+
+:deep(.editor-card .v-alert) {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+.editor-form__footer .v-btn {
+  border-radius: 999px;
+  padding-inline: 24px;
+}
+
+@media (max-width: 959px) {
+  .editor-card__aside {
+    align-items: flex-start !important;
+  }
+
+  .editor-card__hint {
+    max-width: none;
+    text-align: left !important;
+  }
+
+  .editor-card__locale {
+    width: 100%;
+  }
+
+  .editor-form__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+</style>
