@@ -30,6 +30,10 @@ const EN_CONTENT: ContentRecord = {
       url: "/work",
     },
     {
+      label: "GitHub",
+      url: "/projects",
+    },
+    {
       label: "Services",
       url: "/service",
     },
@@ -500,6 +504,10 @@ const FR_CONTENT: ContentRecord = {
     {
       label: "Projets",
       url: "/work",
+    },
+    {
+      label: "Projets GitHub",
+      url: "/projects",
     },
     {
       label: "Services",

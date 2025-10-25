@@ -606,6 +606,7 @@ export default defineNuxtConfig({
       csrfCookieName,
       sessionMaxAge: Number.parseInt(process.env.SESSION_MAX_AGE ?? "", 10) || 60 * 60 * 24,
     },
+    githubToken: process.env.GITHUB_TOKEN,
     admin: {
       defaultEmail: process.env.ADMIN_EMAIL || "admin@example.com",
       defaultPassword: process.env.ADMIN_PASSWORD || "ChangeMe123!",
@@ -614,6 +615,7 @@ export default defineNuxtConfig({
       auth: {
         csrfCookieName,
       },
+      githubUsername: process.env.GITHUB_USERNAME || "rami-aouinti",
     },
   },
 });

@@ -37,7 +37,7 @@
             <div class="personal__actions">
               <Button
                 :label="t('portfolio.personal.viewProjects')"
-                :to="resolveLocalizedRouteTarget('/work', localePath)"
+                :to="resolveLocalizedRouteTarget('/projects', localePath)"
               />
               <Button
                 :label="t('portfolio.personal.contact')"
