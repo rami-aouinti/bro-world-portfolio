@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from "vue";
+
 import { LOCALIZED_PAGE_META } from '~/utils/i18n/routes'
 import Line from "~/components/Layout/Line.vue";
 import Skills from "~/components/section/Skills.vue";
@@ -6,16 +8,25 @@ import Experience from "~/components/section/Experience.vue";
 import Education from "~/components/section/Education.vue";
 import Cta from "~/components/section/Cta.vue";
 import About from "~/components/section/About.vue";
+
 definePageMeta(LOCALIZED_PAGE_META.about)
+
+const { data: skillsContent } = useContentBlock("skills");
+const { data: experienceContent } = useContentBlock("experience");
+const { data: educationContent } = useContentBlock("education");
+
+const skillsLabel = computed(() => skillsContent.value?.label ?? "");
+const experienceLabel = computed(() => experienceContent.value?.label ?? "");
+const educationLabel = computed(() => educationContent.value?.label ?? "");
 </script>
 
 <template>
   <About />
-  <Line />
+  <Line :section-name="skillsLabel" />
   <Skills />
-  <Line />
+  <Line :section-name="experienceLabel" />
   <Experience />
-  <Line />
+  <Line :section-name="educationLabel" />
   <Education />
   <Cta />
 </template>
