@@ -105,7 +105,7 @@
                   t("portfolio.contact.card.footerLabel")
                 }}</span>
                 <v-btn
-                  href="https://cal.com/aouinti-rami"
+                  :href="schedulingLink"
                   :label="t('portfolio.contact.card.footerCta')"
                   target="_blank"
                   variant="flat"
@@ -133,12 +133,16 @@ definePageMeta(LOCALIZED_PAGE_META.contact);
 
 const { t } = useI18n();
 
+const contactEmailHref = computed(() =>
+  import.meta.dev ? "mailto:hello@example.dev" : "mailto:hello@broworld.dev",
+);
+
 const contactMethods = computed(() => [
   {
     icon: "mdi-email-outline",
     label: t("portfolio.contact.methods.email.label"),
     value: t("portfolio.contact.methods.email.value"),
-    href: "mailto:hello@broworld.dev",
+    href: contactEmailHref.value,
   },
   {
     icon: "mdi-map-marker",
@@ -151,6 +155,10 @@ const contactMethods = computed(() => [
     value: t("portfolio.contact.methods.availability.value"),
   },
 ]);
+
+const schedulingLink = computed(() =>
+  import.meta.dev ? "https://cal.com/example-consultation" : "https://cal.com/aouinti-rami",
+);
 </script>
 
 <style scoped>
