@@ -106,6 +106,15 @@ if (sessionCheck.data.value?.user) {
   await navigateTo("/admin", { replace: true });
 }
 
+function isFetchError(value: unknown): value is { data?: { statusMessage?: string } } {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "data" in value &&
+    typeof (value as { data?: unknown }).data === "object"
+  );
+}
+
 async function handleSubmit() {
   errorMessage.value = "";
   isSubmitting.value = true;
@@ -116,8 +125,8 @@ async function handleSubmit() {
       body: { email: email.value, password: password.value },
     });
     await navigateTo("/admin", { replace: true });
-  } catch (error: any) {
-    if (error?.data?.statusMessage) {
+  } catch (error: unknown) {
+    if (isFetchError(error) && typeof error.data?.statusMessage === "string") {
       errorMessage.value = error.data.statusMessage;
     } else {
       errorMessage.value = "Une erreur est survenue lors de la connexion.";

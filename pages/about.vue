@@ -13,7 +13,7 @@
 import { computed } from "vue";
 
 import { LOCALIZED_PAGE_META } from "~/utils/i18n/routes";
-import Line from "~/components/Layout/Line.vue";
+import Line from "~/components/layout/Line.vue";
 import Skills from "~/components/section/Skills.vue";
 import Experience from "~/components/section/Experience.vue";
 import Education from "~/components/section/Education.vue";

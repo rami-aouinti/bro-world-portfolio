@@ -18,8 +18,8 @@
 
 <script setup lang="ts">
 import { createNoise3D } from "simplex-noise";
-import { onMounted, onUnmounted } from "vue";
-import { templateRef } from "@vueuse/core";
+import { onMounted, onUnmounted, ref, shallowRef } from "vue";
+import { templateRef, useDebounceFn } from "@vueuse/core";
 import { cn } from "@/lib/utils";
 
 const TAU = 2 * Math.PI;

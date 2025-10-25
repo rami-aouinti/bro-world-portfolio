@@ -64,7 +64,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import CustomGlowCard from "~/components/CustomGlowCard.vue";
-import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 
 const { data: service } = useContentBlock("service");
 const content = computed(() => service.value);
@@ -72,7 +72,7 @@ const { t } = useI18n();
 
 const accentPalette = ["#7c3aed", "#0ea5e9", "#f97316", "#22d3ee", "#f472b6", "#34d399"];
 
-const hexToRgba = (hex: string, alpha = 1) => {
+function hexToRgba(hex: string, alpha = 1) {
   const sanitized = hex.replace("#", "").trim();
   const normalized =
     sanitized.length === 3
@@ -92,9 +92,9 @@ const hexToRgba = (hex: string, alpha = 1) => {
   const blue = numeric & 255;
 
   return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
-};
+}
 
-const formatBadge = (label?: string) => {
+function formatBadge(label?: string) {
   if (!label) {
     return undefined;
   }
@@ -105,7 +105,7 @@ const formatBadge = (label?: string) => {
     .replace(/[-_]+/g, " ")
     .replace(/\s+/g, " ")
     .trim();
-};
+}
 
 const serviceCards = computed(() => {
   const items = content.value?.services ?? [];

@@ -43,6 +43,7 @@
 <script setup lang="ts">
 import { cn } from "@/lib/utils";
 import { animate } from "motion-v";
+import { templateRef } from "@vueuse/core";
 import type { HTMLAttributes } from "vue";
 
 interface Props {

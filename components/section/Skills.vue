@@ -33,7 +33,7 @@
             >
               <div class="skills__card">
                 <v-chip
-                  v-for="(skill, skillIndex) in card.skills"
+                  v-for="skill in card.skills"
                   :key="skill.slug"
                   class="skills__chip"
                   color="primary"
@@ -95,7 +95,7 @@ import { computed } from "vue";
 
 import CustomGlowCard from "~/components/CustomGlowCard.vue";
 import { glowCardVariantCycle } from "~/utils/glowCardVariants";
-import ScrollSmooth from "~/components/Layout/ScrollSmooth.vue";
+import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 
 type RawLanguageEntry =

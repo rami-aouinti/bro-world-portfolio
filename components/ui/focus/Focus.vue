@@ -54,6 +54,10 @@
 </template>
 
 <script lang="ts" setup>
+import { Motion } from "motion-v";
+import { computed, nextTick, onMounted, ref, watch } from "vue";
+import { useIntervalFn } from "@vueuse/core";
+
 interface FocusProps {
   sentence?: string;
   manualMode?: boolean;
@@ -85,6 +89,7 @@ const wordRefs = ref<{ [key: number]: HTMLElement | null }>({});
 const currentIndex = ref(0);
 const lastActiveIndex = ref<number | null>(null);
 const focusRect = ref<FocusRect>({ x: 0, y: 0, width: 0, height: 0 });
+const manualMode = computed(() => props.manualMode);
 
 function setRef(el: HTMLElement, index: number) {
   if (!el) return;

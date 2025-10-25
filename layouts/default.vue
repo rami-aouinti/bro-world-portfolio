@@ -29,8 +29,8 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import Navbar from "~/components/Layout/Navbar.vue";
-import { ParticlesBg } from "~/components/Ui/particles-bg";
+import Navbar from "~/components/layout/Navbar.vue";
+import { ParticlesBg } from "~/components/ui/particles-bg";
 import { useCookieColorMode } from "~/composables/useCookieColorMode";
 
 const colorMode = useCookieColorMode();

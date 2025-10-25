@@ -142,7 +142,7 @@ const initial = computed(() => props.title?.charAt(0)?.toUpperCase() ?? "");
 const isNavigable = computed(() => Boolean(props.to));
 const hasBadge = computed(() => Boolean(props.badge));
 
-const setPointerPosition = (event: PointerEvent) => {
+function setPointerPosition(event: PointerEvent) {
   if (!cardRef.value) {
     return;
   }
@@ -152,22 +152,22 @@ const setPointerPosition = (event: PointerEvent) => {
   const y = ((event.clientY - bounds.top) / bounds.height) * 100;
   cardRef.value.style.setProperty("--pointer-x", `${x}%`);
   cardRef.value.style.setProperty("--pointer-y", `${y}%`);
-};
+}
 
-const resetPointerPosition = () => {
+function resetPointerPosition() {
   if (!cardRef.value) {
     return;
   }
 
   cardRef.value.style.setProperty("--pointer-x", "50%");
   cardRef.value.style.setProperty("--pointer-y", "50%");
-};
+}
 
 onMounted(() => {
   resetPointerPosition();
 });
 
-const handleCardClick = async (event: MouseEvent) => {
+async function handleCardClick(event: MouseEvent) {
   if (!isNavigable.value || !props.to) {
     return;
   }
@@ -184,9 +184,9 @@ const handleCardClick = async (event: MouseEvent) => {
   }
 
   await navigateTo(props.to);
-};
+}
 
-const handleCardKeydown = async (event: KeyboardEvent) => {
+async function handleCardKeydown(event: KeyboardEvent) {
   if (!isNavigable.value || !props.to) {
     return;
   }
@@ -195,7 +195,7 @@ const handleCardKeydown = async (event: KeyboardEvent) => {
     event.preventDefault();
     await navigateTo(props.to);
   }
-};
+}
 </script>
 
 <style scoped>
