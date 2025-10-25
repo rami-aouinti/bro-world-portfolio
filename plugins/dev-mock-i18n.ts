@@ -28,6 +28,9 @@ function applyMockMessages(locale: string, nuxtApp: NuxtApp) {
   const normalized = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
   const overrides = getMockTranslations(normalized);
   const composer = i18n.global;
+  if (!composer) {
+    return;
+  }
   const currentMessages = composer.getLocaleMessage(locale) as Record<string, unknown>;
   const merged = mergeMessages(currentMessages ?? {}, overrides);
   composer.setLocaleMessage(locale, merged);
@@ -43,7 +46,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     return;
   }
 
-  const initialLocales = $i18n.global.availableLocales;
+  const initialLocales = $i18n.global?.availableLocales ?? [];
   for (const locale of initialLocales) {
     applyMockMessages(locale, nuxtApp);
   }
