@@ -15,7 +15,7 @@ import Cta from "~/components/section/Cta.vue";
 
 const { data: aboutContent } = useContentBlock("about");
 const { data: skillsContent } = useContentBlock("skills");
-const { data: experienceContent } = useContentBlock("experience");
+const { data: experienceContent } = useContentBlock("experiences");
 const { data: educationContent } = useContentBlock("education");
 const { data: serviceContent } = useContentBlock("service");
 const { data: workContent } = useContentBlock("work");
