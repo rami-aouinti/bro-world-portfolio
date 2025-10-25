@@ -2,8 +2,8 @@
   <transition name="ui-popover-fade">
     <div
       v-if="context.isOpen.value"
-      ref="contentRef"
       :id="context.id"
+      ref="contentRef"
       role="dialog"
       tabindex="-1"
       :class="[
@@ -21,7 +21,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, nextTick, onBeforeUnmount, ref, useAttrs, watch, watchEffect } from "vue";
+import {
+  computed,
+  inject,
+  nextTick,
+  onBeforeUnmount,
+  ref,
+  useAttrs,
+  watch,
+  watchEffect,
+} from "vue";
 import { uiPopoverContextKey } from "./ui-popover-context";
 
 const props = withDefaults(
@@ -92,7 +101,9 @@ function handleKeydown(event: KeyboardEvent) {
 <style scoped>
 .ui-popover-fade-enter-active,
 .ui-popover-fade-leave-active {
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
 }
 
 .ui-popover-fade-enter-from,

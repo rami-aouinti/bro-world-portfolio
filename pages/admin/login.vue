@@ -1,46 +1,18 @@
-<script setup lang="ts">
-const email = ref('')
-const password = ref('')
-const errorMessage = ref('')
-const isSubmitting = ref(false)
-
-const sessionCheck = await useAsyncData('admin-session-check', () => $fetch('/api/auth/session'))
-if (sessionCheck.data.value?.user) {
-  await navigateTo('/admin', { replace: true })
-}
-
-async function handleSubmit() {
-  errorMessage.value = ''
-  isSubmitting.value = true
-
-  try {
-    await $fetch('/api/auth/login', {
-      method: 'POST',
-      body: { email: email.value, password: password.value }
-    })
-    await navigateTo('/admin', { replace: true })
-  }
-  catch (error: any) {
-    if (error?.data?.statusMessage) {
-      errorMessage.value = error.data.statusMessage
-    }
-    else {
-      errorMessage.value = 'Une erreur est survenue lors de la connexion.'
-    }
-  }
-  finally {
-    isSubmitting.value = false
-  }
-}
-</script>
-
 <template>
   <div class="admin-login">
     <div class="admin-login__overlay" />
     <v-container class="py-16">
       <v-row justify="center">
-        <v-col cols="12" md="6" lg="5">
-          <v-card class="login-card" elevation="0" rounded="xl">
+        <v-col
+          cols="12"
+          md="6"
+          lg="5"
+        >
+          <v-card
+            class="login-card"
+            elevation="0"
+            rounded="xl"
+          >
             <div class="login-card__header">
               <div class="login-card__badge">
                 <span class="login-card__badge-dot" />
@@ -52,7 +24,10 @@ async function handleSubmit() {
               </p>
             </div>
 
-            <v-form @submit.prevent="handleSubmit" class="login-form">
+            <v-form
+              class="login-form"
+              @submit.prevent="handleSubmit"
+            >
               <div class="login-form__fields">
                 <v-text-field
                   v-model="email"
@@ -74,17 +49,33 @@ async function handleSubmit() {
                 />
               </div>
 
-              <v-alert v-if="errorMessage" type="error" variant="tonal" class="login-form__alert">
+              <v-alert
+                v-if="errorMessage"
+                type="error"
+                variant="tonal"
+                class="login-form__alert"
+              >
                 {{ errorMessage }}
               </v-alert>
 
-              <v-btn type="submit" color="primary" class="text-none login-form__submit" :loading="isSubmitting">
+              <v-btn
+                type="submit"
+                color="primary"
+                class="text-none login-form__submit"
+                :loading="isSubmitting"
+              >
                 Se connecter
               </v-btn>
             </v-form>
 
             <div class="login-card__footer">
-              <v-alert type="info" variant="tonal" density="compact" border="start" border-color="primary">
+              <v-alert
+                type="info"
+                variant="tonal"
+                density="compact"
+                border="start"
+                border-color="primary"
+              >
                 <p class="font-weight-medium mb-1">Identifiants par défaut</p>
                 <p>Utilisateur : <code>admin@example.com</code></p>
                 <p>Mot de passe : <code>ChangeMe123!</code></p>
@@ -100,6 +91,43 @@ async function handleSubmit() {
   </div>
 </template>
 
+<script setup lang="ts">
+definePageMeta({
+  layout: "admin",
+});
+
+const email = ref("");
+const password = ref("");
+const errorMessage = ref("");
+const isSubmitting = ref(false);
+
+const sessionCheck = await useAsyncData("admin-session-check", () => $fetch("/api/auth/session"));
+if (sessionCheck.data.value?.user) {
+  await navigateTo("/admin", { replace: true });
+}
+
+async function handleSubmit() {
+  errorMessage.value = "";
+  isSubmitting.value = true;
+
+  try {
+    await $fetch("/api/auth/login", {
+      method: "POST",
+      body: { email: email.value, password: password.value },
+    });
+    await navigateTo("/admin", { replace: true });
+  } catch (error: any) {
+    if (error?.data?.statusMessage) {
+      errorMessage.value = error.data.statusMessage;
+    } else {
+      errorMessage.value = "Une erreur est survenue lors de la connexion.";
+    }
+  } finally {
+    isSubmitting.value = false;
+  }
+}
+</script>
+
 <style scoped>
 .admin-login {
   position: relative;
@@ -109,7 +137,8 @@ async function handleSubmit() {
   justify-content: center;
   overflow: hidden;
   padding: 32px 16px;
-  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.45), transparent 45%),
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.45), transparent 45%),
     radial-gradient(circle at bottom right, rgba(79, 70, 229, 0.4), transparent 40%),
     linear-gradient(160deg, #0b1120, #111827 55%, #1f2937);
 }
@@ -139,7 +168,7 @@ async function handleSubmit() {
 }
 
 .login-card::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;

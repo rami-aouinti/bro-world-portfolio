@@ -1,13 +1,16 @@
-<script setup lang="ts">
-const el = ref(null)
-const { isVisible } = useElementInView(el)
-</script>
-
 <template>
-  <div ref="el" :class="{ 'animate-fade': isVisible }">
-    <slot/>
-</div>
+  <div
+    ref="el"
+    :class="{ 'animate-fade': isVisible }"
+  >
+    <slot />
+  </div>
 </template>
+
+<script setup lang="ts">
+const el = ref(null);
+const { isVisible } = useElementInView(el);
+</script>
 
 <style scoped>
 .animate-fade {

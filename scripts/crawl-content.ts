@@ -1,8 +1,9 @@
-import type { Registry, RegistryFiles } from "../registry/schema";
+import type { Registry, RegistryFiles } from "~/registry/schema";
 import { readdir, readFile } from "node:fs/promises";
-import { parseSync } from "@oxc-parser/wasm";
-import { join, resolve } from "pathe";
+import { existsSync } from "node:fs";
+import { join, resolve } from "node:path";
 import { compileScript, parse } from "vue/compiler-sfc";
+import ts from "typescript";
 
 // TODO: Maybe specify the types of the dependencies between normal and dev dependencies, like @types/three
 const DEPENDENCIES = new Map<string, string[]>([
@@ -52,10 +53,10 @@ export async function buildRegistry() {
   const composablesPath = resolve("composables");
 
   const [ui, block, hooks] = await Promise.all([
-    crawlUI(uiPath),
+    existsSync(uiPath) ? crawlUI(uiPath) : [],
     // crawlExample(examplesPath),
-    crawlBlock(blocksPath),
-    crawlHook(composablesPath),
+    existsSync(blocksPath) ? crawlBlock(blocksPath) : [],
+    existsSync(composablesPath) ? crawlHook(composablesPath) : [],
   ]);
 
   registry.push(...ui, ...block, ...hooks);
@@ -323,16 +324,19 @@ async function getFileDependencies(filename: string, sourceCode: string) {
   }
 
   if (filename.endsWith(".ts")) {
-    const ast = parseSync(sourceCode, {
-      sourceType: "module",
-      sourceFilename: filename,
-    });
+    const sourceFile = ts.createSourceFile(
+      filename,
+      sourceCode,
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.TS,
+    );
 
-    const sources = ast.program.body
-      .filter((i: any) => i.type === "ImportDeclaration")
-      .map((i: any) => i.source);
-    sources.forEach((source: any) => {
-      populateDeps(source.value);
+    sourceFile.forEachChild(function visit(node) {
+      if (ts.isImportDeclaration(node) && ts.isStringLiteral(node.moduleSpecifier)) {
+        populateDeps(node.moduleSpecifier.text);
+      }
+      node.forEachChild(visit);
     });
   } else {
     const parsed = parse(sourceCode, { filename });

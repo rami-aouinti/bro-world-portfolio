@@ -1,38 +1,3 @@
-<script setup lang="ts">
-import { createError } from '#app'
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-
-const route = useRoute()
-const slug = computed(() => route.params.slug?.toString() ?? '')
-const localePath = useLocalePath()
-
-if (!slug.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Projet introuvable.' })
-}
-
-const { data: work } = await useContentBlock('work')
-
-const sectionLabel = computed(() => work.value?.label ?? 'Projets')
-
-const backLink = computed(() => resolveLocalizedRouteTarget('/work', localePath))
-
-const projectDetails = computed(() => {
-  const entry = work.value?.works.find((item) => item.slug === slug.value)
-
-  if (!entry) {
-    throw createError({ statusCode: 404, statusMessage: 'Projet introuvable.' })
-  }
-
-  return entry
-})
-
-useSeoMeta(() => ({
-  title: `${projectDetails.value.name} · ${sectionLabel.value}`,
-  description: projectDetails.value.description,
-  ogImage: `/images/work/${projectDetails.value.thumbnails}`
-}))
-</script>
-
 <template>
   <section class="detail-page">
     <v-container class="py-12 detail-page__container">
@@ -51,9 +16,20 @@ useSeoMeta(() => ({
         <p class="detail-page__lead">{{ projectDetails.type }}</p>
       </div>
 
-      <v-row class="detail-page__grid" align="stretch" dense>
-        <v-col cols="12" md="6">
-          <v-card variant="tonal" color="primary" class="detail-page__card pa-6">
+      <v-row
+        class="detail-page__grid"
+        align="stretch"
+        dense
+      >
+        <v-col
+          cols="12"
+          md="6"
+        >
+          <v-card
+            variant="tonal"
+            color="primary"
+            class="detail-page__card pa-6"
+          >
             <p class="detail-page__description">
               {{ projectDetails.description }}
             </p>
@@ -71,7 +47,10 @@ useSeoMeta(() => ({
             </div>
           </v-card>
         </v-col>
-        <v-col cols="12" md="6">
+        <v-col
+          cols="12"
+          md="6"
+        >
           <v-img
             :src="`/images/work/${projectDetails.thumbnails}`"
             :alt="`Illustration du projet ${projectDetails.name}`"
@@ -84,6 +63,41 @@ useSeoMeta(() => ({
     </v-container>
   </section>
 </template>
+
+<script setup lang="ts">
+import { createError } from "#app";
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+const route = useRoute();
+const slug = computed(() => route.params.slug?.toString() ?? "");
+const localePath = useLocalePath();
+
+if (!slug.value) {
+  throw createError({ statusCode: 404, statusMessage: "Projet introuvable." });
+}
+
+const { data: work } = await useContentBlock("work");
+
+const sectionLabel = computed(() => work.value?.label ?? "Projets");
+
+const backLink = computed(() => resolveLocalizedRouteTarget("/work", localePath));
+
+const projectDetails = computed(() => {
+  const entry = work.value?.works.find((item) => item.slug === slug.value);
+
+  if (!entry) {
+    throw createError({ statusCode: 404, statusMessage: "Projet introuvable." });
+  }
+
+  return entry;
+});
+
+useSeoMeta(() => ({
+  title: `${projectDetails.value.name} · ${sectionLabel.value}`,
+  description: projectDetails.value.description,
+  ogImage: `/images/work/${projectDetails.value.thumbnails}`,
+}));
+</script>
 
 <style scoped>
 .detail-page__container {

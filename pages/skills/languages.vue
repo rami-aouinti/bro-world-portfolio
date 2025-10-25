@@ -1,42 +1,3 @@
-<script setup lang="ts">
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-
-definePageMeta({
-  i18n: {
-    paths: {
-      en: '/skills/languages',
-      fr: '/competences/langues',
-      de: '/kompetenzen/sprachen',
-      es: '/habilidades/idiomas',
-      it: '/competenze/lingue',
-      ru: '/navyki/yazyki',
-      ar: '/maharat/lughat',
-    },
-  },
-})
-
-const { data: skills } = await useContentBlock('skills')
-const { t } = useI18n()
-const localePath = useLocalePath()
-
-const skillsContent = computed(() => skills.value)
-const languages = computed(() => {
-  const entries = skillsContent.value?.languageProficiencies ?? []
-
-  return [...entries].sort((first, second) => second.proficiency - first.proficiency)
-})
-
-const hasLanguages = computed(() => languages.value.length > 0)
-const pageTitle = computed(() => t('portfolio.skills.languagesPage.title'))
-const pageDescription = computed(() => t('portfolio.skills.languagesPage.description'))
-const backLink = computed(() => resolveLocalizedRouteTarget('/skills', localePath))
-
-useSeoMeta(() => ({
-  title: `${pageTitle.value} · ${skillsContent.value?.label ?? t('portfolio.skills.languagesTitle')}`,
-  description: pageDescription.value,
-}))
-</script>
-
 <template>
   <LayoutLine />
   <section class="language-skills">
@@ -48,7 +9,7 @@ useSeoMeta(() => ({
         class="text-none language-skills__back"
         prepend-icon="mdi-arrow-left"
       >
-        {{ t('portfolio.skills.backToOverview') }}
+        {{ t("portfolio.skills.backToOverview") }}
       </v-btn>
 
       <header class="language-skills__header">
@@ -58,14 +19,22 @@ useSeoMeta(() => ({
         </p>
       </header>
 
-      <v-row v-if="hasLanguages" class="language-skills__grid" dense>
+      <v-row
+        v-if="hasLanguages"
+        class="language-skills__grid"
+        dense
+      >
         <v-col
           v-for="language in languages"
           :key="language.name"
           cols="12"
           md="6"
         >
-          <v-card variant="tonal" color="primary" class="language-card pa-6">
+          <v-card
+            variant="tonal"
+            color="primary"
+            class="language-card pa-6"
+          >
             <header class="language-card__header">
               <h2 class="language-card__title">{{ language.name }}</h2>
               <span class="language-card__score">{{ language.proficiency }}%</span>
@@ -80,18 +49,67 @@ useSeoMeta(() => ({
             />
 
             <p class="language-card__description">
-              {{ t('portfolio.skills.languagesPage.proficiencyLabel', { value: language.proficiency }) }}
+              {{
+                t("portfolio.skills.languagesPage.proficiencyLabel", {
+                  value: language.proficiency,
+                })
+              }}
             </p>
           </v-card>
         </v-col>
       </v-row>
-      <v-alert v-else type="info" variant="tonal" color="primary" class="language-skills__empty">
-        {{ t('portfolio.skills.languagesPage.empty') }}
+      <v-alert
+        v-else
+        type="info"
+        variant="tonal"
+        color="primary"
+        class="language-skills__empty"
+      >
+        {{ t("portfolio.skills.languagesPage.empty") }}
       </v-alert>
     </v-container>
   </section>
   <LayoutLine />
 </template>
+
+<script setup lang="ts">
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+definePageMeta({
+  i18n: {
+    paths: {
+      en: "/skills/languages",
+      fr: "/competences/langues",
+      de: "/kompetenzen/sprachen",
+      es: "/habilidades/idiomas",
+      it: "/competenze/lingue",
+      ru: "/navyki/yazyki",
+      ar: "/maharat/lughat",
+    },
+  },
+});
+
+const { data: skills } = await useContentBlock("skills");
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+const skillsContent = computed(() => skills.value);
+const languages = computed(() => {
+  const entries = skillsContent.value?.languageProficiencies ?? [];
+
+  return [...entries].sort((first, second) => second.proficiency - first.proficiency);
+});
+
+const hasLanguages = computed(() => languages.value.length > 0);
+const pageTitle = computed(() => t("portfolio.skills.languagesPage.title"));
+const pageDescription = computed(() => t("portfolio.skills.languagesPage.description"));
+const backLink = computed(() => resolveLocalizedRouteTarget("/skills", localePath));
+
+useSeoMeta(() => ({
+  title: `${pageTitle.value} · ${skillsContent.value?.label ?? t("portfolio.skills.languagesTitle")}`,
+  description: pageDescription.value,
+}));
+</script>
 
 <style scoped>
 .language-skills {
@@ -128,7 +146,10 @@ useSeoMeta(() => ({
   border-radius: 20px;
   border: 1px solid rgba(148, 163, 184, 0.15);
   box-shadow: 0 25px 60px -35px rgba(15, 23, 42, 0.85);
-  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .language-card:hover {

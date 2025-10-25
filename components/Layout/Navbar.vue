@@ -1,3 +1,259 @@
+<template>
+  <nav
+    class="dock-navbar"
+    :class="{ 'dock-navbar--mobile': isMobile }"
+  >
+    <template v-if="isMobile">
+      <button
+        class="dock-navbar__drawer-button"
+        type="button"
+        @click="isDrawerOpen = true"
+      >
+        <v-icon
+          icon="mdi-menu"
+          size="28"
+          aria-hidden="true"
+        />
+        <span class="sr-only">{{ t("navigation.openMenu") }}</span>
+      </button>
+
+      <v-navigation-drawer
+        v-model="isDrawerOpen"
+        class="dock-navbar__drawer"
+        location="left"
+        temporary
+        scrim
+      >
+        <div class="dock-navbar__drawer-inner">
+          <div class="dock-navbar__drawer-header">
+            <span class="dock-navbar__drawer-title">{{ t("navigation.title") }}</span>
+            <button
+              class="dock-navbar__drawer-close"
+              type="button"
+              @click="closeDrawer"
+            >
+              <v-icon
+                icon="mdi-close"
+                size="24"
+                aria-hidden="true"
+              />
+              <span class="sr-only">{{ t("navigation.closeMenu") }}</span>
+            </button>
+          </div>
+
+          <v-divider class="dock-navbar__drawer-divider" />
+
+          <v-list
+            class="dock-navbar__drawer-links"
+            density="comfortable"
+          >
+            <v-list-item
+              v-for="link in links"
+              :key="link.url"
+              :to="link.to"
+              link
+              class="dock-navbar__drawer-link"
+              :class="{ 'dock-navbar__drawer-link--active': isActiveLink(link.to) }"
+              @click="closeDrawer"
+            >
+              <template #prepend>
+                <v-icon
+                  :icon="link.icon"
+                  size="24"
+                  aria-hidden="true"
+                />
+              </template>
+              <v-list-item-title>{{ link.label }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+
+          <div
+            v-if="hasControls"
+            class="dock-navbar__drawer-controls"
+          >
+            <div
+              v-if="config.header.darkModeToggle"
+              class="dock-navbar__drawer-control"
+            >
+              <DarkModeToggle class="dock-navbar__toggle" />
+            </div>
+
+            <div
+              v-if="hasLanguageMenu"
+              class="dock-navbar__drawer-languages"
+            >
+              <span class="dock-navbar__drawer-control-label">
+                {{ t("navigation.language") }}
+              </span>
+              <v-list
+                class="dock-navbar__drawer-language-list"
+                density="compact"
+              >
+                <v-list-item
+                  v-for="language in languageItems"
+                  :key="language.code"
+                  :to="language.to"
+                  link
+                  class="dock-navbar__drawer-language-item"
+                  :class="{
+                    'dock-navbar__drawer-language-item--active': language.code === locale,
+                  }"
+                  @click="closeDrawer"
+                >
+                  <div class="dock-navbar__language-item">
+                    <span
+                      v-if="language.icon"
+                      class="dock-navbar__language-flag"
+                      aria-hidden="true"
+                    >
+                      <span
+                        class="fi"
+                        :class="language.icon"
+                      />
+                    </span>
+                    <span
+                      v-else
+                      class="dock-navbar__language-code"
+                      aria-hidden="true"
+                    >
+                      {{ language.code.toUpperCase() }}
+                    </span>
+                    <div class="dock-navbar__language-info">
+                      <span class="dock-navbar__language-name">{{ language.name }}</span>
+                    </div>
+                    <v-icon
+                      v-if="language.code === locale"
+                      icon="mdi-check"
+                      size="16"
+                      class="dock-navbar__language-check"
+                    />
+                  </div>
+                </v-list-item>
+              </v-list>
+            </div>
+          </div>
+        </div>
+      </v-navigation-drawer>
+    </template>
+
+    <template v-else>
+      <Dock
+        class="dock-navbar__dock"
+        :magnification="72"
+        :distance="160"
+      >
+        <DockIcon
+          v-for="link in links"
+          :key="link.url"
+        >
+          <NuxtLink
+            :to="link.to"
+            class="dock-navbar__link"
+            :class="{ 'dock-navbar__link--active': isActiveLink(link.to) }"
+          >
+            <v-icon
+              :icon="link.icon"
+              size="28"
+              class="dock-navbar__link-icon"
+              aria-hidden="true"
+            />
+            <span class="sr-only">{{ link.label }}</span>
+          </NuxtLink>
+        </DockIcon>
+
+        <DockSeparator v-if="hasControls" />
+
+        <DockIcon v-if="config.header.darkModeToggle">
+          <DarkModeToggle class="dock-navbar__toggle" />
+        </DockIcon>
+
+        <DockIcon v-if="hasLanguageMenu">
+          <v-menu
+            transition="fade-transition"
+            :offset="[0, 12]"
+          >
+            <template #activator="{ props }">
+              <button
+                class="dock-navbar__language-button"
+                type="button"
+                v-bind="props"
+              >
+                <span
+                  v-if="currentLanguage?.icon"
+                  class="dock-navbar__language-flag"
+                  aria-hidden="true"
+                >
+                  <span
+                    class="fi"
+                    :class="currentLanguage.icon"
+                  />
+                </span>
+                <span
+                  v-else
+                  class="dock-navbar__language-code"
+                  aria-hidden="true"
+                >
+                  {{ currentLanguage?.code?.toUpperCase() }}
+                </span>
+                <v-icon
+                  icon="mdi-menu-down"
+                  size="16"
+                  class="dock-navbar__language-icon"
+                />
+                <span class="sr-only">{{ t("navigation.language") }}</span>
+              </button>
+            </template>
+
+            <v-list
+              class="dock-navbar__language-list"
+              density="compact"
+            >
+              <v-list-item
+                v-for="language in languageItems"
+                :key="language.code"
+                :to="language.to"
+                class="dock-navbar__language-list-item"
+                :class="{
+                  'dock-navbar__language-list-item--active': language.code === locale,
+                }"
+              >
+                <div class="dock-navbar__language-item">
+                  <span
+                    v-if="language.icon"
+                    class="dock-navbar__language-flag"
+                    aria-hidden="true"
+                  >
+                    <span
+                      class="fi"
+                      :class="language.icon"
+                    />
+                  </span>
+                  <span
+                    v-else
+                    class="dock-navbar__language-code"
+                    aria-hidden="true"
+                  >
+                    {{ language.code.toUpperCase() }}
+                  </span>
+                  <div class="dock-navbar__language-info">
+                    <span class="dock-navbar__language-name">{{ language.name }}</span>
+                  </div>
+                  <v-icon
+                    v-if="language.code === locale"
+                    icon="mdi-check"
+                    size="16"
+                    class="dock-navbar__language-check"
+                  />
+                </div>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </DockIcon>
+      </Dock>
+    </template>
+  </nav>
+</template>
+
 <script setup lang="ts">
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 
@@ -51,9 +307,7 @@ const currentLanguage = computed(() =>
 );
 
 const hasLanguageMenu = computed(() => languageItems.value.length > 0);
-const hasControls = computed(
-  () => config.value.header.darkModeToggle || hasLanguageMenu.value,
-);
+const hasControls = computed(() => config.value.header.darkModeToggle || hasLanguageMenu.value);
 
 const isDrawerOpen = ref(false);
 const isMobile = useMediaQuery("(max-width: 960px)");
@@ -79,194 +333,6 @@ function isActiveLink(target: string) {
   return route.path === path;
 }
 </script>
-
-<template>
-  <nav class="dock-navbar" :class="{ 'dock-navbar--mobile': isMobile }">
-    <template v-if="isMobile">
-      <button
-        class="dock-navbar__drawer-button"
-        type="button"
-        @click="isDrawerOpen = true"
-      >
-        <v-icon icon="mdi-menu" size="28" aria-hidden="true" />
-        <span class="sr-only">{{ t("navigation.openMenu") }}</span>
-      </button>
-
-      <v-navigation-drawer
-        v-model="isDrawerOpen"
-        class="dock-navbar__drawer"
-        location="left"
-        temporary
-        scrim
-      >
-        <div class="dock-navbar__drawer-inner">
-          <div class="dock-navbar__drawer-header">
-            <span class="dock-navbar__drawer-title">{{ t("navigation.title") }}</span>
-            <button
-              class="dock-navbar__drawer-close"
-              type="button"
-              @click="closeDrawer"
-            >
-              <v-icon icon="mdi-close" size="24" aria-hidden="true" />
-              <span class="sr-only">{{ t("navigation.closeMenu") }}</span>
-            </button>
-          </div>
-
-          <v-divider class="dock-navbar__drawer-divider" />
-
-          <v-list class="dock-navbar__drawer-links" density="comfortable">
-            <v-list-item
-              v-for="link in links"
-              :key="link.url"
-              :to="link.to"
-              link
-              class="dock-navbar__drawer-link"
-              :class="{ 'dock-navbar__drawer-link--active': isActiveLink(link.to) }"
-              @click="closeDrawer"
-            >
-              <template #prepend>
-                <v-icon :icon="link.icon" size="24" aria-hidden="true" />
-              </template>
-              <v-list-item-title>{{ link.label }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-
-          <div v-if="hasControls" class="dock-navbar__drawer-controls">
-            <div v-if="config.header.darkModeToggle" class="dock-navbar__drawer-control">
-              <DarkModeToggle class="dock-navbar__toggle" />
-            </div>
-
-            <div v-if="hasLanguageMenu" class="dock-navbar__drawer-languages">
-              <span class="dock-navbar__drawer-control-label">
-                {{ t("navigation.language") }}
-              </span>
-              <v-list class="dock-navbar__drawer-language-list" density="compact">
-                <v-list-item
-                  v-for="language in languageItems"
-                  :key="language.code"
-                  :to="language.to"
-                  link
-                  class="dock-navbar__drawer-language-item"
-                  :class="{
-                    'dock-navbar__drawer-language-item--active': language.code === locale,
-                  }"
-                  @click="closeDrawer"
-                >
-                  <div class="dock-navbar__language-item">
-                    <span
-                      v-if="language.icon"
-                      class="dock-navbar__language-flag"
-                      aria-hidden="true"
-                    >
-                      <span class="fi" :class="language.icon" />
-                    </span>
-                    <span v-else class="dock-navbar__language-code" aria-hidden="true">
-                      {{ language.code.toUpperCase() }}
-                    </span>
-                    <div class="dock-navbar__language-info">
-                      <span class="dock-navbar__language-name">{{ language.name }}</span>
-                    </div>
-                    <v-icon
-                      v-if="language.code === locale"
-                      icon="mdi-check"
-                      size="16"
-                      class="dock-navbar__language-check"
-                    />
-                  </div>
-                </v-list-item>
-              </v-list>
-            </div>
-          </div>
-        </div>
-      </v-navigation-drawer>
-    </template>
-
-    <template v-else>
-      <Dock class="dock-navbar__dock" :magnification="72" :distance="160">
-        <DockIcon v-for="link in links" :key="link.url">
-          <NuxtLink
-            :to="link.to"
-            class="dock-navbar__link"
-            :class="{ 'dock-navbar__link--active': isActiveLink(link.to) }"
-          >
-            <v-icon
-              :icon="link.icon"
-              size="28"
-              class="dock-navbar__link-icon"
-              aria-hidden="true"
-            />
-            <span class="sr-only">{{ link.label }}</span>
-          </NuxtLink>
-        </DockIcon>
-
-        <DockSeparator v-if="hasControls" />
-
-        <DockIcon v-if="config.header.darkModeToggle">
-          <DarkModeToggle class="dock-navbar__toggle" />
-        </DockIcon>
-
-        <DockIcon v-if="hasLanguageMenu">
-          <v-menu transition="fade-transition" :offset="[0, 12]">
-            <template #activator="{ props }">
-              <button
-                class="dock-navbar__language-button"
-                type="button"
-                v-bind="props"
-              >
-                <span
-                  v-if="currentLanguage?.icon"
-                  class="dock-navbar__language-flag"
-                  aria-hidden="true"
-                >
-                  <span class="fi" :class="currentLanguage.icon" />
-                </span>
-                <span v-else class="dock-navbar__language-code" aria-hidden="true">
-                  {{ currentLanguage?.code?.toUpperCase() }}
-                </span>
-                <v-icon icon="mdi-menu-down" size="16" class="dock-navbar__language-icon" />
-                <span class="sr-only">{{ t("navigation.language") }}</span>
-              </button>
-            </template>
-
-            <v-list class="dock-navbar__language-list" density="compact">
-              <v-list-item
-                v-for="language in languageItems"
-                :key="language.code"
-                :to="language.to"
-                class="dock-navbar__language-list-item"
-                :class="{
-                  'dock-navbar__language-list-item--active': language.code === locale,
-                }"
-              >
-                <div class="dock-navbar__language-item">
-                  <span
-                    v-if="language.icon"
-                    class="dock-navbar__language-flag"
-                    aria-hidden="true"
-                  >
-                    <span class="fi" :class="language.icon" />
-                  </span>
-                  <span v-else class="dock-navbar__language-code" aria-hidden="true">
-                    {{ language.code.toUpperCase() }}
-                  </span>
-                  <div class="dock-navbar__language-info">
-                    <span class="dock-navbar__language-name">{{ language.name }}</span>
-                  </div>
-                  <v-icon
-                    v-if="language.code === locale"
-                    icon="mdi-check"
-                    size="16"
-                    class="dock-navbar__language-check"
-                  />
-                </div>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </DockIcon>
-      </Dock>
-    </template>
-  </nav>
-</template>
 <style scoped>
 .dock-navbar {
   position: sticky;
@@ -298,7 +364,9 @@ function isActiveLink(target: string) {
   box-shadow: 0 20px 35px -20px rgba(15, 23, 42, 0.9);
   cursor: pointer;
   pointer-events: auto;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .dock-navbar__drawer-button:hover {
@@ -351,7 +419,9 @@ function isActiveLink(target: string) {
   background: rgba(148, 163, 184, 0.16);
   color: #e2e8f0;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .dock-navbar__drawer-close:hover {
@@ -372,7 +442,9 @@ function isActiveLink(target: string) {
 .dock-navbar__drawer-link {
   border-radius: 16px;
   margin-bottom: 4px;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .dock-navbar__drawer-link:hover {
@@ -412,7 +484,9 @@ function isActiveLink(target: string) {
 .dock-navbar__drawer-language-item {
   border-radius: 12px;
   margin-bottom: 4px;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .dock-navbar__drawer-language-item:hover {
@@ -485,7 +559,9 @@ function isActiveLink(target: string) {
   font-weight: 600;
   letter-spacing: 0.04em;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
   padding: 0;
 }
 

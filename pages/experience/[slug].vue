@@ -1,37 +1,3 @@
-<script setup lang="ts">
-import { createError } from '#app'
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-
-const route = useRoute()
-const slug = computed(() => route.params.slug?.toString() ?? '')
-const localePath = useLocalePath()
-
-if (!slug.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Expérience introuvable.' })
-}
-
-const { data: experiences } = await useContentBlock('experiences')
-
-const sectionLabel = computed(() => experiences.value?.label ?? 'Expériences')
-
-const backLink = computed(() => resolveLocalizedRouteTarget('/experience', localePath))
-
-const experienceDetails = computed(() => {
-  const entry = experiences.value?.positions.find((position) => position.slug === slug.value)
-
-  if (!entry) {
-    throw createError({ statusCode: 404, statusMessage: 'Expérience introuvable.' })
-  }
-
-  return entry
-})
-
-useSeoMeta(() => ({
-  title: `${experienceDetails.value.role} · ${sectionLabel.value}`,
-  description: experienceDetails.value.achievements[0]
-}))
-</script>
-
 <template>
   <section class="detail-page">
     <v-container class="py-12 detail-page__container">
@@ -60,11 +26,23 @@ useSeoMeta(() => ({
         </div>
       </div>
 
-      <v-card variant="tonal" color="primary" class="detail-page__card pa-6">
+      <v-card
+        variant="tonal"
+        color="primary"
+        class="detail-page__card pa-6"
+      >
         <h2 class="text-h6 text-foreground mb-4">Principales réalisations</h2>
         <ul class="detail-page__list">
-          <li v-for="achievement in experienceDetails.achievements" :key="achievement" class="detail-page__list-item">
-            <v-icon icon="mdi-check-circle-outline" size="20" class="detail-page__icon" />
+          <li
+            v-for="achievement in experienceDetails.achievements"
+            :key="achievement"
+            class="detail-page__list-item"
+          >
+            <v-icon
+              icon="mdi-check-circle-outline"
+              size="20"
+              class="detail-page__icon"
+            />
             <span>{{ achievement }}</span>
           </li>
         </ul>
@@ -72,6 +50,40 @@ useSeoMeta(() => ({
     </v-container>
   </section>
 </template>
+
+<script setup lang="ts">
+import { createError } from "#app";
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+const route = useRoute();
+const slug = computed(() => route.params.slug?.toString() ?? "");
+const localePath = useLocalePath();
+
+if (!slug.value) {
+  throw createError({ statusCode: 404, statusMessage: "Expérience introuvable." });
+}
+
+const { data: experiences } = await useContentBlock("experiences");
+
+const sectionLabel = computed(() => experiences.value?.label ?? "Expériences");
+
+const backLink = computed(() => resolveLocalizedRouteTarget("/experience", localePath));
+
+const experienceDetails = computed(() => {
+  const entry = experiences.value?.positions.find((position) => position.slug === slug.value);
+
+  if (!entry) {
+    throw createError({ statusCode: 404, statusMessage: "Expérience introuvable." });
+  }
+
+  return entry;
+});
+
+useSeoMeta(() => ({
+  title: `${experienceDetails.value.role} · ${sectionLabel.value}`,
+  description: experienceDetails.value.achievements[0],
+}));
+</script>
 
 <style scoped>
 .detail-page__container {

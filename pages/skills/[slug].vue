@@ -1,86 +1,3 @@
-<script setup lang="ts">
-import { createError } from '#app'
-
-import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
-
-definePageMeta({
-  i18n: {
-    paths: {
-      en: '/skills/[slug]',
-      fr: '/competences/[slug]',
-      de: '/kompetenzen/[slug]',
-      es: '/habilidades/[slug]',
-      it: '/competenze/[slug]',
-      ru: '/navyki/[slug]',
-      ar: '/maharat/[slug]'
-    }
-  }
-})
-
-const route = useRoute()
-const slug = computed(() => route.params.slug?.toString() ?? '')
-
-if (!slug.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Skill category not found.' })
-}
-
-const { data: skills } = await useContentBlock('skills')
-const { data: work } = await useContentBlock('work')
-const { t } = useI18n()
-const localePath = useLocalePath()
-
-const skillsContent = computed(() => skills.value)
-const sectionLabel = computed(() => skillsContent.value?.label ?? 'Skills')
-const backLink = computed(() => resolveLocalizedRouteTarget('/skills', localePath))
-
-const category = computed(() => skillsContent.value?.categories.find((entry) => entry.slug === slug.value))
-
-if (!category.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Skill category not found.' })
-}
-
-const projectLookup = computed(() => {
-  const projects = work.value?.works ?? []
-  return new Map(projects.map((project) => [project.slug, project]))
-})
-
-const skillEntries = computed(() => {
-  const currentCategory = category.value
-
-  if (!currentCategory) {
-    return []
-  }
-
-  return currentCategory.skills.map((skill) => ({
-    skill,
-    link: resolveLocalizedRouteTarget(`/skills/${currentCategory.slug}/${skill.slug}`, localePath),
-    projects: skill.projects
-      .map(({ slug: projectSlug }) => {
-        const project = projectLookup.value.get(projectSlug)
-
-        if (!project) {
-          return null
-        }
-
-        return {
-          ...project,
-          link: resolveLocalizedRouteTarget(`/work/${project.slug}`, localePath)
-        }
-      })
-      .filter((project): project is NonNullable<typeof project> => Boolean(project))
-  }))
-})
-
-const categoryDescription = computed(
-  () => category.value?.description || skillsContent.value?.subline || ''
-)
-
-useSeoMeta(() => ({
-  title: `${category.value?.name} · ${sectionLabel.value}`,
-  description: categoryDescription.value
-}))
-</script>
-
 <template>
   <section class="skill-category">
     <v-container class="py-12 skill-category__container">
@@ -91,7 +8,7 @@ useSeoMeta(() => ({
         class="text-none skill-category__back"
         prepend-icon="mdi-arrow-left"
       >
-        {{ t('portfolio.skills.backToOverview') }}
+        {{ t("portfolio.skills.backToOverview") }}
       </v-btn>
 
       <header class="skill-category__header">
@@ -101,16 +18,31 @@ useSeoMeta(() => ({
         </p>
       </header>
 
-      <v-row class="skill-category__grid" dense>
-        <v-col v-for="entry in skillEntries" :key="entry.skill.slug" cols="12" md="6">
-          <v-card variant="tonal" color="primary" class="skill-card pa-6">
+      <v-row
+        class="skill-category__grid"
+        dense
+      >
+        <v-col
+          v-for="entry in skillEntries"
+          :key="entry.skill.slug"
+          cols="12"
+          md="6"
+        >
+          <v-card
+            variant="tonal"
+            color="primary"
+            class="skill-card pa-6"
+          >
             <header class="skill-card__header">
               <div>
-                <NuxtLink :to="entry.link" class="skill-card__title">
+                <NuxtLink
+                  :to="entry.link"
+                  class="skill-card__title"
+                >
                   {{ entry.skill.name }}
                 </NuxtLink>
                 <p class="skill-card__level">
-                  {{ t('portfolio.skills.levelLabel') }}
+                  {{ t("portfolio.skills.levelLabel") }}
                   <span>{{ entry.skill.level }}</span>
                 </p>
               </div>
@@ -131,9 +63,12 @@ useSeoMeta(() => ({
 
             <div class="skill-card__projects">
               <h3 class="skill-card__projects-title">
-                {{ t('portfolio.skills.projectsTitle', { skill: entry.skill.name }) }}
+                {{ t("portfolio.skills.projectsTitle", { skill: entry.skill.name }) }}
               </h3>
-              <div v-if="entry.projects.length" class="skill-card__project-list">
+              <div
+                v-if="entry.projects.length"
+                class="skill-card__project-list"
+              >
                 <v-chip
                   v-for="project in entry.projects"
                   :key="project.slug"
@@ -146,8 +81,11 @@ useSeoMeta(() => ({
                   {{ project.name }}
                 </v-chip>
               </div>
-              <p v-else class="skill-card__empty">
-                {{ t('portfolio.skills.noProjects') }}
+              <p
+                v-else
+                class="skill-card__empty"
+              >
+                {{ t("portfolio.skills.noProjects") }}
               </p>
             </div>
           </v-card>
@@ -156,6 +94,91 @@ useSeoMeta(() => ({
     </v-container>
   </section>
 </template>
+
+<script setup lang="ts">
+import { createError } from "#app";
+
+import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+definePageMeta({
+  i18n: {
+    paths: {
+      en: "/skills/[slug]",
+      fr: "/competences/[slug]",
+      de: "/kompetenzen/[slug]",
+      es: "/habilidades/[slug]",
+      it: "/competenze/[slug]",
+      ru: "/navyki/[slug]",
+      ar: "/maharat/[slug]",
+    },
+  },
+});
+
+const route = useRoute();
+const slug = computed(() => route.params.slug?.toString() ?? "");
+
+if (!slug.value) {
+  throw createError({ statusCode: 404, statusMessage: "Skill category not found." });
+}
+
+const { data: skills } = await useContentBlock("skills");
+const { data: work } = await useContentBlock("work");
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+const skillsContent = computed(() => skills.value);
+const sectionLabel = computed(() => skillsContent.value?.label ?? "Skills");
+const backLink = computed(() => resolveLocalizedRouteTarget("/skills", localePath));
+
+const category = computed(() =>
+  skillsContent.value?.categories.find((entry) => entry.slug === slug.value),
+);
+
+if (!category.value) {
+  throw createError({ statusCode: 404, statusMessage: "Skill category not found." });
+}
+
+const projectLookup = computed(() => {
+  const projects = work.value?.works ?? [];
+  return new Map(projects.map((project) => [project.slug, project]));
+});
+
+const skillEntries = computed(() => {
+  const currentCategory = category.value;
+
+  if (!currentCategory) {
+    return [];
+  }
+
+  return currentCategory.skills.map((skill) => ({
+    skill,
+    link: resolveLocalizedRouteTarget(`/skills/${currentCategory.slug}/${skill.slug}`, localePath),
+    projects: skill.projects
+      .map(({ slug: projectSlug }) => {
+        const project = projectLookup.value.get(projectSlug);
+
+        if (!project) {
+          return null;
+        }
+
+        return {
+          ...project,
+          link: resolveLocalizedRouteTarget(`/work/${project.slug}`, localePath),
+        };
+      })
+      .filter((project): project is NonNullable<typeof project> => Boolean(project)),
+  }));
+});
+
+const categoryDescription = computed(
+  () => category.value?.description || skillsContent.value?.subline || "",
+);
+
+useSeoMeta(() => ({
+  title: `${category.value?.name} · ${sectionLabel.value}`,
+  description: categoryDescription.value,
+}));
+</script>
 
 <style scoped>
 .skill-category__container {
@@ -197,14 +220,21 @@ useSeoMeta(() => ({
   flex-direction: column;
   gap: 22px;
   overflow: hidden;
-  transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
 }
 
 .skill-card::before {
   content: "";
   position: absolute;
   inset: -40% -20%;
-  background: radial-gradient(circle at var(--glow-x, 30%) 30%, rgba(99, 102, 241, 0.18), transparent 60%);
+  background: radial-gradient(
+    circle at var(--glow-x, 30%) 30%,
+    rgba(99, 102, 241, 0.18),
+    transparent 60%
+  );
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;

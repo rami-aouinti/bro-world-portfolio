@@ -1,3 +1,20 @@
+<template>
+  <Personal />
+  <Line :section-name="aboutLabel" />
+  <About />
+  <Line :section-name="skillsLabel" />
+  <Skills />
+  <Line :section-name="experienceLabel" />
+  <Experience />
+  <Line :section-name="educationLabel" />
+  <Education />
+  <Line :section-name="serviceLabel" />
+  <Service />
+  <Line :section-name="workLabel" />
+  <Work />
+  <Cta />
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 
@@ -27,21 +44,3 @@ const educationLabel = computed(() => educationContent.value?.label ?? "");
 const serviceLabel = computed(() => serviceContent.value?.label ?? "");
 const workLabel = computed(() => workContent.value?.label ?? "");
 </script>
-
-<template>
-  <Personal />
-  <Line :section-name="aboutLabel" />
-  <About />
-  <Line :section-name="skillsLabel" />
-  <Skills />
-  <Line :section-name="experienceLabel" />
-  <Experience />
-  <Line :section-name="educationLabel" />
-  <Education />
-  <Line :section-name="serviceLabel" />
-  <Service />
-  <Line :section-name="workLabel" />
-  <Work />
-  <Cta />
-</template>
-
