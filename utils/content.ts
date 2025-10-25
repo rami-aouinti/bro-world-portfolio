@@ -45,12 +45,12 @@ const EN_CONTENT: ContentRecord = {
   profile: {
     firstname: "Mohamed Rami",
     lastname: "Aouinti",
-    role: "Backend Developer (PHP & Symfony)",
+    role: "FullStack Developer (PHP & Vue)",
     avatar: "/images/profile.jpg",
   },
   hero: {
     badge: "Ready for new challenges",
-    headline: "Hi, I'm Rami Backend Developer (PHP & Symfony)",
+    headline: "Hi, I'm Rami FullStack Developer (PHP & Vue)",
     subline:
       "I craft secure, high-performance backends with PHP 8, Symfony, REST APIs, Docker, and CI/CD pipelines.",
   },
