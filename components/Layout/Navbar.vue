@@ -14,10 +14,23 @@ const { locales, locale, t } = useI18n();
 const route = useRoute();
 
 const rawLinks = computed(() => navlinks.value ?? []);
+const navIconMap: Record<string, string> = {
+  "/": "mdi-home-variant-outline",
+  "/about": "mdi-account-badge-outline",
+  "/skills": "mdi-star-circle-outline",
+  "/experience": "mdi-briefcase-outline",
+  "/education": "mdi-school-outline",
+  "/work": "mdi-rocket-launch-outline",
+  "/service": "mdi-cog-outline",
+  "/blog": "mdi-post-outline",
+  "/contact": "mdi-email-fast-outline",
+};
+
 const links = computed(() =>
   rawLinks.value.map((link) => ({
     ...link,
     to: resolveLocalizedRouteTarget(link.url, localePath),
+    icon: link.icon ?? navIconMap[link.url as keyof typeof navIconMap] ?? "mdi-dots-grid",
   })),
 );
 
@@ -62,7 +75,13 @@ function isActiveLink(target: string) {
           class="dock-navbar__link"
           :class="{ 'dock-navbar__link--active': isActiveLink(link.to) }"
         >
-          <span class="dock-navbar__link-label">{{ link.label }}</span>
+          <v-icon
+            :icon="link.icon"
+            size="28"
+            class="dock-navbar__link-icon"
+            aria-hidden="true"
+          />
+          <span class="sr-only">{{ link.label }}</span>
         </NuxtLink>
       </DockIcon>
 
@@ -135,9 +154,14 @@ function isActiveLink(target: string) {
 </template>
 <style scoped>
 .dock-navbar {
+  position: sticky;
+  top: 16px;
+  z-index: 30;
   display: flex;
   justify-content: center;
   margin: 24px 0;
+  padding: 0 16px;
+  pointer-events: none;
 }
 
 .dock-navbar__dock {
@@ -145,20 +169,18 @@ function isActiveLink(target: string) {
   border: 1px solid rgba(148, 163, 184, 0.25);
   box-shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.9);
   padding: 12px;
+  backdrop-filter: blur(16px);
+  pointer-events: auto;
 }
 
 .dock-navbar__link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 56px;
+  height: 56px;
   border-radius: 999px;
-  padding: 0 12px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  padding: 0;
   color: #e2e8f0;
   background: rgba(148, 163, 184, 0.12);
   text-decoration: none;
@@ -176,25 +198,28 @@ function isActiveLink(target: string) {
   box-shadow: 0 10px 25px -15px rgba(94, 234, 212, 0.8);
 }
 
-.dock-navbar__link-label {
-  white-space: nowrap;
+.dock-navbar__link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dock-navbar__toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 56px;
+  height: 56px;
 }
 
 .dock-navbar__language-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  gap: 0;
+  width: 56px;
+  height: 56px;
   border-radius: 999px;
   background: rgba(148, 163, 184, 0.12);
   color: #e2e8f0;
@@ -203,6 +228,7 @@ function isActiveLink(target: string) {
   letter-spacing: 0.04em;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
+  padding: 0;
 }
 
 .dock-navbar__language-button:hover {
@@ -215,8 +241,8 @@ function isActiveLink(target: string) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   overflow: hidden;
   background: rgba(148, 163, 184, 0.16);
@@ -232,6 +258,9 @@ function isActiveLink(target: string) {
 }
 
 .dock-navbar__language-icon {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
   color: currentColor;
 }
 
@@ -300,6 +329,7 @@ function isActiveLink(target: string) {
 @media (max-width: 960px) {
   .dock-navbar {
     margin-top: 16px;
+    padding: 0 8px;
   }
 
   .dock-navbar__dock {
@@ -308,9 +338,11 @@ function isActiveLink(target: string) {
     overflow-x: auto;
   }
 
-  .dock-navbar__link {
-    font-size: 0.6rem;
-    padding: 0 10px;
+  .dock-navbar__link,
+  .dock-navbar__toggle,
+  .dock-navbar__language-button {
+    width: 48px;
+    height: 48px;
   }
 }
 </style>
