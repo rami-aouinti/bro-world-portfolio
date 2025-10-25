@@ -12,7 +12,7 @@ import About from "~/components/section/About.vue";
 definePageMeta(LOCALIZED_PAGE_META.about)
 
 const { data: skillsContent } = useContentBlock("skills");
-const { data: experienceContent } = useContentBlock("experience");
+const { data: experienceContent } = useContentBlock("experiences");
 const { data: educationContent } = useContentBlock("education");
 
 const skillsLabel = computed(() => skillsContent.value?.label ?? "");
