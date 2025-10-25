@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useDisplay } from 'vuetify'
 
 import CustomGlowCard from '~/components/CustomGlowCard.vue'
 import { glowCardVariantCycle, glowCardVariants } from '~/utils/glowCardVariants'
@@ -8,6 +9,7 @@ import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 
 const { data: education } = useContentBlock('education')
 const localePath = useLocalePath()
+const display = useDisplay()
 
 const educationContent = computed(() => education.value)
 const educationCards = computed(() => {
@@ -24,6 +26,11 @@ const educationCards = computed(() => {
     }
   })
 })
+
+const timelineSide = computed(() => (display.mdAndUp.value ? 'end' : 'start'))
+const timelineLineInset = computed(() => (display.mdAndUp.value ? 16 : 0))
+const timelineDensity = computed(() => (display.mdAndUp.value ? 'comfortable' : 'compact'))
+const showTimelineOpposite = computed(() => display.mdAndUp.value)
 </script>
 
 <template>
@@ -33,9 +40,9 @@ const educationCards = computed(() => {
         <h2 class="text-h4 text-foreground">{{ educationContent.headline }}</h2>
         <v-timeline
           class="education__timeline mt-10"
-          density="comfortable"
-          line-inset="16"
-          side="end"
+          :density="timelineDensity"
+          :line-inset="timelineLineInset"
+          :side="timelineSide"
         >
           <v-timeline-item
             v-for="card in educationCards"
@@ -43,7 +50,7 @@ const educationCards = computed(() => {
             :dot-color="card.accentColor"
             fill-dot
           >
-            <template #opposite>
+            <template v-if="showTimelineOpposite" #opposite>
               <span class="education__timeline-time">{{ card.school.timeframe }}</span>
             </template>
 
