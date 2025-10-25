@@ -185,6 +185,7 @@ async function handleLogout() {
   min-height: 100vh;
   background: radial-gradient(circle at top, rgba(52, 120, 246, 0.2), transparent 60%),
     linear-gradient(180deg, rgba(10, 18, 41, 0.95), rgba(10, 18, 41, 0.7) 50%, rgba(15, 23, 42, 0.4));
+}
 .admin-dashboard__decor,
 .admin-dashboard::before {
   content: '';
