@@ -2,9 +2,9 @@
 import { computed } from 'vue'
 import ScrollSmooth from '~/components/Layout/ScrollSmooth.vue'
 
-import { AppleCardCarousel, AppleCard } from '~/components/Ui/apple-card-carousel'
 import { resolveLocalizedRouteTarget } from '~/utils/i18n/resolve-target'
 import { Text3d } from '../Ui/text-3d'
+import CustomGlowCard from "~/components/CustomGlowCard.vue";
 
 const { data: personal } = useContentBlock('hero')
 const { data: work } = useContentBlock('work')
@@ -13,7 +13,12 @@ const localePath = useLocalePath()
 
 const personalContent = computed(() => personal.value)
 const workItems = computed(() => work.value?.works ?? [])
-
+const personalCards = computed(() =>
+    workItems.value.map((item, index) => ({
+      item,
+      variant: glowCardVariantCycle[index % glowCardVariantCycle.length]
+    }))
+)
 const enrichedWorkDetails: Record<string, {
   description: string
   highlights: string[]
@@ -80,28 +85,6 @@ const enrichedWorkDetails: Record<string, {
     impact: "Impact: New engineers shipped production-ready code in their first sprint.",
   },
 }
-
-const carouselCards = computed(() =>
-  workItems.value.map((item) => {
-    const enriched = enrichedWorkDetails[item.slug] ?? {
-      description: item.description,
-      highlights: [],
-    }
-
-    return {
-      card: {
-        src: `/images/work/${item.thumbnails}`,
-        title: item.name,
-        category: item.type,
-      },
-      description: enriched.description ?? item.description,
-      highlights: enriched.highlights ?? [],
-      impact: enriched.impact,
-      demo: item.live_demo,
-      caseStudy: resolveLocalizedRouteTarget(`/work/${item.slug}`, localePath),
-    }
-  }),
-)
 </script>
 
 <template>
@@ -138,7 +121,6 @@ const carouselCards = computed(() =>
               <Button
                 :label="t('portfolio.personal.contact')"
                 :to="resolveLocalizedRouteTarget('/contact', localePath)"
-                variant="btn-dark"
               />
             </div>
             <v-chip
@@ -152,74 +134,147 @@ const carouselCards = computed(() =>
           </v-col>
         </v-row>
 
-        <div v-if="carouselCards.length" class="personal__carousel-wrapper">
-          <AppleCardCarousel>
-            <AppleCard
-              v-for="(card, index) in carouselCards"
-              :key="card.card.title"
-              :card="card.card"
-              :index="index"
-              layout
+        <v-slide-group show-arrows class="personal__carousel">
+          <v-slide-group-item v-for="card in personalCards" :key="card.item.name">
+            <CustomGlowCard
+                class="personal__card"
+                :title="card.item.name"
+                :badge="card.item.type"
+                :variant="card.variant"
             >
-              <div class="space-y-6 text-left">
-                <p class="text-base leading-relaxed text-neutral-700 dark:text-neutral-200">
-                  {{ card.description }}
-                </p>
-                <ul
-                  v-if="card.highlights.length"
-                  class="space-y-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300"
-                >
-                  <li
-                    v-for="point in card.highlights"
-                    :key="point"
-                    class="flex gap-3"
-                  >
-                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary"></span>
-                    <span>{{ point }}</span>
-                  </li>
-                </ul>
-                <p
-                  v-if="card.impact"
-                  class="text-xs font-semibold uppercase tracking-[0.35em] text-primary"
-                >
-                  {{ card.impact }}
-                </p>
-                <div class="flex flex-wrap gap-3 pt-4">
+              <template #media>
+                <v-img
+                    :src="`/images/work/${card.item.thumbnails}`"
+                    :alt="card.item.name"
+                    height="200"
+                    cover
+                    class="personal__image"
+                />
+              </template>
+              <template #footer>
+                <div class="personal__footer">
+                  <span class="personal__footer-label">{{ t('portfolio.personal.viewProjectLabel') }}</span>
                   <v-btn
-                    :to="card.caseStudy"
-                    color="primary"
-                    variant="elevated"
-                    class="text-none"
-                  >
-                    {{ t('portfolio.personal.viewProjectLabel') }}
-                  </v-btn>
-                  <v-btn
-                    v-if="card.demo && card.demo !== '#'"
-                    :href="card.demo"
-                    target="_blank"
-                    rel="noopener"
-                    color="primary"
-                    variant="text"
-                    class="text-none"
+                      :to="card.item.live_demo"
+                      target="_blank"
+                      color="primary"
+                      variant="text"
+                      class="text-none"
                   >
                     {{ t('portfolio.personal.viewProjectCta') }}
                   </v-btn>
                 </div>
-              </div>
-            </AppleCard>
-          </AppleCardCarousel>
-        </div>
+              </template>
+            </CustomGlowCard>
+          </v-slide-group-item>
+        </v-slide-group>
       </v-container>
     </ScrollSmooth>
   </section>
 </template>
 
 <style scoped>
-.personal {
+
+
+.personal__spark--one {
+  top: 28%;
+  left: 18%;
+  animation-delay: 0.4s;
+}
+
+.personal__spark--two {
+  top: 62%;
+  right: 22%;
+  animation-delay: 1.2s;
+}
+
+.personal__spark--three {
+  top: 48%;
+  left: 72%;
+  animation-delay: 2.4s;
+}
+
+.personal__container {
+  min-height: clamp(560px, 82vh, 760px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
-  overflow: hidden;
-  background: transparent;
-  color: #f8fafc;
+  z-index: 1;
+}
+
+
+
+.personal__badge {
+  align-items: center;
+  border-color: rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.4);
+  color: #cbd5f5;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  padding-inline: 18px;
+}
+
+.personal__headline {
+  font-size: clamp(2.5rem, 4vw + 1rem, 4.75rem);
+  line-height: 1.1;
+  font-weight: 800;
+  text-shadow: 0 16px 36px rgba(15, 23, 42, 0.6);
+}
+
+.personal__description {
+  max-width: 680px;
+  font-size: clamp(1.05rem, 1vw + 1rem, 1.25rem);
+  line-height: 1.7;
+}
+
+.personal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 38px;
+}
+
+.personal__carousel {
+  margin-top: clamp(32px, 6vw, 64px);
+}
+
+.personal__card {
+  display: block;
+  margin: 12px;
+  width: clamp(260px, 58vw, 320px);
+}
+
+.personal__image {
+  border-radius: 18px;
+}
+
+.personal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.personal__footer-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--card-text-color) 60%, white 40%);
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.8);
+  }
 }
 
 .personal__background {
@@ -268,95 +323,5 @@ const carouselCards = computed(() =>
   border-radius: 50%;
   box-shadow: 0 0 16px rgba(255, 255, 255, 0.55);
   animation: twinkle 6s ease-in-out infinite;
-}
-
-.personal__spark--one {
-  top: 28%;
-  left: 18%;
-  animation-delay: 0.4s;
-}
-
-.personal__spark--two {
-  top: 62%;
-  right: 22%;
-  animation-delay: 1.2s;
-}
-
-.personal__spark--three {
-  top: 48%;
-  left: 72%;
-  animation-delay: 2.4s;
-}
-
-.personal__container {
-  min-height: clamp(560px, 82vh, 760px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-
-.personal__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-}
-
-.personal__badge {
-  align-items: center;
-  border-color: rgba(148, 163, 184, 0.4);
-  background: rgba(15, 23, 42, 0.4);
-  color: #cbd5f5;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  padding-inline: 18px;
-}
-
-.personal__headline {
-  font-size: clamp(2.5rem, 4vw + 1rem, 4.75rem);
-  line-height: 1.1;
-  font-weight: 800;
-  text-shadow: 0 16px 36px rgba(15, 23, 42, 0.6);
-}
-
-.personal__description {
-  max-width: 680px;
-  font-size: clamp(1.05rem, 1vw + 1rem, 1.25rem);
-  line-height: 1.7;
-}
-
-.personal__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px;
-}
-
-.personal__carousel-wrapper {
-  margin-top: clamp(32px, 6vw, 72px);
-}
-
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.8);
-  }
-}
-
-@media (max-width: 600px) {
-  .personal__container {
-    min-height: clamp(520px, 90vh, 680px);
-  }
-
-  .personal__headline {
-    font-size: clamp(2.25rem, 7vw + 1rem, 3.25rem);
-  }
 }
 </style>

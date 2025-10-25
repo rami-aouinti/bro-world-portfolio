@@ -31,7 +31,7 @@ const appearance = computed(() =>
     v-if="isRainbowVariant"
     is="NuxtLink"
     :to="to"
-    class="app-button app-button--rainbow"
+    class="app-button app-button--rainbow bg-primary/50 hover:bg-primary/50"
     :class="appearance"
   >
     {{ props.label }}
@@ -67,7 +67,7 @@ const appearance = computed(() =>
 
 .app-button--rainbow {
   border-radius: 999px;
-  color: #f8fafc;
+  color: #485562;
   height: 52px;
   padding-inline: clamp(20px, 5vw, 32px);
 }
@@ -78,7 +78,7 @@ const appearance = computed(() =>
 
 .app-button--primary:hover,
 .app-button--primary:focus-visible {
-  box-shadow: 0 22px 52px -20px rgba(129, 140, 248, 0.85);
+  box-shadow: 0 22px 52px -20px rgba(var(--v-theme-primary));
   filter: brightness(1.05);
   transform: translateY(-2px);
 }
@@ -100,8 +100,8 @@ const appearance = computed(() =>
 
 .app-button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.35),
-    0 22px 52px -20px rgba(129, 140, 248, 0.65);
+  box-shadow: 0 0 0 3px rgba(var(--v-theme-primary)),
+    0 22px 52px -20px rgba(var(--v-theme-primary));
 }
 
 @media (max-width: 600px) {

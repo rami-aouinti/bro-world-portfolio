@@ -42,6 +42,7 @@
 import { ref, onMounted, watch, provide, computed } from "vue";
 import { cn } from "@/lib/utils";
 import { CarouselKey } from "./AppleCarouselContext";
+import Icon from "~/components/Icon.vue";
 
 interface Props {
   initialScroll?: number;

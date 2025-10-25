@@ -27,7 +27,7 @@ interface RainbowButtonProps {
 }
 
 const props = withDefaults(defineProps<RainbowButtonProps>(), {
-  speed: 2,
+  speed: 8,
   is: "button",
 });
 
@@ -36,11 +36,11 @@ const speedInSeconds = computed(() => `${props.speed}s`);
 
 <style scoped>
 .rainbow-button {
-  --color-1: hsl(0 100% 63%);
-  --color-2: hsl(270 100% 63%);
+  --color-1: hsl(210, 67%, 11%);
+  --color-2: hsl(210, 71%, 22%);
   --color-3: hsl(210 100% 63%);
   --color-4: hsl(195 100% 63%);
-  --color-5: hsl(90 100% 63%);
+  --color-5: hsl(180, 100%, 63%);
   --speed: v-bind(speedInSeconds);
   animation: rainbow var(--speed) infinite linear;
 }
