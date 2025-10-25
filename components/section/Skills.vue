@@ -146,7 +146,7 @@ const languageCard = computed(() => {
                     variant="tonal"
                     size="small"
                 >
-                  <NuxtLink :to="skill.link" class="skills__item-name">
+                  <NuxtLink :to="skill.link">
                     {{ skill.name }}
                   </NuxtLink>
                 </v-chip>
