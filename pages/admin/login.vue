@@ -1,4 +1,9 @@
 <script setup lang="ts">
+
+definePageMeta({
+  layout: 'admin'
+})
+
 const email = ref('')
 const password = ref('')
 const errorMessage = ref('')

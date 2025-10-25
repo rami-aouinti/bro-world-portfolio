@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
 
-definePageMeta({ middleware: 'auth' })
+definePageMeta({
+  middleware: 'auth',
+  layout: 'admin'
+})
 
 const router = useRouter()
 const { t } = useI18n()
+
+const openSetting = ref(false);
 
 const ThemeCustomizer = defineAsyncComponent(() => import('~/components/ThemeCustomizer.vue'))
 const shouldRenderThemeCustomizer = ref(false)
@@ -110,8 +115,7 @@ async function handleLogout() {
 </script>
 
 <template>
-  <v-container class="admin-dashboard mt-10">
-    <div class="admin-dashboard__decor" />
+  <v-container class="admin-dashboard mt-5">
     <v-row justify="center">
       <v-col cols="12" lg="10" class="d-flex flex-column" style="gap: 32px;">
         <v-card class="dashboard-hero" elevation="0" rounded="xl">
@@ -170,10 +174,10 @@ async function handleLogout() {
                     </p>
                   </div>
                   <div class="site-settings-card__icon">
-                    <v-icon icon="mdi-tune" size="28" color="primary" />
+                    <v-icon @click="openSetting = !openSetting" icon="mdi-tune" size="28" color="primary" />
                   </div>
                 </div>
-                <div class="site-settings-card__customizer">
+                <div v-if="openSetting" class="site-settings-card__customizer">
                   <ClientOnly>
                     <template #fallback>
                       <div class="site-settings-card__loading">
@@ -244,37 +248,15 @@ async function handleLogout() {
 </template>
 
 <style scoped>
-.admin-dashboard {
-  position: relative;
-  min-height: 100vh;
-  background: radial-gradient(circle at top, rgba(52, 120, 246, 0.2), transparent 60%),
-    linear-gradient(180deg, rgba(10, 18, 41, 0.95), rgba(10, 18, 41, 0.7) 50%, rgba(15, 23, 42, 0.4));
-}
+
 .admin-dashboard__decor,
 .admin-dashboard::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 18% 25%, rgba(255, 255, 255, 0.12), transparent 55%),
-    repeating-linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.09) 0,
-      rgba(255, 255, 255, 0.09) 2px,
-      transparent 2px,
-      transparent 12px
-    );
-  mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0));
   pointer-events: none;
 }
 
-.admin-dashboard__decor {
-  inset: 10% 5% 5% 8%;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(96, 165, 250, 0.3), transparent 50%),
-    radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.22), transparent 55%);
-  filter: blur(40px);
-}
 
 .admin-dashboard > * {
   position: relative;

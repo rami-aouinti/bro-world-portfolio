@@ -4,7 +4,10 @@ import { showError } from '#app'
 import { contentSchemas, isContentSlug, type ContentSlug } from '~/types/content'
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type LocaleCode } from '~/utils/i18n/locales'
 
-definePageMeta({ middleware: 'auth' })
+definePageMeta({
+  middleware: 'auth' ,
+  layout: 'admin'
+})
 
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
@@ -233,8 +236,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <v-container class="admin-editor mt-10">
-    <div class="admin-editor__overlay" />
+  <v-container class="admin-editor mt-6">
     <v-row justify="center">
       <v-col cols="12" lg="10" style="display: flex; flex-direction: column; gap: 24px;">
         <v-card elevation="0" class="editor-card editor-card--header">
@@ -686,23 +688,11 @@ async function handleSubmit() {
 <style scoped>
 .admin-editor {
   position: relative;
-  min-height: calc(100vh - 80px);
-  padding-bottom: 96px;
-  background: linear-gradient(160deg, rgba(15, 23, 42, 0.92), rgba(17, 24, 39, 0.88));
+  padding-bottom: 16px;
   border-radius: 32px 32px 0 0;
   overflow: hidden;
 }
 
-.admin-editor__overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.25), transparent 50%),
-    radial-gradient(circle at 80% 60%, rgba(56, 189, 248, 0.18), transparent 55%),
-    linear-gradient(120deg, rgba(99, 102, 241, 0.15), transparent 70%);
-  opacity: 0.8;
-  pointer-events: none;
-}
 
 .admin-editor > * {
   position: relative;
