@@ -557,7 +557,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Mohamed Rami Aouinti | Backend Developer (PHP & Symfony)",
+      title: "Mohamed Rami Aouinti | FullStack Developer (PHP & Vue)",
       meta: [
         {
           name: "google-adsense-account",
