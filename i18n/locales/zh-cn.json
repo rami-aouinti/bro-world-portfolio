@@ -92,6 +92,9 @@
       "fallbackSummary": "在 {company} 的关键贡献"
     }
   },
+  "navigation": {
+    "language": "切换语言"
+  },
   "admin": {
     "settings": {
       "themeCustomizer": {

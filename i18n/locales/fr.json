@@ -98,6 +98,9 @@
       "fallbackSummary": "Contributions clés chez {company}"
     }
   },
+  "navigation": {
+    "language": "Changer de langue"
+  },
   "admin": {
     "settings": {
       "themeCustomizer": {

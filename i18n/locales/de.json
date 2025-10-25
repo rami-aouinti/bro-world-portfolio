@@ -92,6 +92,9 @@
       "fallbackSummary": "Wichtige Beiträge bei {company}"
     }
   },
+  "navigation": {
+    "language": "Sprache ändern"
+  },
   "admin": {
     "settings": {
       "themeCustomizer": {
