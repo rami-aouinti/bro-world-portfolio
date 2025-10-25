@@ -39,7 +39,7 @@ export function resolveLocalizedRouteTarget(target: string, localePath: LocalePa
   }
 
   const routePath = normalized.startsWith('/') ? normalized : `/${normalized}`;
-  const resolvedPath = localePath(routePath);
+  const resolvedPath = localePath({ path: routePath });
 
   return `${resolvedPath}${hash}`;
 }
