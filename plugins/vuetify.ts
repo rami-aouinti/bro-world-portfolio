@@ -417,7 +417,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const fallbackDateLocale = dateLocaleRegistry.en;
   const initialDateLocale = resolveDateLocaleValue(initialLocale) ?? fallbackDateLocale;
-  const initialThemeName = resolveInitialColorMode();
 
   const colorModeCookie = useCookie<"light" | "dark" | "auto">(
     "color-mode",
