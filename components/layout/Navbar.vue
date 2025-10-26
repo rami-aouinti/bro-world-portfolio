@@ -2,6 +2,7 @@
   <nav
     class="dock-navbar"
     :class="{ 'dock-navbar--mobile': isMobile }"
+    :style="controlStyles"
   >
     <template v-if="isMobile">
       <div class="dock-navbar__mobile-bar">
@@ -12,7 +13,7 @@
         >
           <v-icon
             icon="mdi-menu"
-            size="28"
+            :size="controlIconSize"
             aria-hidden="true"
           />
           <span class="sr-only">{{ t("navigation.openMenu") }}</span>
@@ -22,6 +23,7 @@
           <DarkModeToggle
             v-if="config.header.darkModeToggle"
             class="dock-navbar__toggle"
+            :icon-size="controlIconSize"
           />
 
           <v-menu
@@ -54,7 +56,7 @@
                 </span>
                 <v-icon
                   icon="mdi-menu-down"
-                  size="16"
+                  :size="controlChevronSize"
                   class="dock-navbar__language-icon"
                 />
                 <span class="sr-only">{{ t("navigation.language") }}</span>
@@ -107,7 +109,13 @@
                       class="dock-navbar__language-check"
                     />
                   </div>
-                </NuxtLink>
+                  <v-icon
+                    v-if="language.code === locale"
+                    icon="mdi-check"
+                    :size="controlChevronSize"
+                    class="dock-navbar__language-check"
+                  />
+                </div>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -174,7 +182,10 @@
             class="dock-navbar__drawer-controls"
           >
             <div class="dock-navbar__drawer-control">
-              <DarkModeToggle class="dock-navbar__toggle" />
+              <DarkModeToggle
+                class="dock-navbar__toggle"
+                :icon-size="controlIconSize"
+              />
             </div>
           </div>
         </div>
@@ -209,7 +220,10 @@
         <DockSeparator v-if="hasControls" />
 
         <DockIcon v-if="config.header.darkModeToggle">
-          <DarkModeToggle class="dock-navbar__toggle" />
+          <DarkModeToggle
+            class="dock-navbar__toggle"
+            :icon-size="controlIconSize"
+          />
         </DockIcon>
 
         <DockIcon v-if="hasLanguageMenu">
@@ -364,6 +378,15 @@ const hasControls = computed(() => config.value.header.darkModeToggle || hasLang
 const isDrawerOpen = ref(false);
 const isMobile = useMediaQuery("(max-width: 960px)");
 
+const controlButtonSize = computed(() => (isMobile.value ? 48 : 56));
+const controlIconSize = computed(() => (isMobile.value ? 24 : 28));
+const controlChevronSize = computed(() => Math.round(controlIconSize.value * 0.57));
+const controlStyles = computed(() => ({
+  "--dock-navbar-control-size": `${controlButtonSize.value}px`,
+  "--dock-navbar-control-icon-size": `${controlIconSize.value}px`,
+  "--dock-navbar-control-chevron-size": `${controlChevronSize.value}px`,
+}));
+
 watch(isMobile, (value) => {
   if (!value) {
     isDrawerOpen.value = false;
@@ -395,6 +418,9 @@ function isActiveLink(target: string) {
   margin: 24px 0;
   padding: 0 16px;
   pointer-events: none;
+  --dock-navbar-control-size: 56px;
+  --dock-navbar-control-icon-size: 28px;
+  --dock-navbar-control-chevron-size: 16px;
 }
 
 .dock-navbar--mobile {
@@ -423,8 +449,8 @@ function isActiveLink(target: string) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: var(--dock-navbar-control-size);
+  height: var(--dock-navbar-control-size);
   border: none;
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.6);
@@ -635,8 +661,8 @@ function isActiveLink(target: string) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: var(--dock-navbar-control-size) !important;
+  height: var(--dock-navbar-control-size) !important;
 }
 
 .dock-navbar__language-button {
@@ -645,8 +671,8 @@ function isActiveLink(target: string) {
   justify-content: center;
   position: relative;
   gap: 0;
-  width: 56px;
-  height: 56px;
+  width: var(--dock-navbar-control-size);
+  height: var(--dock-navbar-control-size);
   border-radius: 999px;
   color: #e2e8f0;
   border: none;
@@ -669,12 +695,12 @@ function isActiveLink(target: string) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: var(--dock-navbar-control-icon-size);
+  height: var(--dock-navbar-control-icon-size);
   border-radius: 50%;
   overflow: hidden;
   background: rgba(148, 163, 184, 0.16);
-  font-size: 0.65rem;
+  font-size: calc(var(--dock-navbar-control-icon-size) * 0.55);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -690,6 +716,7 @@ function isActiveLink(target: string) {
   right: 6px;
   bottom: 6px;
   color: currentColor;
+  font-size: var(--dock-navbar-control-chevron-size);
 }
 
 .dock-navbar__language-list {
@@ -752,6 +779,7 @@ function isActiveLink(target: string) {
 .dock-navbar__language-check {
   margin-left: auto;
   color: rgba(94, 234, 212, 0.9);
+  font-size: var(--dock-navbar-control-chevron-size);
 }
 
 .dock-navbar :deep(.v-overlay__content) {
@@ -781,16 +809,10 @@ function isActiveLink(target: string) {
     overflow-x: auto;
   }
 
-  .dock-navbar__link,
-  .dock-navbar__toggle,
-  .dock-navbar__language-button {
-    width: 48px;
-    height: 48px;
-  }
-
-  .dock-navbar__drawer-button {
-    width: 48px;
-    height: 48px;
+  .dock-navbar {
+    --dock-navbar-control-size: 48px;
+    --dock-navbar-control-icon-size: 24px;
+    --dock-navbar-control-chevron-size: 14px;
   }
 }
 </style>
