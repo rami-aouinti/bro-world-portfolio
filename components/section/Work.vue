@@ -59,13 +59,6 @@
                     >
                       {{ card.item.name }}
                     </CardItem>
-                    <CardItem
-                      as="p"
-                      :translate-z="35"
-                      class="text-sm leading-relaxed text-muted-foreground"
-                    >
-                      {{ card.item.description }}
-                    </CardItem>
                   </div>
                   <CardItem
                     as="div"
@@ -127,7 +120,7 @@ const workCards = computed(() => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 500px;
+  min-height: 300px;
   border-radius: 28px;
   border: 1px solid;
   padding: 2.5rem;
