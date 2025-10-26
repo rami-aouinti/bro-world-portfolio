@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useMediaQuery } from "@vueuse/core";
+import { useMediaQuery, useMounted } from "@vueuse/core";
 
 import CustomGlowCard from "~/components/CustomGlowCard.vue";
 import { glowCardVariantCycle, glowCardVariants } from "~/utils/glowCardVariants";
@@ -79,10 +79,18 @@ const educationCards = computed(() => {
   });
 });
 
-const timelineSide = computed(() => (isMdAndUp.value ? "end" : "start"));
-const timelineLineInset = computed(() => (isMdAndUp.value ? 16 : 0));
-const timelineDensity = computed(() => (isMdAndUp.value ? "comfortable" : "compact"));
-const showTimelineOpposite = computed(() => isMdAndUp.value);
+const isMounted = useMounted();
+
+const isExpandedTimeline = computed(
+  () => isMounted.value && isMdAndUp.value,
+);
+
+const timelineSide = computed(() => (isExpandedTimeline.value ? "end" : "start"));
+const timelineLineInset = computed(() => (isExpandedTimeline.value ? 16 : 0));
+const timelineDensity = computed(() =>
+  isExpandedTimeline.value ? "comfortable" : "compact",
+);
+const showTimelineOpposite = computed(() => isExpandedTimeline.value);
 </script>
 
 <style scoped>
