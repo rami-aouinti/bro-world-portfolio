@@ -153,18 +153,6 @@
               </NuxtLink>
             </v-list-item>
           </v-list>
-
-          <div
-            v-if="config.header.darkModeToggle"
-            class="dock-navbar__drawer-controls"
-          >
-            <div class="dock-navbar__drawer-control">
-              <DarkModeToggle
-                class="dock-navbar__toggle"
-                :icon-size="controlIconSize"
-              />
-            </div>
-          </div>
         </div>
       </v-navigation-drawer>
     </template>
