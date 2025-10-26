@@ -34,7 +34,7 @@ import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, watch 
 import { usePreferredReducedMotion, useWindowSize } from "@vueuse/core";
 import Navbar from "~/components/layout/Navbar.vue";
 import { useCookieColorMode } from "~/composables/useCookieColorMode";
-import { Analytics } from '@vercel/analytics/nuxt'
+import { Analytics } from "@vercel/analytics/nuxt";
 
 const colorMode = useCookieColorMode();
 const prefersReducedMotion = usePreferredReducedMotion();
@@ -59,9 +59,11 @@ function scheduleParticlesRender() {
   }
 
   if (import.meta.client && "requestIdleCallback" in window) {
-    pendingIdleHandle.value = (window as Window & {
-      requestIdleCallback: (callback: () => void, options?: { timeout?: number }) => number;
-    }).requestIdleCallback(enableParticles, { timeout: 350 });
+    pendingIdleHandle.value = (
+      window as Window & {
+        requestIdleCallback: (callback: () => void, options?: { timeout?: number }) => number;
+      }
+    ).requestIdleCallback(enableParticles, { timeout: 350 });
   } else if (import.meta.client) {
     pendingIdleHandle.value = window.setTimeout(() => enableParticles(), 180);
   }
@@ -73,7 +75,9 @@ function cancelScheduledParticles() {
   }
 
   if ("cancelIdleCallback" in window) {
-    (window as Window & { cancelIdleCallback: (handle: number) => void }).cancelIdleCallback(pendingIdleHandle.value);
+    (window as Window & { cancelIdleCallback: (handle: number) => void }).cancelIdleCallback(
+      pendingIdleHandle.value,
+    );
   } else {
     window.clearTimeout(pendingIdleHandle.value);
   }
@@ -130,7 +134,9 @@ const particleQuantity = computed(() => {
   return 160;
 });
 
-const showParticles = computed(() => isHydrated.value && shouldRenderParticles.value && !prefersReducedMotion.value);
+const showParticles = computed(
+  () => isHydrated.value && shouldRenderParticles.value && !prefersReducedMotion.value,
+);
 </script>
 
 <style scoped>

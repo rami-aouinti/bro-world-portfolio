@@ -122,9 +122,7 @@ import Personal from "~/components/section/Personal.vue";
 
 const About = defineAsyncComponent(() => import("~/components/section/About.vue"));
 const Skills = defineAsyncComponent(() => import("~/components/section/Skills.vue"));
-const Experience = defineAsyncComponent(
-  () => import("~/components/section/Experience.vue"),
-);
+const Experience = defineAsyncComponent(() => import("~/components/section/Experience.vue"));
 const Education = defineAsyncComponent(() => import("~/components/section/Education.vue"));
 const Service = defineAsyncComponent(() => import("~/components/section/Service.vue"));
 const Work = defineAsyncComponent(() => import("~/components/section/Work.vue"));

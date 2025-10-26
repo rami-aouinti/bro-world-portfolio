@@ -86,10 +86,10 @@
                       <span class="dock-navbar__language-name">{{ language.name }}</span>
                     </div>
                     <v-icon
-                        v-if="language.code === locale"
-                        icon="mdi-check"
-                        :size="controlChevronSize"
-                        class="dock-navbar__language-check"
+                      v-if="language.code === locale"
+                      icon="mdi-check"
+                      :size="controlChevronSize"
+                      class="dock-navbar__language-check"
                     />
                   </div>
                 </NuxtLink>

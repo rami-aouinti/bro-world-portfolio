@@ -29,11 +29,14 @@ onMounted(() => {
     return;
   }
 
-  observer = new IntersectionObserver(([entry]) => {
-    isVisible.value = entry.isIntersecting;
-  }, {
-    threshold: 0.1,
-  });
+  observer = new IntersectionObserver(
+    ([entry]) => {
+      isVisible.value = entry.isIntersecting;
+    },
+    {
+      threshold: 0.1,
+    },
+  );
 
   observer.observe(el.value);
 });
