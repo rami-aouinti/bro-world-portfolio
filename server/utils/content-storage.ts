@@ -1,22 +1,30 @@
+import { createError } from "h3";
 import { DEFAULT_CONTENT } from "~/utils/content";
 import type { ContentRecord, ContentSlug } from "~/types/content";
 import { contentSchemas, parseContentBySlug } from "~/types/content";
-import { createError } from "h3";
-import { useStorage } from "#imports";
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type LocaleCode } from "~/utils/i18n/locales";
+import { usePrisma } from "./prisma";
+import { deleteCachedValue, getCachedValue, setCachedValue } from "./cache";
 
-const CONTENT_FILE_EXTENSION = ".json" as const;
+const CONTENT_ENTRY_CACHE_PREFIX = "content:entry:";
+const CONTENT_LIST_CACHE_PREFIX = "content:list:";
 
 type LocalizedContentEntry = [LocaleCode, ContentRecord];
 
-type StorageKey = `${LocaleCode}/${ContentSlug}${typeof CONTENT_FILE_EXTENSION}`;
+type CacheableContent<TSlug extends ContentSlug> = ContentRecord[TSlug];
 
-function getContentKey(locale: LocaleCode, slug: ContentSlug): StorageKey {
-  return `${locale}/${slug}${CONTENT_FILE_EXTENSION}`;
+type StorageKey = `${LocaleCode}:${ContentSlug}`;
+
+function getEntryCacheKey(locale: LocaleCode, slug: ContentSlug): StorageKey {
+  return `${locale}:${slug}`;
 }
 
-function getContentStorage() {
-  return useStorage("content");
+function getListCacheKey(locale: LocaleCode) {
+  return `${CONTENT_LIST_CACHE_PREFIX}${locale}`;
+}
+
+function getEntryCacheKeyWithPrefix(locale: LocaleCode, slug: ContentSlug) {
+  return `${CONTENT_ENTRY_CACHE_PREFIX}${getEntryCacheKey(locale, slug)}`;
 }
 
 function getDefaultContent(locale: LocaleCode, slug: ContentSlug) {
@@ -24,60 +32,106 @@ function getDefaultContent(locale: LocaleCode, slug: ContentSlug) {
   return localized[slug];
 }
 
-export async function ensureContentDefaults() {
-  const storage = getContentStorage();
-
-  const entries = Object.entries(DEFAULT_CONTENT) as LocalizedContentEntry[];
-
+async function ensureLocales() {
+  const prisma = usePrisma();
   await Promise.all(
-    entries.flatMap(([locale, record]) =>
-      (Object.keys(record) as ContentSlug[]).map(async (slug) => {
-        const key = getContentKey(locale, slug);
-        const existing = await storage.getItem(key);
-        if (existing === null) {
-          await storage.setItem(key, record[slug]);
-        }
+    SUPPORTED_LOCALES.map((code) =>
+      prisma.locale.upsert({
+        where: { code },
+        update: { label: code },
+        create: { code, label: code },
       }),
     ),
   );
 }
 
+export async function ensureContentDefaults() {
+  const prisma = usePrisma();
+  await ensureLocales();
+
+  const entries = Object.entries(DEFAULT_CONTENT) as LocalizedContentEntry[];
+
+  await prisma.$transaction(async (tx) => {
+    for (const [locale, record] of entries) {
+      const slugs = Object.keys(record) as ContentSlug[];
+      for (const slug of slugs) {
+        await tx.contentBlock.upsert({
+          where: { slug_localeCode: { slug, localeCode: locale } },
+          update: {},
+          create: {
+            slug,
+            localeCode: locale,
+            payload: record[slug],
+          },
+        });
+      }
+    }
+  });
+
+  const listKeys = SUPPORTED_LOCALES.map((locale) => getListCacheKey(locale));
+  await deleteCachedValue(listKeys);
+}
+
 export async function listAllContent(locale: LocaleCode) {
-  const record: Partial<ContentRecord> = {};
+  const cacheKey = getListCacheKey(locale);
+  const cached = await getCachedValue<ContentRecord>(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
   const localizedContent = DEFAULT_CONTENT[locale] ?? DEFAULT_CONTENT[DEFAULT_LOCALE];
+  const record: Partial<ContentRecord> = {};
 
-  await Promise.all(
-    (Object.keys(localizedContent) as ContentSlug[]).map(async (slug) => {
-      record[slug] = await readContent(slug, locale);
-    }),
-  );
+  for (const slug of Object.keys(localizedContent) as ContentSlug[]) {
+    record[slug] = await readContent(slug, locale);
+  }
 
-  return record as ContentRecord;
+  const parsed = record as ContentRecord;
+  await setCachedValue(cacheKey, parsed);
+  return parsed;
 }
 
 export async function readContent<TSlug extends ContentSlug>(slug: TSlug, locale: LocaleCode) {
-  const storage = getContentStorage();
-  const key = getContentKey(locale, slug);
-  const raw = await storage.getItem(key);
-
-  if (raw === null) {
-    const fallback = getDefaultContent(locale, slug);
-    await storage.setItem(key, fallback);
-    return fallback;
+  const cacheKey = getEntryCacheKeyWithPrefix(locale, slug);
+  const cached = await getCachedValue<CacheableContent<TSlug>>(cacheKey);
+  if (cached) {
+    return cached;
   }
+
+  const prisma = usePrisma();
+  const block = await prisma.contentBlock.findUnique({
+    where: { slug_localeCode: { slug, localeCode: locale } },
+  });
 
   const schema = contentSchemas[slug];
-  const parsed = schema.safeParse(raw);
 
-  if (parsed.success) {
-    return parsed.data;
+  if (block) {
+    const parsed = schema.safeParse(block.payload);
+    if (parsed.success) {
+      await setCachedValue(cacheKey, parsed.data);
+      return parsed.data;
+    }
+
+    console.error(`Impossible de valider le bloc “${slug}”.`, parsed.error);
   }
 
-  console.error(`Impossible de valider le bloc “${slug}”.`, parsed.error);
-
   const fallback = getDefaultContent(locale, slug);
-  await storage.setItem(key, fallback);
-  return fallback;
+
+  await prisma.contentBlock.upsert({
+    where: { slug_localeCode: { slug, localeCode: locale } },
+    update: {
+      payload: fallback,
+    },
+    create: {
+      slug,
+      localeCode: locale,
+      payload: fallback,
+    },
+  });
+
+  await setCachedValue(cacheKey, fallback);
+  await deleteCachedValue(getListCacheKey(locale));
+  return fallback as CacheableContent<TSlug>;
 }
 
 export async function writeContent<TSlug extends ContentSlug>(
@@ -85,18 +139,25 @@ export async function writeContent<TSlug extends ContentSlug>(
   locale: LocaleCode,
   payload: unknown,
 ) {
-  const storage = getContentStorage();
-  try {
-    const parsed = parseContentBySlug(slug, payload);
-    await storage.setItem(getContentKey(locale, slug), parsed);
-    return parsed;
-  } catch (error) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: `Le contenu fourni pour “${slug}” est invalide.`,
-      data: error,
-    });
-  }
+  const parsed = parseContentBySlug(slug, payload);
+  const prisma = usePrisma();
+
+  await prisma.contentBlock.upsert({
+    where: { slug_localeCode: { slug, localeCode: locale } },
+    update: {
+      payload: parsed,
+    },
+    create: {
+      slug,
+      localeCode: locale,
+      payload: parsed,
+    },
+  });
+
+  const entryKey = getEntryCacheKeyWithPrefix(locale, slug);
+  await deleteCachedValue([entryKey, getListCacheKey(locale)]);
+  await setCachedValue(entryKey, parsed);
+  return parsed;
 }
 
 export function assertContentSlug(value: string): asserts value is ContentSlug {

@@ -537,18 +537,6 @@ export default defineNuxtConfig({
     },
     display: "swap",
   },
-  nitro: {
-    storage: {
-      content: {
-        driver: "fs",
-        base: "./server/storage/content",
-      },
-      auth: {
-        driver: "fs",
-        base: "./server/storage/auth",
-      },
-    },
-  },
   eslint: {
     config: {
       standalone: false,
