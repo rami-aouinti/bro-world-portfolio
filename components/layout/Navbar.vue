@@ -323,7 +323,7 @@
 import { useLocalePath, useSwitchLocalePath } from "#i18n";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 
-import { useMediaQuery } from "@vueuse/core";
+import { useMediaQuery, useMounted } from "@vueuse/core";
 import type { LocaleObject } from "@nuxtjs/i18n";
 import DarkModeToggle from "~/components/DarkModeToggle.vue";
 import { Dock, DockIcon, DockSeparator } from "~/components/ui/dock";
@@ -377,7 +377,9 @@ const hasLanguageMenu = computed(() => languageItems.value.length > 0);
 const hasControls = computed(() => config.value.header.darkModeToggle || hasLanguageMenu.value);
 
 const isDrawerOpen = ref(false);
-const isMobile = useMediaQuery("(max-width: 960px)");
+const isMounted = useMounted();
+const mobileQuery = useMediaQuery("(max-width: 960px)", { initialValue: false });
+const isMobile = computed(() => isMounted.value && mobileQuery.value);
 
 const controlButtonSize = computed(() => (isMobile.value ? 48 : 56));
 const controlIconSize = computed(() => (isMobile.value ? 24 : 28));
