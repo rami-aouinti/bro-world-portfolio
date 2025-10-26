@@ -34,11 +34,7 @@ body {
 html,
 body {
   width: 100%;
-}
-
-body {
   min-height: 100%;
-  overflow: clip;
 }
 
 body.ltr {
@@ -217,12 +213,14 @@ label.btn {
 
 :where(#__nuxt, .v-application) {
   min-height: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 html {
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 html.dark {

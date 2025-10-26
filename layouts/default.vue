@@ -53,17 +53,20 @@ const particlesColor = computed(() => (isDark.value ? "#FFFFFF" : "#0F172A"));
 <style scoped>
 .app-layout {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .app-layout__shell {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-layout__content {
   position: relative;
   z-index: 1;
+  flex: 1 1 auto;
 }
 
 .personal__glow {
