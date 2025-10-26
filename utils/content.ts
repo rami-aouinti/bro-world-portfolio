@@ -206,14 +206,14 @@ const EN_CONTENT: ContentRecord = {
   profile: {
     firstname: "Mohamed Rami",
     lastname: "Aouinti",
-    role: "FullStack Developer (PHP & Vue)",
+    role: "Backend & DevOps Engineer (PHP, Symfony, Shopware)",
     avatar: "/images/profile.jpg",
   },
   hero: {
     badge: "Ready for new challenges",
-    headline: "Hi, I'm Rami FullStack Developer (PHP & Vue)",
+    headline: "Hi, I'm Rami, backend & DevOps engineer",
     subline:
-      "I craft secure, high-performance backends with PHP 8, Symfony, REST APIs, Docker, and CI/CD pipelines.",
+      "I design resilient Symfony and Shopware platforms with PHP 8, API Platform, asynchronous processing, and cloud-ready CI/CD.",
   },
   service: {
     label: "Services",
@@ -248,14 +248,14 @@ const EN_CONTENT: ContentRecord = {
     label: "Projects",
     headline: "Highlighted projects and engagements.",
     subline:
-      "From e-commerce platforms to microservice ecosystems, I deliver robust backends that help teams grow.",
+      "From high-volume ecommerce to event-driven services, I build PHP platforms that stay fast, observable, and easy to evolve.",
     works: [
       {
         name: "Microservices for TKDeutschland",
         slug: "microservices-tkdeutschland",
         live_demo: "#",
         description:
-          "Built secure, scalable services, integrated third-party APIs, and designed authentication workflows.",
+          "Architected event-driven Symfony 6 services with OAuth2, hardened security reviews, and 40% fewer production incidents.",
         thumbnails: "creativeagency-landingpage.webp",
         type: "Symfony 6 · REST APIs",
       },
@@ -264,7 +264,7 @@ const EN_CONTENT: ContentRecord = {
         slug: "ecommerce-plattformen-hinke-gmbh",
         live_demo: "#",
         description:
-          "Implemented advanced e-commerce features, configured analytics, and continuously optimized performance.",
+          "Replatformed the B2B store to Shopware 6 with dynamic pricing, async stock sync, and analytics that lifted conversion by 18%.",
         thumbnails: "furnilux-landingpage.webp",
         type: "Full Stack · Shopware",
       },
@@ -273,7 +273,7 @@ const EN_CONTENT: ContentRecord = {
         slug: "shopware-integrationen-wizmo-gmbh",
         live_demo: "#",
         description:
-          "Developed RESTful APIs, plugin extensions, and data tooling for international clients.",
+          "Delivered a Shopware plugin suite enabling multi-currency catalogs, translation workflows, and automated marketplace feeds.",
         thumbnails: "cafestreet-landingpage.webp",
         type: "PHP · Laravel",
       },
@@ -282,7 +282,7 @@ const EN_CONTENT: ContentRecord = {
         slug: "monitoring-analytics-automatisierung",
         live_demo: "#",
         description:
-          "Configured Google Analytics, built trustworthy dashboards, and uncovered actionable technical improvements.",
+          "Centralised telemetry across marketing and ops with GA4 connectors, Looker Studio dashboards, and proactive alerting runbooks.",
         thumbnails: "letsfood-landingpage.webp",
         type: "Analytics · Automation",
       },
@@ -291,7 +291,7 @@ const EN_CONTENT: ContentRecord = {
         slug: "leistungsoptimierung-legacy-systeme",
         live_demo: "#",
         description:
-          "Refactored existing codebases, reduced response times, and boosted maintainability.",
+          "Refactored legacy Symfony and Zend modules, added Redis caching, and cut median response times by 45%.",
         thumbnails: "loginregister-design.webp",
         type: "Refactoring · Testing",
       },
@@ -300,7 +300,7 @@ const EN_CONTENT: ContentRecord = {
         slug: "dockerisierte-entwicklungsumgebungen",
         live_demo: "#",
         description:
-          "Established containerized workflows to standardize CI/CD and accelerate releases.",
+          "Standardised Docker Compose environments, Make tooling, and GitHub Actions pipelines that trimmed onboarding to one day.",
         thumbnails: "iratoon-mobileapp.webp",
         type: "Docker · CI/CD",
       },
@@ -309,22 +309,22 @@ const EN_CONTENT: ContentRecord = {
   about: {
     label: "About",
     introduce: [
-      "I am Mohamed Rami Aouinti, a backend developer ((PHP & Vue)) with several years of experience designing, optimizing, and maintaining modern web applications.",
-      "My toolkit spans PHP 8, Symfony, Laravel, MySQL and PostgreSQL data modeling, plus scalable CI/CD pipelines.",
-      "I focus on rigor, quality, and teamwork to deliver reliable, future-proof products.",
+      "I am Mohamed Rami Aouinti, a backend specialist who has delivered B2B commerce, logistics, and subscription platforms across Europe.",
+      "My toolkit spans PHP 8, Symfony, Shopware 6, API Platform, and event-driven integrations backed by MySQL, PostgreSQL, and Redis.",
+      "I focus on pairing with teams, automating quality gates, and translating business goals into reliable, future-proof products.",
     ],
     hobbies: ["Reading technical books", "Playing chess", "Exploring new cuisines"],
   },
   cta: {
     label: "Build something remarkable together",
     description:
-      "Need a clear, effective interface? I help transform your vision into simple, fast, user-centered experiences.",
+      "Need a resilient backend or API rollout? I turn complex requirements into reliable services, analytics, and developer workflows.",
   },
   skills: {
     label: "Skills",
-    headline: "Tools and technologies I rely on to ship dependable interfaces.",
+    headline: "Technologies powering resilient Symfony, Shopware, and API platforms.",
     subline:
-      "From core web technologies to design systems, these are the skills I apply every day to craft engaging digital experiences.",
+      "From typed PHP services to observability stacks, these are the capabilities I lean on to deliver measurable business impact.",
     categories: [
       {
         slug: "it-kenntnisse-programmiersprachen",
@@ -699,6 +699,17 @@ const EN_CONTENT: ContentRecord = {
             ],
           },
           {
+            slug: "rabbitmq",
+            name: "RabbitMQ",
+            level: "Advanced",
+            rating: 4,
+            summary: "Message brokering for asynchronous workflows, guaranteed delivery, and resilient job processing.",
+            projects: [
+              { slug: "microservices-tkdeutschland" },
+              { slug: "dockerisierte-entwicklungsumgebungen" },
+            ],
+          },
+          {
             slug: "github-actions",
             name: "GitHub Actions",
             level: "Advanced",
@@ -874,14 +885,14 @@ const FR_CONTENT: ContentRecord = {
   profile: {
     firstname: "Mohamed Rami",
     lastname: "Aouinti",
-    role: "Développeur backend ((PHP & Vue))",
+    role: "Ingénieur backend & DevOps (PHP, Symfony, Shopware)",
     avatar: "/images/profile.jpg",
   },
   hero: {
     badge: "Prêt pour de nouveaux défis",
-    headline: "Bonjour, je suis Rami développeur backend ((PHP & Vue))",
+    headline: "Bonjour, je suis Rami, ingénieur backend & DevOps",
     subline:
-      "Je conçois des backends sécurisés et performants avec PHP 8, Symfony, des API REST, Docker et des pipelines CI/CD.",
+      "Je conçois des plateformes Symfony et Shopware résilientes avec PHP 8, API Platform, des traitements asynchrones et une CI/CD prête pour le cloud.",
   },
   service: {
     label: "Services",
@@ -916,14 +927,14 @@ const FR_CONTENT: ContentRecord = {
     label: "Projets",
     headline: "Projets et missions marquants.",
     subline:
-      "Des plateformes e-commerce aux écosystèmes de microservices, je livre des backends robustes qui font grandir les équipes.",
+      "Des e-commerces à fort volume aux services événementiels, je construis des plateformes PHP rapides, observables et faciles à faire évoluer.",
     works: [
       {
         name: "Microservices pour TKDeutschland",
         slug: "microservices-tkdeutschland",
         live_demo: "#",
         description:
-          "Conception de services sécurisés et scalables, intégration d’API tierces et mise en place de parcours d’authentification.",
+          "Architecture de services Symfony 6 orientés événements avec OAuth2, revues de sécurité renforcées et 40 % d’incidents en production en moins.",
         thumbnails: "creativeagency-landingpage.webp",
         type: "Symfony 6 · API REST",
       },
@@ -932,7 +943,7 @@ const FR_CONTENT: ContentRecord = {
         slug: "ecommerce-plattformen-hinke-gmbh",
         live_demo: "#",
         description:
-          "Mise en œuvre de fonctionnalités e-commerce avancées, configuration d’analytics et optimisation continue des performances.",
+          "Replatforming de la boutique B2B vers Shopware 6 avec tarification dynamique, synchronisation de stock asynchrone et analytics ayant augmenté la conversion de 18 %.",
         thumbnails: "furnilux-landingpage.webp",
         type: "Full Stack · Shopware",
       },
@@ -941,7 +952,7 @@ const FR_CONTENT: ContentRecord = {
         slug: "shopware-integrationen-wizmo-gmbh",
         live_demo: "#",
         description:
-          "Développement d’API REST, d’extensions de plugins et d’outils de données pour des clients internationaux.",
+          "Livraison d’une suite de plugins Shopware activant catalogues multi-devises, flux de traduction et feeds marketplaces automatisés.",
         thumbnails: "cafestreet-landingpage.webp",
         type: "PHP · Laravel",
       },
@@ -950,7 +961,7 @@ const FR_CONTENT: ContentRecord = {
         slug: "monitoring-analytics-automatisierung",
         live_demo: "#",
         description:
-          "Configuration de Google Analytics, création de tableaux de bord fiables et identification d’améliorations techniques actionnables.",
+          "Centralisation de la télémétrie marketing et ops avec connecteurs GA4, dashboards Looker Studio et runbooks d’alerting proactif.",
         thumbnails: "letsfood-landingpage.webp",
         type: "Analytics · Automatisation",
       },
@@ -959,7 +970,7 @@ const FR_CONTENT: ContentRecord = {
         slug: "leistungsoptimierung-legacy-systeme",
         live_demo: "#",
         description:
-          "Refonte de codebases existantes, réduction des temps de réponse et amélioration de la maintenabilité.",
+          "Refactorisation de modules Symfony et Zend legacy, ajout de cache Redis et baisse de 45 % du temps de réponse médian.",
         thumbnails: "loginregister-design.webp",
         type: "Refactorisation · Tests",
       },
@@ -968,7 +979,7 @@ const FR_CONTENT: ContentRecord = {
         slug: "dockerisierte-entwicklungsumgebungen",
         live_demo: "#",
         description:
-          "Mise en place de workflows conteneurisés pour standardiser la CI/CD et accélérer les livraisons.",
+          "Standardisation d’environnements Docker Compose, d’outils Make et de pipelines GitHub Actions réduisant l’onboarding à une journée.",
         thumbnails: "iratoon-mobileapp.webp",
         type: "Docker · CI/CD",
       },
@@ -977,9 +988,9 @@ const FR_CONTENT: ContentRecord = {
   about: {
     label: "À propos",
     introduce: [
-      "Je suis Mohamed Rami Aouinti, développeur backend ((PHP & Vue)) avec plusieurs années d’expérience dans la conception, l’optimisation et la maintenance d’applications web modernes.",
-      "Mon quotidien combine PHP 8, Symfony, Laravel, la modélisation de données MySQL et PostgreSQL ainsi que des pipelines CI/CD évolutifs.",
-      "J’accorde une grande importance à la rigueur, à la qualité et au travail d’équipe pour livrer des produits fiables et pérennes.",
+      "Je suis Mohamed Rami Aouinti, spécialiste backend ayant livré des plateformes e-commerce B2B, logistiques et d’abonnement à travers l’Europe.",
+      "Mon quotidien combine PHP 8, Symfony, Shopware 6, API Platform et des intégrations événementielles soutenues par MySQL, PostgreSQL et Redis.",
+      "Je mise sur le pairing, l’automatisation des garde-fous qualité et la traduction des objectifs métiers en produits fiables et durables.",
     ],
     hobbies: [
       "Lecture d’ouvrages techniques",
@@ -990,13 +1001,13 @@ const FR_CONTENT: ContentRecord = {
   cta: {
     label: "Construisons quelque chose de remarquable ensemble",
     description:
-      "Besoin d’une interface claire et efficace ? Je transforme votre vision en expériences simples, rapides et centrées sur l’utilisateur.",
+      "Besoin d’un backend résilient ou d’une API prête pour la production ? Je transforme vos exigences complexes en services fiables, analytics et workflows développeurs.",
   },
   skills: {
     label: "Compétences",
-    headline: "Outils et technologies que j’utilise pour livrer des interfaces fiables.",
+    headline: "Technologies au service de plateformes Symfony, Shopware et API résilientes.",
     subline:
-      "Des technologies web essentielles aux design systems, voici les compétences que j’active chaque jour pour créer des expériences numériques engageantes.",
+      "Du PHP typé aux stacks d’observabilité, voici les expertises sur lesquelles je m’appuie pour générer de l’impact mesurable.",
     categories: [
       {
         slug: "it-kenntnisse-programmiersprachen",
@@ -1359,6 +1370,18 @@ const FR_CONTENT: ContentRecord = {
             projects: [
               { slug: "dockerisierte-entwicklungsumgebungen" },
               { slug: "microservices-tkdeutschland" },
+            ],
+          },
+          {
+            slug: "rabbitmq",
+            name: "RabbitMQ",
+            level: "Avancé",
+            rating: 4,
+            summary:
+              "Courtier de messages pour flux asynchrones, garantie de livraison et traitements résilients.",
+            projects: [
+              { slug: "microservices-tkdeutschland" },
+              { slug: "dockerisierte-entwicklungsumgebungen" },
             ],
           },
           {
