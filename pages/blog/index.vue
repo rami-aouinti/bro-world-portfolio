@@ -1,7 +1,6 @@
 <template>
   <ScrollSmooth>
     <v-container class="blog-page py-16">
-
       <v-sheet
         class="blog-page__filters"
         elevation="0"

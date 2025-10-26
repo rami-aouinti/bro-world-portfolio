@@ -30,13 +30,6 @@
             </template>
 
             <div class="blog-article__hero-overlay">
-              <v-chip
-                color="primary"
-                variant="elevated"
-                class="text-uppercase font-weight-bold"
-              >
-                {{ post.category }}
-              </v-chip>
               <h1 class="blog-article__title">{{ post.title }}</h1>
               <p class="blog-article__excerpt">{{ post.description }}</p>
               <div class="blog-article__meta">

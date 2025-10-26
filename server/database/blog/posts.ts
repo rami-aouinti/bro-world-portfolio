@@ -1,15 +1,13 @@
 import type { BlogPost } from "~/types/blog";
 
-const DEMO_AUTHOR_AVATAR =
-  "https://api.dicebear.com/7.x/initials/svg?seed=Demo%20Author";
+const DEMO_AUTHOR_AVATAR = "https://api.dicebear.com/7.x/initials/svg?seed=Demo%20Author";
 
 export const BLOG_POSTS: BlogPost[] = [
   {
     id: "welcome-to-the-demo-blog",
     slug: "welcome-to-the-demo-blog",
     title: "Welcome to the Demo Blog",
-    excerpt:
-      "A quick introduction to the sample blog that ships with the portfolio starter.",
+    excerpt: "A quick introduction to the sample blog that ships with the portfolio starter.",
     description:
       "Use these demo posts to showcase the blog layout, typography and content building blocks before publishing your own stories.",
     coverImage:
