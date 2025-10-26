@@ -69,7 +69,8 @@
                 <v-img
                   :src="profileContent.avatar"
                   :alt="`${fullname} - ${profileContent.role}`"
-                  height="360"
+                  height="240"
+                  width="240"
                   cover
                   class="about__image"
                 />
@@ -132,6 +133,8 @@ const profileDescription = computed(() => {
 }
 
 .about__image {
-  border-radius: 18px;
+  border-radius: 50%;
+  margin-inline: auto;
+  max-width: 240px;
 }
 </style>
