@@ -371,7 +371,7 @@ function isActiveLink(target: string) {
 <style scoped>
 .dock-navbar {
   position: sticky;
-  top: 16px;
+  top: 24px;
   z-index: 30;
   display: flex;
   justify-content: center;
