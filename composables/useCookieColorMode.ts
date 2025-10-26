@@ -1,6 +1,6 @@
 import { computed, watch, watchEffect } from "vue";
 import { useColorMode } from "@vueuse/core";
-import { useCookie, useHead, useRequestHeaders } from "#imports";
+import { useCookie, useHead, useRequestHeaders, useI18n } from "#imports";
 import { withSecureCookieOptions } from "~/lib/cookies";
 import { useTheme } from "vuetify";
 
@@ -163,6 +163,8 @@ export function useCookieColorMode() {
     );
   }
 
+  const { locale } = useI18n();
+
   useHead({
     htmlAttrs: computed(() => {
       const isDark = resolvedMode.value === "dark";
@@ -170,6 +172,7 @@ export function useCookieColorMode() {
       return {
         class: isDark ? "dark" : undefined,
         "data-theme": isDark ? "dark" : "light",
+        lang: locale.value,
       };
     }),
   });
