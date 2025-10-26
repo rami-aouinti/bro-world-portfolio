@@ -54,9 +54,6 @@
           <NuxtImg
             :src="projectThumbnailSrc"
             :alt="`Illustration du projet ${projectDetails.name}`"
-            width="1024"
-            height="640"
-            sizes="(min-width: 1280px) 560px, (min-width: 960px) 50vw, 90vw"
             densities="[1,2]"
             class="detail-page__image"
             format="webp"
