@@ -38,12 +38,41 @@
     "blog": {
       "badge": "Blog",
       "title": "Approfondimenti, appunti e analisi tecniche.",
-      "description": "Presto pubblicherò articoli approfonditi su architettura backend, pratiche Symfony e consigli di produttività.",
+    "description": "Presto pubblicherò articoli approfonditi su architettura backend, pratiche Symfony e consigli di produttività.",
+    "filters": {
+      "search": "Cerca articoli",
+      "categories": "Sfoglia categorie",
+      "tags": "Filtra per tag",
+      "all": "Tutti gli articoli"
+    },
+    "list": {
+      "readingTime": "{minutes} min di lettura",
+      "readMore": "Leggi l’articolo",
       "empty": {
-        "title": "Il primo articolo è in arrivo",
-        "description": "Sto preparando casi di studio e tutorial da condividere a breve. Nel frattempo, scrivimi per parlare del tuo progetto.",
-        "cta": "Contattami"
+        "title": "Nessun articolo corrisponde ai filtri",
+        "description": "Prova ad azzerare la ricerca o scegli un’altra categoria per continuare l’esplorazione."
       }
+    },
+    "meta": {
+      "heading": "Dettagli dell’articolo",
+      "published": "Pubblicato",
+      "updated": "Aggiornato",
+      "readingTime": "Tempo di lettura",
+      "copyLink": "Copia link",
+      "linkCopied": "Link copiato!",
+      "backToList": "Torna a tutti gli articoli"
+    },
+    "related": "Altri articoli che potrebbero interessarti",
+    "notFound": {
+      "title": "Questo articolo non è più disponibile",
+      "description": "Potrebbe essere stato spostato o rimosso. Torna al blog per continuare a leggere.",
+      "cta": "Torna al blog"
+    },
+    "empty": {
+      "title": "Il primo articolo è in arrivo",
+      "description": "Sto preparando casi di studio e tutorial da condividere a breve. Nel frattempo, scrivimi per parlare del tuo progetto.",
+      "cta": "Contattami"
+    }
     },
     "personal": {
       "viewProjects": "Guarda i miei progetti",
