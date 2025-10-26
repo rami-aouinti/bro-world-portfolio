@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref, reactive, computed } from "vue";
-import { useDevicePixelRatio } from "@vueuse/core";
+import { useDevicePixelRatio, useResizeObserver } from "@vueuse/core";
 
 type Snowflake = {
   x: number;
@@ -55,35 +55,75 @@ const color = computed(() => {
   return `${r} ${g} ${b}`;
 });
 
+let resizeRaf: number | null = null;
+let stopResizeObserver: (() => void) | undefined;
+
 onMounted(() => {
   if (canvasRef.value) {
     context.value = canvasRef.value.getContext("2d");
   }
-  initCanvas();
+
   animate();
-  window.addEventListener("resize", initCanvas);
+  scheduleResize();
+
+  stopResizeObserver = useResizeObserver(canvasContainerRef, ([entry]) => {
+    scheduleResize(entry.contentRect);
+  });
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener("resize", initCanvas);
+  if (resizeRaf !== null) {
+    cancelAnimationFrame(resizeRaf);
+    resizeRaf = null;
+  }
+  stopResizeObserver?.();
 });
 
-function initCanvas() {
-  resizeCanvas();
-  createSnowflakes();
+function scheduleResize(rect?: DOMRectReadOnly) {
+  if (resizeRaf !== null) {
+    cancelAnimationFrame(resizeRaf);
+  }
+
+  resizeRaf = requestAnimationFrame(() => {
+    resizeRaf = null;
+    resizeCanvas(rect);
+  });
 }
 
-function resizeCanvas() {
-  if (canvasContainerRef.value && canvasRef.value && context.value) {
-    snowflakes.value.length = 0;
-    canvasSize.w = canvasContainerRef.value.offsetWidth;
-    canvasSize.h = canvasContainerRef.value.offsetHeight;
-    canvasRef.value.width = canvasSize.w * pixelRatio.value;
-    canvasRef.value.height = canvasSize.h * pixelRatio.value;
-    canvasRef.value.style.width = `${canvasSize.w}px`;
-    canvasRef.value.style.height = `${canvasSize.h}px`;
-    context.value.scale(pixelRatio.value, pixelRatio.value);
+function resizeCanvas(rect?: DOMRectReadOnly) {
+  if (!canvasContainerRef.value || !canvasRef.value || !context.value) {
+    return;
   }
+
+  const nextWidth = Math.round(rect?.width ?? canvasContainerRef.value.clientWidth);
+  const nextHeight = Math.round(rect?.height ?? canvasContainerRef.value.clientHeight);
+
+  if (nextWidth <= 0 || nextHeight <= 0) {
+    return;
+  }
+
+  if (nextWidth === canvasSize.w && nextHeight === canvasSize.h) {
+    return;
+  }
+
+  canvasSize.w = nextWidth;
+  canvasSize.h = nextHeight;
+
+  canvasRef.value.width = canvasSize.w * pixelRatio.value;
+  canvasRef.value.height = canvasSize.h * pixelRatio.value;
+  canvasRef.value.style.width = `${canvasSize.w}px`;
+  canvasRef.value.style.height = `${canvasSize.h}px`;
+
+  // Reset the transform before applying a new scale to avoid accumulating values.
+  context.value.setTransform(1, 0, 0, 1, 0, 0);
+  context.value.scale(pixelRatio.value, pixelRatio.value);
+
+  regenerateSnowflakes();
+}
+
+function regenerateSnowflakes() {
+  snowflakes.value.length = 0;
+  createSnowflakes();
 }
 
 function createSnowflakes() {
