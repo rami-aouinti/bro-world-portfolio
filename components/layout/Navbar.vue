@@ -19,7 +19,7 @@
           <span class="sr-only">{{ t("navigation.openMenu") }}</span>
         </button>
 
-        <NuxtLink class="dock-navbar__mobile-right">
+        <div class="dock-navbar__mobile-right">
           <DarkModeToggle
             v-if="config.header.darkModeToggle"
             class="dock-navbar__toggle"
@@ -119,7 +119,7 @@
               </v-list-item>
             </v-list>
           </v-menu>
-        </NuxtLink>
+        </div>
       </div>
 
       <v-navigation-drawer
