@@ -120,7 +120,7 @@ const workCards = computed(() => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 300px;
+  min-height: 440px;
   border-radius: 28px;
   border: 1px solid;
   padding: 2.5rem;
@@ -128,7 +128,7 @@ const workCards = computed(() => {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-color: hsl(var(--border) / 0.4);
-  background-color: hsl(var(--muted) / 0.2);
+  background-color: rgba(var(--v-theme-primary), 0.65);
 }
 
 .work-card-thumbnail {
