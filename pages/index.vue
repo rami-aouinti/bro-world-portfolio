@@ -117,7 +117,6 @@
 import { computed } from "vue";
 import { Motion } from "motion-v";
 
-import LampHero from "~/components/section/LampHero.vue";
 import Personal from "~/components/section/Personal.vue";
 import Line from "~/components/layout/Line.vue";
 import About from "~/components/section/About.vue";
@@ -126,7 +125,6 @@ import Experience from "~/components/section/Experience.vue";
 import Education from "~/components/section/Education.vue";
 import Service from "~/components/section/Service.vue";
 import Work from "~/components/section/Work.vue";
-import LampCallout from "~/components/section/LampCallout.vue";
 import Cta from "~/components/section/Cta.vue";
 
 const { data: aboutContent } = useContentBlock("about");
