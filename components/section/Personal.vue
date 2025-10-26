@@ -3,7 +3,7 @@
     id="personal"
     class="personal"
   >
-    <ScrollSmooth>
+    <ScrollSmooth initially-visible>
       <v-container
         v-if="personalContent"
         class="personal__container py-6 my-auto py-md-24"
