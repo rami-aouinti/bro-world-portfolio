@@ -19,7 +19,7 @@
           <span class="sr-only">{{ t("navigation.openMenu") }}</span>
         </button>
 
-        <div class="dock-navbar__mobile-right">
+        <NuxtLink class="dock-navbar__mobile-right">
           <DarkModeToggle
             v-if="config.header.darkModeToggle"
             class="dock-navbar__toggle"
@@ -115,12 +115,13 @@
                     :size="controlChevronSize"
                     class="dock-navbar__language-check"
                   />
-                </div>
+                </NuxtLink>
               </v-list-item>
             </v-list>
           </v-menu>
-        </div>
+        </NuxtLink>
       </div>
+
 
       <v-navigation-drawer
         v-model="isDrawerOpen"
