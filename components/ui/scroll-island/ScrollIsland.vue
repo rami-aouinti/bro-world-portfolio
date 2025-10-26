@@ -64,7 +64,7 @@ import NumberFlow from "@number-flow/vue";
 import { useColorMode } from "@vueuse/core";
 import { motion, MotionConfig } from "motion-v";
 import { computed, onMounted, onUnmounted, ref, toRef, useSlots } from "vue";
-import {AnimatedCircularProgressBar} from "~/components/ui/animated-circular-progressbar";
+import { AnimatedCircularProgressBar } from "~/components/ui/animated-circular-progressbar";
 
 interface Props {
   class?: string;
