@@ -608,6 +608,18 @@ const EN_CONTENT: ContentRecord = {
             summary: "Stateless authentication with refresh tokens and role-based access control.",
             projects: [{ slug: "microservices-tkdeutschland" }],
           },
+          {
+            slug: "headless-ecommerce-services",
+            name: "Headless ecommerce services",
+            level: "Advanced",
+            rating: 4,
+            summary:
+              "Modular catalog, checkout, and payment flows powering the bro-world-backend-ecommce platform.",
+            projects: [
+              { slug: "ecommerce-plattformen-hinke-gmbh" },
+              { slug: "dockerisierte-entwicklungsumgebungen" },
+            ],
+          },
         ],
       },
       {
