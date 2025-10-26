@@ -98,6 +98,11 @@ function escapeHtml(value: string) {
     .replace(/'/g, "&#39;");
 }
 
+function buildFromDisplayName(name: string) {
+  const sanitized = name.replace(/[\r\n"<>]/g, "").trim();
+  return sanitized ? `${sanitized} via Contact Form` : "Contact Form";
+}
+
 export async function sendContactEmail(payload: ContactEmailPayload) {
   const config = getResendConfig();
   const recipients = config.to
@@ -109,8 +114,9 @@ export async function sendContactEmail(payload: ContactEmailPayload) {
     throw new MailerConfigurationError("No destination address configured.");
   }
 
+  const displayFromName = buildFromDisplayName(payload.name);
   const requestPayload = {
-    from: config.from,
+    from: `${displayFromName} <${config.from}>`,
     to: recipients,
     reply_to: payload.email,
     subject: `New contact from ${payload.name}`,
