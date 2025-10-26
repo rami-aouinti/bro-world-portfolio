@@ -1,10 +1,12 @@
 <template>
   <div class="app-layout">
     <v-app class="app-layout__shell">
-      <ParticlesBg
+      <component
+        :is="LazyParticlesBg"
+        v-if="showParticles"
         class="app-layout__particles"
         :color="particlesColor"
-        :quantity="160"
+        :quantity="particleQuantity"
         :staticity="55"
         :ease="45"
       />
@@ -29,13 +31,80 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { usePreferredReducedMotion, useWindowSize } from "@vueuse/core";
 import Navbar from "~/components/layout/Navbar.vue";
-import { ParticlesBg } from "~/components/ui/particles-bg";
 import { useCookieColorMode } from "~/composables/useCookieColorMode";
 import { Analytics } from '@vercel/analytics/nuxt'
 
 const colorMode = useCookieColorMode();
+const prefersReducedMotion = usePreferredReducedMotion();
+const { width } = useWindowSize();
+const isHydrated = ref(false);
+const shouldRenderParticles = ref(false);
+const pendingIdleHandle = ref<number | null>(null);
+
+const LazyParticlesBg = defineAsyncComponent({
+  loader: () => import("~/components/ui/particles-bg").then((module) => module.ParticlesBg),
+  suspensible: false,
+});
+
+function scheduleParticlesRender() {
+  if (shouldRenderParticles.value || pendingIdleHandle.value !== null) {
+    return;
+  }
+
+  function enableParticles() {
+    shouldRenderParticles.value = true;
+    pendingIdleHandle.value = null;
+  }
+
+  if (import.meta.client && "requestIdleCallback" in window) {
+    pendingIdleHandle.value = (window as Window & {
+      requestIdleCallback: (callback: () => void, options?: { timeout?: number }) => number;
+    }).requestIdleCallback(enableParticles, { timeout: 350 });
+  } else if (import.meta.client) {
+    pendingIdleHandle.value = window.setTimeout(() => enableParticles(), 180);
+  }
+}
+
+function cancelScheduledParticles() {
+  if (!import.meta.client || pendingIdleHandle.value === null) {
+    return;
+  }
+
+  if ("cancelIdleCallback" in window) {
+    (window as Window & { cancelIdleCallback: (handle: number) => void }).cancelIdleCallback(pendingIdleHandle.value);
+  } else {
+    window.clearTimeout(pendingIdleHandle.value);
+  }
+
+  pendingIdleHandle.value = null;
+}
+
+onMounted(() => {
+  isHydrated.value = true;
+
+  if (!prefersReducedMotion.value) {
+    scheduleParticlesRender();
+  }
+});
+
+onBeforeUnmount(() => {
+  cancelScheduledParticles();
+});
+
+watch(prefersReducedMotion, (prefers) => {
+  if (prefers) {
+    cancelScheduledParticles();
+    shouldRenderParticles.value = false;
+    return;
+  }
+
+  if (isHydrated.value) {
+    scheduleParticlesRender();
+  }
+});
 
 const isDark = computed(() => {
   if (colorMode.value === "dark") {
@@ -50,6 +119,19 @@ const isDark = computed(() => {
 });
 
 const particlesColor = computed(() => (isDark.value ? "#FFFFFF" : "#0F172A"));
+const particleQuantity = computed(() => {
+  if (width.value < 640) {
+    return 60;
+  }
+
+  if (width.value < 1280) {
+    return 120;
+  }
+
+  return 160;
+});
+
+const showParticles = computed(() => isHydrated.value && shouldRenderParticles.value && !prefersReducedMotion.value);
 </script>
 
 <style scoped>
