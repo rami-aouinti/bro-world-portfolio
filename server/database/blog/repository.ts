@@ -1,5 +1,6 @@
 import type { Prisma } from "@prisma/client";
 import type { BlogPost, BlogPostPreview, BlogPostSection } from "~/types/blog";
+import { BLOG_POSTS } from "./posts";
 import { usePrisma } from "~/server/utils/prisma";
 import { deleteCachedValue, getCachedValue, setCachedValue } from "~/server/utils/cache";
 
@@ -69,6 +70,9 @@ function mapPost(record: PrismaBlogPost): BlogPost {
 
 async function fetchPostFromDatabase(slug: string) {
   const prisma = usePrisma();
+  if (!prisma) {
+    return BLOG_POSTS.find((post) => post.slug === slug) ?? null;
+  }
   const record = await prisma.blogPost.findUnique({
     where: { slug },
     include: {
@@ -88,6 +92,11 @@ export async function listPosts() {
   }
 
   const prisma = usePrisma();
+  if (!prisma) {
+    await setCachedValue(LIST_CACHE_KEY, BLOG_POSTS);
+    await Promise.all(BLOG_POSTS.map((post) => setCachedValue(getPostCacheKey(post.slug), post)));
+    return BLOG_POSTS;
+  }
   const records = await prisma.blogPost.findMany({
     orderBy: { publishedAt: "desc" },
     include: {
@@ -121,6 +130,9 @@ export async function findPostBySlug(slug: string) {
 
 export async function upsertPost(payload: BlogPost) {
   const prisma = usePrisma();
+  if (!prisma) {
+    throw new Error("Database is not configured.");
+  }
   const authorId = resolveAuthorId(payload.author.name);
 
   await prisma.$transaction(async (tx) => {

@@ -1,4 +1,5 @@
 import { createError } from "h3";
+import { useStorage } from "#imports";
 import { DEFAULT_CONTENT } from "~/utils/content";
 import type { ContentRecord, ContentSlug } from "~/types/content";
 import { contentSchemas, parseContentBySlug } from "~/types/content";
@@ -34,6 +35,9 @@ function getDefaultContent(locale: LocaleCode, slug: ContentSlug) {
 
 async function ensureLocales() {
   const prisma = usePrisma();
+  if (!prisma) {
+    return;
+  }
   await Promise.all(
     SUPPORTED_LOCALES.map((code) =>
       prisma.locale.upsert({
@@ -47,6 +51,9 @@ async function ensureLocales() {
 
 export async function ensureContentDefaults() {
   const prisma = usePrisma();
+  if (!prisma) {
+    return;
+  }
   await ensureLocales();
 
   const entries = Object.entries(DEFAULT_CONTENT) as LocalizedContentEntry[];
@@ -98,12 +105,40 @@ export async function readContent<TSlug extends ContentSlug>(slug: TSlug, locale
     return cached;
   }
 
+  const schema = contentSchemas[slug];
   const prisma = usePrisma();
+  if (!prisma) {
+    const storageKey = `${locale}/${slug}.json`;
+    try {
+      const storage = useStorage("content");
+      const storedValue = await storage.getItem(storageKey);
+      if (storedValue) {
+        const parsed = schema.safeParse(storedValue);
+        if (parsed.success) {
+          await setCachedValue(cacheKey, parsed.data);
+          return parsed.data as CacheableContent<TSlug>;
+        }
+
+        console.error(`Impossible de valider le bloc “${slug}”.`, parsed.error);
+      }
+    } catch {
+      // Ignore storage access errors when storage is unavailable
+    }
+
+    const fallback = getDefaultContent(locale, slug);
+    try {
+      const storage = useStorage("content");
+      await storage.setItem(storageKey, fallback);
+    } catch {
+      // ignore storage write errors when storage is unavailable
+    }
+
+    await setCachedValue(cacheKey, fallback);
+    return fallback as CacheableContent<TSlug>;
+  }
   const block = await prisma.contentBlock.findUnique({
     where: { slug_localeCode: { slug, localeCode: locale } },
   });
-
-  const schema = contentSchemas[slug];
 
   if (block) {
     const parsed = schema.safeParse(block.payload);
@@ -141,6 +176,12 @@ export async function writeContent<TSlug extends ContentSlug>(
 ) {
   const parsed = parseContentBySlug(slug, payload);
   const prisma = usePrisma();
+  if (!prisma) {
+    throw createError({
+      statusCode: 503,
+      statusMessage: "Le stockage de contenu n'est pas disponible.",
+    });
+  }
 
   await prisma.contentBlock.upsert({
     where: { slug_localeCode: { slug, localeCode: locale } },

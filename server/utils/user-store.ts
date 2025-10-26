@@ -52,6 +52,9 @@ async function cacheUser(user: AdminUser) {
 
 export async function listUsers() {
   const prisma = usePrisma();
+  if (!prisma) {
+    return [];
+  }
   const users = await prisma.adminUser.findMany();
   const mapped = users.map((user) => mapAdminUser(user));
   await Promise.all(mapped.map((user) => cacheUser(user)));
@@ -66,6 +69,9 @@ export async function findUserByEmail(email: string) {
   }
 
   const prisma = usePrisma();
+  if (!prisma) {
+    return null;
+  }
   const record = await prisma.adminUser.findUnique({ where: { email: normalizeEmail(email) } });
   if (!record) {
     return null;
@@ -79,6 +85,9 @@ export async function findUserByEmail(email: string) {
 export async function ensureDefaultAdmin() {
   const config = useRuntimeConfig();
   const prisma = usePrisma();
+  if (!prisma) {
+    return;
+  }
 
   const existing = await prisma.adminUser.findFirst({ where: { role: "admin" } });
   if (existing) {
@@ -123,6 +132,9 @@ export async function findUserById(id: string) {
   }
 
   const prisma = usePrisma();
+  if (!prisma) {
+    return null;
+  }
   const record = await prisma.adminUser.findUnique({ where: { id } });
   if (!record) {
     return null;

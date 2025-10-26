@@ -3,17 +3,27 @@ import { useRuntimeConfig } from "#imports";
 
 const DEFAULT_CACHE_TTL = 60 * 15; // 15 minutes
 
+type RuntimeConfig = ReturnType<typeof useRuntimeConfig>;
+
+function getRuntimeConfig(): Partial<RuntimeConfig> {
+  try {
+    return useRuntimeConfig();
+  } catch {
+    return {};
+  }
+}
+
 let cachedClient: Redis | null = null;
 let isDisabled = false;
 
 function resolveRedisUrl(): string | null {
-  const { redis } = useRuntimeConfig();
+  const { redis } = getRuntimeConfig();
   const url = typeof redis?.url === "string" ? redis.url.trim() : "";
   return url.length > 0 ? url : null;
 }
 
 function resolveRedisTtl(): number {
-  const { redis } = useRuntimeConfig();
+  const { redis } = getRuntimeConfig();
   const ttlValue = redis?.ttl;
 
   if (typeof ttlValue === "number" && Number.isFinite(ttlValue) && ttlValue > 0) {
