@@ -603,6 +603,10 @@ export default defineNuxtConfig({
       url: process.env.REDIS_URL,
       ttl: Number.parseInt(process.env.REDIS_CACHE_TTL ?? "", 10) || 60 * 15,
     },
+    workflow: {
+      endpoint: process.env.WORKFLOW_ENDPOINT,
+      apiKey: process.env.WORKFLOW_API_KEY,
+    },
     public: {
       auth: {
         csrfCookieName,
