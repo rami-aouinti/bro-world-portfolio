@@ -67,6 +67,13 @@ const particlesColor = computed(() => (isDark.value ? "#FFFFFF" : "#0F172A"));
   position: relative;
   z-index: 1;
   flex: 1 1 auto;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  .app-layout__content {
+    overflow-x: hidden;
+  }
 }
 
 .personal__glow {
