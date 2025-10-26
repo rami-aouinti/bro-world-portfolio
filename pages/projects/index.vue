@@ -2,14 +2,6 @@
   <section class="github-projects">
     <v-container class="py-12 github-projects__container">
       <header class="github-projects__header">
-        <v-chip
-          label
-          color="primary"
-          variant="tonal"
-          class="github-projects__badge"
-        >
-          {{ t("portfolio.githubProjects.badge") }}
-        </v-chip>
         <h1 class="text-h4 text-foreground github-projects__title">
           {{ t("portfolio.githubProjects.title") }}
         </h1>

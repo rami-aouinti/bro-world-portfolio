@@ -1,13 +1,6 @@
 <template>
   <ScrollSmooth>
     <v-container class="blog-page py-16">
-      <div class="blog-page__header text-foreground">
-        <span class="blog-page__badge">{{ t("portfolio.blog.badge") }}</span>
-        <h1 class="blog-page__title">{{ t("portfolio.blog.title") }}</h1>
-        <p class="blog-page__description">
-          {{ t("portfolio.blog.description") }}
-        </p>
-      </div>
 
       <v-sheet
         class="blog-page__filters"

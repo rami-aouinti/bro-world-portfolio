@@ -290,6 +290,7 @@ const languageCard = computed(() => {
   min-height: 44px;
   padding-inline: 12px;
   margin: 4px;
+  text-decoration: none;
 }
 
 .skills__chip :deep(.v-chip__content) {
@@ -304,6 +305,7 @@ const languageCard = computed(() => {
   width: 100%;
   min-height: 44px;
   padding-inline: 4px;
+  text-decoration: none;
 }
 
 .skills__language-chip {
