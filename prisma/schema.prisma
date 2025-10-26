@@ -1,0 +1,105 @@
+// Prisma schema generated to persist portfolio data in PostgreSQL
+// Run `pnpm dlx prisma generate` after installing dependencies.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Locale {
+  code   String        @id
+  label  String
+  blocks ContentBlock[]
+}
+
+model ContentBlock {
+  id         String   @id @default(cuid())
+  slug       String
+  localeCode String
+  payload    Json
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  locale Locale @relation(fields: [localeCode], references: [code], onDelete: Cascade)
+
+  @@unique([slug, localeCode])
+}
+
+model BlogAuthor {
+  id     String    @id
+  name   String
+  role   String
+  avatar String
+
+  posts BlogPost[]
+}
+
+model BlogPost {
+  id                 String             @id
+  slug               String             @unique
+  title              String
+  excerpt            String
+  description        String
+  coverImage         String
+  heroImage          String?
+  category           String
+  tags               String[]
+  readingTimeMinutes Int
+  publishedAt        DateTime
+  updatedAt          DateTime?
+  featured           Boolean            @default(false)
+  authorId           String
+  createdAt          DateTime           @default(now())
+  updatedAtInternal  DateTime           @updatedAt
+
+  author   BlogAuthor     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  stats    BlogPostStats?
+  sections BlogSection[]
+}
+
+model BlogPostStats {
+  postId    String  @id
+  views     Int
+  reactions Int
+
+  post BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
+
+model BlogSection {
+  id     String   @id @default(cuid())
+  postId String
+  order  Int
+  type   String
+  data   Json
+
+  post BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, order])
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  role         String
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  sessions Session[]
+}
+
+model Session {
+  token     String   @id
+  userId    String
+  role      String
+  csrfToken String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

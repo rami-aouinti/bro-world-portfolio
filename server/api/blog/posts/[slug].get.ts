@@ -1,15 +1,15 @@
 import { createError, defineEventHandler, getRouterParam } from "h3";
-import { findBlogPostBySlug } from "~/server/database/blog/posts";
+import { findPostBySlug } from "~/server/database/blog/repository";
 import type { BlogPostResponse } from "~/types/blog";
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
   const slug = getRouterParam(event, "slug");
 
   if (!slug) {
     throw createError({ statusCode: 400, statusMessage: "Slug is required." });
   }
 
-  const post = findBlogPostBySlug(slug);
+  const post = await findPostBySlug(slug);
 
   if (!post) {
     throw createError({ statusCode: 404, statusMessage: "Post not found." });

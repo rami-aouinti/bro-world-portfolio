@@ -1,31 +1,22 @@
 import { defineEventHandler, getQuery } from "h3";
-import { BLOG_POSTS } from "~/server/database/blog/posts";
-import type { BlogPost, BlogPostPreview, BlogPostsMeta, BlogPostsResponse } from "~/types/blog";
+import { listPosts, toPreview } from "~/server/database/blog/repository";
+import type { BlogPostPreview, BlogPostsMeta, BlogPostsResponse } from "~/types/blog";
 
 function normalize(value: string) {
   return value.trim().toLowerCase();
 }
 
-function buildPreview(post: BlogPost): BlogPostPreview {
-  const { sections, ...rest } = post;
-  return rest;
-}
-
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
   const query = getQuery(event);
   const category = typeof query.category === "string" ? normalize(query.category) : null;
   const tag = typeof query.tag === "string" ? normalize(query.tag) : null;
   const limit =
-    typeof query.limit === "string" && query.limit
-      ? Number.parseInt(query.limit, 10)
-      : null;
+    typeof query.limit === "string" && query.limit ? Number.parseInt(query.limit, 10) : null;
   const normalizedLimit = Number.isFinite(limit) && (limit ?? 0) > 0 ? (limit as number) : null;
 
-  const sorted = [...BLOG_POSTS].sort(
-    (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
-  );
+  const posts = await listPosts();
 
-  const filtered = sorted.filter((post) => {
+  const filtered = posts.filter((post) => {
     const matchesCategory = category ? normalize(post.category) === category : true;
     const matchesTag = tag ? post.tags.map(normalize).includes(tag) : true;
     return matchesCategory && matchesTag;
@@ -56,7 +47,7 @@ export default defineEventHandler((event) => {
     }
   }
 
-  const data = limited.map((post) => buildPreview(post));
+  const data = limited.map((post) => toPreview(post));
 
   const meta: BlogPostsMeta = {
     total: filtered.length,
@@ -64,7 +55,7 @@ export default defineEventHandler((event) => {
     tags: Array.from(tagsMap.values()).sort((a, b) => a.label.localeCompare(b.label)),
     featured: (() => {
       const selected = filtered.find((post) => post.featured) ?? filtered[0] ?? null;
-      return selected ? buildPreview(selected) : null;
+      return selected ? (toPreview(selected) as BlogPostPreview) : null;
     })(),
   };
 
