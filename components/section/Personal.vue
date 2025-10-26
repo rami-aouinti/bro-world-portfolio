@@ -78,7 +78,7 @@
                   width="640"
                   height="400"
                   sizes="(min-width: 1280px) 320px, (min-width: 960px) 280px, (min-width: 640px) 50vw, 90vw"
-                  :densities="[1, 2]"
+                  densities="1x, 2x"
                   class="personal__image"
                 />
               </template>
