@@ -11,7 +11,7 @@ function resolveAuthorId(name: string) {
 
 async function ensureDatabaseSchema() {
   const lookup = await prisma.$queryRaw<{ name: string | null }[]>`
-    SELECT to_regclass('public."Locale"') AS "name";
+    SELECT to_regclass('public."Locale"')::text AS "name";
   `;
 
   if (lookup[0]?.name) {
