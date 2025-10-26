@@ -58,22 +58,20 @@ export async function ensureContentDefaults() {
 
   const entries = Object.entries(DEFAULT_CONTENT) as LocalizedContentEntry[];
 
-  await prisma.$transaction(async (tx) => {
-    for (const [locale, record] of entries) {
-      const slugs = Object.keys(record) as ContentSlug[];
-      for (const slug of slugs) {
-        await tx.contentBlock.upsert({
-          where: { slug_localeCode: { slug, localeCode: locale } },
-          update: {},
-          create: {
-            slug,
-            localeCode: locale,
-            payload: record[slug],
-          },
-        });
-      }
+  for (const [locale, record] of entries) {
+    const slugs = Object.keys(record) as ContentSlug[];
+    for (const slug of slugs) {
+      await prisma.contentBlock.upsert({
+        where: { slug_localeCode: { slug, localeCode: locale } },
+        update: {},
+        create: {
+          slug,
+          localeCode: locale,
+          payload: record[slug],
+        },
+      });
     }
-  });
+  }
 
   const listKeys = SUPPORTED_LOCALES.map((locale) => getListCacheKey(locale));
   await deleteCachedValue(listKeys);
