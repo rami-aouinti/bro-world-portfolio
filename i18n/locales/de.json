@@ -38,7 +38,36 @@
     "blog": {
       "badge": "Blog",
       "title": "Einblicke, Notizen und technische Deep-Dives.",
-      "description": "Bleiben Sie dran für ausführliche Artikel über Backend-Architektur, Symfony-Best-Practices und Produktivitätstipps.",
+    "description": "Bleiben Sie dran für ausführliche Artikel über Backend-Architektur, Symfony-Best-Practices und Produktivitätstipps.",
+    "filters": {
+      "search": "Artikel suchen",
+      "categories": "Kategorien durchsuchen",
+      "tags": "Nach Tags filtern",
+      "all": "Alle Beiträge"
+    },
+    "list": {
+      "readingTime": "{minutes} Min. Lesezeit",
+      "readMore": "Artikel lesen",
+      "empty": {
+        "title": "Keine Beiträge passen zu deinen Filtern",
+        "description": "Setze die Suche zurück oder wähle eine andere Kategorie, um weiterzulesen."
+      }
+    },
+    "meta": {
+      "heading": "Artikeldetails",
+      "published": "Veröffentlicht",
+      "updated": "Aktualisiert",
+      "readingTime": "Lesezeit",
+      "copyLink": "Link kopieren",
+      "linkCopied": "Link kopiert!",
+      "backToList": "Alle Beiträge anzeigen"
+    },
+    "related": "Weitere Artikel, die dich interessieren könnten",
+    "notFound": {
+      "title": "Dieser Artikel ist nicht mehr verfügbar",
+      "description": "Vielleicht wurde er verschoben oder entfernt. Kehre zum Blog zurück, um weiterzulesen.",
+      "cta": "Zurück zum Blog"
+    },
       "empty": {
         "title": "Der erste Beitrag ist unterwegs",
         "description": "Ich bereite Fallstudien und Tutorials vor, die ich in Kürze veröffentlichen werde. Schreiben Sie mir gern, wenn Sie über Ihr Projekt sprechen möchten.",

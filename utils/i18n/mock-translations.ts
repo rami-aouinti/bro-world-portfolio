@@ -26,6 +26,37 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       },
       blog: {
         description: "Placeholder insights appear here while developing locally.",
+        filters: {
+          search: "Search mock articles",
+          categories: "Mock categories",
+          tags: "Mock tags",
+          all: "All mock posts",
+        },
+        list: {
+          readingTime: "{minutes} min read",
+          readMore: "Open mock article",
+          empty: {
+            title: "No mock posts for these filters",
+            description:
+              "Adjust the filters to preview how the blog behaves with different datasets in development.",
+          },
+        },
+        meta: {
+          heading: "Mock article details",
+          published: "Published",
+          updated: "Updated",
+          readingTime: "Reading time",
+          copyLink: "Copy mock link",
+          linkCopied: "Link copied!",
+          backToList: "View all mock posts",
+        },
+        related: "More mock articles",
+        notFound: {
+          title: "Mock article not found",
+          description:
+            "This placeholder entry might not exist. Return to the blog overview to keep testing.",
+          cta: "Back to mock blog",
+        },
         empty: {
           title: "Demo articles coming soon",
           description:
@@ -62,6 +93,37 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       },
       blog: {
         description: "Des idées factices sont affichées ici pendant le développement.",
+        filters: {
+          search: "Rechercher (démo)",
+          categories: "Catégories fictives",
+          tags: "Tags fictifs",
+          all: "Tous les articles de démo",
+        },
+        list: {
+          readingTime: "{minutes} min",
+          readMore: "Ouvrir l’article démo",
+          empty: {
+            title: "Aucun article de démo pour ces filtres",
+            description:
+              "Ajustez les filtres pour prévisualiser le comportement du blog en développement.",
+          },
+        },
+        meta: {
+          heading: "Détails (démo)",
+          published: "Publié",
+          updated: "Mis à jour",
+          readingTime: "Temps de lecture",
+          copyLink: "Copier le lien démo",
+          linkCopied: "Lien copié !",
+          backToList: "Retour aux articles de démo",
+        },
+        related: "Autres articles de démonstration",
+        notFound: {
+          title: "Article de démo introuvable",
+          description:
+            "Cet élément factice n’existe peut-être pas. Revenez à la liste pour continuer les tests.",
+          cta: "Retour au blog de démo",
+        },
         empty: {
           title: "Articles à venir (démonstration)",
           description:
@@ -99,6 +161,37 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       blog: {
         description:
           "Während der Entwicklung werden hier Platzhalter-Einblicke angezeigt.",
+        filters: {
+          search: "Beiträge suchen (Demo)",
+          categories: "Demo-Kategorien",
+          tags: "Demo-Tags",
+          all: "Alle Demo-Beiträge",
+        },
+        list: {
+          readingTime: "{minutes} Min.",
+          readMore: "Demo-Beitrag öffnen",
+          empty: {
+            title: "Keine Demo-Beiträge für diese Filter",
+            description:
+              "Passe die Filter an, um das Blog-Verhalten in der Entwicklung zu testen.",
+          },
+        },
+        meta: {
+          heading: "Demodaten",
+          published: "Veröffentlicht",
+          updated: "Aktualisiert",
+          readingTime: "Lesezeit",
+          copyLink: "Demo-Link kopieren",
+          linkCopied: "Link kopiert!",
+          backToList: "Zurück zur Demo-Liste",
+        },
+        related: "Weitere Demo-Artikel",
+        notFound: {
+          title: "Demo-Artikel nicht gefunden",
+          description:
+            "Dieser Platzhalter existiert eventuell nicht. Kehre zur Übersicht zurück, um weiterzutesten.",
+          cta: "Zurück zum Demo-Blog",
+        },
         empty: {
           title: "Beiträge folgen bald (Demo)",
           description:
@@ -136,6 +229,37 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       blog: {
         description:
           "Mientras desarrollamos se muestran aquí ideas ficticias.",
+        filters: {
+          search: "Buscar artículos demo",
+          categories: "Categorías demo",
+          tags: "Etiquetas demo",
+          all: "Todas las publicaciones demo",
+        },
+        list: {
+          readingTime: "{minutes} min",
+          readMore: "Abrir artículo demo",
+          empty: {
+            title: "No hay artículos demo para estos filtros",
+            description:
+              "Ajusta los filtros para comprobar el comportamiento del blog durante el desarrollo.",
+          },
+        },
+        meta: {
+          heading: "Detalles (demo)",
+          published: "Publicado",
+          updated: "Actualizado",
+          readingTime: "Tiempo de lectura",
+          copyLink: "Copiar enlace demo",
+          linkCopied: "¡Enlace copiado!",
+          backToList: "Volver a las publicaciones demo",
+        },
+        related: "Más artículos demo",
+        notFound: {
+          title: "Artículo demo no encontrado",
+          description:
+            "Puede que esta entrada ficticia no exista. Regresa al blog para seguir probando.",
+          cta: "Volver al blog demo",
+        },
         empty: {
           title: "Publicaciones en camino (demo)",
           description:
@@ -173,6 +297,37 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       blog: {
         description:
           "Durante lo sviluppo qui compaiono contenuti segnaposto.",
+        filters: {
+          search: "Cerca articoli demo",
+          categories: "Categorie demo",
+          tags: "Tag demo",
+          all: "Tutti gli articoli demo",
+        },
+        list: {
+          readingTime: "{minutes} min",
+          readMore: "Apri articolo demo",
+          empty: {
+            title: "Nessun articolo demo con questi filtri",
+            description:
+              "Modifica i filtri per vedere come reagisce il blog durante lo sviluppo.",
+          },
+        },
+        meta: {
+          heading: "Dettagli (demo)",
+          published: "Pubblicato",
+          updated: "Aggiornato",
+          readingTime: "Tempo di lettura",
+          copyLink: "Copia link demo",
+          linkCopied: "Link copiato!",
+          backToList: "Torna agli articoli demo",
+        },
+        related: "Altri articoli demo",
+        notFound: {
+          title: "Articolo demo non trovato",
+          description:
+            "È possibile che questo elemento fittizio non esista. Torna alla lista per continuare i test.",
+          cta: "Ritorna al blog demo",
+        },
         empty: {
           title: "Articoli in arrivo (demo)",
           description:
@@ -210,6 +365,37 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       blog: {
         description:
           "Во время разработки здесь показываются демонстрационные материалы.",
+        filters: {
+          search: "Поиск статей (демо)",
+          categories: "Демо-категории",
+          tags: "Демо-теги",
+          all: "Все демо-статьи",
+        },
+        list: {
+          readingTime: "{minutes} мин",
+          readMore: "Открыть демо-статью",
+          empty: {
+            title: "Нет демо-статей для выбранных фильтров",
+            description:
+              "Измените фильтры, чтобы посмотреть, как блог ведёт себя в режиме разработки.",
+          },
+        },
+        meta: {
+          heading: "Детали (демо)",
+          published: "Опубликовано",
+          updated: "Обновлено",
+          readingTime: "Время чтения",
+          copyLink: "Скопировать демо-ссылку",
+          linkCopied: "Ссылка скопирована!",
+          backToList: "К списку демо-статей",
+        },
+        related: "Другие демо-материалы",
+        notFound: {
+          title: "Демо-статья не найдена",
+          description:
+            "Возможно, этой фиктивной записи нет. Вернитесь к списку, чтобы продолжить тестирование.",
+          cta: "Назад к демо-блогу",
+        },
         empty: {
           title: "Статьи появятся скоро (демо)",
           description:
@@ -244,6 +430,37 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       },
       blog: {
         description: "أثناء التطوير نعرض هنا محتوى تجريبياً.",
+        filters: {
+          search: "ابحث في مقالات التجربة",
+          categories: "تصنيفات تجريبية",
+          tags: "وسوم تجريبية",
+          all: "كل مقالات التجربة",
+        },
+        list: {
+          readingTime: "{minutes} دقيقة",
+          readMore: "عرض المقال التجريبي",
+          empty: {
+            title: "لا توجد مقالات تجريبية لهذه الفلاتر",
+            description:
+              "عدّل الفلاتر لمعاينة سلوك المدونة أثناء التطوير.",
+          },
+        },
+        meta: {
+          heading: "تفاصيل (تجريبي)",
+          published: "تاريخ النشر",
+          updated: "آخر تحديث",
+          readingTime: "مدة القراءة",
+          copyLink: "نسخ رابط تجريبي",
+          linkCopied: "تم النسخ!",
+          backToList: "العودة لقائمة التجربة",
+        },
+        related: "مقالات تجريبية إضافية",
+        notFound: {
+          title: "لم يتم العثور على المقال التجريبي",
+          description:
+            "قد لا يكون هذا العنصر الوهمي موجودًا. عُد إلى المدونة لمواصلة الاختبار.",
+          cta: "العودة إلى المدونة التجريبية",
+        },
         empty: {
           title: "مقالات قادمة قريباً (تجريبي)",
           description:

@@ -38,12 +38,41 @@
     "blog": {
       "badge": "Blog",
       "title": "Insights, notes, and technical deep-dives.",
-      "description": "Stay tuned for long-form articles about backend architecture, Symfony practices, and productivity tips.",
+    "description": "Stay tuned for long-form articles about backend architecture, Symfony practices, and productivity tips.",
+    "filters": {
+      "search": "Search articles",
+      "categories": "Browse categories",
+      "tags": "Filter by tags",
+      "all": "All posts"
+    },
+    "list": {
+      "readingTime": "{minutes} min read",
+      "readMore": "Read article",
       "empty": {
-        "title": "The first post is on its way",
-        "description": "I am curating case studies and tutorials to share soon. In the meantime, feel free to reach out and let's talk about your project.",
-        "cta": "Contact me"
+        "title": "No articles match your filters",
+        "description": "Try clearing the search or selecting a different category to continue exploring."
       }
+    },
+    "meta": {
+      "heading": "Article details",
+      "published": "Published",
+      "updated": "Updated",
+      "readingTime": "Reading time",
+      "copyLink": "Copy link",
+      "linkCopied": "Link copied!",
+      "backToList": "Browse all posts"
+    },
+    "related": "More articles you might like",
+    "notFound": {
+      "title": "This article is no longer available",
+      "description": "It may have been moved or unpublished. Head back to the blog to continue reading.",
+      "cta": "Return to the blog"
+    },
+    "empty": {
+      "title": "The first post is on its way",
+      "description": "I am curating case studies and tutorials to share soon. In the meantime, feel free to reach out and let's talk about your project.",
+      "cta": "Contact me"
+    }
     },
     "personal": {
       "viewProjects": "View my projects",
