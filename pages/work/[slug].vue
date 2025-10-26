@@ -83,14 +83,14 @@ const sectionLabel = computed(() => work.value?.label ?? "Projets");
 
 const backLink = computed(() => resolveLocalizedRouteTarget("/work", localePath));
 
-const goBack = () => {
+function goBack() {
   if (import.meta.client && window.history.length > 1) {
     router.back();
     return;
   }
 
   router.push(backLink.value);
-};
+}
 
 const projectDetails = computed(() => {
   const entry = work.value?.works.find((item) => item.slug === slug.value);

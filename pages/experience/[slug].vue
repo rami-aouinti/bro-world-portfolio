@@ -70,14 +70,14 @@ const sectionLabel = computed(() => experiences.value?.label ?? "Expériences");
 
 const backLink = computed(() => resolveLocalizedRouteTarget("/experience", localePath));
 
-const goBack = () => {
+function goBack() {
   if (import.meta.client && window.history.length > 1) {
     router.back();
     return;
   }
 
   router.push(backLink.value);
-};
+}
 
 const experienceDetails = computed(() => {
   const entry = experiences.value?.positions.find((position) => position.slug === slug.value);
