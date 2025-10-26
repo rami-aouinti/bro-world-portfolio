@@ -108,7 +108,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useMediaQuery } from "@vueuse/core";
+import { useMediaQuery, useMounted } from "@vueuse/core";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
@@ -129,9 +129,13 @@ const personalCards = computed(() =>
   })),
 );
 
-const isCompactViewport = useMediaQuery("(max-width: 640px)", {
+const isMounted = useMounted();
+const compactViewportQuery = useMediaQuery("(max-width: 640px)", {
   initialValue: false,
 });
+const isCompactViewport = computed(
+  () => isMounted.value && compactViewportQuery.value,
+);
 
 const headlineStrokeSize = computed(() => (isCompactViewport.value ? 8 : 20));
 const headlineShadowOneSize = computed(() => (isCompactViewport.value ? 4 : 7));
