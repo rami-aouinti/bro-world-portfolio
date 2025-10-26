@@ -49,7 +49,12 @@
           >
             {{ eyebrow }}
           </p>
-          <h3 class="glow-card__title">{{ title }}</h3>
+          <component
+            :is="headingTag"
+            class="glow-card__title"
+          >
+            {{ title }}
+          </component>
         </div>
       </header>
 
@@ -82,6 +87,7 @@ type GlowCardProps = {
   description?: string;
   eyebrow?: string;
   badge?: string;
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   variant?: keyof typeof glowCardVariants;
   accentColor?: string;
   background?: string;
@@ -99,6 +105,7 @@ type GlowCardProps = {
 const props = withDefaults(defineProps<GlowCardProps>(), {
   eyebrow: undefined,
   badge: undefined,
+  headingLevel: 3,
   variant: "violet",
   accentColor: undefined,
   background: undefined,
@@ -138,6 +145,18 @@ const cssVars = computed(() => {
 });
 
 const initial = computed(() => props.title?.charAt(0)?.toUpperCase() ?? "");
+
+const headingTag = computed(() => {
+  const rawLevel = Number(props.headingLevel);
+
+  if (!Number.isFinite(rawLevel)) {
+    return "h3";
+  }
+
+  const boundedLevel = Math.min(6, Math.max(1, Math.round(rawLevel)));
+
+  return `h${boundedLevel}`;
+});
 
 const isNavigable = computed(() => Boolean(props.to));
 const hasBadge = computed(() => Boolean(props.badge));

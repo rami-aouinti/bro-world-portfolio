@@ -66,36 +66,48 @@
             <v-list
               class="dock-navbar__language-list"
               density="compact"
+              tag="ul"
             >
               <v-list-item
                 v-for="language in languageItems"
                 :key="language.code"
-                :to="language.to"
+                tag="li"
                 class="dock-navbar__language-list-item"
                 :class="{
                   'dock-navbar__language-list-item--active': language.code === locale,
                 }"
               >
-                <div class="dock-navbar__language-item">
-                  <span
-                    v-if="language.icon"
-                    class="dock-navbar__language-flag"
-                    aria-hidden="true"
-                  >
+                <NuxtLink
+                  :to="language.to"
+                  class="dock-navbar__language-link"
+                >
+                  <div class="dock-navbar__language-item">
                     <span
-                      class="fi"
-                      :class="language.icon"
+                      v-if="language.icon"
+                      class="dock-navbar__language-flag"
+                      aria-hidden="true"
+                    >
+                      <span
+                        class="fi"
+                        :class="language.icon"
+                      />
+                    </span>
+                    <span
+                      v-else
+                      class="dock-navbar__language-code"
+                      aria-hidden="true"
+                    >
+                      {{ language.code.toUpperCase() }}
+                    </span>
+                    <div class="dock-navbar__language-info">
+                      <span class="dock-navbar__language-name">{{ language.name }}</span>
+                    </div>
+                    <v-icon
+                      v-if="language.code === locale"
+                      icon="mdi-check"
+                      size="16"
+                      class="dock-navbar__language-check"
                     />
-                  </span>
-                  <span
-                    v-else
-                    class="dock-navbar__language-code"
-                    aria-hidden="true"
-                  >
-                    {{ language.code.toUpperCase() }}
-                  </span>
-                  <div class="dock-navbar__language-info">
-                    <span class="dock-navbar__language-name">{{ language.name }}</span>
                   </div>
                   <v-icon
                     v-if="language.code === locale"
@@ -139,24 +151,29 @@
           <v-list
             class="dock-navbar__drawer-links"
             density="comfortable"
+            tag="ul"
           >
             <v-list-item
               v-for="link in links"
               :key="link.url"
-              :to="link.to"
-              link
+              tag="li"
               class="dock-navbar__drawer-link"
               :class="{ 'dock-navbar__drawer-link--active': isActiveLink(link.to) }"
-              @click="closeDrawer"
             >
-              <template #prepend>
+              <NuxtLink
+                :to="link.to"
+                class="dock-navbar__drawer-link-button"
+                :aria-current="isActiveLink(link.to) ? 'page' : undefined"
+                @click="closeDrawer"
+              >
                 <v-icon
                   :icon="link.icon"
                   size="24"
+                  class="dock-navbar__drawer-link-icon"
                   aria-hidden="true"
                 />
-              </template>
-              <v-list-item-title>{{ link.label }}</v-list-item-title>
+                <span class="dock-navbar__drawer-link-label">{{ link.label }}</span>
+              </NuxtLink>
             </v-list-item>
           </v-list>
 
@@ -249,44 +266,50 @@
             <v-list
               class="dock-navbar__language-list"
               density="compact"
+              tag="ul"
             >
               <v-list-item
                 v-for="language in languageItems"
                 :key="language.code"
-                :to="language.to"
+                tag="li"
                 class="dock-navbar__language-list-item"
                 :class="{
                   'dock-navbar__language-list-item--active': language.code === locale,
                 }"
               >
-                <div class="dock-navbar__language-item">
-                  <span
-                    v-if="language.icon"
-                    class="dock-navbar__language-flag"
-                    aria-hidden="true"
-                  >
+                <NuxtLink
+                  :to="language.to"
+                  class="dock-navbar__language-link"
+                >
+                  <div class="dock-navbar__language-item">
                     <span
-                      class="fi"
-                      :class="language.icon"
+                      v-if="language.icon"
+                      class="dock-navbar__language-flag"
+                      aria-hidden="true"
+                    >
+                      <span
+                        class="fi"
+                        :class="language.icon"
+                      />
+                    </span>
+                    <span
+                      v-else
+                      class="dock-navbar__language-code"
+                      aria-hidden="true"
+                    >
+                      {{ language.code.toUpperCase() }}
+                    </span>
+                    <div class="dock-navbar__language-info">
+                      <span class="dock-navbar__language-name">{{ language.name }}</span>
+                    </div>
+                    <v-icon
+                      v-if="language.code === locale"
+                      icon="mdi-check"
+                      size="16"
+                      class="dock-navbar__language-check"
                     />
-                  </span>
-                  <span
-                    v-else
-                    class="dock-navbar__language-code"
-                    aria-hidden="true"
-                  >
-                    {{ language.code.toUpperCase() }}
-                  </span>
-                  <div class="dock-navbar__language-info">
-                    <span class="dock-navbar__language-name">{{ language.name }}</span>
                   </div>
-                  <v-icon
-                    v-if="language.code === locale"
-                    icon="mdi-check"
-                    size="16"
-                    class="dock-navbar__language-check"
-                  />
-                </div>
+                </NuxtLink>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -508,6 +531,7 @@ function isActiveLink(target: string) {
   background: transparent;
   color: #e2e8f0;
   padding: 0;
+  list-style: none;
 }
 
 .dock-navbar__drawer-link {
@@ -516,6 +540,7 @@ function isActiveLink(target: string) {
   transition:
     background 0.2s ease,
     color 0.2s ease;
+  list-style: none;
 }
 
 .dock-navbar__drawer-link:hover {
@@ -525,6 +550,30 @@ function isActiveLink(target: string) {
 .dock-navbar__drawer-link--active {
   background: rgba(94, 234, 212, 0.18);
   box-shadow: inset 0 0 0 1px rgba(94, 234, 212, 0.35);
+}
+
+.dock-navbar__drawer-link-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  color: inherit;
+  text-decoration: none;
+  border-radius: inherit;
+}
+
+.dock-navbar__drawer-link-button:focus-visible {
+  outline: 2px solid rgba(94, 234, 212, 0.75);
+  outline-offset: 2px;
+}
+
+.dock-navbar__drawer-link-icon {
+  color: currentColor;
+}
+
+.dock-navbar__drawer-link-label {
+  font-weight: 500;
 }
 
 .dock-navbar__drawer-controls {
@@ -676,11 +725,13 @@ function isActiveLink(target: string) {
   border: 1px solid rgba(148, 163, 184, 0.25);
   border-radius: 16px;
   box-shadow: 0 30px 60px -35px rgba(15, 23, 42, 0.85);
+  list-style: none;
 }
 
 .dock-navbar__language-list-item {
   min-height: unset;
   border-radius: 12px;
+  list-style: none;
 }
 
 .dock-navbar__language-list-item:hover {
@@ -690,6 +741,19 @@ function isActiveLink(target: string) {
 .dock-navbar__language-list-item--active {
   background: rgba(94, 234, 212, 0.18);
   box-shadow: inset 0 0 0 1px rgba(94, 234, 212, 0.35);
+}
+
+.dock-navbar__language-link {
+  display: block;
+  padding: 8px 10px;
+  border-radius: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+.dock-navbar__language-link:focus-visible {
+  outline: 2px solid rgba(94, 234, 212, 0.75);
+  outline-offset: 2px;
 }
 
 .dock-navbar__language-item {

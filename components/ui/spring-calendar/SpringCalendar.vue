@@ -17,7 +17,7 @@
 
       <Motion
         v-if="calendarData[activeIndex].events"
-        :key="'event-container' + Math.random()"
+        :key="'event-container-' + activeIndex"
         layout
         as="div"
         class="flex flex-col gap-4"
@@ -38,7 +38,7 @@
         <div class="flex flex-wrap gap-4">
           <Motion
             v-for="event in calendarData[activeIndex].events"
-            :key="event.title + event.time + Math.random()"
+            :key="`${event.title}-${event.day}-${event.time}`"
             as="div"
             layout
             class="w-full max-w-44 rounded-lg border p-3"

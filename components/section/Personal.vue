@@ -69,6 +69,7 @@
               :title="card.item.name"
               :badge="card.item.type"
               :variant="card.variant"
+              :heading-level="2"
             >
               <template #media>
                 <v-img
