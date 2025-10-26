@@ -133,9 +133,7 @@ const isMounted = useMounted();
 const compactViewportQuery = useMediaQuery("(max-width: 640px)", {
   initialValue: false,
 });
-const isCompactViewport = computed(
-  () => isMounted.value && compactViewportQuery.value,
-);
+const isCompactViewport = computed(() => isMounted.value && compactViewportQuery.value);
 
 const headlineStrokeSize = computed(() => (isCompactViewport.value ? 8 : 20));
 const headlineShadowOneSize = computed(() => (isCompactViewport.value ? 4 : 7));

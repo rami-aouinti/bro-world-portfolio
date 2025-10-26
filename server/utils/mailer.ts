@@ -8,7 +8,10 @@ export class MailerConfigurationError extends Error {
 }
 
 export class MailerDeliveryError extends Error {
-  constructor(message: string, public cause?: unknown) {
+  constructor(
+    message: string,
+    public cause?: unknown,
+  ) {
     super(message);
     this.name = "MailerDeliveryError";
   }
@@ -97,7 +100,10 @@ function escapeHtml(value: string) {
 
 export async function sendContactEmail(payload: ContactEmailPayload) {
   const config = getResendConfig();
-  const recipients = config.to.split(",").map((address) => address.trim()).filter(Boolean);
+  const recipients = config.to
+    .split(",")
+    .map((address) => address.trim())
+    .filter(Boolean);
 
   if (recipients.length === 0) {
     throw new MailerConfigurationError("No destination address configured.");

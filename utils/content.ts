@@ -703,7 +703,8 @@ const EN_CONTENT: ContentRecord = {
             name: "RabbitMQ",
             level: "Advanced",
             rating: 4,
-            summary: "Message brokering for asynchronous workflows, guaranteed delivery, and resilient job processing.",
+            summary:
+              "Message brokering for asynchronous workflows, guaranteed delivery, and resilient job processing.",
             projects: [
               { slug: "microservices-tkdeutschland" },
               { slug: "dockerisierte-entwicklungsumgebungen" },

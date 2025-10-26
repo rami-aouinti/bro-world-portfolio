@@ -261,21 +261,15 @@ async function handleSubmit() {
 }
 
 const contactEmailHref = computed(() =>
-  import.meta.dev
-    ? "mailto:hello@example.dev"
-    : "mailto:rami.aouinti@gmail.com",
+  import.meta.dev ? "mailto:hello@example.dev" : "mailto:rami.aouinti@gmail.com",
 );
 
 const contactEmailValue = computed(() =>
-  import.meta.dev
-    ? t("portfolio.contact.methods.email.value")
-    : "rami.aouinti@gmail.com",
+  import.meta.dev ? t("portfolio.contact.methods.email.value") : "rami.aouinti@gmail.com",
 );
 
 const contactLocationValue = computed(() =>
-  import.meta.dev
-    ? t("portfolio.contact.methods.location.value")
-    : "Köln, Germany",
+  import.meta.dev ? t("portfolio.contact.methods.location.value") : "Köln, Germany",
 );
 
 const contactMethods = computed(() => [
