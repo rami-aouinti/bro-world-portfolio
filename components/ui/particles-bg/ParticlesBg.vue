@@ -49,6 +49,7 @@ const mouse = reactive<{ x: number; y: number }>({ x: 0, y: 0 });
 const canvasSize = reactive<{ w: number; h: number }>({ w: 0, h: 0 });
 const { x: mouseX, y: mouseY } = useMouse();
 const { pixelRatio } = useDevicePixelRatio();
+const animationId = ref<number | null>(null);
 
 const color = computed(() => {
   // Remove the leading '#' if it's present
@@ -84,6 +85,11 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener("resize", initCanvas);
+
+  if (animationId.value !== null) {
+    cancelAnimationFrame(animationId.value);
+    animationId.value = null;
+  }
 });
 
 watch([mouseX, mouseY], () => {
@@ -245,6 +251,6 @@ function animate() {
       );
     }
   });
-  window.requestAnimationFrame(animate);
+  animationId.value = window.requestAnimationFrame(animate);
 }
 </script>
