@@ -4,89 +4,7 @@
     :class="{ 'dock-navbar--mobile': isMobile }"
   >
     <template v-if="isMobile">
-      <div class="dock-navbar__mobile-actions">
-        <v-menu
-          v-if="hasLanguageMenu"
-          transition="fade-transition"
-          :offset="[0, 12]"
-        >
-          <template #activator="{ props }">
-            <button
-              class="dock-navbar__language-button"
-              type="button"
-              v-bind="props"
-            >
-              <span
-                v-if="currentLanguage?.icon"
-                class="dock-navbar__language-flag"
-                aria-hidden="true"
-              >
-                <span
-                  class="fi"
-                  :class="currentLanguage.icon"
-                />
-              </span>
-              <span
-                v-else
-                class="dock-navbar__language-code"
-                aria-hidden="true"
-              >
-                {{ currentLanguage?.code?.toUpperCase() }}
-              </span>
-              <v-icon
-                icon="mdi-menu-down"
-                size="16"
-                class="dock-navbar__language-icon"
-              />
-              <span class="sr-only">{{ t("navigation.language") }}</span>
-            </button>
-          </template>
-
-          <v-list
-            class="dock-navbar__language-list"
-            density="compact"
-          >
-            <v-list-item
-              v-for="language in languageItems"
-              :key="language.code"
-              :to="language.to"
-              class="dock-navbar__language-list-item"
-              :class="{
-                'dock-navbar__language-list-item--active': language.code === locale,
-              }"
-            >
-              <div class="dock-navbar__language-item">
-                <span
-                  v-if="language.icon"
-                  class="dock-navbar__language-flag"
-                  aria-hidden="true"
-                >
-                  <span
-                    class="fi"
-                    :class="language.icon"
-                  />
-                </span>
-                <span
-                  v-else
-                  class="dock-navbar__language-code"
-                  aria-hidden="true"
-                >
-                  {{ language.code.toUpperCase() }}
-                </span>
-                <div class="dock-navbar__language-info">
-                  <span class="dock-navbar__language-name">{{ language.name }}</span>
-                </div>
-                <v-icon
-                  v-if="language.code === locale"
-                  icon="mdi-check"
-                  size="16"
-                  class="dock-navbar__language-check"
-                />
-              </div>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-
+      <div class="dock-navbar__mobile-bar">
         <button
           class="dock-navbar__drawer-button"
           type="button"
@@ -99,6 +17,95 @@
           />
           <span class="sr-only">{{ t("navigation.openMenu") }}</span>
         </button>
+
+        <div class="dock-navbar__mobile-right">
+          <DarkModeToggle
+            v-if="config.header.darkModeToggle"
+            class="dock-navbar__toggle"
+          />
+
+          <v-menu
+            v-if="hasLanguageMenu"
+            transition="fade-transition"
+            :offset="[0, 12]"
+          >
+            <template #activator="{ props }">
+              <button
+                class="dock-navbar__language-button"
+                type="button"
+                v-bind="props"
+              >
+                <span
+                  v-if="currentLanguage?.icon"
+                  class="dock-navbar__language-flag"
+                  aria-hidden="true"
+                >
+                  <span
+                    class="fi"
+                    :class="currentLanguage.icon"
+                  />
+                </span>
+                <span
+                  v-else
+                  class="dock-navbar__language-code"
+                  aria-hidden="true"
+                >
+                  {{ currentLanguage?.code?.toUpperCase() }}
+                </span>
+                <v-icon
+                  icon="mdi-menu-down"
+                  size="16"
+                  class="dock-navbar__language-icon"
+                />
+                <span class="sr-only">{{ t("navigation.language") }}</span>
+              </button>
+            </template>
+
+            <v-list
+              class="dock-navbar__language-list"
+              density="compact"
+            >
+              <v-list-item
+                v-for="language in languageItems"
+                :key="language.code"
+                :to="language.to"
+                class="dock-navbar__language-list-item"
+                :class="{
+                  'dock-navbar__language-list-item--active': language.code === locale,
+                }"
+              >
+                <div class="dock-navbar__language-item">
+                  <span
+                    v-if="language.icon"
+                    class="dock-navbar__language-flag"
+                    aria-hidden="true"
+                  >
+                    <span
+                      class="fi"
+                      :class="language.icon"
+                    />
+                  </span>
+                  <span
+                    v-else
+                    class="dock-navbar__language-code"
+                    aria-hidden="true"
+                  >
+                    {{ language.code.toUpperCase() }}
+                  </span>
+                  <div class="dock-navbar__language-info">
+                    <span class="dock-navbar__language-name">{{ language.name }}</span>
+                  </div>
+                  <v-icon
+                    v-if="language.code === locale"
+                    icon="mdi-check"
+                    size="16"
+                    class="dock-navbar__language-check"
+                  />
+                </div>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </div>
       </div>
 
       <v-navigation-drawer
@@ -374,16 +381,25 @@ function isActiveLink(target: string) {
 }
 
 .dock-navbar--mobile {
-  justify-content: flex-end;
+  justify-content: center;
+  width: 100%;
   margin-top: 16px;
   pointer-events: auto;
 }
 
-.dock-navbar__mobile-actions {
+.dock-navbar__mobile-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%, 520px);
+  pointer-events: auto;
+  gap: 12px;
+}
+
+.dock-navbar__mobile-right {
   display: flex;
   align-items: center;
   gap: 12px;
-  pointer-events: auto;
 }
 
 .dock-navbar__drawer-button {
