@@ -639,6 +639,13 @@ export default defineNuxtConfig({
       endpoint: process.env.WORKFLOW_ENDPOINT,
       apiKey: process.env.WORKFLOW_API_KEY,
     },
+    mailer: {
+      resend: {
+        apiKey: process.env.RESEND_API_KEY,
+        from: process.env.RESEND_FROM,
+        to: process.env.RESEND_TO || process.env.RESEND_FROM,
+      },
+    },
     public: {
       auth: {
         csrfCookieName,
