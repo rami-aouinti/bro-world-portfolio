@@ -127,13 +127,14 @@
 
           <v-list
             class="dock-navbar__drawer-links"
-            density="comfortable"
+            density="compact"
             tag="ul"
           >
             <v-list-item
               v-for="link in links"
               :key="link.url"
               tag="li"
+              density="compact"
               class="dock-navbar__drawer-link"
               :class="{ 'dock-navbar__drawer-link--active': isActiveLink(link.to) }"
             >
@@ -521,10 +522,6 @@ function isActiveLink(target: string) {
 
 .dock-navbar__drawer-link-icon {
   color: currentColor;
-}
-
-.dock-navbar__drawer-link-label {
-  font-weight: 500;
 }
 
 .dock-navbar__drawer-controls {

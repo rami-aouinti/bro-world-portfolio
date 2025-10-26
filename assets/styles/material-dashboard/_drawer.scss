@@ -49,7 +49,7 @@
     .v-navigation-drawer__content {
       .item-active + .v-list-group__items {
         .v-list-item--active > div {
-          background-color: $default;
+          background-color: $white;
         }
       }
     }
@@ -81,7 +81,7 @@
           background-image: $v-list-item-icon-active-color-secondary;
         }
         &:not(.v-list-item--disabled) {
-          color: $headings-color !important;
+          color: $white !important;
         }
         &.v-list-item--active {
           .v-list-item-mini,
@@ -97,7 +97,7 @@
     .v-navigation-drawer__content {
       .v-list-item {
         &:not(.v-list-item--disabled) {
-          color: $headings-color !important;
+          color: $white !important;
         }
         &.v-list-item--active {
           .v-list-item-mini,
@@ -339,7 +339,7 @@
   }
 
   .v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
-    color: $v-list-item-title-color !important;
+    color: $white !important;
   }
 
   .v-list-item:not(.v-list-item--active):not(.v-list-item--disabled):not(.has-children) {
