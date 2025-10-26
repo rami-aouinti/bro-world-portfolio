@@ -347,7 +347,7 @@ const initialMobileState = computed(() => {
   const userAgentHeader = requestHeaders["user-agent"];
   const userAgent = Array.isArray(userAgentHeader)
     ? userAgentHeader.join(" ")
-    : userAgentHeader ?? "";
+    : (userAgentHeader ?? "");
 
   return /Mobi|Android|iPhone|iPad|iPod/i.test(userAgent);
 });
@@ -357,9 +357,7 @@ const isHydrated = ref(false);
 const mobileQuery = useMediaQuery("(max-width: 960px)", {
   initialValue: initialMobileState.value,
 });
-const isMobile = computed(() =>
-  isHydrated.value ? mobileQuery.value : initialMobileState.value,
-);
+const isMobile = computed(() => (isHydrated.value ? mobileQuery.value : initialMobileState.value));
 
 onMounted(() => {
   isHydrated.value = true;

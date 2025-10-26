@@ -1539,9 +1539,7 @@ function createLocalizedEducationContent(
   return {
     ...base,
     navlinks: base.navlinks.map((link) =>
-      navLabelOverrides[link.url]
-        ? { ...link, label: navLabelOverrides[link.url] }
-        : link,
+      navLabelOverrides[link.url] ? { ...link, label: navLabelOverrides[link.url] } : link,
     ),
     education: overrides.education,
   };
