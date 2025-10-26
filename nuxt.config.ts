@@ -559,7 +559,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Mohamed Rami Aouinti | FullStack Developer (PHP & Vue)",
+      title: "Mohamed Rami Aouinti | Backend & DevOps Engineer (PHP, Symfony, Shopware)",
       meta: [
         {
           name: "viewport",
@@ -569,19 +569,19 @@ export default defineNuxtConfig({
           key: "description",
           name: "description",
           content:
-            "Portfolio of Mohamed Rami Aouinti, a full-stack developer crafting performant PHP, Symfony, and Vue applications.",
+            "Portfolio of Mohamed Rami Aouinti, a backend & DevOps engineer building resilient Symfony, Shopware, and API Platform solutions.",
         },
         {
           key: "og:description",
           property: "og:description",
           content:
-            "Portfolio of Mohamed Rami Aouinti, a full-stack developer crafting performant PHP, Symfony, and Vue applications.",
+            "Portfolio of Mohamed Rami Aouinti, a backend & DevOps engineer building resilient Symfony, Shopware, and API Platform solutions.",
         },
         {
           key: "twitter:description",
           name: "twitter:description",
           content:
-            "Portfolio of Mohamed Rami Aouinti, a full-stack developer crafting performant PHP, Symfony, and Vue applications.",
+            "Portfolio of Mohamed Rami Aouinti, a backend & DevOps engineer building resilient Symfony, Shopware, and API Platform solutions.",
         },
         {
           name: "google-adsense-account",
