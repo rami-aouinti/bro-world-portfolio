@@ -135,20 +135,34 @@ definePageMeta(LOCALIZED_PAGE_META.contact);
 const { t } = useI18n();
 
 const contactEmailHref = computed(() =>
-  import.meta.dev ? "mailto:hello@example.dev" : "mailto:hello@broworld.dev",
+  import.meta.dev
+    ? "mailto:hello@example.dev"
+    : "mailto:rami.aouinti@gmail.com",
+);
+
+const contactEmailValue = computed(() =>
+  import.meta.dev
+    ? t("portfolio.contact.methods.email.value")
+    : "rami.aouinti@gmail.com",
+);
+
+const contactLocationValue = computed(() =>
+  import.meta.dev
+    ? t("portfolio.contact.methods.location.value")
+    : "Köln, Germany",
 );
 
 const contactMethods = computed(() => [
   {
     icon: "mdi-email-outline",
     label: t("portfolio.contact.methods.email.label"),
-    value: t("portfolio.contact.methods.email.value"),
+    value: contactEmailValue.value,
     href: contactEmailHref.value,
   },
   {
     icon: "mdi-map-marker",
     label: t("portfolio.contact.methods.location.label"),
-    value: t("portfolio.contact.methods.location.value"),
+    value: contactLocationValue.value,
   },
   {
     icon: "mdi-clock-outline",
