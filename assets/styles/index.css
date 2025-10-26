@@ -103,6 +103,7 @@ body.rtl .text-right {
   --ui-scrollbar-thumb-border-width: 2px;
   --ui-scrollbar-thumb-border-color: transparent;
   --ui-scrollbar-thumb-radius: 4px;
+  --ui-scrollbar-track-color: transparent;
 
   /* Spacing */
   --ui-spacing-0: var(--v-space-0);
@@ -253,6 +254,11 @@ html.dark {
 ::-webkit-scrollbar {
   width: var(--ui-scrollbar-size);
   height: var(--ui-scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--ui-scrollbar-track-color);
+  border-radius: var(--ui-scrollbar-thumb-radius);
 }
 
 ::-webkit-scrollbar-thumb {
