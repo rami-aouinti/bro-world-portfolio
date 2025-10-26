@@ -6,8 +6,7 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
   en: {
     portfolio: {
       contact: {
-        description:
-          "This is placeholder contact information displayed while working locally.",
+        description: "This is placeholder contact information displayed while working locally.",
         methods: {
           email: {
             value: "hello@example.dev",
@@ -20,8 +19,7 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
           },
         },
         card: {
-          description:
-            "Mock contact options to preview the layout during development.",
+          description: "Mock contact options to preview the layout during development.",
         },
       },
       blog: {
@@ -66,7 +64,8 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       githubProjects: {
         description: "Mock repositories are displayed while developing locally.",
         empty: "Example GitHub projects appear here in development builds.",
-        metaDescription: "Browse placeholder GitHub repositories available in local development mode.",
+        metaDescription:
+          "Browse placeholder GitHub repositories available in local development mode.",
       },
     },
   },
@@ -140,8 +139,7 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
   de: {
     portfolio: {
       contact: {
-        description:
-          "Platzhalter-Kontaktdaten für lokale Entwicklungsumgebungen.",
+        description: "Platzhalter-Kontaktdaten für lokale Entwicklungsumgebungen.",
         methods: {
           email: {
             value: "hello@example.dev",
@@ -159,8 +157,7 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
         },
       },
       blog: {
-        description:
-          "Während der Entwicklung werden hier Platzhalter-Einblicke angezeigt.",
+        description: "Während der Entwicklung werden hier Platzhalter-Einblicke angezeigt.",
         filters: {
           search: "Beiträge suchen (Demo)",
           categories: "Demo-Kategorien",
@@ -172,8 +169,7 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
           readMore: "Demo-Beitrag öffnen",
           empty: {
             title: "Keine Demo-Beiträge für diese Filter",
-            description:
-              "Passe die Filter an, um das Blog-Verhalten in der Entwicklung zu testen.",
+            description: "Passe die Filter an, um das Blog-Verhalten in der Entwicklung zu testen.",
           },
         },
         meta: {
@@ -201,15 +197,15 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       githubProjects: {
         description: "Während der lokalen Entwicklung werden Platzhalter-Repositories angezeigt.",
         empty: "Beispielhafte GitHub-Projekte erscheinen hier im Entwicklungsmodus.",
-        metaDescription: "Entdecke Platzhalter-GitHub-Repositories, die in der lokalen Entwicklung verfügbar sind.",
+        metaDescription:
+          "Entdecke Platzhalter-GitHub-Repositories, die in der lokalen Entwicklung verfügbar sind.",
       },
     },
   },
   es: {
     portfolio: {
       contact: {
-        description:
-          "Información de contacto ficticia mostrada en el entorno de desarrollo.",
+        description: "Información de contacto ficticia mostrada en el entorno de desarrollo.",
         methods: {
           email: {
             value: "hello@example.dev",
@@ -227,8 +223,7 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
         },
       },
       blog: {
-        description:
-          "Mientras desarrollamos se muestran aquí ideas ficticias.",
+        description: "Mientras desarrollamos se muestran aquí ideas ficticias.",
         filters: {
           search: "Buscar artículos demo",
           categories: "Categorías demo",
@@ -269,15 +264,15 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       githubProjects: {
         description: "Durante el desarrollo local se muestran repositorios de ejemplo.",
         empty: "En modo desarrollo aparecerán aquí proyectos de GitHub de demostración.",
-        metaDescription: "Explora repositorios de GitHub ficticios disponibles en el entorno local de desarrollo.",
+        metaDescription:
+          "Explora repositorios de GitHub ficticios disponibles en el entorno local de desarrollo.",
       },
     },
   },
   it: {
     portfolio: {
       contact: {
-        description:
-          "Informazioni di contatto fittizie mostrate nell'ambiente di sviluppo.",
+        description: "Informazioni di contatto fittizie mostrate nell'ambiente di sviluppo.",
         methods: {
           email: {
             value: "hello@example.dev",
@@ -290,13 +285,11 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
           },
         },
         card: {
-          description:
-            "Canali di contatto di esempio per vedere l'impaginazione in sviluppo.",
+          description: "Canali di contatto di esempio per vedere l'impaginazione in sviluppo.",
         },
       },
       blog: {
-        description:
-          "Durante lo sviluppo qui compaiono contenuti segnaposto.",
+        description: "Durante lo sviluppo qui compaiono contenuti segnaposto.",
         filters: {
           search: "Cerca articoli demo",
           categories: "Categorie demo",
@@ -308,8 +301,7 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
           readMore: "Apri articolo demo",
           empty: {
             title: "Nessun articolo demo con questi filtri",
-            description:
-              "Modifica i filtri per vedere come reagisce il blog durante lo sviluppo.",
+            description: "Modifica i filtri per vedere come reagisce il blog durante lo sviluppo.",
           },
         },
         meta: {
@@ -337,7 +329,8 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       githubProjects: {
         description: "Durante lo sviluppo locale vengono mostrati repository di esempio.",
         empty: "In modalità sviluppo qui compaiono progetti GitHub dimostrativi.",
-        metaDescription: "Esplora repository GitHub fittizi disponibili nell'ambiente di sviluppo locale.",
+        metaDescription:
+          "Esplora repository GitHub fittizi disponibili nell'ambiente di sviluppo locale.",
       },
     },
   },
@@ -358,13 +351,11 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
           },
         },
         card: {
-          description:
-            "Пример вариантов связи, чтобы посмотреть макет в режиме разработки.",
+          description: "Пример вариантов связи, чтобы посмотреть макет в режиме разработки.",
         },
       },
       blog: {
-        description:
-          "Во время разработки здесь показываются демонстрационные материалы.",
+        description: "Во время разработки здесь показываются демонстрационные материалы.",
         filters: {
           search: "Поиск статей (демо)",
           categories: "Демо-категории",
@@ -405,7 +396,8 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
       githubProjects: {
         description: "Во время локальной разработки отображаются демонстрационные репозитории.",
         empty: "В режиме разработки здесь появятся демонстрационные проекты GitHub.",
-        metaDescription: "Просмотрите демонстрационные репозитории GitHub, доступные в локальной среде разработки.",
+        metaDescription:
+          "Просмотрите демонстрационные репозитории GitHub, доступные в локальной среде разработки.",
       },
     },
   },
@@ -441,8 +433,7 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
           readMore: "عرض المقال التجريبي",
           empty: {
             title: "لا توجد مقالات تجريبية لهذه الفلاتر",
-            description:
-              "عدّل الفلاتر لمعاينة سلوك المدونة أثناء التطوير.",
+            description: "عدّل الفلاتر لمعاينة سلوك المدونة أثناء التطوير.",
           },
         },
         meta: {
@@ -457,8 +448,7 @@ const MOCK_TRANSLATIONS: Record<LocaleCode, MessageOverrides> = {
         related: "مقالات تجريبية إضافية",
         notFound: {
           title: "لم يتم العثور على المقال التجريبي",
-          description:
-            "قد لا يكون هذا العنصر الوهمي موجودًا. عُد إلى المدونة لمواصلة الاختبار.",
+          description: "قد لا يكون هذا العنصر الوهمي موجودًا. عُد إلى المدونة لمواصلة الاختبار.",
           cta: "العودة إلى المدونة التجريبية",
         },
         empty: {

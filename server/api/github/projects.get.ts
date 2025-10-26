@@ -38,14 +38,17 @@ export default defineEventHandler(async () => {
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const repos = await $fetch<GithubProjectListResponse[]>(`${API_BASE_URL}/users/${username}/repos`, {
-    headers,
-    query: {
-      per_page: 100,
-      sort: "updated",
-      direction: "desc",
+  const repos = await $fetch<GithubProjectListResponse[]>(
+    `${API_BASE_URL}/users/${username}/repos`,
+    {
+      headers,
+      query: {
+        per_page: 100,
+        sort: "updated",
+        direction: "desc",
+      },
     },
-  });
+  );
 
   const projects = repos
     .filter((repo) => !repo.fork && repo.description && repo.description.trim().length > 0)

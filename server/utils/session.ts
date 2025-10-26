@@ -14,7 +14,14 @@ interface SessionRecord {
   createdAt: number;
 }
 
-function mapSession(record: { token: string; userId: string; role: string; csrfToken: string; expiresAt: Date; createdAt: Date }): SessionRecord {
+function mapSession(record: {
+  token: string;
+  userId: string;
+  role: string;
+  csrfToken: string;
+  expiresAt: Date;
+  createdAt: Date;
+}): SessionRecord {
   return {
     token: record.token,
     userId: record.userId,

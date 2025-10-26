@@ -18,7 +18,10 @@
         </p>
       </header>
 
-      <div v-if="status === 'pending'" class="github-projects__loading">
+      <div
+        v-if="status === 'pending'"
+        class="github-projects__loading"
+      >
         <v-progress-circular
           indeterminate
           color="primary"
@@ -52,147 +55,158 @@
           {{ t("portfolio.githubProjects.empty") }}
         </v-alert>
 
-      <v-row
-        v-else
-        dense
-        class="github-projects__grid"
-      >
-        <v-col
-          v-for="(project, index) in projectsWithHighlights"
-          :key="project.slug"
-          cols="12"
-          md="6"
-          lg="6"
+        <v-row
+          v-else
+          dense
+          class="github-projects__grid"
         >
-          <Motion
-            :initial="{ opacity: 0, y: 24 }"
-            :while-in-view="{ opacity: 1, y: 0 }"
-            :transition="{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }"
-            :viewport="{ once: true, amount: 0.4 }"
+          <v-col
+            v-for="(project, index) in projectsWithHighlights"
+            :key="project.slug"
+            cols="12"
+            md="6"
+            lg="6"
           >
-            <article
-              class="github-projects__card"
-              :aria-labelledby="`project-${project.slug}`"
+            <Motion
+              :initial="{ opacity: 0, y: 24 }"
+              :while-in-view="{ opacity: 1, y: 0 }"
+              :transition="{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }"
+              :viewport="{ once: true, amount: 0.4 }"
             >
-              <span class="github-projects__card-glow" aria-hidden="true" />
+              <article
+                class="github-projects__card"
+                :aria-labelledby="`project-${project.slug}`"
+              >
+                <span
+                  class="github-projects__card-glow"
+                  aria-hidden="true"
+                />
 
-              <header class="github-projects__card-header">
-                <div class="github-projects__card-heading">
-                  <h2
-                    :id="`project-${project.slug}`"
-                    class="github-projects__card-title"
+                <header class="github-projects__card-header">
+                  <div class="github-projects__card-heading">
+                    <h2
+                      :id="`project-${project.slug}`"
+                      class="github-projects__card-title"
+                    >
+                      {{ project.name }}
+                    </h2>
+                    <p class="github-projects__card-subtitle">
+                      {{ formatDate(project.updatedAt) }} ·
+                      {{ project.primaryLanguage ?? t("portfolio.githubProjects.languageUnknown") }}
+                    </p>
+                  </div>
+
+                  <span
+                    v-if="project.primaryLanguage"
+                    class="github-projects__language"
                   >
-                    {{ project.name }}
-                  </h2>
-                  <p class="github-projects__card-subtitle">
-                    {{ formatDate(project.updatedAt) }} ·
-                    {{ project.primaryLanguage ?? t("portfolio.githubProjects.languageUnknown") }}
-                  </p>
+                    {{ project.primaryLanguage }}
+                  </span>
+                </header>
+
+                <ul class="github-projects__stats">
+                  <li>
+                    <v-icon
+                      icon="mdi-star-outline"
+                      size="18"
+                      class="github-projects__stat-icon"
+                      aria-hidden="true"
+                    />
+                    <div class="github-projects__stat-text">
+                      <span class="github-projects__stat-value">{{ project.stars }}</span>
+                      <span class="github-projects__stat-label">{{
+                        t("portfolio.githubProjects.stars")
+                      }}</span>
+                    </div>
+                  </li>
+                  <li>
+                    <v-icon
+                      icon="mdi-source-fork"
+                      size="18"
+                      class="github-projects__stat-icon"
+                      aria-hidden="true"
+                    />
+                    <div class="github-projects__stat-text">
+                      <span class="github-projects__stat-value">{{ project.forks }}</span>
+                      <span class="github-projects__stat-label">{{
+                        t("portfolio.githubProjects.forks")
+                      }}</span>
+                    </div>
+                  </li>
+                  <li>
+                    <v-icon
+                      icon="mdi-clock-outline"
+                      size="18"
+                      class="github-projects__stat-icon"
+                      aria-hidden="true"
+                    />
+                    <div class="github-projects__stat-text">
+                      <span class="github-projects__stat-value">{{
+                        formatDate(project.updatedAt)
+                      }}</span>
+                      <span class="github-projects__stat-label">{{
+                        t("portfolio.githubProjects.updatedAt")
+                      }}</span>
+                    </div>
+                  </li>
+                </ul>
+
+                <div
+                  v-if="project.displayTopics.length"
+                  class="github-projects__topics"
+                >
+                  <Motion
+                    v-for="(topic, topicIndex) in project.displayTopics"
+                    :key="topic"
+                    as="div"
+                    class="github-projects__topic-motion"
+                    :initial="{ opacity: 0, y: 12 }"
+                    :while-in-view="{ opacity: 1, y: 0 }"
+                    :transition="{ duration: 0.35, delay: 0.15 + topicIndex * 0.05 }"
+                    :viewport="{ once: true }"
+                  >
+                    <v-chip
+                      label
+                      size="small"
+                      class="github-projects__topic"
+                      variant="outlined"
+                    >
+                      #{{ topic }}
+                    </v-chip>
+                  </Motion>
+                  <span
+                    v-if="project.hiddenTopics > 0"
+                    class="github-projects__topic github-projects__topic--more"
+                  >
+                    +{{ project.hiddenTopics }}
+                  </span>
                 </div>
 
-                <span
-                  v-if="project.primaryLanguage"
-                  class="github-projects__language"
-                >
-                  {{ project.primaryLanguage }}
-                </span>
-              </header>
-
-              <ul class="github-projects__stats">
-                <li>
-                  <v-icon
-                    icon="mdi-star-outline"
-                    size="18"
-                    class="github-projects__stat-icon"
-                    aria-hidden="true"
-                  />
-                  <div class="github-projects__stat-text">
-                    <span class="github-projects__stat-value">{{ project.stars }}</span>
-                    <span class="github-projects__stat-label">{{ t("portfolio.githubProjects.stars") }}</span>
-                  </div>
-                </li>
-                <li>
-                  <v-icon
-                    icon="mdi-source-fork"
-                    size="18"
-                    class="github-projects__stat-icon"
-                    aria-hidden="true"
-                  />
-                  <div class="github-projects__stat-text">
-                    <span class="github-projects__stat-value">{{ project.forks }}</span>
-                    <span class="github-projects__stat-label">{{ t("portfolio.githubProjects.forks") }}</span>
-                  </div>
-                </li>
-                <li>
-                  <v-icon
-                    icon="mdi-clock-outline"
-                    size="18"
-                    class="github-projects__stat-icon"
-                    aria-hidden="true"
-                  />
-                  <div class="github-projects__stat-text">
-                    <span class="github-projects__stat-value">{{ formatDate(project.updatedAt) }}</span>
-                    <span class="github-projects__stat-label">{{ t("portfolio.githubProjects.updatedAt") }}</span>
-                  </div>
-                </li>
-              </ul>
-
-              <div
-                v-if="project.displayTopics.length"
-                class="github-projects__topics"
-              >
-                <Motion
-                  v-for="(topic, topicIndex) in project.displayTopics"
-                  :key="topic"
-                  as="div"
-                  class="github-projects__topic-motion"
-                  :initial="{ opacity: 0, y: 12 }"
-                  :while-in-view="{ opacity: 1, y: 0 }"
-                  :transition="{ duration: 0.35, delay: 0.15 + topicIndex * 0.05 }"
-                  :viewport="{ once: true }"
-                >
-                  <v-chip
-                    label
-                    size="small"
-                    class="github-projects__topic"
-                    variant="outlined"
+                <footer class="github-projects__actions">
+                  <v-btn
+                    :to="projectDetailRoute(project.slug)"
+                    variant="flat"
+                    color="primary"
+                    class="text-none"
                   >
-                    #{{ topic }}
-                  </v-chip>
-                </Motion>
-                <span
-                  v-if="project.hiddenTopics > 0"
-                  class="github-projects__topic github-projects__topic--more"
-                >
-                  +{{ project.hiddenTopics }}
-                </span>
-              </div>
-
-              <footer class="github-projects__actions">
-                <v-btn
-                  :to="projectDetailRoute(project.slug)"
-                  variant="flat"
-                  color="primary"
-                  class="text-none"
-                >
-                  {{ t("portfolio.githubProjects.viewDetails") }}
-                </v-btn>
-                <v-btn
-                  :href="project.url"
-                  target="_blank"
-                  rel="noopener"
-                  variant="text"
-                  color="primary"
-                  class="text-none"
-                  append-icon="mdi-open-in-new"
-                >
-                  {{ t("portfolio.githubProjects.viewOnGithub") }}
-                </v-btn>
-              </footer>
-            </article>
-          </Motion>
-        </v-col>
-      </v-row>
+                    {{ t("portfolio.githubProjects.viewDetails") }}
+                  </v-btn>
+                  <v-btn
+                    :href="project.url"
+                    target="_blank"
+                    rel="noopener"
+                    variant="text"
+                    color="primary"
+                    class="text-none"
+                    append-icon="mdi-open-in-new"
+                  >
+                    {{ t("portfolio.githubProjects.viewOnGithub") }}
+                  </v-btn>
+                </footer>
+              </article>
+            </Motion>
+          </v-col>
+        </v-row>
       </div>
     </v-container>
   </section>
@@ -321,7 +335,8 @@ useSeoMeta(() => ({
   overflow: hidden;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+  transition:
+    transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
     border-color 0.4s ease,
     box-shadow 0.4s ease;
 }

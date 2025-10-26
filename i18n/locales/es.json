@@ -38,36 +38,36 @@
     "blog": {
       "badge": "Blog",
       "title": "Ideas, notas y análisis técnicos en profundidad.",
-    "description": "Pronto compartiré artículos extensos sobre arquitectura backend, prácticas con Symfony y consejos de productividad.",
-    "filters": {
-      "search": "Buscar artículos",
-      "categories": "Explorar categorías",
-      "tags": "Filtrar por etiquetas",
-      "all": "Todas las publicaciones"
-    },
-    "list": {
-      "readingTime": "{minutes} min de lectura",
-      "readMore": "Leer artículo",
-      "empty": {
-        "title": "Ningún artículo coincide con tus filtros",
-        "description": "Prueba a limpiar la búsqueda o elige otra categoría para seguir explorando."
-      }
-    },
-    "meta": {
-      "heading": "Detalles del artículo",
-      "published": "Publicado",
-      "updated": "Actualizado",
-      "readingTime": "Tiempo de lectura",
-      "copyLink": "Copiar enlace",
-      "linkCopied": "¡Enlace copiado!",
-      "backToList": "Ver todas las publicaciones"
-    },
-    "related": "Más artículos que podrían interesarte",
-    "notFound": {
-      "title": "Este artículo ya no está disponible",
-      "description": "Puede que se haya movido o despublicado. Vuelve al blog para seguir leyendo.",
-      "cta": "Volver al blog"
-    },
+      "description": "Pronto compartiré artículos extensos sobre arquitectura backend, prácticas con Symfony y consejos de productividad.",
+      "filters": {
+        "search": "Buscar artículos",
+        "categories": "Explorar categorías",
+        "tags": "Filtrar por etiquetas",
+        "all": "Todas las publicaciones"
+      },
+      "list": {
+        "readingTime": "{minutes} min de lectura",
+        "readMore": "Leer artículo",
+        "empty": {
+          "title": "Ningún artículo coincide con tus filtros",
+          "description": "Prueba a limpiar la búsqueda o elige otra categoría para seguir explorando."
+        }
+      },
+      "meta": {
+        "heading": "Detalles del artículo",
+        "published": "Publicado",
+        "updated": "Actualizado",
+        "readingTime": "Tiempo de lectura",
+        "copyLink": "Copiar enlace",
+        "linkCopied": "¡Enlace copiado!",
+        "backToList": "Ver todas las publicaciones"
+      },
+      "related": "Más artículos que podrían interesarte",
+      "notFound": {
+        "title": "Este artículo ya no está disponible",
+        "description": "Puede que se haya movido o despublicado. Vuelve al blog para seguir leyendo.",
+        "cta": "Volver al blog"
+      },
       "empty": {
         "title": "La primera publicación está en camino",
         "description": "Estoy preparando casos de estudio y tutoriales para compartir muy pronto. Mientras tanto, contáctame y hablemos de tu proyecto.",

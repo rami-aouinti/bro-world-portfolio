@@ -97,10 +97,7 @@ export async function ensureDefaultAdmin() {
     },
   });
 
-  await deleteCachedValue([
-    getEmailCacheKey(email),
-    getIdCacheKey(created.id),
-  ]);
+  await deleteCachedValue([getEmailCacheKey(email), getIdCacheKey(created.id)]);
   await cacheUser(mapAdminUser(created));
 }
 

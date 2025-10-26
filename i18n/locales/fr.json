@@ -38,41 +38,41 @@
     "blog": {
       "badge": "Blog",
       "title": "Analyses, notes et plongées techniques.",
-    "description": "Restez à l’écoute pour des articles détaillés sur l’architecture backend, les pratiques Symfony et la productivité.",
-    "filters": {
-      "search": "Rechercher un article",
-      "categories": "Parcourir les catégories",
-      "tags": "Filtrer par tags",
-      "all": "Tous les articles"
-    },
-    "list": {
-      "readingTime": "{minutes} min de lecture",
-      "readMore": "Lire l’article",
+      "description": "Restez à l’écoute pour des articles détaillés sur l’architecture backend, les pratiques Symfony et la productivité.",
+      "filters": {
+        "search": "Rechercher un article",
+        "categories": "Parcourir les catégories",
+        "tags": "Filtrer par tags",
+        "all": "Tous les articles"
+      },
+      "list": {
+        "readingTime": "{minutes} min de lecture",
+        "readMore": "Lire l’article",
+        "empty": {
+          "title": "Aucun article ne correspond à vos filtres",
+          "description": "Essayez de réinitialiser la recherche ou sélectionnez une autre catégorie pour continuer votre lecture."
+        }
+      },
+      "meta": {
+        "heading": "Détails de l’article",
+        "published": "Publié",
+        "updated": "Mis à jour",
+        "readingTime": "Temps de lecture",
+        "copyLink": "Copier le lien",
+        "linkCopied": "Lien copié !",
+        "backToList": "Retour à tous les articles"
+      },
+      "related": "D’autres articles susceptibles de vous plaire",
+      "notFound": {
+        "title": "Cet article n’est plus disponible",
+        "description": "Il a peut-être été déplacé ou retiré. Retournez au blog pour poursuivre votre lecture.",
+        "cta": "Retourner au blog"
+      },
       "empty": {
-        "title": "Aucun article ne correspond à vos filtres",
-        "description": "Essayez de réinitialiser la recherche ou sélectionnez une autre catégorie pour continuer votre lecture."
+        "title": "Le premier article arrive bientôt",
+        "description": "Je prépare des études de cas et des tutoriels à partager très prochainement. En attendant, contactez-moi pour discuter de votre projet.",
+        "cta": "Me contacter"
       }
-    },
-    "meta": {
-      "heading": "Détails de l’article",
-      "published": "Publié",
-      "updated": "Mis à jour",
-      "readingTime": "Temps de lecture",
-      "copyLink": "Copier le lien",
-      "linkCopied": "Lien copié !",
-      "backToList": "Retour à tous les articles"
-    },
-    "related": "D’autres articles susceptibles de vous plaire",
-    "notFound": {
-      "title": "Cet article n’est plus disponible",
-      "description": "Il a peut-être été déplacé ou retiré. Retournez au blog pour poursuivre votre lecture.",
-      "cta": "Retourner au blog"
-    },
-    "empty": {
-      "title": "Le premier article arrive bientôt",
-      "description": "Je prépare des études de cas et des tutoriels à partager très prochainement. En attendant, contactez-moi pour discuter de votre projet.",
-      "cta": "Me contacter"
-    }
     },
     "personal": {
       "viewProjects": "Voir mes projets",

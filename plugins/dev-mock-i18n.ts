@@ -4,12 +4,15 @@ import { getMockTranslations } from "~/utils/i18n/mock-translations";
 import { DEFAULT_LOCALE, isSupportedLocale } from "~/utils/i18n/locales";
 
 function mergeMessages(base: unknown, overrides: Record<string, unknown>): Record<string, unknown> {
-  const initial = typeof base === "object" && base !== null ? { ...(base as Record<string, unknown>) } : {};
+  const initial =
+    typeof base === "object" && base !== null ? { ...(base as Record<string, unknown>) } : {};
 
   for (const [key, value] of Object.entries(overrides)) {
     if (value && typeof value === "object" && !Array.isArray(value)) {
       const existing =
-        typeof initial[key] === "object" && initial[key] !== null ? (initial[key] as Record<string, unknown>) : {};
+        typeof initial[key] === "object" && initial[key] !== null
+          ? (initial[key] as Record<string, unknown>)
+          : {};
       initial[key] = mergeMessages(existing, value as Record<string, unknown>);
     } else {
       initial[key] = value;

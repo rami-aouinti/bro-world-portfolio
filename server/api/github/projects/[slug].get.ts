@@ -53,7 +53,9 @@ export default defineEventHandler(async (event) => {
   let repo: GithubProjectDetailResponse;
 
   try {
-    repo = await $fetch<GithubProjectDetailResponse>(`${API_BASE_URL}/repos/${username}/${slug}`, { headers });
+    repo = await $fetch<GithubProjectDetailResponse>(`${API_BASE_URL}/repos/${username}/${slug}`, {
+      headers,
+    });
   } catch (error) {
     throw createError({ statusCode: 404, statusMessage: "Repository not found" });
   }

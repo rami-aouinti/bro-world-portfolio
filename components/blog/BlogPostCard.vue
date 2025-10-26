@@ -25,7 +25,9 @@
           <span class="blog-post-card__dot" />
           <span>{{ formattedPublishedAt }}</span>
           <span class="blog-post-card__dot" />
-          <span>{{ t("portfolio.blog.list.readingTime", { minutes: post.readingTimeMinutes }) }}</span>
+          <span>{{
+            t("portfolio.blog.list.readingTime", { minutes: post.readingTimeMinutes })
+          }}</span>
         </div>
 
         <h3 class="blog-post-card__title">
@@ -53,7 +55,10 @@
       <v-card-actions class="blog-post-card__footer">
         <div class="blog-post-card__author">
           <v-avatar size="36">
-            <v-img :src="post.author.avatar" alt="" />
+            <v-img
+              :src="post.author.avatar"
+              alt=""
+            />
           </v-avatar>
           <div>
             <p class="blog-post-card__author-name">{{ post.author.name }}</p>
@@ -67,7 +72,10 @@
           class="text-none"
         >
           {{ t("portfolio.blog.list.readMore") }}
-          <v-icon icon="mdi-arrow-right" class="ml-2" />
+          <v-icon
+            icon="mdi-arrow-right"
+            class="ml-2"
+          />
         </v-btn>
       </v-card-actions>
     </v-card>

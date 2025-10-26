@@ -6,7 +6,10 @@ import { SUPPORTED_LOCALES, type LocaleCode } from "../utils/i18n/locales";
 const prisma = new PrismaClient();
 
 function resolveAuthorId(name: string) {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 }
 
 async function ensureDatabaseSchema() {
@@ -92,7 +95,7 @@ async function ensureDatabaseSchema() {
     `ALTER TABLE "BlogPost" ADD CONSTRAINT "BlogPost_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "BlogAuthor"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
     `ALTER TABLE "BlogPostStats" ADD CONSTRAINT "BlogPostStats_postId_fkey" FOREIGN KEY ("postId") REFERENCES "BlogPost"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
     `ALTER TABLE "BlogSection" ADD CONSTRAINT "BlogSection_postId_fkey" FOREIGN KEY ("postId") REFERENCES "BlogPost"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
-    `ALTER TABLE "Session" ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "AdminUser"("id") ON DELETE CASCADE ON UPDATE CASCADE`
+    `ALTER TABLE "Session" ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "AdminUser"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
   ];
 
   for (const statement of statements) {
@@ -113,7 +116,7 @@ async function seedLocales() {
 }
 
 async function seedContent() {
-  const entries = Object.entries(LIVE_CONTENT) as [LocaleCode, typeof LIVE_CONTENT[LocaleCode]][];
+  const entries = Object.entries(LIVE_CONTENT) as [LocaleCode, (typeof LIVE_CONTENT)[LocaleCode]][];
 
   for (const [locale, record] of entries) {
     const slugs = Object.keys(record);

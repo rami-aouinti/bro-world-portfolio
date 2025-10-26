@@ -15,7 +15,10 @@ function getPostCacheKey(slug: string) {
 }
 
 function resolveAuthorId(name: string) {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 }
 
 function mapSection(section: { type: string; data: unknown }): BlogPostSection {

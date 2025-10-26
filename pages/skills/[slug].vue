@@ -209,7 +209,6 @@ useSeoMeta(() => ({
   margin-top: 8px;
 }
 
-
 .skill-card {
   height: 100%;
   position: relative;
@@ -312,7 +311,6 @@ useSeoMeta(() => ({
   text-shadow: 0 8px 22px rgba(129, 140, 248, 0.4);
 }
 
-
 .skill-card__level {
   margin: 6px 0 0;
   color: rgba(226, 232, 240, 0.75);
@@ -330,7 +328,6 @@ useSeoMeta(() => ({
   --v-rating-background-opacity: 0.25;
 }
 
-
 .skill-card__summary {
   margin: 0;
   color: rgba(226, 232, 240, 0.9);
@@ -344,7 +341,6 @@ useSeoMeta(() => ({
   gap: 12px;
 }
 
-
 .skill-card__projects-title {
   margin: 0;
   font-size: 1.02rem;
@@ -353,7 +349,6 @@ useSeoMeta(() => ({
   text-transform: uppercase;
   color: rgba(226, 232, 240, 0.88);
 }
-
 
 .skill-card__project-list {
   display: flex;

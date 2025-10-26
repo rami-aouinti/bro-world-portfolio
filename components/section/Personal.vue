@@ -130,9 +130,7 @@ const isCompactViewport = useMediaQuery("(max-width: 640px)");
 const headlineStrokeSize = computed(() => (isCompactViewport.value ? 8 : 20));
 const headlineShadowOneSize = computed(() => (isCompactViewport.value ? 4 : 7));
 const headlineShadowTwoSize = computed(() => (isCompactViewport.value ? 6 : 10));
-const headlineLetterSpacing = computed(() =>
-  isCompactViewport.value ? -0.05 : -0.1,
-);
+const headlineLetterSpacing = computed(() => (isCompactViewport.value ? -0.05 : -0.1));
 const enrichedWorkDetails: Record<
   string,
   {

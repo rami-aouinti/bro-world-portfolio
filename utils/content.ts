@@ -625,7 +625,8 @@ const EN_CONTENT: ContentRecord = {
       {
         slug: "quality-and-testing",
         name: "Quality & Testing",
-        description: "Test suites and static analysis that keep releases confident and maintainable.",
+        description:
+          "Test suites and static analysis that keep releases confident and maintainable.",
         skills: [
           {
             slug: "phpunit",
@@ -682,7 +683,8 @@ const EN_CONTENT: ContentRecord = {
             name: "Docker",
             level: "Expert",
             rating: 5,
-            summary: "Multi-service containers for local development, testing, and production parity.",
+            summary:
+              "Multi-service containers for local development, testing, and production parity.",
             projects: [{ slug: "dockerisierte-entwicklungsumgebungen" }],
           },
           {
@@ -1239,8 +1241,7 @@ const FR_CONTENT: ContentRecord = {
             name: "API Platform",
             level: "Expert",
             rating: 5,
-            summary:
-              "API schema-first avec pagination, filtres et documentation OpenAPI intégrée.",
+            summary: "API schema-first avec pagination, filtres et documentation OpenAPI intégrée.",
             projects: [
               { slug: "microservices-tkdeutschland" },
               { slug: "shopware-integrationen-wizmo-gmbh" },
@@ -1275,7 +1276,8 @@ const FR_CONTENT: ContentRecord = {
             name: "LexikJWTAuthenticationBundle",
             level: "Avancé",
             rating: 4,
-            summary: "Authentification stateless avec refresh tokens et contrôle d’accès par rôles.",
+            summary:
+              "Authentification stateless avec refresh tokens et contrôle d’accès par rôles.",
             projects: [{ slug: "microservices-tkdeutschland" }],
           },
         ],
@@ -1318,7 +1320,8 @@ const FR_CONTENT: ContentRecord = {
             name: "PHPStan",
             level: "Avancé",
             rating: 4,
-            summary: "Analyse statique pour renforcer la sécurité des types et prévenir les régressions.",
+            summary:
+              "Analyse statique pour renforcer la sécurité des types et prévenir les régressions.",
             projects: [{ slug: "dockerisierte-entwicklungsumgebungen" }],
           },
           {
@@ -1334,7 +1337,8 @@ const FR_CONTENT: ContentRecord = {
       {
         slug: "devops-and-delivery",
         name: "DevOps & Delivery",
-        description: "Automatisation, conteneurisation et CI/CD pour des déploiements prédictibles.",
+        description:
+          "Automatisation, conteneurisation et CI/CD pour des déploiements prédictibles.",
         skills: [
           {
             slug: "docker",
@@ -1379,14 +1383,16 @@ const FR_CONTENT: ContentRecord = {
       {
         slug: "monitoring-and-observability",
         name: "Monitoring & Observabilité",
-        description: "Tableaux de bord, traces et alertes pour garder les services sains en production.",
+        description:
+          "Tableaux de bord, traces et alertes pour garder les services sains en production.",
         skills: [
           {
             slug: "sentry",
             name: "Sentry",
             level: "Avancé",
             rating: 4,
-            summary: "Suivi d’erreurs en temps réel avec indicateurs de santé et routage d’alertes.",
+            summary:
+              "Suivi d’erreurs en temps réel avec indicateurs de santé et routage d’alertes.",
             projects: [
               { slug: "monitoring-analytics-automatisierung" },
               { slug: "leistungsoptimierung-legacy-systeme" },
@@ -1647,8 +1653,7 @@ const PROD_LOCALIZED_CONTENT: Partial<Record<LocaleCode, ContentRecord>> = {
 
 const PROD_CONTENT: LocalizedContentRecord = Object.fromEntries(
   SUPPORTED_LOCALES.map((locale) => {
-    const localized =
-      PROD_LOCALIZED_CONTENT[locale] ?? PROD_LOCALIZED_CONTENT[DEFAULT_LOCALE];
+    const localized = PROD_LOCALIZED_CONTENT[locale] ?? PROD_LOCALIZED_CONTENT[DEFAULT_LOCALE];
     return [locale, localized as ContentRecord];
   }),
 ) as LocalizedContentRecord;

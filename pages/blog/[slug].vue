@@ -1,22 +1,40 @@
 <template>
   <ScrollSmooth>
     <div class="blog-article">
-      <div v-if="pending" class="blog-article__loading">
-        <v-skeleton-loader type="image" class="blog-article__hero-skeleton" />
+      <div
+        v-if="pending"
+        class="blog-article__loading"
+      >
+        <v-skeleton-loader
+          type="image"
+          class="blog-article__hero-skeleton"
+        />
         <v-container class="py-8">
           <v-skeleton-loader type="article" />
         </v-container>
       </div>
 
-      <div v-else-if="post" class="blog-article__content">
+      <div
+        v-else-if="post"
+        class="blog-article__content"
+      >
         <section class="blog-article__hero">
-          <v-img :src="post.heroImage ?? post.coverImage" height="420" cover class="blog-article__hero-img">
+          <v-img
+            :src="post.heroImage ?? post.coverImage"
+            height="420"
+            cover
+            class="blog-article__hero-img"
+          >
             <template #placeholder>
               <div class="blog-article__hero-placeholder" />
             </template>
 
             <div class="blog-article__hero-overlay">
-              <v-chip color="primary" variant="elevated" class="text-uppercase font-weight-bold">
+              <v-chip
+                color="primary"
+                variant="elevated"
+                class="text-uppercase font-weight-bold"
+              >
                 {{ post.category }}
               </v-chip>
               <h1 class="blog-article__title">{{ post.title }}</h1>
@@ -36,9 +54,15 @@
 
         <v-container class="blog-article__body">
           <v-row>
-            <v-col cols="12" lg="8">
+            <v-col
+              cols="12"
+              lg="8"
+            >
               <article class="blog-article__prose">
-                <template v-for="(section, index) in post.sections" :key="index">
+                <template
+                  v-for="(section, index) in post.sections"
+                  :key="index"
+                >
                   <component
                     :is="`h${section.level}`"
                     v-if="section.type === 'heading'"
@@ -58,19 +82,38 @@
                     {{ section.text }}
                   </p>
 
-                  <div v-else-if="section.type === 'list'" class="blog-article__list">
-                    <p v-if="section.title" class="blog-article__list-title">{{ section.title }}</p>
+                  <div
+                    v-else-if="section.type === 'list'"
+                    class="blog-article__list"
+                  >
+                    <p
+                      v-if="section.title"
+                      class="blog-article__list-title"
+                    >
+                      {{ section.title }}
+                    </p>
                     <component :is="section.ordered ? 'ol' : 'ul'">
-                      <li v-for="item in section.items" :key="item">{{ item }}</li>
+                      <li
+                        v-for="item in section.items"
+                        :key="item"
+                      >
+                        {{ item }}
+                      </li>
                     </component>
                   </div>
 
-                  <figure v-else-if="section.type === 'quote'" class="blog-article__quote">
+                  <figure
+                    v-else-if="section.type === 'quote'"
+                    class="blog-article__quote"
+                  >
                     <blockquote>“{{ section.text }}”</blockquote>
                     <figcaption v-if="section.attribution">— {{ section.attribution }}</figcaption>
                   </figure>
 
-                  <div v-else-if="section.type === 'code'" class="blog-article__code">
+                  <div
+                    v-else-if="section.type === 'code'"
+                    class="blog-article__code"
+                  >
                     <header>
                       <span>{{ section.language }}</span>
                     </header>
@@ -81,21 +124,31 @@
               </article>
             </v-col>
 
-            <v-col cols="12" lg="4">
+            <v-col
+              cols="12"
+              lg="4"
+            >
               <aside class="blog-article__sidebar">
-                <v-sheet elevation="0" border class="blog-article__panel">
-                  <p class="blog-article__panel-heading">{{ t('portfolio.blog.meta.heading') }}</p>
+                <v-sheet
+                  elevation="0"
+                  border
+                  class="blog-article__panel"
+                >
+                  <p class="blog-article__panel-heading">{{ t("portfolio.blog.meta.heading") }}</p>
 
                   <div class="blog-article__panel-entry">
-                    <span>{{ t('portfolio.blog.meta.published') }}</span>
+                    <span>{{ t("portfolio.blog.meta.published") }}</span>
                     <strong>{{ publishedLabel }}</strong>
                   </div>
-                  <div v-if="post.updatedAt" class="blog-article__panel-entry">
-                    <span>{{ t('portfolio.blog.meta.updated') }}</span>
+                  <div
+                    v-if="post.updatedAt"
+                    class="blog-article__panel-entry"
+                  >
+                    <span>{{ t("portfolio.blog.meta.updated") }}</span>
                     <strong>{{ updatedLabel }}</strong>
                   </div>
                   <div class="blog-article__panel-entry">
-                    <span>{{ t('portfolio.blog.meta.readingTime') }}</span>
+                    <span>{{ t("portfolio.blog.meta.readingTime") }}</span>
                     <strong>{{ readingTimeLabel }}</strong>
                   </div>
 
@@ -119,7 +172,11 @@
                     variant="flat"
                     @click="copyShareLink"
                   >
-                    {{ copied ? t('portfolio.blog.meta.linkCopied') : t('portfolio.blog.meta.copyLink') }}
+                    {{
+                      copied
+                        ? t("portfolio.blog.meta.linkCopied")
+                        : t("portfolio.blog.meta.copyLink")
+                    }}
                   </v-btn>
                 </v-sheet>
               </aside>
@@ -127,25 +184,52 @@
           </v-row>
         </v-container>
 
-        <v-container v-if="relatedPosts.length" class="blog-article__related">
+        <v-container
+          v-if="relatedPosts.length"
+          class="blog-article__related"
+        >
           <div class="blog-article__related-header">
-            <h2>{{ t('portfolio.blog.related') }}</h2>
-            <NuxtLink :to="localePath('/blog')" class="blog-article__back">{{ t('portfolio.blog.meta.backToList') }}</NuxtLink>
+            <h2>{{ t("portfolio.blog.related") }}</h2>
+            <NuxtLink
+              :to="localePath('/blog')"
+              class="blog-article__back"
+              >{{ t("portfolio.blog.meta.backToList") }}</NuxtLink
+            >
           </div>
           <v-row dense>
-            <v-col v-for="item in relatedPosts" :key="item.id" cols="12" md="4">
+            <v-col
+              v-for="item in relatedPosts"
+              :key="item.id"
+              cols="12"
+              md="4"
+            >
               <BlogPostCard :post="item" />
             </v-col>
           </v-row>
         </v-container>
       </div>
 
-      <v-container v-else class="blog-article__empty py-16">
-        <v-sheet class="blog-article__empty-card" elevation="0">
-          <v-icon icon="mdi-alert-circle-outline" size="48" color="warning" />
-          <h2>{{ t('portfolio.blog.notFound.title') }}</h2>
-          <p>{{ t('portfolio.blog.notFound.description') }}</p>
-          <v-btn :to="localePath('/blog')" color="primary" class="text-none">{{ t('portfolio.blog.notFound.cta') }}</v-btn>
+      <v-container
+        v-else
+        class="blog-article__empty py-16"
+      >
+        <v-sheet
+          class="blog-article__empty-card"
+          elevation="0"
+        >
+          <v-icon
+            icon="mdi-alert-circle-outline"
+            size="48"
+            color="warning"
+          />
+          <h2>{{ t("portfolio.blog.notFound.title") }}</h2>
+          <p>{{ t("portfolio.blog.notFound.description") }}</p>
+          <v-btn
+            :to="localePath('/blog')"
+            color="primary"
+            class="text-none"
+            >{{ t("portfolio.blog.notFound.cta") }}</v-btn
+          >
         </v-sheet>
       </v-container>
     </div>
@@ -171,9 +255,8 @@ const { data, pending } = await useAsyncData<BlogPostResponse>(
   { watch: [() => slug.value] },
 );
 
-const { data: relatedData } = await useAsyncData<BlogPostsResponse>(
-  "blog-related",
-  () => $fetch("/api/blog/posts", { params: { limit: 6 } }),
+const { data: relatedData } = await useAsyncData<BlogPostsResponse>("blog-related", () =>
+  $fetch("/api/blog/posts", { params: { limit: 6 } }),
 );
 
 const post = computed(() => data.value?.data ?? null);

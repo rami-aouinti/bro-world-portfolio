@@ -9,7 +9,11 @@
         </p>
       </div>
 
-      <v-sheet class="blog-page__filters" elevation="0" border>
+      <v-sheet
+        class="blog-page__filters"
+        elevation="0"
+        border
+      >
         <v-text-field
           v-model="searchTerm"
           :label="t('portfolio.blog.filters.search')"
@@ -22,7 +26,7 @@
 
         <div class="blog-page__filter-group">
           <p class="blog-page__filter-label">
-            {{ t('portfolio.blog.filters.categories') }}
+            {{ t("portfolio.blog.filters.categories") }}
           </p>
           <v-chip-group
             v-model="selectedCategory"
@@ -46,7 +50,7 @@
 
         <div class="blog-page__filter-group">
           <p class="blog-page__filter-label">
-            {{ t('portfolio.blog.filters.tags') }}
+            {{ t("portfolio.blog.filters.tags") }}
           </p>
           <v-chip-group
             v-model="selectedTag"
@@ -70,7 +74,10 @@
         </div>
       </v-sheet>
 
-      <div v-if="pending" class="blog-page__loading">
+      <div
+        v-if="pending"
+        class="blog-page__loading"
+      >
         <v-skeleton-loader
           type="image, article, actions"
           class="blog-page__skeleton"
@@ -84,11 +91,21 @@
       </div>
 
       <div v-else>
-        <div v-if="highlightPost" class="blog-page__featured">
-          <BlogPostCard :post="highlightPost" variant="featured" />
+        <div
+          v-if="highlightPost"
+          class="blog-page__featured"
+        >
+          <BlogPostCard
+            :post="highlightPost"
+            variant="featured"
+          />
         </div>
 
-        <v-row v-if="otherPosts.length" class="blog-page__grid" dense>
+        <v-row
+          v-if="otherPosts.length"
+          class="blog-page__grid"
+          dense
+        >
           <v-col
             v-for="post in otherPosts"
             :key="post.id"
@@ -148,8 +165,8 @@ const { data, pending } = await useAsyncData<BlogPostsResponse>("blog-posts", ()
 );
 
 const posts = computed<BlogPostPreview[]>(() => data.value?.data ?? []);
-const meta = computed<BlogPostsMeta>(() =>
-  data.value?.meta ?? { total: 0, categories: [], tags: [], featured: null },
+const meta = computed<BlogPostsMeta>(
+  () => data.value?.meta ?? { total: 0, categories: [], tags: [], featured: null },
 );
 
 const normalizedSearch = computed(() => searchTerm.value.trim().toLowerCase());
@@ -169,9 +186,7 @@ const filteredPosts = computed(() => {
 
   if (normalizedSearch.value) {
     items = items.filter((post) => {
-      const haystack = [post.title, post.excerpt, post.tags.join(" ")]
-        .join(" ")
-        .toLowerCase();
+      const haystack = [post.title, post.excerpt, post.tags.join(" ")].join(" ").toLowerCase();
       return haystack.includes(normalizedSearch.value);
     });
   }
@@ -208,10 +223,7 @@ const otherPosts = computed(() => {
 const categories = computed(() => {
   const records = meta.value.categories ?? [];
   const total = meta.value.total ?? 0;
-  return [
-    { id: "all", label: t("portfolio.blog.filters.all"), count: total },
-    ...records,
-  ];
+  return [{ id: "all", label: t("portfolio.blog.filters.all"), count: total }, ...records];
 });
 
 const tags = computed(() => {

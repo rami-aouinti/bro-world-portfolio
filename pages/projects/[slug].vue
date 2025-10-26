@@ -19,7 +19,10 @@
         :transition="{ duration: 0.6, ease: 'easeOut' }"
         :viewport="{ once: true, amount: 0.5 }"
       >
-        <span class="github-project-detail__hero-glow" aria-hidden="true" />
+        <span
+          class="github-project-detail__hero-glow"
+          aria-hidden="true"
+        />
         <h1 class="text-h3 text-foreground github-project-detail__title">
           {{ project.name }}
         </h1>
@@ -28,22 +31,40 @@
         </p>
         <div class="github-project-detail__hero-meta">
           <span class="github-project-detail__hero-pill">
-            <v-icon icon="mdi-calendar-plus" size="18" aria-hidden="true" />
+            <v-icon
+              icon="mdi-calendar-plus"
+              size="18"
+              aria-hidden="true"
+            />
             {{ t("portfolio.githubProjects.createdAt") }} {{ formatDate(project.createdAt) }}
           </span>
           <span class="github-project-detail__hero-pill">
-            <v-icon icon="mdi-update" size="18" aria-hidden="true" />
+            <v-icon
+              icon="mdi-update"
+              size="18"
+              aria-hidden="true"
+            />
             {{ t("portfolio.githubProjects.updatedAt") }} {{ formatDate(project.updatedAt) }}
           </span>
           <span class="github-project-detail__hero-pill">
-            <v-icon icon="mdi-code-tags" size="18" aria-hidden="true" />
+            <v-icon
+              icon="mdi-code-tags"
+              size="18"
+              aria-hidden="true"
+            />
             {{ project.primaryLanguage ?? t("portfolio.githubProjects.languageUnknown") }}
           </span>
         </div>
       </Motion>
 
-      <v-row dense class="github-project-detail__grid">
-        <v-col cols="12" md="8">
+      <v-row
+        dense
+        class="github-project-detail__grid"
+      >
+        <v-col
+          cols="12"
+          md="8"
+        >
           <Motion
             :initial="{ opacity: 0, y: 28 }"
             :while-in-view="{ opacity: 1, y: 0 }"
@@ -86,7 +107,9 @@
                 </div>
                 <div>
                   <dt>{{ t("portfolio.githubProjects.primaryLanguage") }}</dt>
-                  <dd>{{ project.primaryLanguage ?? t("portfolio.githubProjects.languageUnknown") }}</dd>
+                  <dd>
+                    {{ project.primaryLanguage ?? t("portfolio.githubProjects.languageUnknown") }}
+                  </dd>
                 </div>
               </dl>
 
@@ -144,7 +167,10 @@
           </Motion>
         </v-col>
 
-        <v-col cols="12" md="4">
+        <v-col
+          cols="12"
+          md="4"
+        >
           <Motion
             :initial="{ opacity: 0, y: 28 }"
             :while-in-view="{ opacity: 1, y: 0 }"
@@ -157,31 +183,55 @@
               </h2>
               <ul class="github-project-detail__stats">
                 <li>
-                  <v-icon icon="mdi-star-outline" size="18" aria-hidden="true" />
+                  <v-icon
+                    icon="mdi-star-outline"
+                    size="18"
+                    aria-hidden="true"
+                  />
                   <div>
                     <span class="github-project-detail__stat-value">{{ project.stars }}</span>
-                    <span class="github-project-detail__stat-label">{{ t("portfolio.githubProjects.stars") }}</span>
+                    <span class="github-project-detail__stat-label">{{
+                      t("portfolio.githubProjects.stars")
+                    }}</span>
                   </div>
                 </li>
                 <li>
-                  <v-icon icon="mdi-source-fork" size="18" aria-hidden="true" />
+                  <v-icon
+                    icon="mdi-source-fork"
+                    size="18"
+                    aria-hidden="true"
+                  />
                   <div>
                     <span class="github-project-detail__stat-value">{{ project.forks }}</span>
-                    <span class="github-project-detail__stat-label">{{ t("portfolio.githubProjects.forks") }}</span>
+                    <span class="github-project-detail__stat-label">{{
+                      t("portfolio.githubProjects.forks")
+                    }}</span>
                   </div>
                 </li>
                 <li>
-                  <v-icon icon="mdi-alert-circle-outline" size="18" aria-hidden="true" />
+                  <v-icon
+                    icon="mdi-alert-circle-outline"
+                    size="18"
+                    aria-hidden="true"
+                  />
                   <div>
                     <span class="github-project-detail__stat-value">{{ project.openIssues }}</span>
-                    <span class="github-project-detail__stat-label">{{ t("portfolio.githubProjects.openIssues") }}</span>
+                    <span class="github-project-detail__stat-label">{{
+                      t("portfolio.githubProjects.openIssues")
+                    }}</span>
                   </div>
                 </li>
                 <li>
-                  <v-icon icon="mdi-eye-outline" size="18" aria-hidden="true" />
+                  <v-icon
+                    icon="mdi-eye-outline"
+                    size="18"
+                    aria-hidden="true"
+                  />
                   <div>
                     <span class="github-project-detail__stat-value">{{ project.watchers }}</span>
-                    <span class="github-project-detail__stat-label">{{ t("portfolio.githubProjects.watchers") }}</span>
+                    <span class="github-project-detail__stat-label">{{
+                      t("portfolio.githubProjects.watchers")
+                    }}</span>
                   </div>
                 </li>
               </ul>
@@ -338,7 +388,8 @@ useSeoMeta(() => ({
   overflow: hidden;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+  transition:
+    transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
     border-color 0.4s ease,
     box-shadow 0.4s ease;
 }

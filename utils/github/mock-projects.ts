@@ -54,7 +54,7 @@ const MOCK_GITHUB_PROJECTS: MockGithubProject[] = [
     languages: {
       PHP: 72000,
       Twig: 8000,
-      "Shell": 3000,
+      Shell: 3000,
       Dockerfile: 2000,
     },
   },
