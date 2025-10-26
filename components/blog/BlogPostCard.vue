@@ -11,6 +11,7 @@
       <v-img
         :src="post.coverImage"
         :height="variant === 'featured' ? 320 : 200"
+        :alt="post.title"
         cover
         class="blog-post-card__image"
       >
@@ -30,9 +31,9 @@
           }}</span>
         </div>
 
-        <h3 class="blog-post-card__title">
+        <h2 class="blog-post-card__title">
           {{ post.title }}
-        </h3>
+        </h2>
 
         <p class="blog-post-card__excerpt">
           {{ post.excerpt }}
