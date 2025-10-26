@@ -289,6 +289,7 @@ const languageCard = computed(() => {
   text-transform: none;
   min-height: 44px;
   padding-inline: 12px;
+  margin: 4px;
 }
 
 .skills__chip :deep(.v-chip__content) {
