@@ -71,11 +71,13 @@
               :variant="card.variant"
             >
               <template #media>
-                <v-img
+                <NuxtImg
                   :src="`/images/work/${card.item.thumbnails}`"
                   :alt="card.item.name"
-                  height="200"
-                  cover
+                  width="640"
+                  height="400"
+                  sizes="(min-width: 1280px) 320px, (min-width: 960px) 280px, (min-width: 640px) 50vw, 90vw"
+                  densities="[1,2]"
                   class="personal__image"
                 />
               </template>
@@ -262,7 +264,12 @@ const enrichedWorkDetails: Record<
 }
 
 .personal__image {
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: 18px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
 }
 
 .personal__footer {

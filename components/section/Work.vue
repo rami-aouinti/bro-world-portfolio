@@ -38,6 +38,8 @@
                     :alt="t('portfolio.work.thumbnailAlt', { name: card.item.name })"
                     width="1000"
                     height="320"
+                    sizes="(min-width: 1280px) 320px, (min-width: 960px) 33vw, (min-width: 600px) 50vw, 90vw"
+                    densities="[1,2]"
                     class="work-card-thumbnail-image"
                   />
                 </NuxtLink>
