@@ -5,7 +5,7 @@
   >
     <v-card
       class="rounded-xl overflow-hidden"
-      elevation="variant === 'featured' ? 8 : 2"
+      :elevation="variant === 'featured' ? 8 : 2"
       border
     >
       <v-img
