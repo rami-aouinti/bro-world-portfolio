@@ -88,7 +88,12 @@
     "work": {
       "thumbnailAlt": "صورة مصغرة لـ {name}",
       "footerLabel": "مشروع مباشر",
-      "liveDemo": "مشاهدة العرض المباشر"
+      "liveDemo": "مشاهدة العرض المباشر",
+      "backToProjects": "العودة إلى المشاريع",
+      "detailAlt": "صورة توضيحية لمشروع {name}",
+      "errors": {
+        "notFound": "المشروع غير موجود."
+      }
     },
     "githubProjects": {
       "badge": "GitHub",

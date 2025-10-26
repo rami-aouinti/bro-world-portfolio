@@ -88,7 +88,12 @@
     "work": {
       "thumbnailAlt": "{name} 缩略图",
       "footerLabel": "在线项目",
-      "liveDemo": "查看在线演示"
+      "liveDemo": "查看在线演示",
+      "backToProjects": "返回项目列表",
+      "detailAlt": "{name} 项目插图",
+      "errors": {
+        "notFound": "未找到项目。"
+      }
     },
     "githubProjects": {
       "badge": "GitHub",
