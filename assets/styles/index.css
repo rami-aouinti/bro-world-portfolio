@@ -4,7 +4,6 @@
 
 html {
   min-height: 100%;
-  scrollbar-width: thin;
   scrollbar-color: var(--ui-scrollbar-thumb-color) var(--ui-scrollbar-track-color);
 }
 
@@ -216,11 +215,6 @@ label.btn {
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-}
-
-html {
-  overflow-y: hidden;
 }
 
 html.dark {
@@ -245,10 +239,6 @@ html.dark {
 .v-navigation-drawer,
 .v-footer {
   background-color: rgb(var(--v-theme-background)) !important;
-}
-
-.v-overlay__content > .v-card {
-  overflow-y: overlay !important;
 }
 
 .v-btn {

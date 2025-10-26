@@ -113,7 +113,6 @@
       background-color: rgb(var(--main-bg-color, var(--v-theme-background)));
     }
     background-image: none;
-    overflow-y: hidden;
   }
 }
 

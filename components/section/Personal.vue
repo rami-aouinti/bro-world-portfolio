@@ -208,7 +208,6 @@ const enrichedWorkDetails: Record<
 <style scoped>
 .personal {
   position: relative;
-  overflow-x: hidden;
 }
 
 .personal__container {
