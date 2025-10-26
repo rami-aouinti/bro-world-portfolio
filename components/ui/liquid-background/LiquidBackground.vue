@@ -7,6 +7,7 @@
 
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref, type HTMLAttributes } from "vue";
+import { useResizeObserver } from "@vueuse/core";
 import { Renderer, Program, Mesh, Color, Triangle, type OGLRenderingContext } from "ogl";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +19,8 @@ let animateId: number;
 let renderer: Renderer;
 let gl: OGLRenderingContext;
 let mesh: Mesh;
+let resizeRaf: number | null = null;
+let stopResizeObserver: (() => void) | undefined;
 
 // Vertex Shader
 const vert = `
@@ -59,10 +62,26 @@ const frag = `
   }
   `;
 
-function resize() {
+function scheduleResize(rect?: DOMRectReadOnly) {
+  if (resizeRaf !== null) {
+    cancelAnimationFrame(resizeRaf);
+  }
+
+  resizeRaf = requestAnimationFrame(() => {
+    resizeRaf = null;
+    resize(rect);
+  });
+}
+
+function resize(rect?: DOMRectReadOnly) {
   if (!ctnDom.value) return;
   const scale = 1;
-  renderer.setSize(ctnDom.value.offsetWidth * scale, ctnDom.value.offsetHeight * scale);
+  const width = Math.round(rect?.width ?? ctnDom.value.clientWidth);
+  const height = Math.round(rect?.height ?? ctnDom.value.clientHeight);
+
+  if (width <= 0 || height <= 0) return;
+
+  renderer.setSize(width * scale, height * scale);
   if (mesh) {
     mesh.program.uniforms.uResolution.value = [
       gl.canvas.width,
@@ -87,8 +106,11 @@ onMounted(() => {
   gl = renderer.gl;
   gl.clearColor(1, 1, 1, 1);
 
-  window.addEventListener("resize", resize, false);
-  resize();
+  scheduleResize();
+
+  stopResizeObserver = useResizeObserver(ctnDom, ([entry]) => {
+    scheduleResize(entry.contentRect);
+  });
 
   const geometry = new Triangle(gl);
 
@@ -112,7 +134,11 @@ onMounted(() => {
 
 onUnmounted(() => {
   cancelAnimationFrame(animateId);
-  window.removeEventListener("resize", resize);
+  if (resizeRaf !== null) {
+    cancelAnimationFrame(resizeRaf);
+    resizeRaf = null;
+  }
+  stopResizeObserver?.();
   if (ctnDom.value && gl?.canvas) {
     ctnDom.value.removeChild(gl.canvas);
   }
