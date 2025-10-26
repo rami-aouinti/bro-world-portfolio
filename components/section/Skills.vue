@@ -41,7 +41,6 @@
                   class="skills__chip"
                   color="primary"
                   variant="tonal"
-                  size="small"
                 >
                   <NuxtLink :to="skill.link">
                     {{ skill.name }}
@@ -288,6 +287,22 @@ const languageCard = computed(() => {
 
 .skills__chip {
   text-transform: none;
+  min-height: 44px;
+  padding-inline: 12px;
+}
+
+.skills__chip :deep(.v-chip__content) {
+  min-height: 44px;
+  padding: 0;
+}
+
+.skills__chip :deep(a) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding-inline: 4px;
 }
 
 .skills__language-chip {
