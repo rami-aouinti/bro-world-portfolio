@@ -320,6 +320,7 @@
 </template>
 
 <script setup lang="ts">
+import { useLocalePath, useSwitchLocalePath } from "#i18n";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 
 import { useMediaQuery } from "@vueuse/core";
