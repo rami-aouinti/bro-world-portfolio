@@ -12,12 +12,12 @@
     <Icon
       name="lucide:sun"
       class="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-      size="18"
+      :size="resolvedIconSize"
     />
     <Icon
       name="lucide:moon"
       class="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-      size="18"
+      :size="resolvedIconSize"
     />
     <span class="sr-only">Toggle theme</span>
   </UiButton>
@@ -29,9 +29,15 @@ import { useCookieColorMode } from "#imports";
 import { useSiteSettingsState } from "~/composables/useSiteSettingsState";
 import UiButton from "~/components/UiButton.vue";
 
-const props = defineProps<{ buttonClass?: string }>();
+const props = withDefaults(
+  defineProps<{ buttonClass?: string; iconSize?: number }>(),
+  {
+    iconSize: 18,
+  },
+);
 
 const buttonClass = computed(() => props.buttonClass ?? "");
+const resolvedIconSize = computed(() => props.iconSize ?? 18);
 
 const colorMode = useCookieColorMode();
 const siteSettings = useSiteSettingsState();
