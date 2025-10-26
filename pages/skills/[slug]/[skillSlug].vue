@@ -168,14 +168,14 @@ const categoryLink = computed(() =>
   resolveLocalizedRouteTarget(`/skills/${category.value?.slug ?? ""}`, localePath),
 );
 
-const goBack = () => {
+function goBack() {
   if (import.meta.client && window.history.length > 1) {
     router.back();
     return;
   }
 
   router.push(categoryLink.value);
-};
+}
 
 useSeoMeta(() => ({
   title: `${skill.value?.name} · ${category.value?.name} · ${sectionLabel.value}`,

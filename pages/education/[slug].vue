@@ -58,14 +58,14 @@ const sectionLabel = computed(() => education.value?.label ?? "Formations");
 
 const backLink = computed(() => resolveLocalizedRouteTarget("/education", localePath));
 
-const goBack = () => {
+function goBack() {
   if (import.meta.client && window.history.length > 1) {
     router.back();
     return;
   }
 
   router.push(backLink.value);
-};
+}
 
 const schoolDetails = computed(() => {
   const entry = education.value?.schools.find((school) => school.slug === slug.value);
