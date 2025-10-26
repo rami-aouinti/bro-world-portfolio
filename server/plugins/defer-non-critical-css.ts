@@ -1,4 +1,5 @@
-import { defineNitroPlugin, type NitroRenderHtmlContext } from "nitropack";
+import { defineNitroPlugin } from "#imports";
+import type { NitroRenderHtmlContext } from "nitropack";
 
 const LINK_TAG_REGEX = /^<link\b/i;
 const REL_STYLESHEET_REGEX = /\brel=(?:"|')stylesheet(?:"|')/i;
