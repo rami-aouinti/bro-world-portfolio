@@ -114,18 +114,21 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, defineAsyncComponent } from "vue";
 import { Motion } from "motion-v";
 
-import Personal from "~/components/section/Personal.vue";
 import Line from "~/components/layout/Line.vue";
-import About from "~/components/section/About.vue";
-import Skills from "~/components/section/Skills.vue";
-import Experience from "~/components/section/Experience.vue";
-import Education from "~/components/section/Education.vue";
-import Service from "~/components/section/Service.vue";
-import Work from "~/components/section/Work.vue";
-import Cta from "~/components/section/Cta.vue";
+import Personal from "~/components/section/Personal.vue";
+
+const About = defineAsyncComponent(() => import("~/components/section/About.vue"));
+const Skills = defineAsyncComponent(() => import("~/components/section/Skills.vue"));
+const Experience = defineAsyncComponent(
+  () => import("~/components/section/Experience.vue"),
+);
+const Education = defineAsyncComponent(() => import("~/components/section/Education.vue"));
+const Service = defineAsyncComponent(() => import("~/components/section/Service.vue"));
+const Work = defineAsyncComponent(() => import("~/components/section/Work.vue"));
+const Cta = defineAsyncComponent(() => import("~/components/section/Cta.vue"));
 
 const { data: aboutContent } = useContentBlock("about");
 const { data: skillsContent } = useContentBlock("skills");
