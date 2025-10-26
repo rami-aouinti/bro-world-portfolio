@@ -7,9 +7,7 @@ import { useTheme } from "vuetify";
 export type ColorModeValue = "light" | "dark" | "auto";
 export type ResolvedColorMode = "light" | "dark";
 
-function resolveSystemColorPreference(
-  hint: ResolvedColorMode | null,
-): ResolvedColorMode | null {
+function resolveSystemColorPreference(hint: ResolvedColorMode | null): ResolvedColorMode | null {
   if (hint) {
     return hint;
   }
@@ -62,9 +60,8 @@ export function resolveInitialColorMode(): ResolvedColorMode {
   );
 
   const colorSchemeHint = import.meta.server
-    ? ((useRequestHeaders(["sec-ch-prefers-color-scheme"])[
-        "sec-ch-prefers-color-scheme"
-      ] ?? null) as ResolvedColorMode | null)
+    ? ((useRequestHeaders(["sec-ch-prefers-color-scheme"])["sec-ch-prefers-color-scheme"] ??
+        null) as ResolvedColorMode | null)
     : null;
 
   return resolveResolvedColorMode(colorModeCookie.value, colorSchemeHint);
@@ -96,9 +93,8 @@ export function useCookieColorMode() {
   });
 
   const colorSchemeHint = import.meta.server
-    ? ((useRequestHeaders(["sec-ch-prefers-color-scheme"])[
-        "sec-ch-prefers-color-scheme"
-      ] ?? null) as ResolvedColorMode | null)
+    ? ((useRequestHeaders(["sec-ch-prefers-color-scheme"])["sec-ch-prefers-color-scheme"] ??
+        null) as ResolvedColorMode | null)
     : null;
 
   const initialResolvedMode = resolveResolvedColorMode(initialValue, colorSchemeHint);

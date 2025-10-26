@@ -1,5 +1,5 @@
 export default defineNuxtPlugin(async () => {
-  if (!process.server) {
+  if (!import.meta.server) {
     return;
   }
 
@@ -10,9 +10,9 @@ export default defineNuxtPlugin(async () => {
   }
 
   try {
-    const { AsyncLocalStorage } = await import('node:async_hooks');
+    const { AsyncLocalStorage } = await import("node:async_hooks");
     globalObject.AsyncLocalStorage = AsyncLocalStorage;
   } catch (error) {
-    console.warn('[async-local-storage] Failed to provide AsyncLocalStorage polyfill.', error);
+    console.warn("[async-local-storage] Failed to provide AsyncLocalStorage polyfill.", error);
   }
 });

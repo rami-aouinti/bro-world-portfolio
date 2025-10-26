@@ -81,15 +81,11 @@ const educationCards = computed(() => {
 
 const isMounted = useMounted();
 
-const isExpandedTimeline = computed(
-  () => isMounted.value && isMdAndUp.value,
-);
+const isExpandedTimeline = computed(() => isMounted.value && isMdAndUp.value);
 
 const timelineSide = computed(() => (isExpandedTimeline.value ? "end" : "start"));
 const timelineLineInset = computed(() => (isExpandedTimeline.value ? 16 : 0));
-const timelineDensity = computed(() =>
-  isExpandedTimeline.value ? "comfortable" : "compact",
-);
+const timelineDensity = computed(() => (isExpandedTimeline.value ? "comfortable" : "compact"));
 const showTimelineOpposite = computed(() => isExpandedTimeline.value);
 </script>
 

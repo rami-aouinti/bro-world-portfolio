@@ -10,9 +10,12 @@ const updateAdminSchema = z
     name: z.string().min(1, "Le nom est requis.").optional(),
     password: z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères.").optional(),
   })
-  .refine((value) => Object.values(value).some((entry) => typeof entry === "string" && entry.trim()), {
-    message: "Au moins un champ doit être fourni.",
-  });
+  .refine(
+    (value) => Object.values(value).some((entry) => typeof entry === "string" && entry.trim()),
+    {
+      message: "Au moins un champ doit être fourni.",
+    },
+  );
 
 export default defineEventHandler(async (event) => {
   await assertCsrf(event);
