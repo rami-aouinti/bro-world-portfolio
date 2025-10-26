@@ -80,6 +80,12 @@ const MOCK_GITHUB_PROJECTS: MockGithubProject[] = [
   },
 ];
 
+function extractPrimaryLanguage(languages: GithubProjectLanguagesResponse) {
+  const [primary] = Object.keys(languages);
+
+  return primary ?? null;
+}
+
 function computeLanguageShare(languages: GithubProjectLanguagesResponse) {
   const total = Object.values(languages).reduce((sum, value) => sum + value, 0);
 
@@ -91,8 +97,8 @@ function computeLanguageShare(languages: GithubProjectLanguagesResponse) {
     .sort((a, b) => b.share - a.share);
 }
 
-export function getMockGithubProjects() {
-  return MOCK_GITHUB_PROJECTS.map((project) => ({
+function mapBaseProjectData(project: MockGithubProject) {
+  return {
     slug: project.slug,
     name: project.name,
     description: project.description,
@@ -102,8 +108,12 @@ export function getMockGithubProjects() {
     stars: project.stars,
     forks: project.forks,
     updatedAt: project.updatedAt,
-    primaryLanguage: Object.keys(project.languages)[0] ?? null,
-  }));
+    primaryLanguage: extractPrimaryLanguage(project.languages),
+  };
+}
+
+export function getMockGithubProjects() {
+  return MOCK_GITHUB_PROJECTS.map(mapBaseProjectData);
 }
 
 export function getMockGithubProjectDetail(slug: string) {
@@ -114,19 +124,10 @@ export function getMockGithubProjectDetail(slug: string) {
   }
 
   return {
-    slug: project.slug,
-    name: project.name,
-    description: project.description,
-    url: project.url,
-    homepage: project.homepage ?? null,
-    topics: project.topics,
-    stars: project.stars,
-    forks: project.forks,
+    ...mapBaseProjectData(project),
     openIssues: project.openIssues,
     watchers: project.watchers,
     createdAt: project.createdAt,
-    updatedAt: project.updatedAt,
-    primaryLanguage: Object.keys(project.languages)[0] ?? null,
     languages: computeLanguageShare(project.languages),
   };
 }
