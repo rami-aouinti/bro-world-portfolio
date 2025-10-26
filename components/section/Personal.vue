@@ -34,16 +34,6 @@
             <p class="personal__description text-foreground">
               {{ personalContent.subline }}
             </p>
-            <div class="personal__actions">
-              <Button
-                :label="t('portfolio.personal.viewProjects')"
-                :to="resolveLocalizedRouteTarget('/projects', localePath)"
-              />
-              <Button
-                :label="t('portfolio.personal.contact')"
-                :to="resolveLocalizedRouteTarget('/contact', localePath)"
-              />
-            </div>
             <v-chip
               v-if="personalContent?.badge"
               color="primary"
