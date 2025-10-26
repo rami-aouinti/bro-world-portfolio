@@ -35,6 +35,12 @@ function mapSession(record: {
 export async function createSession(event: Parameters<typeof setCookie>[0], user: AdminUser) {
   const config = useRuntimeConfig();
   const prisma = usePrisma();
+  if (!prisma) {
+    throw createError({
+      statusCode: 503,
+      statusMessage: "Le service d'authentification est indisponible.",
+    });
+  }
   const token = randomUUID();
   const csrfToken = randomUUID();
   const maxAge = config.auth.sessionMaxAge;
@@ -73,6 +79,9 @@ export async function createSession(event: Parameters<typeof setCookie>[0], user
 export async function getAuthSession(event: Parameters<typeof getCookie>[0]) {
   const config = useRuntimeConfig();
   const prisma = usePrisma();
+  if (!prisma) {
+    return null;
+  }
   const token = getCookie(event, config.auth.sessionCookieName);
   if (!token) {
     return null;
@@ -114,6 +123,9 @@ export async function requireAdminSession(event: Parameters<typeof getCookie>[0]
 export async function destroySession(event: Parameters<typeof getCookie>[0]) {
   const config = useRuntimeConfig();
   const prisma = usePrisma();
+  if (!prisma) {
+    return;
+  }
   const token = getCookie(event, config.auth.sessionCookieName);
   if (!token) {
     return;
