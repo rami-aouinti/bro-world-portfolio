@@ -48,8 +48,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
-import { useDisplay } from "vuetify";
+import { computed } from "vue";
+import { useMediaQuery } from "@vueuse/core";
 
 import CustomGlowCard from "~/components/CustomGlowCard.vue";
 import { glowCardVariantCycle, glowCardVariants } from "~/utils/glowCardVariants";
@@ -59,7 +59,9 @@ import { BlurReveal } from "~/components/ui/blur-reveal";
 
 const { data: education } = useContentBlock("education");
 const localePath = useLocalePath();
-const display = useDisplay();
+const isMdAndUp = useMediaQuery("(min-width: 960px)", {
+  initialValue: false,
+});
 
 const educationContent = computed(() => education.value);
 const educationCards = computed(() => {
@@ -77,16 +79,10 @@ const educationCards = computed(() => {
   });
 });
 
-const isMounted = ref(false);
-
-onMounted(() => {
-  isMounted.value = true;
-});
-
-const timelineSide = computed(() => (isMounted.value && display.mdAndUp.value ? "end" : "start"));
-const timelineLineInset = computed(() => (isMounted.value && display.mdAndUp.value ? 16 : 0));
-const timelineDensity = computed(() => (isMounted.value && display.mdAndUp.value ? "comfortable" : "compact"));
-const showTimelineOpposite = computed(() => isMounted.value && display.mdAndUp.value);
+const timelineSide = computed(() => (isMdAndUp.value ? "end" : "start"));
+const timelineLineInset = computed(() => (isMdAndUp.value ? 16 : 0));
+const timelineDensity = computed(() => (isMdAndUp.value ? "comfortable" : "compact"));
+const showTimelineOpposite = computed(() => isMdAndUp.value);
 </script>
 
 <style scoped>

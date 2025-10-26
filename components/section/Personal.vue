@@ -58,6 +58,7 @@
         <v-slide-group
           show-arrows
           class="personal__carousel"
+          :mobile="isCompactViewport"
         >
           <v-slide-group-item
             v-for="card in personalCards"
@@ -125,7 +126,9 @@ const personalCards = computed(() =>
   })),
 );
 
-const isCompactViewport = useMediaQuery("(max-width: 640px)");
+const isCompactViewport = useMediaQuery("(max-width: 640px)", {
+  initialValue: false,
+});
 
 const headlineStrokeSize = computed(() => (isCompactViewport.value ? 8 : 20));
 const headlineShadowOneSize = computed(() => (isCompactViewport.value ? 4 : 7));
