@@ -614,4 +614,19 @@ export default defineNuxtConfig({
       githubUsername: process.env.GITHUB_USERNAME || "rami-aouinti",
     },
   },
+  nitro: {
+    routeRules: {
+      "/_vercel/image/**": {
+        headers: {
+          "cache-control": [
+            "public",
+            "max-age=31536000",
+            "s-maxage=31536000",
+            "stale-while-revalidate=86400",
+            "immutable",
+          ].join(", "),
+        },
+      },
+    },
+  },
 });
