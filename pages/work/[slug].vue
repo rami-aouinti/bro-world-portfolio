@@ -52,13 +52,21 @@
           md="6"
         >
           <NuxtImg
-            :src="`/images/work/${projectDetails.thumbnails}`"
+            :src="projectThumbnailSrc"
             :alt="`Illustration du projet ${projectDetails.name}`"
             width="1024"
             height="640"
             sizes="(min-width: 1280px) 560px, (min-width: 960px) 50vw, 90vw"
             densities="[1,2]"
             class="detail-page__image"
+            format="webp"
+            width="960"
+            height="640"
+            sizes="(min-width: 1280px) 480px, (min-width: 960px) 50vw, 100vw"
+            placeholder="blur"
+            preload
+            loading="eager"
+            fetchpriority="high"
           />
         </v-col>
       </v-row>
@@ -104,10 +112,14 @@ const projectDetails = computed(() => {
   return entry;
 });
 
+const projectThumbnailSrc = computed(
+  () => `/images/work/${projectDetails.value.thumbnails}`,
+);
+
 useSeoMeta(() => ({
   title: `${projectDetails.value.name} · ${sectionLabel.value}`,
   description: projectDetails.value.description,
-  ogImage: `/images/work/${projectDetails.value.thumbnails}`,
+  ogImage: projectThumbnailSrc.value,
 }));
 </script>
 
