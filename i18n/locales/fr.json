@@ -88,7 +88,12 @@
     "work": {
       "thumbnailAlt": "Miniature {name}",
       "footerLabel": "Projet en ligne",
-      "liveDemo": "Voir la démo en direct"
+      "liveDemo": "Voir la démo en direct",
+      "backToProjects": "Voir les projets",
+      "detailAlt": "Illustration du projet {name}",
+      "errors": {
+        "notFound": "Projet introuvable."
+      }
     },
     "githubProjects": {
       "badge": "GitHub",

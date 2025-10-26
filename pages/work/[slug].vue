@@ -8,7 +8,7 @@
         prepend-icon="mdi-arrow-left"
         @click="goBack"
       >
-        Go to projects
+        {{ t("portfolio.work.backToProjects") }}
       </v-btn>
 
       <div class="detail-page__header">
@@ -42,7 +42,7 @@
                 class="text-none"
                 append-icon="mdi-open-in-new"
               >
-                Voir la démo en ligne
+                {{ t("portfolio.work.liveDemo") }}
               </v-btn>
             </div>
           </v-card>
@@ -53,7 +53,7 @@
         >
           <NuxtImg
             :src="projectThumbnailSrc"
-            :alt="`Illustration du projet ${projectDetails.name}`"
+            :alt="t('portfolio.work.detailAlt', { name: projectDetails.name })"
             densities="1x, 2x"
             class="detail-page__image"
             format="webp"
@@ -75,13 +75,19 @@
 import { createError } from "#app";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 
+const { t } = useI18n();
+
 const route = useRoute();
 const slug = computed(() => route.params.slug?.toString() ?? "");
 const localePath = useLocalePath();
 const router = useRouter();
 
+function createNotFoundError() {
+  return createError({ statusCode: 404, statusMessage: t("portfolio.work.errors.notFound") });
+}
+
 if (!slug.value) {
-  throw createError({ statusCode: 404, statusMessage: "Projet introuvable." });
+  throw createNotFoundError();
 }
 
 const { data: work } = await useContentBlock("work");
@@ -103,7 +109,7 @@ const projectDetails = computed(() => {
   const entry = work.value?.works.find((item) => item.slug === slug.value);
 
   if (!entry) {
-    throw createError({ statusCode: 404, statusMessage: "Projet introuvable." });
+    throw createNotFoundError();
   }
 
   return entry;

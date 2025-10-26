@@ -88,7 +88,12 @@
     "work": {
       "thumbnailAlt": "Миниатюра {name}",
       "footerLabel": "Проект онлайн",
-      "liveDemo": "Посмотреть демо"
+      "liveDemo": "Посмотреть демо",
+      "backToProjects": "К проектам",
+      "detailAlt": "Иллюстрация проекта {name}",
+      "errors": {
+        "notFound": "Проект не найден."
+      }
     },
     "githubProjects": {
       "badge": "GitHub",
