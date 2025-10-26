@@ -76,6 +76,7 @@ import { normalizeHexColor } from "~/lib/theme/colors";
 import { coreProjectMdiIcons, ensureProjectMdiIcons } from "~/lib/vuetify/projectMdiIcons";
 import { withSecureCookieOptions } from "~/lib/cookies";
 import { ensureVuetifyLoading } from "~/lib/vuetify/loading";
+import { resolveInitialColorMode } from "~/composables/useCookieColorMode";
 
 function withSvgPrefix(path: IconValue): IconValue {
   if (typeof path !== "string") {
@@ -416,6 +417,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const fallbackDateLocale = dateLocaleRegistry.en;
   const initialDateLocale = resolveDateLocaleValue(initialLocale) ?? fallbackDateLocale;
+  const initialThemeName = resolveInitialColorMode();
 
   const sharedVariables = {
     "font-family-base":
@@ -839,7 +841,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       Ripple,
     },
     theme: {
-      defaultTheme: "dark",
+      defaultTheme: initialThemeName,
       themes: {
         light: lightTheme,
         dark: darkTheme,

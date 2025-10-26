@@ -4,7 +4,71 @@ import { useCookie, useHead, useRequestHeaders } from "#imports";
 import { withSecureCookieOptions } from "~/lib/cookies";
 import { useTheme } from "vuetify";
 
-type ColorModeValue = "light" | "dark" | "auto";
+export type ColorModeValue = "light" | "dark" | "auto";
+export type ResolvedColorMode = "light" | "dark";
+
+function resolveSystemColorPreference(
+  hint: ResolvedColorMode | null,
+): ResolvedColorMode | null {
+  if (hint) {
+    return hint;
+  }
+
+  if (import.meta.client && typeof window !== "undefined") {
+    const supportsMatchMedia = typeof window.matchMedia === "function";
+
+    if (supportsMatchMedia) {
+      try {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+
+        if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+          return "light";
+        }
+      } catch {
+        // ignore matchMedia errors and fall through to the fallback value
+      }
+    }
+  }
+
+  return null;
+}
+
+function resolveResolvedColorMode(
+  value: ColorModeValue | null | undefined,
+  hint: ResolvedColorMode | null,
+): ResolvedColorMode {
+  if (value === "dark" || value === "light") {
+    return value;
+  }
+
+  const systemPreference = resolveSystemColorPreference(hint);
+
+  if (systemPreference) {
+    return systemPreference;
+  }
+
+  return "light";
+}
+
+export function resolveInitialColorMode(): ResolvedColorMode {
+  const colorModeCookie = useCookie<ColorModeValue | null>(
+    "color-mode",
+    withSecureCookieOptions({
+      sameSite: "lax",
+      watch: false,
+    }),
+  );
+
+  const colorSchemeHint = import.meta.server
+    ? ((useRequestHeaders(["sec-ch-prefers-color-scheme"])[
+        "sec-ch-prefers-color-scheme"
+      ] ?? null) as ResolvedColorMode | null)
+    : null;
+
+  return resolveResolvedColorMode(colorModeCookie.value, colorSchemeHint);
+}
 
 export function useCookieColorMode() {
   const colorModeCookie = useCookie<ColorModeValue>(
@@ -32,18 +96,12 @@ export function useCookieColorMode() {
   });
 
   const colorSchemeHint = import.meta.server
-    ? ((useRequestHeaders(["sec-ch-prefers-color-scheme"])["sec-ch-prefers-color-scheme"] ??
-        null) as "light" | "dark" | null)
+    ? ((useRequestHeaders(["sec-ch-prefers-color-scheme"])[
+        "sec-ch-prefers-color-scheme"
+      ] ?? null) as ResolvedColorMode | null)
     : null;
 
-  const initialResolvedMode: "light" | "dark" =
-    initialValue === "dark"
-      ? "dark"
-      : initialValue === "light"
-        ? "light"
-        : colorSchemeHint === "dark"
-          ? "dark"
-          : "light";
+  const initialResolvedMode = resolveResolvedColorMode(initialValue, colorSchemeHint);
 
   if (colorMode.value !== initialValue) {
     colorMode.value = initialValue;
