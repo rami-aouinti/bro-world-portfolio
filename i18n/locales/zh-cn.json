@@ -25,7 +25,12 @@
         "emailLabel": "电子邮件",
         "projectDetailsLabel": "项目详情",
         "projectDetailsPlaceholder": "请告诉我您的项目、时间安排和目标。",
-        "submit": "发送消息"
+        "submit": "发送消息",
+        "success": "谢谢！您的留言已成功发送。",
+        "error": "抱歉，暂时无法发送您的留言，请稍后再试。",
+        "nameRequired": "请输入您的姓名。",
+        "emailRequired": "请输入有效的电子邮件地址。",
+        "messageRequired": "请描述您的项目。"
       },
       "card": {
         "title": "直接联系",

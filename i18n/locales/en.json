@@ -25,7 +25,12 @@
         "emailLabel": "E-mail",
         "projectDetailsLabel": "Project details",
         "projectDetailsPlaceholder": "Tell me about your project, timeline, and goals.",
-        "submit": "Send message"
+        "submit": "Send message",
+        "success": "Thanks! Your message has been sent successfully.",
+        "error": "Sorry, we couldn't send your message. Please try again later.",
+        "nameRequired": "Please enter your name.",
+        "emailRequired": "Please enter a valid e-mail address.",
+        "messageRequired": "Please describe your project."
       },
       "card": {
         "title": "Direct contact",

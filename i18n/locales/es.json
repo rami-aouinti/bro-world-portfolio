@@ -25,7 +25,12 @@
         "emailLabel": "E-mail",
         "projectDetailsLabel": "Detalles del proyecto",
         "projectDetailsPlaceholder": "Cuéntame sobre tu proyecto, el calendario y los objetivos.",
-        "submit": "Enviar mensaje"
+        "submit": "Enviar mensaje",
+        "success": "¡Gracias! Tu mensaje se envió correctamente.",
+        "error": "Lo sentimos, no pudimos enviar tu mensaje. Inténtalo de nuevo más tarde.",
+        "nameRequired": "Por favor, introduce tu nombre.",
+        "emailRequired": "Por favor, introduce un correo electrónico válido.",
+        "messageRequired": "Por favor, describe tu proyecto."
       },
       "card": {
         "title": "Contacto directo",

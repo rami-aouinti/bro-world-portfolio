@@ -17,9 +17,24 @@
             {{ t("portfolio.contact.description") }}
           </p>
           <v-form
+            ref="formRef"
             class="mt-8 text-foreground"
-            @submit.prevent
+            @submit.prevent="handleSubmit"
           >
+            <v-alert
+              v-if="status === 'success'"
+              type="success"
+              variant="tonal"
+              class="mb-4"
+              :text="t('portfolio.contact.form.success')"
+            />
+            <v-alert
+              v-else-if="status === 'error'"
+              type="error"
+              variant="tonal"
+              class="mb-4"
+              :text="submitError ?? t('portfolio.contact.form.error')"
+            />
             <v-row
               align="stretch"
               style="row-gap: 16px"
@@ -29,10 +44,13 @@
                 md="6"
               >
                 <v-text-field
+                  v-model="form.name"
                   :label="t('portfolio.contact.form.nameLabel')"
                   autocomplete="name"
                   variant="outlined"
                   density="comfortable"
+                  :rules="[rules.name]"
+                  :disabled="isSubmitting"
                 />
               </v-col>
               <v-col
@@ -40,25 +58,33 @@
                 md="6"
               >
                 <v-text-field
+                  v-model="form.email"
                   :label="t('portfolio.contact.form.emailLabel')"
                   type="email"
                   autocomplete="email"
                   variant="outlined"
                   density="comfortable"
+                  :rules="[rules.email]"
+                  :disabled="isSubmitting"
                 />
               </v-col>
             </v-row>
             <v-textarea
+              v-model="form.message"
               :label="t('portfolio.contact.form.projectDetailsLabel')"
               rows="6"
               variant="outlined"
               density="comfortable"
               :placeholder="t('portfolio.contact.form.projectDetailsPlaceholder')"
+              :rules="[rules.message]"
+              :disabled="isSubmitting"
             />
             <v-btn
               type="submit"
               color="primary"
               class="text-none mt-4"
+              :loading="isSubmitting"
+              :disabled="isSubmitting"
             >
               {{ t("portfolio.contact.form.submit") }}
             </v-btn>
@@ -125,14 +151,114 @@
 </template>
 
 <script setup lang="ts">
+import { computed, reactive, ref } from "vue";
+import type { VForm } from "vuetify/components";
 import { LOCALIZED_PAGE_META } from "~/utils/i18n/routes";
 import CustomGlowCard from "~/components/CustomGlowCard.vue";
-import Line from "~/components/layout/Line.vue";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 
 definePageMeta(LOCALIZED_PAGE_META.contact);
 
 const { t } = useI18n();
+
+const formRef = ref<InstanceType<typeof VForm> | null>(null);
+const isSubmitting = ref(false);
+const status = ref<"idle" | "success" | "error">("idle");
+const submitError = ref<string | null>(null);
+const form = reactive({
+  name: "",
+  email: "",
+  message: "",
+});
+
+const rules = {
+  name: (value: string) => {
+    const normalized = value?.trim() ?? "";
+    return normalized.length > 0 || t("portfolio.contact.form.nameRequired");
+  },
+  email: (value: string) => {
+    const normalized = value?.trim() ?? "";
+    if (!normalized) {
+      return t("portfolio.contact.form.emailRequired");
+    }
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(normalized) || t("portfolio.contact.form.emailRequired");
+  },
+  message: (value: string) => {
+    const normalized = value?.trim() ?? "";
+    return normalized.length > 0 || t("portfolio.contact.form.messageRequired");
+  },
+};
+
+function resolveErrorMessage(error: unknown) {
+  if (!error || typeof error !== "object") {
+    return null;
+  }
+
+  if ("data" in error) {
+    const data = (error as { data?: unknown }).data;
+    if (data && typeof data === "object" && "statusMessage" in data) {
+      const message = (data as { statusMessage?: unknown }).statusMessage;
+      if (typeof message === "string" && message.trim()) {
+        return message;
+      }
+    }
+  }
+
+  if ("statusMessage" in error) {
+    const message = (error as { statusMessage?: unknown }).statusMessage;
+    if (typeof message === "string" && message.trim()) {
+      return message;
+    }
+  }
+
+  if ("message" in error) {
+    const message = (error as { message?: unknown }).message;
+    if (typeof message === "string" && message.trim()) {
+      return message;
+    }
+  }
+
+  return null;
+}
+
+function resetForm() {
+  form.name = "";
+  form.email = "";
+  form.message = "";
+  formRef.value?.resetValidation();
+}
+
+async function handleSubmit() {
+  submitError.value = null;
+  status.value = "idle";
+
+  const validationResult = await formRef.value?.validate();
+  if (validationResult && !validationResult.valid) {
+    return;
+  }
+
+  isSubmitting.value = true;
+
+  try {
+    await $fetch("/api/contact", {
+      method: "POST",
+      body: {
+        name: form.name.trim(),
+        email: form.email.trim(),
+        message: form.message.trim(),
+      },
+    });
+
+    status.value = "success";
+    resetForm();
+  } catch (error) {
+    status.value = "error";
+    submitError.value = resolveErrorMessage(error);
+  } finally {
+    isSubmitting.value = false;
+  }
+}
 
 const contactEmailHref = computed(() =>
   import.meta.dev

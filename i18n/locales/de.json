@@ -25,7 +25,12 @@
         "emailLabel": "E-Mail",
         "projectDetailsLabel": "Projektdetails",
         "projectDetailsPlaceholder": "Erzählen Sie mir von Ihrem Projekt, dem Zeitplan und den Zielen.",
-        "submit": "Nachricht senden"
+        "submit": "Nachricht senden",
+        "success": "Danke! Ihre Nachricht wurde erfolgreich gesendet.",
+        "error": "Entschuldigung, Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.",
+        "nameRequired": "Bitte geben Sie Ihren Namen ein.",
+        "emailRequired": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        "messageRequired": "Bitte beschreiben Sie Ihr Projekt."
       },
       "card": {
         "title": "Direkter Kontakt",
