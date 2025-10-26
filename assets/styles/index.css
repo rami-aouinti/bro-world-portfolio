@@ -96,14 +96,14 @@ body.rtl .text-right {
 
   /* Scrollbars */
   --ui-scrollbar-size: 10px;
-  --ui-scrollbar-thumb-color: rgba(148, 163, 184, 0.55);
-  --ui-scrollbar-thumb-hover-color: rgba(148, 163, 184, 0.75);
-  --ui-scrollbar-thumb-active-color: rgba(94, 234, 212, 0.85);
+  --ui-scrollbar-thumb-color: rgba(244, 63, 94, 0.75);
+  --ui-scrollbar-thumb-hover-color: rgba(244, 63, 94, 0.9);
+  --ui-scrollbar-thumb-active-color: rgba(244, 63, 94, 1);
   --ui-scrollbar-thumb-border-width: 2px;
-  --ui-scrollbar-thumb-border-color: rgba(15, 23, 42, 0.35);
+  --ui-scrollbar-thumb-border-color: rgba(244, 63, 94, 0.6);
   --ui-scrollbar-thumb-radius: 9999px;
-  --ui-scrollbar-track-color: rgba(148, 163, 184, 0.12);
-  --ui-scrollbar-track-border-color: rgba(15, 23, 42, 0.2);
+  --ui-scrollbar-track-color: rgba(244, 63, 94, 0.15);
+  --ui-scrollbar-track-border-color: rgba(244, 63, 94, 0.3);
 
   /* Spacing */
   --ui-spacing-0: var(--v-space-0);
@@ -124,12 +124,12 @@ body.rtl .text-right {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ui-scrollbar-thumb-color: rgba(148, 163, 184, 0.65);
-    --ui-scrollbar-thumb-hover-color: rgba(226, 232, 240, 0.75);
-    --ui-scrollbar-thumb-active-color: rgba(94, 234, 212, 0.95);
-    --ui-scrollbar-thumb-border-color: rgba(15, 23, 42, 0.55);
-    --ui-scrollbar-track-color: rgba(15, 23, 42, 0.55);
-    --ui-scrollbar-track-border-color: rgba(30, 41, 59, 0.65);
+    --ui-scrollbar-thumb-color: rgba(236, 72, 153, 0.8);
+    --ui-scrollbar-thumb-hover-color: rgba(236, 72, 153, 0.92);
+    --ui-scrollbar-thumb-active-color: rgba(236, 72, 153, 1);
+    --ui-scrollbar-thumb-border-color: rgba(236, 72, 153, 0.65);
+    --ui-scrollbar-track-color: rgba(24, 24, 27, 0.7);
+    --ui-scrollbar-track-border-color: rgba(236, 72, 153, 0.4);
   }
 }
 
@@ -137,12 +137,12 @@ body.dark,
 body[data-theme="dark"],
 .dark body,
 .v-theme--dark {
-  --ui-scrollbar-thumb-color: rgba(148, 163, 184, 0.65);
-  --ui-scrollbar-thumb-hover-color: rgba(226, 232, 240, 0.75);
-  --ui-scrollbar-thumb-active-color: rgba(94, 234, 212, 0.95);
-  --ui-scrollbar-thumb-border-color: rgba(15, 23, 42, 0.55);
-  --ui-scrollbar-track-color: rgba(15, 23, 42, 0.55);
-  --ui-scrollbar-track-border-color: rgba(30, 41, 59, 0.65);
+  --ui-scrollbar-thumb-color: rgba(236, 72, 153, 0.8);
+  --ui-scrollbar-thumb-hover-color: rgba(236, 72, 153, 0.92);
+  --ui-scrollbar-thumb-active-color: rgba(236, 72, 153, 1);
+  --ui-scrollbar-thumb-border-color: rgba(236, 72, 153, 0.65);
+  --ui-scrollbar-track-color: rgba(24, 24, 27, 0.7);
+  --ui-scrollbar-track-border-color: rgba(236, 72, 153, 0.4);
 }
 
 form,

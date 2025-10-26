@@ -131,6 +131,8 @@ onUnmounted(() => {
   --scroll-island-track-color: v-bind(scrollbarTrackColor);
   --ui-scrollbar-size: 0.625rem;
   --ui-scrollbar-thumb-color: var(--scroll-island-thumb-color);
+  --ui-scrollbar-thumb-hover-color: var(--scroll-island-thumb-color);
+  --ui-scrollbar-thumb-active-color: var(--scroll-island-thumb-color);
   --ui-scrollbar-thumb-border-color: v-bind(scrollbarThumbBorderColor);
   --ui-scrollbar-thumb-border-width: 2px;
   --ui-scrollbar-thumb-radius: 9999px;
@@ -143,6 +145,8 @@ onUnmounted(() => {
   .scroll-island__content {
     --scroll-island-thumb-color: v-bind(darkScrollbarThumbColor);
     --scroll-island-track-color: v-bind(darkScrollbarTrackColor);
+    --ui-scrollbar-thumb-hover-color: var(--scroll-island-thumb-color);
+    --ui-scrollbar-thumb-active-color: var(--scroll-island-thumb-color);
     --ui-scrollbar-thumb-border-color: v-bind(darkScrollbarThumbBorderColor);
     scrollbar-color: var(--scroll-island-thumb-color) var(--scroll-island-track-color);
   }
