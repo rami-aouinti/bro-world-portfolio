@@ -898,7 +898,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
   });
 
-  vuetify.theme.global.name.value = initialThemeName;
+  vuetify.theme.change(initialThemeName);
 
   vuetify.date.instance.locale = initialDateLocale;
 
