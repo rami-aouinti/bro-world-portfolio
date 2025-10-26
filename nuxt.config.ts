@@ -552,6 +552,24 @@ export default defineNuxtConfig({
           content: "width=device-width, initial-scale=1",
         },
         {
+          key: "description",
+          name: "description",
+          content:
+            "Portfolio of Mohamed Rami Aouinti, a full-stack developer crafting performant PHP, Symfony, and Vue applications.",
+        },
+        {
+          key: "og:description",
+          property: "og:description",
+          content:
+            "Portfolio of Mohamed Rami Aouinti, a full-stack developer crafting performant PHP, Symfony, and Vue applications.",
+        },
+        {
+          key: "twitter:description",
+          name: "twitter:description",
+          content:
+            "Portfolio of Mohamed Rami Aouinti, a full-stack developer crafting performant PHP, Symfony, and Vue applications.",
+        },
+        {
           name: "google-adsense-account",
           content: process.env.NUXT_ADSENSE_ACCOUNT,
         },
