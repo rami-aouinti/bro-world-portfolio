@@ -95,14 +95,14 @@ body.rtl .text-right {
   --ui-focus: 0 0 0 3px rgba(var(--v-theme-primary), 0.35);
 
   /* Scrollbars */
-  --ui-scrollbar-size: 10px;
-  --ui-scrollbar-thumb-color: rgba(244, 63, 94, 0.75);
-  --ui-scrollbar-thumb-hover-color: rgba(244, 63, 94, 0.9);
-  --ui-scrollbar-thumb-active-color: rgba(244, 63, 94, 1);
+  --ui-scrollbar-size: 2px;
+  --ui-scrollbar-thumb-color: rgb(18, 53, 89);
+  --ui-scrollbar-thumb-hover-color: rgb(9, 27, 45);
+  --ui-scrollbar-thumb-active-color: rgb(3, 32, 61);
   --ui-scrollbar-thumb-border-width: 2px;
   --ui-scrollbar-thumb-border-color: rgba(244, 63, 94, 0.6);
   --ui-scrollbar-thumb-radius: 9999px;
-  --ui-scrollbar-track-color: rgba(244, 63, 94, 0.15);
+  --ui-scrollbar-track-color: rgba(var(--v-theme-primary));
   --ui-scrollbar-track-border-color: rgba(244, 63, 94, 0.3);
 
   /* Spacing */

@@ -82,10 +82,10 @@ const props = withDefaults(defineProps<Props>(), {
   class: "",
   title: "Progress",
   height: 44,
-  scrollbarThumbColor: "rgba(244, 63, 94, 0.75)",
-  scrollbarTrackColor: "rgba(244, 63, 94, 0.18)",
+  scrollbarThumbColor: "rgb(3,32,61)",
+  scrollbarTrackColor: "rgb(3,32,61)",
   scrollbarThumbBorderColor: "rgba(15, 23, 42, 0.35)",
-  darkScrollbarThumbColor: "rgba(236, 72, 153, 0.75)",
+  darkScrollbarThumbColor: "rgb(9,27,45)",
   darkScrollbarTrackColor: "rgba(15, 23, 42, 0.6)",
   darkScrollbarThumbBorderColor: "rgba(236, 72, 153, 0.4)",
 });
