@@ -25,6 +25,7 @@
       </v-main>
     </v-app>
   </div>
+  <Analytics />
 </template>
 
 <script setup lang="ts">
@@ -32,6 +33,7 @@ import { computed } from "vue";
 import Navbar from "~/components/layout/Navbar.vue";
 import { ParticlesBg } from "~/components/ui/particles-bg";
 import { useCookieColorMode } from "~/composables/useCookieColorMode";
+import { Analytics } from '@vercel/analytics/nuxt'
 
 const colorMode = useCookieColorMode();
 
