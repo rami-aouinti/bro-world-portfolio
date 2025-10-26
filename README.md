@@ -78,6 +78,8 @@ CSRF_COOKIE_NAME=bro_world_csrf
 SESSION_MAX_AGE=86400
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=ChangeMe123!
+WORKFLOW_ENDPOINT=https://api.workflow.example
+WORKFLOW_API_KEY=your-workflow-api-key
 ```
 
 ### Administration
@@ -178,6 +180,8 @@ CSRF_COOKIE_NAME=bro_world_csrf
 SESSION_MAX_AGE=86400
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=ChangeMe123!
+WORKFLOW_ENDPOINT=https://api.workflow.example
+WORKFLOW_API_KEY=your-workflow-api-key
 ```
 
 ### Admin Panel
@@ -276,6 +280,8 @@ CSRF_COOKIE_NAME=bro_world_csrf
 SESSION_MAX_AGE=86400
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=ChangeMe123!
+WORKFLOW_ENDPOINT=https://api.workflow.example
+WORKFLOW_API_KEY=your-workflow-api-key
 ```
 
 ### Panel de administración
@@ -374,6 +380,8 @@ CSRF_COOKIE_NAME=bro_world_csrf
 SESSION_MAX_AGE=86400
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=ChangeMe123!
+WORKFLOW_ENDPOINT=https://api.workflow.example
+WORKFLOW_API_KEY=your-workflow-api-key
 ```
 
 ### Adminbereich
