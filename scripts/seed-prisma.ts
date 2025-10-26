@@ -1,7 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import Prisma from "@prisma/client";
 import { BLOG_POSTS } from "../server/database/blog/posts";
 import { LIVE_CONTENT } from "../utils/content";
 import { SUPPORTED_LOCALES, type LocaleCode } from "../utils/i18n/locales";
+
+const { PrismaClient } = Prisma;
 
 const prisma = new PrismaClient();
 
