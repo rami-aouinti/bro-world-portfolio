@@ -559,7 +559,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Mohamed Rami Aouinti | Backend & DevOps Engineer (PHP, Symfony, Shopware)",
+      title: "Mohamed Rami Aouinti | FullStack Developer (PHP & Vue)",
       meta: [
         {
           name: "viewport",

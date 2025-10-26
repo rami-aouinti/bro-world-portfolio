@@ -206,7 +206,7 @@ const EN_CONTENT: ContentRecord = {
   profile: {
     firstname: "Mohamed Rami",
     lastname: "Aouinti",
-    role: "Backend & DevOps Engineer (PHP, Symfony, Shopware)",
+    role: "FullStack Developer (PHP & Vue)",
     avatar: "/images/profile.jpg",
   },
   hero: {
@@ -885,7 +885,7 @@ const FR_CONTENT: ContentRecord = {
   profile: {
     firstname: "Mohamed Rami",
     lastname: "Aouinti",
-    role: "Ingénieur backend & DevOps (PHP, Symfony, Shopware)",
+    role: "Développeur FullStack (PHP & Vue)",
     avatar: "/images/profile.jpg",
   },
   hero: {
