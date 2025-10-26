@@ -4,9 +4,8 @@ import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type LocaleCode } from "~/utils/i18n
 export type LocalizedContentRecord = Record<LocaleCode, ContentRecord>;
 
 function createMockContentRecord(record: ContentRecord): ContentRecord {
-  const navlinks = record.navlinks.map((link, index) => ({
+  const navlinks = record.navlinks.map((link) => ({
     ...link,
-    label: `Section ${index + 1}`,
   }));
 
   const profile = {
