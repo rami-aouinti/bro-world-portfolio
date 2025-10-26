@@ -87,8 +87,15 @@ export async function listAllContent(locale: LocaleCode) {
   const localizedContent = DEFAULT_CONTENT[locale] ?? DEFAULT_CONTENT[DEFAULT_LOCALE];
   const record: Partial<ContentRecord> = {};
 
-  for (const slug of Object.keys(localizedContent) as ContentSlug[]) {
-    record[slug] = await readContent(slug, locale);
+  const entries = await Promise.all(
+    (Object.keys(localizedContent) as ContentSlug[]).map(async (slug) => {
+      const value = await readContent(slug, locale);
+      return [slug, value] as const;
+    }),
+  );
+
+  for (const [slug, value] of entries) {
+    record[slug] = value;
   }
 
   const parsed = record as ContentRecord;
