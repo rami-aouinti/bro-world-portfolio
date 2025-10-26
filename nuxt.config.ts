@@ -411,7 +411,6 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/google-fonts",
     "@nuxt/image",
-    "@nuxt/image",
     "nuxt-gtag",
     "@nuxt/ui",
     "shadcn-nuxt",
@@ -507,6 +506,18 @@ export default defineNuxtConfig({
           ],
         },
       }),
+      compression({
+        algorithm: "brotliCompress",
+        ext: ".br",
+        threshold: 1024,
+        deleteOriginFile: false,
+      }),
+      compression({
+        algorithm: "gzip",
+        ext: ".gz",
+        threshold: 1024,
+        deleteOriginFile: false,
+      }),
     ],
     build: {
       optimizeCSS: true,
@@ -533,9 +544,12 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Poppins: [300, 400, 500, 600, 700],
+      Poppins: [400, 600, 700],
     },
+    subsets: ["latin"],
     display: "swap",
+    download: true,
+    preload: true,
   },
   eslint: {
     config: {
