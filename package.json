@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "author": "Rami Aouinti",
   "scripts": {
-    "build": "pnpm build:registry && nuxt build && pnpm build:copy",
+    "build": "pnpm build:registry && nuxt build && pnpm build:copy && prisma:generate && prisma:migrate",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
