@@ -1,6 +1,7 @@
 import { createError, getRouterParams } from "h3";
 import type { GithubProjectDetailResponse, GithubProjectLanguagesResponse } from "~/types/github";
 import { getMockGithubProjectDetail } from "~/utils/github/mock-projects";
+import { getRedisCacheTtl, useRedisClient } from "~/server/utils/redis";
 
 const API_BASE_URL = "https://api.github.com";
 
@@ -18,6 +19,21 @@ export default defineEventHandler(async (event) => {
     }
 
     throw createError({ statusCode: 404, statusMessage: "Repository not found" });
+  }
+
+  const redis = useRedisClient();
+  const cacheTtl = getRedisCacheTtl();
+  const cacheKey = `github:projects:detail:${slug}`;
+
+  if (redis) {
+    try {
+      const cachedProject = await redis.get(cacheKey);
+      if (cachedProject) {
+        return JSON.parse(cachedProject);
+      }
+    } catch (error) {
+      console.error("[redis] Failed to read project detail cache", error);
+    }
   }
 
   const config = useRuntimeConfig();
@@ -55,7 +71,7 @@ export default defineEventHandler(async (event) => {
     }))
     .sort((a, b) => b.share - a.share);
 
-  return {
+  const projectDetail = {
     slug: repo.name,
     name: repo.name,
     description: repo.description,
@@ -71,4 +87,14 @@ export default defineEventHandler(async (event) => {
     primaryLanguage: repo.language,
     languages,
   };
+
+  if (redis) {
+    try {
+      await redis.set(cacheKey, JSON.stringify(projectDetail), "EX", cacheTtl);
+    } catch (error) {
+      console.error("[redis] Failed to write project detail cache", error);
+    }
+  }
+
+  return projectDetail;
 });

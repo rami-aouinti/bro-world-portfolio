@@ -611,6 +611,10 @@ export default defineNuxtConfig({
       defaultEmail: process.env.ADMIN_EMAIL || "admin@example.com",
       defaultPassword: process.env.ADMIN_PASSWORD || "ChangeMe123!",
     },
+    redis: {
+      url: process.env.REDIS_URL,
+      ttl: Number.parseInt(process.env.REDIS_CACHE_TTL ?? "", 10) || 60 * 15,
+    },
     public: {
       auth: {
         csrfCookieName,
