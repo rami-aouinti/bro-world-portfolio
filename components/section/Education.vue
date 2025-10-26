@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useDisplay } from "vuetify";
 
 import CustomGlowCard from "~/components/CustomGlowCard.vue";
@@ -77,10 +77,16 @@ const educationCards = computed(() => {
   });
 });
 
-const timelineSide = computed(() => (display.mdAndUp.value ? "end" : "start"));
-const timelineLineInset = computed(() => (display.mdAndUp.value ? 16 : 0));
-const timelineDensity = computed(() => (display.mdAndUp.value ? "comfortable" : "compact"));
-const showTimelineOpposite = computed(() => display.mdAndUp.value);
+const isMounted = ref(false);
+
+onMounted(() => {
+  isMounted.value = true;
+});
+
+const timelineSide = computed(() => (isMounted.value && display.mdAndUp.value ? "end" : "start"));
+const timelineLineInset = computed(() => (isMounted.value && display.mdAndUp.value ? 16 : 0));
+const timelineDensity = computed(() => (isMounted.value && display.mdAndUp.value ? "comfortable" : "compact"));
+const showTimelineOpposite = computed(() => isMounted.value && display.mdAndUp.value);
 </script>
 
 <style scoped>
