@@ -63,18 +63,30 @@ import { cn } from "@/lib/utils";
 import NumberFlow from "@number-flow/vue";
 import { useColorMode } from "@vueuse/core";
 import { motion, MotionConfig } from "motion-v";
-import { computed, onMounted, onUnmounted, ref, useSlots } from "vue";
+import { computed, onMounted, onUnmounted, ref, toRef, useSlots } from "vue";
 
 interface Props {
   class?: string;
   title?: string;
   height?: number;
+  scrollbarThumbColor?: string;
+  scrollbarTrackColor?: string;
+  scrollbarThumbBorderColor?: string;
+  darkScrollbarThumbColor?: string;
+  darkScrollbarTrackColor?: string;
+  darkScrollbarThumbBorderColor?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   class: "",
   title: "Progress",
   height: 44,
+  scrollbarThumbColor: "rgba(244, 63, 94, 0.75)",
+  scrollbarTrackColor: "rgba(244, 63, 94, 0.18)",
+  scrollbarThumbBorderColor: "rgba(15, 23, 42, 0.35)",
+  darkScrollbarThumbColor: "rgba(236, 72, 153, 0.75)",
+  darkScrollbarTrackColor: "rgba(15, 23, 42, 0.6)",
+  darkScrollbarThumbBorderColor: "rgba(236, 72, 153, 0.4)",
 });
 
 const open = ref(false);
@@ -85,6 +97,12 @@ const scrollPercentage = ref(0);
 const isDark = computed(() => useColorMode().value == "dark");
 const isSlotAvailable = computed(() => !!slots.default);
 const borderRadius = computed(() => `${props.height / 2}px`);
+const scrollbarThumbColor = toRef(props, "scrollbarThumbColor");
+const scrollbarTrackColor = toRef(props, "scrollbarTrackColor");
+const scrollbarThumbBorderColor = toRef(props, "scrollbarThumbBorderColor");
+const darkScrollbarThumbColor = toRef(props, "darkScrollbarThumbColor");
+const darkScrollbarTrackColor = toRef(props, "darkScrollbarTrackColor");
+const darkScrollbarThumbBorderColor = toRef(props, "darkScrollbarThumbBorderColor");
 
 onMounted(() => {
   if (window === undefined) return;
@@ -108,24 +126,24 @@ onUnmounted(() => {
 }
 
 .scroll-island__content {
-  --scroll-island-thumb-color: rgba(37, 99, 235, 0.55);
-  --scroll-island-track-color: rgba(148, 163, 184, 0.14);
+  --scroll-island-thumb-color: v-bind(scrollbarThumbColor);
+  --scroll-island-track-color: v-bind(scrollbarTrackColor);
   --ui-scrollbar-size: 0.625rem;
   --ui-scrollbar-thumb-color: var(--scroll-island-thumb-color);
-  --ui-scrollbar-thumb-border-color: rgba(15, 23, 42, 0.1);
+  --ui-scrollbar-thumb-border-color: v-bind(scrollbarThumbBorderColor);
   --ui-scrollbar-thumb-border-width: 2px;
   --ui-scrollbar-thumb-radius: 9999px;
   --ui-scrollbar-track-color: var(--scroll-island-track-color);
   scrollbar-width: thin;
-  scrollbar-color: var(--scroll-island-thumb-color) transparent;
+  scrollbar-color: var(--scroll-island-thumb-color) var(--scroll-island-track-color);
 }
 
 @media (prefers-color-scheme: dark) {
   .scroll-island__content {
-    --scroll-island-thumb-color: rgba(148, 163, 184, 0.55);
-    --scroll-island-track-color: rgba(15, 23, 42, 0.45);
-    --ui-scrollbar-thumb-border-color: rgba(15, 23, 42, 0.6);
-    scrollbar-color: var(--scroll-island-thumb-color) rgba(15, 23, 42, 0.45);
+    --scroll-island-thumb-color: v-bind(darkScrollbarThumbColor);
+    --scroll-island-track-color: v-bind(darkScrollbarTrackColor);
+    --ui-scrollbar-thumb-border-color: v-bind(darkScrollbarThumbBorderColor);
+    scrollbar-color: var(--scroll-island-thumb-color) var(--scroll-island-track-color);
   }
 }
 </style>
