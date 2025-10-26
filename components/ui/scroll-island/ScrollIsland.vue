@@ -49,7 +49,7 @@
         </header>
         <motion.div
           v-if="isSlotAvailable"
-          class="mb-2 flex h-full max-h-60 flex-col gap-1 overflow-y-auto px-4 text-sm"
+          class="scroll-island__content mb-2 flex h-full max-h-60 flex-col gap-1 overflow-y-auto px-4 text-sm"
         >
           <slot />
         </motion.div>
@@ -105,5 +105,27 @@ onUnmounted(() => {
 <style scoped>
 .border-radius {
   border-radius: v-bind(borderRadius);
+}
+
+.scroll-island__content {
+  --scroll-island-thumb-color: rgba(37, 99, 235, 0.55);
+  --scroll-island-track-color: rgba(148, 163, 184, 0.14);
+  --ui-scrollbar-size: 0.625rem;
+  --ui-scrollbar-thumb-color: var(--scroll-island-thumb-color);
+  --ui-scrollbar-thumb-border-color: rgba(15, 23, 42, 0.1);
+  --ui-scrollbar-thumb-border-width: 2px;
+  --ui-scrollbar-thumb-radius: 9999px;
+  --ui-scrollbar-track-color: var(--scroll-island-track-color);
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-island-thumb-color) transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .scroll-island__content {
+    --scroll-island-thumb-color: rgba(148, 163, 184, 0.55);
+    --scroll-island-track-color: rgba(15, 23, 42, 0.45);
+    --ui-scrollbar-thumb-border-color: rgba(15, 23, 42, 0.6);
+    scrollbar-color: var(--scroll-island-thumb-color) rgba(15, 23, 42, 0.45);
+  }
 }
 </style>
