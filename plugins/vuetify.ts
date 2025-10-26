@@ -417,6 +417,33 @@ export default defineNuxtPlugin((nuxtApp) => {
   const fallbackDateLocale = dateLocaleRegistry.en;
   const initialDateLocale = resolveDateLocaleValue(initialLocale) ?? fallbackDateLocale;
 
+  const colorModeCookie = useCookie<"light" | "dark" | "auto">(
+    "color-mode",
+    withSecureCookieOptions({
+      sameSite: "lax",
+      watch: false,
+    }),
+  );
+  const colorModePreference = colorModeCookie.value ?? "auto";
+  const prefersColorSchemeHeader = import.meta.server
+    ? (useRequestHeaders(["sec-ch-prefers-color-scheme"])["sec-ch-prefers-color-scheme"] ?? null)
+    : null;
+  const resolvedInitialColorMode: "light" | "dark" =
+    colorModePreference === "dark"
+      ? "dark"
+      : colorModePreference === "light"
+        ? "light"
+        : import.meta.server
+          ? prefersColorSchemeHeader === "dark"
+            ? "dark"
+            : "light"
+          : typeof window !== "undefined" && typeof window.matchMedia === "function"
+            ? window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light"
+            : "light";
+  const initialThemeName = resolvedInitialColorMode === "dark" ? "dark" : "light";
+
   const sharedVariables = {
     "font-family-base":
       "'Plus Jakarta Sans', 'Space Grotesk', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
@@ -839,7 +866,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       Ripple,
     },
     theme: {
-      defaultTheme: "dark",
+      defaultTheme: initialThemeName,
       themes: {
         light: lightTheme,
         dark: darkTheme,
@@ -869,6 +896,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       },
     },
   });
+
+  vuetify.theme.global.name.value = initialThemeName;
 
   vuetify.date.instance.locale = initialDateLocale;
 
