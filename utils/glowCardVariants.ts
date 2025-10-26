@@ -57,6 +57,14 @@ export const glowCardVariants = {
     text: "#f8fafc",
     outline: "rgba(100, 116, 139, 0.24)",
   },
+  primary: {
+    accent: "rgba(var(--v-theme-primary))",
+    background:
+        "linear-gradient(135deg, rgba(var(--v-theme-primary), 0) 0%, rgba(var(--v-theme-primary), 0.6) 100%)",
+    glow: "rgba(var(--v-theme-primary))",
+    text: "#f8fafc",
+    outline: "rgba(var(--v-theme-primary), 0.7)",
+  },
 } as const;
 
 export type GlowCardVariant = keyof typeof glowCardVariants;

@@ -99,7 +99,7 @@
             :title="t('portfolio.contact.card.title')"
             :description="t('portfolio.contact.card.description')"
             :badge="t('portfolio.contact.card.badge')"
-            variant="rose"
+            variant="primary"
             :heading-level="2"
           >
             <div class="contact__methods">
