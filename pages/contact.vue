@@ -74,6 +74,7 @@
             :description="t('portfolio.contact.card.description')"
             :badge="t('portfolio.contact.card.badge')"
             variant="rose"
+            :heading-level="2"
           >
             <div class="contact__methods">
               <div

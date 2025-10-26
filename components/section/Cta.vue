@@ -15,6 +15,7 @@
             :description="ctaContent.description"
             variant="indigo"
             :eyebrow="t('portfolio.cta.eyebrow')"
+            :heading-level="2"
           >
             <div class="cta__actions">
               <Button

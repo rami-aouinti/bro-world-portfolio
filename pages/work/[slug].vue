@@ -54,6 +54,10 @@
           <NuxtImg
             :src="projectThumbnailSrc"
             :alt="`Illustration du projet ${projectDetails.name}`"
+            width="1024"
+            height="640"
+            sizes="(min-width: 1280px) 560px, (min-width: 960px) 50vw, 90vw"
+            densities="[1,2]"
             class="detail-page__image"
             format="webp"
             width="960"
@@ -168,7 +172,11 @@ useSeoMeta(() => ({
 }
 
 .detail-page__image {
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: 24px;
   border: 1px solid rgba(148, 163, 184, 0.25);
+  object-fit: cover;
 }
 </style>

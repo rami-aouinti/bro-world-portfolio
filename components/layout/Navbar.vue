@@ -2,6 +2,7 @@
   <nav
     class="dock-navbar"
     :class="{ 'dock-navbar--mobile': isMobile }"
+    :style="controlStyles"
   >
     <template v-if="isMobile">
       <div class="dock-navbar__mobile-bar">
@@ -12,16 +13,17 @@
         >
           <v-icon
             icon="mdi-menu"
-            size="28"
+            :size="controlIconSize"
             aria-hidden="true"
           />
           <span class="sr-only">{{ t("navigation.openMenu") }}</span>
         </button>
 
-        <div class="dock-navbar__mobile-right">
+        <NuxtLink class="dock-navbar__mobile-right">
           <DarkModeToggle
             v-if="config.header.darkModeToggle"
             class="dock-navbar__toggle"
+            :icon-size="controlIconSize"
           />
 
           <v-menu
@@ -54,7 +56,7 @@
                 </span>
                 <v-icon
                   icon="mdi-menu-down"
-                  size="16"
+                  :size="controlChevronSize"
                   class="dock-navbar__language-icon"
                 />
                 <span class="sr-only">{{ t("navigation.language") }}</span>
@@ -64,49 +66,62 @@
             <v-list
               class="dock-navbar__language-list"
               density="compact"
+              tag="ul"
             >
               <v-list-item
                 v-for="language in languageItems"
                 :key="language.code"
-                :to="language.to"
+                tag="li"
                 class="dock-navbar__language-list-item"
                 :class="{
                   'dock-navbar__language-list-item--active': language.code === locale,
                 }"
               >
-                <div class="dock-navbar__language-item">
-                  <span
-                    v-if="language.icon"
-                    class="dock-navbar__language-flag"
-                    aria-hidden="true"
-                  >
+                <NuxtLink
+                  :to="language.to"
+                  class="dock-navbar__language-link"
+                >
+                  <div class="dock-navbar__language-item">
                     <span
-                      class="fi"
-                      :class="language.icon"
+                      v-if="language.icon"
+                      class="dock-navbar__language-flag"
+                      aria-hidden="true"
+                    >
+                      <span
+                        class="fi"
+                        :class="language.icon"
+                      />
+                    </span>
+                    <span
+                      v-else
+                      class="dock-navbar__language-code"
+                      aria-hidden="true"
+                    >
+                      {{ language.code.toUpperCase() }}
+                    </span>
+                    <div class="dock-navbar__language-info">
+                      <span class="dock-navbar__language-name">{{ language.name }}</span>
+                    </div>
+                    <v-icon
+                      v-if="language.code === locale"
+                      icon="mdi-check"
+                      size="16"
+                      class="dock-navbar__language-check"
                     />
-                  </span>
-                  <span
-                    v-else
-                    class="dock-navbar__language-code"
-                    aria-hidden="true"
-                  >
-                    {{ language.code.toUpperCase() }}
-                  </span>
-                  <div class="dock-navbar__language-info">
-                    <span class="dock-navbar__language-name">{{ language.name }}</span>
                   </div>
                   <v-icon
                     v-if="language.code === locale"
                     icon="mdi-check"
-                    size="16"
+                    :size="controlChevronSize"
                     class="dock-navbar__language-check"
                   />
-                </div>
+                </NuxtLink>
               </v-list-item>
             </v-list>
           </v-menu>
-        </div>
+        </NuxtLink>
       </div>
+
 
       <v-navigation-drawer
         v-model="isDrawerOpen"
@@ -137,24 +152,29 @@
           <v-list
             class="dock-navbar__drawer-links"
             density="comfortable"
+            tag="ul"
           >
             <v-list-item
               v-for="link in links"
               :key="link.url"
-              :to="link.to"
-              link
+              tag="li"
               class="dock-navbar__drawer-link"
               :class="{ 'dock-navbar__drawer-link--active': isActiveLink(link.to) }"
-              @click="closeDrawer"
             >
-              <template #prepend>
+              <NuxtLink
+                :to="link.to"
+                class="dock-navbar__drawer-link-button"
+                :aria-current="isActiveLink(link.to) ? 'page' : undefined"
+                @click="closeDrawer"
+              >
                 <v-icon
                   :icon="link.icon"
                   size="24"
+                  class="dock-navbar__drawer-link-icon"
                   aria-hidden="true"
                 />
-              </template>
-              <v-list-item-title>{{ link.label }}</v-list-item-title>
+                <span class="dock-navbar__drawer-link-label">{{ link.label }}</span>
+              </NuxtLink>
             </v-list-item>
           </v-list>
 
@@ -163,7 +183,10 @@
             class="dock-navbar__drawer-controls"
           >
             <div class="dock-navbar__drawer-control">
-              <DarkModeToggle class="dock-navbar__toggle" />
+              <DarkModeToggle
+                class="dock-navbar__toggle"
+                :icon-size="controlIconSize"
+              />
             </div>
           </div>
         </div>
@@ -198,7 +221,10 @@
         <DockSeparator v-if="hasControls" />
 
         <DockIcon v-if="config.header.darkModeToggle">
-          <DarkModeToggle class="dock-navbar__toggle" />
+          <DarkModeToggle
+            class="dock-navbar__toggle"
+            :icon-size="controlIconSize"
+          />
         </DockIcon>
 
         <DockIcon v-if="hasLanguageMenu">
@@ -241,44 +267,50 @@
             <v-list
               class="dock-navbar__language-list"
               density="compact"
+              tag="ul"
             >
               <v-list-item
                 v-for="language in languageItems"
                 :key="language.code"
-                :to="language.to"
+                tag="li"
                 class="dock-navbar__language-list-item"
                 :class="{
                   'dock-navbar__language-list-item--active': language.code === locale,
                 }"
               >
-                <div class="dock-navbar__language-item">
-                  <span
-                    v-if="language.icon"
-                    class="dock-navbar__language-flag"
-                    aria-hidden="true"
-                  >
+                <NuxtLink
+                  :to="language.to"
+                  class="dock-navbar__language-link"
+                >
+                  <div class="dock-navbar__language-item">
                     <span
-                      class="fi"
-                      :class="language.icon"
+                      v-if="language.icon"
+                      class="dock-navbar__language-flag"
+                      aria-hidden="true"
+                    >
+                      <span
+                        class="fi"
+                        :class="language.icon"
+                      />
+                    </span>
+                    <span
+                      v-else
+                      class="dock-navbar__language-code"
+                      aria-hidden="true"
+                    >
+                      {{ language.code.toUpperCase() }}
+                    </span>
+                    <div class="dock-navbar__language-info">
+                      <span class="dock-navbar__language-name">{{ language.name }}</span>
+                    </div>
+                    <v-icon
+                      v-if="language.code === locale"
+                      icon="mdi-check"
+                      size="16"
+                      class="dock-navbar__language-check"
                     />
-                  </span>
-                  <span
-                    v-else
-                    class="dock-navbar__language-code"
-                    aria-hidden="true"
-                  >
-                    {{ language.code.toUpperCase() }}
-                  </span>
-                  <div class="dock-navbar__language-info">
-                    <span class="dock-navbar__language-name">{{ language.name }}</span>
                   </div>
-                  <v-icon
-                    v-if="language.code === locale"
-                    icon="mdi-check"
-                    size="16"
-                    class="dock-navbar__language-check"
-                  />
-                </div>
+                </NuxtLink>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -347,6 +379,15 @@ const hasControls = computed(() => config.value.header.darkModeToggle || hasLang
 const isDrawerOpen = ref(false);
 const isMobile = useMediaQuery("(max-width: 960px)");
 
+const controlButtonSize = computed(() => (isMobile.value ? 48 : 56));
+const controlIconSize = computed(() => (isMobile.value ? 24 : 28));
+const controlChevronSize = computed(() => Math.round(controlIconSize.value * 0.57));
+const controlStyles = computed(() => ({
+  "--dock-navbar-control-size": `${controlButtonSize.value}px`,
+  "--dock-navbar-control-icon-size": `${controlIconSize.value}px`,
+  "--dock-navbar-control-chevron-size": `${controlChevronSize.value}px`,
+}));
+
 watch(isMobile, (value) => {
   if (!value) {
     isDrawerOpen.value = false;
@@ -378,6 +419,9 @@ function isActiveLink(target: string) {
   margin: 24px 0;
   padding: 0 16px;
   pointer-events: none;
+  --dock-navbar-control-size: 56px;
+  --dock-navbar-control-icon-size: 28px;
+  --dock-navbar-control-chevron-size: 16px;
 }
 
 .dock-navbar--mobile {
@@ -406,8 +450,8 @@ function isActiveLink(target: string) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: var(--dock-navbar-control-size);
+  height: var(--dock-navbar-control-size);
   border: none;
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.6);
@@ -488,6 +532,7 @@ function isActiveLink(target: string) {
   background: transparent;
   color: #e2e8f0;
   padding: 0;
+  list-style: none;
 }
 
 .dock-navbar__drawer-link {
@@ -496,6 +541,7 @@ function isActiveLink(target: string) {
   transition:
     background 0.2s ease,
     color 0.2s ease;
+  list-style: none;
 }
 
 .dock-navbar__drawer-link:hover {
@@ -505,6 +551,30 @@ function isActiveLink(target: string) {
 .dock-navbar__drawer-link--active {
   background: rgba(94, 234, 212, 0.18);
   box-shadow: inset 0 0 0 1px rgba(94, 234, 212, 0.35);
+}
+
+.dock-navbar__drawer-link-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  color: inherit;
+  text-decoration: none;
+  border-radius: inherit;
+}
+
+.dock-navbar__drawer-link-button:focus-visible {
+  outline: 2px solid rgba(94, 234, 212, 0.75);
+  outline-offset: 2px;
+}
+
+.dock-navbar__drawer-link-icon {
+  color: currentColor;
+}
+
+.dock-navbar__drawer-link-label {
+  font-weight: 500;
 }
 
 .dock-navbar__drawer-controls {
@@ -592,8 +662,8 @@ function isActiveLink(target: string) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: var(--dock-navbar-control-size) !important;
+  height: var(--dock-navbar-control-size) !important;
 }
 
 .dock-navbar__language-button {
@@ -602,8 +672,8 @@ function isActiveLink(target: string) {
   justify-content: center;
   position: relative;
   gap: 0;
-  width: 56px;
-  height: 56px;
+  width: var(--dock-navbar-control-size);
+  height: var(--dock-navbar-control-size);
   border-radius: 999px;
   color: #e2e8f0;
   border: none;
@@ -626,12 +696,12 @@ function isActiveLink(target: string) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: var(--dock-navbar-control-icon-size);
+  height: var(--dock-navbar-control-icon-size);
   border-radius: 50%;
   overflow: hidden;
   background: rgba(148, 163, 184, 0.16);
-  font-size: 0.65rem;
+  font-size: calc(var(--dock-navbar-control-icon-size) * 0.55);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -647,6 +717,7 @@ function isActiveLink(target: string) {
   right: 6px;
   bottom: 6px;
   color: currentColor;
+  font-size: var(--dock-navbar-control-chevron-size);
 }
 
 .dock-navbar__language-list {
@@ -655,11 +726,13 @@ function isActiveLink(target: string) {
   border: 1px solid rgba(148, 163, 184, 0.25);
   border-radius: 16px;
   box-shadow: 0 30px 60px -35px rgba(15, 23, 42, 0.85);
+  list-style: none;
 }
 
 .dock-navbar__language-list-item {
   min-height: unset;
   border-radius: 12px;
+  list-style: none;
 }
 
 .dock-navbar__language-list-item:hover {
@@ -669,6 +742,19 @@ function isActiveLink(target: string) {
 .dock-navbar__language-list-item--active {
   background: rgba(94, 234, 212, 0.18);
   box-shadow: inset 0 0 0 1px rgba(94, 234, 212, 0.35);
+}
+
+.dock-navbar__language-link {
+  display: block;
+  padding: 8px 10px;
+  border-radius: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+.dock-navbar__language-link:focus-visible {
+  outline: 2px solid rgba(94, 234, 212, 0.75);
+  outline-offset: 2px;
 }
 
 .dock-navbar__language-item {
@@ -694,6 +780,7 @@ function isActiveLink(target: string) {
 .dock-navbar__language-check {
   margin-left: auto;
   color: rgba(94, 234, 212, 0.9);
+  font-size: var(--dock-navbar-control-chevron-size);
 }
 
 .dock-navbar :deep(.v-overlay__content) {
@@ -723,16 +810,10 @@ function isActiveLink(target: string) {
     overflow-x: auto;
   }
 
-  .dock-navbar__link,
-  .dock-navbar__toggle,
-  .dock-navbar__language-button {
-    width: 48px;
-    height: 48px;
-  }
-
-  .dock-navbar__drawer-button {
-    width: 48px;
-    height: 48px;
+  .dock-navbar {
+    --dock-navbar-control-size: 48px;
+    --dock-navbar-control-icon-size: 24px;
+    --dock-navbar-control-chevron-size: 14px;
   }
 }
 </style>
