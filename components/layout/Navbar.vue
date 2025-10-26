@@ -651,7 +651,7 @@ function isActiveLink(target: string) {
 .dock-navbar__link--active {
   background: linear-gradient(135deg, rgba(94, 234, 212, 0.45), rgba(59, 130, 246, 0.3));
   color: #0f172a;
-  box-shadow: 0 10px 25px -15px rgba(94, 234, 212, 0.8);
+  box-shadow: 0 1px 10px 14px rgba(0, 241, 201, 0.8);
 }
 
 .dock-navbar__link-icon {
