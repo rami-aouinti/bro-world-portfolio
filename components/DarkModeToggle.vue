@@ -29,12 +29,9 @@ import { useCookieColorMode } from "#imports";
 import { useSiteSettingsState } from "~/composables/useSiteSettingsState";
 import UiButton from "~/components/UiButton.vue";
 
-const props = withDefaults(
-  defineProps<{ buttonClass?: string; iconSize?: number }>(),
-  {
-    iconSize: 18,
-  },
-);
+const props = withDefaults(defineProps<{ buttonClass?: string; iconSize?: number }>(), {
+  iconSize: 18,
+});
 
 const buttonClass = computed(() => props.buttonClass ?? "");
 const resolvedIconSize = computed(() => props.iconSize ?? 18);

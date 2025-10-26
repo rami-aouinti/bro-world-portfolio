@@ -122,7 +122,6 @@
         </NuxtLink>
       </div>
 
-
       <v-navigation-drawer
         v-model="isDrawerOpen"
         class="dock-navbar__drawer"

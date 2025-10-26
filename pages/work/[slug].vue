@@ -109,9 +109,7 @@ const projectDetails = computed(() => {
   return entry;
 });
 
-const projectThumbnailSrc = computed(
-  () => `/images/work/${projectDetails.value.thumbnails}`,
-);
+const projectThumbnailSrc = computed(() => `/images/work/${projectDetails.value.thumbnails}`);
 
 useSeoMeta(() => ({
   title: `${projectDetails.value.name} · ${sectionLabel.value}`,
