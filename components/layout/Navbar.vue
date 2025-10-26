@@ -82,39 +82,16 @@
                   class="dock-navbar__language-link"
                 >
                   <div class="dock-navbar__language-item">
-                    <span
-                      v-if="language.icon"
-                      class="dock-navbar__language-flag"
-                      aria-hidden="true"
-                    >
-                      <span
-                        class="fi"
-                        :class="language.icon"
-                      />
-                    </span>
-                    <span
-                      v-else
-                      class="dock-navbar__language-code"
-                      aria-hidden="true"
-                    >
-                      {{ language.code.toUpperCase() }}
-                    </span>
                     <div class="dock-navbar__language-info">
                       <span class="dock-navbar__language-name">{{ language.name }}</span>
                     </div>
                     <v-icon
-                      v-if="language.code === locale"
-                      icon="mdi-check"
-                      size="16"
-                      class="dock-navbar__language-check"
+                        v-if="language.code === locale"
+                        icon="mdi-check"
+                        :size="controlChevronSize"
+                        class="dock-navbar__language-check"
                     />
                   </div>
-                  <v-icon
-                    v-if="language.code === locale"
-                    icon="mdi-check"
-                    :size="controlChevronSize"
-                    class="dock-navbar__language-check"
-                  />
                 </NuxtLink>
               </v-list-item>
             </v-list>
@@ -282,23 +259,6 @@
                   class="dock-navbar__language-link"
                 >
                   <div class="dock-navbar__language-item">
-                    <span
-                      v-if="language.icon"
-                      class="dock-navbar__language-flag"
-                      aria-hidden="true"
-                    >
-                      <span
-                        class="fi"
-                        :class="language.icon"
-                      />
-                    </span>
-                    <span
-                      v-else
-                      class="dock-navbar__language-code"
-                      aria-hidden="true"
-                    >
-                      {{ language.code.toUpperCase() }}
-                    </span>
                     <div class="dock-navbar__language-info">
                       <span class="dock-navbar__language-name">{{ language.name }}</span>
                     </div>
