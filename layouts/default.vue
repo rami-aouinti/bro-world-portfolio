@@ -3,7 +3,6 @@
     <v-app class="app-layout__shell">
       <component
         :is="LazyParticlesBg"
-        v-if="showParticles"
         class="app-layout__particles"
         :color="particlesColor"
         :quantity="particleQuantity"
