@@ -47,7 +47,7 @@ function resolveResolvedColorMode(
     return systemPreference;
   }
 
-  return "light";
+  return "dark";
 }
 
 export function resolveInitialColorMode(): ResolvedColorMode {

@@ -442,7 +442,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             ? window.matchMedia("(prefers-color-scheme: dark)").matches
               ? "dark"
               : "light"
-            : "light";
+            : "dark";
   const initialThemeName = resolvedInitialColorMode === "dark" ? "dark" : "light";
 
   const sharedVariables = {
