@@ -8,8 +8,40 @@
 </template>
 
 <script setup lang="ts">
-const el = ref(null);
-const { isVisible } = useElementInView(el);
+import { onBeforeUnmount, onMounted, ref } from "vue";
+
+const props = withDefaults(
+  defineProps<{
+    initiallyVisible?: boolean;
+  }>(),
+  {
+    initiallyVisible: false,
+  },
+);
+
+const el = ref<HTMLElement | null>(null);
+const isVisible = ref(props.initiallyVisible);
+
+let observer: IntersectionObserver | null = null;
+
+onMounted(() => {
+  if (!el.value) {
+    return;
+  }
+
+  observer = new IntersectionObserver(([entry]) => {
+    isVisible.value = entry.isIntersecting;
+  }, {
+    threshold: 0.1,
+  });
+
+  observer.observe(el.value);
+});
+
+onBeforeUnmount(() => {
+  observer?.disconnect();
+  observer = null;
+});
 </script>
 
 <style scoped>
