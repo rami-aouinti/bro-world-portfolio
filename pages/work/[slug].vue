@@ -54,7 +54,7 @@
           <NuxtImg
             :src="projectThumbnailSrc"
             :alt="`Illustration du projet ${projectDetails.name}`"
-            densities="[1,2]"
+            :densities="[1, 2]"
             class="detail-page__image"
             format="webp"
             width="960"
