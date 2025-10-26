@@ -609,6 +609,7 @@ export default defineNuxtConfig({
       timeoutMs: process.env.WORKFLOW_TIMEOUT_MS
         ? Number.parseInt(process.env.WORKFLOW_TIMEOUT_MS, 10)
         : undefined,
+      endpoint: process.env.WORKFLOW_ENDPOINT,
     },
     public: {
       auth: {
