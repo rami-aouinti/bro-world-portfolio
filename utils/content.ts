@@ -1519,7 +1519,8 @@ const FR_CONTENT: ContentRecord = {
 };
 
 type EducationLocalization = {
-  navEducationLabel: string;
+  navEducationLabel?: string;
+  navLabels?: Partial<Record<string, string>>;
   education: ContentRecord["education"];
 };
 
@@ -1527,17 +1528,38 @@ function createLocalizedEducationContent(
   base: ContentRecord,
   overrides: EducationLocalization,
 ): ContentRecord {
+  const navLabelOverrides = {
+    ...(overrides.navLabels ?? {}),
+  } as Record<string, string>;
+
+  if (overrides.navEducationLabel) {
+    navLabelOverrides["/education"] = overrides.navEducationLabel;
+  }
+
   return {
     ...base,
     navlinks: base.navlinks.map((link) =>
-      link.url === "/education" ? { ...link, label: overrides.navEducationLabel } : link,
+      navLabelOverrides[link.url]
+        ? { ...link, label: navLabelOverrides[link.url] }
+        : link,
     ),
     education: overrides.education,
   };
 }
 
 const DE_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
-  navEducationLabel: "Ausbildung",
+  navLabels: {
+    "/": "Startseite",
+    "/about": "Über mich",
+    "/skills": "Fähigkeiten",
+    "/experience": "Erfahrung",
+    "/education": "Ausbildung",
+    "/work": "Projekte",
+    "/projects": "GitHub-Projekte",
+    "/service": "Dienstleistungen",
+    "/blog": "Blog",
+    "/contact": "Kontakt",
+  },
   education: {
     label: "Ausbildung",
     headline: "Akademischer Hintergrund und kontinuierliches Lernen.",
@@ -1563,7 +1585,18 @@ const DE_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
 });
 
 const ES_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
-  navEducationLabel: "Formación",
+  navLabels: {
+    "/": "Inicio",
+    "/about": "Sobre mí",
+    "/skills": "Habilidades",
+    "/experience": "Experiencia",
+    "/education": "Formación",
+    "/work": "Proyectos",
+    "/projects": "Proyectos GitHub",
+    "/service": "Servicios",
+    "/blog": "Blog",
+    "/contact": "Contacto",
+  },
   education: {
     label: "Formación",
     headline: "Trayectoria académica y aprendizaje continuo.",
@@ -1589,7 +1622,18 @@ const ES_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
 });
 
 const IT_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
-  navEducationLabel: "Formazione",
+  navLabels: {
+    "/": "Home",
+    "/about": "Chi sono",
+    "/skills": "Competenze",
+    "/experience": "Esperienza",
+    "/education": "Formazione",
+    "/work": "Progetti",
+    "/projects": "Progetti GitHub",
+    "/service": "Servizi",
+    "/blog": "Blog",
+    "/contact": "Contatti",
+  },
   education: {
     label: "Formazione",
     headline: "Percorso accademico e apprendimento continuo.",
@@ -1615,7 +1659,18 @@ const IT_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
 });
 
 const RU_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
-  navEducationLabel: "Образование",
+  navLabels: {
+    "/": "Главная",
+    "/about": "Обо мне",
+    "/skills": "Навыки",
+    "/experience": "Опыт",
+    "/education": "Образование",
+    "/work": "Проекты",
+    "/projects": "Проекты GitHub",
+    "/service": "Услуги",
+    "/blog": "Блог",
+    "/contact": "Контакты",
+  },
   education: {
     label: "Образование",
     headline: "Академический путь и непрерывное обучение.",
@@ -1641,7 +1696,18 @@ const RU_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
 });
 
 const AR_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
-  navEducationLabel: "التعليم",
+  navLabels: {
+    "/": "الرئيسية",
+    "/about": "نبذة عني",
+    "/skills": "المهارات",
+    "/experience": "الخبرات",
+    "/education": "التعليم",
+    "/work": "المشاريع",
+    "/projects": "مشاريع GitHub",
+    "/service": "الخدمات",
+    "/blog": "المدونة",
+    "/contact": "تواصل",
+  },
   education: {
     label: "التعليم",
     headline: "المسار الأكاديمي والتعلم المستمر.",
