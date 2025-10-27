@@ -101,14 +101,12 @@ import { computed } from "vue";
 import { useMediaQuery, useMounted } from "@vueuse/core";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 
-import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
-import { Text3d } from "../ui/text-3d";
+import { Text3d } from "~/components/ui/text-3d";
 import CustomGlowCard from "~/components/CustomGlowCard.vue";
 
 const { data: personal } = useContentBlock("hero");
 const { data: work } = useContentBlock("work");
 const { t } = useI18n();
-const localePath = useLocalePath();
 
 const personalContent = computed(() => personal.value);
 const workItems = computed(() => work.value?.works ?? []);
@@ -129,6 +127,7 @@ const headlineStrokeSize = computed(() => (isCompactViewport.value ? 8 : 20));
 const headlineShadowOneSize = computed(() => (isCompactViewport.value ? 4 : 7));
 const headlineShadowTwoSize = computed(() => (isCompactViewport.value ? 6 : 10));
 const headlineLetterSpacing = computed(() => (isCompactViewport.value ? -0.05 : -0.1));
+
 const enrichedWorkDetails: Record<
   string,
   {
