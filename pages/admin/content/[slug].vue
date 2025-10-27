@@ -21,23 +21,23 @@
                 color="primary"
                 class="text-none px-0 editor-card__back"
               >
-                Retour au tableau de bord
+                {{ t("admin.editor.backToDashboard") }}
               </v-btn>
-              <h1 class="editor-card__title">{{ titles[slug] }}</h1>
+              <h1 class="editor-card__title">{{ sectionTitle }}</h1>
             </div>
             <div
               class="editor-card__aside d-flex flex-column align-end"
               style="gap: 12px"
             >
               <p class="text-body-2 text-medium-emphasis text-end editor-card__hint">
-                Les modifications sont appliquées immédiatement après sauvegarde.
+                {{ t("admin.editor.autosaveHint") }}
               </p>
               <v-select
                 v-model="selectedLocale"
                 :items="localeItems"
                 item-title="title"
                 item-value="value"
-                label="Langue du contenu"
+                :label="t('admin.editor.localeSelectorLabel')"
                 density="comfortable"
                 variant="outlined"
                 hide-details
@@ -55,13 +55,13 @@
             v-if="pending"
             class="py-10 text-center text-medium-emphasis"
           >
-            Chargement…
+            {{ t("admin.editor.loading") }}
           </div>
           <div
             v-else-if="error"
             class="py-10 text-center editor-card__error"
           >
-            Une erreur est survenue lors du chargement du contenu.
+            {{ t("admin.editor.loadError") }}
           </div>
           <v-form
             v-else
@@ -74,7 +74,7 @@
               variant="tonal"
               class="editor-form__alert"
             >
-              <p class="font-weight-medium mb-2">Merci de corriger les points suivants :</p>
+              <p class="font-weight-medium mb-2">{{ t("admin.editor.validation.title") }}</p>
               <ul style="padding-left: 20px; margin: 0">
                 <li
                   v-for="errorMessage in saveState.errors"
@@ -101,7 +101,7 @@
                 >
                   <v-text-field
                     v-model="form.firstname"
-                    label="Prénom"
+                    :label="t('admin.editor.fields.profile.firstname')"
                     required
                     variant="outlined"
                     density="comfortable"
@@ -113,7 +113,7 @@
                 >
                   <v-text-field
                     v-model="form.lastname"
-                    label="Nom"
+                    :label="t('admin.editor.fields.profile.lastname')"
                     required
                     variant="outlined"
                     density="comfortable"
@@ -122,7 +122,7 @@
                 <v-col cols="12">
                   <v-text-field
                     v-model="form.role"
-                    label="Rôle"
+                    :label="t('admin.editor.fields.profile.role')"
                     required
                     variant="outlined"
                     density="comfortable"
@@ -131,7 +131,7 @@
                 <v-col cols="12">
                   <v-text-field
                     v-model="form.avatar"
-                    label="URL de l’avatar"
+                    :label="t('admin.editor.fields.profile.avatar')"
                     required
                     variant="outlined"
                     density="comfortable"
@@ -143,21 +143,21 @@
             <template v-else-if="slug === 'hero'">
               <v-text-field
                 v-model="form.badge"
-                label="Badge"
+                :label="t('admin.editor.fields.hero.badge')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-text-field
                 v-model="form.headline"
-                label="Titre principal"
+                :label="t('admin.editor.fields.hero.headline')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-textarea
                 v-model="form.subline"
-                label="Description"
+                :label="t('admin.editor.fields.hero.subline')"
                 rows="4"
                 required
                 variant="outlined"
@@ -168,35 +168,35 @@
             <template v-else-if="slug === 'service'">
               <v-text-field
                 v-model="form.label"
-                label="Libellé"
+                :label="t('admin.editor.fields.common.label')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-text-field
                 v-model="form.headline"
-                label="Titre"
+                :label="t('admin.editor.fields.common.title')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-textarea
                 v-model="form.subline"
-                label="Description"
+                :label="t('admin.editor.fields.common.description')"
                 rows="4"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <div class="editor-section__heading">
-                <h2 class="editor-section__title">Services</h2>
+                <h2 class="editor-section__title">{{ t('admin.editor.sections.service.listTitle') }}</h2>
                 <v-btn
                   color="primary"
                   variant="tonal"
                   class="text-none"
                   @click="addService"
                 >
-                  Ajouter un service
+                  {{ t('admin.editor.buttons.addService') }}
                 </v-btn>
               </div>
               <div
@@ -211,7 +211,7 @@
                   class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
-                    <span class="text-caption">Service #{{ index + 1 }}</span>
+                    <span class="text-caption">{{ t('admin.editor.entries.service', { index: index + 1 }) }}</span>
                     <v-btn
                       icon="mdi-delete"
                       variant="text"
@@ -221,21 +221,21 @@
                   </div>
                   <v-text-field
                     v-model="service.name"
-                    label="Nom"
+                    :label="t('admin.editor.fields.common.name')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="service.icon"
-                    label="Icône"
+                    :label="t('admin.editor.fields.service.icon')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-textarea
                     v-model="service.description"
-                    label="Description"
+                    :label="t('admin.editor.fields.common.description')"
                     rows="3"
                     required
                     variant="outlined"
@@ -243,7 +243,7 @@
                   />
                   <v-text-field
                     v-model="service.thumbnails"
-                    label="Image (optionnelle)"
+                    :label="t('admin.editor.fields.service.thumbnailOptional')"
                     variant="outlined"
                     density="comfortable"
                   />
@@ -253,42 +253,42 @@
                 v-else
                 class="text-body-2 text-medium-emphasis"
               >
-                Aucun service. Ajoutez-en un pour commencer.
+                {{ t('admin.editor.empty.services') }}
               </p>
             </template>
 
             <template v-else-if="slug === 'work'">
               <v-text-field
                 v-model="form.label"
-                label="Libellé"
+                :label="t('admin.editor.fields.common.label')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-text-field
                 v-model="form.headline"
-                label="Titre"
+                :label="t('admin.editor.fields.common.title')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-textarea
                 v-model="form.subline"
-                label="Description"
+                :label="t('admin.editor.fields.common.description')"
                 rows="4"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <div class="editor-section__heading">
-                <h2 class="editor-section__title">Projets</h2>
+                <h2 class="editor-section__title">{{ t('admin.editor.sections.work.listTitle') }}</h2>
                 <v-btn
                   color="primary"
                   variant="tonal"
                   class="text-none"
                   @click="addWork"
                 >
-                  Ajouter un projet
+                  {{ t('admin.editor.buttons.addProject') }}
                 </v-btn>
               </div>
               <div
@@ -303,7 +303,7 @@
                   class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
-                    <span class="text-caption">Projet #{{ index + 1 }}</span>
+                    <span class="text-caption">{{ t('admin.editor.entries.project', { index: index + 1 }) }}</span>
                     <v-btn
                       icon="mdi-delete"
                       variant="text"
@@ -313,28 +313,28 @@
                   </div>
                   <v-text-field
                     v-model="project.name"
-                    label="Nom"
+                    :label="t('admin.editor.fields.common.name')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="project.slug"
-                    label="Identifiant (slug)"
+                    :label="t('admin.editor.fields.common.slug')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="project.live_demo"
-                    label="Lien de démonstration"
+                    :label="t('admin.editor.fields.work.demo')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-textarea
                     v-model="project.description"
-                    label="Description"
+                    :label="t('admin.editor.fields.common.description')"
                     rows="3"
                     required
                     variant="outlined"
@@ -342,14 +342,14 @@
                   />
                   <v-text-field
                     v-model="project.thumbnails"
-                    label="Image"
+                    :label="t('admin.editor.fields.work.thumbnail')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="project.type"
-                    label="Type"
+                    :label="t('admin.editor.fields.work.type')"
                     required
                     variant="outlined"
                     density="comfortable"
@@ -360,27 +360,27 @@
                 v-else
                 class="text-body-2 text-medium-emphasis"
               >
-                Aucun projet enregistré.
+                {{ t('admin.editor.empty.projects') }}
               </p>
             </template>
 
             <template v-else-if="slug === 'about'">
               <v-text-field
                 v-model="form.label"
-                label="Libellé"
+                :label="t('admin.editor.fields.common.label')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <div class="editor-section__heading">
-                <h2 class="editor-section__title">Paragraphes</h2>
+                <h2 class="editor-section__title">{{ t('admin.editor.sections.about.paragraphsTitle') }}</h2>
                 <v-btn
                   color="primary"
                   variant="tonal"
                   class="text-none"
                   @click="addIntroduce"
                 >
-                  Ajouter un paragraphe
+                  {{ t('admin.editor.buttons.addParagraph') }}
                 </v-btn>
               </div>
               <div
@@ -395,7 +395,7 @@
                   class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
-                    <span class="text-caption">Paragraphe #{{ index + 1 }}</span>
+                    <span class="text-caption">{{ t('admin.editor.entries.paragraph', { index: index + 1 }) }}</span>
                     <v-btn
                       icon="mdi-delete"
                       variant="text"
@@ -405,7 +405,7 @@
                   </div>
                   <v-textarea
                     v-model="form.introduce[index]"
-                    label="Contenu"
+                    :label="t('admin.editor.fields.common.content')"
                     rows="3"
                     required
                     variant="outlined"
@@ -417,17 +417,17 @@
                 v-else
                 class="text-body-2 text-medium-emphasis"
               >
-                Ajoutez un paragraphe pour commencer.
+                {{ t('admin.editor.empty.paragraphs') }}
               </p>
               <div class="editor-section__heading mt-6">
-                <h2 class="editor-section__title">Hobbies</h2>
+                <h2 class="editor-section__title">{{ t('admin.editor.sections.about.hobbiesTitle') }}</h2>
                 <v-btn
                   color="primary"
                   variant="tonal"
                   class="text-none"
                   @click="addHobby"
                 >
-                  Ajouter un hobby
+                  {{ t('admin.editor.buttons.addHobby') }}
                 </v-btn>
               </div>
               <div
@@ -442,7 +442,7 @@
                   class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
-                    <span class="text-caption">Hobby #{{ index + 1 }}</span>
+                    <span class="text-caption">{{ t('admin.editor.entries.hobby', { index: index + 1 }) }}</span>
                     <v-btn
                       icon="mdi-delete"
                       variant="text"
@@ -452,7 +452,7 @@
                   </div>
                   <v-text-field
                     v-model="form.hobbies[index]"
-                    label="Nom du hobby"
+                    :label="t('admin.editor.fields.about.hobbyName')"
                     required
                     variant="outlined"
                     density="comfortable"
@@ -463,21 +463,21 @@
                 v-else
                 class="text-body-2 text-medium-emphasis"
               >
-                Ajoutez un hobby pour commencer.
+                {{ t('admin.editor.empty.hobbies') }}
               </p>
             </template>
 
             <template v-else-if="slug === 'cta'">
               <v-text-field
                 v-model="form.label"
-                label="Libellé"
+                :label="t('admin.editor.fields.common.label')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-textarea
                 v-model="form.description"
-                label="Description"
+                :label="t('admin.editor.fields.common.description')"
                 rows="4"
                 required
                 variant="outlined"
@@ -487,14 +487,16 @@
 
             <template v-else-if="slug === 'navlinks'">
               <div style="display: flex; justify-content: space-between; align-items: center">
-                <h2 class="text-h6 font-weight-semibold mb-0">Liens de navigation</h2>
+                <h2 class="text-h6 font-weight-semibold mb-0">
+                  {{ t('admin.editor.sections.navlinks.listTitle') }}
+                </h2>
                 <v-btn
                   color="primary"
                   variant="tonal"
                   class="text-none"
                   @click="addNavlink"
                 >
-                  Ajouter un lien
+                  {{ t('admin.editor.buttons.addNavlink') }}
                 </v-btn>
               </div>
               <div
@@ -509,7 +511,7 @@
                   class="pa-4"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
-                    <span class="text-caption">Lien #{{ index + 1 }}</span>
+                    <span class="text-caption">{{ t('admin.editor.entries.navlink', { index: index + 1 }) }}</span>
                     <v-btn
                       icon="mdi-delete"
                       variant="text"
@@ -519,14 +521,14 @@
                   </div>
                   <v-text-field
                     v-model="link.label"
-                    label="Libellé"
+                    :label="t('admin.editor.fields.common.label')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="link.url"
-                    label="URL"
+                    :label="t('admin.editor.fields.common.url')"
                     required
                     variant="outlined"
                     density="comfortable"
@@ -537,42 +539,42 @@
                 v-else
                 class="text-body-2 text-medium-emphasis"
               >
-                Aucun lien n’est encore configuré.
+                {{ t('admin.editor.empty.navlinks') }}
               </p>
             </template>
 
             <template v-else-if="slug === 'skills'">
               <v-text-field
                 v-model="form.label"
-                label="Libellé"
+                :label="t('admin.editor.fields.common.label')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-text-field
                 v-model="form.headline"
-                label="Titre"
+                :label="t('admin.editor.fields.common.title')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-textarea
                 v-model="form.subline"
-                label="Description"
+                :label="t('admin.editor.fields.common.description')"
                 rows="4"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <div class="editor-section__heading">
-                <h2 class="editor-section__title">Catégories</h2>
+                <h2 class="editor-section__title">{{ t('admin.editor.sections.skills.categoriesTitle') }}</h2>
                 <v-btn
                   color="primary"
                   variant="tonal"
                   class="text-none"
                   @click="addSkillCategory"
                 >
-                  Ajouter une catégorie
+                  {{ t('admin.editor.buttons.addCategory') }}
                 </v-btn>
               </div>
               <div
@@ -587,7 +589,7 @@
                   class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
-                    <span class="text-caption">Catégorie #{{ categoryIndex + 1 }}</span>
+                    <span class="text-caption">{{ t('admin.editor.entries.category', { index: categoryIndex + 1 }) }}</span>
                     <v-btn
                       icon="mdi-delete"
                       variant="text"
@@ -597,13 +599,13 @@
                   </div>
                   <v-text-field
                     v-model="category.name"
-                    label="Nom de la catégorie"
+                    :label="t('admin.editor.fields.skills.categoryName')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <div class="editor-section__heading">
-                    <span class="text-body-2">Compétences</span>
+                    <span class="text-body-2">{{ t('admin.editor.sections.skills.skillsLabel') }}</span>
                     <v-btn
                       icon="mdi-plus"
                       variant="text"
@@ -622,7 +624,7 @@
                     >
                       <v-text-field
                         v-model="category.skills[skillIndex]"
-                        label="Nom de la compétence"
+                        :label="t('admin.editor.fields.skills.skillName')"
                         required
                         variant="outlined"
                         density="comfortable"
@@ -640,7 +642,7 @@
                     v-else
                     class="text-body-2 text-medium-emphasis"
                   >
-                    Aucune compétence.
+                    {{ t('admin.editor.empty.skills') }}
                   </p>
                 </v-card>
               </div>
@@ -648,17 +650,17 @@
                 v-else
                 class="text-body-2 text-medium-emphasis"
               >
-                Aucune catégorie définie.
+                {{ t('admin.editor.empty.categories') }}
               </p>
               <div class="editor-section__heading mt-6">
-                <h2 class="editor-section__title">Langues</h2>
+                <h2 class="editor-section__title">{{ t('admin.editor.sections.skills.languagesTitle') }}</h2>
                 <v-btn
                   color="primary"
                   variant="tonal"
                   class="text-none"
                   @click="addLanguage"
                 >
-                  Ajouter une langue
+                  {{ t('admin.editor.buttons.addLanguage') }}
                 </v-btn>
               </div>
               <div
@@ -673,7 +675,7 @@
                   class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
-                    <span class="text-caption">Langue #{{ index + 1 }}</span>
+                    <span class="text-caption">{{ t('admin.editor.entries.language', { index: index + 1 }) }}</span>
                     <v-btn
                       icon="mdi-delete"
                       variant="text"
@@ -683,7 +685,7 @@
                   </div>
                   <v-text-field
                     v-model="form.languages[index]"
-                    label="Nom de la langue"
+                    :label="t('admin.editor.fields.skills.languageName')"
                     required
                     variant="outlined"
                     density="comfortable"
@@ -694,17 +696,17 @@
                 v-else
                 class="text-body-2 text-medium-emphasis"
               >
-                Aucune langue définie.
+                {{ t('admin.editor.empty.languages') }}
               </p>
               <div class="editor-section__heading mt-6">
-                <h2 class="editor-section__title">Niveaux de langues</h2>
+                <h2 class="editor-section__title">{{ t('admin.editor.sections.skills.proficienciesTitle') }}</h2>
                 <v-btn
                   color="primary"
                   variant="tonal"
                   class="text-none"
                   @click="addLanguageProficiency"
                 >
-                  Ajouter un niveau
+                  {{ t('admin.editor.buttons.addLanguageLevel') }}
                 </v-btn>
               </div>
               <div
@@ -719,7 +721,7 @@
                   class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
-                    <span class="text-caption">Langue #{{ index + 1 }}</span>
+                    <span class="text-caption">{{ t('admin.editor.entries.language', { index: index + 1 }) }}</span>
                     <v-btn
                       icon="mdi-delete"
                       variant="text"
@@ -729,7 +731,7 @@
                   </div>
                   <v-text-field
                     v-model="form.languageProficiencies[index].name"
-                    label="Nom de la langue"
+                    :label="t('admin.editor.fields.skills.languageName')"
                     required
                     variant="outlined"
                     density="comfortable"
@@ -737,7 +739,7 @@
                   <v-text-field
                     v-model.number="form.languageProficiencies[index].proficiency"
                     type="number"
-                    label="Maîtrise (%)"
+                    :label="t('admin.editor.fields.skills.languageProficiency')"
                     min="0"
                     max="100"
                     step="5"
@@ -751,34 +753,34 @@
                 v-else
                 class="text-body-2 text-medium-emphasis"
               >
-                Aucun niveau de langue défini.
+                {{ t('admin.editor.empty.languageProficiencies') }}
               </p>
             </template>
 
             <template v-else-if="slug === 'experiences'">
               <v-text-field
                 v-model="form.label"
-                label="Libellé"
+                :label="t('admin.editor.fields.common.label')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-text-field
                 v-model="form.headline"
-                label="Titre"
+                :label="t('admin.editor.fields.common.title')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <div class="editor-section__heading">
-                <h2 class="editor-section__title">Expériences</h2>
+                <h2 class="editor-section__title">{{ t('admin.editor.sections.experiences.listTitle') }}</h2>
                 <v-btn
                   color="primary"
                   variant="tonal"
                   class="text-none"
                   @click="addExperience"
                 >
-                  Ajouter une expérience
+                  {{ t('admin.editor.buttons.addExperience') }}
                 </v-btn>
               </div>
               <div
@@ -793,7 +795,7 @@
                   class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
-                    <span class="text-caption">Expérience #{{ index + 1 }}</span>
+                    <span class="text-caption">{{ t('admin.editor.entries.experience', { index: index + 1 }) }}</span>
                     <v-btn
                       icon="mdi-delete"
                       variant="text"
@@ -803,34 +805,34 @@
                   </div>
                   <v-text-field
                     v-model="position.role"
-                    label="Rôle"
+                    :label="t('admin.editor.fields.experiences.role')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="position.slug"
-                    label="Identifiant (slug)"
+                    :label="t('admin.editor.fields.common.slug')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="position.company"
-                    label="Entreprise"
+                    :label="t('admin.editor.fields.experiences.company')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="position.timeframe"
-                    label="Période"
+                    :label="t('admin.editor.fields.common.period')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <div class="editor-section__heading">
-                    <span class="text-body-2">Réalisations</span>
+                    <span class="text-body-2">{{ t('admin.editor.sections.experiences.achievementsTitle') }}</span>
                     <v-btn
                       icon="mdi-plus"
                       variant="text"
@@ -849,7 +851,7 @@
                     >
                       <v-textarea
                         v-model="position.achievements[achievementIndex]"
-                        label="Détail"
+                        :label="t('admin.editor.fields.experiences.achievementDetail')"
                         rows="2"
                         required
                         variant="outlined"
@@ -868,7 +870,7 @@
                     v-else
                     class="text-body-2 text-medium-emphasis"
                   >
-                    Aucune réalisation.
+                    {{ t('admin.editor.empty.achievements') }}
                   </p>
                 </v-card>
               </div>
@@ -876,34 +878,34 @@
                 v-else
                 class="text-body-2 text-medium-emphasis"
               >
-                Aucune expérience.
+                {{ t('admin.editor.empty.experiences') }}
               </p>
             </template>
 
             <template v-else-if="slug === 'education'">
               <v-text-field
                 v-model="form.label"
-                label="Libellé"
+                :label="t('admin.editor.fields.common.label')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <v-text-field
                 v-model="form.headline"
-                label="Titre"
+                :label="t('admin.editor.fields.common.title')"
                 required
                 variant="outlined"
                 density="comfortable"
               />
               <div class="editor-section__heading">
-                <h2 class="editor-section__title">Formations</h2>
+                <h2 class="editor-section__title">{{ t('admin.editor.sections.education.listTitle') }}</h2>
                 <v-btn
                   color="primary"
                   variant="tonal"
                   class="text-none"
                   @click="addEducation"
                 >
-                  Ajouter une formation
+                  {{ t('admin.editor.buttons.addEducation') }}
                 </v-btn>
               </div>
               <div
@@ -918,7 +920,7 @@
                   class="editor-subcard"
                 >
                   <div class="d-flex justify-space-between align-center mb-3">
-                    <span class="text-caption">Formation #{{ index + 1 }}</span>
+                    <span class="text-caption">{{ t('admin.editor.entries.education', { index: index + 1 }) }}</span>
                     <v-btn
                       icon="mdi-delete"
                       variant="text"
@@ -928,35 +930,35 @@
                   </div>
                   <v-text-field
                     v-model="school.degree"
-                    label="Diplôme"
+                    :label="t('admin.editor.fields.education.degree')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="school.slug"
-                    label="Identifiant (slug)"
+                    :label="t('admin.editor.fields.common.slug')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="school.institution"
-                    label="Établissement"
+                    :label="t('admin.editor.fields.education.institution')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-text-field
                     v-model="school.timeframe"
-                    label="Période"
+                    :label="t('admin.editor.fields.common.period')"
                     required
                     variant="outlined"
                     density="comfortable"
                   />
                   <v-textarea
                     v-model="school.details"
-                    label="Détails"
+                    :label="t('admin.editor.fields.education.details')"
                     rows="3"
                     required
                     variant="outlined"
@@ -968,7 +970,7 @@
                 v-else
                 class="text-body-2 text-medium-emphasis"
               >
-                Aucune formation.
+                {{ t('admin.editor.empty.education') }}
               </p>
             </template>
 
@@ -979,7 +981,7 @@
                 color="primary"
                 class="text-none"
               >
-                Annuler
+                {{ t('admin.editor.actions.cancel') }}
               </v-btn>
               <v-btn
                 type="submit"
@@ -987,7 +989,7 @@
                 class="text-none"
                 :loading="saveState.isSaving"
               >
-                Enregistrer
+                {{ t('admin.editor.actions.save') }}
               </v-btn>
             </div>
           </v-form>
@@ -1012,42 +1014,24 @@ const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
 const slugParam = computed(() => route.params.slug?.toString() ?? "");
 
+const { t } = useI18n();
+
 if (!isContentSlug(slugParam.value)) {
-  showError({ statusCode: 404, statusMessage: "Section introuvable." });
+  showError({ statusCode: 404, statusMessage: t("admin.editor.notFound") });
 }
 
 const slug = computed(() => slugParam.value as ContentSlug);
 
-const localeLabels: Record<LocaleCode, string> = {
-  en: "English",
-  fr: "Français",
-  de: "Deutsch",
-  es: "Español",
-  it: "Italiano",
-  ru: "Русский",
-  ar: "العربية",
-};
-
-const localeItems = SUPPORTED_LOCALES.map((code) => ({
-  value: code,
-  title: localeLabels[code] ?? code.toUpperCase(),
-}));
+const localeItems = computed(() =>
+  SUPPORTED_LOCALES.map((code) => ({
+    value: code,
+    title: t(`admin.editor.localeNames.${code}`),
+  })),
+);
 
 const selectedLocale = ref<LocaleCode>(DEFAULT_LOCALE);
 
-const titles: Record<ContentSlug, string> = {
-  contact: "Contact",
-  profile: "Profil",
-  hero: "Section personnelle",
-  service: "Compétences",
-  work: "Projets",
-  about: "À propos",
-  cta: "Appel à l’action",
-  navlinks: "Navigation",
-  skills: "Compétences",
-  experiences: "Expériences",
-  education: "Formations",
-};
+const sectionTitle = computed(() => t(`admin.editor.sections.${slug.value}.title`));
 
 const { data, pending, refresh, error } = await useAsyncData(
   () => `admin-content-${slug.value}-${selectedLocale.value}`,
@@ -1287,7 +1271,7 @@ async function handleSubmit() {
         "x-csrf-token": csrfCookie.value ?? "",
       },
     });
-    saveState.success = "Contenu mis à jour avec succès.";
+    saveState.success = t("admin.editor.save.success");
     await refresh();
   } catch (err: unknown) {
     if (err instanceof ZodError) {
@@ -1295,7 +1279,7 @@ async function handleSubmit() {
     } else if (isFetchError(err) && typeof err.data?.statusMessage === "string") {
       saveState.errors = [err.data.statusMessage];
     } else {
-      saveState.errors = ["Impossible d’enregistrer les modifications."];
+      saveState.errors = [t("admin.editor.save.failure")];
     }
   } finally {
     saveState.isSaving = false;

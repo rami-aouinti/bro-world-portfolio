@@ -16,11 +16,11 @@
             <div class="login-card__header">
               <div class="login-card__badge">
                 <span class="login-card__badge-dot" />
-                <span class="login-card__badge-text">Admin</span>
+                <span class="login-card__badge-text">{{ t("admin.login.badge") }}</span>
               </div>
-              <h1 class="login-card__title">Espace administrateur</h1>
+              <h1 class="login-card__title">{{ t("admin.login.title") }}</h1>
               <p class="login-card__subtitle">
-                Gérez votre portfolio avec une interface claire et élégante.
+                {{ t("admin.login.subtitle") }}
               </p>
             </div>
 
@@ -31,7 +31,7 @@
               <div class="login-form__fields">
                 <v-text-field
                   v-model="email"
-                  label="Adresse e-mail"
+                  :label="t('admin.login.form.email')"
                   type="email"
                   required
                   autocomplete="email"
@@ -40,7 +40,7 @@
                 />
                 <v-text-field
                   v-model="password"
-                  label="Mot de passe"
+                  :label="t('admin.login.form.password')"
                   type="password"
                   required
                   autocomplete="current-password"
@@ -64,7 +64,7 @@
                 class="text-none login-form__submit"
                 :loading="isSubmitting"
               >
-                Se connecter
+                {{ t("admin.login.form.submit") }}
               </v-btn>
             </v-form>
 
@@ -76,12 +76,18 @@
                 border="start"
                 border-color="primary"
               >
-                <p class="font-weight-medium mb-1">Identifiants par défaut</p>
-                <p>Utilisateur : <code>admin@example.com</code></p>
-                <p>Mot de passe : <code>ChangeMe123!</code></p>
+                <p class="font-weight-medium mb-1">{{ t("admin.login.defaultCredentials.title") }}</p>
+                <p>
+                  {{ t("admin.login.defaultCredentials.email") }}
+                  <code>admin@example.com</code>
+                </p>
+                <p>
+                  {{ t("admin.login.defaultCredentials.password") }}
+                  <code>ChangeMe123!</code>
+                </p>
               </v-alert>
               <p class="login-card__help text-medium-emphasis">
-                En cas d’oubli, contactez le propriétaire du site pour réinitialiser vos accès.
+                {{ t("admin.login.help") }}
               </p>
             </div>
           </v-card>
@@ -95,6 +101,8 @@
 definePageMeta({
   layout: "admin",
 });
+
+const { t } = useI18n();
 
 const email = ref("");
 const password = ref("");
@@ -129,7 +137,7 @@ async function handleSubmit() {
     if (isFetchError(error) && typeof error.data?.statusMessage === "string") {
       errorMessage.value = error.data.statusMessage;
     } else {
-      errorMessage.value = "Une erreur est survenue lors de la connexion.";
+      errorMessage.value = t("admin.login.form.error");
     }
   } finally {
     isSubmitting.value = false;

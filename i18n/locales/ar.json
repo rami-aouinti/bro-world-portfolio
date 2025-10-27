@@ -2,6 +2,247 @@
   "$vuetify": {
     "loading": "جارٍ التحميل…"
   },
+  "admin": {
+    "dashboard": {
+      "hero": {
+        "eyebrow": "لوحة الإدارة",
+        "title": "لوحة التحكم",
+        "subtitle": "أدر جميع أقسام البورتفوليو، حدّث المحتوى ببضع نقرات وتابع أثر تعديلاتك."
+      },
+      "session": {
+        "status": {
+          "online": "متصل"
+        },
+        "role": "مدير",
+        "logout": "تسجيل الخروج",
+        "fallback": "المستخدم الحالي"
+      },
+      "settings": {
+        "eyebrow": "إعدادات الموقع",
+        "title": "مخصص السمة",
+        "subtitle": "خصص الألوان، الزوايا والسمة العامة في الوقت الفعلي.",
+        "customizer": {
+          "prepare": "جارٍ تجهيز أدوات السمة…",
+          "loading": "جارٍ تحميل أدوات السمة…"
+        }
+      },
+      "cards": {
+        "sectionLabel": "قسم",
+        "pendingUpdate": "آخر تحديث قيد الانتظار",
+        "edit": "تعديل"
+      },
+      "sections": {
+        "profile": {
+          "title": "الملف الشخصي",
+          "description": "الاسم والدور والصورة المعروضة على الموقع."
+        },
+        "hero": {
+          "title": "القسم الرئيسي",
+          "description": "الشارة والعنوان والنص الفرعي في الترويسة."
+        },
+        "service": {
+          "title": "الخدمات",
+          "description": "قائمة الخدمات والمهارات الأساسية."
+        },
+        "work": {
+          "title": "المشاريع",
+          "description": "المشاريع المميزة في قسم «المشاريع»."
+        },
+        "about": {
+          "title": "نبذة عني",
+          "description": "فقرة التعريف الشخصية."
+        },
+        "cta": {
+          "title": "دعوة للإجراء",
+          "description": "كتلة التواصل/CTA أسفل الصفحة."
+        },
+        "navlinks": {
+          "title": "التنقل",
+          "description": "الروابط المعروضة في القائمة وفي كتلة CTA."
+        },
+        "skills": {
+          "title": "المهارات",
+          "description": "تصنيفات المهارات وأبرزها."
+        },
+        "experiences": {
+          "title": "الخبرات",
+          "description": "التسلسل الزمني للخبرات المهنية."
+        },
+        "education": {
+          "title": "التعليم",
+          "description": "المسار التعليمي والشهادات."
+        }
+      }
+    },
+    "login": {
+      "badge": "مدير",
+      "title": "منطقة الإدارة",
+      "subtitle": "أدر بورتفوليوك بواجهة واضحة وأنيقة.",
+      "form": {
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "submit": "تسجيل الدخول",
+        "error": "حدث خطأ أثناء تسجيل الدخول."
+      },
+      "defaultCredentials": {
+        "title": "بيانات الاعتماد الافتراضية",
+        "email": "المستخدم: ",
+        "password": "كلمة المرور: "
+      },
+      "help": "إذا نسيت بيانات الدخول، تواصل مع مالك الموقع لإعادة التعيين."
+    },
+    "editor": {
+      "backToDashboard": "العودة إلى اللوحة",
+      "autosaveHint": "يتم تطبيق التغييرات مباشرة بعد الحفظ.",
+      "localeSelectorLabel": "لغة المحتوى",
+      "loading": "جارٍ التحميل…",
+      "loadError": "حدث خطأ أثناء تحميل المحتوى.",
+      "validation": {
+        "title": "يرجى تصحيح العناصر التالية:"
+      },
+      "notFound": "لم يتم العثور على القسم.",
+      "save": {
+        "success": "تم تحديث المحتوى بنجاح.",
+        "failure": "تعذر حفظ التغييرات."
+      },
+      "actions": {
+        "cancel": "إلغاء",
+        "save": "حفظ"
+      },
+      "localeNames": {
+        "en": "الإنجليزية",
+        "fr": "الفرنسية",
+        "de": "الألمانية",
+        "es": "الإسبانية",
+        "it": "الإيطالية",
+        "ru": "الروسية",
+        "ar": "العربية"
+      },
+      "sections": {
+        "profile": {
+          "title": "الملف الشخصي"
+        },
+        "hero": {
+          "title": "القسم الرئيسي"
+        },
+        "service": {
+          "title": "الخدمات"
+        },
+        "work": {
+          "title": "المشاريع"
+        },
+        "about": {
+          "title": "نبذة عني"
+        },
+        "cta": {
+          "title": "دعوة للإجراء"
+        },
+        "navlinks": {
+          "title": "التنقل"
+        },
+        "skills": {
+          "title": "المهارات"
+        },
+        "experiences": {
+          "title": "الخبرات"
+        },
+        "education": {
+          "title": "التعليم"
+        },
+        "contact": {
+          "title": "التواصل"
+        }
+      },
+      "fields": {
+        "profile": {
+          "firstname": "الاسم الأول",
+          "lastname": "اسم العائلة",
+          "role": "الدور",
+          "avatar": "رابط الصورة الرمزية"
+        },
+        "hero": {
+          "badge": "الشارة",
+          "headline": "العنوان الرئيسي",
+          "subline": "الوصف"
+        },
+        "common": {
+          "label": "التسمية",
+          "title": "العنوان",
+          "description": "الوصف",
+          "name": "الاسم",
+          "content": "المحتوى",
+          "slug": "المعرف (slug)",
+          "url": "الرابط",
+          "period": "المدة"
+        },
+        "service": {
+          "icon": "الأيقونة",
+          "thumbnailOptional": "الصورة (اختياري)"
+        },
+        "work": {
+          "demo": "رابط العرض",
+          "thumbnail": "الصورة",
+          "type": "النوع"
+        },
+        "about": {
+          "hobbyName": "اسم الهواية"
+        },
+        "skills": {
+          "categoryName": "اسم التصنيف",
+          "skillName": "اسم المهارة",
+          "languageName": "اسم اللغة",
+          "languageProficiency": "نسبة الإتقان (%)"
+        },
+        "experiences": {
+          "role": "الدور",
+          "company": "الشركة",
+          "achievementDetail": "التفاصيل"
+        },
+        "education": {
+          "degree": "المؤهل",
+          "institution": "المؤسسة",
+          "details": "التفاصيل"
+        }
+      },
+      "buttons": {
+        "addService": "إضافة خدمة",
+        "addProject": "إضافة مشروع",
+        "addParagraph": "إضافة فقرة",
+        "addHobby": "إضافة هواية",
+        "addNavlink": "إضافة رابط",
+        "addCategory": "إضافة تصنيف",
+        "addLanguage": "إضافة لغة",
+        "addLanguageLevel": "إضافة مستوى",
+        "addExperience": "إضافة خبرة",
+        "addEducation": "إضافة مؤهل"
+      },
+      "entries": {
+        "service": "الخدمة رقم {index}",
+        "project": "المشروع رقم {index}",
+        "paragraph": "الفقرة رقم {index}",
+        "hobby": "الهواية رقم {index}",
+        "navlink": "الرابط رقم {index}",
+        "category": "التصنيف رقم {index}",
+        "language": "اللغة رقم {index}",
+        "experience": "الخبرة رقم {index}",
+        "education": "المؤهل رقم {index}"
+      },
+      "empty": {
+        "services": "لا توجد خدمات. أضف خدمة للبدء.",
+        "projects": "لا توجد مشاريع مسجلة.",
+        "paragraphs": "أضف فقرة للبدء.",
+        "hobbies": "أضف هواية للبدء.",
+        "navlinks": "لم يتم إعداد أي روابط بعد.",
+        "skills": "لا توجد مهارات.",
+        "categories": "لا توجد تصنيفات محددة.",
+        "languages": "لا توجد لغات محددة.",
+        "languageProficiencies": "لم يتم تحديد مستويات اللغات.",
+        "achievements": "لا توجد إنجازات.",
+        "experiences": "لا توجد خبرات.",
+        "education": "لا توجد بيانات تعليمية."
+      }
+    }
+  },
   "portfolio": {
     "contact": {
       "methods": {
