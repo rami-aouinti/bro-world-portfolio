@@ -272,7 +272,7 @@
 import { useLocalePath, useSwitchLocalePath } from "#i18n";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 
-import { useMediaQuery, useMounted } from "@vueuse/core";
+import { useMediaQuery } from "@vueuse/core";
 import type { LocaleObject } from "@nuxtjs/i18n";
 import DarkModeToggle from "~/components/DarkModeToggle.vue";
 import { Dock, DockIcon, DockSeparator } from "~/components/ui/dock";
@@ -325,10 +325,45 @@ const currentLanguage = computed(() =>
 const hasLanguageMenu = computed(() => languageItems.value.length > 0);
 const hasControls = computed(() => config.value.header.darkModeToggle || hasLanguageMenu.value);
 
+const requestHeaders = import.meta.server
+  ? useRequestHeaders(["user-agent", "sec-ch-ua-mobile"])
+  : undefined;
+
+const initialMobileState = computed(() => {
+  if (!import.meta.server || !requestHeaders) {
+    return false;
+  }
+
+  const clientHint = requestHeaders["sec-ch-ua-mobile"];
+
+  if (typeof clientHint === "string") {
+    return clientHint === "?1";
+  }
+
+  if (Array.isArray(clientHint)) {
+    return clientHint.includes("?1");
+  }
+
+  const userAgentHeader = requestHeaders["user-agent"];
+  const userAgent = Array.isArray(userAgentHeader)
+    ? userAgentHeader.join(" ")
+    : userAgentHeader ?? "";
+
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(userAgent);
+});
+
 const isDrawerOpen = ref(false);
-const isMounted = useMounted();
-const mobileQuery = useMediaQuery("(max-width: 960px)", { initialValue: false });
-const isMobile = computed(() => isMounted.value && mobileQuery.value);
+const isHydrated = ref(false);
+const mobileQuery = useMediaQuery("(max-width: 960px)", {
+  initialValue: initialMobileState.value,
+});
+const isMobile = computed(() =>
+  isHydrated.value ? mobileQuery.value : initialMobileState.value,
+);
+
+onMounted(() => {
+  isHydrated.value = true;
+});
 
 const controlButtonSize = computed(() => (isMobile.value ? 48 : 56));
 const controlIconSize = computed(() => (isMobile.value ? 24 : 28));
