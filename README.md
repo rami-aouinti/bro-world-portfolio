@@ -4,7 +4,7 @@
   <img src="./logo.png" alt="Super Portfolio Logo" width="140" />
 </div>
 
-> **Auteur · Author · Autor · Autor** : Vous, propriétaire du projet. Mettez à jour ce champ avec votre nom complet si vous le souhaitez.
+> **Auteur · Author · Autor · Autor** : À personnaliser selon votre organisation ou votre équipe avant publication.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ### Présentation
 
-Super Portfolio est une application Nuxt 3 + Tailwind CSS permettant de créer un portfolio moderne, administrable via une interface sécurisée. Cette version du projet est maintenue par **vous, l'auteur principal**.
+Super Portfolio est une application Nuxt 3 + Tailwind CSS permettant de créer un portfolio moderne, administrable via une interface sécurisée. Cette version du projet est conçue pour être maintenue par l'équipe responsable de votre déploiement.
 
 ### Fonctionnalités clés
 
@@ -78,9 +78,16 @@ CSRF_COOKIE_NAME=bro_world_csrf
 SESSION_MAX_AGE=86400
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=ChangeMe123!
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/bro_world"
 WORKFLOW_ENDPOINT=https://api.workflow.example
 WORKFLOW_API_KEY=your-workflow-api-key
+NUXT_PUBLIC_USE_MOCK_CONTENT=true
 ```
+
+### Contenu mock & base de données
+
+- Activez le contenu mock pendant le développement en laissant `NUXT_PUBLIC_USE_MOCK_CONTENT=true` dans votre `.env`. Passez la variable à `false` pour consommer la base de données réelle.
+- Après avoir ajusté vos données Prisma, exécutez `pnpm db:seed` pour recharger la base avec les valeurs d'exemple.
 
 ### Administration
 
@@ -129,7 +136,7 @@ Consultez `vitest.config.ts` et `tests/` pour ajouter vos propres scénarios.
 
 ### Overview
 
-Super Portfolio is a Nuxt 3 + Tailwind CSS application for crafting a modern, easily editable portfolio. **You are credited as the primary author and maintainer of this edition.**
+Super Portfolio is a Nuxt 3 + Tailwind CSS application for crafting a modern, easily editable portfolio. This edition is intended to be maintained by your own team.
 
 ### Key Features
 
@@ -180,9 +187,16 @@ CSRF_COOKIE_NAME=bro_world_csrf
 SESSION_MAX_AGE=86400
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=ChangeMe123!
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/bro_world"
 WORKFLOW_ENDPOINT=https://api.workflow.example
 WORKFLOW_API_KEY=your-workflow-api-key
+NUXT_PUBLIC_USE_MOCK_CONTENT=true
 ```
+
+### Mock content & database refresh
+
+- Keep `NUXT_PUBLIC_USE_MOCK_CONTENT=true` in your `.env` to serve mock data during development. Set it to `false` to read from the database.
+- Whenever you need to reload seed data locally, run `pnpm db:seed` after ensuring your database connection is configured.
 
 ### Admin Panel
 
@@ -231,7 +245,7 @@ See `vitest.config.ts` and `tests/` for guidance on writing additional tests.
 
 ### Descripción
 
-Super Portfolio es una aplicación creada con Nuxt 3 y Tailwind CSS para construir un portafolio moderno y editable. **Tú eres la persona autora y responsable principal de esta versión.**
+Super Portfolio es una aplicación creada con Nuxt 3 y Tailwind CSS para construir un portafolio moderno y editable. Esta versión está pensada para ser mantenida por tu propio equipo.
 
 ### Funcionalidades
 
@@ -280,9 +294,16 @@ CSRF_COOKIE_NAME=bro_world_csrf
 SESSION_MAX_AGE=86400
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=ChangeMe123!
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/bro_world"
 WORKFLOW_ENDPOINT=https://api.workflow.example
 WORKFLOW_API_KEY=your-workflow-api-key
+NUXT_PUBLIC_USE_MOCK_CONTENT=true
 ```
+
+### Contenido mock y recarga de la base de datos
+
+- Mantén `NUXT_PUBLIC_USE_MOCK_CONTENT=true` en tu `.env` para servir datos simulados en desarrollo. Cámbialo a `false` para usar la base real.
+- Para restaurar los datos de ejemplo, ejecuta `pnpm db:seed` después de configurar la conexión a tu base de datos.
 
 ### Panel de administración
 
@@ -331,7 +352,7 @@ Revisa `vitest.config.ts` y `tests/` para añadir nuevos casos.
 
 ### Überblick
 
-Super Portfolio ist eine Anwendung auf Basis von Nuxt 3 und Tailwind CSS zum Aufbau eines modernen, leicht pflegbaren Portfolios. **Sie werden als Hauptautor:in dieser Variante genannt.**
+Super Portfolio ist eine Anwendung auf Basis von Nuxt 3 und Tailwind CSS zum Aufbau eines modernen, leicht pflegbaren Portfolios. Diese Variante ist dafür gedacht, von Ihrem eigenen Team betreut zu werden.
 
 ### Hauptfunktionen
 
@@ -380,9 +401,16 @@ CSRF_COOKIE_NAME=bro_world_csrf
 SESSION_MAX_AGE=86400
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=ChangeMe123!
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/bro_world"
 WORKFLOW_ENDPOINT=https://api.workflow.example
 WORKFLOW_API_KEY=your-workflow-api-key
+NUXT_PUBLIC_USE_MOCK_CONTENT=true
 ```
+
+### Mock-Inhalte und Datenbank-Reset
+
+- Lassen Sie `NUXT_PUBLIC_USE_MOCK_CONTENT=true` in Ihrer `.env`, um während der Entwicklung Mock-Daten zu laden. Setzen Sie die Variable auf `false`, um die echte Datenbank zu verwenden.
+- Zum Zurücksetzen der Seed-Daten führen Sie `pnpm db:seed` aus, nachdem die Datenbankverbindung eingerichtet wurde.
 
 ### Adminbereich
 
