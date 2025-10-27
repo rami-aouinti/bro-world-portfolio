@@ -1685,16 +1685,19 @@ const PROD_CONTENT: LocalizedContentRecord = Object.fromEntries(
 const DEV_CONTENT = createMockLocalizedContent(PROD_CONTENT);
 
 function resolveMockContentFlag(): boolean {
-  if (typeof process !== "undefined" && process.env?.NUXT_PUBLIC_USE_MOCK_CONTENT) {
-    return process.env.NUXT_PUBLIC_USE_MOCK_CONTENT === "true";
+  const envValue =
+    typeof process !== "undefined" ? process.env?.NUXT_PUBLIC_USE_MOCK_CONTENT : undefined;
+  if (envValue !== undefined) {
+    return envValue === "true";
   }
 
   const meta = (import.meta as unknown as { env?: Record<string, string | undefined> })?.env;
-  if (meta?.NUXT_PUBLIC_USE_MOCK_CONTENT) {
-    return meta.NUXT_PUBLIC_USE_MOCK_CONTENT === "true";
+  const metaValue = meta?.NUXT_PUBLIC_USE_MOCK_CONTENT;
+  if (metaValue !== undefined) {
+    return metaValue === "true";
   }
 
-  return false;
+  return true;
 }
 
 export const DEFAULT_CONTENT = resolveMockContentFlag() ? DEV_CONTENT : PROD_CONTENT;
