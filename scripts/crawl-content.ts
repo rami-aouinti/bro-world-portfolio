@@ -30,10 +30,10 @@ const DEPENDENCIES = new Map<string, string[]>([
   ["@uiw/color-convert", []],
 ]);
 
-// This map is used when a basic Inspira UI component internally uses another Inspira component.
+// This map is used when a basic Bro World component internally uses another Bro World component.
 const COMPONENT_DEPENDENCIES = new Map<string, string[]>();
 
-const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://inspira-ui.com/docs/r";
+const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://rami.aouinti.com/docs/r";
 const REGISTRY_DEPENDENCY = "@/";
 
 type ArrayItem<T> = T extends Array<infer X> ? X : never;

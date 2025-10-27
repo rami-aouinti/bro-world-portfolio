@@ -6,9 +6,9 @@ import { $t } from "./i18n/locales";
 export default defineAppConfig({
   shadcnDocs: {
     site: {
-      name: "Inspira UI",
-      description: "Build beautiful websites using Vue & Nuxt.",
-      ogImage: "https://cdn.inspira-ui.com/og-image-v2.1.png",
+      name: "Bro World Portfolio",
+      description: "Documentation hub for the Bro World Portfolio experience and admin tooling.",
+      ogImage: "/og-image.png",
     },
     theme: {
       customizable: true,
@@ -18,18 +18,18 @@ export default defineAppConfig({
     banner: {
       enable: true,
       showClose: false,
-      content: "For Tailwind CSS v3 docs, [**click here**](https://v1.inspira-ui.com).",
-      to: "https://v1.inspira-ui.com",
+      content: "Explore the live experience at [**rami.aouinti.com**](https://rami.aouinti.com).",
+      to: "https://rami.aouinti.com",
       target: "_blank",
       border: true,
     },
     header: {
-      title: "Inspira UI",
+      title: "Bro World Portfolio",
       showTitle: true,
       darkModeToggle: true,
       logo: {
-        light: "https://cdn.inspira-ui.com/logo.svg",
-        dark: "https://cdn.inspira-ui.com/logo-dark.svg",
+        light: "/logo.svg",
+        dark: "/logo-dark.svg",
       },
       nav: [
         {
@@ -52,9 +52,9 @@ export default defineAppConfig({
               target: "_self",
             },
             {
-              title: "Inspira UI v1",
-              to: "https://v1.inspira-ui.com",
-              description: $t("nav.V1DocsDescription"),
+              title: "Live Bro World site",
+              to: "https://rami.aouinti.com",
+              description: "Preview the production Bro World Portfolio experience.",
               target: "_blank",
             },
           ],
@@ -94,21 +94,21 @@ export default defineAppConfig({
           links: [
             {
               title: "GitHub",
-              to: "https://github.com/unovue/inspira-ui",
-              description: $t("nav.GitHubDescription"),
+              to: "https://github.com/rami-aouinti/bro-world-portfolio",
+              description: "Browse the source code and contribute to Bro World Portfolio.",
               target: "_blank",
             },
             {
-              title: "Discord",
-              to: "https://discord.gg/Xbh5DwJRc9",
-              description: $t("nav.DiscordDescription"),
+              title: "Discussions",
+              to: "https://github.com/rami-aouinti/bro-world-portfolio/discussions",
+              description: "Share feedback and ideas with the maintainers.",
               target: "_blank",
             },
             {
-              title: $t("nav.Forum"),
-              to: "https://github.com/unovue/inspira-ui/discussions",
+              title: "Issues",
+              to: "https://github.com/rami-aouinti/bro-world-portfolio/issues",
               target: "_blank",
-              description: $t("nav.ForumDiscord"),
+              description: "Report bugs or track roadmap tasks.",
             },
           ],
         },
@@ -116,22 +116,12 @@ export default defineAppConfig({
       links: [
         {
           icon: "lucide:github",
-          to: "https://github.com/unovue/inspira-ui",
+          to: "https://github.com/rami-aouinti/bro-world-portfolio",
           target: "_blank",
         },
         {
-          icon: "prime:twitter",
-          to: "https://x.com/rahulv_dev",
-          target: "_blank",
-        },
-        {
-          icon: "ri:discord-line",
-          to: "https://discord.gg/Xbh5DwJRc9",
-          target: "_blank",
-        },
-        {
-          icon: "ri:bluesky-line",
-          to: "http://bsky.app/profile/inspira-ui.com",
+          icon: "lucide:globe",
+          to: "https://rami.aouinti.com",
           target: "_blank",
         },
       ],
@@ -149,18 +139,18 @@ export default defineAppConfig({
       codeCopyToast: true,
     },
     footer: {
-      credits: "Copyright © 2024 - 2025",
+      credits: "Bro World Portfolio © 2024 - 2025",
       links: [
         {
           icon: "lucide:globe",
-          to: "https://rahulv.dev",
-          title: "Maintained by rahulv.dev",
+          to: "https://rami.aouinti.com",
+          title: "Maintained by Mohamed Rami Aouinti",
           target: "_blank",
         },
         {
           icon: "lucide:github",
-          title: "Github",
-          to: "https://github.com/unovue/inspira-ui",
+          title: "GitHub",
+          to: "https://github.com/rami-aouinti/bro-world-portfolio",
           target: "_blank",
         },
       ],
@@ -172,43 +162,31 @@ export default defineAppConfig({
       carbonAds: {
         enable: true,
         code: "CW7DEK37",
-        placement: "inspira-uicom",
+        placement: "bro-world-portfolio",
       },
       links: [
         {
           title: $t("toc.StarOnGitHub"),
           icon: "lucide:star",
-          to: "https://github.com/unovue/inspira-ui",
+          to: "https://github.com/rami-aouinti/bro-world-portfolio",
           target: "_blank",
         },
         {
           title: $t("toc.CreateIssues"),
           icon: "lucide:circle-dot",
-          to: "https://github.com/unovue/inspira-ui/issues",
-          target: "_blank",
-        },
-        {
-          title: $t("toc.JoinDiscord"),
-          icon: "ri:discord-line",
-          to: "https://discord.gg/Xbh5DwJRc9",
+          to: "https://github.com/rami-aouinti/bro-world-portfolio/issues",
           target: "_blank",
         },
         {
           title: $t("toc.Forum"),
           icon: "lucide:newspaper",
-          to: "https://github.com/unovue/inspira-ui/discussions",
+          to: "https://github.com/rami-aouinti/bro-world-portfolio/discussions",
           target: "_blank",
         },
         {
-          title: $t("toc.FollowOnX"),
-          icon: "prime:twitter",
-          to: "https://x.com/rahulv_dev",
-          target: "_blank",
-        },
-        {
-          title: $t("toc.FollowOnBluesky"),
-          icon: "ri:bluesky-line",
-          to: "http://bsky.app/profile/inspira-ui.com",
+          title: "Live portfolio",
+          icon: "lucide:globe",
+          to: "https://rami.aouinti.com",
           target: "_blank",
         },
       ],

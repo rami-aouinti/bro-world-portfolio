@@ -1,7 +1,7 @@
-# Super Portfolio – README Multilingue / Multilingual / Multilingüe / Mehrsprachig
+# Bro World Portfolio – README Multilingue / Multilingual / Multilingüe / Mehrsprachig
 
 <div align="center">
-  <img src="./logo.png" alt="Super Portfolio Logo" width="140" />
+  <img src="./logo.png" alt="Bro World Portfolio Logo" width="140" />
 </div>
 
 > **Auteur · Author · Autor · Autor** : À personnaliser selon votre organisation ou votre équipe avant publication.
@@ -23,7 +23,7 @@
 
 ### Présentation
 
-Super Portfolio est une application Nuxt 3 + Tailwind CSS permettant de créer un portfolio moderne, administrable via une interface sécurisée. Cette version du projet est conçue pour être maintenue par l'équipe responsable de votre déploiement.
+Bro World Portfolio est une application Nuxt 3 + Tailwind CSS permettant de créer un portfolio moderne, administrable via une interface sécurisée. Cette version du projet est conçue pour être maintenue par l'équipe responsable de votre déploiement.
 
 ### Fonctionnalités clés
 
@@ -52,8 +52,8 @@ Super Portfolio est une application Nuxt 3 + Tailwind CSS permettant de créer 
 
 ```bash
 # Cloner votre propre fork ou ce dépôt
-git clone https://github.com/USER/super-portfolio.git
-cd super-portfolio
+git clone https://github.com/USER/bro-world-portfolio.git
+cd bro-world-portfolio
 
 # Installer les dépendances
 pnpm install
@@ -151,7 +151,7 @@ Consultez `vitest.config.ts` et `tests/` pour ajouter vos propres scénarios.
 
 ### Overview
 
-Super Portfolio is a Nuxt 3 + Tailwind CSS application for crafting a modern, easily editable portfolio. This edition is intended to be maintained by your own team.
+Bro World Portfolio is a Nuxt 3 + Tailwind CSS application for crafting a modern, easily editable portfolio. This edition is intended to be maintained by your own team.
 
 ### Key Features
 
@@ -179,8 +179,8 @@ Super Portfolio is a Nuxt 3 + Tailwind CSS application for crafting a modern, e
 ### Installation
 
 ```bash
-git clone https://github.com/USER/super-portfolio.git
-cd super-portfolio
+git clone https://github.com/USER/bro-world-portfolio.git
+cd bro-world-portfolio
 pnpm install
 ```
 
@@ -276,7 +276,7 @@ See `vitest.config.ts` and `tests/` for guidance on writing additional tests.
 
 ### Descripción
 
-Super Portfolio es una aplicación creada con Nuxt 3 y Tailwind CSS para construir un portafolio moderno y editable. Esta versión está pensada para ser mantenida por tu propio equipo.
+Bro World Portfolio es una aplicación creada con Nuxt 3 y Tailwind CSS para construir un portafolio moderno y editable. Esta versión está pensada para ser mantenida por tu propio equipo.
 
 ### Funcionalidades
 
@@ -304,8 +304,8 @@ Super Portfolio es una aplicación creada con Nuxt 3 y Tailwind CSS para constr
 ### Instalación
 
 ```bash
-git clone https://github.com/USER/super-portfolio.git
-cd super-portfolio
+git clone https://github.com/USER/bro-world-portfolio.git
+cd bro-world-portfolio
 pnpm install
 ```
 
@@ -383,7 +383,7 @@ Revisa `vitest.config.ts` y `tests/` para añadir nuevos casos.
 
 ### Überblick
 
-Super Portfolio ist eine Anwendung auf Basis von Nuxt 3 und Tailwind CSS zum Aufbau eines modernen, leicht pflegbaren Portfolios. Diese Variante ist dafür gedacht, von Ihrem eigenen Team betreut zu werden.
+Bro World Portfolio ist eine Anwendung auf Basis von Nuxt 3 und Tailwind CSS zum Aufbau eines modernen, leicht pflegbaren Portfolios. Diese Variante ist dafür gedacht, von Ihrem eigenen Team betreut zu werden.
 
 ### Hauptfunktionen
 
@@ -411,8 +411,8 @@ Super Portfolio ist eine Anwendung auf Basis von Nuxt 3 und Tailwind CSS zum Au
 ### Installation
 
 ```bash
-git clone https://github.com/USER/super-portfolio.git
-cd super-portfolio
+git clone https://github.com/USER/bro-world-portfolio.git
+cd bro-world-portfolio
 pnpm install
 ```
 
