@@ -1,252 +1,153 @@
 import type { BlogPost } from "~/types/blog";
 
-const AUTHOR_AVATAR = "https://avatars.githubusercontent.com/u/130002255?v=4";
+const DEMO_AUTHOR_AVATAR =
+  "https://api.dicebear.com/7.x/initials/svg?seed=Demo%20Author";
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    id: "architecture-evolution",
-    slug: "scaling-nuxt-architecture",
-    title: "Scaling a Nuxt 3 Architecture for Global Content Delivery",
+    id: "welcome-to-the-demo-blog",
+    slug: "welcome-to-the-demo-blog",
+    title: "Welcome to the Demo Blog",
     excerpt:
-      "Lessons learned from rethinking a Nuxt 3 monorepo to support localized content, caching strategies, and CI pipelines.",
+      "A quick introduction to the sample blog that ships with the portfolio starter.",
     description:
-      "A deep dive into the architectural decisions that helped us scale Nuxt 3 applications for multilingual audiences without compromising developer velocity.",
+      "Use these demo posts to showcase the blog layout, typography and content building blocks before publishing your own stories.",
     coverImage:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80",
     heroImage:
-      "https://images.unsplash.com/photo-1526378722443-4aa0e0280927?auto=format&fit=crop&w=2000&q=80",
-    category: "architecture",
-    tags: ["nuxt", "cdn", "devops"],
-    readingTimeMinutes: 9,
-    publishedAt: "2024-03-18T09:00:00.000Z",
-    updatedAt: "2024-04-02T10:15:00.000Z",
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80",
+    category: "announcements",
+    tags: ["getting-started", "demo"],
+    readingTimeMinutes: 4,
+    publishedAt: "2024-01-05T09:00:00.000Z",
+    updatedAt: "2024-01-12T10:15:00.000Z",
     featured: true,
     author: {
-      name: "Rami Aouinti",
-      role: "Lead Software Engineer",
-      avatar: AUTHOR_AVATAR,
+      name: "Demo Author",
+      role: "Content Team",
+      avatar: DEMO_AUTHOR_AVATAR,
     },
     stats: {
-      views: 4820,
-      reactions: 168,
+      views: 1240,
+      reactions: 38,
     },
     sections: [
       {
         type: "paragraph",
-        text: "Internationalising the Bro-World platform forced us to revisit early technical decisions. We needed an architecture that could serve localized assets quickly without duplicating deployments.",
+        text: "This starter blog ships with a lightweight dataset so you can explore the admin dashboard, content editor and public layout right away.",
+      },
+      {
+        type: "list",
+        title: "What's inside",
+        items: [
+          "Reusable sections for paragraphs, quotes, and checklists",
+          "Sample metadata for categories and tags",
+          "Placeholder analytics showing how stats are rendered",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Feel free to replace these posts with your own articles once you are ready to publish.",
+      },
+    ],
+  },
+  {
+    id: "productivity-checklist",
+    slug: "productivity-checklist",
+    title: "A Productivity Checklist for Busy Teams",
+    excerpt:
+      "Use this fictional checklist to demonstrate how actionable content can be presented in the blog.",
+    description:
+      "Explore how numbered lists, bullet points and highlighted quotes appear within the Nuxt blog theme.",
+    coverImage:
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80",
+    category: "guides",
+    tags: ["checklist", "teamwork"],
+    readingTimeMinutes: 6,
+    publishedAt: "2024-02-22T08:30:00.000Z",
+    featured: false,
+    author: {
+      name: "Demo Author",
+      role: "Content Team",
+      avatar: DEMO_AUTHOR_AVATAR,
+    },
+    stats: {
+      views: 980,
+      reactions: 24,
+    },
+    sections: [
+      {
+        type: "paragraph",
+        text: "Nothing here is tied to a real project. The content simply illustrates how practical tips could be formatted in production.",
       },
       {
         type: "heading",
         level: 2,
-        title: "Diagnosing the bottlenecks",
-        anchor: "diagnosing-the-bottlenecks",
-      },
-      {
-        type: "paragraph",
-        text: "Our initial setup relied heavily on server-side rendering, which added noticeable latency for visitors outside Europe. We profiled requests to understand how middleware, API calls, and rendering competed for resources.",
+        title: "Team essentials",
+        anchor: "team-essentials",
       },
       {
         type: "list",
         ordered: true,
-        title: "Key metrics we tracked",
         items: [
-          "Time-to-first-byte across five regions",
-          "Cache hit ratio on the CDN edge",
-          "Cold start frequency for lambda functions",
+          "Start the week with a short planning session",
+          "Outline blockers in a shared document",
+          "Celebrate wins at the end of each sprint",
         ],
       },
       {
-        type: "paragraph",
-        text: "Instrumenting observability early meant we could quantify the impact of every improvement. From there, it was time to redesign deployment boundaries.",
-      },
-      {
-        type: "heading",
-        level: 2,
-        title: "Restructuring the delivery pipeline",
-        anchor: "restructuring-the-delivery-pipeline",
-      },
-      {
-        type: "paragraph",
-        text: "We separated static content from dynamic responses and leaned into edge caching. Nuxt's Nitro server made it painless to export island components and hydrate them selectively on the client.",
-      },
-      {
         type: "quote",
-        text: "Optimise for change, not perfection. The architecture should make iterations cheaper, not lock you into a single choice.",
-        attribution: "Team retrospective note",
-      },
-      {
-        type: "code",
-        language: "bash",
-        caption: "Preview build pipeline",
-        code: "pnpm install\npnpm lint\npnpm test\npnpm build --filter web --preset=production",
-      },
-      {
-        type: "paragraph",
-        text: "By the time we rolled out the new pipeline, deployment times dropped by 43% and new locales shipped in hours instead of days.",
-        highlight: true,
+        text: "Consistency beats intensity when it comes to productivity habits.",
+        attribution: "Demo Playbook",
       },
     ],
   },
   {
-    id: "observability-playbook",
-    slug: "observability-playbook-for-scale",
-    title: "Building an Observability Playbook Before the Incident Happens",
+    id: "design-system-refresh",
+    slug: "design-system-refresh",
+    title: "Planning a Design System Refresh",
     excerpt:
-      "A pragmatic approach to logging, tracing, and alerting that keeps distributed systems debuggable as the team grows.",
+      "This imaginary case study shows how to communicate visual updates in long-form content.",
     description:
-      "Implementing observability guardrails across services ensured that onboarding engineers could ship features confidently without breaking production.",
-    coverImage:
-      "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1600&q=80",
-    category: "platform",
-    tags: ["observability", "logging", "sre"],
-    readingTimeMinutes: 7,
-    publishedAt: "2024-02-11T08:00:00.000Z",
-    author: {
-      name: "Rami Aouinti",
-      role: "Lead Software Engineer",
-      avatar: AUTHOR_AVATAR,
-    },
-    stats: {
-      views: 3714,
-      reactions: 142,
-    },
-    sections: [
-      {
-        type: "paragraph",
-        text: "Every incident debrief surfaced the same theme: we lacked a single source of truth for runtime behaviour. The playbook we created now lives alongside the code and keeps the team aligned.",
-      },
-      {
-        type: "heading",
-        level: 2,
-        title: "Start with critical user journeys",
-        anchor: "critical-user-journeys",
-      },
-      {
-        type: "paragraph",
-        text: "We mapped key scenarios—registration, checkout, and workspace management—to make sure telemetry covered the paths that generate revenue.",
-      },
-      {
-        type: "list",
-        items: [
-          "Define canonical log formats with request identifiers",
-          "Adopt distributed tracing that spans Nuxt server routes and background jobs",
-          "Document alert runbooks with owner, severity, and mitigation steps",
-        ],
-      },
-      {
-        type: "paragraph",
-        text: "This foundation allowed us to automate regression detection and create dashboards that the product team actually uses.",
-      },
-      {
-        type: "quote",
-        text: "If the dashboard requires a senior engineer to explain it, it will never be used during an incident.",
-        attribution: "Platform engineering guidelines",
-      },
-      {
-        type: "paragraph",
-        text: "Once the scaffolding was in place, we ran game days to validate alarms and to rehearse our response process.",
-      },
-    ],
-  },
-  {
-    id: "ai-assisted-ui",
-    slug: "shipping-ai-assisted-interfaces",
-    title: "Shipping AI-assisted Interfaces Without Overwhelming the User",
-    excerpt:
-      "Design principles we applied when integrating AI copilots into Bro-World's productivity tools.",
-    description:
-      "AI features must feel like collaboration, not automation. Here is how we aligned product, design, and engineering to deliver it.",
+      "Combine imagery, subheadings and highlighted callouts to guide the reader through design decisions.",
     coverImage:
       "https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1600&q=80",
-    category: "product",
-    tags: ["ai", "ux", "product"],
-    readingTimeMinutes: 6,
-    publishedAt: "2023-12-09T10:45:00.000Z",
+    heroImage:
+      "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=2000&q=80",
+    category: "case-study",
+    tags: ["design", "process"],
+    readingTimeMinutes: 7,
+    publishedAt: "2024-03-18T11:15:00.000Z",
+    updatedAt: "2024-03-20T07:45:00.000Z",
+    featured: false,
     author: {
-      name: "Rami Aouinti",
-      role: "Lead Software Engineer",
-      avatar: AUTHOR_AVATAR,
+      name: "Demo Author",
+      role: "Content Team",
+      avatar: DEMO_AUTHOR_AVATAR,
     },
     stats: {
-      views: 2985,
-      reactions: 101,
+      views: 1455,
+      reactions: 52,
     },
     sections: [
       {
         type: "paragraph",
-        text: "We experimented with prompt-driven UI flows that adapt based on the user's intent. The secret was to keep the first interaction obvious and add depth progressively.",
+        text: "The refresh starts by documenting the current state of your components and identifying areas that need polish.",
       },
       {
         type: "heading",
         level: 2,
-        title: "Designing for trust",
-        anchor: "designing-for-trust",
+        title: "Highlight the wins",
+        anchor: "highlight-the-wins",
       },
       {
         type: "paragraph",
-        text: "Every suggestion includes a clear explanation of why it appeared. People can accept, reject, or fine-tune results without leaving the current context.",
+        text: "Use screenshots or visual references to show what improved and where future iterations should focus.",
       },
       {
         type: "paragraph",
-        text: "We also instrumented telemetry to capture when prompts feel confusing so the product team can iterate quickly.",
-      },
-      {
-        type: "list",
-        title: "Guardrails we shipped",
-        items: [
-          "Context-aware onboarding that fades away after repeated success",
-          "Immediate feedback options to report irrelevant suggestions",
-          "A safe-mode toggle that reduces AI initiative in sensitive workflows",
-        ],
-      },
-    ],
-  },
-  {
-    id: "performance-case-study",
-    slug: "improving-performance-with-edge-rendering",
-    title: "Improving Performance With Edge Rendering and Smart Caching",
-    excerpt:
-      "A case study detailing how we moved personalised dashboards to the edge to reduce latency for remote teams.",
-    description:
-      "Edge rendering let us deliver dynamic dashboards with cached data layers, keeping latency under 90ms globally.",
-    coverImage:
-      "https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?auto=format&fit=crop&w=1600&q=80",
-    category: "performance",
-    tags: ["edge", "performance", "caching"],
-    readingTimeMinutes: 8,
-    publishedAt: "2023-10-21T07:30:00.000Z",
-    author: {
-      name: "Rami Aouinti",
-      role: "Lead Software Engineer",
-      avatar: AUTHOR_AVATAR,
-    },
-    stats: {
-      views: 4126,
-      reactions: 156,
-    },
-    sections: [
-      {
-        type: "paragraph",
-        text: "We analysed where requests spent time and realised most of the delay happened before our application even started executing.",
-      },
-      {
-        type: "heading",
-        level: 2,
-        title: "Profiling the baseline",
-        anchor: "profiling-the-baseline",
-      },
-      {
-        type: "paragraph",
-        text: "Synthetic monitoring told a different story than real traffic. Edge rendering brought those numbers together by removing transcontinental hops.",
-      },
-      {
-        type: "quote",
-        text: "Caching is only effective when you know what not to cache.",
-        attribution: "Performance review",
-      },
-      {
-        type: "paragraph",
-        text: "We implemented background regeneration for expensive queries so that users always see fresh data without paying the cold start cost.",
+        highlight: true,
+        text: "This highlighted paragraph draws the reader's attention to a key insight without relying on real project details.",
       },
     ],
   },
