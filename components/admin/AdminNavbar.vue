@@ -478,6 +478,11 @@ const sectionDefinitions = computed(() => [
     label: translate("admin.dashboard.sections.cta.title", "Call to action"),
   },
   {
+    slug: "contact",
+    icon: "mdi-card-account-phone-outline",
+    label: translate("admin.dashboard.sections.contact.title", "Contact"),
+  },
+  {
     slug: "navlinks",
     icon: "mdi-compass-outline",
     label: translate("admin.dashboard.sections.navlinks.title", "Navigation"),
@@ -619,14 +624,19 @@ async function handleLogout() {
 .dock-navbar__dock {
   position: relative;
   padding: 12px;
-  border-radius: 999px;
-  background: linear-gradient(160deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: var(--admin-control-radius, 999px);
+  background: color-mix(in srgb, var(--admin-glass-surface, rgba(30, 41, 59, 0.88)) 94%, transparent);
+  backdrop-filter: blur(var(--admin-glass-blur, 18px)) saturate(125%);
+  border: 1px solid var(--admin-glass-border, rgba(148, 163, 184, 0.25));
   box-shadow:
-    0 20px 50px -25px rgba(15, 23, 42, 0.75),
+    0 20px 50px -25px var(--admin-surface-shadow, rgba(15, 23, 42, 0.75)),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   pointer-events: auto;
+  transition:
+    backdrop-filter 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .dock-navbar__link {
@@ -791,10 +801,10 @@ async function handleLogout() {
   gap: 12px;
   padding: 12px 16px;
   border-radius: 18px;
-  background: linear-gradient(160deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: color-mix(in srgb, var(--admin-glass-surface, rgba(30, 41, 59, 0.88)) 94%, transparent);
+  border: 1px solid var(--admin-glass-border, rgba(148, 163, 184, 0.25));
   box-shadow:
-    0 18px 40px -30px rgba(15, 23, 42, 0.75),
+    0 18px 40px -30px var(--admin-surface-shadow, rgba(15, 23, 42, 0.75)),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   pointer-events: auto;
 }
@@ -844,8 +854,9 @@ async function handleLogout() {
 
 .dock-navbar__drawer {
   border-radius: 24px 0 0 24px;
-  background: rgba(15, 23, 42, 0.95);
-  border-right: 1px solid rgba(148, 163, 184, 0.25);
+  background: color-mix(in srgb, var(--admin-glass-surface, rgba(15, 23, 42, 0.92)) 96%, transparent);
+  backdrop-filter: blur(calc(var(--admin-glass-blur, 18px) * 0.85));
+  border-right: 1px solid var(--admin-glass-border, rgba(148, 163, 184, 0.25));
 }
 
 .dock-navbar__drawer-inner {

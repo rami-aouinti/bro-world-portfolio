@@ -97,9 +97,10 @@ const quickLinks = computed(() => [
 .admin-settings__card {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(37, 99, 235, 0.18);
-  background: linear-gradient(140deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.9));
-  box-shadow: 0 34px 70px -45px rgba(37, 99, 235, 0.75);
+  border-radius: var(--admin-surface-radius, 28px);
+  border: 1px solid var(--admin-glass-border, rgba(37, 99, 235, 0.18));
+  background: color-mix(in srgb, var(--admin-glass-surface, rgba(15, 23, 42, 0.92)) 94%, transparent);
+  box-shadow: 0 34px 70px -45px var(--admin-surface-shadow, rgba(37, 99, 235, 0.75));
 }
 
 .admin-settings__glow {
@@ -109,6 +110,8 @@ const quickLinks = computed(() => [
     radial-gradient(circle at 10% 30%, rgba(59, 130, 246, 0.35), transparent 55%),
     radial-gradient(circle at 80% 70%, rgba(79, 70, 229, 0.3), transparent 65%);
   pointer-events: none;
+  opacity: var(--admin-accent-glow-opacity, 1);
+  transition: opacity 0.3s ease;
 }
 
 .admin-settings__content {
@@ -147,6 +150,7 @@ const quickLinks = computed(() => [
 .admin-settings__panel {
   background: rgba(15, 23, 42, 0.65);
   border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: calc(var(--admin-surface-radius, 28px) - 10px);
 }
 
 .admin-settings__panel-title {

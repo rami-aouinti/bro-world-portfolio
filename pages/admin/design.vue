@@ -50,6 +50,7 @@
                 </Suspense>
               </ClientOnly>
             </div>
+            <AdminDesignControls class="admin-design__controls" />
           </v-card-text>
         </v-card>
       </v-col>
@@ -59,6 +60,7 @@
 
 <script setup lang="ts">
 import { defineAsyncComponent, onMounted, ref } from "vue";
+import AdminDesignControls from "~/components/admin/AdminDesignControls.vue";
 
 definePageMeta({
   middleware: "auth",
@@ -100,9 +102,10 @@ onMounted(() => {
 .admin-design__card {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(37, 99, 235, 0.18);
-  background: linear-gradient(140deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.9));
-  box-shadow: 0 34px 70px -45px rgba(37, 99, 235, 0.75);
+  border-radius: var(--admin-surface-radius, 28px);
+  border: 1px solid var(--admin-glass-border, rgba(37, 99, 235, 0.18));
+  background: color-mix(in srgb, var(--admin-glass-surface, rgba(15, 23, 42, 0.92)) 94%, transparent);
+  box-shadow: 0 34px 70px -45px var(--admin-surface-shadow, rgba(37, 99, 235, 0.75));
 }
 
 .admin-design__glow {
@@ -112,6 +115,8 @@ onMounted(() => {
     radial-gradient(circle at 15% 25%, rgba(59, 130, 246, 0.35), transparent 55%),
     radial-gradient(circle at 85% 75%, rgba(79, 70, 229, 0.3), transparent 65%);
   pointer-events: none;
+  opacity: var(--admin-accent-glow-opacity, 1);
+  transition: opacity 0.3s ease;
 }
 
 .admin-design__content {
@@ -158,5 +163,10 @@ onMounted(() => {
   justify-content: center;
   min-height: 200px;
   color: rgba(226, 232, 240, 0.75);
+}
+
+.admin-design__controls {
+  position: relative;
+  z-index: 1;
 }
 </style>
