@@ -432,7 +432,15 @@
       "actions": {
         "reset": "Descartar cambios"
       },
-      "siteSettings": "Ajustes del sitio"
+      "siteSettings": "Ajustes del sitio",
+      "quickAccess": "Acceso rápido"
+    },
+    "navigation": {
+      "home": "Inicio",
+      "dashboard": "Panel",
+      "settings": "Ajustes",
+      "design": "Diseño",
+      "content": "Contenidos"
     }
   }
 }

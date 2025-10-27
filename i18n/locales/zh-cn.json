@@ -432,7 +432,15 @@
       "actions": {
         "reset": "放弃更改"
       },
-      "siteSettings": "站点设置"
+      "siteSettings": "站点设置",
+      "quickAccess": "快速访问"
+    },
+    "navigation": {
+      "home": "首页",
+      "dashboard": "仪表盘",
+      "settings": "设置",
+      "design": "设计",
+      "content": "内容"
     }
   }
 }

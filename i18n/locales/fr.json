@@ -432,7 +432,15 @@
       "actions": {
         "reset": "Annuler les modifications"
       },
-      "siteSettings": "Paramètres du site"
+      "siteSettings": "Paramètres du site",
+      "quickAccess": "Accès rapide"
+    },
+    "navigation": {
+      "home": "Accueil",
+      "dashboard": "Tableau de bord",
+      "settings": "Réglages",
+      "design": "Design",
+      "content": "Contenus"
     }
   }
 }

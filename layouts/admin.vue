@@ -8,6 +8,7 @@
         :staticity="55"
         :ease="45"
       />
+      <AdminNavbar />
       <div class="app-layout__content">
         <slot />
       </div>
@@ -17,7 +18,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import Navbar from "~/components/layout/Navbar.vue";
+import AdminNavbar from "~/components/admin/AdminNavbar.vue";
 import { ParticlesBg } from "~/components/ui/particles-bg";
 import { useCookieColorMode } from "~/composables/useCookieColorMode";
 
