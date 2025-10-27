@@ -264,6 +264,12 @@ const sections = computed(() => [
     icon: "mdi-email-outline",
   },
   {
+    slug: "contact",
+    title: t("admin.dashboard.sections.contact.title"),
+    description: t("admin.dashboard.sections.contact.description"),
+    icon: "mdi-email-outline",
+  },
+  {
     slug: "navlinks",
     title: t("admin.dashboard.sections.navlinks.title"),
     description: t("admin.dashboard.sections.navlinks.description"),

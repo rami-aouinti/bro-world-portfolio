@@ -56,6 +56,10 @@
           "title": "Призыв к действию",
           "description": "Контактный блок/CTA внизу страницы."
         },
+        "contact": {
+          "title": "Контакты",
+          "description": "Актуализируйте контактные данные и доступность."
+        },
         "navlinks": {
           "title": "Навигация",
           "description": "Ссылки в меню и CTA."
@@ -150,7 +154,8 @@
           "title": "Образование"
         },
         "contact": {
-          "title": "Контакт"
+          "title": "Контакт",
+          "listTitle": "Способы связи"
         }
       },
       "fields": {
@@ -202,6 +207,12 @@
           "degree": "Степень/квалификация",
           "institution": "Учреждение",
           "details": "Подробности"
+        },
+        "contact": {
+          "degree": "Канал",
+          "institution": "Контактная информация",
+          "timeframe": "Доступность",
+          "details": "Дополнительные сведения"
         }
       },
       "buttons": {
@@ -214,7 +225,8 @@
         "addLanguage": "Добавить язык",
         "addLanguageLevel": "Добавить уровень",
         "addExperience": "Добавить опыт",
-        "addEducation": "Добавить образование"
+        "addEducation": "Добавить образование",
+        "addContact": "Добавить способ связи"
       },
       "entries": {
         "service": "Услуга №{index}",
@@ -225,7 +237,8 @@
         "category": "Категория №{index}",
         "language": "Язык №{index}",
         "experience": "Опыт №{index}",
-        "education": "Образование №{index}"
+        "education": "Образование №{index}",
+        "contact": "Способ связи №{index}"
       },
       "empty": {
         "services": "Нет услуг. Добавьте первую, чтобы начать.",
@@ -239,7 +252,8 @@
         "languageProficiencies": "Уровни владения языками не заданы.",
         "achievements": "Достижений пока нет.",
         "experiences": "Опыт еще не добавлен.",
-        "education": "Данных об образовании нет."
+        "education": "Данных об образовании нет.",
+        "contact": "Способы связи не настроены."
       }
     }
   },

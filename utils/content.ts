@@ -838,6 +838,24 @@ const EN_CONTENT: ContentRecord = {
       },
     ],
   },
+  contact: {
+    label: "Contact",
+    headline: "Direct ways to reach me.",
+    contact: [
+      {
+        degree: "E-mail",
+        institution: "hello@broworld.dev",
+        timeframe: "Always open",
+        details: "Send a message anytime and I'll respond within one business day.",
+      },
+      {
+        degree: "Location",
+        institution: "Berlin, Germany",
+        timeframe: "GMT+1",
+        details: "Remote-first collaboration with availability for on-site workshops across Europe.",
+      },
+    ],
+  },
 };
 
 const FR_CONTENT: ContentRecord = {
@@ -1513,6 +1531,24 @@ const FR_CONTENT: ContentRecord = {
         timeframe: "Sept. 2008 — Août 2013",
         details:
           "Formation approfondie en réseaux informatiques, télécommunications et technologies de l’information appliquées.",
+      },
+    ],
+  },
+  contact: {
+    label: "Contact",
+    headline: "Les meilleurs moyens de me joindre.",
+    contact: [
+      {
+        degree: "E-mail",
+        institution: "hello@broworld.dev",
+        timeframe: "Disponible en continu",
+        details: "Écrivez-moi et je vous répondrai sous un jour ouvré.",
+      },
+      {
+        degree: "Localisation",
+        institution: "Berlin, Allemagne",
+        timeframe: "Fuseau GMT+1",
+        details: "Disponible en télétravail et pour des ateliers sur place en Europe.",
       },
     ],
   },

@@ -56,6 +56,10 @@
           "title": "دعوة للإجراء",
           "description": "كتلة التواصل/CTA أسفل الصفحة."
         },
+        "contact": {
+          "title": "التواصل",
+          "description": "حدّث بيانات التواصل والتوافر."
+        },
         "navlinks": {
           "title": "التنقل",
           "description": "الروابط المعروضة في القائمة وفي كتلة CTA."
@@ -150,7 +154,8 @@
           "title": "التعليم"
         },
         "contact": {
-          "title": "التواصل"
+          "title": "التواصل",
+          "listTitle": "وسائل التواصل"
         }
       },
       "fields": {
@@ -202,6 +207,12 @@
           "degree": "المؤهل",
           "institution": "المؤسسة",
           "details": "التفاصيل"
+        },
+        "contact": {
+          "degree": "القناة",
+          "institution": "بيانات التواصل",
+          "timeframe": "التوافر",
+          "details": "تفاصيل إضافية"
         }
       },
       "buttons": {
@@ -214,7 +225,8 @@
         "addLanguage": "إضافة لغة",
         "addLanguageLevel": "إضافة مستوى",
         "addExperience": "إضافة خبرة",
-        "addEducation": "إضافة مؤهل"
+        "addEducation": "إضافة مؤهل",
+        "addContact": "إضافة وسيلة تواصل"
       },
       "entries": {
         "service": "الخدمة رقم {index}",
@@ -225,7 +237,8 @@
         "category": "التصنيف رقم {index}",
         "language": "اللغة رقم {index}",
         "experience": "الخبرة رقم {index}",
-        "education": "المؤهل رقم {index}"
+        "education": "المؤهل رقم {index}",
+        "contact": "وسيلة تواصل رقم {index}"
       },
       "empty": {
         "services": "لا توجد خدمات. أضف خدمة للبدء.",
@@ -239,7 +252,8 @@
         "languageProficiencies": "لم يتم تحديد مستويات اللغات.",
         "achievements": "لا توجد إنجازات.",
         "experiences": "لا توجد خبرات.",
-        "education": "لا توجد بيانات تعليمية."
+        "education": "لا توجد بيانات تعليمية.",
+        "contact": "لا توجد وسائل تواصل معدّة بعد."
       }
     }
   },

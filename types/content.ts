@@ -128,10 +128,10 @@ const educationItemSchema = z.object({
 });
 
 const contactItemSchema = z.object({
-  degree: z.string().trim().min(1, "Le diplôme est requis."),
-  institution: z.string().trim().min(1, "L’établissement est requis."),
-  timeframe: z.string().trim().min(1, "La période est requise."),
-  details: z.string().trim().min(1, "Les détails sont requis."),
+  degree: z.string().trim().min(1, "Le canal est requis."),
+  institution: z.string().trim().min(1, "La coordonnée est requise."),
+  timeframe: z.string().trim().min(1, "La disponibilité est requise."),
+  details: z.string().trim().min(1, "Les détails complémentaires sont requis."),
 });
 
 export const educationSchema = z.object({
@@ -143,7 +143,7 @@ export const educationSchema = z.object({
 export const contactSchema = z.object({
   label: z.string().trim().min(1, "Le libellé est requis."),
   headline: z.string().trim().min(1, "Le titre est requis."),
-  contact: z.array(contactItemSchema).min(1, "Ajoutez au moins une formation."),
+  contact: z.array(contactItemSchema).min(1, "Ajoutez au moins un moyen de contact."),
 });
 
 const schemas = {
