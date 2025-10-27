@@ -68,6 +68,21 @@ pnpm dev
 
 Accédez ensuite à <http://localhost:3000>.
 
+### Déploiement Docker
+
+```bash
+docker build -t super-portfolio .
+docker run --rm -p 3000:3000 \
+  -e DATABASE_URL="postgresql://postgres:postgres@localhost:5432/bro_world" \
+  super-portfolio
+```
+
+L'image utilise une build multi-étapes Nuxt 3 et attend que `DATABASE_URL` pointe vers votre base PostgreSQL.
+
+### Intégration continue
+
+Un workflow GitHub Actions (`.github/workflows/ci.yml`) installe les dépendances avec PNPM, exécute l'analyse statique, les tests unitaires puis la compilation de production à chaque push sur `main` et sur chaque Pull Request.
+
 ### Configuration des variables d'environnement
 
 Créez un fichier `.env` ou exportez ces variables si vous souhaitez personnaliser les valeurs par défaut :
@@ -176,6 +191,22 @@ pnpm dev
 ```
 
 Then open <http://localhost:3000>.
+
+### Docker deployment
+
+```bash
+docker build -t super-portfolio .
+docker run --rm -p 3000:3000 \
+  -e DATABASE_URL="postgresql://postgres:postgres@localhost:5432/bro_world" \
+  super-portfolio
+```
+
+The multi-stage Nuxt 3 image expects `DATABASE_URL` to target your PostgreSQL instance.
+
+### Continuous Integration
+
+A GitHub Actions workflow (`.github/workflows/ci.yml`) installs dependencies via PNPM, runs linting and unit tests, and produc
+es a production build for every push to `main` and each pull request.
 
 ### Environment Variables
 
