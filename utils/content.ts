@@ -1697,7 +1697,18 @@ function resolveMockContentFlag(): boolean {
     return metaValue === "true";
   }
 
-  return true;
+  const metaEnv = (import.meta as unknown as { env?: Record<string, unknown> })?.env;
+  const devFlag = metaEnv && "DEV" in metaEnv ? Boolean(metaEnv.DEV) : undefined;
+  if (devFlag !== undefined) {
+    return devFlag;
+  }
+
+  const nodeEnv = typeof process !== "undefined" ? process.env?.NODE_ENV : undefined;
+  if (nodeEnv) {
+    return nodeEnv !== "production";
+  }
+
+  return false;
 }
 
 export const DEFAULT_CONTENT = resolveMockContentFlag() ? DEV_CONTENT : PROD_CONTENT;
