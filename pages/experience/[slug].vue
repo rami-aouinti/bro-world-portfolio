@@ -8,7 +8,7 @@
         prepend-icon="mdi-arrow-left"
         @click="goBack"
       >
-        Go back
+        {{ t("portfolio.experience.backToExperience") }}
       </v-btn>
       <div class="detail-page__header">
         <h1 class="text-h3 text-foreground mb-2">{{ experienceDetails.role }}</h1>
@@ -54,6 +54,8 @@
 <script setup lang="ts">
 import { createError } from "#app";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+const { t } = useI18n();
 
 const route = useRoute();
 const slug = computed(() => route.params.slug?.toString() ?? "");

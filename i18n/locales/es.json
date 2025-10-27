@@ -160,8 +160,12 @@
       "footerFallback": "Experiencia en backend",
       "footerStatus": "Listo"
     },
+    "education": {
+      "backToEducation": "Volver a la sección de educación"
+    },
     "experience": {
-      "fallbackSummary": "Contribuciones clave en {company}"
+      "fallbackSummary": "Contribuciones clave en {company}",
+      "backToExperience": "Volver a la sección de experiencia"
     }
   },
   "navigation": {

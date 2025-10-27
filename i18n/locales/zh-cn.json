@@ -160,8 +160,12 @@
       "footerFallback": "后端专长",
       "footerStatus": "就绪"
     },
+    "education": {
+      "backToEducation": "返回教育概览"
+    },
     "experience": {
-      "fallbackSummary": "在 {company} 的关键贡献"
+      "fallbackSummary": "在 {company} 的关键贡献",
+      "backToExperience": "返回工作经历概览"
     }
   },
   "navigation": {

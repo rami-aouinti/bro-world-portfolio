@@ -160,8 +160,12 @@
       "footerFallback": "Backend-Expertise",
       "footerStatus": "Bereit"
     },
+    "education": {
+      "backToEducation": "Zur Ausbildungsübersicht zurück"
+    },
     "experience": {
-      "fallbackSummary": "Wichtige Beiträge bei {company}"
+      "fallbackSummary": "Wichtige Beiträge bei {company}",
+      "backToExperience": "Zur Erfahrungsübersicht zurück"
     }
   },
   "navigation": {
