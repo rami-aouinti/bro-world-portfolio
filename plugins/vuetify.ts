@@ -66,7 +66,7 @@ import {
 } from "vuetify/components";
 import { VCalendar } from "vuetify/labs/VCalendar";
 import { VDateInput } from "vuetify/labs/VDateInput";
-import { defineComponent, h, ref, watch } from "vue";
+import { defineComponent, h, onMounted, ref, watch } from "vue";
 import { Ripple } from "vuetify/directives";
 import { createVuetify } from "vuetify";
 import { ar, de, en, es, fr, it, ru } from "vuetify/locale";
@@ -243,6 +243,11 @@ const MdiSvgIcon = defineComponent({
   props: makeIconProps(),
   setup(props, { attrs, slots }) {
     const resolved = ref<IconValue>(resolveMdiIconValue(props.icon ?? "").icon);
+    let hasMounted = false;
+
+    onMounted(() => {
+      hasMounted = true;
+    });
 
     async function updateIcon(icon: IconValue) {
       const target = icon ?? "";
@@ -256,7 +261,9 @@ const MdiSvgIcon = defineComponent({
       const requestName = normalizeRequestedIconName(target);
 
       // Avoid rendering invalid SVG path data while the icon registry updates.
-      resolved.value = "";
+      if (hasMounted) {
+        resolved.value = "";
+      }
 
       if (!requestName) {
         return;
