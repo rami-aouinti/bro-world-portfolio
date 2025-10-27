@@ -437,7 +437,9 @@ export default defineNuxtPlugin((nuxtApp) => {
         : import.meta.server
           ? prefersColorSchemeHeader === "dark"
             ? "dark"
-            : "light"
+            : prefersColorSchemeHeader === "light"
+              ? "light"
+              : "dark"
           : typeof window !== "undefined" && typeof window.matchMedia === "function"
             ? window.matchMedia("(prefers-color-scheme: dark)").matches
               ? "dark"
