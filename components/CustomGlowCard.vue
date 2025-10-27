@@ -20,6 +20,14 @@
       class="glow-card__surface"
       aria-hidden="true"
     />
+    <span
+      class="glow-card__top-glow"
+      aria-hidden="true"
+    />
+    <span
+      class="glow-card__bottom-glow"
+      aria-hidden="true"
+    />
 
     <div
       v-if="badge"
@@ -244,7 +252,9 @@ async function handleCardKeydown(event: KeyboardEvent) {
 }
 
 .glow-card__surface,
-.glow-card__halo {
+.glow-card__halo,
+.glow-card__top-glow,
+.glow-card__bottom-glow {
   position: absolute;
   inset: -2px;
   border-radius: inherit;
@@ -269,6 +279,39 @@ async function handleCardKeydown(event: KeyboardEvent) {
   z-index: -1;
   background: linear-gradient(var(--card-sheen-angle), rgba(255, 255, 255, 0.35), transparent 55%);
   mix-blend-mode: screen;
+}
+
+.glow-card__top-glow,
+.glow-card__bottom-glow {
+  inset-inline: -35%;
+  z-index: -1;
+  opacity: 0.65;
+}
+
+.glow-card__top-glow {
+  inset-block-start: -45%;
+  inset-block-end: auto;
+  height: 190px;
+  background: radial-gradient(
+    circle at top,
+    color-mix(in srgb, var(--card-accent) 40%, transparent),
+    transparent 70%
+  );
+  transition: opacity 0.45s ease;
+}
+
+.glow-card__bottom-glow {
+  inset-block-start: auto;
+  inset-block-end: -55%;
+  height: 150%;
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--card-accent) 40%, transparent),
+    rgba(15, 23, 42, 0.4) 75%
+  );
+  transform: rotate(12deg);
+  filter: blur(0.75px);
+  transition: opacity 0.45s ease;
 }
 
 .glow-card__badge {
@@ -377,13 +420,29 @@ async function handleCardKeydown(event: KeyboardEvent) {
 }
 
 .glow-card:hover .glow-card__halo,
-.glow-card:hover .glow-card__surface {
+.glow-card:hover .glow-card__surface,
+.glow-card:hover .glow-card__top-glow,
+.glow-card:hover .glow-card__bottom-glow,
+.glow-card:focus-within .glow-card__halo,
+.glow-card:focus-within .glow-card__surface,
+.glow-card:focus-within .glow-card__top-glow,
+.glow-card:focus-within .glow-card__bottom-glow {
   opacity: var(--card-glow-opacity);
 }
 
 .glow-card:hover .glow-card__surface {
   opacity: var(--card-sheen-opacity);
   transform: translateY(-4px);
+}
+
+.glow-card:hover .glow-card__top-glow,
+.glow-card:focus-within .glow-card__top-glow {
+  opacity: 1;
+}
+
+.glow-card:hover .glow-card__bottom-glow,
+.glow-card:focus-within .glow-card__bottom-glow {
+  opacity: 0.85;
 }
 
 @media (prefers-reduced-motion: reduce) {
