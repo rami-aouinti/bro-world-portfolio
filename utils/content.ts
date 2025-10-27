@@ -1684,28 +1684,49 @@ const PROD_CONTENT: LocalizedContentRecord = Object.fromEntries(
 
 const DEV_CONTENT = createMockLocalizedContent(PROD_CONTENT);
 
+function resolveBooleanFlag(value: unknown): boolean | undefined {
+  if (typeof value === "boolean") {
+    return value;
+  }
+
+  if (typeof value === "string") {
+    if (value === "true") {
+      return true;
+    }
+    if (value === "false") {
+      return false;
+    }
+  }
+
+  return undefined;
+}
+
 function resolveMockContentFlag(): boolean {
-  const envValue =
+  const processEnvValue =
     typeof process !== "undefined" ? process.env?.NUXT_PUBLIC_USE_MOCK_CONTENT : undefined;
-  if (envValue !== undefined) {
-    return envValue === "true";
+  const processFlag = resolveBooleanFlag(processEnvValue);
+  if (processFlag !== undefined) {
+    return processFlag;
   }
 
-  const meta = (import.meta as unknown as { env?: Record<string, string | undefined> })?.env;
+  const meta = (import.meta as unknown as { env?: Record<string, unknown>; dev?: boolean })?.env;
   const metaValue = meta?.NUXT_PUBLIC_USE_MOCK_CONTENT;
-  if (metaValue !== undefined) {
-    return metaValue === "true";
+  const metaFlag = resolveBooleanFlag(metaValue);
+  if (metaFlag !== undefined) {
+    return metaFlag;
   }
 
-  const metaEnv = (import.meta as unknown as { env?: Record<string, unknown> })?.env;
-  const devFlag = metaEnv && "DEV" in metaEnv ? Boolean(metaEnv.DEV) : undefined;
-  if (devFlag !== undefined) {
-    return devFlag;
+  const devFlagFromMetaEnv = meta && "DEV" in meta ? resolveBooleanFlag(meta.DEV) : undefined;
+  if (devFlagFromMetaEnv !== undefined) {
+    return devFlagFromMetaEnv;
   }
 
-  const nodeEnv = typeof process !== "undefined" ? process.env?.NODE_ENV : undefined;
-  if (nodeEnv) {
-    return nodeEnv !== "production";
+  const importMeta = import.meta as unknown as { dev?: boolean };
+  if ("dev" in importMeta) {
+    const devFlag = resolveBooleanFlag(importMeta.dev);
+    if (devFlag !== undefined) {
+      return devFlag;
+    }
   }
 
   return false;
