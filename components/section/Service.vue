@@ -31,9 +31,6 @@
               :description="card.item.description"
               :eyebrow="card.eyebrow"
               :badge="card.badge"
-              :accent-color="card.accent"
-              :background="card.background"
-              :glow-color="card.glow"
               padding="clamp(22px, 3vw, 28px)"
               border-radius="26px"
               outline-color="rgba(148, 163, 184, 0.18)"
@@ -73,30 +70,6 @@ const { data: service } = useContentBlock("service");
 const content = computed(() => service.value);
 const { t } = useI18n();
 
-const accentPalette = ["#7c3aed", "#0ea5e9", "#f97316", "#22d3ee", "#f472b6", "#34d399"];
-
-function hexToRgba(hex: string, alpha = 1) {
-  const sanitized = hex.replace("#", "").trim();
-  const normalized =
-    sanitized.length === 3
-      ? sanitized
-          .split("")
-          .map((char) => `${char}${char}`)
-          .join("")
-      : sanitized;
-  const numeric = Number.parseInt(normalized, 16);
-
-  if (Number.isNaN(numeric)) {
-    return `rgba(124, 58, 237, ${alpha})`;
-  }
-
-  const red = (numeric >> 16) & 255;
-  const green = (numeric >> 8) & 255;
-  const blue = numeric & 255;
-
-  return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
-}
-
 function formatBadge(label?: string) {
   if (!label) {
     return undefined;
@@ -114,14 +87,10 @@ const serviceCards = computed(() => {
   const items = content.value?.services ?? [];
 
   return items.map((item, index) => {
-    const accent = accentPalette[index % accentPalette.length];
     const prefix = t("portfolio.service.eyebrowPrefix");
 
     return {
       item,
-      accent,
-      background: `linear-gradient(135deg, rgba(15, 23, 42, 0.94) 0%, ${hexToRgba(accent, 0.35)} 100%)`,
-      glow: hexToRgba(accent, 0.55),
       eyebrow: `${prefix} ${String(index + 1).padStart(2, "0")}`,
       badge: formatBadge(item.icon),
     };
