@@ -160,8 +160,12 @@
       "footerFallback": "Expertise back-end",
       "footerStatus": "Prêt"
     },
+    "education": {
+      "backToEducation": "Retour aux formations"
+    },
     "experience": {
-      "fallbackSummary": "Contributions clés chez {company}"
+      "fallbackSummary": "Contributions clés chez {company}",
+      "backToExperience": "Retour aux expériences"
     }
   },
   "navigation": {

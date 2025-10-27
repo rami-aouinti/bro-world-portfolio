@@ -160,8 +160,12 @@
       "footerFallback": "Экспертиза по бэкенду",
       "footerStatus": "Готов"
     },
+    "education": {
+      "backToEducation": "Назад к разделу об образовании"
+    },
     "experience": {
-      "fallbackSummary": "Основные достижения в компании {company}"
+      "fallbackSummary": "Основные достижения в компании {company}",
+      "backToExperience": "Назад к разделу об опыте"
     }
   },
   "navigation": {

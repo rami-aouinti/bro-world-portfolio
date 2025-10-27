@@ -160,8 +160,12 @@
       "footerFallback": "Backend expertise",
       "footerStatus": "Ready"
     },
+    "education": {
+      "backToEducation": "Back to education overview"
+    },
     "experience": {
-      "fallbackSummary": "Key contributions at {company}"
+      "fallbackSummary": "Key contributions at {company}",
+      "backToExperience": "Back to experience overview"
     }
   },
   "navigation": {

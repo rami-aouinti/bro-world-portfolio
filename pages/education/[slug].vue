@@ -8,7 +8,7 @@
         prepend-icon="mdi-arrow-left"
         @click="goBack"
       >
-        Retour aux formations
+        {{ t("portfolio.education.backToEducation") }}
       </v-btn>
       <div class="detail-page__header">
         <h1 class="text-h3 text-foreground mb-2">{{ schoolDetails.degree }}</h1>
@@ -42,6 +42,8 @@
 <script setup lang="ts">
 import { createError } from "#app";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+
+const { t } = useI18n();
 
 const route = useRoute();
 const slug = computed(() => route.params.slug?.toString() ?? "");

@@ -160,8 +160,12 @@
       "footerFallback": "خبرة في البنية الخلفية",
       "footerStatus": "جاهز"
     },
+    "education": {
+      "backToEducation": "الرجوع إلى قسم التعليم"
+    },
     "experience": {
-      "fallbackSummary": "أبرز المساهمات في {company}"
+      "fallbackSummary": "أبرز المساهمات في {company}",
+      "backToExperience": "الرجوع إلى قسم الخبرات"
     }
   },
   "navigation": {
