@@ -61,10 +61,10 @@ function getResendConfig(): Required<ResendConfig> {
 function buildPlainTextMessage(payload: ContactEmailPayload) {
   const lines = [
     `New contact message received`,
-    "",
-    `Name: ${payload.name}`,
-    `Email: ${payload.email}`,
-    "",
+    "---------------------------",
+    `Name   : ${payload.name}`,
+    `Email  : ${payload.email}`,
+    "---------------------------",
     "Message:",
     payload.message,
   ];
@@ -77,14 +77,34 @@ function buildHtmlMessage(payload: ContactEmailPayload) {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>New contact form message</title>
   </head>
-  <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.5;">
-    <h1 style="font-size: 20px; margin-bottom: 16px;">New contact form message</h1>
-    <p style="margin: 0 0 8px;"><strong>Name:</strong> ${escapeHtml(payload.name)}</p>
-    <p style="margin: 0 0 8px;"><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
-    <p style="margin: 16px 0 8px;"><strong>Message:</strong></p>
-    <p style="white-space: pre-wrap; margin: 0;">${escapeHtml(payload.message)}</p>
+  <body style="margin: 0; background-color: #f4f4f5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #0f172a;">
+    <div style="max-width: 560px; margin: 32px auto; padding: 0 16px;">
+      <div style="background: linear-gradient(135deg, #1e3a8a, #0ea5e9); border-radius: 16px 16px 0 0; padding: 24px; color: #f8fafc;">
+        <p style="margin: 0; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8;">Portfolio contact</p>
+        <h1 style="margin: 8px 0 0; font-size: 24px; font-weight: 600;">New contact form message</h1>
+      </div>
+      <div style="background-color: #ffffff; border-radius: 0 0 16px 16px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12); overflow: hidden;">
+        <div style="padding: 24px 24px 8px;">
+          <div style="margin-bottom: 16px;">
+            <p style="margin: 0 0 4px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #64748b;">From</p>
+            <p style="margin: 0; font-size: 16px; font-weight: 600;">${escapeHtml(payload.name)}</p>
+            <a href="mailto:${encodeURIComponent(payload.email)}" style="display: inline-block; margin-top: 4px; font-size: 14px; color: #0ea5e9; text-decoration: none;">${escapeHtml(payload.email)}</a>
+          </div>
+        </div>
+        <div style="padding: 0 24px 24px;">
+          <p style="margin: 0 0 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #64748b;">Message</p>
+          <div style="padding: 16px; border-radius: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0;">
+            <p style="margin: 0; white-space: pre-wrap; font-size: 15px; color: #0f172a;">${escapeHtml(payload.message)}</p>
+          </div>
+        </div>
+        <div style="padding: 16px 24px; background-color: #0f172a; color: #e2e8f0;">
+          <p style="margin: 0; font-size: 13px;">Reply directly to this email to continue the conversation.</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>`;
 }
