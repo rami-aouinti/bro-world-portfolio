@@ -250,7 +250,6 @@ const languageCard = computed(() => {
   border-radius: 14px;
   border: 1px solid rgba(148, 163, 184, 0.14);
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.55), rgba(30, 41, 59, 0.4));
-  box-shadow: 0 18px 40px -32px rgba(15, 23, 42, 0.8);
   animation: skills-item-fade 0.6s ease both;
   animation-delay: var(--skill-delay);
   transition:
