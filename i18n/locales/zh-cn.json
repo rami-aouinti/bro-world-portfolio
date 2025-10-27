@@ -2,6 +2,247 @@
   "$vuetify": {
     "loading": "加载中…"
   },
+  "admin": {
+    "dashboard": {
+      "hero": {
+        "eyebrow": "管理后台",
+        "title": "控制面板",
+        "subtitle": "管理全部作品集页面，几次点击即可更新内容，并随时掌握改动带来的影响。"
+      },
+      "session": {
+        "status": {
+          "online": "在线"
+        },
+        "role": "管理员",
+        "logout": "退出登录",
+        "fallback": "当前用户"
+      },
+      "settings": {
+        "eyebrow": "站点设置",
+        "title": "主题定制器",
+        "subtitle": "实时调整颜色、圆角和全局主题。",
+        "customizer": {
+          "prepare": "正在准备主题工具…",
+          "loading": "正在加载主题工具…"
+        }
+      },
+      "cards": {
+        "sectionLabel": "版块",
+        "pendingUpdate": "等待最后一次更新",
+        "edit": "编辑"
+      },
+      "sections": {
+        "profile": {
+          "title": "个人资料",
+          "description": "站点上显示的姓名、角色和头像。"
+        },
+        "hero": {
+          "title": "首屏区域",
+          "description": "页眉中的徽章、标题和副标题。"
+        },
+        "service": {
+          "title": "服务",
+          "description": "主要服务与核心能力列表。"
+        },
+        "work": {
+          "title": "项目",
+          "description": "“项目”区展示的精选项目。"
+        },
+        "about": {
+          "title": "关于我",
+          "description": "个人简介段落。"
+        },
+        "cta": {
+          "title": "号召性用语",
+          "description": "页面底部的联系/CTA 模块。"
+        },
+        "navlinks": {
+          "title": "导航",
+          "description": "菜单和 CTA 模块中显示的链接。"
+        },
+        "skills": {
+          "title": "技能",
+          "description": "技能分类与亮点。"
+        },
+        "experiences": {
+          "title": "经历",
+          "description": "职业经历时间线。"
+        },
+        "education": {
+          "title": "教育经历",
+          "description": "学历与认证。"
+        }
+      }
+    },
+    "login": {
+      "badge": "管理员",
+      "title": "管理登录",
+      "subtitle": "以清晰优雅的界面管理你的作品集。",
+      "form": {
+        "email": "电子邮箱",
+        "password": "密码",
+        "submit": "登录",
+        "error": "登录时出现错误。"
+      },
+      "defaultCredentials": {
+        "title": "默认账号",
+        "email": "账号：",
+        "password": "密码："
+      },
+      "help": "若遗忘账号，请联系站点拥有者重置权限。"
+    },
+    "editor": {
+      "backToDashboard": "返回控制面板",
+      "autosaveHint": "保存后将立即应用修改。",
+      "localeSelectorLabel": "内容语言",
+      "loading": "正在加载…",
+      "loadError": "加载内容时出现错误。",
+      "validation": {
+        "title": "请修正以下项目："
+      },
+      "notFound": "未找到该版块。",
+      "save": {
+        "success": "内容已成功更新。",
+        "failure": "无法保存修改。"
+      },
+      "actions": {
+        "cancel": "取消",
+        "save": "保存"
+      },
+      "localeNames": {
+        "en": "英语",
+        "fr": "法语",
+        "de": "德语",
+        "es": "西班牙语",
+        "it": "意大利语",
+        "ru": "俄语",
+        "ar": "阿拉伯语"
+      },
+      "sections": {
+        "profile": {
+          "title": "个人资料"
+        },
+        "hero": {
+          "title": "首屏区域"
+        },
+        "service": {
+          "title": "服务"
+        },
+        "work": {
+          "title": "项目"
+        },
+        "about": {
+          "title": "关于我"
+        },
+        "cta": {
+          "title": "号召性用语"
+        },
+        "navlinks": {
+          "title": "导航"
+        },
+        "skills": {
+          "title": "技能"
+        },
+        "experiences": {
+          "title": "经历"
+        },
+        "education": {
+          "title": "教育经历"
+        },
+        "contact": {
+          "title": "联系"
+        }
+      },
+      "fields": {
+        "profile": {
+          "firstname": "名字",
+          "lastname": "姓氏",
+          "role": "角色",
+          "avatar": "头像链接"
+        },
+        "hero": {
+          "badge": "徽章",
+          "headline": "主标题",
+          "subline": "描述"
+        },
+        "common": {
+          "label": "标签",
+          "title": "标题",
+          "description": "描述",
+          "name": "名称",
+          "content": "内容",
+          "slug": "标识 (slug)",
+          "url": "链接",
+          "period": "时间段"
+        },
+        "service": {
+          "icon": "图标",
+          "thumbnailOptional": "图片（可选）"
+        },
+        "work": {
+          "demo": "演示链接",
+          "thumbnail": "图片",
+          "type": "类型"
+        },
+        "about": {
+          "hobbyName": "爱好名称"
+        },
+        "skills": {
+          "categoryName": "分类名称",
+          "skillName": "技能名称",
+          "languageName": "语言名称",
+          "languageProficiency": "掌握度 (%)"
+        },
+        "experiences": {
+          "role": "职位",
+          "company": "公司",
+          "achievementDetail": "详细说明"
+        },
+        "education": {
+          "degree": "学历/证书",
+          "institution": "学校/机构",
+          "details": "详细信息"
+        }
+      },
+      "buttons": {
+        "addService": "新增服务",
+        "addProject": "新增项目",
+        "addParagraph": "新增段落",
+        "addHobby": "新增爱好",
+        "addNavlink": "新增链接",
+        "addCategory": "新增分类",
+        "addLanguage": "新增语言",
+        "addLanguageLevel": "新增等级",
+        "addExperience": "新增经历",
+        "addEducation": "新增教育经历"
+      },
+      "entries": {
+        "service": "第 {index} 个服务",
+        "project": "第 {index} 个项目",
+        "paragraph": "第 {index} 个段落",
+        "hobby": "第 {index} 个爱好",
+        "navlink": "第 {index} 个链接",
+        "category": "第 {index} 个分类",
+        "language": "第 {index} 种语言",
+        "experience": "第 {index} 段经历",
+        "education": "第 {index} 条教育经历"
+      },
+      "empty": {
+        "services": "暂无服务，请新增一项开始。",
+        "projects": "暂无项目记录。",
+        "paragraphs": "新增一个段落开始编写吧。",
+        "hobbies": "新增一个爱好开始吧。",
+        "navlinks": "尚未配置任何链接。",
+        "skills": "暂无技能。",
+        "categories": "尚未定义分类。",
+        "languages": "尚未添加语言。",
+        "languageProficiencies": "尚未设置语言掌握度。",
+        "achievements": "暂无成就。",
+        "experiences": "暂无经历。",
+        "education": "暂无教育经历。"
+      }
+    }
+  },
   "portfolio": {
     "contact": {
       "methods": {

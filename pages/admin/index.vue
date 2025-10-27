@@ -17,12 +17,11 @@
             <div class="dashboard-hero__intro">
               <div class="dashboard-hero__eyebrow">
                 <span class="dashboard-hero__dot" />
-                <span>Administration</span>
+                <span>{{ t("admin.dashboard.hero.eyebrow") }}</span>
               </div>
-              <h1 class="dashboard-hero__title">Tableau de bord</h1>
+              <h1 class="dashboard-hero__title">{{ t("admin.dashboard.hero.title") }}</h1>
               <p class="dashboard-hero__subtitle">
-                Pilotez toutes les sections du portfolio, mettez-les à jour en quelques clics et
-                suivez l’impact de vos modifications.
+                {{ t("admin.dashboard.hero.subtitle") }}
               </p>
             </div>
             <div class="dashboard-session text-foreground text-end">
@@ -40,11 +39,13 @@
                 </v-avatar>
                 <span class="dashboard-session__status">
                   <span class="dashboard-session__status-dot" />
-                  En ligne
+                  {{ t("admin.dashboard.session.status.online") }}
                 </span>
               </div>
               <p class="text-subtitle-2 mb-1 text-high-emphasis">{{ userDisplayName }}</p>
-              <p class="text-body-2 text-foreground text-medium-emphasis">Administrateur</p>
+              <p class="text-body-2 text-foreground text-medium-emphasis">
+                {{ t("admin.dashboard.session.role") }}
+              </p>
               <div class="dashboard-session-actions">
                 <v-btn
                   color="white"
@@ -53,7 +54,7 @@
                   prepend-icon="mdi-logout"
                   @click="handleLogout"
                 >
-                  Déconnexion
+                  {{ t("admin.dashboard.session.logout") }}
                 </v-btn>
               </div>
             </div>
@@ -75,13 +76,13 @@
                 <div class="site-settings-card__header">
                   <div>
                     <p class="site-settings-card__eyebrow text-caption">
-                      {{ t("admin.settings.siteSettings") }}
+                      {{ t("admin.dashboard.settings.eyebrow") }}
                     </p>
                     <h2 class="site-settings-card__title">
-                      {{ t("admin.settings.themeCustomizer.title") }}
+                      {{ t("admin.dashboard.settings.title") }}
                     </h2>
                     <p class="site-settings-card__subtitle">
-                      Personnalisez les couleurs, le rayon et le thème global du site en temps réel.
+                      {{ t("admin.dashboard.settings.subtitle") }}
                     </p>
                   </div>
                   <div class="site-settings-card__icon">
@@ -100,7 +101,7 @@
                   <ClientOnly>
                     <template #fallback>
                       <div class="site-settings-card__loading">
-                        Préparation des outils de thème…
+                        {{ t("admin.dashboard.settings.customizer.prepare") }}
                       </div>
                     </template>
                     <Suspense>
@@ -110,12 +111,12 @@
                           v-else
                           class="site-settings-card__loading"
                         >
-                          Préparation des outils de thème…
+                          {{ t("admin.dashboard.settings.customizer.prepare") }}
                         </div>
                       </template>
                       <template #fallback>
                         <div class="site-settings-card__loading">
-                          Chargement des outils de thème…
+                          {{ t("admin.dashboard.settings.customizer.loading") }}
                         </div>
                       </template>
                     </Suspense>
@@ -154,7 +155,7 @@
                       size="small"
                       class="text-none dashboard-card__chip"
                     >
-                      Section
+                      {{ t("admin.dashboard.cards.sectionLabel") }}
                     </v-chip>
                   </div>
                   <h2 class="dashboard-card__title">{{ section.title }}</h2>
@@ -163,7 +164,7 @@
                 <v-card-actions class="dashboard-card__actions">
                   <div class="dashboard-card__meta">
                     <span class="dashboard-card__meta-dot" />
-                    Dernière mise à jour en attente
+                    {{ t("admin.dashboard.cards.pendingUpdate") }}
                   </div>
                   <v-btn
                     :to="`/admin/content/${section.slug}`"
@@ -172,7 +173,7 @@
                     class="text-none"
                     append-icon="mdi-arrow-right"
                   >
-                    Modifier
+                    {{ t("admin.dashboard.cards.edit") }}
                   </v-btn>
                 </v-card-actions>
               </v-card>
@@ -225,73 +226,73 @@ onMounted(() => {
   window.setTimeout(activateThemeCustomizer, 300);
 });
 
-const sections = [
+const sections = computed(() => [
   {
     slug: "profile",
-    title: "Profil",
-    description: "Nom, rôle et avatar affichés sur le site.",
+    title: t("admin.dashboard.sections.profile.title"),
+    description: t("admin.dashboard.sections.profile.description"),
     icon: "mdi-account-circle-outline",
   },
   {
     slug: "hero",
-    title: "Section personnelle",
-    description: "Badge, titre et sous-titre de l’en-tête.",
+    title: t("admin.dashboard.sections.hero.title"),
+    description: t("admin.dashboard.sections.hero.description"),
     icon: "mdi-star",
   },
   {
     slug: "service",
-    title: "Compétences",
-    description: "Liste des services et compétences clés.",
+    title: t("admin.dashboard.sections.service.title"),
+    description: t("admin.dashboard.sections.service.description"),
     icon: "mdi-clipboard-check-outline",
   },
   {
     slug: "work",
-    title: "Projets",
-    description: "Projets présentés dans la section « Projets ».",
+    title: t("admin.dashboard.sections.work.title"),
+    description: t("admin.dashboard.sections.work.description"),
     icon: "mdi-rocket-launch-outline",
   },
   {
     slug: "about",
-    title: "À propos",
-    description: "Paragraphe de présentation personnelle.",
+    title: t("admin.dashboard.sections.about.title"),
+    description: t("admin.dashboard.sections.about.description"),
     icon: "mdi-text-box-outline",
   },
   {
     slug: "cta",
-    title: "Appel à l’action",
-    description: "Bloc contact/CTA du bas de page.",
+    title: t("admin.dashboard.sections.cta.title"),
+    description: t("admin.dashboard.sections.cta.description"),
     icon: "mdi-email-outline",
   },
   {
     slug: "navlinks",
-    title: "Navigation",
-    description: "Liens affichés dans le menu et le CTA.",
+    title: t("admin.dashboard.sections.navlinks.title"),
+    description: t("admin.dashboard.sections.navlinks.description"),
     icon: "mdi-compass-outline",
   },
   {
     slug: "skills",
-    title: "Compétences",
-    description: "Catégories de compétences.",
+    title: t("admin.dashboard.sections.skills.title"),
+    description: t("admin.dashboard.sections.skills.description"),
     icon: "mdi-lightbulb-on-outline",
   },
   {
     slug: "experiences",
-    title: "Expériences",
-    description: "Historique des expériences professionnelles.",
+    title: t("admin.dashboard.sections.experiences.title"),
+    description: t("admin.dashboard.sections.experiences.description"),
     icon: "mdi-briefcase-search-outline",
   },
   {
     slug: "education",
-    title: "Formations",
-    description: "Parcours académique et certifications.",
+    title: t("admin.dashboard.sections.education.title"),
+    description: t("admin.dashboard.sections.education.description"),
     icon: "mdi-school-outline",
   },
-] as const;
+]);
 
 const { data: session } = await useAsyncData("admin-session", () => $fetch("/api/auth/session"));
 
 const userDisplayName = computed(
-  () => session.value?.user?.name || session.value?.user?.email || "Utilisateur connecté",
+  () => session.value?.user?.name || session.value?.user?.email || t("admin.dashboard.session.fallback"),
 );
 
 async function handleLogout() {

@@ -2,6 +2,247 @@
   "$vuetify": {
     "loading": "Cargando…"
   },
+  "admin": {
+    "dashboard": {
+      "hero": {
+        "eyebrow": "Administración",
+        "title": "Panel de control",
+        "subtitle": "Gestiona todas las secciones del portafolio, actualiza el contenido con unos pocos clics y supervisa el impacto de tus cambios."
+      },
+      "session": {
+        "status": {
+          "online": "En línea"
+        },
+        "role": "Administrador",
+        "logout": "Cerrar sesión",
+        "fallback": "Usuario conectado"
+      },
+      "settings": {
+        "eyebrow": "Configuración del sitio",
+        "title": "Personalizador de tema",
+        "subtitle": "Personaliza colores, radios y el tema global en tiempo real.",
+        "customizer": {
+          "prepare": "Preparando las herramientas del tema…",
+          "loading": "Cargando las herramientas del tema…"
+        }
+      },
+      "cards": {
+        "sectionLabel": "Sección",
+        "pendingUpdate": "Última actualización pendiente",
+        "edit": "Editar"
+      },
+      "sections": {
+        "profile": {
+          "title": "Perfil",
+          "description": "Nombre, rol y avatar que se muestran en el sitio."
+        },
+        "hero": {
+          "title": "Sección principal",
+          "description": "Insignia, título y subtítulo del encabezado."
+        },
+        "service": {
+          "title": "Servicios",
+          "description": "Lista de servicios y competencias clave."
+        },
+        "work": {
+          "title": "Proyectos",
+          "description": "Proyectos destacados en la sección «Proyectos»."
+        },
+        "about": {
+          "title": "Sobre mí",
+          "description": "Párrafo de presentación personal."
+        },
+        "cta": {
+          "title": "Llamado a la acción",
+          "description": "Bloque de contacto/CTA del pie de página."
+        },
+        "navlinks": {
+          "title": "Navegación",
+          "description": "Enlaces del menú y el bloque CTA."
+        },
+        "skills": {
+          "title": "Habilidades",
+          "description": "Categorías de habilidades y destacados."
+        },
+        "experiences": {
+          "title": "Experiencias",
+          "description": "Historial de experiencias profesionales."
+        },
+        "education": {
+          "title": "Formación",
+          "description": "Trayectoria académica y certificaciones."
+        }
+      }
+    },
+    "login": {
+      "badge": "Admin",
+      "title": "Área de administración",
+      "subtitle": "Gestiona tu portafolio con una interfaz clara y elegante.",
+      "form": {
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "submit": "Iniciar sesión",
+        "error": "Se produjo un error al iniciar sesión."
+      },
+      "defaultCredentials": {
+        "title": "Credenciales por defecto",
+        "email": "Usuario: ",
+        "password": "Contraseña: "
+      },
+      "help": "Si olvidas tus accesos, contacta al propietario del sitio para restablecerlos."
+    },
+    "editor": {
+      "backToDashboard": "Volver al panel",
+      "autosaveHint": "Los cambios se aplican inmediatamente después de guardar.",
+      "localeSelectorLabel": "Idioma del contenido",
+      "loading": "Cargando…",
+      "loadError": "Se produjo un error al cargar el contenido.",
+      "validation": {
+        "title": "Corrige los siguientes elementos:"
+      },
+      "notFound": "Sección no encontrada.",
+      "save": {
+        "success": "Contenido actualizado correctamente.",
+        "failure": "No se pudieron guardar los cambios."
+      },
+      "actions": {
+        "cancel": "Cancelar",
+        "save": "Guardar"
+      },
+      "localeNames": {
+        "en": "Inglés",
+        "fr": "Francés",
+        "de": "Alemán",
+        "es": "Español",
+        "it": "Italiano",
+        "ru": "Ruso",
+        "ar": "Árabe"
+      },
+      "sections": {
+        "profile": {
+          "title": "Perfil"
+        },
+        "hero": {
+          "title": "Sección principal"
+        },
+        "service": {
+          "title": "Servicios"
+        },
+        "work": {
+          "title": "Proyectos"
+        },
+        "about": {
+          "title": "Sobre mí"
+        },
+        "cta": {
+          "title": "Llamado a la acción"
+        },
+        "navlinks": {
+          "title": "Navegación"
+        },
+        "skills": {
+          "title": "Habilidades"
+        },
+        "experiences": {
+          "title": "Experiencias"
+        },
+        "education": {
+          "title": "Formación"
+        },
+        "contact": {
+          "title": "Contacto"
+        }
+      },
+      "fields": {
+        "profile": {
+          "firstname": "Nombre",
+          "lastname": "Apellido",
+          "role": "Rol",
+          "avatar": "URL del avatar"
+        },
+        "hero": {
+          "badge": "Insignia",
+          "headline": "Título principal",
+          "subline": "Descripción"
+        },
+        "common": {
+          "label": "Etiqueta",
+          "title": "Título",
+          "description": "Descripción",
+          "name": "Nombre",
+          "content": "Contenido",
+          "slug": "Identificador (slug)",
+          "url": "URL",
+          "period": "Periodo"
+        },
+        "service": {
+          "icon": "Ícono",
+          "thumbnailOptional": "Imagen (opcional)"
+        },
+        "work": {
+          "demo": "Enlace de demostración",
+          "thumbnail": "Imagen",
+          "type": "Tipo"
+        },
+        "about": {
+          "hobbyName": "Nombre del hobby"
+        },
+        "skills": {
+          "categoryName": "Nombre de la categoría",
+          "skillName": "Nombre de la habilidad",
+          "languageName": "Nombre del idioma",
+          "languageProficiency": "Dominio (%)"
+        },
+        "experiences": {
+          "role": "Rol",
+          "company": "Empresa",
+          "achievementDetail": "Detalle"
+        },
+        "education": {
+          "degree": "Título",
+          "institution": "Institución",
+          "details": "Detalles"
+        }
+      },
+      "buttons": {
+        "addService": "Añadir servicio",
+        "addProject": "Añadir proyecto",
+        "addParagraph": "Añadir párrafo",
+        "addHobby": "Añadir hobby",
+        "addNavlink": "Añadir enlace",
+        "addCategory": "Añadir categoría",
+        "addLanguage": "Añadir idioma",
+        "addLanguageLevel": "Añadir nivel",
+        "addExperience": "Añadir experiencia",
+        "addEducation": "Añadir formación"
+      },
+      "entries": {
+        "service": "Servicio n.º {index}",
+        "project": "Proyecto n.º {index}",
+        "paragraph": "Párrafo n.º {index}",
+        "hobby": "Hobby n.º {index}",
+        "navlink": "Enlace n.º {index}",
+        "category": "Categoría n.º {index}",
+        "language": "Idioma n.º {index}",
+        "experience": "Experiencia n.º {index}",
+        "education": "Formación n.º {index}"
+      },
+      "empty": {
+        "services": "No hay servicios. Añade uno para comenzar.",
+        "projects": "No hay proyectos registrados.",
+        "paragraphs": "Añade un párrafo para comenzar.",
+        "hobbies": "Añade un hobby para comenzar.",
+        "navlinks": "Aún no hay enlaces configurados.",
+        "skills": "No hay habilidades.",
+        "categories": "No hay categorías definidas.",
+        "languages": "No hay idiomas definidos.",
+        "languageProficiencies": "No hay niveles de idioma definidos.",
+        "achievements": "No hay logros.",
+        "experiences": "No hay experiencias.",
+        "education": "No hay formaciones."
+      }
+    }
+  },
   "portfolio": {
     "contact": {
       "methods": {

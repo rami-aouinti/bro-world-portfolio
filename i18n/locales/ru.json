@@ -2,6 +2,247 @@
   "$vuetify": {
     "loading": "Загрузка…"
   },
+  "admin": {
+    "dashboard": {
+      "hero": {
+        "eyebrow": "Администрирование",
+        "title": "Панель управления",
+        "subtitle": "Управляйте всеми разделами портфолио, обновляйте контент в несколько кликов и отслеживайте влияние изменений."
+      },
+      "session": {
+        "status": {
+          "online": "В сети"
+        },
+        "role": "Администратор",
+        "logout": "Выйти",
+        "fallback": "Текущий пользователь"
+      },
+      "settings": {
+        "eyebrow": "Настройки сайта",
+        "title": "Настройка темы",
+        "subtitle": "Настраивайте цвета, скругления и общую тему в реальном времени.",
+        "customizer": {
+          "prepare": "Подготовка инструментов темы…",
+          "loading": "Загрузка инструментов темы…"
+        }
+      },
+      "cards": {
+        "sectionLabel": "Раздел",
+        "pendingUpdate": "Ожидает последнего обновления",
+        "edit": "Редактировать"
+      },
+      "sections": {
+        "profile": {
+          "title": "Профиль",
+          "description": "Имя, роль и аватар, отображаемые на сайте."
+        },
+        "hero": {
+          "title": "Основной блок",
+          "description": "Бейдж, заголовок и подзаголовок хедера."
+        },
+        "service": {
+          "title": "Услуги",
+          "description": "Список ключевых услуг и компетенций."
+        },
+        "work": {
+          "title": "Проекты",
+          "description": "Отобранные проекты в разделе «Проекты»."
+        },
+        "about": {
+          "title": "Обо мне",
+          "description": "Личное представление."
+        },
+        "cta": {
+          "title": "Призыв к действию",
+          "description": "Контактный блок/CTA внизу страницы."
+        },
+        "navlinks": {
+          "title": "Навигация",
+          "description": "Ссылки в меню и CTA."
+        },
+        "skills": {
+          "title": "Навыки",
+          "description": "Категории навыков и основные навыки."
+        },
+        "experiences": {
+          "title": "Опыт",
+          "description": "Хронология профессионального опыта."
+        },
+        "education": {
+          "title": "Образование",
+          "description": "Образование и сертификаты."
+        }
+      }
+    },
+    "login": {
+      "badge": "Админ",
+      "title": "Зона администратора",
+      "subtitle": "Управляйте портфолио с помощью удобного и современного интерфейса.",
+      "form": {
+        "email": "Электронная почта",
+        "password": "Пароль",
+        "submit": "Войти",
+        "error": "При входе произошла ошибка."
+      },
+      "defaultCredentials": {
+        "title": "Стандартные учетные данные",
+        "email": "Пользователь: ",
+        "password": "Пароль: "
+      },
+      "help": "Если вы забыли доступ, свяжитесь с владельцем сайта для сброса."
+    },
+    "editor": {
+      "backToDashboard": "Назад к панели",
+      "autosaveHint": "Изменения применяются сразу после сохранения.",
+      "localeSelectorLabel": "Язык контента",
+      "loading": "Загрузка…",
+      "loadError": "При загрузке контента произошла ошибка.",
+      "validation": {
+        "title": "Исправьте следующие пункты:"
+      },
+      "notFound": "Раздел не найден.",
+      "save": {
+        "success": "Контент успешно обновлен.",
+        "failure": "Не удалось сохранить изменения."
+      },
+      "actions": {
+        "cancel": "Отмена",
+        "save": "Сохранить"
+      },
+      "localeNames": {
+        "en": "Английский",
+        "fr": "Французский",
+        "de": "Немецкий",
+        "es": "Испанский",
+        "it": "Итальянский",
+        "ru": "Русский",
+        "ar": "Арабский"
+      },
+      "sections": {
+        "profile": {
+          "title": "Профиль"
+        },
+        "hero": {
+          "title": "Основной блок"
+        },
+        "service": {
+          "title": "Услуги"
+        },
+        "work": {
+          "title": "Проекты"
+        },
+        "about": {
+          "title": "Обо мне"
+        },
+        "cta": {
+          "title": "Призыв к действию"
+        },
+        "navlinks": {
+          "title": "Навигация"
+        },
+        "skills": {
+          "title": "Навыки"
+        },
+        "experiences": {
+          "title": "Опыт"
+        },
+        "education": {
+          "title": "Образование"
+        },
+        "contact": {
+          "title": "Контакт"
+        }
+      },
+      "fields": {
+        "profile": {
+          "firstname": "Имя",
+          "lastname": "Фамилия",
+          "role": "Роль",
+          "avatar": "URL аватара"
+        },
+        "hero": {
+          "badge": "Бейдж",
+          "headline": "Основной заголовок",
+          "subline": "Описание"
+        },
+        "common": {
+          "label": "Подпись",
+          "title": "Заголовок",
+          "description": "Описание",
+          "name": "Название",
+          "content": "Содержимое",
+          "slug": "Идентификатор (slug)",
+          "url": "URL",
+          "period": "Период"
+        },
+        "service": {
+          "icon": "Иконка",
+          "thumbnailOptional": "Изображение (опционально)"
+        },
+        "work": {
+          "demo": "Ссылка на демо",
+          "thumbnail": "Изображение",
+          "type": "Тип"
+        },
+        "about": {
+          "hobbyName": "Название хобби"
+        },
+        "skills": {
+          "categoryName": "Название категории",
+          "skillName": "Название навыка",
+          "languageName": "Название языка",
+          "languageProficiency": "Владение (%)"
+        },
+        "experiences": {
+          "role": "Роль",
+          "company": "Компания",
+          "achievementDetail": "Деталь"
+        },
+        "education": {
+          "degree": "Степень/квалификация",
+          "institution": "Учреждение",
+          "details": "Подробности"
+        }
+      },
+      "buttons": {
+        "addService": "Добавить услугу",
+        "addProject": "Добавить проект",
+        "addParagraph": "Добавить абзац",
+        "addHobby": "Добавить хобби",
+        "addNavlink": "Добавить ссылку",
+        "addCategory": "Добавить категорию",
+        "addLanguage": "Добавить язык",
+        "addLanguageLevel": "Добавить уровень",
+        "addExperience": "Добавить опыт",
+        "addEducation": "Добавить образование"
+      },
+      "entries": {
+        "service": "Услуга №{index}",
+        "project": "Проект №{index}",
+        "paragraph": "Абзац №{index}",
+        "hobby": "Хобби №{index}",
+        "navlink": "Ссылка №{index}",
+        "category": "Категория №{index}",
+        "language": "Язык №{index}",
+        "experience": "Опыт №{index}",
+        "education": "Образование №{index}"
+      },
+      "empty": {
+        "services": "Нет услуг. Добавьте первую, чтобы начать.",
+        "projects": "Проекты еще не добавлены.",
+        "paragraphs": "Добавьте абзац, чтобы начать.",
+        "hobbies": "Добавьте хобби, чтобы начать.",
+        "navlinks": "Ссылки еще не настроены.",
+        "skills": "Навыков пока нет.",
+        "categories": "Категории не созданы.",
+        "languages": "Языки не указаны.",
+        "languageProficiencies": "Уровни владения языками не заданы.",
+        "achievements": "Достижений пока нет.",
+        "experiences": "Опыт еще не добавлен.",
+        "education": "Данных об образовании нет."
+      }
+    }
+  },
   "portfolio": {
     "contact": {
       "methods": {
