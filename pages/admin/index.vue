@@ -267,7 +267,7 @@ const sections = computed(() => [
     slug: "contact",
     title: t("admin.dashboard.sections.contact.title"),
     description: t("admin.dashboard.sections.contact.description"),
-    icon: "mdi-email-outline",
+    icon: "mdi-card-account-phone-outline",
   },
   {
     slug: "navlinks",
@@ -324,7 +324,8 @@ async function handleLogout() {
   background: linear-gradient(135deg, #1d4ed8, #2563eb 55%, #4f46e5);
   color: white;
   overflow: hidden;
-  box-shadow: 0 40px 80px -50px rgba(37, 99, 235, 0.75);
+  border-radius: var(--admin-surface-radius, 28px);
+  box-shadow: 0 40px 80px -50px var(--admin-surface-shadow, rgba(37, 99, 235, 0.75));
 }
 
 .dashboard-hero__glow {
@@ -335,6 +336,8 @@ async function handleLogout() {
     radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.3), transparent 55%);
   mix-blend-mode: screen;
   pointer-events: none;
+  opacity: var(--admin-accent-glow-opacity, 1);
+  transition: opacity 0.3s ease;
 }
 
 .dashboard-hero__content {
@@ -434,9 +437,10 @@ async function handleLogout() {
 .site-settings-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(37, 99, 235, 0.18);
-  background: linear-gradient(140deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.9));
-  box-shadow: 0 34px 70px -45px rgba(37, 99, 235, 0.75);
+  border-radius: var(--admin-surface-radius, 28px);
+  border: 1px solid var(--admin-glass-border, rgba(37, 99, 235, 0.18));
+  background: color-mix(in srgb, var(--admin-glass-surface, rgba(15, 23, 42, 0.92)) 94%, transparent);
+  box-shadow: 0 34px 70px -45px var(--admin-surface-shadow, rgba(37, 99, 235, 0.75));
 }
 
 .site-settings-card__glow {
@@ -447,7 +451,8 @@ async function handleLogout() {
     radial-gradient(circle at 85% 15%, rgba(129, 140, 248, 0.25), transparent 60%),
     radial-gradient(circle at 60% 85%, rgba(59, 130, 246, 0.2), transparent 65%);
   pointer-events: none;
-  opacity: 0.9;
+  opacity: var(--admin-accent-glow-opacity, 1);
+  transition: opacity 0.3s ease;
 }
 
 .site-settings-card__content {
@@ -536,8 +541,9 @@ async function handleLogout() {
     transform 0.25s ease,
     box-shadow 0.25s ease,
     border-color 0.25s ease;
-  border: 1px solid rgba(37, 99, 235, 0.12);
-  background: linear-gradient(160deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.88));
+  border-radius: calc(var(--admin-surface-radius, 28px) - 6px);
+  border: 1px solid var(--admin-glass-border, rgba(37, 99, 235, 0.12));
+  background: color-mix(in srgb, var(--admin-glass-surface, rgba(15, 23, 42, 0.85)) 96%, transparent);
 }
 
 .dashboard-card:hover {
@@ -552,11 +558,11 @@ async function handleLogout() {
   transform: rotate(12deg);
   filter: blur(0.5px);
   transition: opacity 0.3s ease;
-  opacity: 0.75;
+  opacity: calc(var(--admin-accent-glow-opacity, 1) * 0.75);
 }
 
 .dashboard-card:hover .dashboard-card__beam {
-  opacity: 1;
+  opacity: var(--admin-accent-glow-opacity, 1);
 }
 
 .dashboard-card__head {
