@@ -265,7 +265,10 @@ function formatDate(input: string) {
     return input;
   }
 
-  return new Intl.DateTimeFormat(locale.value, { dateStyle: "medium" }).format(date);
+  return new Intl.DateTimeFormat(locale.value, {
+    dateStyle: "medium",
+    timeZone: "UTC",
+  }).format(date);
 }
 
 definePageMeta(LOCALIZED_PAGE_META.projects);
