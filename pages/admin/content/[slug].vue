@@ -485,6 +485,95 @@
               />
             </template>
 
+            <template v-else-if="slug === 'contact'">
+              <v-text-field
+                v-model="form.label"
+                :label="t('admin.editor.fields.common.label')"
+                required
+                variant="outlined"
+                density="comfortable"
+              />
+              <v-text-field
+                v-model="form.headline"
+                :label="t('admin.editor.fields.common.title')"
+                required
+                variant="outlined"
+                density="comfortable"
+              />
+              <div class="editor-section__heading">
+                <h2 class="editor-section__title">{{ t('admin.editor.sections.contact.listTitle') }}</h2>
+                <v-btn
+                  color="primary"
+                  variant="tonal"
+                  class="text-none"
+                  @click="addContact"
+                >
+                  {{ t('admin.editor.buttons.addContact') }}
+                </v-btn>
+              </div>
+              <div
+                v-if="form.contact?.length"
+                class="editor-collection"
+              >
+                <v-card
+                  v-for="(contactEntry, index) in form.contact"
+                  :key="index"
+                  variant="tonal"
+                  color="primary"
+                  class="editor-subcard"
+                >
+                  <div class="d-flex justify-space-between align-center mb-3">
+                    <span class="text-caption">{{ t('admin.editor.entries.contact', { index: index + 1 }) }}</span>
+                    <v-btn
+                      icon="mdi-delete"
+                      variant="text"
+                      color="error"
+                      @click="removeContact(index)"
+                    />
+                  </div>
+                  <v-text-field
+                    :model-value="contactEntry.degree"
+                    :label="t('admin.editor.fields.contact.degree')"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                    @update:model-value="updateContactField(index, 'degree', $event)"
+                  />
+                  <v-text-field
+                    :model-value="contactEntry.institution"
+                    :label="t('admin.editor.fields.contact.institution')"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                    @update:model-value="updateContactField(index, 'institution', $event)"
+                  />
+                  <v-text-field
+                    :model-value="contactEntry.timeframe"
+                    :label="t('admin.editor.fields.contact.timeframe')"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                    @update:model-value="updateContactField(index, 'timeframe', $event)"
+                  />
+                  <v-textarea
+                    :model-value="contactEntry.details"
+                    :label="t('admin.editor.fields.contact.details')"
+                    rows="3"
+                    required
+                    variant="outlined"
+                    density="comfortable"
+                    @update:model-value="updateContactField(index, 'details', $event)"
+                  />
+                </v-card>
+              </div>
+              <p
+                v-else
+                class="text-body-2 text-medium-emphasis"
+              >
+                {{ t('admin.editor.empty.contact') }}
+              </p>
+            </template>
+
             <template v-else-if="slug === 'navlinks'">
               <div style="display: flex; justify-content: space-between; align-items: center">
                 <h2 class="text-h6 font-weight-semibold mb-0">
@@ -1049,6 +1138,7 @@ type WorkEntry = {
   thumbnails: string;
   type: string;
 };
+type ContactEntry = { degree: string; institution: string; timeframe: string; details: string };
 type CategoryEntry = { name: string; skills: string[] };
 type LanguageProficiencyEntry = { name: string; proficiency: number };
 type PositionEntry = {
@@ -1085,6 +1175,7 @@ interface ContentFormState extends Record<string, unknown> {
   languageProficiencies?: LanguageProficiencyEntry[];
   positions?: PositionEntry[];
   schools?: SchoolEntry[];
+  contact?: ContactEntry[];
 }
 
 function cloneContentForm(value: unknown): ContentFormState {
@@ -1253,6 +1344,23 @@ function addEducation() {
 
 function removeEducation(index: number) {
   form.schools?.splice(index, 1);
+}
+
+function addContact() {
+  form.contact ??= [];
+  form.contact.push({ degree: "", institution: "", timeframe: "", details: "" });
+}
+
+function removeContact(index: number) {
+  form.contact?.splice(index, 1);
+}
+
+function updateContactField(index: number, field: keyof ContactEntry, value: string) {
+  const entry = form.contact?.[index];
+  if (!entry) {
+    return;
+  }
+  entry[field] = value;
 }
 
 async function handleSubmit() {

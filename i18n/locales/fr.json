@@ -56,6 +56,10 @@
           "title": "Appel à l’action",
           "description": "Bloc contact/CTA du bas de page."
         },
+        "contact": {
+          "title": "Contact",
+          "description": "Mettez à jour vos coordonnées et disponibilités."
+        },
         "navlinks": {
           "title": "Navigation",
           "description": "Liens affichés dans le menu et le CTA."
@@ -150,7 +154,8 @@
           "title": "Formations"
         },
         "contact": {
-          "title": "Contact"
+          "title": "Contact",
+          "listTitle": "Moyens de contact"
         }
       },
       "fields": {
@@ -202,6 +207,12 @@
           "degree": "Diplôme",
           "institution": "Établissement",
           "details": "Détails"
+        },
+        "contact": {
+          "degree": "Canal",
+          "institution": "Coordonnée",
+          "timeframe": "Disponibilité",
+          "details": "Informations complémentaires"
         }
       },
       "buttons": {
@@ -214,7 +225,8 @@
         "addLanguage": "Ajouter une langue",
         "addLanguageLevel": "Ajouter un niveau",
         "addExperience": "Ajouter une expérience",
-        "addEducation": "Ajouter une formation"
+        "addEducation": "Ajouter une formation",
+        "addContact": "Ajouter un moyen de contact"
       },
       "entries": {
         "service": "Service n°{index}",
@@ -225,7 +237,8 @@
         "category": "Catégorie n°{index}",
         "language": "Langue n°{index}",
         "experience": "Expérience n°{index}",
-        "education": "Formation n°{index}"
+        "education": "Formation n°{index}",
+        "contact": "Moyen de contact n°{index}"
       },
       "empty": {
         "services": "Aucun service. Ajoutez-en un pour commencer.",
@@ -239,7 +252,8 @@
         "languageProficiencies": "Aucun niveau de langue défini.",
         "achievements": "Aucune réalisation.",
         "experiences": "Aucune expérience.",
-        "education": "Aucune formation."
+        "education": "Aucune formation.",
+        "contact": "Aucun moyen de contact configuré."
       }
     }
   },

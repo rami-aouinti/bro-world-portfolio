@@ -56,6 +56,10 @@
           "title": "Call to action",
           "description": "Blocco contatti/CTA a fondo pagina."
         },
+        "contact": {
+          "title": "Contatti",
+          "description": "Aggiorna i canali di contatto e la disponibilità."
+        },
         "navlinks": {
           "title": "Navigazione",
           "description": "Link mostrati nel menu e nel blocco CTA."
@@ -150,7 +154,8 @@
           "title": "Formazione"
         },
         "contact": {
-          "title": "Contatto"
+          "title": "Contatto",
+          "listTitle": "Metodi di contatto"
         }
       },
       "fields": {
@@ -202,6 +207,12 @@
           "degree": "Titolo di studio",
           "institution": "Istituto",
           "details": "Dettagli"
+        },
+        "contact": {
+          "degree": "Canale",
+          "institution": "Dettaglio di contatto",
+          "timeframe": "Disponibilità",
+          "details": "Dettagli aggiuntivi"
         }
       },
       "buttons": {
@@ -214,7 +225,8 @@
         "addLanguage": "Aggiungi lingua",
         "addLanguageLevel": "Aggiungi livello",
         "addExperience": "Aggiungi esperienza",
-        "addEducation": "Aggiungi formazione"
+        "addEducation": "Aggiungi formazione",
+        "addContact": "Aggiungi metodo di contatto"
       },
       "entries": {
         "service": "Servizio n.{index}",
@@ -225,7 +237,8 @@
         "category": "Categoria n.{index}",
         "language": "Lingua n.{index}",
         "experience": "Esperienza n.{index}",
-        "education": "Formazione n.{index}"
+        "education": "Formazione n.{index}",
+        "contact": "Metodo di contatto n.{index}"
       },
       "empty": {
         "services": "Nessun servizio. Aggiungine uno per iniziare.",
@@ -239,7 +252,8 @@
         "languageProficiencies": "Nessun livello linguistico definito.",
         "achievements": "Nessun risultato.",
         "experiences": "Nessuna esperienza.",
-        "education": "Nessuna formazione."
+        "education": "Nessuna formazione.",
+        "contact": "Nessun metodo di contatto configurato."
       }
     }
   },

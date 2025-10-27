@@ -56,6 +56,10 @@
           "title": "号召性用语",
           "description": "页面底部的联系/CTA 模块。"
         },
+        "contact": {
+          "title": "联系",
+          "description": "维护联系方式和可用时间。"
+        },
         "navlinks": {
           "title": "导航",
           "description": "菜单和 CTA 模块中显示的链接。"
@@ -150,7 +154,8 @@
           "title": "教育经历"
         },
         "contact": {
-          "title": "联系"
+          "title": "联系",
+          "listTitle": "联系方式列表"
         }
       },
       "fields": {
@@ -202,6 +207,12 @@
           "degree": "学历/证书",
           "institution": "学校/机构",
           "details": "详细信息"
+        },
+        "contact": {
+          "degree": "渠道",
+          "institution": "联系方式",
+          "timeframe": "可用时间",
+          "details": "补充说明"
         }
       },
       "buttons": {
@@ -214,7 +225,8 @@
         "addLanguage": "新增语言",
         "addLanguageLevel": "新增等级",
         "addExperience": "新增经历",
-        "addEducation": "新增教育经历"
+        "addEducation": "新增教育经历",
+        "addContact": "新增联系方式"
       },
       "entries": {
         "service": "第 {index} 个服务",
@@ -225,7 +237,8 @@
         "category": "第 {index} 个分类",
         "language": "第 {index} 种语言",
         "experience": "第 {index} 段经历",
-        "education": "第 {index} 条教育经历"
+        "education": "第 {index} 条教育经历",
+        "contact": "第 {index} 条联系方式"
       },
       "empty": {
         "services": "暂无服务，请新增一项开始。",
@@ -239,7 +252,8 @@
         "languageProficiencies": "尚未设置语言掌握度。",
         "achievements": "暂无成就。",
         "experiences": "暂无经历。",
-        "education": "暂无教育经历。"
+        "education": "暂无教育经历。",
+        "contact": "尚未配置联系方式。"
       }
     }
   },

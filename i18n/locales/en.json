@@ -56,6 +56,10 @@
           "title": "Call to action",
           "description": "Contact/CTA block at the bottom of the page."
         },
+        "contact": {
+          "title": "Contact",
+          "description": "Maintain direct contact details and availability."
+        },
         "navlinks": {
           "title": "Navigation",
           "description": "Links shown in the menu and CTA block."
@@ -150,7 +154,8 @@
           "title": "Education"
         },
         "contact": {
-          "title": "Contact"
+          "title": "Contact",
+          "listTitle": "Contact methods"
         }
       },
       "fields": {
@@ -202,6 +207,12 @@
           "degree": "Degree",
           "institution": "Institution",
           "details": "Details"
+        },
+        "contact": {
+          "degree": "Method",
+          "institution": "Contact detail",
+          "timeframe": "Availability",
+          "details": "Additional details"
         }
       },
       "buttons": {
@@ -214,7 +225,8 @@
         "addLanguage": "Add language",
         "addLanguageLevel": "Add level",
         "addExperience": "Add experience",
-        "addEducation": "Add education"
+        "addEducation": "Add education",
+        "addContact": "Add contact method"
       },
       "entries": {
         "service": "Service #{index}",
@@ -225,7 +237,8 @@
         "category": "Category #{index}",
         "language": "Language #{index}",
         "experience": "Experience #{index}",
-        "education": "Education #{index}"
+        "education": "Education #{index}",
+        "contact": "Contact method #{index}"
       },
       "empty": {
         "services": "No services yet. Add one to get started.",
@@ -239,7 +252,8 @@
         "languageProficiencies": "No language proficiencies defined.",
         "achievements": "No achievements yet.",
         "experiences": "No experiences yet.",
-        "education": "No education entries yet."
+        "education": "No education entries yet.",
+        "contact": "No contact methods configured yet."
       }
     }
   },

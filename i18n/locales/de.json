@@ -56,6 +56,10 @@
           "title": "Call-to-Action",
           "description": "Kontakt-/CTA-Block am Seitenende."
         },
+        "contact": {
+          "title": "Kontakt",
+          "description": "Aktualisiere direkte Kontaktwege und Verfügbarkeiten."
+        },
         "navlinks": {
           "title": "Navigation",
           "description": "Links im Menü und im CTA-Block."
@@ -150,7 +154,8 @@
           "title": "Ausbildung"
         },
         "contact": {
-          "title": "Kontakt"
+          "title": "Kontakt",
+          "listTitle": "Kontaktwege"
         }
       },
       "fields": {
@@ -202,6 +207,12 @@
           "degree": "Abschluss",
           "institution": "Institution",
           "details": "Details"
+        },
+        "contact": {
+          "degree": "Kanal",
+          "institution": "Kontaktdetail",
+          "timeframe": "Verfügbarkeit",
+          "details": "Zusätzliche Hinweise"
         }
       },
       "buttons": {
@@ -214,7 +225,8 @@
         "addLanguage": "Sprache hinzufügen",
         "addLanguageLevel": "Sprachniveau hinzufügen",
         "addExperience": "Erfahrung hinzufügen",
-        "addEducation": "Ausbildung hinzufügen"
+        "addEducation": "Ausbildung hinzufügen",
+        "addContact": "Kontaktweg hinzufügen"
       },
       "entries": {
         "service": "Service Nr. {index}",
@@ -225,7 +237,8 @@
         "category": "Kategorie Nr. {index}",
         "language": "Sprache Nr. {index}",
         "experience": "Erfahrung Nr. {index}",
-        "education": "Ausbildung Nr. {index}"
+        "education": "Ausbildung Nr. {index}",
+        "contact": "Kontaktweg Nr. {index}"
       },
       "empty": {
         "services": "Keine Services vorhanden. Füge einen hinzu, um zu starten.",
@@ -239,7 +252,8 @@
         "languageProficiencies": "Keine Sprachniveaus definiert.",
         "achievements": "Keine Erfolge vorhanden.",
         "experiences": "Keine Erfahrungen vorhanden.",
-        "education": "Keine Ausbildungsstationen vorhanden."
+        "education": "Keine Ausbildungsstationen vorhanden.",
+        "contact": "Keine Kontaktwege konfiguriert."
       }
     }
   },
