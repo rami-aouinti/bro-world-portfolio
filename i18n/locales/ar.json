@@ -432,7 +432,15 @@
       "actions": {
         "reset": "تجاهل التغييرات"
       },
-      "siteSettings": "إعدادات الموقع"
+      "siteSettings": "إعدادات الموقع",
+      "quickAccess": "وصول سريع"
+    },
+    "navigation": {
+      "home": "الرئيسية",
+      "dashboard": "لوحة التحكم",
+      "settings": "الإعدادات",
+      "design": "التصميم",
+      "content": "المحتوى"
     }
   }
 }

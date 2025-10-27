@@ -432,7 +432,15 @@
       "actions": {
         "reset": "Отменить изменения"
       },
-      "siteSettings": "Настройки сайта"
+      "siteSettings": "Настройки сайта",
+      "quickAccess": "Быстрый доступ"
+    },
+    "navigation": {
+      "home": "Главная",
+      "dashboard": "Панель",
+      "settings": "Настройки",
+      "design": "Дизайн",
+      "content": "Контент"
     }
   }
 }

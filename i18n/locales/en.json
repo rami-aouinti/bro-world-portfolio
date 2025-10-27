@@ -432,7 +432,15 @@
       "actions": {
         "reset": "Discard changes"
       },
-      "siteSettings": "Site settings"
+      "siteSettings": "Site settings",
+      "quickAccess": "Quick access"
+    },
+    "navigation": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "settings": "Settings",
+      "design": "Design",
+      "content": "Content"
     }
   }
 }
