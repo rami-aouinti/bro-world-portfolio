@@ -26,6 +26,15 @@
         </div>
         <slot />
       </v-main>
+      <button
+        v-if="isHydrated"
+        type="button"
+        class="app-layout__scroll-top"
+        aria-label="Revenir en haut de la page"
+        @click="scrollToTop"
+      >
+        <span class="app-layout__scroll-top-label">Revenir en haut de la page</span>
+      </button>
     </v-app>
   </div>
   <Analytics />
@@ -156,6 +165,17 @@ const showParticles = computed(
     !prefersReducedMotion.value &&
     allowParticles.value,
 );
+
+function scrollToTop() {
+  if (!import.meta.client) {
+    return;
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
 </script>
 
 <style scoped>
@@ -260,5 +280,40 @@ const showParticles = computed(
   height: 100%;
   pointer-events: none;
   z-index: 0;
+}
+
+.app-layout__scroll-top {
+  position: fixed;
+  inset-block-end: clamp(16px, 3vw, 32px);
+  inset-inline-end: clamp(16px, 3vw, 32px);
+  width: clamp(44px, 10vw, 64px);
+  height: clamp(44px, 10vw, 64px);
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.app-layout__scroll-top:focus-visible {
+  outline: 2px solid var(--v-theme-primary);
+  outline-offset: 4px;
+  opacity: 0;
+}
+
+.app-layout__scroll-top-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 </style>
