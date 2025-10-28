@@ -26,6 +26,13 @@
         </div>
         <slot />
       </v-main>
+      <button
+        v-if="isHydrated"
+        type="button"
+        class="app-layout__scroll-top"
+        aria-label="Revenir en haut de la page"
+        @click="scrollToTop"
+      />
     </v-app>
   </div>
   <Analytics />
@@ -156,6 +163,17 @@ const showParticles = computed(
     !prefersReducedMotion.value &&
     allowParticles.value,
 );
+
+function scrollToTop() {
+  if (!import.meta.client) {
+    return;
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
 </script>
 
 <style scoped>
@@ -260,5 +278,25 @@ const showParticles = computed(
   height: 100%;
   pointer-events: none;
   z-index: 0;
+}
+
+.app-layout__scroll-top {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(48px, 12vw, 72px);
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.app-layout__scroll-top:focus-visible {
+  outline: 2px solid var(--v-theme-primary);
+  opacity: 0.2;
 }
 </style>
