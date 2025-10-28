@@ -1,64 +1,61 @@
 <template>
-  <NuxtLink
-    :to="`/blog/${post.slug}`"
+  <CustomGlowCard
     class="blog-post-card"
+    :title="post.title"
+    :eyebrow="post.category"
+    :to="`/blog/${post.slug}`"
+    :variant="cardVariant"
+    :heading-level="2"
   >
-    <v-card
-      class="rounded-xl overflow-hidden"
-      :elevation="variant === 'featured' ? 8 : 2"
-      border
-    >
-      <v-img
+    <template #media>
+      <NuxtImg
         :src="post.coverImage"
-        :height="variant === 'featured' ? 320 : 200"
         :alt="post.title"
-        cover
+        :height="variant === 'featured' ? 320 : 220"
+        width="1280"
+        sizes="(min-width: 1280px) 360px, (min-width: 960px) 33vw, (min-width: 640px) 50vw, 90vw"
+        densities="1x, 2x"
         class="blog-post-card__image"
-      >
-        <template #placeholder>
-          <div class="blog-post-card__image-placeholder" />
-        </template>
-      </v-img>
+        loading="lazy"
+      />
+    </template>
 
-      <v-card-text class="blog-post-card__body">
-        <div class="blog-post-card__meta">
-          <span class="blog-post-card__category">{{ post.category }}</span>
-          <span class="blog-post-card__dot" />
-          <span>{{ formattedPublishedAt }}</span>
-          <span class="blog-post-card__dot" />
-          <span>{{
-            t("portfolio.blog.list.readingTime", { minutes: post.readingTimeMinutes })
-          }}</span>
-        </div>
+    <template #default>
+      <div class="blog-post-card__meta">
+        <span>{{ formattedPublishedAt }}</span>
+        <span class="blog-post-card__dot" />
+        <span>{{ readingTimeLabel }}</span>
+      </div>
 
-        <h2 class="blog-post-card__title">
-          {{ post.title }}
-        </h2>
+      <p class="blog-post-card__excerpt">
+        {{ post.excerpt }}
+      </p>
 
-        <p class="blog-post-card__excerpt">
-          {{ post.excerpt }}
-        </p>
+      <div class="blog-post-card__tags">
+        <v-chip
+          v-for="tag in post.tags"
+          :key="`${post.id}-${tag}`"
+          size="small"
+          class="text-capitalize"
+          color="primary"
+          variant="tonal"
+        >
+          #{{ tag }}
+        </v-chip>
+      </div>
+    </template>
 
-        <div class="blog-post-card__tags">
-          <v-chip
-            v-for="tag in post.tags"
-            :key="`${post.id}-${tag}`"
-            size="small"
-            class="text-capitalize"
-            color="primary"
-            variant="tonal"
-          >
-            #{{ tag }}
-          </v-chip>
-        </div>
-      </v-card-text>
-
-      <v-card-actions class="blog-post-card__footer">
+    <template #footer>
+      <div class="blog-post-card__footer">
         <div class="blog-post-card__author">
           <v-avatar size="36">
-            <v-img
+            <NuxtImg
               :src="post.author.avatar"
-              alt=""
+              :alt="post.author.name"
+              width="72"
+              height="72"
+              densities="1x, 2x"
+              loading="lazy"
             />
           </v-avatar>
           <div>
@@ -78,13 +75,15 @@
             class="ml-2"
           />
         </v-btn>
-      </v-card-actions>
-    </v-card>
-  </NuxtLink>
+      </div>
+    </template>
+  </CustomGlowCard>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
+import CustomGlowCard from "~/components/CustomGlowCard.vue";
+import type { GlowCardVariant } from "~/utils/glowCardVariants";
 import type { BlogPostPreview } from "~/types/blog";
 
 const props = defineProps<{
@@ -95,6 +94,12 @@ const props = defineProps<{
 const { t, locale } = useI18n();
 
 const variant = computed(() => props.variant ?? "default");
+const variantMap: Record<"default" | "featured", GlowCardVariant> = {
+  default: "cyan",
+  featured: "rose",
+};
+
+const cardVariant = computed(() => variantMap[variant.value] ?? "cyan");
 
 const formattedPublishedAt = computed(() => {
   const date = new Date(props.post.publishedAt);
@@ -104,25 +109,22 @@ const formattedPublishedAt = computed(() => {
     year: "numeric",
   }).format(date);
 });
+
+const readingTimeLabel = computed(() =>
+  t("portfolio.blog.list.readingTime", { minutes: props.post.readingTimeMinutes }),
+);
 </script>
 
 <style scoped>
 .blog-post-card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
-.blog-post-card__image-placeholder {
-  width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.6));
 }
 
-.blog-post-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.blog-post-card__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: calc(var(--card-border-radius, 24px) - 10px);
 }
 
 .blog-post-card__meta {
@@ -131,34 +133,21 @@ const formattedPublishedAt = computed(() => {
   align-items: center;
   gap: 6px;
   font-size: 0.875rem;
-  color: rgba(148, 163, 184, 0.9);
-}
-
-.blog-post-card__category {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--v-theme-primary);
+  color: color-mix(in srgb, var(--card-text-color, #f8fafc) 70%, rgba(15, 23, 42, 0.5) 30%);
 }
 
 .blog-post-card__dot {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: rgba(148, 163, 184, 0.6);
-}
-
-.blog-post-card__title {
-  margin: 0;
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--v-theme-foreground);
+  background-color: color-mix(in srgb, var(--card-accent, #2563eb) 25%, rgba(15, 23, 42, 0.35));
 }
 
 .blog-post-card__excerpt {
   margin: 0;
-  color: rgba(203, 213, 225, 0.9);
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--card-text-color, #f8fafc) 82%, rgba(15, 23, 42, 0.6) 18%);
 }
 
 .blog-post-card__tags {
@@ -171,7 +160,7 @@ const formattedPublishedAt = computed(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px 24px;
+  gap: 12px;
 }
 
 .blog-post-card__author {
@@ -183,11 +172,11 @@ const formattedPublishedAt = computed(() => {
 .blog-post-card__author-name {
   margin: 0;
   font-weight: 600;
-  color: var(--v-theme-foreground);
+  color: color-mix(in srgb, var(--card-text-color, #f8fafc) 90%, rgba(15, 23, 42, 0.4) 10%);
 }
 
 .blog-post-card__author-role {
   font-size: 0.875rem;
-  color: rgba(148, 163, 184, 0.9);
+  color: color-mix(in srgb, var(--card-text-color, #f8fafc) 70%, rgba(15, 23, 42, 0.5) 30%);
 }
 </style>
