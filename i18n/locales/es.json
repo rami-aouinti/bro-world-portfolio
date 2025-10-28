@@ -40,6 +40,10 @@
           "title": "Sección principal",
           "description": "Insignia, título y subtítulo del encabezado."
         },
+        "analytics": {
+          "title": "Analíticas e impacto",
+          "description": "Supervisa el tráfico y ajusta los mensajes públicos de impacto."
+        },
         "service": {
           "title": "Servicios",
           "description": "Lista de servicios y competencias clave."

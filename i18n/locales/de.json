@@ -40,6 +40,10 @@
           "title": "Intro-Bereich",
           "description": "Badge, Überschrift und Untertitel im Header."
         },
+        "analytics": {
+          "title": "Analysen & Wirkung",
+          "description": "Überwachen Sie Traffic-Insights und verwalten Sie den Text des Impact-Bereichs."
+        },
         "service": {
           "title": "Leistungen",
           "description": "Liste der wichtigsten Services und Kompetenzen."

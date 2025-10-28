@@ -12,13 +12,8 @@ html.has-smooth-scroll,
   min-height: 100%;
 }
 
-.has-smooth-scroll body {
-  overflow: hidden;
-}
-
 .lenis-provider[data-smooth-scroll="enabled"] {
   min-height: 100%;
-  overflow: hidden;
 }
 
 .lenis-provider[data-smooth-scroll="disabled"] {
@@ -91,6 +86,13 @@ body.rtl .text-left {
 
 body.rtl .text-right {
   text-align: left !important;
+}
+
+@media (max-width: 640px) {
+  .v-slider.v-slider--horizontal {
+    --v-slider-track-size: 4px;
+    --v-slider-thumb-size: 18px;
+  }
 }
 
 :root {
