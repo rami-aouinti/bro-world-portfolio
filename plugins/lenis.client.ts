@@ -72,6 +72,7 @@ export default defineNuxtPlugin(() => {
     });
 
     lenisRef.value = instance;
+    refreshDocumentState();
 
     if (!isEnabled.value) {
       instance.stop();
