@@ -495,7 +495,14 @@
       "dashboard": "Tableau de bord",
       "settings": "Réglages",
       "design": "Design",
-      "content": "Contenus"
+      "content": "Contenus",
+      "resume": "Générateur de CV"
+    },
+    "resume": {
+      "badge": "Nouvelle fonctionnalité",
+      "title": "Générez un CV élégant en quelques minutes",
+      "subtitle": "Renseignez vos données sauvegardées, ajustez le modèle et exportez un PDF directement depuis l’admin.",
+      "privateLabel": "Réservé à l’admin"
     }
   }
 }

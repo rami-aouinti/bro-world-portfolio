@@ -495,7 +495,14 @@
       "dashboard": "Dashboard",
       "settings": "Settings",
       "design": "Design",
-      "content": "Content"
+      "content": "Content",
+      "resume": "Résumé builder"
+    },
+    "resume": {
+      "badge": "New feature",
+      "title": "Generate a polished résumé in minutes",
+      "subtitle": "Populate your stored data, fine-tune the template and export a PDF without leaving the admin.",
+      "privateLabel": "Admin only"
     }
   }
 }

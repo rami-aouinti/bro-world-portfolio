@@ -296,16 +296,19 @@ const navIconMap: Record<string, string> = {
   "/projects": "mdi-github",
   "/service": "mdi-cog-outline",
   "/blog": "mdi-post-outline",
-  "/resume": "mdi-file-account-outline",
   "/contact": "mdi-email-fast-outline",
 };
 
+const hiddenRoutes = new Set(["/resume"]);
+
 const links = computed(() =>
-  rawLinks.value.map((link) => ({
-    ...link,
-    to: resolveLocalizedRouteTarget(link.url, localePath),
-    icon: link.icon ?? navIconMap[link.url as keyof typeof navIconMap] ?? "mdi-dots-grid",
-  })),
+  rawLinks.value
+    .filter((link) => !hiddenRoutes.has(link.url))
+    .map((link) => ({
+      ...link,
+      to: resolveLocalizedRouteTarget(link.url, localePath),
+      icon: link.icon ?? navIconMap[link.url as keyof typeof navIconMap] ?? "mdi-dots-grid",
+    })),
 );
 
 type LanguageItem = LocaleObject & { to: string };
