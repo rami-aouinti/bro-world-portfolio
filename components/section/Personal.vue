@@ -70,38 +70,12 @@ import { useMediaQuery, useMounted } from "@vueuse/core";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 
 import { Text3d } from "~/components/ui/text-3d";
-import CustomGlowCard from "~/components/CustomGlowCard.vue";
 import HeroScene from "~/components/visual/HeroScene.vue";
 import { HERO_SCENE_DEFAULTS, type HeroSceneSettings } from "~/types/content";
 
 const { data: personal } = useContentBlock("hero");
 
 const personalContent = computed(() => personal.value);
-
-const heroSceneSettings = computed<HeroSceneSettings>(() => ({
-  ...HERO_SCENE_DEFAULTS,
-  ...(personalContent.value?.scene ?? {}),
-}));
-
-const heroSceneEnabled = computed(() => heroSceneSettings.value.enabled !== false);
-
-const heroSceneProps = computed(() => ({
-  enabled: heroSceneEnabled.value,
-  primaryColor: heroSceneSettings.value.primaryColor,
-  secondaryColor: heroSceneSettings.value.secondaryColor,
-  accentColor: heroSceneSettings.value.accentColor,
-  particleDensity: heroSceneSettings.value.particleDensity,
-  bloomIntensity: heroSceneSettings.value.bloomIntensity,
-  rotationSpeed: heroSceneSettings.value.rotationSpeed,
-  noiseStrength: heroSceneSettings.value.noiseStrength,
-}));
-
-const heroFallbackStyle = computed(() => ({
-  background:
-    `radial-gradient(circle at 24% 28%, ${heroSceneSettings.value.secondaryColor}33 0%, transparent 58%), ` +
-    `radial-gradient(circle at 78% 18%, ${heroSceneSettings.value.accentColor}2b 0%, transparent 54%), ` +
-    `linear-gradient(120deg, ${heroSceneSettings.value.primaryColor}3a, rgba(15, 23, 42, 0.85))`,
-}));
 
 const heroSceneSettings = computed<HeroSceneSettings>(() => ({
   ...HERO_SCENE_DEFAULTS,
