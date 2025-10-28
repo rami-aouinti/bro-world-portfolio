@@ -20,11 +20,11 @@ export default defineNuxtPlugin(() => {
       return;
     }
     const classList = document.documentElement.classList;
-    if (active) {
-      classList.add("has-smooth-scroll");
-    } else {
-      classList.remove("has-smooth-scroll");
-    }
+    classList.toggle("has-smooth-scroll", active);
+  }
+
+  function refreshDocumentState() {
+    setDocumentState(isSupported.value && isEnabled.value && !!lenisRef.value);
   }
 
   function cancelRaf() {
@@ -48,6 +48,7 @@ export default defineNuxtPlugin(() => {
       lenisRef.value.destroy();
       lenisRef.value = null;
     }
+    refreshDocumentState();
   }
 
   function startLenis() {
@@ -87,6 +88,7 @@ export default defineNuxtPlugin(() => {
     });
 
     lenisRef.value = instance;
+    refreshDocumentState();
 
     if (isEnabled.value) {
       startLenis();
@@ -101,13 +103,12 @@ export default defineNuxtPlugin(() => {
     if (!isSupported.value) {
       isEnabled.value = false;
       destroyLenis();
-      setDocumentState(false);
     } else {
-      setDocumentState(true);
       if (!lenisRef.value && rootElement) {
         createLenis();
       }
     }
+    refreshDocumentState();
   }
 
   function registerRoot(element: HTMLElement | null) {
@@ -139,6 +140,7 @@ export default defineNuxtPlugin(() => {
       }
       startLenis();
     }
+    refreshDocumentState();
   }
 
   if (import.meta.client) {
@@ -165,6 +167,7 @@ export default defineNuxtPlugin(() => {
     } else {
       startLenis();
     }
+    refreshDocumentState();
   });
 
   onScopeDispose(() => {
