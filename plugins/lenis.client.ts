@@ -11,7 +11,6 @@ export default defineNuxtPlugin(() => {
   const lenisRef = shallowRef<LenisInstance | null>(null);
   const isSupported = ref(false);
   const isEnabled = ref(false);
-  let rafId = 0;
   let rootElement: HTMLElement | null = null;
   let prefersReducedMotion: MediaQueryList | null = null;
 
@@ -20,43 +19,29 @@ export default defineNuxtPlugin(() => {
       return;
     }
     const classList = document.documentElement.classList;
-    if (active) {
-      classList.add("has-smooth-scroll");
-    } else {
-      classList.remove("has-smooth-scroll");
-    }
+    classList.toggle("has-smooth-scroll", active);
   }
 
-  function cancelRaf() {
-    if (rafId) {
-      cancelAnimationFrame(rafId);
-      rafId = 0;
-    }
+  function refreshDocumentState() {
+    const lenis = lenisRef.value;
+    const isLenisRunning = !!lenis && !lenis.isStopped;
+    setDocumentState(isSupported.value && isEnabled.value && isLenisRunning);
   }
-
-  const animate = (time: number) => {
-    if (!lenisRef.value) {
-      return;
-    }
-    lenisRef.value.raf(time);
-    rafId = requestAnimationFrame(animate);
-  };
 
   function destroyLenis() {
-    cancelRaf();
     if (lenisRef.value) {
       lenisRef.value.destroy();
       lenisRef.value = null;
     }
+    refreshDocumentState();
   }
 
   function startLenis() {
     if (!lenisRef.value || !isEnabled.value) {
       return;
     }
-    cancelRaf();
-    rafId = requestAnimationFrame(animate);
     lenisRef.value.start();
+    refreshDocumentState();
   }
 
   function stopLenis() {
@@ -64,7 +49,7 @@ export default defineNuxtPlugin(() => {
       return;
     }
     lenisRef.value.stop();
-    cancelRaf();
+    refreshDocumentState();
   }
 
   function createLenis() {
@@ -79,7 +64,7 @@ export default defineNuxtPlugin(() => {
     const instance = new Lenis({
       wrapper: rootElement,
       content: contentElement,
-      autoRaf: false,
+      autoRaf: true,
       smoothWheel: true,
       smoothTouch: false,
       normalizeWheel: true,
@@ -88,11 +73,11 @@ export default defineNuxtPlugin(() => {
 
     lenisRef.value = instance;
 
-    if (isEnabled.value) {
-      startLenis();
-    } else {
-      stopLenis();
+    if (!isEnabled.value) {
+      instance.stop();
     }
+
+    refreshDocumentState();
   }
 
   function updateSupportState() {
@@ -101,13 +86,12 @@ export default defineNuxtPlugin(() => {
     if (!isSupported.value) {
       isEnabled.value = false;
       destroyLenis();
-      setDocumentState(false);
     } else {
-      setDocumentState(true);
       if (!lenisRef.value && rootElement) {
         createLenis();
       }
     }
+    refreshDocumentState();
   }
 
   function registerRoot(element: HTMLElement | null) {
@@ -133,12 +117,14 @@ export default defineNuxtPlugin(() => {
     isEnabled.value = nextState;
     if (!nextState) {
       stopLenis();
-    } else {
-      if (!lenisRef.value) {
-        createLenis();
-      }
-      startLenis();
+      return;
     }
+
+    if (!lenisRef.value && rootElement && isSupported.value) {
+      createLenis();
+    }
+
+    startLenis();
   }
 
   if (import.meta.client) {
@@ -162,9 +148,12 @@ export default defineNuxtPlugin(() => {
   watch(isEnabled, (value) => {
     if (!value) {
       stopLenis();
-    } else {
-      startLenis();
+      return;
     }
+    if (!lenisRef.value && rootElement && isSupported.value) {
+      createLenis();
+    }
+    startLenis();
   });
 
   onScopeDispose(() => {
