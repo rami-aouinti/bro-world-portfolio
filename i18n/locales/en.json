@@ -365,6 +365,34 @@
         "cta": "Contact me"
       }
     },
+    "resume": {
+      "hero": {
+        "badge": "New feature",
+        "title": "Generate a polished resume in minutes",
+        "description": "Enter your information, choose a template from five professional styles, adjust the colors, and instantly export a share-ready PDF.",
+        "primaryCta": "Start building",
+        "secondaryCta": "View sample",
+        "benefits": {
+          "professionalTemplates": {
+            "title": "Professional templates",
+            "description": "5 ready-to-use styles inspired by standout portfolios."
+          },
+          "instantAdjustments": {
+            "title": "Instant adjustments",
+            "description": "See your updates reflected live in the preview."
+          },
+          "highQualityExport": {
+            "title": "High-quality PDF export",
+            "description": "Download a print-optimized document in one click."
+          }
+        }
+      },
+      "seo": {
+        "title": "Resume Builder",
+        "ogTitle": "Resume Builder | Bro World",
+        "description": "Craft a modern resume from your saved data, customize the design, and export a PDF in one click."
+      }
+    },
     "personal": {
       "viewProjects": "View my projects",
       "contact": "Contact me",
