@@ -340,6 +340,23 @@
       "viewProjectLabel": "Projekt ansehen",
       "viewProjectCta": "Entdecken"
     },
+    "impact": {
+      "rangeLabel": "Zeitraum",
+      "range24h": "24 Std",
+      "range7d": "7 Tage",
+      "range30d": "30 Tage",
+      "updated": "Aktualisiert {value}",
+      "loadingChart": "Analytics werden geladen…",
+      "topPagesTitle": "Top-Seiten",
+      "pageViews": "{value} Seitenaufrufe",
+      "visitors": "{value} Besucher",
+      "noPages": "Noch keine Seitendaten",
+      "performanceTitle": "Web Vitals (p75)",
+      "metricP75": "{value}s",
+      "noPerformance": "Keine Performance-Metriken vorhanden",
+      "rangeLabelShort": "Zeitraum",
+      "noChange": "—"
+    },
     "work": {
       "thumbnailAlt": "{name}-Miniatur",
       "footerLabel": "Live-Projekt",
@@ -490,11 +507,98 @@
         }
       }
     },
+    "heroScene": {
+      "title": "Hero-Szene",
+      "subtitle": "Passe den interaktiven 3D-Hintergrund an, ohne den Code zu berühren.",
+      "localeLabel": "Sprache",
+      "loading": "Hero-Szene wird geladen...",
+      "error": "Die Einstellungen der Hero-Szene können momentan nicht geladen werden.",
+      "sections": {
+        "sceneTitle": "Animierter Hintergrund",
+        "sceneHint": "Stimme Farben, Bewegung und Glow auf dein Branding ab. Änderungen gelten pro Sprache."
+      },
+      "fields": {
+        "enabled": "Animierte Szene aktivieren",
+        "primaryColor": "Primärfarbe",
+        "secondaryColor": "Sekundärfarbe",
+        "accentColor": "Akzentfarbe",
+        "particleDensity": "Partikeldichte",
+        "bloomIntensity": "Bloom-Intensität",
+        "rotationSpeed": "Orbitgeschwindigkeit",
+        "noiseStrength": "Bewegungsvariation"
+      },
+      "actions": {
+        "backToDashboard": "Zurück zum Dashboard",
+        "reset": "Standardwerte wiederherstellen",
+        "save": "Änderungen speichern"
+      },
+      "feedback": {
+        "success": "Einstellungen der Hero-Szene gespeichert.",
+        "failure": "Die Einstellungen der Hero-Szene konnten nicht gespeichert werden.",
+        "missingContent": "Für diese Sprache ist noch kein Hero-Inhalt vorhanden."
+      }
+    },
+    "analytics": {
+      "eyebrow": "Live-Insights",
+      "title": "Analytics & Impact",
+      "subtitle": "Behalte Vercel Analytics und Speed Insights im Blick, um Stakeholder über Traffic und Performance zu informieren.",
+      "rangeLabel": "Zeitraum",
+      "range24h": "24 Std",
+      "range7d": "7 Tage",
+      "range30d": "30 Tage",
+      "updated": "Aktualisiert {value}",
+      "loadingChart": "Analysen werden geladen…",
+      "topPagesTitle": "Top-Seiten",
+      "pageViews": "{value} Seitenaufrufe",
+      "visitors": "{value} Besucher",
+      "noPages": "Noch keine Daten",
+      "performanceTitle": "Web Vitals (p75)",
+      "metricP75": "{value}s",
+      "noPerformance": "Keine Performance-Metriken",
+      "formTitle": "Impact-Inhalte",
+      "formSubtitle": "Passe Überschrift, Beschreibung, Kennzahlen und zielgerichtete Botschaften für den öffentlichen Bereich an.",
+      "validationTitle": "Bitte überprüfe die folgenden Punkte:",
+      "metricsHeading": "Definition der Kennzahlen",
+      "metricsDescription": "Beschreibe die Berechnung jeder Kennzahl, damit sie zu den Analytics-Daten passt.",
+      "addMetric": "Kennzahl hinzufügen",
+      "metricPlaceholder": "Kennzahl {index}",
+      "removeMetric": "Kennzahl entfernen",
+      "noMetrics": "Noch keine Kennzahlen angelegt.",
+      "messagesHeading": "Personalisierte Nachrichten",
+      "messagesDescription": "Formuliere Botschaften für bestimmte Zielgruppen, Referrer oder Kampagnen.",
+      "addMessage": "Nachricht hinzufügen",
+      "messagePlaceholder": "Nachricht {index}",
+      "removeMessage": "Nachricht entfernen",
+      "noMessages": "Noch keine personalisierten Nachrichten.",
+      "saveCta": "Impact-Inhalte speichern",
+      "saveSuccess": "Impact-Inhalte erfolgreich aktualisiert.",
+      "saveFailure": "Impact-Inhalte konnten nicht gespeichert werden.",
+      "metricKeys": {
+        "visitors": "Einzigartige Besucher",
+        "pageViews": "Seitenaufrufe",
+        "averageDuration": "Ø Sitzungsdauer (s)"
+      },
+      "fields": {
+        "headline": "Überschrift",
+        "subline": "Beschreibung",
+        "metricKey": "Kennzahl-Key",
+        "metricLabel": "Label",
+        "metricPlaceholder": "Fallback-Wert",
+        "metricUnit": "Einheit",
+        "metricDescription": "Beschreibung",
+        "audience": "Audience-Key",
+        "messageHeadline": "Nachrichtenüberschrift",
+        "messageBody": "Nachrichteninhalt"
+      },
+      "noChange": "—"
+    },
     "navigation": {
       "home": "Startseite",
       "dashboard": "Dashboard",
       "settings": "Einstellungen",
       "design": "Design",
+      "heroScene": "Hero-Szene",
+      "analytics": "Analytics",
       "content": "Inhalte"
     }
   }

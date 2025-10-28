@@ -340,6 +340,23 @@
       "viewProjectLabel": "عرض المشروع",
       "viewProjectCta": "استكشف"
     },
+    "impact": {
+      "rangeLabel": "الفترة",
+      "range24h": "٢٤ ساعة",
+      "range7d": "٧ أيام",
+      "range30d": "٣٠ يومًا",
+      "updated": "تم التحديث {value}",
+      "loadingChart": "جاري تجهيز التحليلات…",
+      "topPagesTitle": "أكثر الصفحات زيارة",
+      "pageViews": "{value} مشاهدة",
+      "visitors": "{value} زائر",
+      "noPages": "لا توجد بيانات بعد",
+      "performanceTitle": "مؤشرات الأداء (p75)",
+      "metricP75": "{value}ث",
+      "noPerformance": "لا تتوفر بيانات أداء",
+      "rangeLabelShort": "الفترة",
+      "noChange": "—"
+    },
     "work": {
       "thumbnailAlt": "صورة مصغرة لـ {name}",
       "footerLabel": "مشروع مباشر",
@@ -490,11 +507,98 @@
         }
       }
     },
+    "heroScene": {
+      "title": "مشهد البطل",
+      "subtitle": "اضبط الخلفية ثلاثية الأبعاد التفاعلية دون لمس الكود.",
+      "localeLabel": "اللغة",
+      "loading": "جاري تحميل إعدادات المشهد...",
+      "error": "تعذر تحميل إعدادات المشهد في الوقت الحالي.",
+      "sections": {
+        "sceneTitle": "خلفية متحركة",
+        "sceneHint": "اضبط الألوان والحركة والتوهج لتلائم هويتك. يتم حفظ التغييرات لكل لغة على حدة."
+      },
+      "fields": {
+        "enabled": "تفعيل المشهد المتحرك",
+        "primaryColor": "اللون الأساسي",
+        "secondaryColor": "اللون الثانوي",
+        "accentColor": "لون التمييز",
+        "particleDensity": "كثافة الجزيئات",
+        "bloomIntensity": "شدة التوهج",
+        "rotationSpeed": "سرعة الدوران",
+        "noiseStrength": "تذبذب الحركة"
+      },
+      "actions": {
+        "backToDashboard": "العودة إلى لوحة التحكم",
+        "reset": "إعادة القيم الافتراضية",
+        "save": "حفظ التغييرات"
+      },
+      "feedback": {
+        "success": "تم حفظ إعدادات المشهد.",
+        "failure": "تعذر حفظ إعدادات المشهد.",
+        "missingContent": "محتوى منطقة البطل غير متوفر بعد لهذه اللغة."
+      }
+    },
+    "analytics": {
+      "eyebrow": "تحليلات مباشرة",
+      "title": "التحليلات والأثر",
+      "subtitle": "تابع Vercel Analytics وSpeed Insights لإبقاء جميع الأطراف على اطلاع بحركة المرور والأداء.",
+      "rangeLabel": "الفترة",
+      "range24h": "٢٤ ساعة",
+      "range7d": "٧ أيام",
+      "range30d": "٣٠ يومًا",
+      "updated": "تم التحديث {value}",
+      "loadingChart": "جاري تحميل التحليلات…",
+      "topPagesTitle": "أكثر الصفحات زيارة",
+      "pageViews": "{value} مشاهدة",
+      "visitors": "{value} زائر",
+      "noPages": "لا توجد بيانات بعد",
+      "performanceTitle": "مؤشرات الأداء (p75)",
+      "metricP75": "{value}ث",
+      "noPerformance": "لا توجد بيانات أداء",
+      "formTitle": "محتوى قسم الأثر",
+      "formSubtitle": "حرّر العنوان والوصف والمؤشرات والرسائل المخصصة المعروضة في الواجهة العامة.",
+      "validationTitle": "يرجى مراجعة الحقول التالية:",
+      "metricsHeading": "تعريف المؤشرات",
+      "metricsDescription": "اشرح كيفية احتساب كل مؤشر لضمان اتساقه مع بيانات التحليلات.",
+      "addMetric": "إضافة مؤشر",
+      "metricPlaceholder": "مؤشر {index}",
+      "removeMetric": "حذف المؤشر",
+      "noMetrics": "لم يتم إعداد مؤشرات بعد.",
+      "messagesHeading": "رسائل مخصصة",
+      "messagesDescription": "أنشئ رسائل موجهة لجماهير أو حملات أو مصادر إحالة محددة.",
+      "addMessage": "إضافة رسالة",
+      "messagePlaceholder": "رسالة {index}",
+      "removeMessage": "حذف الرسالة",
+      "noMessages": "لا توجد رسائل مخصصة بعد.",
+      "saveCta": "حفظ محتوى الأثر",
+      "saveSuccess": "تم تحديث محتوى الأثر بنجاح.",
+      "saveFailure": "تعذر حفظ محتوى الأثر.",
+      "metricKeys": {
+        "visitors": "الزوار الفريدون",
+        "pageViews": "مشاهدات الصفحات",
+        "averageDuration": "متوسط الجلسة (ث)"
+      },
+      "fields": {
+        "headline": "العنوان",
+        "subline": "الوصف",
+        "metricKey": "مفتاح المؤشر",
+        "metricLabel": "اسم المؤشر",
+        "metricPlaceholder": "القيمة الافتراضية",
+        "metricUnit": "الوحدة",
+        "metricDescription": "الوصف",
+        "audience": "مفتاح الجمهور",
+        "messageHeadline": "عنوان الرسالة",
+        "messageBody": "نص الرسالة"
+      },
+      "noChange": "—"
+    },
     "navigation": {
       "home": "الرئيسية",
       "dashboard": "لوحة التحكم",
       "settings": "الإعدادات",
       "design": "التصميم",
+      "heroScene": "مشهد البطل",
+      "analytics": "التحليلات",
       "content": "المحتوى"
     }
   }

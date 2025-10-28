@@ -1,4 +1,4 @@
-import type { ContentRecord } from "~/types/content";
+import { HERO_SCENE_DEFAULTS, type ContentRecord } from "~/types/content";
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type LocaleCode } from "~/utils/i18n/locales";
 
 export type LocalizedContentRecord = Record<LocaleCode, ContentRecord>;
@@ -19,6 +19,7 @@ function createMockContentRecord(record: ContentRecord): ContentRecord {
     badge: "Development preview",
     headline: "This is mock hero content",
     subline: "Placeholder copy is shown while working in development mode.",
+    scene: { ...HERO_SCENE_DEFAULTS },
   };
 
   const service = {
@@ -136,6 +137,44 @@ function createMockContentRecord(record: ContentRecord): ContentRecord {
     })),
   };
 
+  const impactSource = record.impact ?? {
+    label: "Impact",
+    headline: "Mock impact overview",
+    subline: "Placeholder analytics data rendered in development builds.",
+    metrics: [
+      { key: "visitors", label: "Visitors", description: "", placeholder: 1200, unit: "" },
+      { key: "pageViews", label: "Page Views", description: "", placeholder: 4800, unit: "" },
+      { key: "averageDuration", label: "Avg. session", description: "", placeholder: 240, unit: "s" },
+    ],
+    messages: [
+      {
+        audience: "default",
+        headline: "Mock analytics",
+        body: "Sample insight displayed while working locally.",
+      },
+    ],
+  };
+
+  const impact = {
+    label: impactSource.label,
+    headline: "Mock impact overview",
+    subline: "Analytics placeholders illustrate layout when live data is unavailable.",
+    metrics: impactSource.metrics.map((metric, index) => ({
+      ...metric,
+      key: metric.key,
+      label: metric.label || `Metric ${index + 1}`,
+      placeholder: metric.placeholder || (index + 1) * 100,
+      unit: metric.unit ?? "",
+      description: metric.description ?? "",
+    })),
+    messages: impactSource.messages?.map((message, index) => ({
+      ...message,
+      audience: message.audience || `audience-${index + 1}`,
+      headline: message.headline || `Message ${index + 1}`,
+      body: message.body || "Mock message body.",
+    })) ?? [],
+  };
+
   return {
     navlinks,
     profile,
@@ -148,6 +187,7 @@ function createMockContentRecord(record: ContentRecord): ContentRecord {
     experiences,
     education,
     contact,
+    impact,
   } satisfies ContentRecord;
 }
 
@@ -218,6 +258,7 @@ const EN_CONTENT: ContentRecord = {
     headline: "Hi, I'm Rami, backend & DevOps engineer",
     subline:
       "I design resilient Symfony and Shopware platforms with PHP 8, API Platform, asynchronous processing, and cloud-ready CI/CD.",
+    scene: { ...HERO_SCENE_DEFAULTS },
   },
   service: {
     label: "Services",
@@ -307,6 +348,52 @@ const EN_CONTENT: ContentRecord = {
           "Standardised Docker Compose environments, Make tooling, and GitHub Actions pipelines that trimmed onboarding to one day.",
         thumbnails: "iratoon-mobileapp.webp",
         type: "Docker · CI/CD",
+      },
+    ],
+  },
+  impact: {
+    label: "Impact",
+    headline: "Impact delivered in the last 90 days.",
+    subline:
+      "We connect Vercel Analytics and Speed Insights to surface the audience growth, engagement, and performance signals recruiters ask for.",
+    metrics: [
+      {
+        key: "visitors",
+        label: "Unique visitors",
+        description: "Distinct visitors measured over the selected window.",
+        placeholder: 1820,
+        unit: "",
+      },
+      {
+        key: "pageViews",
+        label: "Page views",
+        description: "Total page impressions captured across the portfolio.",
+        placeholder: 5420,
+        unit: "",
+      },
+      {
+        key: "averageDuration",
+        label: "Average session",
+        description: "Mean visit duration converted to seconds for consistency.",
+        placeholder: 265,
+        unit: "s",
+      },
+    ],
+    messages: [
+      {
+        audience: "default",
+        headline: "Continuous traction",
+        body: "Traffic keeps compounding thanks to in-depth case studies and open-source visibility.",
+      },
+      {
+        audience: "referrer:github",
+        headline: "Welcome GitHub visitor",
+        body: "Since you came from my repositories, you can dig deeper into commit history in the case studies below.",
+      },
+      {
+        audience: "referrer:linkedin",
+        headline: "Fresh from LinkedIn?",
+        body: "I recently shared DevOps wins there—scroll further for the measurable outcomes behind those posts.",
       },
     ],
   },
@@ -920,6 +1007,7 @@ const FR_CONTENT: ContentRecord = {
     headline: "Bonjour, je suis Rami, ingénieur backend & DevOps",
     subline:
       "Je conçois des plateformes Symfony et Shopware résilientes avec PHP 8, API Platform, des traitements asynchrones et une CI/CD prête pour le cloud.",
+    scene: { ...HERO_SCENE_DEFAULTS },
   },
   service: {
     label: "Services",
@@ -1009,6 +1097,52 @@ const FR_CONTENT: ContentRecord = {
           "Standardisation d’environnements Docker Compose, d’outils Make et de pipelines GitHub Actions réduisant l’onboarding à une journée.",
         thumbnails: "iratoon-mobileapp.webp",
         type: "Docker · CI/CD",
+      },
+    ],
+  },
+  impact: {
+    label: "Impact",
+    headline: "Impact mesuré sur les 90 derniers jours.",
+    subline:
+      "Nous agrégeons Vercel Analytics et Speed Insights pour mettre en lumière la croissance d’audience, l’engagement et les signaux de performance attendus par les recruteurs.",
+    metrics: [
+      {
+        key: "visitors",
+        label: "Visiteurs uniques",
+        description: "Visiteurs distincts sur la période sélectionnée.",
+        placeholder: 1820,
+        unit: "",
+      },
+      {
+        key: "pageViews",
+        label: "Pages vues",
+        description: "Nombre total de consultations enregistrées sur le portfolio.",
+        placeholder: 5420,
+        unit: "",
+      },
+      {
+        key: "averageDuration",
+        label: "Session moyenne",
+        description: "Durée moyenne de visite convertie en secondes pour comparaison.",
+        placeholder: 265,
+        unit: "s",
+      },
+    ],
+    messages: [
+      {
+        audience: "default",
+        headline: "Traction continue",
+        body: "Le trafic progresse grâce aux études de cas détaillées et à la visibilité open-source.",
+      },
+      {
+        audience: "referrer:github",
+        headline: "Bienvenue depuis GitHub",
+        body: "Puisque vous arrivez de mes dépôts, explorez l’historique de commits dans les études de cas ci-dessous.",
+      },
+      {
+        audience: "referrer:linkedin",
+        headline: "Vu sur LinkedIn ?",
+        body: "J’y partage récemment mes succès DevOps : faites défiler pour découvrir les résultats mesurables derrière ces posts.",
       },
     ],
   },

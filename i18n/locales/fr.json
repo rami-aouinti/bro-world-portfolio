@@ -340,6 +340,23 @@
       "viewProjectLabel": "Voir le projet",
       "viewProjectCta": "Explorer"
     },
+    "impact": {
+      "rangeLabel": "Période",
+      "range24h": "24h",
+      "range7d": "7 jours",
+      "range30d": "30 jours",
+      "updated": "Mis à jour {value}",
+      "loadingChart": "Préparation des analyses…",
+      "topPagesTitle": "Pages les plus visitées",
+      "pageViews": "{value} pages vues",
+      "visitors": "{value} visiteurs",
+      "noPages": "Pas encore de données",
+      "performanceTitle": "Web vitals (p75)",
+      "metricP75": "{value}s",
+      "noPerformance": "Aucune métrique disponible",
+      "rangeLabelShort": "Plage",
+      "noChange": "—"
+    },
     "work": {
       "thumbnailAlt": "Miniature {name}",
       "footerLabel": "Projet en ligne",
@@ -490,11 +507,98 @@
         }
       }
     },
+    "heroScene": {
+      "title": "Scène hero",
+      "subtitle": "Affinez l’arrière-plan 3D interactif sans écrire de code.",
+      "localeLabel": "Langue",
+      "loading": "Chargement des réglages de la scène...",
+      "error": "Impossible de charger les réglages de la scène pour le moment.",
+      "sections": {
+        "sceneTitle": "Arrière-plan animé",
+        "sceneHint": "Ajustez les couleurs, le mouvement et la lueur pour correspondre à votre identité. Les changements sont propres à chaque langue."
+      },
+      "fields": {
+        "enabled": "Activer la scène animée",
+        "primaryColor": "Couleur principale",
+        "secondaryColor": "Couleur secondaire",
+        "accentColor": "Couleur d’accent",
+        "particleDensity": "Densité des particules",
+        "bloomIntensity": "Intensité du bloom",
+        "rotationSpeed": "Vitesse d’orbite",
+        "noiseStrength": "Variation du mouvement"
+      },
+      "actions": {
+        "backToDashboard": "Retour au tableau de bord",
+        "reset": "Réinitialiser les valeurs",
+        "save": "Enregistrer"
+      },
+      "feedback": {
+        "success": "Réglages de la scène enregistrés.",
+        "failure": "Impossible d’enregistrer les réglages de la scène.",
+        "missingContent": "Le contenu du hero n’est pas encore disponible pour cette langue."
+      }
+    },
+    "analytics": {
+      "eyebrow": "Données en direct",
+      "title": "Analyses & impact",
+      "subtitle": "Suivez Vercel Analytics et Speed Insights pour garder les parties prenantes alignées sur le trafic et la performance.",
+      "rangeLabel": "Période",
+      "range24h": "24h",
+      "range7d": "7 jours",
+      "range30d": "30 jours",
+      "updated": "Actualisé {value}",
+      "loadingChart": "Chargement des analyses…",
+      "topPagesTitle": "Pages les plus consultées",
+      "pageViews": "{value} pages vues",
+      "visitors": "{value} visiteurs",
+      "noPages": "Pas encore de données",
+      "performanceTitle": "Web vitals (p75)",
+      "metricP75": "{value}s",
+      "noPerformance": "Aucune métrique de performance",
+      "formTitle": "Contenu impact",
+      "formSubtitle": "Modifiez le titre, la description, les métriques et les messages personnalisés affichés sur la section publique.",
+      "validationTitle": "Merci de vérifier les éléments ci-dessous :",
+      "metricsHeading": "Définition des métriques",
+      "metricsDescription": "Précisez comment chaque métrique est calculée pour rester cohérent avec les données analytics.",
+      "addMetric": "Ajouter une métrique",
+      "metricPlaceholder": "Métrique {index}",
+      "removeMetric": "Supprimer la métrique",
+      "noMetrics": "Aucune métrique configurée pour le moment.",
+      "messagesHeading": "Messages personnalisés",
+      "messagesDescription": "Rédigez des messages adaptés aux audiences, référents ou campagnes spécifiques.",
+      "addMessage": "Ajouter un message",
+      "messagePlaceholder": "Message {index}",
+      "removeMessage": "Supprimer le message",
+      "noMessages": "Aucun message personnalisé pour le moment.",
+      "saveCta": "Enregistrer le contenu impact",
+      "saveSuccess": "Contenu impact mis à jour avec succès.",
+      "saveFailure": "Impossible d’enregistrer le contenu impact.",
+      "metricKeys": {
+        "visitors": "Visiteurs uniques",
+        "pageViews": "Pages vues",
+        "averageDuration": "Durée moyenne (s)"
+      },
+      "fields": {
+        "headline": "Titre",
+        "subline": "Description",
+        "metricKey": "Clé de métrique",
+        "metricLabel": "Libellé",
+        "metricPlaceholder": "Valeur par défaut",
+        "metricUnit": "Unité",
+        "metricDescription": "Description",
+        "audience": "Clé d’audience",
+        "messageHeadline": "Titre du message",
+        "messageBody": "Contenu du message"
+      },
+      "noChange": "—"
+    },
     "navigation": {
       "home": "Accueil",
       "dashboard": "Tableau de bord",
       "settings": "Réglages",
       "design": "Design",
+      "heroScene": "Scène hero",
+      "analytics": "Analyses",
       "content": "Contenus"
     }
   }

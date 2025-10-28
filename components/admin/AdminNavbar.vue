@@ -444,6 +444,18 @@ const baseLinks = computed(() => [
     label: translate("admin.navigation.design", "Design"),
     icon: "mdi-palette-outline",
   },
+  {
+    url: "hero-scene",
+    to: "/admin/personal",
+    label: translate("admin.navigation.heroScene", "Hero scene"),
+    icon: "mdi-orbit-variant",
+  },
+  {
+    url: "analytics",
+    to: "/admin/analytics",
+    label: translate("admin.navigation.analytics", "Analytics"),
+    icon: "mdi-chart-timeline-variant",
+  },
 ]);
 
 const sectionDefinitions = computed(() => [

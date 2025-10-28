@@ -340,6 +340,23 @@
       "viewProjectLabel": "Посмотреть проект",
       "viewProjectCta": "Открыть"
     },
+    "impact": {
+      "rangeLabel": "Период",
+      "range24h": "24 ч",
+      "range7d": "7 дней",
+      "range30d": "30 дней",
+      "updated": "Обновлено {value}",
+      "loadingChart": "Загружаем аналитику…",
+      "topPagesTitle": "Популярные страницы",
+      "pageViews": "{value} просмотров",
+      "visitors": "{value} посетителей",
+      "noPages": "Данные пока отсутствуют",
+      "performanceTitle": "Web vitals (p75)",
+      "metricP75": "{value} с",
+      "noPerformance": "Нет данных по метрикам",
+      "rangeLabelShort": "Период",
+      "noChange": "—"
+    },
     "work": {
       "thumbnailAlt": "Миниатюра {name}",
       "footerLabel": "Проект онлайн",
@@ -490,11 +507,98 @@
         }
       }
     },
+    "heroScene": {
+      "title": "Hero-сцена",
+      "subtitle": "Настройте интерактивный 3D-фон без изменений в коде.",
+      "localeLabel": "Язык",
+      "loading": "Загрузка настроек сцены...",
+      "error": "Не удалось загрузить настройки сцены сейчас.",
+      "sections": {
+        "sceneTitle": "Анимированный фон",
+        "sceneHint": "Подберите цвета, движение и свечение под свой бренд. Изменения сохраняются для каждого языка отдельно."
+      },
+      "fields": {
+        "enabled": "Включить анимированную сцену",
+        "primaryColor": "Основной цвет",
+        "secondaryColor": "Вторичный цвет",
+        "accentColor": "Акцентный цвет",
+        "particleDensity": "Плотность частиц",
+        "bloomIntensity": "Интенсивность свечения",
+        "rotationSpeed": "Скорость орбиты",
+        "noiseStrength": "Вариация движения"
+      },
+      "actions": {
+        "backToDashboard": "Назад в панель",
+        "reset": "Сбросить значения",
+        "save": "Сохранить изменения"
+      },
+      "feedback": {
+        "success": "Настройки сцены сохранены.",
+        "failure": "Не удалось сохранить настройки сцены.",
+        "missingContent": "Контент hero для этого языка пока недоступен."
+      }
+    },
+    "analytics": {
+      "eyebrow": "Онлайн-аналитика",
+      "title": "Аналитика и влияние",
+      "subtitle": "Следите за Vercel Analytics и Speed Insights, чтобы держать команду в курсе трафика и производительности.",
+      "rangeLabel": "Период",
+      "range24h": "24 ч",
+      "range7d": "7 дней",
+      "range30d": "30 дней",
+      "updated": "Обновлено {value}",
+      "loadingChart": "Загружаем аналитику…",
+      "topPagesTitle": "Популярные страницы",
+      "pageViews": "{value} просмотров",
+      "visitors": "{value} посетителей",
+      "noPages": "Данные отсутствуют",
+      "performanceTitle": "Web vitals (p75)",
+      "metricP75": "{value} с",
+      "noPerformance": "Нет метрик производительности",
+      "formTitle": "Контент раздела Impact",
+      "formSubtitle": "Измените заголовок, описание, метрики и персональные сообщения, отображаемые на публичной странице.",
+      "validationTitle": "Проверьте следующие поля:",
+      "metricsHeading": "Определение метрик",
+      "metricsDescription": "Опишите расчёт каждой метрики, чтобы данные совпадали с аналитикой.",
+      "addMetric": "Добавить метрику",
+      "metricPlaceholder": "Метрика {index}",
+      "removeMetric": "Удалить метрику",
+      "noMetrics": "Метрики ещё не добавлены.",
+      "messagesHeading": "Персональные сообщения",
+      "messagesDescription": "Создавайте сообщения для конкретных аудиторий, рефереров или кампаний.",
+      "addMessage": "Добавить сообщение",
+      "messagePlaceholder": "Сообщение {index}",
+      "removeMessage": "Удалить сообщение",
+      "noMessages": "Персональные сообщения отсутствуют.",
+      "saveCta": "Сохранить контент Impact",
+      "saveSuccess": "Контент Impact успешно обновлён.",
+      "saveFailure": "Не удалось сохранить контент Impact.",
+      "metricKeys": {
+        "visitors": "Уникальные посетители",
+        "pageViews": "Просмотры страниц",
+        "averageDuration": "Средняя сессия (с)"
+      },
+      "fields": {
+        "headline": "Заголовок",
+        "subline": "Описание",
+        "metricKey": "Ключ метрики",
+        "metricLabel": "Название",
+        "metricPlaceholder": "Значение по умолчанию",
+        "metricUnit": "Единица",
+        "metricDescription": "Описание",
+        "audience": "Ключ аудитории",
+        "messageHeadline": "Заголовок сообщения",
+        "messageBody": "Текст сообщения"
+      },
+      "noChange": "—"
+    },
     "navigation": {
       "home": "Главная",
       "dashboard": "Панель",
       "settings": "Настройки",
       "design": "Дизайн",
+      "heroScene": "Hero-сцена",
+      "analytics": "Аналитика",
       "content": "Контент"
     }
   }
