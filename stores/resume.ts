@@ -1,4 +1,5 @@
-import { computed, onNuxtReady, ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
+import { onNuxtReady } from "#app";
 import { defineStore } from "~/lib/pinia-shim";
 import type {
   ResumeColorPalette,
