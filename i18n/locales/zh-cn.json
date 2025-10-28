@@ -334,6 +334,34 @@
         "cta": "Contact me"
       }
     },
+    "resume": {
+      "hero": {
+        "badge": "全新功能",
+        "title": "几分钟内生成精美简历",
+        "description": "填写信息，任选五款专业模板，调整配色，即刻导出可分享的 PDF。",
+        "primaryCta": "开始创建",
+        "secondaryCta": "查看示例",
+        "benefits": {
+          "professionalTemplates": {
+            "title": "专业模板",
+            "description": "5 款即用风格，灵感来自顶尖作品集。"
+          },
+          "instantAdjustments": {
+            "title": "即时调整",
+            "description": "你的修改会实时同步到预览。"
+          },
+          "highQualityExport": {
+            "title": "高质量 PDF 导出",
+            "description": "一键获取优化打印的文档。"
+          }
+        }
+      },
+      "seo": {
+        "title": "简历生成器",
+        "ogTitle": "简历生成器 | Bro World",
+        "description": "基于已保存的数据创建现代简历，自由定制设计，并一键导出 PDF。"
+      }
+    },
     "personal": {
       "viewProjects": "查看我的项目",
       "contact": "联系我",
@@ -528,6 +556,14 @@
       "design": "设计",
       "heroScene": "Hero 场景",
       "content": "内容"
+      "content": "内容",
+      "resume": "简历生成器"
+    },
+    "resume": {
+      "badge": "新功能",
+      "title": "几分钟内生成专业简历",
+      "subtitle": "填写已保存的数据，调整模板并在后台直接导出 PDF。",
+      "privateLabel": "仅限管理员"
     }
   }
 }

@@ -334,6 +334,34 @@
         "cta": "Contáctame"
       }
     },
+    "resume": {
+      "hero": {
+        "badge": "Nueva función",
+        "title": "Genera un CV elegante en minutos",
+        "description": "Introduce tu información, elige una plantilla entre cinco estilos profesionales, ajusta los colores y exporta al instante un PDF listo para compartir.",
+        "primaryCta": "Comenzar a crear",
+        "secondaryCta": "Ver ejemplo",
+        "benefits": {
+          "professionalTemplates": {
+            "title": "Plantillas profesionales",
+            "description": "5 estilos listos para usar, inspirados en los mejores portfolios."
+          },
+          "instantAdjustments": {
+            "title": "Ajustes instantáneos",
+            "description": "Tus cambios se reflejan en directo en la vista previa."
+          },
+          "highQualityExport": {
+            "title": "Exportación PDF de alta calidad",
+            "description": "Obtén un documento optimizado para impresión con un solo clic."
+          }
+        }
+      },
+      "seo": {
+        "title": "Generador de currículum",
+        "ogTitle": "Generador de currículum | Bro World",
+        "description": "Crea un currículum moderno a partir de tus datos guardados, personaliza el diseño y exporta un PDF con un solo clic."
+      }
+    },
     "personal": {
       "viewProjects": "Ver mis proyectos",
       "contact": "Contáctame",
@@ -600,6 +628,14 @@
       "heroScene": "Escena hero",
       "analytics": "Analíticas",
       "content": "Contenidos"
+      "content": "Contenidos",
+      "resume": "Generador de CV"
+    },
+    "resume": {
+      "badge": "Nueva función",
+      "title": "Genera un currículum impecable en minutos",
+      "subtitle": "Completa tus datos guardados, ajusta la plantilla y exporta el PDF sin salir del panel de administración.",
+      "privateLabel": "Solo administración"
     }
   }
 }

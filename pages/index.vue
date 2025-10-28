@@ -120,6 +120,14 @@
     <Work />
   </Motion>
   <Motion
+    :initial="sectionInitial"
+    :while-in-view="sectionVisible"
+    :transition="sectionTransition(0.7)"
+    :viewport="viewportConfig"
+  >
+    <PortfolioShowcase />
+  </Motion>
+  <Motion
     :initial="ctaInitial"
     :while-in-view="ctaVisible"
     :transition="sectionTransition(0.85)"
@@ -143,6 +151,9 @@ const Education = defineAsyncComponent(() => import("~/components/section/Educat
 const Service = defineAsyncComponent(() => import("~/components/section/Service.vue"));
 const Impact = defineAsyncComponent(() => import("~/components/section/Impact.vue"));
 const Work = defineAsyncComponent(() => import("~/components/section/Work.vue"));
+const PortfolioShowcase = defineAsyncComponent(
+  () => import("~/components/section/PortfolioShowcase.vue"),
+);
 const Cta = defineAsyncComponent(() => import("~/components/section/Cta.vue"));
 
 const { data: aboutContent } = useContentBlock("about");

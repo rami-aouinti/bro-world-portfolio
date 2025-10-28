@@ -3,11 +3,42 @@
     "loading": "Chargement…"
   },
   "admin": {
+    "shell": {
+      "breadcrumbs": {
+        "dashboard": "Tableau de bord",
+        "design": "Design",
+        "settings": "Réglages",
+        "content": "Contenus"
+      },
+      "actions": {
+        "newContent": "Nouveau contenu",
+        "design": "Personnaliser le design",
+        "preview": "Voir le site"
+      },
+      "context": {
+        "defaultDescription": "Pilotez les sections de votre portfolio et gardez tout synchronisé.",
+        "fallbackTitle": "Administration"
+      }
+    },
     "dashboard": {
       "hero": {
         "eyebrow": "Administration",
         "title": "Tableau de bord",
         "subtitle": "Pilotez toutes les sections du portfolio, mettez-les à jour en quelques clics et suivez l’impact de vos modifications."
+      },
+      "metrics": {
+        "sections": {
+          "label": "Sections actives",
+          "helper": "Modules synchronisés"
+        },
+        "drafts": {
+          "label": "Brouillons",
+          "helper": "Contenus à finaliser"
+        },
+        "themes": {
+          "label": "Thèmes enregistrés",
+          "helper": "Variations de palette"
+        }
       },
       "session": {
         "status": {
@@ -334,6 +365,34 @@
         "cta": "Me contacter"
       }
     },
+    "resume": {
+      "hero": {
+        "badge": "Nouvelle fonctionnalité",
+        "title": "Générez un CV élégant en quelques minutes",
+        "description": "Saisissez vos informations, choisissez un template parmi cinq styles professionnels, ajustez les couleurs et exportez instantanément un PDF prêt à être partagé.",
+        "primaryCta": "Commencer la création",
+        "secondaryCta": "Voir un exemple",
+        "benefits": {
+          "professionalTemplates": {
+            "title": "Modèles professionnels",
+            "description": "5 styles prêts à l'emploi, inspirés des meilleurs portfolios."
+          },
+          "instantAdjustments": {
+            "title": "Ajustements instantanés",
+            "description": "Vos modifications sont reflétées en direct dans l'aperçu."
+          },
+          "highQualityExport": {
+            "title": "Export PDF haute qualité",
+            "description": "Récupérez un document optimisé pour l'impression en un clic."
+          }
+        }
+      },
+      "seo": {
+        "title": "Générateur de CV",
+        "ogTitle": "Générateur de CV | Bro World",
+        "description": "Créez un CV moderne depuis vos données enregistrées, personnalisez le design et exportez un PDF en un clic."
+      }
+    },
     "personal": {
       "viewProjects": "Voir mes projets",
       "contact": "Me contacter",
@@ -600,6 +659,14 @@
       "heroScene": "Scène hero",
       "analytics": "Analyses",
       "content": "Contenus"
+      "content": "Contenus",
+      "resume": "Générateur de CV"
+    },
+    "resume": {
+      "badge": "Nouvelle fonctionnalité",
+      "title": "Générez un CV élégant en quelques minutes",
+      "subtitle": "Renseignez vos données sauvegardées, ajustez le modèle et exportez un PDF directement depuis l’admin.",
+      "privateLabel": "Réservé à l’admin"
     }
   }
 }

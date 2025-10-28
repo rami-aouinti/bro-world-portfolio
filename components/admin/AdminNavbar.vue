@@ -455,6 +455,12 @@ const baseLinks = computed(() => [
     to: "/admin/analytics",
     label: translate("admin.navigation.analytics", "Analytics"),
     icon: "mdi-chart-timeline-variant",
+    },
+  {
+    url: "resume",
+    to: "/admin/resume",
+    label: translate("admin.navigation.resume", "Résumé builder"),
+    icon: "mdi-file-account-outline",
   },
 ]);
 

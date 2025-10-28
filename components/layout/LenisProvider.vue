@@ -2,7 +2,6 @@
   <div
     ref="rootRef"
     class="lenis-provider"
-    :data-smooth-scroll="smoothScrollState"
   >
     <slot />
   </div>
