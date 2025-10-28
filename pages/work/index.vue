@@ -9,5 +9,7 @@
 import { LOCALIZED_PAGE_META } from "~/utils/i18n/routes";
 import Work from "~/components/section/Work.vue";
 
-definePageMeta(LOCALIZED_PAGE_META.work);
+definePageMeta({
+  ...LOCALIZED_PAGE_META.work,
+});
 </script>

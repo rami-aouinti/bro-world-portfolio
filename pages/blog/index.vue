@@ -143,7 +143,9 @@ import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 import BlogPostCard from "~/components/blog/BlogPostCard.vue";
 
-definePageMeta(LOCALIZED_PAGE_META.blog);
+definePageMeta({
+  ...LOCALIZED_PAGE_META.blog,
+});
 
 const { t } = useI18n();
 const localePath = useLocalePath();

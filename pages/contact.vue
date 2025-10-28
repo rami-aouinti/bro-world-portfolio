@@ -157,7 +157,9 @@ import { LOCALIZED_PAGE_META } from "~/utils/i18n/routes";
 import CustomGlowCard from "~/components/CustomGlowCard.vue";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 
-definePageMeta(LOCALIZED_PAGE_META.contact);
+definePageMeta({
+  ...LOCALIZED_PAGE_META.contact,
+});
 
 const { t } = useI18n();
 

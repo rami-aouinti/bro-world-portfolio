@@ -263,7 +263,9 @@ function formatDate(input: string) {
   }).format(date);
 }
 
-definePageMeta(LOCALIZED_PAGE_META.projects);
+definePageMeta({
+  ...LOCALIZED_PAGE_META.projects,
+});
 
 useSeoMeta(() => ({
   title: t("portfolio.githubProjects.metaTitle"),

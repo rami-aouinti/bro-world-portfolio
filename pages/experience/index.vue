@@ -6,5 +6,7 @@
 import { LOCALIZED_PAGE_META } from "~/utils/i18n/routes";
 import Experience from "~/components/section/Experience.vue";
 
-definePageMeta(LOCALIZED_PAGE_META.experience);
+definePageMeta({
+  ...LOCALIZED_PAGE_META.experience,
+});
 </script>
