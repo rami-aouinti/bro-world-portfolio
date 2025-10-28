@@ -7,23 +7,6 @@ html {
   scrollbar-color: var(--ui-scrollbar-thumb-color) var(--ui-scrollbar-track-color);
 }
 
-html.has-smooth-scroll,
-.has-smooth-scroll body {
-  min-height: 100%;
-}
-
-.lenis-provider[data-smooth-scroll="enabled"] {
-  min-height: 100%;
-}
-
-.lenis-provider[data-smooth-scroll="disabled"] {
-  min-height: 100%;
-}
-
-.lenis-provider[data-smooth-scroll="enabled"] > * {
-  will-change: transform;
-}
-
 body {
   font-family: var(
     --v-font-family-base,
