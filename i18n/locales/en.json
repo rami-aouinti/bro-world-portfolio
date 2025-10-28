@@ -490,11 +490,43 @@
         }
       }
     },
+    "heroScene": {
+      "title": "Hero scene",
+      "subtitle": "Fine-tune the interactive 3D hero background without touching the code.",
+      "localeLabel": "Locale",
+      "loading": "Loading hero scene settings...",
+      "error": "Unable to load the hero scene settings right now.",
+      "sections": {
+        "sceneTitle": "Animated background",
+        "sceneHint": "Adjust colours, motion and glow to match your brand. Changes are saved per locale."
+      },
+      "fields": {
+        "enabled": "Enable animated scene",
+        "primaryColor": "Primary colour",
+        "secondaryColor": "Secondary colour",
+        "accentColor": "Accent colour",
+        "particleDensity": "Particle density",
+        "bloomIntensity": "Bloom intensity",
+        "rotationSpeed": "Orbit speed",
+        "noiseStrength": "Motion variance"
+      },
+      "actions": {
+        "backToDashboard": "Back to dashboard",
+        "reset": "Reset defaults",
+        "save": "Save changes"
+      },
+      "feedback": {
+        "success": "Hero scene settings saved.",
+        "failure": "Unable to save hero scene settings.",
+        "missingContent": "Hero content is not available for this locale yet."
+      }
+    },
     "navigation": {
       "home": "Home",
       "dashboard": "Dashboard",
       "settings": "Settings",
       "design": "Design",
+      "heroScene": "Hero scene",
       "content": "Content"
     }
   }
