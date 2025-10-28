@@ -324,7 +324,7 @@
 
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from "vue";
-import { NumberFlow } from "@number-flow/vue";
+import NumberFlow from "@number-flow/vue";
 import { ZodError } from "zod";
 import TrendChart from "~/components/analytics/TrendChart.vue";
 import { useAnalytics } from "~/composables/useAnalytics";

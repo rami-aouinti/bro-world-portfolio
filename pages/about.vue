@@ -20,7 +20,9 @@ import Education from "~/components/section/Education.vue";
 import Cta from "~/components/section/Cta.vue";
 import About from "~/components/section/About.vue";
 
-definePageMeta(LOCALIZED_PAGE_META.about);
+definePageMeta({
+  ...LOCALIZED_PAGE_META.about,
+});
 
 const { data: skillsContent } = useContentBlock("skills");
 const { data: experienceContent } = useContentBlock("experiences");
