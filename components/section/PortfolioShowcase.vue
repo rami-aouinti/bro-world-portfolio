@@ -158,8 +158,7 @@ const isCompactViewport = computed(() => isMounted.value && compactViewportQuery
 }
 
 .portfolio-showcase__carousel :deep(.v-slide-group__content) {
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
   align-items: stretch;
   gap: clamp(14px, 4vw, 24px);
   padding-inline: var(--carousel-inline-padding);
@@ -206,6 +205,10 @@ const isCompactViewport = computed(() => isMounted.value && compactViewportQuery
 }
 
 @media (max-width: 640px) {
+  .portfolio-showcase__carousel :deep(.v-slide-group__content) {
+    padding-inline: calc(var(--carousel-inline-padding) - 4px);
+  }
+
   .portfolio-showcase__card {
     width: min(260px, 82vw);
   }
