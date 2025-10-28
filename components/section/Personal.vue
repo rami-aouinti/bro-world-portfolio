@@ -70,6 +70,7 @@ import { useMediaQuery, useMounted } from "@vueuse/core";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 
 import { Text3d } from "~/components/ui/text-3d";
+import { HERO_SCENE_DEFAULTS, type HeroSceneSettings } from "~/types/content";
 
 const { data: personal } = useContentBlock("hero");
 
