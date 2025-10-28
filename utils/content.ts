@@ -199,6 +199,10 @@ const EN_CONTENT: ContentRecord = {
       url: "/blog",
     },
     {
+      label: "Resume",
+      url: "/resume",
+    },
+    {
       label: "Contact",
       url: "/contact",
     },
@@ -897,6 +901,10 @@ const FR_CONTENT: ContentRecord = {
       url: "/blog",
     },
     {
+      label: "CV",
+      url: "/resume",
+    },
+    {
       label: "Contact",
       url: "/contact",
     },
@@ -1592,6 +1600,7 @@ const DE_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
     "/projects": "GitHub-Projekte",
     "/service": "Dienstleistungen",
     "/blog": "Blog",
+    "/resume": "Lebenslauf",
     "/contact": "Kontakt",
   },
   education: {
@@ -1629,6 +1638,7 @@ const ES_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
     "/projects": "Proyectos GitHub",
     "/service": "Servicios",
     "/blog": "Blog",
+    "/resume": "Currículum",
     "/contact": "Contacto",
   },
   education: {
@@ -1666,6 +1676,7 @@ const IT_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
     "/projects": "Progetti GitHub",
     "/service": "Servizi",
     "/blog": "Blog",
+    "/resume": "Curriculum",
     "/contact": "Contatti",
   },
   education: {
@@ -1703,6 +1714,7 @@ const RU_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
     "/projects": "Проекты GitHub",
     "/service": "Услуги",
     "/blog": "Блог",
+    "/resume": "Резюме",
     "/contact": "Контакты",
   },
   education: {
@@ -1740,6 +1752,7 @@ const AR_CONTENT = createLocalizedEducationContent(EN_CONTENT, {
     "/projects": "مشاريع GitHub",
     "/service": "الخدمات",
     "/blog": "المدونة",
+    "/resume": "السيرة الذاتية",
     "/contact": "تواصل",
   },
   education: {
