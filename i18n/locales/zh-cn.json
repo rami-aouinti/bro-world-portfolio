@@ -40,6 +40,10 @@
           "title": "首屏区域",
           "description": "页眉中的徽章、标题和副标题。"
         },
+        "analytics": {
+          "title": "数据分析与影响",
+          "description": "监控流量洞察并管理影响板块的文案。"
+        },
         "service": {
           "title": "服务",
           "description": "主要服务与核心能力列表。"

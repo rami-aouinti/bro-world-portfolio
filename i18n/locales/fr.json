@@ -71,6 +71,10 @@
           "title": "Section personnelle",
           "description": "Badge, titre et sous-titre de l’en-tête."
         },
+        "analytics": {
+          "title": "Analyses & impact",
+          "description": "Surveillez le trafic et ajustez les messages de la section impact."
+        },
         "service": {
           "title": "Compétences",
           "description": "Liste des services et compétences clés."

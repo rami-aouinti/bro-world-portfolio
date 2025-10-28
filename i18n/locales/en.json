@@ -71,6 +71,10 @@
           "title": "Hero section",
           "description": "Badge, headline, and subline in the header."
         },
+        "analytics": {
+          "title": "Analytics & impact",
+          "description": "Monitor traffic insights and manage the public impact messaging."
+        },
         "service": {
           "title": "Services",
           "description": "List of key services and expertise."

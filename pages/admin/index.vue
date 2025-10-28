@@ -201,7 +201,7 @@
                     {{ t("admin.dashboard.cards.pendingUpdate") }}
                   </div>
                   <v-btn
-                    :to="`/admin/content/${section.slug}`"
+                    :to="section.to ?? `/admin/content/${section.slug}`"
                     color="primary"
                     variant="tonal"
                     class="text-none"
@@ -277,6 +277,19 @@ const sections = computed(() => [
     title: t("admin.dashboard.sections.hero.title"),
     description: t("admin.dashboard.sections.hero.description"),
     icon: "mdi-star",
+  },
+  {
+    slug: "analytics",
+    title: translate(
+      "admin.dashboard.sections.analytics.title",
+      "Analytics & impact",
+    ),
+    description: translate(
+      "admin.dashboard.sections.analytics.description",
+      "Monitor traffic insights and fine-tune the public impact copy.",
+    ),
+    icon: "mdi-chart-timeline-variant",
+    to: "/admin/analytics",
   },
   {
     slug: "service",

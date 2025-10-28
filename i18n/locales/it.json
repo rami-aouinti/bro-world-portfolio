@@ -40,6 +40,10 @@
           "title": "Sezione principale",
           "description": "Badge, titolo e sottotitolo dell’intestazione."
         },
+        "analytics": {
+          "title": "Analisi & impatto",
+          "description": "Monitora il traffico e gestisci i messaggi della sezione impatto."
+        },
         "service": {
           "title": "Servizi",
           "description": "Elenco dei servizi e delle competenze principali."
