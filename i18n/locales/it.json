@@ -334,6 +334,34 @@
         "cta": "Contattami"
       }
     },
+    "resume": {
+      "hero": {
+        "badge": "Nuova funzionalità",
+        "title": "Genera un CV elegante in pochi minuti",
+        "description": "Inserisci le tue informazioni, scegli un template tra cinque stili professionali, regola i colori ed esporta all'istante un PDF pronto da condividere.",
+        "primaryCta": "Inizia a creare",
+        "secondaryCta": "Guarda un esempio",
+        "benefits": {
+          "professionalTemplates": {
+            "title": "Template professionali",
+            "description": "5 stili pronti all'uso, ispirati ai migliori portfolio."
+          },
+          "instantAdjustments": {
+            "title": "Modifiche immediate",
+            "description": "Le tue modifiche vengono mostrate in tempo reale nell'anteprima."
+          },
+          "highQualityExport": {
+            "title": "Esportazione PDF di alta qualità",
+            "description": "Ottieni un documento ottimizzato per la stampa con un solo clic."
+          }
+        }
+      },
+      "seo": {
+        "title": "Generatore di curriculum",
+        "ogTitle": "Generatore di curriculum | Bro World",
+        "description": "Crea un curriculum moderno a partire dai tuoi dati salvati, personalizza il design ed esporta un PDF con un solo clic."
+      }
+    },
     "personal": {
       "viewProjects": "Guarda i miei progetti",
       "contact": "Contattami",

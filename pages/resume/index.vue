@@ -10,12 +10,9 @@
         lg="6"
       >
         <div class="resume-builder__headline">
-          <span class="resume-builder__badge">Nouvelle fonctionnalité</span>
-          <h1>Générez un CV élégant en quelques minutes</h1>
-          <p>
-            Saisissez vos informations, choisissez un template parmi cinq styles professionnels, ajustez les couleurs et exportez
-            instantanément un PDF prêt à être partagé.
-          </p>
+          <span class="resume-builder__badge">{{ t("resume.hero.badge") }}</span>
+          <h1>{{ t("resume.hero.title") }}</h1>
+          <p>{{ t("resume.hero.description") }}</p>
 
           <div class="resume-builder__actions">
             <v-btn
@@ -24,7 +21,7 @@
               prepend-icon="mdi-auto-fix"
               @click="scrollToSection('resume-form')"
             >
-              Commencer la création
+              {{ t("resume.hero.primaryCta") }}
             </v-btn>
             <v-btn
               variant="text"
@@ -32,7 +29,7 @@
               append-icon="mdi-eye-outline"
               @click="scrollToSection('resume-preview')"
             >
-              Voir un exemple
+              {{ t("resume.hero.secondaryCta") }}
             </v-btn>
           </div>
 
@@ -116,26 +113,29 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import ResumeForm from "~/components/resume/ResumeForm.vue";
 import ResumePreview from "~/components/resume/ResumePreview.vue";
 
-const heroBenefits = [
+const { t } = useI18n();
+
+const heroBenefits = computed(() => [
   {
-    title: "Modèles professionnels",
-    description: "5 styles prêts à l'emploi, inspirés des meilleurs portfolios.",
+    title: t("resume.hero.benefits.professionalTemplates.title"),
+    description: t("resume.hero.benefits.professionalTemplates.description"),
     icon: "mdi-briefcase-check-outline",
   },
   {
-    title: "Ajustements instantanés",
-    description: "Vos modifications sont reflétées en direct dans l'aperçu.",
+    title: t("resume.hero.benefits.instantAdjustments.title"),
+    description: t("resume.hero.benefits.instantAdjustments.description"),
     icon: "mdi-update",
   },
   {
-    title: "Export PDF haute qualité",
-    description: "Récupérez un document optimisé pour l'impression en un clic.",
+    title: t("resume.hero.benefits.highQualityExport.title"),
+    description: t("resume.hero.benefits.highQualityExport.description"),
     icon: "mdi-file-download-outline",
   },
-];
+]);
 
 function scrollToSection(id: string) {
   if (!import.meta.client) {
@@ -152,12 +152,11 @@ definePageMeta({
   layout: "default",
 });
 
-useSeoMeta({
-  title: "Générateur de CV",
-  ogTitle: "Générateur de CV | Bro World",
-  description:
-    "Créez un CV moderne depuis vos données enregistrées, personnalisez le design et exportez un PDF en un clic.",
-});
+useSeoMeta(() => ({
+  title: t("resume.seo.title"),
+  ogTitle: t("resume.seo.ogTitle"),
+  description: t("resume.seo.description"),
+}));
 </script>
 
 <style scoped>

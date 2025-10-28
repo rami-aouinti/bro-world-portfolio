@@ -334,6 +334,34 @@
         "cta": "Kontakt aufnehmen"
       }
     },
+    "resume": {
+      "hero": {
+        "badge": "Neue Funktion",
+        "title": "Erstellen Sie in wenigen Minuten einen eleganten Lebenslauf",
+        "description": "Geben Sie Ihre Informationen ein, wählen Sie eine Vorlage aus fünf professionellen Stilen, passen Sie die Farben an und exportieren Sie sofort ein teilbares PDF.",
+        "primaryCta": "Erstellung starten",
+        "secondaryCta": "Beispiel ansehen",
+        "benefits": {
+          "professionalTemplates": {
+            "title": "Professionelle Vorlagen",
+            "description": "5 einsatzbereite Stile, inspiriert von herausragenden Portfolios."
+          },
+          "instantAdjustments": {
+            "title": "Sofortige Anpassungen",
+            "description": "Ihre Änderungen werden live in der Vorschau angezeigt."
+          },
+          "highQualityExport": {
+            "title": "Hochwertiger PDF-Export",
+            "description": "Erhalten Sie mit einem Klick ein druckoptimiertes Dokument."
+          }
+        }
+      },
+      "seo": {
+        "title": "Lebenslauf-Generator",
+        "ogTitle": "Lebenslauf-Generator | Bro World",
+        "description": "Erstellen Sie aus Ihren gespeicherten Daten einen modernen Lebenslauf, passen Sie das Design an und exportieren Sie ihn mit einem Klick als PDF."
+      }
+    },
     "personal": {
       "viewProjects": "Meine Projekte ansehen",
       "contact": "Kontaktieren Sie mich",
