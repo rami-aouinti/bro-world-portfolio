@@ -296,6 +296,7 @@ const navIconMap: Record<string, string> = {
   "/projects": "mdi-github",
   "/service": "mdi-cog-outline",
   "/blog": "mdi-post-outline",
+  "/resume": "mdi-file-account-outline",
   "/contact": "mdi-email-fast-outline",
 };
 
