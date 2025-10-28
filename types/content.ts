@@ -12,10 +12,47 @@ export const profileSchema = z.object({
   avatar: z.string().trim().min(1, "Le chemin de l’image est requis."),
 });
 
+export const HERO_SCENE_DEFAULTS = {
+  enabled: true,
+  primaryColor: "#0ea5e9",
+  secondaryColor: "#22d3ee",
+  accentColor: "#f472b6",
+  particleDensity: 0.65,
+  bloomIntensity: 0.45,
+  rotationSpeed: 0.18,
+  noiseStrength: 0.35,
+} as const;
+
+export const heroSceneSchema = z.object({
+  enabled: z.boolean().optional().default(true),
+  primaryColor: z.string().trim().min(1, "La couleur principale est requise."),
+  secondaryColor: z.string().trim().min(1, "La couleur secondaire est requise."),
+  accentColor: z.string().trim().min(1, "La couleur d’accent est requise."),
+  particleDensity: z
+    .number({ invalid_type_error: "La densité des particules doit être un nombre." })
+    .min(0.1, "La densité minimale est 0,1.")
+    .max(2, "La densité maximale est 2."),
+  bloomIntensity: z
+    .number({ invalid_type_error: "L’intensité bloom doit être un nombre." })
+    .min(0, "L’intensité minimale est 0.")
+    .max(2.5, "L’intensité maximale est 2,5."),
+  rotationSpeed: z
+    .number({ invalid_type_error: "La vitesse de rotation doit être un nombre." })
+    .min(-2, "La vitesse minimale est -2.")
+    .max(2, "La vitesse maximale est 2."),
+  noiseStrength: z
+    .number({ invalid_type_error: "L’intensité du mouvement doit être un nombre." })
+    .min(0, "L’intensité minimale est 0.")
+    .max(1.5, "L’intensité maximale est 1,5."),
+});
+
+export type HeroSceneSettings = z.infer<typeof heroSceneSchema>;
+
 export const heroSchema = z.object({
   badge: z.string().trim().min(1, "Le badge est requis."),
   headline: z.string().trim().min(1, "Le titre est requis."),
   subline: z.string().trim().min(1, "La description est requise."),
+  scene: heroSceneSchema.optional().default(() => ({ ...HERO_SCENE_DEFAULTS })),
 });
 
 const serviceItemSchema = z.object({

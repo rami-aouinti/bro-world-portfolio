@@ -3,6 +3,21 @@
     id="personal"
     class="personal"
   >
+    <div class="personal__background">
+      <ClientOnly>
+        <HeroScene
+          v-if="heroSceneEnabled"
+          class="personal__hero"
+          v-bind="heroSceneProps"
+        />
+      </ClientOnly>
+      <div
+        v-if="!heroSceneEnabled"
+        class="personal__background-fallback"
+        :style="heroFallbackStyle"
+      />
+      <div class="personal__background-overlay" />
+    </div>
     <ScrollSmooth initially-visible>
       <v-container
         v-if="personalContent"
@@ -60,6 +75,31 @@ const { data: personal } = useContentBlock("hero");
 
 const personalContent = computed(() => personal.value);
 
+const heroSceneSettings = computed<HeroSceneSettings>(() => ({
+  ...HERO_SCENE_DEFAULTS,
+  ...(personalContent.value?.scene ?? {}),
+}));
+
+const heroSceneEnabled = computed(() => heroSceneSettings.value.enabled !== false);
+
+const heroSceneProps = computed(() => ({
+  enabled: heroSceneEnabled.value,
+  primaryColor: heroSceneSettings.value.primaryColor,
+  secondaryColor: heroSceneSettings.value.secondaryColor,
+  accentColor: heroSceneSettings.value.accentColor,
+  particleDensity: heroSceneSettings.value.particleDensity,
+  bloomIntensity: heroSceneSettings.value.bloomIntensity,
+  rotationSpeed: heroSceneSettings.value.rotationSpeed,
+  noiseStrength: heroSceneSettings.value.noiseStrength,
+}));
+
+const heroFallbackStyle = computed(() => ({
+  background:
+    `radial-gradient(circle at 24% 28%, ${heroSceneSettings.value.secondaryColor}33 0%, transparent 58%), ` +
+    `radial-gradient(circle at 78% 18%, ${heroSceneSettings.value.accentColor}2b 0%, transparent 54%), ` +
+    `linear-gradient(120deg, ${heroSceneSettings.value.primaryColor}3a, rgba(15, 23, 42, 0.85))`,
+}));
+
 const isMounted = useMounted();
 const compactViewportQuery = useMediaQuery("(max-width: 640px)", {
   initialValue: false,
@@ -75,6 +115,31 @@ const headlineLetterSpacing = computed(() => (isCompactViewport.value ? -0.05 : 
 <style scoped>
 .personal {
   position: relative;
+}
+
+.personal__background {
+  position: absolute;
+  inset: clamp(12px, 3vw, 22px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.personal__background-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: clamp(18px, 5vw, 32px);
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.35) 0%, rgba(2, 6, 23, 0.78) 65%);
+  mix-blend-mode: screen;
+}
+
+.personal__background-fallback {
+  position: absolute;
+  inset: 0;
+  border-radius: clamp(18px, 5vw, 32px);
+}
+
+.personal__hero {
+  inset: 0;
 }
 
 .personal__container {

@@ -490,6 +490,37 @@
         }
       }
     },
+    "heroScene": {
+      "title": "Scena hero",
+      "subtitle": "Affina lo sfondo 3D interattivo senza toccare il codice.",
+      "localeLabel": "Lingua",
+      "loading": "Caricamento delle impostazioni della scena...",
+      "error": "Impossibile caricare le impostazioni della scena al momento.",
+      "sections": {
+        "sceneTitle": "Sfondo animato",
+        "sceneHint": "Regola colori, movimento e bagliore per allinearli al tuo brand. Le modifiche sono specifiche per lingua."
+      },
+      "fields": {
+        "enabled": "Attiva scena animata",
+        "primaryColor": "Colore primario",
+        "secondaryColor": "Colore secondario",
+        "accentColor": "Colore di accento",
+        "particleDensity": "Densità delle particelle",
+        "bloomIntensity": "Intensità bloom",
+        "rotationSpeed": "Velocità di orbita",
+        "noiseStrength": "Variazione del movimento"
+      },
+      "actions": {
+        "backToDashboard": "Torna al dashboard",
+        "reset": "Ripristina valori",
+        "save": "Salva modifiche"
+      },
+      "feedback": {
+        "success": "Impostazioni della scena salvate.",
+        "failure": "Impossibile salvare le impostazioni della scena.",
+        "missingContent": "Il contenuto hero non è ancora disponibile per questa lingua."
+      }
+    },
     "navigation": {
       "home": "Home",
       "dashboard": "Dashboard",

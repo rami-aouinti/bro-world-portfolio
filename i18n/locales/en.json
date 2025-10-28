@@ -3,11 +3,42 @@
     "loading": "Loading…"
   },
   "admin": {
+    "shell": {
+      "breadcrumbs": {
+        "dashboard": "Dashboard",
+        "design": "Design",
+        "settings": "Settings",
+        "content": "Content"
+      },
+      "actions": {
+        "newContent": "New entry",
+        "design": "Customize design",
+        "preview": "View site"
+      },
+      "context": {
+        "defaultDescription": "Manage your portfolio sections and keep everything in sync.",
+        "fallbackTitle": "Administration"
+      }
+    },
     "dashboard": {
       "hero": {
         "eyebrow": "Administration",
         "title": "Dashboard",
         "subtitle": "Manage every portfolio section, update content in a few clicks, and monitor the impact of your changes."
+      },
+      "metrics": {
+        "sections": {
+          "label": "Active sections",
+          "helper": "Published modules"
+        },
+        "drafts": {
+          "label": "Drafts",
+          "helper": "Content to finish"
+        },
+        "themes": {
+          "label": "Saved themes",
+          "helper": "Palette variations"
+        }
       },
       "session": {
         "status": {
@@ -488,6 +519,37 @@
           "educationCount": "Education entries",
           "unknown": "LinkedIn member"
         }
+      }
+    },
+    "heroScene": {
+      "title": "Hero scene",
+      "subtitle": "Fine-tune the interactive 3D hero background without touching the code.",
+      "localeLabel": "Locale",
+      "loading": "Loading hero scene settings...",
+      "error": "Unable to load the hero scene settings right now.",
+      "sections": {
+        "sceneTitle": "Animated background",
+        "sceneHint": "Adjust colours, motion and glow to match your brand. Changes are saved per locale."
+      },
+      "fields": {
+        "enabled": "Enable animated scene",
+        "primaryColor": "Primary colour",
+        "secondaryColor": "Secondary colour",
+        "accentColor": "Accent colour",
+        "particleDensity": "Particle density",
+        "bloomIntensity": "Bloom intensity",
+        "rotationSpeed": "Orbit speed",
+        "noiseStrength": "Motion variance"
+      },
+      "actions": {
+        "backToDashboard": "Back to dashboard",
+        "reset": "Reset defaults",
+        "save": "Save changes"
+      },
+      "feedback": {
+        "success": "Hero scene settings saved.",
+        "failure": "Unable to save hero scene settings.",
+        "missingContent": "Hero content is not available for this locale yet."
       }
     },
     "navigation": {

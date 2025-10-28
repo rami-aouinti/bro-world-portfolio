@@ -3,11 +3,42 @@
     "loading": "Chargement…"
   },
   "admin": {
+    "shell": {
+      "breadcrumbs": {
+        "dashboard": "Tableau de bord",
+        "design": "Design",
+        "settings": "Réglages",
+        "content": "Contenus"
+      },
+      "actions": {
+        "newContent": "Nouveau contenu",
+        "design": "Personnaliser le design",
+        "preview": "Voir le site"
+      },
+      "context": {
+        "defaultDescription": "Pilotez les sections de votre portfolio et gardez tout synchronisé.",
+        "fallbackTitle": "Administration"
+      }
+    },
     "dashboard": {
       "hero": {
         "eyebrow": "Administration",
         "title": "Tableau de bord",
         "subtitle": "Pilotez toutes les sections du portfolio, mettez-les à jour en quelques clics et suivez l’impact de vos modifications."
+      },
+      "metrics": {
+        "sections": {
+          "label": "Sections actives",
+          "helper": "Modules synchronisés"
+        },
+        "drafts": {
+          "label": "Brouillons",
+          "helper": "Contenus à finaliser"
+        },
+        "themes": {
+          "label": "Thèmes enregistrés",
+          "helper": "Variations de palette"
+        }
       },
       "session": {
         "status": {
@@ -488,6 +519,37 @@
           "educationCount": "Formations",
           "unknown": "Membre LinkedIn"
         }
+      }
+    },
+    "heroScene": {
+      "title": "Scène hero",
+      "subtitle": "Affinez l’arrière-plan 3D interactif sans écrire de code.",
+      "localeLabel": "Langue",
+      "loading": "Chargement des réglages de la scène...",
+      "error": "Impossible de charger les réglages de la scène pour le moment.",
+      "sections": {
+        "sceneTitle": "Arrière-plan animé",
+        "sceneHint": "Ajustez les couleurs, le mouvement et la lueur pour correspondre à votre identité. Les changements sont propres à chaque langue."
+      },
+      "fields": {
+        "enabled": "Activer la scène animée",
+        "primaryColor": "Couleur principale",
+        "secondaryColor": "Couleur secondaire",
+        "accentColor": "Couleur d’accent",
+        "particleDensity": "Densité des particules",
+        "bloomIntensity": "Intensité du bloom",
+        "rotationSpeed": "Vitesse d’orbite",
+        "noiseStrength": "Variation du mouvement"
+      },
+      "actions": {
+        "backToDashboard": "Retour au tableau de bord",
+        "reset": "Réinitialiser les valeurs",
+        "save": "Enregistrer"
+      },
+      "feedback": {
+        "success": "Réglages de la scène enregistrés.",
+        "failure": "Impossible d’enregistrer les réglages de la scène.",
+        "missingContent": "Le contenu du hero n’est pas encore disponible pour cette langue."
       }
     },
     "navigation": {
