@@ -170,7 +170,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
-import { NumberFlow } from "@number-flow/vue";
+import NumberFlow from "@number-flow/vue";
 import ScrollSmooth from "~/components/layout/ScrollSmooth.vue";
 import TrendChart from "~/components/analytics/TrendChart.vue";
 import { useAnalytics } from "~/composables/useAnalytics";
