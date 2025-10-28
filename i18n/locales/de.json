@@ -518,12 +518,50 @@
         }
       }
     },
+    "heroScene": {
+      "title": "Hero-Szene",
+      "subtitle": "Passe den interaktiven 3D-Hintergrund an, ohne den Code zu berühren.",
+      "localeLabel": "Sprache",
+      "loading": "Hero-Szene wird geladen...",
+      "error": "Die Einstellungen der Hero-Szene können momentan nicht geladen werden.",
+      "sections": {
+        "sceneTitle": "Animierter Hintergrund",
+        "sceneHint": "Stimme Farben, Bewegung und Glow auf dein Branding ab. Änderungen gelten pro Sprache."
+      },
+      "fields": {
+        "enabled": "Animierte Szene aktivieren",
+        "primaryColor": "Primärfarbe",
+        "secondaryColor": "Sekundärfarbe",
+        "accentColor": "Akzentfarbe",
+        "particleDensity": "Partikeldichte",
+        "bloomIntensity": "Bloom-Intensität",
+        "rotationSpeed": "Orbitgeschwindigkeit",
+        "noiseStrength": "Bewegungsvariation"
+      },
+      "actions": {
+        "backToDashboard": "Zurück zum Dashboard",
+        "reset": "Standardwerte wiederherstellen",
+        "save": "Änderungen speichern"
+      },
+      "feedback": {
+        "success": "Einstellungen der Hero-Szene gespeichert.",
+        "failure": "Die Einstellungen der Hero-Szene konnten nicht gespeichert werden.",
+        "missingContent": "Für diese Sprache ist noch kein Hero-Inhalt vorhanden."
+      }
+    },
     "navigation": {
       "home": "Startseite",
       "dashboard": "Dashboard",
       "settings": "Einstellungen",
       "design": "Design",
-      "content": "Inhalte"
+      "content": "Inhalte",
+      "resume": "Résumé-Generator"
+    },
+    "resume": {
+      "badge": "Neue Funktion",
+      "title": "In wenigen Minuten einen professionellen Lebenslauf erstellen",
+      "subtitle": "Füllen Sie Ihre gespeicherten Daten aus, passen Sie das Template an und exportieren Sie das PDF direkt im Admin-Bereich.",
+      "privateLabel": "Nur für Admin"
     }
   }
 }

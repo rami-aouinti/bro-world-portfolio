@@ -518,12 +518,50 @@
         }
       }
     },
+    "heroScene": {
+      "title": "Escena hero",
+      "subtitle": "Ajusta el fondo 3D interactivo sin tocar el código.",
+      "localeLabel": "Idioma",
+      "loading": "Cargando ajustes de la escena...",
+      "error": "No se pueden cargar los ajustes de la escena en este momento.",
+      "sections": {
+        "sceneTitle": "Fondo animado",
+        "sceneHint": "Modifica colores, movimiento y brillo para alinearlos con tu marca. Los cambios son específicos por idioma."
+      },
+      "fields": {
+        "enabled": "Activar escena animada",
+        "primaryColor": "Color primario",
+        "secondaryColor": "Color secundario",
+        "accentColor": "Color de acento",
+        "particleDensity": "Densidad de partículas",
+        "bloomIntensity": "Intensidad del bloom",
+        "rotationSpeed": "Velocidad de órbita",
+        "noiseStrength": "Variación del movimiento"
+      },
+      "actions": {
+        "backToDashboard": "Volver al panel",
+        "reset": "Restablecer valores",
+        "save": "Guardar cambios"
+      },
+      "feedback": {
+        "success": "Configuración de la escena guardada.",
+        "failure": "No se pudo guardar la configuración de la escena.",
+        "missingContent": "El contenido del hero aún no está disponible para este idioma."
+      }
+    },
     "navigation": {
       "home": "Inicio",
       "dashboard": "Panel",
       "settings": "Ajustes",
       "design": "Diseño",
-      "content": "Contenidos"
+      "content": "Contenidos",
+      "resume": "Generador de CV"
+    },
+    "resume": {
+      "badge": "Nueva función",
+      "title": "Genera un currículum impecable en minutos",
+      "subtitle": "Completa tus datos guardados, ajusta la plantilla y exporta el PDF sin salir del panel de administración.",
+      "privateLabel": "Solo administración"
     }
   }
 }

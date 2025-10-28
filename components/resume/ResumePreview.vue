@@ -1,71 +1,71 @@
 <template>
-  <v-card
+  <CustomGlowCard
     class="resume-preview"
-    elevation="0"
-    rounded="xl"
+    title="Aperçu & export"
+    eyebrow="Assistant CV"
+    :variant="'indigo'"
+    :heading-level="2"
   >
-    <v-card-item class="resume-preview__header">
-      <div class="resume-preview__headline">
-        <v-card-title class="text-h5 font-weight-bold pa-0">Aperçu & export</v-card-title>
-        <v-card-subtitle class="text-body-2 text-medium-emphasis pa-0 mt-1">
+    <template #default>
+      <div class="resume-preview__intro">
+        <p class="resume-preview__description">
           Prévisualisez votre CV en direct. Ajustez le zoom, testez le mode mobile et exportez un PDF prêt à l’emploi.
-        </v-card-subtitle>
-      </div>
-      <div class="resume-preview__controls">
-        <div class="resume-preview__zoom">
-          <span class="resume-preview__zoom-label">{{ zoomLabel }}</span>
-          <div class="resume-preview__zoom-actions">
-            <v-btn
-              variant="text"
-              icon="mdi-minus"
-              density="comfortable"
-              :disabled="!canZoomOut"
-              @click="decreaseZoom"
-            />
-            <v-slider
-              v-model="zoom"
-              class="resume-preview__slider"
-              :min="MIN_ZOOM"
-              :max="MAX_ZOOM"
-              :step="ZOOM_STEP"
-              color="primary"
-              hide-details
-            />
-            <v-btn
-              variant="text"
-              icon="mdi-plus"
-              density="comfortable"
-              :disabled="!canZoomIn"
-              @click="increaseZoom"
-            />
+        </p>
+
+        <div class="resume-preview__controls">
+          <div class="resume-preview__zoom">
+            <span class="resume-preview__zoom-label">{{ zoomLabel }}</span>
+            <div class="resume-preview__zoom-actions">
+              <v-btn
+                variant="text"
+                icon="mdi-minus"
+                density="comfortable"
+                :disabled="!canZoomOut"
+                @click="decreaseZoom"
+              />
+              <v-slider
+                v-model="zoom"
+                class="resume-preview__slider"
+                :min="MIN_ZOOM"
+                :max="MAX_ZOOM"
+                :step="ZOOM_STEP"
+                color="primary"
+                hide-details
+              />
+              <v-btn
+                variant="text"
+                icon="mdi-plus"
+                density="comfortable"
+                :disabled="!canZoomIn"
+                @click="increaseZoom"
+              />
+            </div>
           </div>
+
+          <v-btn
+            class="text-none"
+            variant="tonal"
+            :color="isMobilePreview ? 'primary' : undefined"
+            prepend-icon="mdi-cellphone"
+            @click="toggleMobilePreview"
+          >
+            {{ isMobilePreview ? 'Vue bureau' : 'Vue mobile' }}
+          </v-btn>
+
+          <v-btn
+            color="primary"
+            class="text-none"
+            prepend-icon="mdi-file-download-outline"
+            :loading="isExporting"
+            @click="handleExport"
+          >
+            Exporter en PDF
+          </v-btn>
         </div>
-
-        <v-btn
-          class="text-none"
-          variant="tonal"
-          :color="isMobilePreview ? 'primary' : undefined"
-          prepend-icon="mdi-cellphone"
-          @click="toggleMobilePreview"
-        >
-          {{ isMobilePreview ? 'Vue bureau' : 'Vue mobile' }}
-        </v-btn>
-
-        <v-btn
-          color="primary"
-          class="text-none"
-          prepend-icon="mdi-file-download-outline"
-          :loading="isExporting"
-          @click="handleExport"
-        >
-          Exporter en PDF
-        </v-btn>
       </div>
-    </v-card-item>
 
-    <v-divider class="my-4" />
+      <div class="resume-preview__divider" />
 
-    <v-card-text>
       <client-only>
         <div class="resume-preview__stage">
           <div
@@ -130,13 +130,14 @@
           </v-slide-group-item>
         </v-slide-group>
       </div>
-    </v-card-text>
-  </v-card>
+    </template>
+  </CustomGlowCard>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { storeToRefs } from "pinia";
+import CustomGlowCard from "~/components/CustomGlowCard.vue";
 
 import TemplateBold from "~/components/resume/templates/TemplateBold.vue";
 import TemplateClassic from "~/components/resume/templates/TemplateClassic.vue";
@@ -239,7 +240,7 @@ async function handleExport() {
   flex-direction: column;
 }
 
-.resume-preview__header {
+.resume-preview__intro {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
@@ -247,11 +248,19 @@ async function handleExport() {
   justify-content: space-between;
 }
 
-.resume-preview__headline {
-  max-width: 520px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.resume-preview__description {
+  flex: 1 1 320px;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--card-text-color, #f8fafc) 78%, rgba(15, 23, 42, 0.55) 22%);
+}
+
+.resume-preview__divider {
+  width: 100%;
+  height: 1px;
+  margin: 20px 0 28px;
+  background: color-mix(in srgb, var(--card-accent, #2563eb) 22%, transparent);
 }
 
 .resume-preview__controls {

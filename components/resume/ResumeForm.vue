@@ -1,20 +1,19 @@
 <template>
-  <v-card
+  <CustomGlowCard
     class="resume-form"
-    elevation="0"
-    rounded="xl"
+    title="Générateur de contenu"
+    eyebrow="Assistant CV"
+    :variant="'teal'"
+    :heading-level="2"
   >
-    <v-card-item>
-      <v-card-title class="text-h5 font-weight-bold">Générateur de contenu</v-card-title>
-      <v-card-subtitle class="text-body-2 text-medium-emphasis">
+    <template #default>
+      <p class="resume-form__description">
         Remplissez vos informations, choisissez un template et personnalisez les couleurs. Les données sont sauvegardées
         automatiquement dans votre navigateur.
-      </v-card-subtitle>
-    </v-card-item>
+      </p>
 
-    <v-divider class="my-4" />
+      <div class="resume-form__divider" />
 
-    <v-card-text>
       <v-alert
         v-if="!resumeStore.isHydrated"
         type="info"
@@ -640,12 +639,13 @@
           </v-expansion-panel>
         </v-expansion-panels>
       </v-form>
-    </v-card-text>
-  </v-card>
+    </template>
+  </CustomGlowCard>
 </template>
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import CustomGlowCard from "~/components/CustomGlowCard.vue";
 import { useResumeStore } from "~/stores/resume";
 
 const resumeStore = useResumeStore();
@@ -657,6 +657,20 @@ const { resume } = storeToRefs(resumeStore);
 .resume-form {
   display: flex;
   flex-direction: column;
+}
+
+.resume-form__description {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--card-text-color, #f8fafc) 80%, rgba(15, 23, 42, 0.55) 20%);
+}
+
+.resume-form__divider {
+  width: 100%;
+  height: 1px;
+  margin: 16px 0 24px;
+  background: color-mix(in srgb, var(--card-accent, #2563eb) 20%, transparent);
 }
 
 .resume-form__content {

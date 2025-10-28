@@ -444,6 +444,12 @@ const baseLinks = computed(() => [
     label: translate("admin.navigation.design", "Design"),
     icon: "mdi-palette-outline",
   },
+  {
+    url: "resume",
+    to: "/admin/resume",
+    label: translate("admin.navigation.resume", "Résumé builder"),
+    icon: "mdi-file-account-outline",
+  },
 ]);
 
 const sectionDefinitions = computed(() => [
