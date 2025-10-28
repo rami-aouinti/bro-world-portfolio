@@ -526,8 +526,14 @@
       "dashboard": "Dashboard",
       "settings": "Impostazioni",
       "design": "Design",
-      "heroScene": "Scena hero",
-      "content": "Contenuti"
+      "content": "Contenuti",
+      "resume": "Generatore CV"
+    },
+    "resume": {
+      "badge": "Nuova funzionalità",
+      "title": "Crea un curriculum professionale in pochi minuti",
+      "subtitle": "Compila i dati salvati, personalizza il modello ed esporta il PDF direttamente dall’area admin.",
+      "privateLabel": "Solo amministratore"
     }
   }
 }

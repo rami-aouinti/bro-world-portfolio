@@ -526,8 +526,14 @@
       "dashboard": "Panel",
       "settings": "Ajustes",
       "design": "Diseño",
-      "heroScene": "Escena hero",
-      "content": "Contenidos"
+      "content": "Contenidos",
+      "resume": "Generador de CV"
+    },
+    "resume": {
+      "badge": "Nueva función",
+      "title": "Genera un currículum impecable en minutos",
+      "subtitle": "Completa tus datos guardados, ajusta la plantilla y exporta el PDF sin salir del panel de administración.",
+      "privateLabel": "Solo administración"
     }
   }
 }

@@ -526,8 +526,14 @@
       "dashboard": "仪表盘",
       "settings": "设置",
       "design": "设计",
-      "heroScene": "Hero 场景",
-      "content": "内容"
+      "content": "内容",
+      "resume": "简历生成器"
+    },
+    "resume": {
+      "badge": "新功能",
+      "title": "几分钟内生成专业简历",
+      "subtitle": "填写已保存的数据，调整模板并在后台直接导出 PDF。",
+      "privateLabel": "仅限管理员"
     }
   }
 }
