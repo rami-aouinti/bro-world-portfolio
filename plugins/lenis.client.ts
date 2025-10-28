@@ -77,6 +77,7 @@ export default defineNuxtPlugin(() => {
     });
 
     lenisRef.value = instance;
+    refreshDocumentState();
 
     instance.scrollTo(0, { immediate: true });
 
