@@ -1,5 +1,5 @@
 <template>
-  <v-container class="admin-dashboard mt-5">
+  <v-container class="admin-dashboard">
     <v-row justify="center">
       <v-col
         cols="12"
@@ -60,6 +60,40 @@
             </div>
           </v-card-text>
         </v-card>
+
+        <v-row
+          class="dashboard-metrics"
+          dense
+        >
+          <v-col
+            v-for="metric in metrics"
+            :key="metric.id"
+            cols="12"
+            md="4"
+          >
+            <v-card
+              class="dashboard-metric"
+              elevation="0"
+              rounded="xl"
+            >
+              <div class="dashboard-metric__beam" />
+              <v-card-text class="dashboard-metric__content">
+                <div class="dashboard-metric__icon">
+                  <v-icon
+                    :icon="metric.icon"
+                    size="28"
+                    color="primary"
+                  />
+                </div>
+                <div class="dashboard-metric__values">
+                  <span class="dashboard-metric__label">{{ metric.label }}</span>
+                  <strong class="dashboard-metric__value">{{ metric.value }}</strong>
+                  <span class="dashboard-metric__helper">{{ metric.helper }}</span>
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
 
         <v-row
           class="dashboard-grid"
@@ -201,6 +235,11 @@ const openSetting = ref(false);
 const ThemeCustomizer = defineAsyncComponent(() => import("~/components/ThemeCustomizer.vue"));
 const shouldRenderThemeCustomizer = ref(false);
 
+function translate(key: string, fallback: string) {
+  const value = t(key);
+  return value === key ? fallback : value;
+}
+
 function activateThemeCustomizer() {
   if (shouldRenderThemeCustomizer.value) {
     return;
@@ -295,6 +334,30 @@ const sections = computed(() => [
   },
 ]);
 
+const metrics = computed(() => [
+  {
+    id: "sections",
+    label: translate("admin.dashboard.metrics.sections.label", "Sections actives"),
+    value: sections.value.length.toString().padStart(2, "0"),
+    helper: translate("admin.dashboard.metrics.sections.helper", "Modules synchronisés"),
+    icon: "mdi-view-grid-plus",
+  },
+  {
+    id: "drafts",
+    label: translate("admin.dashboard.metrics.drafts.label", "Brouillons"),
+    value: "03",
+    helper: translate("admin.dashboard.metrics.drafts.helper", "Contenus à finaliser"),
+    icon: "mdi-pencil-outline",
+  },
+  {
+    id: "themes",
+    label: translate("admin.dashboard.metrics.themes.label", "Thèmes enregistrés"),
+    value: "05",
+    helper: translate("admin.dashboard.metrics.themes.helper", "Variations de palette"),
+    icon: "mdi-palette-swatch-outline",
+  },
+]);
+
 const { data: session } = await useAsyncData("admin-session", () => $fetch("/api/auth/session"));
 
 const userDisplayName = computed(
@@ -346,6 +409,73 @@ async function handleLogout() {
   gap: 32px;
   position: relative;
   z-index: 1;
+}
+
+.dashboard-metrics {
+  gap: 20px 0;
+}
+
+.dashboard-metric {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--admin-surface-radius, 28px);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: color-mix(in srgb, rgba(15, 23, 42, 0.88) 96%, transparent);
+  backdrop-filter: blur(calc(var(--admin-glass-blur, 18px) / 1.4));
+  box-shadow: 0 22px 45px -32px rgba(15, 23, 42, 0.55);
+}
+
+.dashboard-metric__beam {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.24), transparent 60%);
+  opacity: var(--admin-accent-glow-opacity, 1);
+  pointer-events: none;
+}
+
+.dashboard-metric__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 26px;
+}
+
+.dashboard-metric__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59, 130, 246, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.25);
+}
+
+.dashboard-metric__values {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dashboard-metric__label {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(191, 219, 254, 0.82);
+}
+
+.dashboard-metric__value {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgb(248, 250, 252);
+}
+
+.dashboard-metric__helper {
+  font-size: 0.9rem;
+  color: rgba(226, 232, 240, 0.7);
 }
 
 .dashboard-hero__intro {

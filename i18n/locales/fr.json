@@ -3,11 +3,42 @@
     "loading": "Chargement…"
   },
   "admin": {
+    "shell": {
+      "breadcrumbs": {
+        "dashboard": "Tableau de bord",
+        "design": "Design",
+        "settings": "Réglages",
+        "content": "Contenus"
+      },
+      "actions": {
+        "newContent": "Nouveau contenu",
+        "design": "Personnaliser le design",
+        "preview": "Voir le site"
+      },
+      "context": {
+        "defaultDescription": "Pilotez les sections de votre portfolio et gardez tout synchronisé.",
+        "fallbackTitle": "Administration"
+      }
+    },
     "dashboard": {
       "hero": {
         "eyebrow": "Administration",
         "title": "Tableau de bord",
         "subtitle": "Pilotez toutes les sections du portfolio, mettez-les à jour en quelques clics et suivez l’impact de vos modifications."
+      },
+      "metrics": {
+        "sections": {
+          "label": "Sections actives",
+          "helper": "Modules synchronisés"
+        },
+        "drafts": {
+          "label": "Brouillons",
+          "helper": "Contenus à finaliser"
+        },
+        "themes": {
+          "label": "Thèmes enregistrés",
+          "helper": "Variations de palette"
+        }
       },
       "session": {
         "status": {
