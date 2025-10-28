@@ -447,7 +447,48 @@
         "reset": "Annuler les modifications"
       },
       "siteSettings": "Paramètres du site",
-      "quickAccess": "Accès rapide"
+      "quickAccess": "Accès rapide",
+      "integrations": {
+        "title": "Services connectés",
+        "subtitle": "Connectez vos comptes GitHub et LinkedIn pour garder votre portfolio synchronisé.",
+        "disconnect": "Déconnecter",
+        "lastSynced": "Dernière synchronisation",
+        "connectedAt": "Connecté le",
+        "neverSynced": "Jamais",
+        "status": {
+          "connected": "Connecté",
+          "disconnected": "Non connecté"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "Importez vos dépôts et votre profil GitHub.",
+          "username": "Nom d’utilisateur",
+          "token": "Jeton d’accès personnel",
+          "tokenHint": "Stocké en toute sécurité et jamais exposé publiquement.",
+          "connect": "Enregistrer la connexion",
+          "refresh": "Actualiser les données",
+          "connectedMessage": "Connexion GitHub enregistrée.",
+          "repos": "Dépôts",
+          "followers": "Abonnés",
+          "following": "Abonnements",
+          "projectsTitle": "Dépôts récents"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "Synchronisez vos expériences et formations LinkedIn avec le portfolio.",
+          "token": "Jeton d’accès",
+          "tokenHint": "Nécessite un jeton membre valide avec les autorisations de profil et d’expérience.",
+          "locale": "Langue cible",
+          "connect": "Enregistrer la connexion",
+          "sync": "Synchroniser le contenu",
+          "refresh": "Recharger l’état",
+          "connectedMessage": "Connexion LinkedIn enregistrée.",
+          "syncedMessage": "Données LinkedIn synchronisées.",
+          "experienceCount": "Expériences",
+          "educationCount": "Formations",
+          "unknown": "Membre LinkedIn"
+        }
+      }
     },
     "navigation": {
       "home": "Accueil",

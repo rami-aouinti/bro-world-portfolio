@@ -447,7 +447,48 @@
         "reset": "تجاهل التغييرات"
       },
       "siteSettings": "إعدادات الموقع",
-      "quickAccess": "وصول سريع"
+      "quickAccess": "وصول سريع",
+      "integrations": {
+        "title": "الخدمات المتصلة",
+        "subtitle": "اربط حسابات GitHub وLinkedIn للحفاظ على تزامن محتوى ملفك الشخصي.",
+        "disconnect": "قطع الاتصال",
+        "lastSynced": "آخر مزامنة",
+        "connectedAt": "تاريخ الاتصال",
+        "neverSynced": "أبدًا",
+        "status": {
+          "connected": "متصل",
+          "disconnected": "غير متصل"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "استورد المستودعات ومعلومات الملف الشخصي مباشرة من GitHub.",
+          "username": "اسم المستخدم",
+          "token": "رمز وصول شخصي",
+          "tokenHint": "يُخزّن بأمان ولا يظهر للعامة.",
+          "connect": "حفظ الاتصال",
+          "refresh": "تحديث البيانات",
+          "connectedMessage": "تم حفظ اتصال GitHub.",
+          "repos": "المستودعات",
+          "followers": "المتابعون",
+          "following": "يتابع",
+          "projectsTitle": "أحدث المستودعات"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "زامن الخبرات والتعليم من LinkedIn مع ملفك.",
+          "token": "رمز الوصول",
+          "tokenHint": "يتطلب رمز عضو صالح مع صلاحيات الملف والخبرة.",
+          "locale": "اللغة المستهدفة",
+          "connect": "حفظ الاتصال",
+          "sync": "مزامنة المحتوى",
+          "refresh": "تحديث الحالة",
+          "connectedMessage": "تم حفظ اتصال LinkedIn.",
+          "syncedMessage": "تمت مزامنة بيانات LinkedIn.",
+          "experienceCount": "الخبرات",
+          "educationCount": "التعليم",
+          "unknown": "عضو LinkedIn"
+        }
+      }
     },
     "navigation": {
       "home": "الرئيسية",

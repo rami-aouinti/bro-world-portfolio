@@ -447,7 +447,48 @@
         "reset": "Отменить изменения"
       },
       "siteSettings": "Настройки сайта",
-      "quickAccess": "Быстрый доступ"
+      "quickAccess": "Быстрый доступ",
+      "integrations": {
+        "title": "Подключённые сервисы",
+        "subtitle": "Свяжите аккаунты GitHub и LinkedIn, чтобы автоматически обновлять портфолио.",
+        "disconnect": "Отключить",
+        "lastSynced": "Последняя синхронизация",
+        "connectedAt": "Подключено",
+        "neverSynced": "Никогда",
+        "status": {
+          "connected": "Подключено",
+          "disconnected": "Не подключено"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "Импортируйте репозитории и данные профиля напрямую из GitHub.",
+          "username": "Имя пользователя",
+          "token": "Персональный токен доступа",
+          "tokenHint": "Хранится надёжно и никогда не показывается публично.",
+          "connect": "Сохранить подключение",
+          "refresh": "Обновить данные",
+          "connectedMessage": "Подключение GitHub сохранено.",
+          "repos": "Репозитории",
+          "followers": "Подписчики",
+          "following": "Подписки",
+          "projectsTitle": "Недавние репозитории"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "Синхронизируйте опыт и образование из LinkedIn с портфолио.",
+          "token": "Токен доступа",
+          "tokenHint": "Требуется действительный токен участника с правами профиля и опыта.",
+          "locale": "Целевой язык",
+          "connect": "Сохранить подключение",
+          "sync": "Синхронизировать контент",
+          "refresh": "Обновить статус",
+          "connectedMessage": "Подключение LinkedIn сохранено.",
+          "syncedMessage": "Данные LinkedIn синхронизированы.",
+          "experienceCount": "Опыт",
+          "educationCount": "Образование",
+          "unknown": "Участник LinkedIn"
+        }
+      }
     },
     "navigation": {
       "home": "Главная",

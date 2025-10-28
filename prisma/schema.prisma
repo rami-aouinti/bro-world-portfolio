@@ -103,3 +103,15 @@ model Session {
 
   user AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model IntegrationSetting {
+  id        String   @id @default(cuid())
+  provider  String
+  key       String
+  value     String
+  isSecret  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([provider, key])
+}

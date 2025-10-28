@@ -447,7 +447,48 @@
         "reset": "Annulla modifiche"
       },
       "siteSettings": "Impostazioni del sito",
-      "quickAccess": "Accesso rapido"
+      "quickAccess": "Accesso rapido",
+      "integrations": {
+        "title": "Servizi connessi",
+        "subtitle": "Collega i tuoi account GitHub e LinkedIn per mantenere aggiornato il portfolio.",
+        "disconnect": "Disconnetti",
+        "lastSynced": "Ultima sincronizzazione",
+        "connectedAt": "Connesso il",
+        "neverSynced": "Mai",
+        "status": {
+          "connected": "Connesso",
+          "disconnected": "Non connesso"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "Importa repository e informazioni del profilo direttamente da GitHub.",
+          "username": "Nome utente",
+          "token": "Token di accesso personale",
+          "tokenHint": "Archiviato in modo sicuro e mai esposto pubblicamente.",
+          "connect": "Salva connessione",
+          "refresh": "Aggiorna dati",
+          "connectedMessage": "Connessione GitHub salvata.",
+          "repos": "Repository",
+          "followers": "Follower",
+          "following": "Seguiti",
+          "projectsTitle": "Repository recenti"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "Sincronizza esperienze e formazione di LinkedIn con il portfolio.",
+          "token": "Token di accesso",
+          "tokenHint": "Richiede un token membro valido con permessi su profilo ed esperienza.",
+          "locale": "Lingua di destinazione",
+          "connect": "Salva connessione",
+          "sync": "Sincronizza contenuti",
+          "refresh": "Ricarica stato",
+          "connectedMessage": "Connessione LinkedIn salvata.",
+          "syncedMessage": "Dati LinkedIn sincronizzati.",
+          "experienceCount": "Esperienze",
+          "educationCount": "Formazioni",
+          "unknown": "Membro LinkedIn"
+        }
+      }
     },
     "navigation": {
       "home": "Home",
