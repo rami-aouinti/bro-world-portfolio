@@ -490,11 +490,43 @@
         }
       }
     },
+    "heroScene": {
+      "title": "Hero 场景",
+      "subtitle": "无需修改代码即可微调交互式 3D 背景。",
+      "localeLabel": "语言",
+      "loading": "正在加载场景设置...",
+      "error": "暂时无法加载场景设置。",
+      "sections": {
+        "sceneTitle": "动态背景",
+        "sceneHint": "调整颜色、运动和光晕以符合品牌。每种语言都会单独保存设置。"
+      },
+      "fields": {
+        "enabled": "启用动态场景",
+        "primaryColor": "主色",
+        "secondaryColor": "次色",
+        "accentColor": "强调色",
+        "particleDensity": "粒子密度",
+        "bloomIntensity": "光晕强度",
+        "rotationSpeed": "旋转速度",
+        "noiseStrength": "运动变化"
+      },
+      "actions": {
+        "backToDashboard": "返回仪表盘",
+        "reset": "重置默认值",
+        "save": "保存更改"
+      },
+      "feedback": {
+        "success": "场景设置已保存。",
+        "failure": "无法保存场景设置。",
+        "missingContent": "该语言的 Hero 内容尚未提供。"
+      }
+    },
     "navigation": {
       "home": "首页",
       "dashboard": "仪表盘",
       "settings": "设置",
       "design": "设计",
+      "heroScene": "Hero 场景",
       "content": "内容"
     }
   }

@@ -1,4 +1,4 @@
-import type { ContentRecord } from "~/types/content";
+import { HERO_SCENE_DEFAULTS, type ContentRecord } from "~/types/content";
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type LocaleCode } from "~/utils/i18n/locales";
 
 export type LocalizedContentRecord = Record<LocaleCode, ContentRecord>;
@@ -19,6 +19,7 @@ function createMockContentRecord(record: ContentRecord): ContentRecord {
     badge: "Development preview",
     headline: "This is mock hero content",
     subline: "Placeholder copy is shown while working in development mode.",
+    scene: { ...HERO_SCENE_DEFAULTS },
   };
 
   const service = {
@@ -218,6 +219,7 @@ const EN_CONTENT: ContentRecord = {
     headline: "Hi, I'm Rami, backend & DevOps engineer",
     subline:
       "I design resilient Symfony and Shopware platforms with PHP 8, API Platform, asynchronous processing, and cloud-ready CI/CD.",
+    scene: { ...HERO_SCENE_DEFAULTS },
   },
   service: {
     label: "Services",
@@ -920,6 +922,7 @@ const FR_CONTENT: ContentRecord = {
     headline: "Bonjour, je suis Rami, ingénieur backend & DevOps",
     subline:
       "Je conçois des plateformes Symfony et Shopware résilientes avec PHP 8, API Platform, des traitements asynchrones et une CI/CD prête pour le cloud.",
+    scene: { ...HERO_SCENE_DEFAULTS },
   },
   service: {
     label: "Services",
