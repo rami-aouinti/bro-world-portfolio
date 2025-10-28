@@ -59,7 +59,12 @@ export default defineNuxtPlugin(() => {
 
     destroyLenis();
 
-    const contentElement = (rootElement.firstElementChild as HTMLElement | null) ?? rootElement;
+    const contentElement =
+      (rootElement.querySelector(
+        ":scope > [data-lenis-content]",
+      ) as HTMLElement | null) ??
+      (rootElement.firstElementChild as HTMLElement | null) ??
+      rootElement;
 
     const instance = new Lenis({
       wrapper: rootElement,
@@ -73,6 +78,8 @@ export default defineNuxtPlugin(() => {
 
     lenisRef.value = instance;
     refreshDocumentState();
+
+    instance.scrollTo(0, { immediate: true });
 
     if (!isEnabled.value) {
       instance.stop();
