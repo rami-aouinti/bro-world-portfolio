@@ -32,7 +32,9 @@
         class="app-layout__scroll-top"
         aria-label="Revenir en haut de la page"
         @click="scrollToTop"
-      />
+      >
+        <span class="app-layout__scroll-top-label">Revenir en haut de la page</span>
+      </button>
     </v-app>
   </div>
   <Analytics />
@@ -282,12 +284,13 @@ function scrollToTop() {
 
 .app-layout__scroll-top {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: clamp(48px, 12vw, 72px);
+  inset-block-end: clamp(16px, 3vw, 32px);
+  inset-inline-end: clamp(16px, 3vw, 32px);
+  width: clamp(44px, 10vw, 64px);
+  height: clamp(44px, 10vw, 64px);
   background: transparent;
   border: none;
+  border-radius: 999px;
   padding: 0;
   margin: 0;
   opacity: 0;
@@ -297,6 +300,20 @@ function scrollToTop() {
 
 .app-layout__scroll-top:focus-visible {
   outline: 2px solid var(--v-theme-primary);
-  opacity: 0.2;
+  outline-offset: 4px;
+  opacity: 0;
+}
+
+.app-layout__scroll-top-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 </style>
