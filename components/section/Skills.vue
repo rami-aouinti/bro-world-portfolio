@@ -33,8 +33,13 @@
               :badge="card.badge"
               :description="card.description"
               :to="card.link"
+              padding="clamp(22px, 3vw, 28px)"
+              border-radius="26px"
+              outline-color="rgba(148, 163, 184, 0.18)"
+              :gradient-sheen-angle="140"
+              :gradient-sheen-opacity="0.55"
             >
-              <div class="skills__card">
+              <div class="skills__chips">
                 <v-chip
                   v-for="skill in card.skills"
                   :key="skill.slug"
@@ -61,6 +66,11 @@
               :badge="languageCard.badge"
               :description="t('portfolio.skills.languagesDescription')"
               :to="languageCard.link"
+              padding="clamp(22px, 3vw, 28px)"
+              border-radius="26px"
+              outline-color="rgba(148, 163, 184, 0.18)"
+              :gradient-sheen-angle="140"
+              :gradient-sheen-opacity="0.55"
             >
               <div class="skills__chips">
                 <v-chip
@@ -219,76 +229,41 @@ const languageCard = computed(() => {
 </script>
 
 <style scoped>
+
 .skills__card {
   height: 100%;
-  position: relative;
-  overflow: visible;
-  transition:
-    transform 0.45s ease,
-    box-shadow 0.45s ease;
 }
 
-.skills__card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 65px -40px rgba(15, 23, 42, 0.9);
-}
-
-.skills__list {
+.skills__card :deep(.glow-card) {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
-.skills__item {
-  --skill-delay: 0ms;
+.skills__card :deep(.glow-card__body) {
   display: flex;
-  align-items: center;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.55), rgba(30, 41, 59, 0.4));
-  animation: skills-item-fade 0.6s ease both;
-  animation-delay: var(--skill-delay);
-  transition:
-    transform 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-.skills__item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(129, 140, 248, 0.55);
-  box-shadow: 0 22px 40px -28px rgba(129, 140, 248, 0.55);
-}
-
-.skills__item-name {
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: #f8fafc;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.skills__item-name:hover,
-.skills__item-name:focus-visible {
-  color: #c7d2fe;
-  text-decoration: underline;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .skills__chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px;
+  justify-content: center;
 }
+
+@media (min-width: 960px) {
+  .skills__chips {
+    justify-content: flex-start;
+  }
+}
+
 
 .skills__chip {
   text-transform: none;
   min-height: 44px;
   padding-inline: 12px;
-  margin: 4px;
   text-decoration: none;
 }
 
