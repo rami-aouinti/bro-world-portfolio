@@ -1,11 +1,5 @@
 <template>
-  <LenisProvider>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </LenisProvider>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
-
-<script setup lang="ts">
-import LenisProvider from "~/components/layout/LenisProvider.vue";
-</script>

@@ -417,7 +417,6 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@nuxt/scripts",
     "motion-v/nuxt",
-    "lenis/nuxt",
     "@nuxtjs/i18n",
     "@nuxt/icon",
     "nuxt-llms",
