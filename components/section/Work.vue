@@ -1,5 +1,8 @@
 <template>
-  <section id="work">
+  <section
+    id="work"
+    class="work-section"
+  >
     <ScrollSmooth>
       <v-container
         v-if="content"
@@ -41,6 +44,7 @@
                     sizes="(min-width: 1280px) 320px, (min-width: 960px) 33vw, (min-width: 600px) 50vw, 90vw"
                     densities="1x, 2x"
                     class="work-card-thumbnail-image"
+                    loading="lazy"
                   />
                 </NuxtLink>
                 <div class="work-card-content relative z-10 flex h-full flex-col gap-5">
@@ -114,6 +118,18 @@ const workCards = computed(() => {
 
 <style scoped>
 @reference "../../assets/styles/index.css";
+
+.work-section {
+  padding-block: clamp(56px, 12vw, 112px);
+}
+
+.work-section :deep(.v-container) {
+  padding-inline: clamp(18px, 6vw, 64px);
+}
+
+.work-section :deep(.v-row) {
+  row-gap: clamp(18px, 4vw, 32px);
+}
 .work-card-body {
   position: relative;
   height: 100%;
@@ -195,5 +211,38 @@ const workCards = computed(() => {
   text-transform: uppercase;
   letter-spacing: 0.35em;
   color: hsl(var(--muted-foreground));
+}
+
+@media (max-width: 1280px) {
+  .work-card-body {
+    padding: 2.25rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .work-card-body {
+    min-height: unset;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .work-section :deep(.v-container) {
+    padding-inline: 1.25rem;
+  }
+
+  .work-card-body {
+    padding: 1.5rem;
+    border-radius: 24px;
+  }
+
+  .work-card-thumbnail-image {
+    aspect-ratio: 16 / 9;
+  }
+
+  .work-card-footer-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+  }
 }
 </style>

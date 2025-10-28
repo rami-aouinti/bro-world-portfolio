@@ -3,11 +3,13 @@
     <v-app class="app-layout__shell">
       <component
         :is="LazyParticlesBg"
+        v-if="showParticles"
         class="app-layout__particles"
         :color="particlesColor"
         :quantity="particleQuantity"
         :staticity="55"
         :ease="45"
+        aria-hidden="true"
       />
       <Navbar />
       <v-main class="app-layout__content">
@@ -42,6 +44,7 @@ const { width } = useWindowSize();
 const isHydrated = ref(false);
 const shouldRenderParticles = ref(false);
 const pendingIdleHandle = ref<number | null>(null);
+const allowParticles = computed(() => width.value >= 640);
 
 const LazyParticlesBg = defineAsyncComponent({
   loader: () => import("~/components/ui/particles-bg").then((module) => module.ParticlesBg),
@@ -49,7 +52,7 @@ const LazyParticlesBg = defineAsyncComponent({
 });
 
 function scheduleParticlesRender() {
-  if (shouldRenderParticles.value || pendingIdleHandle.value !== null) {
+  if (shouldRenderParticles.value || pendingIdleHandle.value !== null || !allowParticles.value) {
     return;
   }
 
@@ -88,7 +91,7 @@ function cancelScheduledParticles() {
 onMounted(() => {
   isHydrated.value = true;
 
-  if (!prefersReducedMotion.value) {
+  if (!prefersReducedMotion.value && allowParticles.value) {
     scheduleParticlesRender();
   }
 });
@@ -104,7 +107,19 @@ watch(prefersReducedMotion, (prefers) => {
     return;
   }
 
-  if (isHydrated.value) {
+  if (isHydrated.value && allowParticles.value) {
+    scheduleParticlesRender();
+  }
+});
+
+watch(allowParticles, (allowed) => {
+  if (!allowed) {
+    cancelScheduledParticles();
+    shouldRenderParticles.value = false;
+    return;
+  }
+
+  if (isHydrated.value && !prefersReducedMotion.value) {
     scheduleParticlesRender();
   }
 });
@@ -135,7 +150,11 @@ const particleQuantity = computed(() => {
 });
 
 const showParticles = computed(
-  () => isHydrated.value && shouldRenderParticles.value && !prefersReducedMotion.value,
+  () =>
+    isHydrated.value &&
+    shouldRenderParticles.value &&
+    !prefersReducedMotion.value &&
+    allowParticles.value,
 );
 </script>
 

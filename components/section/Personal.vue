@@ -46,9 +46,10 @@
         </v-row>
 
         <v-slide-group
-          show-arrows
+          :show-arrows="!isCompactViewport"
           class="personal__carousel"
           :mobile="isCompactViewport"
+          center-active
         >
           <v-slide-group-item
             v-for="card in personalCards"
@@ -70,6 +71,7 @@
                   sizes="(min-width: 1280px) 320px, (min-width: 960px) 280px, (min-width: 640px) 50vw, 90vw"
                   densities="1x, 2x"
                   class="personal__image"
+                  loading="lazy"
                 />
               </template>
               <template #footer>
@@ -247,6 +249,20 @@ const enrichedWorkDetails: Record<
 
 .personal__carousel {
   margin-top: clamp(32px, 6vw, 64px);
+  --carousel-inline-padding: clamp(18px, 6vw, 36px);
+}
+
+.personal__carousel :deep(.v-slide-group__content) {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: stretch;
+  gap: clamp(16px, 4vw, 28px);
+  padding-inline: var(--carousel-inline-padding);
+  scroll-snap-type: x proximity;
+}
+
+.personal__carousel :deep(.v-slide-group__slide) {
+  scroll-snap-align: start;
 }
 
 .personal__card {
@@ -277,6 +293,46 @@ const enrichedWorkDetails: Record<
   letter-spacing: 0.08em;
   font-size: 0.75rem;
   color: color-mix(in srgb, var(--card-text-color) 60%, white 40%);
+}
+
+@media (max-width: 1024px) {
+  .personal__container {
+    min-height: auto;
+    padding-block: clamp(48px, 18vw, 96px);
+  }
+
+  .personal__description {
+    padding: 18px 0 24px;
+  }
+
+  .personal__carousel {
+    margin-top: clamp(24px, 10vw, 48px);
+  }
+}
+
+@media (max-width: 640px) {
+  .personal__container {
+    padding-inline: 1.25rem;
+  }
+
+  .personal__carousel {
+    --carousel-inline-padding: 1rem;
+    scroll-padding: 1rem;
+  }
+
+  .personal__card {
+    margin: 8px 4px;
+    width: min(320px, 88vw);
+  }
+
+  .personal__footer {
+    align-items: stretch;
+  }
+
+  .personal__footer-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
 }
 
 @keyframes twinkle {
