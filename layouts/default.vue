@@ -26,6 +26,22 @@
         </div>
         <slot />
       </v-main>
+      <button
+        v-if="isHydrated"
+        type="button"
+        class="app-layout__scroll-top"
+        :class="{ 'app-layout__scroll-top--visible': !isAtTop }"
+        aria-label="Revenir en haut de la page"
+        @click="scrollToTop"
+      >
+        <v-icon
+          icon="mdi-arrow-up"
+          class="app-layout__scroll-top-icon"
+          size="28"
+          aria-hidden="true"
+        />
+        <span class="sr-only">Revenir en haut de la page</span>
+      </button>
     </v-app>
   </div>
   <Analytics />
@@ -45,6 +61,7 @@ const isHydrated = ref(false);
 const shouldRenderParticles = ref(false);
 const pendingIdleHandle = ref<number | null>(null);
 const allowParticles = computed(() => width.value >= 640);
+const isAtTop = ref(true);
 
 const LazyParticlesBg = defineAsyncComponent({
   loader: () => import("~/components/ui/particles-bg").then((module) => module.ParticlesBg),
@@ -88,16 +105,33 @@ function cancelScheduledParticles() {
   pendingIdleHandle.value = null;
 }
 
+function updateScrollState() {
+  if (!import.meta.client) {
+    return;
+  }
+
+  isAtTop.value = window.scrollY <= 48;
+}
+
 onMounted(() => {
   isHydrated.value = true;
 
   if (!prefersReducedMotion.value && allowParticles.value) {
     scheduleParticlesRender();
   }
+
+  if (import.meta.client) {
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+  }
 });
 
 onBeforeUnmount(() => {
   cancelScheduledParticles();
+
+  if (import.meta.client) {
+    window.removeEventListener("scroll", updateScrollState);
+  }
 });
 
 watch(prefersReducedMotion, (prefers) => {
@@ -156,6 +190,17 @@ const showParticles = computed(
     !prefersReducedMotion.value &&
     allowParticles.value,
 );
+
+function scrollToTop() {
+  if (!import.meta.client) {
+    return;
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
 </script>
 
 <style scoped>
@@ -260,5 +305,55 @@ const showParticles = computed(
   height: 100%;
   pointer-events: none;
   z-index: 0;
+}
+
+.app-layout__scroll-top {
+  position: fixed;
+  inset-block-end: clamp(16px, 3vw, 32px);
+  inset-inline-end: clamp(16px, 3vw, 32px);
+  width: clamp(48px, 10vw, 64px);
+  height: clamp(48px, 10vw, 64px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.6), rgba(30, 41, 59, 0.35));
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 999px;
+  padding: 0;
+  margin: 0;
+  color: #e2e8f0;
+  box-shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  z-index: 10;
+  transform: translateY(12px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.app-layout__scroll-top--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.app-layout__scroll-top:hover,
+.app-layout__scroll-top:focus-visible {
+  background: linear-gradient(135deg, rgba(94, 234, 212, 0.45), rgba(59, 130, 246, 0.3));
+  color: #0f172a;
+}
+
+.app-layout__scroll-top:focus-visible {
+  outline: 2px solid var(--v-theme-primary);
+  outline-offset: 4px;
+}
+
+.app-layout__scroll-top-icon {
+  color: currentColor;
 }
 </style>
