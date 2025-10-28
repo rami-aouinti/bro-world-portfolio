@@ -447,7 +447,48 @@
         "reset": "Änderungen verwerfen"
       },
       "siteSettings": "Seiteneinstellungen",
-      "quickAccess": "Schnellzugriff"
+      "quickAccess": "Schnellzugriff",
+      "integrations": {
+        "title": "Verbundene Dienste",
+        "subtitle": "Verbinde deine GitHub- und LinkedIn-Konten, um Inhalte automatisch zu synchronisieren.",
+        "disconnect": "Trennen",
+        "lastSynced": "Zuletzt synchronisiert",
+        "connectedAt": "Verbunden am",
+        "neverSynced": "Nie",
+        "status": {
+          "connected": "Verbunden",
+          "disconnected": "Nicht verbunden"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "Importiere Repositories und Profildaten direkt von GitHub.",
+          "username": "Benutzername",
+          "token": "Persönlicher Zugriffstoken",
+          "tokenHint": "Sicher gespeichert und niemals öffentlich angezeigt.",
+          "connect": "Verbindung speichern",
+          "refresh": "Daten aktualisieren",
+          "connectedMessage": "GitHub-Verbindung gespeichert.",
+          "repos": "Repositories",
+          "followers": "Follower",
+          "following": "Folgt",
+          "projectsTitle": "Neueste Repositories"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "Synchronisiere deine LinkedIn-Erfahrungen und Ausbildungen mit dem Portfolio.",
+          "token": "Zugriffstoken",
+          "tokenHint": "Erfordert ein gültiges Mitgliedstoken mit Profil- und Erfahrungsrechten.",
+          "locale": "Zielsprache",
+          "connect": "Verbindung speichern",
+          "sync": "Inhalte synchronisieren",
+          "refresh": "Status neu laden",
+          "connectedMessage": "LinkedIn-Verbindung gespeichert.",
+          "syncedMessage": "LinkedIn-Daten synchronisiert.",
+          "experienceCount": "Erfahrungen",
+          "educationCount": "Ausbildungen",
+          "unknown": "LinkedIn-Mitglied"
+        }
+      }
     },
     "navigation": {
       "home": "Startseite",

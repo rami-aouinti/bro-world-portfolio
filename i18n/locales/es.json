@@ -447,7 +447,48 @@
         "reset": "Descartar cambios"
       },
       "siteSettings": "Ajustes del sitio",
-      "quickAccess": "Acceso rápido"
+      "quickAccess": "Acceso rápido",
+      "integrations": {
+        "title": "Servicios conectados",
+        "subtitle": "Vincula tus cuentas de GitHub y LinkedIn para mantener tu portafolio sincronizado.",
+        "disconnect": "Desconectar",
+        "lastSynced": "Última sincronización",
+        "connectedAt": "Conectado el",
+        "neverSynced": "Nunca",
+        "status": {
+          "connected": "Conectado",
+          "disconnected": "No conectado"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "Importa repositorios e información de perfil directamente desde GitHub.",
+          "username": "Nombre de usuario",
+          "token": "Token de acceso personal",
+          "tokenHint": "Se guarda de forma segura y nunca se muestra públicamente.",
+          "connect": "Guardar conexión",
+          "refresh": "Actualizar datos",
+          "connectedMessage": "Conexión de GitHub guardada.",
+          "repos": "Repositorios",
+          "followers": "Seguidores",
+          "following": "Siguiendo",
+          "projectsTitle": "Repositorios recientes"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "Sincroniza tu experiencia y educación de LinkedIn con el portafolio.",
+          "token": "Token de acceso",
+          "tokenHint": "Requiere un token de miembro válido con permisos de perfil y experiencia.",
+          "locale": "Idioma de destino",
+          "connect": "Guardar conexión",
+          "sync": "Sincronizar contenido",
+          "refresh": "Recargar estado",
+          "connectedMessage": "Conexión de LinkedIn guardada.",
+          "syncedMessage": "Datos de LinkedIn sincronizados.",
+          "experienceCount": "Experiencias",
+          "educationCount": "Formaciones",
+          "unknown": "Miembro de LinkedIn"
+        }
+      }
     },
     "navigation": {
       "home": "Inicio",

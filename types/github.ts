@@ -20,3 +20,37 @@ export interface GithubProjectDetailResponse extends GithubProjectListResponse {
 }
 
 export type GithubProjectLanguagesResponse = Record<string, number>;
+
+export interface GithubProjectSummary {
+  slug: string;
+  name: string;
+  description: string | null;
+  url: string;
+  homepage: string | null;
+  topics: string[];
+  stars: number;
+  forks: number;
+  updatedAt: string;
+  primaryLanguage: string | null;
+}
+
+export interface GithubProjectDetails extends GithubProjectSummary {
+  openIssues: number;
+  watchers: number;
+  createdAt: string;
+  languages: { name: string; share: number }[];
+}
+
+export interface GithubUserProfile {
+  login: string;
+  name: string | null;
+  avatar_url: string | null;
+  html_url: string;
+  bio: string | null;
+  blog: string | null;
+  company: string | null;
+  location: string | null;
+  public_repos: number;
+  followers: number;
+  following: number;
+}

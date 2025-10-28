@@ -447,7 +447,48 @@
         "reset": "放弃更改"
       },
       "siteSettings": "站点设置",
-      "quickAccess": "快速访问"
+      "quickAccess": "快速访问",
+      "integrations": {
+        "title": "已连接的服务",
+        "subtitle": "连接你的 GitHub 和 LinkedIn 账户以保持作品集内容同步。",
+        "disconnect": "断开连接",
+        "lastSynced": "最近同步",
+        "connectedAt": "连接时间",
+        "neverSynced": "从未",
+        "status": {
+          "connected": "已连接",
+          "disconnected": "未连接"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "直接从 GitHub 导入仓库和个人资料信息。",
+          "username": "用户名",
+          "token": "个人访问令牌",
+          "tokenHint": "安全存储，绝不会公开显示。",
+          "connect": "保存连接",
+          "refresh": "刷新数据",
+          "connectedMessage": "GitHub 连接已保存。",
+          "repos": "仓库",
+          "followers": "关注者",
+          "following": "正在关注",
+          "projectsTitle": "最新仓库"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "将 LinkedIn 的经历和教育同步到作品集。",
+          "token": "访问令牌",
+          "tokenHint": "需要具有个人资料和经历权限的有效会员令牌。",
+          "locale": "目标语言",
+          "connect": "保存连接",
+          "sync": "同步内容",
+          "refresh": "重新获取状态",
+          "connectedMessage": "LinkedIn 连接已保存。",
+          "syncedMessage": "LinkedIn 数据已同步。",
+          "experienceCount": "经历",
+          "educationCount": "教育",
+          "unknown": "LinkedIn 成员"
+        }
+      }
     },
     "navigation": {
       "home": "首页",
