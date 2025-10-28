@@ -93,12 +93,28 @@
     :transition="lineTransition(0.6)"
     :viewport="viewportConfig"
   >
-    <Line :section-name="workLabel" />
+    <Line :section-name="impactLabel" />
   </Motion>
   <Motion
     :initial="sectionInitial"
     :while-in-view="sectionVisible"
     :transition="sectionTransition(0.65)"
+    :viewport="viewportConfig"
+  >
+    <Impact />
+  </Motion>
+  <Motion
+    :initial="lineInitial"
+    :while-in-view="lineVisible"
+    :transition="lineTransition(0.7)"
+    :viewport="viewportConfig"
+  >
+    <Line :section-name="workLabel" />
+  </Motion>
+  <Motion
+    :initial="sectionInitial"
+    :while-in-view="sectionVisible"
+    :transition="sectionTransition(0.75)"
     :viewport="viewportConfig"
   >
     <Work />
@@ -114,7 +130,7 @@
   <Motion
     :initial="ctaInitial"
     :while-in-view="ctaVisible"
-    :transition="sectionTransition(0.8)"
+    :transition="sectionTransition(0.85)"
     :viewport="viewportConfig"
   >
     <Cta />
@@ -133,6 +149,7 @@ const Skills = defineAsyncComponent(() => import("~/components/section/Skills.vu
 const Experience = defineAsyncComponent(() => import("~/components/section/Experience.vue"));
 const Education = defineAsyncComponent(() => import("~/components/section/Education.vue"));
 const Service = defineAsyncComponent(() => import("~/components/section/Service.vue"));
+const Impact = defineAsyncComponent(() => import("~/components/section/Impact.vue"));
 const Work = defineAsyncComponent(() => import("~/components/section/Work.vue"));
 const PortfolioShowcase = defineAsyncComponent(
   () => import("~/components/section/PortfolioShowcase.vue"),
@@ -145,12 +162,14 @@ const { data: experienceContent } = useContentBlock("experiences");
 const { data: educationContent } = useContentBlock("education");
 const { data: serviceContent } = useContentBlock("service");
 const { data: workContent } = useContentBlock("work");
+const { data: impactContent } = useContentBlock("impact");
 
 const aboutLabel = computed(() => aboutContent.value?.label ?? "");
 const skillsLabel = computed(() => skillsContent.value?.label ?? "");
 const experienceLabel = computed(() => experienceContent.value?.label ?? "");
 const educationLabel = computed(() => educationContent.value?.label ?? "");
 const serviceLabel = computed(() => serviceContent.value?.label ?? "");
+const impactLabel = computed(() => impactContent.value?.label ?? "");
 const workLabel = computed(() => workContent.value?.label ?? "");
 
 const sectionInitial = { opacity: 0, y: 56, filter: "blur(12px)" };

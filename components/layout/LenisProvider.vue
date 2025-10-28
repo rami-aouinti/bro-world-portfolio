@@ -2,24 +2,16 @@
   <div
     ref="rootRef"
     class="lenis-provider"
-    :data-smooth-scroll="smoothScrollState"
   >
-    <div
-      ref="contentRef"
-      class="lenis-content"
-      data-lenis-content
-    >
-      <slot />
-    </div>
+    <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useSmoothScroll } from "~/composables/useSmoothScroll";
 
 const rootRef = ref<HTMLElement | null>(null);
-const contentRef = ref<HTMLElement | null>(null);
 const { registerRoot, isSupported, isEnabled } = useSmoothScroll();
 
 const smoothScrollState = computed(() =>
@@ -27,12 +19,7 @@ const smoothScrollState = computed(() =>
 );
 
 onMounted(() => {
-  nextTick(() => {
-    if (!rootRef.value || !contentRef.value) {
-      return;
-    }
-    registerRoot(rootRef.value);
-  });
+  registerRoot(rootRef.value);
 });
 
 onBeforeUnmount(() => {
@@ -46,10 +33,5 @@ onBeforeUnmount(() => {
   min-height: 100%;
   width: 100%;
   isolation: isolate;
-}
-
-.lenis-content {
-  min-height: 100%;
-  width: 100%;
 }
 </style>

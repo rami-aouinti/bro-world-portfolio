@@ -9,6 +9,7 @@ describe("HeroScene", () => {
   const originalGetContext = HTMLCanvasElement.prototype.getContext;
 
   beforeEach(() => {
+    vi.useFakeTimers();
     globalThis.requestAnimationFrame = ((callback: FrameRequestCallback) =>
       setTimeout(() => callback(0), 16) as unknown as number) as typeof requestAnimationFrame;
     globalThis.cancelAnimationFrame = ((handle: number) =>
@@ -16,6 +17,8 @@ describe("HeroScene", () => {
   });
 
   afterEach(() => {
+    vi.runOnlyPendingTimers();
+    vi.useRealTimers();
     globalThis.requestAnimationFrame = originalRequestAnimationFrame;
     globalThis.cancelAnimationFrame = originalCancelAnimationFrame;
     HTMLCanvasElement.prototype.getContext = originalGetContext;

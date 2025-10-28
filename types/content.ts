@@ -171,6 +171,30 @@ const contactItemSchema = z.object({
   details: z.string().trim().min(1, "Les détails complémentaires sont requis."),
 });
 
+const impactMetricSchema = z.object({
+  key: z.string().trim().optional(),
+  label: z.string().trim().min(1, "Le libellé de la statistique est requis."),
+  description: z.string().trim().optional().default(""),
+  placeholder: z
+    .number({ invalid_type_error: "La valeur par défaut doit être un nombre." })
+    .nonnegative("La valeur doit être positive ou nulle."),
+  unit: z.string().trim().optional().default(""),
+});
+
+const impactMessageSchema = z.object({
+  audience: z.string().trim().min(1, "La clé d’audience est requise."),
+  headline: z.string().trim().min(1, "Le titre est requis."),
+  body: z.string().trim().min(1, "Le contenu est requis."),
+});
+
+export const impactSchema = z.object({
+  label: z.string().trim().min(1, "Le libellé est requis."),
+  headline: z.string().trim().min(1, "Le titre est requis."),
+  subline: z.string().trim().min(1, "La description est requise."),
+  metrics: z.array(impactMetricSchema).min(1, "Ajoutez au moins une statistique."),
+  messages: z.array(impactMessageSchema).optional().default([]),
+});
+
 export const educationSchema = z.object({
   label: z.string().trim().min(1, "Le libellé est requis."),
   headline: z.string().trim().min(1, "Le titre est requis."),
@@ -195,6 +219,7 @@ const schemas = {
   experiences: experiencesSchema,
   education: educationSchema,
   contact: contactSchema,
+  impact: impactSchema,
 } as const satisfies Record<string, ZodTypeAny>;
 
 export type ContentSlug = keyof typeof schemas;

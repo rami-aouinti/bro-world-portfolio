@@ -646,6 +646,19 @@ export default defineNuxtConfig({
         to: process.env.RESEND_TO || process.env.RESEND_FROM,
       },
     },
+    analytics: {
+      cacheTtl: Number.parseInt(process.env.ANALYTICS_CACHE_TTL ?? "", 10) || 60,
+      vercel: {
+        token: process.env.VERCEL_ANALYTICS_TOKEN,
+        teamId: process.env.VERCEL_TEAM_ID,
+        projectId: process.env.VERCEL_PROJECT_ID,
+      },
+      speedInsights: {
+        token: process.env.VERCEL_SPEED_INSIGHTS_TOKEN,
+        teamId: process.env.VERCEL_TEAM_ID,
+        projectId: process.env.VERCEL_PROJECT_ID,
+      },
+    },
     public: {
       auth: {
         csrfCookieName,

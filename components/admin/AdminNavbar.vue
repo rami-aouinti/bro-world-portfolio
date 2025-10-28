@@ -445,6 +445,18 @@ const baseLinks = computed(() => [
     icon: "mdi-palette-outline",
   },
   {
+    url: "hero-scene",
+    to: "/admin/personal",
+    label: translate("admin.navigation.heroScene", "Hero scene"),
+    icon: "mdi-orbit-variant",
+  },
+  {
+    url: "analytics",
+    to: "/admin/analytics",
+    label: translate("admin.navigation.analytics", "Analytics"),
+    icon: "mdi-chart-timeline-variant",
+    },
+  {
     url: "resume",
     to: "/admin/resume",
     label: translate("admin.navigation.resume", "Résumé builder"),
