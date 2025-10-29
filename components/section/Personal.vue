@@ -78,12 +78,13 @@ const headlineLetterSpacing = computed(() => (isCompactViewport.value ? -0.05 : 
 }
 
 .personal__container {
-  min-height: clamp(560px, 82vh, 760px);
+  min-height: clamp(520px, 74vh, 720px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   z-index: 1;
+  padding-block: clamp(36px, 8vh, 72px);
 }
 
 .personal__badge {
@@ -121,7 +122,7 @@ const headlineLetterSpacing = computed(() => (isCompactViewport.value ? -0.05 : 
 @media (max-width: 1024px) {
   .personal__container {
     min-height: auto;
-    padding-block: clamp(48px, 18vw, 96px);
+    padding-block: clamp(32px, 16vw, 72px);
   }
 
   .personal__description {
