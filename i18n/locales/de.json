@@ -15,6 +15,23 @@
     }
   },
   "admin": {
+    "login": {
+      "badge": "Sicherer Zugang",
+      "title": "Im Administrationsbereich anmelden",
+      "subtitle": "Verwende deine Administrator-Zugangsdaten, um dein Portfolio zu verwalten.",
+      "form": {
+        "email": "E-Mail-Adresse",
+        "password": "Passwort",
+        "submit": "Anmelden",
+        "error": "Die Anmeldung ist fehlgeschlagen. Prüfe deine Zugangsdaten und versuche es erneut."
+      },
+      "defaultCredentials": {
+        "title": "Standardanmeldedaten",
+        "email": "E-Mail:",
+        "password": "Passwort:"
+      },
+      "help": "Wende dich an den Website-Inhaber, wenn du Hilfe beim Zugriff auf das Dashboard benötigst."
+    },
     "dashboard": {
       "hero": {
         "eyebrow": "Administration",
@@ -93,23 +110,6 @@
           "description": "Ausbildung und Zertifizierungen."
         }
       }
-    },
-    "login": {
-      "badge": "Admin",
-      "title": "Administratorbereich",
-      "subtitle": "Verwalte dein Portfolio mit einer klaren und eleganten Oberfläche.",
-      "form": {
-        "email": "E-Mail-Adresse",
-        "password": "Passwort",
-        "submit": "Anmelden",
-        "error": "Beim Anmelden ist ein Fehler aufgetreten."
-      },
-      "defaultCredentials": {
-        "title": "Standard-Zugangsdaten",
-        "email": "Benutzer: ",
-        "password": "Passwort: "
-      },
-      "help": "Wenn du den Zugang vergessen hast, kontaktiere den Seiteninhaber für eine Zurücksetzung."
     },
     "editor": {
       "backToDashboard": "Zurück zum Dashboard",
