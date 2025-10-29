@@ -15,6 +15,23 @@
     }
   },
   "admin": {
+    "login": {
+      "badge": "Secure access",
+      "title": "Sign in to the admin area",
+      "subtitle": "Use your administrator credentials to manage your portfolio.",
+      "form": {
+        "email": "Email address",
+        "password": "Password",
+        "submit": "Sign in",
+        "error": "We couldn't sign you in. Please check your credentials and try again."
+      },
+      "defaultCredentials": {
+        "title": "Default credentials",
+        "email": "Email:",
+        "password": "Password:"
+      },
+      "help": "Contact the site owner if you need help accessing the dashboard."
+    },
     "shell": {
       "breadcrumbs": {
         "dashboard": "Dashboard",
