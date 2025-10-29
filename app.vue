@@ -30,6 +30,9 @@
 </template>
 
 <script setup lang="ts">
+import AppLoader from "~/components/layout/AppLoader.vue";
+import RouteLoader from "~/components/layout/RouteLoader.vue";
+
 const isAppReady = useState<boolean>("app:ready", () => false);
 const isRouteLoading = useState<boolean>("app:route-loading", () => false);
 </script>
