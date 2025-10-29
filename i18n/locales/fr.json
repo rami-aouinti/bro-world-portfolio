@@ -2,6 +2,18 @@
   "$vuetify": {
     "loading": "Chargement…"
   },
+  "app": {
+    "loader": {
+      "title": "Préparation de l'expérience",
+      "subtitle": "Nous configurons l'interface du portfolio et récupérons les derniers contenus.",
+      "aria": "L'application charge l'interface du portfolio."
+    },
+    "routeLoader": {
+      "title": "Chargement de la section suivante",
+      "subtitle": "Merci de patienter pendant la récupération du contenu.",
+      "aria": "La page demandée est en cours de chargement."
+    }
+  },
   "admin": {
     "shell": {
       "breadcrumbs": {
