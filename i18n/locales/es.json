@@ -2,6 +2,18 @@
   "$vuetify": {
     "loading": "Cargando…"
   },
+  "app": {
+    "loader": {
+      "title": "Preparando tu experiencia",
+      "subtitle": "Estamos configurando la interfaz del portafolio y obteniendo el contenido más reciente.",
+      "aria": "La aplicación está cargando la interfaz del portafolio."
+    },
+    "routeLoader": {
+      "title": "Cargando la siguiente sección",
+      "subtitle": "Por favor espera mientras recuperamos el contenido.",
+      "aria": "La página solicitada se está cargando."
+    }
+  },
   "admin": {
     "dashboard": {
       "hero": {

@@ -2,6 +2,18 @@
   "$vuetify": {
     "loading": "加载中…"
   },
+  "app": {
+    "loader": {
+      "title": "正在准备您的体验",
+      "subtitle": "我们正在配置作品集界面并获取最新内容。",
+      "aria": "应用正在加载作品集界面。"
+    },
+    "routeLoader": {
+      "title": "正在加载下一部分",
+      "subtitle": "请稍候，我们正在获取内容。",
+      "aria": "请求的页面正在加载。"
+    }
+  },
   "admin": {
     "dashboard": {
       "hero": {

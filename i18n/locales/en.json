@@ -2,6 +2,18 @@
   "$vuetify": {
     "loading": "Loading…"
   },
+  "app": {
+    "loader": {
+      "title": "Preparing your experience",
+      "subtitle": "We’re setting up the portfolio interface and fetching the latest content.",
+      "aria": "The application is loading the portfolio interface."
+    },
+    "routeLoader": {
+      "title": "Loading the next section",
+      "subtitle": "Please hold on while we retrieve the content.",
+      "aria": "The requested page is currently loading."
+    }
+  },
   "admin": {
     "shell": {
       "breadcrumbs": {
