@@ -188,6 +188,7 @@ export async function ensureDefaultAdmin() {
 
   const existing = await prisma.adminUser.findFirst({ where: { role: "admin" } });
   if (existing) {
+    await cacheUser(mapAdminUser(existing));
     return;
   }
 
