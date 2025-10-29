@@ -2,6 +2,18 @@
   "$vuetify": {
     "loading": "Wird geladen…"
   },
+  "app": {
+    "loader": {
+      "title": "Deine Experience wird vorbereitet",
+      "subtitle": "Wir richten das Portfolio-Interface ein und laden die neuesten Inhalte.",
+      "aria": "Die Anwendung lädt die Portfolio-Oberfläche."
+    },
+    "routeLoader": {
+      "title": "Nächster Bereich wird geladen",
+      "subtitle": "Bitte warten Sie, während wir die Inhalte abrufen.",
+      "aria": "Die angeforderte Seite wird geladen."
+    }
+  },
   "admin": {
     "dashboard": {
       "hero": {
