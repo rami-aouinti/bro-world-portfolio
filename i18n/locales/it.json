@@ -15,6 +15,23 @@
     }
   },
   "admin": {
+    "login": {
+      "badge": "Accesso sicuro",
+      "title": "Accedi all’area di amministrazione",
+      "subtitle": "Usa le credenziali da amministratore per gestire il tuo portfolio.",
+      "form": {
+        "email": "Indirizzo email",
+        "password": "Password",
+        "submit": "Accedi",
+        "error": "Accesso non riuscito. Controlla le credenziali e riprova."
+      },
+      "defaultCredentials": {
+        "title": "Credenziali predefinite",
+        "email": "Email:",
+        "password": "Password:"
+      },
+      "help": "Contatta il proprietario del sito se hai bisogno di aiuto per accedere alla dashboard."
+    },
     "dashboard": {
       "hero": {
         "eyebrow": "Amministrazione",

@@ -15,6 +15,23 @@
     }
   },
   "admin": {
+    "login": {
+      "badge": "安全访问",
+      "title": "登录管理后台",
+      "subtitle": "使用管理员凭证来管理你的作品集。",
+      "form": {
+        "email": "电子邮件",
+        "password": "密码",
+        "submit": "登录",
+        "error": "无法登录。请检查凭证后重试。"
+      },
+      "defaultCredentials": {
+        "title": "默认凭证",
+        "email": "邮箱：",
+        "password": "密码："
+      },
+      "help": "如需访问后台的帮助，请联系站点所有者。"
+    },
     "dashboard": {
       "hero": {
         "eyebrow": "管理后台",

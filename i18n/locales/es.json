@@ -15,6 +15,23 @@
     }
   },
   "admin": {
+    "login": {
+      "badge": "Acceso seguro",
+      "title": "Inicia sesión en el área de administración",
+      "subtitle": "Utiliza tus credenciales de administrador para gestionar tu portafolio.",
+      "form": {
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "submit": "Iniciar sesión",
+        "error": "No pudimos iniciar tu sesión. Comprueba tus credenciales e inténtalo de nuevo."
+      },
+      "defaultCredentials": {
+        "title": "Credenciales predeterminadas",
+        "email": "Correo electrónico:",
+        "password": "Contraseña:"
+      },
+      "help": "Si necesitas ayuda para acceder al panel, contacta con el propietario del sitio."
+    },
     "dashboard": {
       "hero": {
         "eyebrow": "Administración",

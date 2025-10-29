@@ -15,6 +15,23 @@
     }
   },
   "admin": {
+    "login": {
+      "badge": "Accès sécurisé",
+      "title": "Connectez-vous à l’espace d’administration",
+      "subtitle": "Utilisez vos identifiants d’administrateur pour gérer votre portfolio.",
+      "form": {
+        "email": "Adresse e-mail",
+        "password": "Mot de passe",
+        "submit": "Se connecter",
+        "error": "Connexion impossible. Vérifiez vos identifiants et réessayez."
+      },
+      "defaultCredentials": {
+        "title": "Identifiants par défaut",
+        "email": "E-mail :",
+        "password": "Mot de passe :"
+      },
+      "help": "Contactez le propriétaire du site si vous avez besoin d’aide pour accéder au tableau de bord."
+    },
     "shell": {
       "breadcrumbs": {
         "dashboard": "Tableau de bord",
