@@ -1,485 +1,253 @@
 <template>
-  <div
-    class="app-loader"
-    role="status"
-    aria-live="polite"
-    aria-busy="true"
+  <Transition
+      enter-active-class="transition-opacity duration-200 ease-out"
+      enter-from-class="opacity-0"
+      leave-active-class="transition-opacity duration-200 ease-in"
+      leave-to-class="opacity-0"
   >
     <div
-      class="app-loader__background"
-      aria-hidden="true"
+        class="route-loader-overlay"
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
     >
-      <span class="app-loader__glow app-loader__glow--one" />
-      <span class="app-loader__glow app-loader__glow--two" />
-      <span class="app-loader__glow app-loader__glow--three" />
-      <span class="app-loader__spark app-loader__spark--one" />
-      <span class="app-loader__spark app-loader__spark--two" />
-      <span class="app-loader__spark app-loader__spark--three" />
-    </div>
-
-    <div class="app-loader__shell">
-      <header class="app-loader__navbar">
-        <div class="app-loader__dock">
-          <span
-            v-for="icon in 5"
-            :key="`dock-icon-${icon}`"
-            class="app-loader__dock-item app-loader__shimmer"
-          />
-          <span class="app-loader__dock-separator" />
-          <span class="app-loader__dock-control app-loader__shimmer" />
-          <span class="app-loader__dock-control app-loader__shimmer" />
+      <span class="sr-only">{{ loaderSubtitle }}</span>
+      <div
+          class="route-loader"
+          aria-hidden="true"
+      >
+        <div class="route-loader__orb">
+          <span class="route-loader__pulse" />
+          <span class="route-loader__spinner" />
+          <span class="route-loader__spark route-loader__spark--one" />
+          <span class="route-loader__spark route-loader__spark--two" />
         </div>
-      </header>
-
-      <main class="app-loader__content">
-        <section class="app-loader__hero">
-          <div class="app-loader__hero-avatar app-loader__shimmer" />
-          <div class="app-loader__hero-text">
-            <span class="app-loader__hero-badge app-loader__shimmer" />
-            <span class="app-loader__line app-loader__line--xl app-loader__shimmer" />
-            <span class="app-loader__line app-loader__line--lg app-loader__shimmer" />
-            <span class="app-loader__line app-loader__line--md app-loader__shimmer" />
-            <div class="app-loader__hero-chips">
-              <span
-                v-for="chip in 3"
-                :key="`chip-${chip}`"
-                class="app-loader__chip app-loader__shimmer"
-              />
-            </div>
-          </div>
-        </section>
-
-        <section class="app-loader__grid">
-          <article
-            v-for="card in 3"
-            :key="`card-${card}`"
-            class="app-loader__card"
-          >
-            <div class="app-loader__card-header">
-              <span class="app-loader__dot app-loader__shimmer" />
-              <span class="app-loader__dot app-loader__shimmer" />
-              <span class="app-loader__dot app-loader__shimmer" />
-            </div>
-            <span class="app-loader__line app-loader__line--lg app-loader__shimmer" />
-            <span class="app-loader__line app-loader__line--md app-loader__shimmer" />
-            <span class="app-loader__line app-loader__line--sm app-loader__shimmer" />
-            <div class="app-loader__pill-group">
-              <span
-                v-for="pill in 3"
-                :key="`pill-${card}-${pill}`"
-                class="app-loader__pill app-loader__shimmer"
-              />
-            </div>
-          </article>
-        </section>
-
-        <section class="app-loader__cta">
-          <div class="app-loader__cta-text">
-            <span class="app-loader__line app-loader__line--lg app-loader__shimmer" />
-            <span class="app-loader__line app-loader__line--md app-loader__shimmer" />
-          </div>
-          <div class="app-loader__cta-actions">
-            <span class="app-loader__button app-loader__button--primary app-loader__shimmer" />
-            <span class="app-loader__button app-loader__button--ghost app-loader__shimmer" />
-          </div>
-        </section>
-      </main>
-
-      <footer class="app-loader__footer">
-        <h1 class="app-loader__title">{{ t("app.loader.title") }}</h1>
-        <p class="app-loader__subtitle">{{ t("app.loader.subtitle") }}</p>
-      </footer>
+        <div class="route-loader__label">
+          <span class="route-loader__title">{{ loaderTitle }}</span>
+          <span class="route-loader__subtitle">{{ loaderSubtitle }}</span>
+        </div>
+        <div class="route-loader__progress">
+          <span class="route-loader__bar" />
+        </div>
+      </div>
     </div>
-
-    <span class="sr-only">{{ t("app.loader.aria") }}</span>
-  </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+
+const props = defineProps({
+  title: {
+    type: String,
+    default: "",
+  },
+  subtitle: {
+    type: String,
+    default: "",
+  },
+});
+
 const { t } = useI18n();
+
+const loaderTitle = computed(() => (props.title ? props.title : t("app.routeLoader.title")));
+const loaderSubtitle = computed(() =>
+    props.subtitle ? props.subtitle : t("app.routeLoader.subtitle"),
+);
+const ariaMessage = computed(() => t("app.routeLoader.aria"));
 </script>
 
 <style scoped>
-.app-loader {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  padding: clamp(24px, 5vw, 48px) clamp(16px, 6vw, 64px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15), transparent 55%),
-    radial-gradient(circle at 80% 30%, rgba(147, 51, 234, 0.18), transparent 52%),
-    radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.1), transparent 60%),
-    linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.96));
-  overflow: hidden;
-  color: rgba(226, 232, 240, 0.92);
-}
-
-.app-loader__shell {
-  position: relative;
-  z-index: 1;
-  width: min(1200px, 100%);
-  display: flex;
-  flex-direction: column;
-  gap: clamp(24px, 4vw, 40px);
-}
-
-.app-loader__background {
-  position: absolute;
+.route-loader-overlay {
+  position: fixed;
   inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.app-loader__glow {
-  position: absolute;
-  filter: blur(120px);
-  opacity: 0.6;
-  border-radius: 999px;
-}
-
-.app-loader__glow--one {
-  background: rgba(61, 27, 84, 0.7);
-  width: 420px;
-  height: 420px;
-  top: -120px;
-  left: -160px;
-}
-
-.app-loader__glow--two {
-  background: rgba(89, 246, 221, 0.5);
-  width: 320px;
-  height: 320px;
-  top: 140px;
-  right: -180px;
-}
-
-.app-loader__glow--three {
-  background: rgba(162, 21, 113, 0.55);
-  width: 280px;
-  height: 280px;
-  bottom: 60px;
-  left: 40%;
-}
-
-.app-loader__spark {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.55);
-  animation: app-loader-twinkle 6s ease-in-out infinite;
-}
-
-.app-loader__spark--one {
-  top: 28%;
-  left: 18%;
-  animation-delay: 0.4s;
-}
-
-.app-loader__spark--two {
-  top: 62%;
-  right: 22%;
-  animation-delay: 1.2s;
-}
-
-.app-loader__spark--three {
-  top: 48%;
-  left: 72%;
-  animation-delay: 2.2s;
-}
-
-.app-loader__navbar {
-  display: flex;
-  justify-content: center;
-}
-
-.app-loader__dock {
-  display: inline-flex;
-  align-items: center;
-  gap: clamp(10px, 2vw, 18px);
-  padding: clamp(12px, 2vw, 16px) clamp(18px, 3vw, 32px);
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(148, 163, 184, 0.24);
-  border-radius: 999px;
-  backdrop-filter: blur(18px);
-}
-
-.app-loader__dock-item {
-  width: clamp(42px, 8vw, 56px);
-  height: clamp(42px, 8vw, 56px);
-  border-radius: 50%;
-}
-
-.app-loader__dock-separator {
-  width: 1px;
-  height: clamp(32px, 5vw, 40px);
-  background: rgba(148, 163, 184, 0.24);
-}
-
-.app-loader__dock-control {
-  width: clamp(44px, 8vw, 52px);
-  height: clamp(44px, 8vw, 52px);
-  border-radius: 18px;
-}
-
-.app-loader__content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(24px, 4vw, 48px);
-  padding: clamp(24px, 4vw, 48px);
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: clamp(24px, 4vw, 36px);
-  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(22px);
-}
-
-.app-loader__hero {
+  z-index: 200;
   display: grid;
-  grid-template-columns: clamp(120px, 18vw, 168px) 1fr;
-  gap: clamp(18px, 3vw, 32px);
-  align-items: center;
+  place-items: center;
+  padding: clamp(1.5rem, 5vw, 4rem);
+  background: transparent;
 }
 
-.app-loader__hero-avatar {
-  aspect-ratio: 1;
-  border-radius: clamp(24px, 5vw, 32px);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.app-loader__hero-text {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(12px, 2vw, 20px);
-}
-
-.app-loader__hero-badge {
-  width: clamp(96px, 16vw, 128px);
-  height: clamp(24px, 4vw, 32px);
-  border-radius: 999px;
-  align-self: flex-start;
-}
-
-.app-loader__hero-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.app-loader__chip {
-  width: clamp(82px, 14vw, 118px);
-  height: 28px;
-  border-radius: 999px;
-}
-
-.app-loader__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: clamp(16px, 3vw, 24px);
-}
-
-.app-loader__card {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(12px, 2vw, 18px);
-  padding: clamp(18px, 3vw, 24px);
-  background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: clamp(18px, 3vw, 24px);
-}
-
-.app-loader__card-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.app-loader__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.app-loader__line {
-  width: 100%;
-  height: 18px;
-  border-radius: 999px;
-}
-
-.app-loader__line--xl {
-  height: clamp(34px, 5vw, 44px);
-  max-width: 92%;
-}
-
-.app-loader__line--lg {
-  height: clamp(26px, 4vw, 34px);
-  max-width: 84%;
-}
-
-.app-loader__line--md {
-  height: 20px;
-  max-width: 72%;
-}
-
-.app-loader__line--sm {
-  height: 16px;
-  max-width: 64%;
-}
-
-.app-loader__pill-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.app-loader__pill {
-  width: clamp(80px, 14vw, 110px);
-  height: 24px;
-  border-radius: 999px;
-}
-
-.app-loader__cta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(18px, 3vw, 32px);
-  align-items: center;
-  justify-content: space-between;
-}
-
-.app-loader__cta-text {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(12px, 2vw, 18px);
-  flex: 1 1 240px;
-}
-
-.app-loader__cta-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: flex-end;
-}
-
-.app-loader__button {
-  width: clamp(160px, 28vw, 220px);
-  height: 44px;
-  border-radius: 999px;
-}
-
-.app-loader__button--primary {
-  background: linear-gradient(135deg, rgba(94, 234, 212, 0.85), rgba(56, 189, 248, 0.75));
-}
-
-.app-loader__button--ghost {
-  background: rgba(94, 234, 212, 0.18);
-}
-
-.app-loader__footer {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  color: rgba(226, 232, 240, 0.92);
-}
-
-.app-loader__title {
-  font-size: clamp(1.5rem, 4vw, 2.4rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-.app-loader__subtitle {
-  margin: 0;
-  font-size: clamp(0.95rem, 2.2vw, 1.125rem);
-  color: rgba(226, 232, 240, 0.75);
-}
-
-.app-loader__shimmer {
+.route-loader {
   position: relative;
+  display: grid;
+  gap: 1.75rem;
+  width: min(420px, 100%);
+  padding: clamp(2rem, 4vw, 2.75rem);
+  border-radius: 1.75rem;
+  background: linear-gradient(150deg, hsl(var(--primary) / 0.16), hsl(var(--primary) / 0.08));
+  border: 1px solid hsl(var(--primary) / 0.25);
+  box-shadow:
+      0 25px 55px hsl(var(--primary) / 0.25),
+      0 12px 22px hsl(var(--primary) / 0.22);
   overflow: hidden;
-  background: rgba(148, 163, 184, 0.18);
 }
 
-.app-loader__shimmer::after {
+.route-loader::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    110deg,
-    rgba(148, 163, 184, 0.1) 20%,
-    rgba(255, 255, 255, 0.35) 45%,
-    rgba(148, 163, 184, 0.1) 70%
-  );
-  animation: app-loader-shimmer 1.6s linear infinite;
-  transform: translateX(-100%);
+  border-radius: inherit;
+  background: radial-gradient(circle at 60% 20%, hsl(var(--primary) / 0.2), transparent 60%);
+  opacity: 0.4;
+  pointer-events: none;
 }
 
-.sr-only {
+.route-loader__orb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(6rem, 35vw, 7.5rem);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+}
+
+.route-loader__pulse {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  inset: 12%;
+  border-radius: 999px;
+  background: radial-gradient(circle, hsl(var(--primary) / 0.35), hsl(var(--primary) / 0.12));
+  filter: blur(2px);
+  animation: route-loader-pulse 2.2s ease-in-out infinite;
 }
 
-@keyframes app-loader-shimmer {
+.route-loader__spinner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: conic-gradient(
+      from 90deg,
+      hsl(var(--primary) / 0),
+      hsl(var(--primary) / 0.85),
+      hsl(var(--primary) / 0)
+  );
+  mask: radial-gradient(circle, transparent calc(50% - 10px), black calc(50% - 9px));
+  -webkit-mask: radial-gradient(circle, transparent calc(50% - 10px), black calc(50% - 9px));
+  animation: route-loader-spin 1.6s linear infinite;
+}
+
+.route-loader__spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: hsl(var(--primary-foreground) / 0.9);
+  box-shadow:
+      0 0 12px hsl(var(--primary-foreground) / 0.75),
+      0 0 24px hsl(var(--primary) / 0.55);
+  animation: route-loader-orbit 2.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.route-loader__spark--one {
+  animation-delay: -0.3s;
+}
+
+.route-loader__spark--two {
+  animation-delay: -1.2s;
+}
+
+.route-loader__label {
+  position: relative;
+  display: grid;
+  gap: 0.45rem;
+  text-align: center;
+  color: hsl(var(--primary-foreground) / 0.95);
+}
+
+.route-loader__title {
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.route-loader__subtitle {
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+  color: hsl(var(--primary-foreground) / 0.7);
+}
+
+.route-loader__progress {
+  position: relative;
+  height: 0.6rem;
+  border-radius: 999px;
+  overflow: hidden;
+  background: hsl(var(--primary) / 0.16);
+}
+
+.route-loader__bar {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+      120deg,
+      hsl(var(--primary) / 0.2),
+      hsl(var(--primary) / 0.85),
+      hsl(var(--primary) / 0.65)
+  );
+  transform: translateX(-100%);
+  animation: route-loader-progress 1.8s ease-in-out infinite;
+}
+
+@keyframes route-loader-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes route-loader-pulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes route-loader-orbit {
+  0%,
+  100% {
+    transform: rotate(0turn) translateY(-160%) scale(1);
+  }
+  50% {
+    transform: rotate(0.5turn) translateY(-160%) scale(1.2);
+  }
+}
+
+@keyframes route-loader-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
   100% {
     transform: translateX(100%);
   }
 }
 
-@keyframes app-loader-twinkle {
-  0%,
-  100% {
-    opacity: 0.25;
-    transform: scale(0.8);
+@media (max-width: 480px) {
+  .route-loader {
+    padding: 1.75rem;
+    border-radius: 1.5rem;
   }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
+
+  .route-loader__subtitle {
+    font-size: 0.85rem;
   }
 }
 
-@media (max-width: 960px) {
-  .app-loader {
-    padding: 32px 18px;
-  }
-
-  .app-loader__hero {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .app-loader__hero-avatar {
-    width: clamp(120px, 38vw, 180px);
-    margin: 0 auto;
-  }
-
-  .app-loader__hero-badge {
-    align-self: center;
-  }
-
-  .app-loader__hero-chips {
-    justify-content: center;
-  }
-
-  .app-loader__cta {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .app-loader__cta-actions {
-    width: 100%;
-    justify-content: flex-start;
+@media (prefers-reduced-motion: reduce) {
+  .route-loader__spinner,
+  .route-loader__pulse,
+  .route-loader__spark,
+  .route-loader__bar {
+    animation: none !important;
   }
 }
 </style>
