@@ -15,6 +15,23 @@
     }
   },
   "admin": {
+    "login": {
+      "badge": "Sicherer Zugang",
+      "title": "Im Administrationsbereich anmelden",
+      "subtitle": "Verwende deine Administrator-Zugangsdaten, um dein Portfolio zu verwalten.",
+      "form": {
+        "email": "E-Mail-Adresse",
+        "password": "Passwort",
+        "submit": "Anmelden",
+        "error": "Die Anmeldung ist fehlgeschlagen. Prüfe deine Zugangsdaten und versuche es erneut."
+      },
+      "defaultCredentials": {
+        "title": "Standardanmeldedaten",
+        "email": "E-Mail:",
+        "password": "Passwort:"
+      },
+      "help": "Wende dich an den Website-Inhaber, wenn du Hilfe beim Zugriff auf das Dashboard benötigst."
+    },
     "dashboard": {
       "hero": {
         "eyebrow": "Administration",
