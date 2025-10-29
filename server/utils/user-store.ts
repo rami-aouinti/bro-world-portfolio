@@ -186,18 +186,76 @@ export async function ensureDefaultAdmin() {
     return;
   }
 
-  const existing = await prisma.adminUser.findFirst({ where: { role: "admin" } });
-  if (existing) {
+  const email = normalizeEmail(config.admin.defaultEmail);
+  const password = config.admin.defaultPassword;
+  const name = "Administrator";
+
+  const existingByEmail = await prisma.adminUser.findUnique({ where: { email } });
+  if (existingByEmail) {
+    const updates: UpdateAdminUserInput = {};
+    if (existingByEmail.name !== name) {
+      updates.name = name;
+    }
+    if (existingByEmail.role !== "admin") {
+      updates.role = "admin";
+    }
+    if (!verifyPassword(password, existingByEmail.passwordHash)) {
+      updates.password = password;
+    }
+
+    if (Object.keys(updates).length > 0) {
+      await updateAdminUser(existingByEmail.id, updates);
+    } else {
+      await cacheUser(mapAdminUser(existingByEmail));
+    }
     return;
   }
 
-  const email = normalizeEmail(config.admin.defaultEmail);
-  const password = config.admin.defaultPassword;
+  const existingAdmins = await prisma.adminUser.findMany({ where: { role: "admin" } });
+
+  if (existingAdmins.length === 0) {
+    const created = await prisma.adminUser.create({
+      data: {
+        email,
+        name,
+        role: "admin",
+        passwordHash: hashPassword(password),
+      },
+    });
+
+    await deleteCachedValue([getEmailCacheKey(email), getIdCacheKey(created.id)]);
+    await cacheUser(mapAdminUser(created));
+    return;
+  }
+
+  if (existingAdmins.length === 1) {
+    const [onlyAdmin] = existingAdmins;
+    const updates: UpdateAdminUserInput = {};
+    if (onlyAdmin.email !== email) {
+      updates.email = email;
+    }
+    if (onlyAdmin.name !== name) {
+      updates.name = name;
+    }
+    if (onlyAdmin.role !== "admin") {
+      updates.role = "admin";
+    }
+    if (!verifyPassword(password, onlyAdmin.passwordHash)) {
+      updates.password = password;
+    }
+
+    if (Object.keys(updates).length > 0) {
+      await updateAdminUser(onlyAdmin.id, updates);
+    } else {
+      await cacheUser(mapAdminUser(onlyAdmin));
+    }
+    return;
+  }
 
   const created = await prisma.adminUser.create({
     data: {
       email,
-      name: "Administrator",
+      name,
       role: "admin",
       passwordHash: hashPassword(password),
     },
