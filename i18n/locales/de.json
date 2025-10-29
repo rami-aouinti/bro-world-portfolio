@@ -436,7 +436,23 @@
       "stars": "Sterne",
       "forks": "Forks",
       "openIssues": "Offene Issues",
-      "watchers": "Watcher"
+      "watchers": "Watcher",
+      "insights": {
+        "title": "PageSpeed Insights",
+        "description": "Aktuelle Lighthouse-Bewertungen der Live-Website.",
+        "generatedAt": "Erfasst am {value}",
+        "reportLink": "Gesamten Bericht ansehen",
+        "platform": {
+          "mobile": "Mobil",
+          "desktop": "Desktop"
+        },
+        "metrics": {
+          "performance": "Leistung",
+          "accessibility": "Barrierefreiheit",
+          "bestPractices": "Best Practices",
+          "seo": "SEO"
+        }
+      }
     },
     "skills": {
       "badge": "{count} Fähigkeit | {count} Fähigkeiten",

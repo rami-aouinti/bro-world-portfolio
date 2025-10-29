@@ -436,7 +436,23 @@
       "stars": "Estrellas",
       "forks": "Forks",
       "openIssues": "Issues abiertos",
-      "watchers": "Watchers"
+      "watchers": "Watchers",
+      "insights": {
+        "title": "PageSpeed Insights",
+        "description": "Últimas puntuaciones de Lighthouse del sitio en línea.",
+        "generatedAt": "Recogido el {value}",
+        "reportLink": "Ver informe completo",
+        "platform": {
+          "mobile": "Móvil",
+          "desktop": "Escritorio"
+        },
+        "metrics": {
+          "performance": "Rendimiento",
+          "accessibility": "Accesibilidad",
+          "bestPractices": "Mejores prácticas",
+          "seo": "SEO"
+        }
+      }
     },
     "skills": {
       "badge": "{count} habilidad | {count} habilidades",

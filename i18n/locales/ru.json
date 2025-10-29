@@ -436,7 +436,23 @@
       "stars": "Звезды",
       "forks": "Форки",
       "openIssues": "Открытые задачи",
-      "watchers": "Наблюдатели"
+      "watchers": "Наблюдатели",
+      "insights": {
+        "title": "PageSpeed Insights",
+        "description": "Актуальные показатели Lighthouse для сайта.",
+        "generatedAt": "Собрано {value}",
+        "reportLink": "Открыть полный отчёт",
+        "platform": {
+          "mobile": "Мобильная версия",
+          "desktop": "Настольная версия"
+        },
+        "metrics": {
+          "performance": "Производительность",
+          "accessibility": "Доступность",
+          "bestPractices": "Лучшие практики",
+          "seo": "SEO"
+        }
+      }
     },
     "skills": {
       "badge": "{count} навык | {count} навыка | {count} навыков",
