@@ -11,6 +11,7 @@ import type {
 import type { AdminGithubProfile } from "~/types/integrations";
 import { deleteIntegrationSetting, getIntegrationSetting, setIntegrationSetting } from "./integration-settings";
 import { getRedisCacheTtl, useRedisClient } from "./redis";
+import { getProjectPerformance } from "~/utils/projects/performance";
 
 const API_BASE_URL = "https://api.github.com";
 const DEFAULT_HEADERS: HeadersInit = {
@@ -139,6 +140,8 @@ export async function fetchGithubProjectDetail(
     }))
     .sort((a, b) => b.share - a.share);
 
+  const performance = getProjectPerformance(slug);
+
   return {
     slug: repo.name,
     name: repo.name,
@@ -154,6 +157,7 @@ export async function fetchGithubProjectDetail(
     updatedAt: repo.updated_at,
     primaryLanguage: repo.language,
     languages,
+    performance: performance ?? null,
   };
 }
 
