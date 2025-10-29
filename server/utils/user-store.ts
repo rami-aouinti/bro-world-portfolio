@@ -186,28 +186,9 @@ export async function ensureDefaultAdmin() {
     return;
   }
 
-  const email = normalizeEmail(config.admin.defaultEmail);
-  const password = config.admin.defaultPassword;
-  const name = "Administrator";
-
-  const existingByEmail = await prisma.adminUser.findUnique({ where: { email } });
-  if (existingByEmail) {
-    const updates: UpdateAdminUserInput = {};
-    if (existingByEmail.name !== name) {
-      updates.name = name;
-    }
-    if (existingByEmail.role !== "admin") {
-      updates.role = "admin";
-    }
-    if (!verifyPassword(password, existingByEmail.passwordHash)) {
-      updates.password = password;
-    }
-
-    if (Object.keys(updates).length > 0) {
-      await updateAdminUser(existingByEmail.id, updates);
-    } else {
-      await cacheUser(mapAdminUser(existingByEmail));
-    }
+  const existing = await prisma.adminUser.findFirst({ where: { role: "admin" } });
+  if (existing) {
+    await cacheUser(mapAdminUser(existing));
     return;
   }
 
