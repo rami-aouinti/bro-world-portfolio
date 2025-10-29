@@ -186,50 +186,35 @@ export async function ensureDefaultAdmin() {
     return;
   }
 
+  const email = normalizeEmail(config.admin.defaultEmail);
+  const password = config.admin.defaultPassword;
+
   const existing = await prisma.adminUser.findFirst({ where: { role: "admin" } });
   if (existing) {
-    await cacheUser(mapAdminUser(existing));
-    return;
-  }
+    const needsEmailUpdate = existing.email !== email;
+    const needsPasswordUpdate = !verifyPassword(password, existing.passwordHash);
+    const needsRoleUpdate = existing.role !== "admin";
 
-  const existingAdmins = await prisma.adminUser.findMany({ where: { role: "admin" } });
+    if (!needsEmailUpdate && !needsPasswordUpdate && !needsRoleUpdate) {
+      await cacheUser(mapAdminUser(existing));
+      return;
+    }
 
-  if (existingAdmins.length === 0) {
-    const created = await prisma.adminUser.create({
+    const updated = await prisma.adminUser.update({
+      where: { id: existing.id },
       data: {
-        email,
-        name,
-        role: "admin",
-        passwordHash: hashPassword(password),
+        ...(needsEmailUpdate ? { email } : {}),
+        ...(needsPasswordUpdate ? { passwordHash: hashPassword(password) } : {}),
+        ...(needsRoleUpdate ? { role: "admin" } : {}),
       },
     });
 
-    await deleteCachedValue([getEmailCacheKey(email), getIdCacheKey(created.id)]);
-    await cacheUser(mapAdminUser(created));
-    return;
-  }
-
-  if (existingAdmins.length === 1) {
-    const [onlyAdmin] = existingAdmins;
-    const updates: UpdateAdminUserInput = {};
-    if (onlyAdmin.email !== email) {
-      updates.email = email;
+    const cacheKeys = [getIdCacheKey(existing.id), getEmailCacheKey(existing.email)];
+    if (needsEmailUpdate) {
+      cacheKeys.push(getEmailCacheKey(email));
     }
-    if (onlyAdmin.name !== name) {
-      updates.name = name;
-    }
-    if (onlyAdmin.role !== "admin") {
-      updates.role = "admin";
-    }
-    if (!verifyPassword(password, onlyAdmin.passwordHash)) {
-      updates.password = password;
-    }
-
-    if (Object.keys(updates).length > 0) {
-      await updateAdminUser(onlyAdmin.id, updates);
-    } else {
-      await cacheUser(mapAdminUser(onlyAdmin));
-    }
+    await deleteCachedValue(cacheKeys);
+    await cacheUser(mapAdminUser(updated));
     return;
   }
 
