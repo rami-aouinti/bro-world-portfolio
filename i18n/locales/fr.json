@@ -142,23 +142,6 @@
         }
       }
     },
-    "login": {
-      "badge": "Admin",
-      "title": "Espace administrateur",
-      "subtitle": "Gérez votre portfolio avec une interface claire et élégante.",
-      "form": {
-        "email": "Adresse e-mail",
-        "password": "Mot de passe",
-        "submit": "Se connecter",
-        "error": "Une erreur est survenue lors de la connexion."
-      },
-      "defaultCredentials": {
-        "title": "Identifiants par défaut",
-        "email": "Utilisateur : ",
-        "password": "Mot de passe : "
-      },
-      "help": "En cas d’oubli, contactez le propriétaire du site pour réinitialiser vos accès."
-    },
     "editor": {
       "backToDashboard": "Retour au tableau de bord",
       "autosaveHint": "Les modifications sont appliquées immédiatement après sauvegarde.",

@@ -111,23 +111,6 @@
         }
       }
     },
-    "login": {
-      "badge": "Admin",
-      "title": "Administratorbereich",
-      "subtitle": "Verwalte dein Portfolio mit einer klaren und eleganten Oberfläche.",
-      "form": {
-        "email": "E-Mail-Adresse",
-        "password": "Passwort",
-        "submit": "Anmelden",
-        "error": "Beim Anmelden ist ein Fehler aufgetreten."
-      },
-      "defaultCredentials": {
-        "title": "Standard-Zugangsdaten",
-        "email": "Benutzer: ",
-        "password": "Passwort: "
-      },
-      "help": "Wenn du den Zugang vergessen hast, kontaktiere den Seiteninhaber für eine Zurücksetzung."
-    },
     "editor": {
       "backToDashboard": "Zurück zum Dashboard",
       "autosaveHint": "Änderungen werden direkt nach dem Speichern angewendet.",

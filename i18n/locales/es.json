@@ -111,23 +111,6 @@
         }
       }
     },
-    "login": {
-      "badge": "Admin",
-      "title": "Área de administración",
-      "subtitle": "Gestiona tu portafolio con una interfaz clara y elegante.",
-      "form": {
-        "email": "Correo electrónico",
-        "password": "Contraseña",
-        "submit": "Iniciar sesión",
-        "error": "Se produjo un error al iniciar sesión."
-      },
-      "defaultCredentials": {
-        "title": "Credenciales por defecto",
-        "email": "Usuario: ",
-        "password": "Contraseña: "
-      },
-      "help": "Si olvidas tus accesos, contacta al propietario del sitio para restablecerlos."
-    },
     "editor": {
       "backToDashboard": "Volver al panel",
       "autosaveHint": "Los cambios se aplican inmediatamente después de guardar.",

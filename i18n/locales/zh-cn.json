@@ -111,23 +111,6 @@
         }
       }
     },
-    "login": {
-      "badge": "管理员",
-      "title": "管理登录",
-      "subtitle": "以清晰优雅的界面管理你的作品集。",
-      "form": {
-        "email": "电子邮箱",
-        "password": "密码",
-        "submit": "登录",
-        "error": "登录时出现错误。"
-      },
-      "defaultCredentials": {
-        "title": "默认账号",
-        "email": "账号：",
-        "password": "密码："
-      },
-      "help": "若遗忘账号，请联系站点拥有者重置权限。"
-    },
     "editor": {
       "backToDashboard": "返回控制面板",
       "autosaveHint": "保存后将立即应用修改。",

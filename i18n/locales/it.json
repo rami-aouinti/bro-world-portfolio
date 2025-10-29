@@ -111,23 +111,6 @@
         }
       }
     },
-    "login": {
-      "badge": "Admin",
-      "title": "Area amministratore",
-      "subtitle": "Gestisci il tuo portfolio con un’interfaccia chiara ed elegante.",
-      "form": {
-        "email": "Indirizzo e-mail",
-        "password": "Password",
-        "submit": "Accedi",
-        "error": "Si è verificato un errore durante l’accesso."
-      },
-      "defaultCredentials": {
-        "title": "Credenziali predefinite",
-        "email": "Utente: ",
-        "password": "Password: "
-      },
-      "help": "Se dimentichi le credenziali, contatta il proprietario del sito per reimpostarle."
-    },
     "editor": {
       "backToDashboard": "Torna al pannello",
       "autosaveHint": "Le modifiche vengono applicate subito dopo il salvataggio.",
