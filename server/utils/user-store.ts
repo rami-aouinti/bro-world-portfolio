@@ -221,7 +221,7 @@ export async function ensureDefaultAdmin() {
   const created = await prisma.adminUser.create({
     data: {
       email,
-      name: "Administrator",
+      name,
       role: "admin",
       passwordHash: hashPassword(password),
     },
