@@ -11,7 +11,7 @@
         aria-live="polite"
         aria-busy="true"
     >
-      <span class="sr-only">{{ loaderSubtitle }}</span>
+      <span class="sr-only">{{ ariaMessage }}</span>
       <div
           class="route-loader"
           aria-hidden="true"
@@ -116,15 +116,45 @@ const ariaMessage = computed(() => t("app.routeLoader.aria"));
   width: 100%;
   height: 100%;
   border-radius: 999px;
-  background: conic-gradient(
-      from 90deg,
-      hsl(var(--primary) / 0),
-      hsl(var(--primary) / 0.85),
-      hsl(var(--primary) / 0)
-  );
-  mask: radial-gradient(circle, transparent calc(50% - 10px), black calc(50% - 9px));
-  -webkit-mask: radial-gradient(circle, transparent calc(50% - 10px), black calc(50% - 9px));
+  box-sizing: border-box;
+  border: 3px solid hsl(var(--primary) / 0.24);
+  border-top-color: hsl(var(--primary) / 0.85);
+  border-right-color: hsl(var(--primary) / 0.6);
+  border-bottom-color: hsl(var(--primary) / 0.12);
+  background: radial-gradient(circle, hsl(var(--primary) / 0.08), transparent 65%);
   animation: route-loader-spin 1.6s linear infinite;
+  overflow: hidden;
+}
+
+.route-loader__spinner::after {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  border-radius: inherit;
+  background: radial-gradient(circle, hsl(var(--primary) / 0.25), transparent 65%);
+  opacity: 0.8;
+  filter: blur(1px);
+}
+
+@supports (mask: radial-gradient(circle, transparent calc(50% - 10px), black calc(50% - 9px))) {
+  .route-loader__spinner {
+    border: none;
+    background: conic-gradient(
+        from 90deg,
+        hsl(var(--primary) / 0),
+        hsl(var(--primary) / 0.85),
+        hsl(var(--primary) / 0)
+    );
+    mask: radial-gradient(circle, transparent calc(50% - 10px), black calc(50% - 9px));
+    -webkit-mask: radial-gradient(circle, transparent calc(50% - 10px), black calc(50% - 9px));
+  }
+
+  .route-loader__spinner::after {
+    inset: 12%;
+    opacity: 1;
+    filter: none;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.35), hsl(var(--primary) / 0.12));
+  }
 }
 
 .route-loader__spark {
