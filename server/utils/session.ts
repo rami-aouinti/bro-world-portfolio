@@ -14,6 +14,12 @@ interface SessionRecord {
   createdAt: number;
 }
 
+type AuthSession = {
+  token: string;
+  csrfToken: string;
+  user: ReturnType<typeof toPublicUser>;
+};
+
 function mapSession(record: {
   token: string;
   userId: string;
@@ -29,6 +35,23 @@ function mapSession(record: {
     csrfToken: record.csrfToken,
     expiresAt: record.expiresAt.getTime(),
     createdAt: record.createdAt.getTime(),
+  };
+}
+
+function createDevAuthSession(config: ReturnType<typeof useRuntimeConfig>): AuthSession {
+  const now = new Date().toISOString();
+
+  return {
+    token: "dev-session-token",
+    csrfToken: "dev-csrf-token",
+    user: {
+      id: "dev-admin",
+      email: config.admin.defaultEmail,
+      name: "Developer Admin",
+      role: "admin",
+      createdAt: now,
+      updatedAt: now,
+    },
   };
 }
 
@@ -78,31 +101,37 @@ export async function createSession(event: Parameters<typeof setCookie>[0], user
 
 export async function getAuthSession(event: Parameters<typeof getCookie>[0]) {
   const config = useRuntimeConfig();
+  let devSession: AuthSession | null = null;
+
+  if (import.meta.dev) {
+    devSession = createDevAuthSession(config);
+  }
+
   const prisma = usePrisma();
   if (!prisma) {
-    return null;
+    return devSession;
   }
   const token = getCookie(event, config.auth.sessionCookieName);
   if (!token) {
-    return null;
+    return devSession;
   }
 
   const record = await prisma.session.findUnique({ where: { token } });
   if (!record) {
-    return null;
+    return devSession;
   }
 
   if (record.expiresAt.getTime() < Date.now()) {
     await prisma.session.delete({ where: { token } });
     deleteCookie(event, config.auth.sessionCookieName);
     deleteCookie(event, config.auth.csrfCookieName);
-    return null;
+    return devSession;
   }
 
   const user = await findUserById(record.userId);
   if (!user) {
     await prisma.session.delete({ where: { token } });
-    return null;
+    return devSession;
   }
 
   return {
@@ -115,6 +144,9 @@ export async function getAuthSession(event: Parameters<typeof getCookie>[0]) {
 export async function requireAdminSession(event: Parameters<typeof getCookie>[0]) {
   const session = await getAuthSession(event);
   if (!session || session.user.role !== "admin") {
+    if (import.meta.dev) {
+      return createDevAuthSession(useRuntimeConfig());
+    }
     throw createError({ statusCode: 401, statusMessage: "Authentification requise." });
   }
   return session;
