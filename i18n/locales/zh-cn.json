@@ -436,7 +436,23 @@
       "stars": "Star",
       "forks": "Fork",
       "openIssues": "未解决问题",
-      "watchers": "关注者"
+      "watchers": "关注者",
+      "insights": {
+        "title": "PageSpeed Insights",
+        "description": "线上站点最新的 Lighthouse 评分。",
+        "generatedAt": "采集时间 {value}",
+        "reportLink": "查看完整报告",
+        "platform": {
+          "mobile": "移动端",
+          "desktop": "桌面端"
+        },
+        "metrics": {
+          "performance": "性能",
+          "accessibility": "无障碍",
+          "bestPractices": "最佳实践",
+          "seo": "SEO"
+        }
+      }
     },
     "skills": {
       "badge": "{count} 项技能",

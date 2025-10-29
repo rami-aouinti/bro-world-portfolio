@@ -39,6 +39,21 @@ export interface GithubProjectDetails extends GithubProjectSummary {
   watchers: number;
   createdAt: string;
   languages: { name: string; share: number }[];
+  performance?: GithubProjectPerformance | null;
+}
+
+export interface GithubProjectPerformanceVariant {
+  performance: number | null;
+  accessibility: number | null;
+  bestPractices: number | null;
+  seo: number | null;
+}
+
+export interface GithubProjectPerformance {
+  generatedAt: string | null;
+  reportUrl: string | null;
+  mobile?: GithubProjectPerformanceVariant;
+  desktop?: GithubProjectPerformanceVariant;
 }
 
 export interface GithubUserProfile {

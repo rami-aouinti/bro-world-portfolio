@@ -453,7 +453,23 @@
       "stars": "النجوم",
       "forks": "التفريعات",
       "openIssues": "المشكلات المفتوحة",
-      "watchers": "المتابعون"
+      "watchers": "المتابعون",
+      "insights": {
+        "title": "PageSpeed Insights",
+        "description": "أحدث نتائج Lighthouse للموقع المباشر.",
+        "generatedAt": "تم جمعها في {value}",
+        "reportLink": "عرض التقرير الكامل",
+        "platform": {
+          "mobile": "الجوال",
+          "desktop": "سطح المكتب"
+        },
+        "metrics": {
+          "performance": "الأداء",
+          "accessibility": "إمكانية الوصول",
+          "bestPractices": "أفضل الممارسات",
+          "seo": "تحسين محركات البحث"
+        }
+      }
     },
     "skills": {
       "badge": "لا مهارات | مهارة واحدة | مهارتان | {count} مهارات | {count} مهارة | {count} مهارة",

@@ -1,4 +1,7 @@
-import type { GithubProjectLanguagesResponse } from "~/types/github";
+import type {
+  GithubProjectLanguagesResponse,
+  GithubProjectPerformance,
+} from "~/types/github";
 
 type MockGithubProject = {
   slug: string;
@@ -14,6 +17,7 @@ type MockGithubProject = {
   createdAt: string;
   updatedAt: string;
   languages: GithubProjectLanguagesResponse;
+  performance?: GithubProjectPerformance | null;
 };
 
 const MOCK_GITHUB_PROJECTS: MockGithubProject[] = [
@@ -37,6 +41,22 @@ const MOCK_GITHUB_PROJECTS: MockGithubProject[] = [
       SCSS: 9000,
       Markdown: 5000,
     },
+    performance: {
+      generatedAt: "2025-01-10T08:45:00.000Z",
+      reportUrl: "https://pagespeed.web.dev/analysis/https-bro-world-dev/",
+      mobile: {
+        performance: 90,
+        accessibility: 100,
+        bestPractices: 96,
+        seo: 100,
+      },
+      desktop: {
+        performance: 90,
+        accessibility: 100,
+        bestPractices: 96,
+        seo: 100,
+      },
+    },
   },
   {
     slug: "bro-world-backend",
@@ -57,6 +77,7 @@ const MOCK_GITHUB_PROJECTS: MockGithubProject[] = [
       Shell: 3000,
       Dockerfile: 2000,
     },
+    performance: null,
   },
   {
     slug: "nuxt-content-toolkit",
@@ -76,6 +97,22 @@ const MOCK_GITHUB_PROJECTS: MockGithubProject[] = [
       TypeScript: 36000,
       JavaScript: 12000,
       JSON: 4000,
+    },
+    performance: {
+      generatedAt: "2024-11-06T11:10:00.000Z",
+      reportUrl: "https://pagespeed.web.dev/analysis/https-toolkit-bro-world-dev/",
+      mobile: {
+        performance: 88,
+        accessibility: 98,
+        bestPractices: 96,
+        seo: 100,
+      },
+      desktop: {
+        performance: 96,
+        accessibility: 100,
+        bestPractices: 100,
+        seo: 100,
+      },
     },
   },
 ];
@@ -129,5 +166,6 @@ export function getMockGithubProjectDetail(slug: string) {
     watchers: project.watchers,
     createdAt: project.createdAt,
     languages: computeLanguageShare(project.languages),
+    performance: project.performance ?? null,
   };
 }

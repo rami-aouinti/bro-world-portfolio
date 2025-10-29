@@ -163,6 +163,90 @@
                   </li>
                 </ul>
               </div>
+
+              <div
+                v-if="insightPlatforms.length"
+                class="github-project-detail__insights"
+              >
+                <div class="github-project-detail__insights-header">
+                  <div class="github-project-detail__insights-heading">
+                    <h3 class="github-project-detail__section-title">
+                      {{ t("portfolio.githubProjects.insights.title") }}
+                    </h3>
+                    <p class="github-project-detail__insights-description">
+                      {{ t("portfolio.githubProjects.insights.description") }}
+                    </p>
+                  </div>
+                  <div class="github-project-detail__insights-meta">
+                    <span
+                      v-if="project.performance?.generatedAt"
+                      class="github-project-detail__insights-updated"
+                    >
+                      {{
+                        t("portfolio.githubProjects.insights.generatedAt", {
+                          value: formatDate(project.performance.generatedAt),
+                        })
+                      }}
+                    </span>
+                    <NuxtLink
+                      v-if="project.performance?.reportUrl"
+                      :to="project.performance.reportUrl"
+                      target="_blank"
+                      rel="noopener"
+                      class="github-project-detail__link"
+                    >
+                      {{ t("portfolio.githubProjects.insights.reportLink") }}
+                    </NuxtLink>
+                  </div>
+                </div>
+
+                <div class="github-project-detail__insights-grid">
+                  <section
+                    v-for="platform in insightPlatforms"
+                    :key="platform.key"
+                    class="github-project-detail__insight-card"
+                  >
+                    <header class="github-project-detail__insight-card-header">
+                      <v-icon
+                        v-if="platform.key === 'mobile'"
+                        icon="mdi-cellphone"
+                        size="20"
+                        aria-hidden="true"
+                      />
+                      <v-icon
+                        v-else
+                        icon="mdi-monitor"
+                        size="20"
+                        aria-hidden="true"
+                      />
+                      <span class="github-project-detail__insight-platform">
+                        {{
+                          t(
+                            `portfolio.githubProjects.insights.platform.${platform.key}`,
+                          )
+                        }}
+                      </span>
+                    </header>
+                    <ul class="github-project-detail__insight-metrics">
+                      <li
+                        v-for="metric in insightMetrics"
+                        :key="metric"
+                      >
+                        <span class="github-project-detail__insight-score">
+                          {{ platform.scores[metric] ?? "—" }}
+                        </span>
+                        <span class="github-project-detail__insight-label">
+                          {{
+                            t(
+                              `portfolio.githubProjects.insights.metrics.${metric}`,
+                            )
+                          }}
+                        </span>
+                      </li>
+                    </ul>
+                  </section>
+                </div>
+              </div>
             </article>
           </Motion>
         </v-col>
@@ -248,6 +332,10 @@ import { computed } from "vue";
 import { Motion } from "motion-v";
 import { createError } from "#app";
 import { resolveLocalizedRouteTarget } from "~/utils/i18n/resolve-target";
+import type {
+  GithubProjectPerformance,
+  GithubProjectPerformanceVariant,
+} from "~/types/github";
 
 interface GithubProjectDetail {
   slug: string;
@@ -264,6 +352,7 @@ interface GithubProjectDetail {
   updatedAt: string;
   primaryLanguage: string | null;
   languages: { name: string; share: number }[];
+  performance?: GithubProjectPerformance | null;
 }
 
 const route = useRoute();
@@ -293,6 +382,33 @@ const project = computed(() => {
   }
 
   return data.value;
+});
+
+const insightMetrics = ["performance", "accessibility", "bestPractices", "seo"] as const;
+type InsightPlatformKey = "mobile" | "desktop";
+
+interface InsightPlatform {
+  key: InsightPlatformKey;
+  scores: GithubProjectPerformanceVariant;
+}
+
+const insightPlatforms = computed<InsightPlatform[]>(() => {
+  const performance = project.value.performance;
+  const platforms: InsightPlatform[] = [];
+
+  if (!performance) {
+    return platforms;
+  }
+
+  if (performance.mobile) {
+    platforms.push({ key: "mobile", scores: performance.mobile });
+  }
+
+  if (performance.desktop) {
+    platforms.push({ key: "desktop", scores: performance.desktop });
+  }
+
+  return platforms;
 });
 
 function formatDate(input: string) {
@@ -550,6 +666,118 @@ useSeoMeta(() => ({
   font-weight: 600;
 }
 
+.github-project-detail__insights {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.github-project-detail__insights-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.github-project-detail__insights-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 36rem;
+}
+
+.github-project-detail__insights-description {
+  margin: 0;
+  color: rgba(226, 232, 240, 0.78);
+  font-size: 0.95rem;
+}
+
+.github-project-detail__insights-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  font-size: 0.85rem;
+  color: rgba(226, 232, 240, 0.7);
+}
+
+.github-project-detail__insights-updated {
+  white-space: nowrap;
+}
+
+.github-project-detail__insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.github-project-detail__insight-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.github-project-detail__insight-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.github-project-detail__insight-card-header v-icon {
+  color: hsl(var(--primary));
+}
+
+.github-project-detail__insight-platform {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+}
+
+.github-project-detail__insight-metrics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.github-project-detail__insight-metrics li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.github-project-detail__insight-score {
+  min-width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0));
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  box-shadow: 0 10px 24px -16px rgba(59, 130, 246, 0.6);
+}
+
+.github-project-detail__insight-label {
+  font-size: 0.9rem;
+  color: rgba(226, 232, 240, 0.8);
+}
+
 .github-project-detail__panel--stats {
   gap: 20px;
 }
@@ -600,6 +828,14 @@ useSeoMeta(() => ({
 
   .github-project-detail__hero-meta {
     gap: 8px;
+  }
+
+  .github-project-detail__insights-meta {
+    align-items: flex-start;
+  }
+
+  .github-project-detail__insights-updated {
+    white-space: normal;
   }
 }
 
