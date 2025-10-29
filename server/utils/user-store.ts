@@ -186,13 +186,37 @@ export async function ensureDefaultAdmin() {
     return;
   }
 
-  const existing = await prisma.adminUser.findFirst({ where: { role: "admin" } });
-  if (existing) {
-    return;
-  }
-
   const email = normalizeEmail(config.admin.defaultEmail);
   const password = config.admin.defaultPassword;
+
+  const existing = await prisma.adminUser.findFirst({ where: { role: "admin" } });
+  if (existing) {
+    const needsEmailUpdate = existing.email !== email;
+    const needsPasswordUpdate = !verifyPassword(password, existing.passwordHash);
+    const needsRoleUpdate = existing.role !== "admin";
+
+    if (!needsEmailUpdate && !needsPasswordUpdate && !needsRoleUpdate) {
+      await cacheUser(mapAdminUser(existing));
+      return;
+    }
+
+    const updated = await prisma.adminUser.update({
+      where: { id: existing.id },
+      data: {
+        ...(needsEmailUpdate ? { email } : {}),
+        ...(needsPasswordUpdate ? { passwordHash: hashPassword(password) } : {}),
+        ...(needsRoleUpdate ? { role: "admin" } : {}),
+      },
+    });
+
+    const cacheKeys = [getIdCacheKey(existing.id), getEmailCacheKey(existing.email)];
+    if (needsEmailUpdate) {
+      cacheKeys.push(getEmailCacheKey(email));
+    }
+    await deleteCachedValue(cacheKeys);
+    await cacheUser(mapAdminUser(updated));
+    return;
+  }
 
   const created = await prisma.adminUser.create({
     data: {
