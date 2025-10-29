@@ -24,14 +24,7 @@
           <span class="personal__spark personal__spark--two"></span>
           <span class="personal__spark personal__spark--three"></span>
         </div>
-        <Suspense :suspensible="false">
-          <template #default>
-            <slot />
-          </template>
-          <template #fallback>
-            <RouteLoader />
-          </template>
-        </Suspense>
+        <slot />
       </v-main>
       <button
         v-if="isHydrated"

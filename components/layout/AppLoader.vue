@@ -102,6 +102,8 @@ const { t } = useI18n();
 <style scoped>
 .app-loader {
   position: relative;
+  width: 100%;
+  height: 100%;
   min-height: 100vh;
   padding: clamp(24px, 5vw, 48px) clamp(16px, 6vw, 64px);
   display: flex;
