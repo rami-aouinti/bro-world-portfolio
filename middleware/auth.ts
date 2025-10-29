@@ -1,4 +1,7 @@
 export default defineNuxtRouteMiddleware(async () => {
+  if (import.meta.dev) {
+    return;
+  }
   const requestFetch = import.meta.server ? useRequestFetch() : $fetch;
 
   try {
