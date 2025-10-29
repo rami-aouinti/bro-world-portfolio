@@ -3,7 +3,6 @@
     <v-app class="app-layout__shell">
       <component
         :is="LazyParticlesBg"
-        v-if="showParticles"
         class="app-layout__particles"
         :color="particlesColor"
         :quantity="particleQuantity"
@@ -60,6 +59,7 @@ import { usePreferredReducedMotion, useWindowSize } from "@vueuse/core";
 import Navbar from "~/components/layout/Navbar.vue";
 import { useCookieColorMode } from "~/composables/useCookieColorMode";
 import { Analytics } from "@vercel/analytics/nuxt";
+import RouteLoader from "~/components/layout/RouteLoader.vue";
 
 const colorMode = useCookieColorMode();
 const prefersReducedMotion = usePreferredReducedMotion();

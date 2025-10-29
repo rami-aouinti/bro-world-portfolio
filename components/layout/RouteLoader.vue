@@ -1,55 +1,37 @@
 <template>
-  <div
-    class="route-loader"
-    role="status"
-    aria-live="polite"
-    aria-busy="true"
+  <Transition
+      enter-active-class="transition-opacity duration-200 ease-out"
+      enter-from-class="opacity-0"
+      leave-active-class="transition-opacity duration-200 ease-in"
+      leave-to-class="opacity-0"
   >
-    <div class="route-loader__surface">
-      <div class="route-loader__beam" aria-hidden="true" />
-      <div class="route-loader__content">
-        <header class="route-loader__header">
-          <span class="route-loader__bubble route-loader__shimmer" />
-          <span class="route-loader__bubble route-loader__shimmer" />
-          <span class="route-loader__bubble route-loader__shimmer" />
-        </header>
-
-        <div class="route-loader__hero">
-          <span class="route-loader__line route-loader__line--lg route-loader__shimmer" />
-          <span class="route-loader__line route-loader__line--md route-loader__shimmer" />
+    <div
+        class="route-loader-overlay"
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
+    >
+      <span class="sr-only">{{ loaderSubtitle }}</span>
+      <div
+          class="route-loader"
+          aria-hidden="true"
+      >
+        <div class="route-loader__orb">
+          <span class="route-loader__pulse" />
+          <span class="route-loader__spinner" />
+          <span class="route-loader__spark route-loader__spark--one" />
+          <span class="route-loader__spark route-loader__spark--two" />
         </div>
-
-        <div class="route-loader__grid">
-          <article
-            v-for="card in 3"
-            :key="`route-card-${card}`"
-            class="route-loader__card"
-          >
-            <span class="route-loader__line route-loader__line--sm route-loader__shimmer" />
-            <span class="route-loader__line route-loader__line--xs route-loader__shimmer" />
-            <div class="route-loader__chips">
-              <span
-                v-for="chip in 3"
-                :key="`route-chip-${card}-${chip}`"
-                class="route-loader__chip route-loader__shimmer"
-              />
-            </div>
-          </article>
+        <div class="route-loader__label">
+          <span class="route-loader__title">{{ loaderTitle }}</span>
+          <span class="route-loader__subtitle">{{ loaderSubtitle }}</span>
         </div>
-
         <div class="route-loader__progress">
-          <span class="route-loader__progress-bar route-loader__shimmer" />
+          <span class="route-loader__bar" />
         </div>
       </div>
     </div>
-
-    <div class="route-loader__message">
-      <p class="route-loader__title">{{ loaderTitle }}</p>
-      <p class="route-loader__subtitle">{{ loaderSubtitle }}</p>
-    </div>
-
-    <span class="sr-only">{{ ariaMessage }}</span>
-  </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -76,197 +58,196 @@ const ariaMessage = computed(() => t("app.routeLoader.aria"));
 </script>
 
 <style scoped>
+.route-loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.5rem, 5vw, 4rem);
+  background: transparent;
+}
+
 .route-loader {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(18px, 3vw, 28px);
-  align-items: center;
-  justify-content: center;
-  min-height: min(70vh, 560px);
-  padding: clamp(24px, 4vw, 48px);
-  color: rgba(226, 232, 240, 0.9);
-}
-
-.route-loader__surface {
-  position: relative;
-  width: min(960px, 100%);
-  background: rgba(15, 23, 42, 0.78);
-  border: 1px solid rgba(148, 163, 184, 0.24);
-  border-radius: clamp(24px, 4vw, 32px);
-  padding: clamp(24px, 4vw, 36px);
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(18px);
-}
-
-.route-loader__beam {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.18), transparent 55%),
-    radial-gradient(circle at 75% 20%, rgba(56, 189, 248, 0.18), transparent 52%),
-    linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.65));
-  opacity: 0.9;
-}
-
-.route-loader__content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(18px, 3vw, 28px);
-}
-
-.route-loader__header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.route-loader__bubble {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-}
-
-.route-loader__hero {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.route-loader__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: clamp(14px, 3vw, 24px);
-}
-
-.route-loader__card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: clamp(16px, 3vw, 22px);
-  border-radius: clamp(16px, 3vw, 22px);
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(148, 163, 184, 0.16);
-}
-
-.route-loader__line {
-  width: 100%;
-  border-radius: 999px;
-  height: 18px;
-}
-
-.route-loader__line--lg {
-  height: clamp(26px, 4vw, 32px);
-  max-width: 82%;
-}
-
-.route-loader__line--md {
-  max-width: 68%;
-}
-
-.route-loader__line--sm {
-  max-width: 72%;
-}
-
-.route-loader__line--xs {
-  max-width: 58%;
-  height: 14px;
-}
-
-.route-loader__chips {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.route-loader__chip {
-  width: clamp(70px, 12vw, 100px);
-  height: 22px;
-  border-radius: 999px;
-}
-
-.route-loader__progress {
-  width: 100%;
-}
-
-.route-loader__progress-bar {
-  display: block;
-  width: 100%;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(94, 234, 212, 0.24);
-}
-
-.route-loader__message {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.route-loader__title {
-  margin: 0;
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  font-weight: 600;
-}
-
-.route-loader__subtitle {
-  margin: 0;
-  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
-  color: rgba(226, 232, 240, 0.72);
-}
-
-.route-loader__shimmer {
-  position: relative;
+  gap: 1.75rem;
+  width: min(420px, 100%);
+  padding: clamp(2rem, 4vw, 2.75rem);
+  border-radius: 1.75rem;
+  background: linear-gradient(150deg, hsl(var(--primary) / 0.16), hsl(var(--primary) / 0.08));
+  border: 1px solid hsl(var(--primary) / 0.25);
+  box-shadow:
+      0 25px 55px hsl(var(--primary) / 0.25),
+      0 12px 22px hsl(var(--primary) / 0.22);
   overflow: hidden;
-  background: rgba(148, 163, 184, 0.18);
 }
 
-.route-loader__shimmer::after {
+.route-loader::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    110deg,
-    rgba(148, 163, 184, 0.12) 20%,
-    rgba(255, 255, 255, 0.4) 45%,
-    rgba(148, 163, 184, 0.12) 70%
-  );
-  animation: route-loader-shimmer 1.5s linear infinite;
-  transform: translateX(-100%);
+  border-radius: inherit;
+  background: radial-gradient(circle at 60% 20%, hsl(var(--primary) / 0.2), transparent 60%);
+  opacity: 0.4;
+  pointer-events: none;
 }
 
-.sr-only {
+.route-loader__orb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(6rem, 35vw, 7.5rem);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+}
+
+.route-loader__pulse {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  inset: 12%;
+  border-radius: 999px;
+  background: radial-gradient(circle, hsl(var(--primary) / 0.35), hsl(var(--primary) / 0.12));
+  filter: blur(2px);
+  animation: route-loader-pulse 2.2s ease-in-out infinite;
 }
 
-@keyframes route-loader-shimmer {
+.route-loader__spinner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: conic-gradient(
+      from 90deg,
+      hsl(var(--primary) / 0),
+      hsl(var(--primary) / 0.85),
+      hsl(var(--primary) / 0)
+  );
+  mask: radial-gradient(circle, transparent calc(50% - 10px), black calc(50% - 9px));
+  -webkit-mask: radial-gradient(circle, transparent calc(50% - 10px), black calc(50% - 9px));
+  animation: route-loader-spin 1.6s linear infinite;
+}
+
+.route-loader__spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: hsl(var(--primary-foreground) / 0.9);
+  box-shadow:
+      0 0 12px hsl(var(--primary-foreground) / 0.75),
+      0 0 24px hsl(var(--primary) / 0.55);
+  animation: route-loader-orbit 2.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.route-loader__spark--one {
+  animation-delay: -0.3s;
+}
+
+.route-loader__spark--two {
+  animation-delay: -1.2s;
+}
+
+.route-loader__label {
+  position: relative;
+  display: grid;
+  gap: 0.45rem;
+  text-align: center;
+  color: hsl(var(--primary-foreground) / 0.95);
+}
+
+.route-loader__title {
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.route-loader__subtitle {
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+  color: hsl(var(--primary-foreground) / 0.7);
+}
+
+.route-loader__progress {
+  position: relative;
+  height: 0.6rem;
+  border-radius: 999px;
+  overflow: hidden;
+  background: hsl(var(--primary) / 0.16);
+}
+
+.route-loader__bar {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+      120deg,
+      hsl(var(--primary) / 0.2),
+      hsl(var(--primary) / 0.85),
+      hsl(var(--primary) / 0.65)
+  );
+  transform: translateX(-100%);
+  animation: route-loader-progress 1.8s ease-in-out infinite;
+}
+
+@keyframes route-loader-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes route-loader-pulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes route-loader-orbit {
+  0%,
+  100% {
+    transform: rotate(0turn) translateY(-160%) scale(1);
+  }
+  50% {
+    transform: rotate(0.5turn) translateY(-160%) scale(1.2);
+  }
+}
+
+@keyframes route-loader-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
   100% {
     transform: translateX(100%);
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 480px) {
   .route-loader {
-    padding: 24px 16px;
+    padding: 1.75rem;
+    border-radius: 1.5rem;
   }
 
-  .route-loader__surface {
-    padding: 24px;
+  .route-loader__subtitle {
+    font-size: 0.85rem;
   }
+}
 
-  .route-loader__grid {
-    grid-template-columns: 1fr;
+@media (prefers-reduced-motion: reduce) {
+  .route-loader__spinner,
+  .route-loader__pulse,
+  .route-loader__spark,
+  .route-loader__bar {
+    animation: none !important;
   }
 }
 </style>
