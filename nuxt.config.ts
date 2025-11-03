@@ -421,8 +421,11 @@ const sessionTokenCookieName =
 const tokenPresenceCookieName =
   readEnv("AUTH_TOKEN_PRESENCE_COOKIE_NAME") || "auth_token_present";
 const userCookieName = readEnv("AUTH_USER_COOKIE_NAME") || "auth_user";
-const authApiBase = readEnv("AUTH_API_BASE") || readEnv("NUXT_AUTH_API_BASE");
-const publicApiBase = readEnv("NUXT_PUBLIC_API_BASE") || readEnv("PUBLIC_API_BASE");
+const defaultApiBase = "https://bro-world.org/api/v1";
+const authApiBase =
+  readEnv("AUTH_API_BASE") || readEnv("NUXT_AUTH_API_BASE") || defaultApiBase;
+const publicApiBase =
+  readEnv("NUXT_PUBLIC_API_BASE") || readEnv("PUBLIC_API_BASE") || defaultApiBase;
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-10-01",
