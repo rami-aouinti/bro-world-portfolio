@@ -30,11 +30,11 @@
             >
               <div class="login-form__fields">
                 <v-text-field
-                  v-model="email"
+                  v-model="identifier"
                   :label="t('admin.login.form.email')"
-                  type="email"
+                  type="text"
                   required
-                  autocomplete="email"
+                  autocomplete="username"
                   variant="outlined"
                   density="comfortable"
                 />
@@ -48,6 +48,15 @@
                   density="comfortable"
                 />
               </div>
+
+              <v-alert
+                v-if="sessionNotice"
+                type="info"
+                variant="tonal"
+                class="login-form__alert"
+              >
+                {{ sessionNotice }}
+              </v-alert>
 
               <v-alert
                 v-if="errorMessage"
@@ -79,11 +88,11 @@
                 <p class="font-weight-medium mb-1">{{ t("admin.login.defaultCredentials.title") }}</p>
                 <p>
                   {{ t("admin.login.defaultCredentials.email") }}
-                  <code>admin@example.com</code>
+                  <code>john-root</code>
                 </p>
                 <p>
                   {{ t("admin.login.defaultCredentials.password") }}
-                  <code>ChangeMe123!</code>
+                  <code>password-root</code>
                 </p>
               </v-alert>
               <p class="login-card__help text-medium-emphasis">
@@ -98,49 +107,60 @@
 </template>
 
 <script setup lang="ts">
+import { useAuthSession } from "~/stores/auth-session";
+
 definePageMeta({
   layout: "admin",
 });
 
 const { t } = useI18n();
+const auth = useAuthSession();
 
-const email = ref("");
-const password = ref("");
-const errorMessage = ref("");
-const isSubmitting = ref(false);
+await auth.initialize();
 
-const sessionCheck = await useAsyncData("admin-session-check", () => $fetch("/api/auth/session"));
-if (sessionCheck.data.value?.user) {
+if (auth.isAuthenticated.value) {
   await navigateTo("/admin", { replace: true });
 }
 
-function isFetchError(value: unknown): value is { data?: { statusMessage?: string } } {
-  return (
-    typeof value === "object" &&
-    value !== null &&
-    "data" in value &&
-    typeof (value as { data?: unknown }).data === "object"
-  );
-}
+const identifier = ref("");
+const password = ref("");
+const localError = ref<string | null>(null);
+const sessionNotice = ref(auth.consumeSessionMessage());
+
+watch(
+  () => auth.sessionMessage.value,
+  (value) => {
+    if (value) {
+      sessionNotice.value = value;
+      auth.consumeSessionMessage();
+    }
+  },
+);
+
+watch([identifier, password], () => {
+  localError.value = null;
+  auth.clearLoginError();
+});
+
+const isSubmitting = computed(() => auth.isLoggingIn.value);
+const errorMessage = computed(() => localError.value ?? auth.loginError.value ?? "");
 
 async function handleSubmit() {
-  errorMessage.value = "";
-  isSubmitting.value = true;
+  localError.value = null;
 
-  try {
-    await $fetch("/api/auth/login", {
-      method: "POST",
-      body: { email: email.value, password: password.value },
-    });
-    await navigateTo("/admin", { replace: true });
-  } catch (error: unknown) {
-    if (isFetchError(error) && typeof error.data?.statusMessage === "string") {
-      errorMessage.value = error.data.statusMessage;
-    } else {
-      errorMessage.value = t("admin.login.form.error");
-    }
-  } finally {
-    isSubmitting.value = false;
+  const success = await auth.login({
+    identifier: identifier.value,
+    password: password.value,
+  });
+
+  if (success) {
+    const redirectTo = auth.consumeRedirect() ?? "/admin";
+    await navigateTo(redirectTo, { replace: true });
+    return;
+  }
+
+  if (!auth.loginError.value) {
+    localError.value = t("admin.login.form.error");
   }
 }
 </script>

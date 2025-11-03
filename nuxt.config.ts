@@ -73,6 +73,18 @@ function unescapeCandidate(candidate: string): string {
   return candidate.replace(/\\:/g, ":").replace(/\\\//g, "/");
 }
 
+function readEnv(name: string): string | undefined {
+  const value = process.env[name];
+
+  if (!value) {
+    return undefined;
+  }
+
+  const trimmed = value.trim();
+
+  return trimmed.length > 0 ? trimmed : undefined;
+}
+
 function purgeCss(css: string, usedClasses: Set<string>, selectorSafelist: RegExp[]): string {
   let result = "";
   let index = 0;
@@ -402,8 +414,15 @@ export interface SimplePurgeCssOptions {
 }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const sessionCookieName = process.env.SESSION_COOKIE_NAME || "bro_world_session";
-const csrfCookieName = process.env.CSRF_COOKIE_NAME || "bro_world_csrf";
+const sessionCookieName = readEnv("SESSION_COOKIE_NAME") || "bro_world_session";
+const csrfCookieName = readEnv("CSRF_COOKIE_NAME") || "bro_world_csrf";
+const sessionTokenCookieName =
+  readEnv("AUTH_SESSION_TOKEN_COOKIE_NAME") || "auth_session_token";
+const tokenPresenceCookieName =
+  readEnv("AUTH_TOKEN_PRESENCE_COOKIE_NAME") || "auth_token_present";
+const userCookieName = readEnv("AUTH_USER_COOKIE_NAME") || "auth_user";
+const authApiBase = readEnv("AUTH_API_BASE") || readEnv("NUXT_AUTH_API_BASE");
+const publicApiBase = readEnv("NUXT_PUBLIC_API_BASE") || readEnv("PUBLIC_API_BASE");
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-10-01",
@@ -621,8 +640,12 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     auth: {
+      apiBase: authApiBase,
       sessionCookieName,
       csrfCookieName,
+      sessionTokenCookieName,
+      tokenPresenceCookieName,
+      userCookieName,
       sessionMaxAge: Number.parseInt(process.env.SESSION_MAX_AGE ?? "", 10) || 60 * 60 * 24,
     },
     githubToken: process.env.GITHUB_TOKEN,
@@ -659,8 +682,12 @@ export default defineNuxtConfig({
       },
     },
     public: {
+      apiBase: publicApiBase,
       auth: {
         csrfCookieName,
+        sessionTokenCookieName,
+        tokenPresenceCookieName,
+        userCookieName,
       },
       githubUsername: process.env.GITHUB_USERNAME || "rami-aouinti",
     },

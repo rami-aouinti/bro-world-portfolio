@@ -666,7 +666,68 @@
       "badge": "Nuova funzionalità",
       "title": "Crea un curriculum professionale in pochi minuti",
       "subtitle": "Compila i dati salvati, personalizza il modello ed esporta il PDF direttamente dall’area admin.",
-      "privateLabel": "Solo amministratore"
+      "privateLabel": "Solo amministratore",
+      "platform": {
+        "eyebrow": "Dati della piattaforma",
+        "title": "Voci del CV sincronizzate",
+        "subtitle": "Rivedi e modifica i dati salvati sull’API CV di Bro World. Le modifiche vengono applicate all’istante.",
+        "resumeId": "ID CV",
+        "reload": "Aggiorna dati",
+        "loading": "Recupero dei dati del CV…",
+        "actions": {
+          "add": "Aggiungi voce",
+          "untitled": "Voce senza titolo"
+        },
+        "editor": {
+          "cancel": "Annulla",
+          "create": "Crea voce",
+          "update": "Aggiorna voce",
+          "createTitle": "Crea {resource}",
+          "editTitle": "Modifica {resource}",
+          "helper": "Modifica il payload JSON prima di inviarlo alla piattaforma. Mantieni gli identificatori obbligatori come resumeId.",
+          "parseError": "Impossibile salvare la voce. Assicurati che il JSON sia valido."
+        },
+        "resourceNames": {
+          "experience": "esperienza",
+          "education": "formazione",
+          "skill": "competenza",
+          "language": "lingua",
+          "hobby": "hobby",
+          "project": "progetto"
+        },
+        "sections": {
+          "experiences": {
+            "title": "Esperienze",
+            "description": "Ruoli e risultati mostrati nel CV pubblico.",
+            "empty": "Nessuna esperienza per ora."
+          },
+          "education": {
+            "title": "Formazione",
+            "description": "Scuole, titoli e certificazioni provenienti dall’API CV.",
+            "empty": "Nessuna formazione registrata."
+          },
+          "skills": {
+            "title": "Competenze",
+            "description": "Competenze e livelli di padronanza visibili nel CV.",
+            "empty": "Nessuna competenza aggiunta."
+          },
+          "languages": {
+            "title": "Lingue",
+            "description": "Lingue parlate e livello di padronanza.",
+            "empty": "Nessuna lingua registrata."
+          },
+          "hobbies": {
+            "title": "Hobby",
+            "description": "Interessi personali che arricchiscono il CV.",
+            "empty": "Nessun hobby registrato."
+          },
+          "projects": {
+            "title": "Progetti",
+            "description": "Progetti in evidenza con descrizioni e link.",
+            "empty": "Nessun progetto registrato."
+          }
+        }
+      }
     }
   }
 }

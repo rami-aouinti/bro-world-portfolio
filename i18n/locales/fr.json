@@ -697,7 +697,68 @@
       "badge": "Nouvelle fonctionnalité",
       "title": "Générez un CV élégant en quelques minutes",
       "subtitle": "Renseignez vos données sauvegardées, ajustez le modèle et exportez un PDF directement depuis l’admin.",
-      "privateLabel": "Réservé à l’admin"
+      "privateLabel": "Réservé à l’admin",
+      "platform": {
+        "eyebrow": "Données plateforme",
+        "title": "Entrées du CV synchronisées",
+        "subtitle": "Consultez et modifiez les données stockées sur l’API CV de Bro World. Les changements sont appliqués instantanément.",
+        "resumeId": "ID du CV",
+        "reload": "Actualiser les données",
+        "loading": "Récupération des données du CV…",
+        "actions": {
+          "add": "Ajouter une entrée",
+          "untitled": "Entrée sans titre"
+        },
+        "editor": {
+          "cancel": "Annuler",
+          "create": "Créer l’entrée",
+          "update": "Mettre à jour",
+          "createTitle": "Créer {resource}",
+          "editTitle": "Modifier {resource}",
+          "helper": "Modifiez la charge JSON avant de l’envoyer à la plateforme. Conservez les identifiants requis comme resumeId.",
+          "parseError": "Impossible d’enregistrer l’entrée. Vérifiez que le JSON est valide."
+        },
+        "resourceNames": {
+          "experience": "expérience",
+          "education": "formation",
+          "skill": "compétence",
+          "language": "langue",
+          "hobby": "loisir",
+          "project": "projet"
+        },
+        "sections": {
+          "experiences": {
+            "title": "Expériences",
+            "description": "Postes et missions affichés sur le CV public.",
+            "empty": "Aucune expérience pour le moment."
+          },
+          "education": {
+            "title": "Formations",
+            "description": "Écoles, diplômes et certifications issus de l’API CV.",
+            "empty": "Aucune formation enregistrée."
+          },
+          "skills": {
+            "title": "Compétences",
+            "description": "Compétences et niveaux de maîtrise exposés sur le CV.",
+            "empty": "Aucune compétence ajoutée."
+          },
+          "languages": {
+            "title": "Langues",
+            "description": "Langues parlées et niveaux de maîtrise.",
+            "empty": "Aucune langue renseignée."
+          },
+          "hobbies": {
+            "title": "Loisirs",
+            "description": "Centres d’intérêt personnels affichés sur le CV.",
+            "empty": "Aucun loisir enregistré."
+          },
+          "projects": {
+            "title": "Projets",
+            "description": "Projets mis en avant avec descriptions et liens.",
+            "empty": "Aucun projet enregistré."
+          }
+        }
+      }
     }
   }
 }

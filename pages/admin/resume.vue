@@ -31,7 +31,7 @@
       </v-col>
     </v-row>
 
-    <v-row
+  <v-row
       class="admin-resume__layout"
       align="stretch"
     >
@@ -64,12 +64,19 @@
         </v-card>
       </v-col>
     </v-row>
+
+    <v-row>
+      <v-col cols="12">
+        <PlatformResumeManager />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script setup lang="ts">
 import ResumeForm from "~/components/resume/ResumeForm.vue";
 import ResumePreview from "~/components/resume/ResumePreview.vue";
+import PlatformResumeManager from "~/components/admin/resume/PlatformResumeManager.vue";
 
 definePageMeta({
   middleware: "auth",

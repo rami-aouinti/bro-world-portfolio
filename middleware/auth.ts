@@ -1,15 +1,17 @@
-export default defineNuxtRouteMiddleware(async () => {
-  if (import.meta.dev) {
+import { useAuthSession } from "~/stores/auth-session";
+
+export default defineNuxtRouteMiddleware(async (to) => {
+  const auth = useAuthSession();
+
+  await auth.initialize();
+
+  if (auth.isAuthenticated.value) {
     return;
   }
-  const requestFetch = import.meta.server ? useRequestFetch() : $fetch;
 
-  try {
-    const session = (await requestFetch("/api/auth/session")) as { user: { role: string } | null };
-    if (!session?.user || session.user.role !== "admin") {
-      return navigateTo("/admin/login");
-    }
-  } catch (error) {
-    return navigateTo("/admin/login");
+  if (to.path && to.path !== "/admin/login") {
+    auth.setRedirect(to.fullPath ?? to.path);
   }
+
+  return navigateTo("/admin/login");
 });

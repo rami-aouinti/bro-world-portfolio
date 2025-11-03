@@ -697,7 +697,68 @@
       "badge": "New feature",
       "title": "Generate a polished résumé in minutes",
       "subtitle": "Populate your stored data, fine-tune the template and export a PDF without leaving the admin.",
-      "privateLabel": "Admin only"
+      "privateLabel": "Admin only",
+      "platform": {
+        "eyebrow": "Platform data",
+        "title": "Synchronised résumé entries",
+        "subtitle": "Review and edit the entries stored on Bro World's résumé API. Changes are applied instantly.",
+        "resumeId": "Résumé ID",
+        "reload": "Refresh data",
+        "loading": "Fetching résumé data…",
+        "actions": {
+          "add": "Add entry",
+          "untitled": "Untitled entry"
+        },
+        "editor": {
+          "cancel": "Cancel",
+          "create": "Create entry",
+          "update": "Update entry",
+          "createTitle": "Create {resource}",
+          "editTitle": "Edit {resource}",
+          "helper": "Edit the JSON payload before sending it to the platform. Keep required identifiers such as resumeId.",
+          "parseError": "Unable to save the entry. Please ensure the JSON is valid."
+        },
+        "resourceNames": {
+          "experience": "experience",
+          "education": "education",
+          "skill": "skill",
+          "language": "language",
+          "hobby": "hobby",
+          "project": "project"
+        },
+        "sections": {
+          "experiences": {
+            "title": "Experiences",
+            "description": "Company roles and accomplishments displayed on the public résumé.",
+            "empty": "No experience entries yet."
+          },
+          "education": {
+            "title": "Education",
+            "description": "Schools, degrees and certifications pulled from the résumé API.",
+            "empty": "No education entries yet."
+          },
+          "skills": {
+            "title": "Skills",
+            "description": "Capabilities and proficiency levels surfaced on the résumé.",
+            "empty": "No skills added yet."
+          },
+          "languages": {
+            "title": "Languages",
+            "description": "Spoken languages and proficiency ratings.",
+            "empty": "No languages recorded yet."
+          },
+          "hobbies": {
+            "title": "Hobbies",
+            "description": "Personal interests and activities that enrich the résumé.",
+            "empty": "No hobbies stored yet."
+          },
+          "projects": {
+            "title": "Projects",
+            "description": "Highlighted projects with links and descriptions.",
+            "empty": "No projects saved yet."
+          }
+        }
+      }
     }
   }
 }
