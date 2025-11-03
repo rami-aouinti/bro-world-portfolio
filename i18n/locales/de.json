@@ -666,7 +666,68 @@
       "badge": "Neue Funktion",
       "title": "In wenigen Minuten einen professionellen Lebenslauf erstellen",
       "subtitle": "Füllen Sie Ihre gespeicherten Daten aus, passen Sie das Template an und exportieren Sie das PDF direkt im Admin-Bereich.",
-      "privateLabel": "Nur für Admin"
+      "privateLabel": "Nur für Admin",
+      "platform": {
+        "eyebrow": "Plattformdaten",
+        "title": "Synchronisierte Lebenslauf-Einträge",
+        "subtitle": "Prüfen und bearbeiten Sie die Einträge, die in der Bro World Résumé-API gespeichert sind. Änderungen wirken sofort.",
+        "resumeId": "Résumé-ID",
+        "reload": "Daten aktualisieren",
+        "loading": "Lebenslaufdaten werden geladen…",
+        "actions": {
+          "add": "Eintrag hinzufügen",
+          "untitled": "Unbenannter Eintrag"
+        },
+        "editor": {
+          "cancel": "Abbrechen",
+          "create": "Eintrag erstellen",
+          "update": "Eintrag aktualisieren",
+          "createTitle": "{resource} erstellen",
+          "editTitle": "{resource} bearbeiten",
+          "helper": "Bearbeiten Sie die JSON-Nutzlast, bevor Sie sie an die Plattform senden. Pflichtfelder wie resumeId müssen erhalten bleiben.",
+          "parseError": "Der Eintrag konnte nicht gespeichert werden. Bitte stellen Sie sicher, dass das JSON gültig ist."
+        },
+        "resourceNames": {
+          "experience": "Erfahrung",
+          "education": "Ausbildung",
+          "skill": "Skill",
+          "language": "Sprache",
+          "hobby": "Hobby",
+          "project": "Projekt"
+        },
+        "sections": {
+          "experiences": {
+            "title": "Erfahrungen",
+            "description": "Positionen und Leistungen, die im öffentlichen Lebenslauf erscheinen.",
+            "empty": "Noch keine Erfahrungen vorhanden."
+          },
+          "education": {
+            "title": "Ausbildung",
+            "description": "Schulen, Abschlüsse und Zertifizierungen aus der Résumé-API.",
+            "empty": "Noch keine Ausbildungseinträge."
+          },
+          "skills": {
+            "title": "Fähigkeiten",
+            "description": "Fähigkeiten und Kompetenzstufen, die im Lebenslauf gezeigt werden.",
+            "empty": "Noch keine Fähigkeiten hinterlegt."
+          },
+          "languages": {
+            "title": "Sprachen",
+            "description": "Gesprochene Sprachen und Kompetenzstufen.",
+            "empty": "Noch keine Sprachen eingetragen."
+          },
+          "hobbies": {
+            "title": "Hobbys",
+            "description": "Persönliche Interessen, die den Lebenslauf abrunden.",
+            "empty": "Noch keine Hobbys gespeichert."
+          },
+          "projects": {
+            "title": "Projekte",
+            "description": "Hervorgehobene Projekte mit Links und Beschreibungen.",
+            "empty": "Noch keine Projekte vorhanden."
+          }
+        }
+      }
     }
   }
 }

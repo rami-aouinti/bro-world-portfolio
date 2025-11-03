@@ -594,7 +594,68 @@
       "badge": "新功能",
       "title": "几分钟内生成专业简历",
       "subtitle": "填写已保存的数据，调整模板并在后台直接导出 PDF。",
-      "privateLabel": "仅限管理员"
+      "privateLabel": "仅限管理员",
+      "platform": {
+        "eyebrow": "平台数据",
+        "title": "同步的简历条目",
+        "subtitle": "查看并编辑存储在 Bro World 简历 API 中的数据，改动会即时生效。",
+        "resumeId": "简历 ID",
+        "reload": "刷新数据",
+        "loading": "正在获取简历数据…",
+        "actions": {
+          "add": "新增条目",
+          "untitled": "未命名条目"
+        },
+        "editor": {
+          "cancel": "取消",
+          "create": "创建条目",
+          "update": "更新条目",
+          "createTitle": "创建{resource}",
+          "editTitle": "编辑{resource}",
+          "helper": "在发送到平台前先调整 JSON 负载，保留 resumeId 等必填标识。",
+          "parseError": "无法保存条目，请确认 JSON 格式有效。"
+        },
+        "resourceNames": {
+          "experience": "经历",
+          "education": "教育",
+          "skill": "技能",
+          "language": "语言",
+          "hobby": "爱好",
+          "project": "项目"
+        },
+        "sections": {
+          "experiences": {
+            "title": "工作经历",
+            "description": "将在公开简历中展示的职位与成果。",
+            "empty": "暂时没有工作经历。"
+          },
+          "education": {
+            "title": "教育背景",
+            "description": "来自简历 API 的学校与证书。",
+            "empty": "暂时没有教育记录。"
+          },
+          "skills": {
+            "title": "技能",
+            "description": "在简历中展示的能力与熟练度。",
+            "empty": "暂时没有技能。"
+          },
+          "languages": {
+            "title": "语言",
+            "description": "掌握的语言及熟练程度。",
+            "empty": "暂时没有语言记录。"
+          },
+          "hobbies": {
+            "title": "兴趣爱好",
+            "description": "丰富简历的个人兴趣。",
+            "empty": "暂时没有爱好记录。"
+          },
+          "projects": {
+            "title": "项目",
+            "description": "重点项目及其链接和简介。",
+            "empty": "暂时没有项目。"
+          }
+        }
+      }
     }
   }
 }
