@@ -271,7 +271,175 @@
         "education": "暂无教育经历。",
         "contact": "尚未配置联系方式。"
       }
+    },
+    "settings": {
+      "themeCustomizer": {
+        "title": "自定义",
+        "theme": "主题",
+        "light": "浅色",
+        "dark": "深色",
+        "system": "系统",
+        "color": "颜色",
+        "radius": "圆角"
+      },
+      "fields": {
+        "themePrimary": "主色"
+      },
+      "actions": {
+        "reset": "放弃更改"
+      },
+      "siteSettings": "站点设置",
+      "quickAccess": "快速访问",
+      "integrations": {
+        "title": "已连接的服务",
+        "subtitle": "连接你的 GitHub 和 LinkedIn 账户以保持作品集内容同步。",
+        "disconnect": "断开连接",
+        "lastSynced": "最近同步",
+        "connectedAt": "连接时间",
+        "neverSynced": "从未",
+        "status": {
+          "connected": "已连接",
+          "disconnected": "未连接"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "直接从 GitHub 导入仓库和个人资料信息。",
+          "username": "用户名",
+          "token": "个人访问令牌",
+          "tokenHint": "安全存储，绝不会公开显示。",
+          "connect": "保存连接",
+          "refresh": "刷新数据",
+          "connectedMessage": "GitHub 连接已保存。",
+          "repos": "仓库",
+          "followers": "关注者",
+          "following": "正在关注",
+          "projectsTitle": "最新仓库"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "将 LinkedIn 的经历和教育同步到作品集。",
+          "token": "访问令牌",
+          "tokenHint": "需要具有个人资料和经历权限的有效会员令牌。",
+          "locale": "目标语言",
+          "connect": "保存连接",
+          "sync": "同步内容",
+          "refresh": "重新获取状态",
+          "connectedMessage": "LinkedIn 连接已保存。",
+          "syncedMessage": "LinkedIn 数据已同步。",
+          "experienceCount": "经历",
+          "educationCount": "教育",
+          "unknown": "LinkedIn 成员"
+        }
+      }
+    },
+    "heroScene": {
+      "title": "Hero 场景",
+      "subtitle": "无需修改代码即可微调交互式 3D 背景。",
+      "localeLabel": "语言",
+      "loading": "正在加载场景设置...",
+      "error": "暂时无法加载场景设置。",
+      "sections": {
+        "sceneTitle": "动态背景",
+        "sceneHint": "调整颜色、运动和光晕以符合品牌。每种语言都会单独保存设置。"
+      },
+      "fields": {
+        "enabled": "启用动态场景",
+        "primaryColor": "主色",
+        "secondaryColor": "次色",
+        "accentColor": "强调色",
+        "particleDensity": "粒子密度",
+        "bloomIntensity": "光晕强度",
+        "rotationSpeed": "旋转速度",
+        "noiseStrength": "运动变化"
+      },
+      "actions": {
+        "backToDashboard": "返回仪表盘",
+        "reset": "重置默认值",
+        "save": "保存更改"
+      },
+      "feedback": {
+        "success": "场景设置已保存。",
+        "failure": "无法保存场景设置。",
+        "missingContent": "该语言的 Hero 内容尚未提供。"
+      }
+    },
+    "navigation": {
+      "home": "首页",
+      "dashboard": "仪表盘",
+      "settings": "设置",
+      "design": "设计",
+      "heroScene": "Hero 场景",
+      "content": "内容",
+      "resume": "简历生成器"
+    },
+    "resume": {
+      "badge": "新功能",
+      "title": "几分钟内生成专业简历",
+      "subtitle": "填写已保存的数据，调整模板并在后台直接导出 PDF。",
+      "privateLabel": "仅限管理员",
+      "platform": {
+        "eyebrow": "平台数据",
+        "title": "同步的简历条目",
+        "subtitle": "查看并编辑存储在 Bro World 简历 API 中的数据，改动会即时生效。",
+        "resumeId": "简历 ID",
+        "reload": "刷新数据",
+        "loading": "正在获取简历数据…",
+        "actions": {
+          "add": "新增条目",
+          "untitled": "未命名条目"
+        },
+        "editor": {
+          "cancel": "取消",
+          "create": "创建条目",
+          "update": "更新条目",
+          "createTitle": "创建{resource}",
+          "editTitle": "编辑{resource}",
+          "helper": "在发送到平台前先调整 JSON 负载，保留 resumeId 等必填标识。",
+          "parseError": "无法保存条目，请确认 JSON 格式有效。"
+        },
+        "resourceNames": {
+          "experience": "经历",
+          "education": "教育",
+          "skill": "技能",
+          "language": "语言",
+          "hobby": "爱好",
+          "project": "项目"
+        },
+        "sections": {
+          "experiences": {
+            "title": "工作经历",
+            "description": "将在公开简历中展示的职位与成果。",
+            "empty": "暂时没有工作经历。"
+          },
+          "education": {
+            "title": "教育背景",
+            "description": "来自简历 API 的学校与证书。",
+            "empty": "暂时没有教育记录。"
+          },
+          "skills": {
+            "title": "技能",
+            "description": "在简历中展示的能力与熟练度。",
+            "empty": "暂时没有技能。"
+          },
+          "languages": {
+            "title": "语言",
+            "description": "掌握的语言及熟练程度。",
+            "empty": "暂时没有语言记录。"
+          },
+          "hobbies": {
+            "title": "兴趣爱好",
+            "description": "丰富简历的个人兴趣。",
+            "empty": "暂时没有爱好记录。"
+          },
+          "projects": {
+            "title": "项目",
+            "description": "重点项目及其链接和简介。",
+            "empty": "暂时没有项目。"
+          }
+        }
+      }
     }
+  
   },
   "portfolio": {
     "contact": {
@@ -488,174 +656,5 @@
     "openMenu": "打开导航菜单",
     "closeMenu": "关闭导航菜单",
     "title": "导航"
-  },
-  "admin": {
-    "settings": {
-      "themeCustomizer": {
-        "title": "自定义",
-        "theme": "主题",
-        "light": "浅色",
-        "dark": "深色",
-        "system": "系统",
-        "color": "颜色",
-        "radius": "圆角"
-      },
-      "fields": {
-        "themePrimary": "主色"
-      },
-      "actions": {
-        "reset": "放弃更改"
-      },
-      "siteSettings": "站点设置",
-      "quickAccess": "快速访问",
-      "integrations": {
-        "title": "已连接的服务",
-        "subtitle": "连接你的 GitHub 和 LinkedIn 账户以保持作品集内容同步。",
-        "disconnect": "断开连接",
-        "lastSynced": "最近同步",
-        "connectedAt": "连接时间",
-        "neverSynced": "从未",
-        "status": {
-          "connected": "已连接",
-          "disconnected": "未连接"
-        },
-        "github": {
-          "title": "GitHub",
-          "description": "直接从 GitHub 导入仓库和个人资料信息。",
-          "username": "用户名",
-          "token": "个人访问令牌",
-          "tokenHint": "安全存储，绝不会公开显示。",
-          "connect": "保存连接",
-          "refresh": "刷新数据",
-          "connectedMessage": "GitHub 连接已保存。",
-          "repos": "仓库",
-          "followers": "关注者",
-          "following": "正在关注",
-          "projectsTitle": "最新仓库"
-        },
-        "linkedin": {
-          "title": "LinkedIn",
-          "description": "将 LinkedIn 的经历和教育同步到作品集。",
-          "token": "访问令牌",
-          "tokenHint": "需要具有个人资料和经历权限的有效会员令牌。",
-          "locale": "目标语言",
-          "connect": "保存连接",
-          "sync": "同步内容",
-          "refresh": "重新获取状态",
-          "connectedMessage": "LinkedIn 连接已保存。",
-          "syncedMessage": "LinkedIn 数据已同步。",
-          "experienceCount": "经历",
-          "educationCount": "教育",
-          "unknown": "LinkedIn 成员"
-        }
-      }
-    },
-    "heroScene": {
-      "title": "Hero 场景",
-      "subtitle": "无需修改代码即可微调交互式 3D 背景。",
-      "localeLabel": "语言",
-      "loading": "正在加载场景设置...",
-      "error": "暂时无法加载场景设置。",
-      "sections": {
-        "sceneTitle": "动态背景",
-        "sceneHint": "调整颜色、运动和光晕以符合品牌。每种语言都会单独保存设置。"
-      },
-      "fields": {
-        "enabled": "启用动态场景",
-        "primaryColor": "主色",
-        "secondaryColor": "次色",
-        "accentColor": "强调色",
-        "particleDensity": "粒子密度",
-        "bloomIntensity": "光晕强度",
-        "rotationSpeed": "旋转速度",
-        "noiseStrength": "运动变化"
-      },
-      "actions": {
-        "backToDashboard": "返回仪表盘",
-        "reset": "重置默认值",
-        "save": "保存更改"
-      },
-      "feedback": {
-        "success": "场景设置已保存。",
-        "failure": "无法保存场景设置。",
-        "missingContent": "该语言的 Hero 内容尚未提供。"
-      }
-    },
-    "navigation": {
-      "home": "首页",
-      "dashboard": "仪表盘",
-      "settings": "设置",
-      "design": "设计",
-      "heroScene": "Hero 场景",
-      "content": "内容",
-      "resume": "简历生成器"
-    },
-    "resume": {
-      "badge": "新功能",
-      "title": "几分钟内生成专业简历",
-      "subtitle": "填写已保存的数据，调整模板并在后台直接导出 PDF。",
-      "privateLabel": "仅限管理员",
-      "platform": {
-        "eyebrow": "平台数据",
-        "title": "同步的简历条目",
-        "subtitle": "查看并编辑存储在 Bro World 简历 API 中的数据，改动会即时生效。",
-        "resumeId": "简历 ID",
-        "reload": "刷新数据",
-        "loading": "正在获取简历数据…",
-        "actions": {
-          "add": "新增条目",
-          "untitled": "未命名条目"
-        },
-        "editor": {
-          "cancel": "取消",
-          "create": "创建条目",
-          "update": "更新条目",
-          "createTitle": "创建{resource}",
-          "editTitle": "编辑{resource}",
-          "helper": "在发送到平台前先调整 JSON 负载，保留 resumeId 等必填标识。",
-          "parseError": "无法保存条目，请确认 JSON 格式有效。"
-        },
-        "resourceNames": {
-          "experience": "经历",
-          "education": "教育",
-          "skill": "技能",
-          "language": "语言",
-          "hobby": "爱好",
-          "project": "项目"
-        },
-        "sections": {
-          "experiences": {
-            "title": "工作经历",
-            "description": "将在公开简历中展示的职位与成果。",
-            "empty": "暂时没有工作经历。"
-          },
-          "education": {
-            "title": "教育背景",
-            "description": "来自简历 API 的学校与证书。",
-            "empty": "暂时没有教育记录。"
-          },
-          "skills": {
-            "title": "技能",
-            "description": "在简历中展示的能力与熟练度。",
-            "empty": "暂时没有技能。"
-          },
-          "languages": {
-            "title": "语言",
-            "description": "掌握的语言及熟练程度。",
-            "empty": "暂时没有语言记录。"
-          },
-          "hobbies": {
-            "title": "兴趣爱好",
-            "description": "丰富简历的个人兴趣。",
-            "empty": "暂时没有爱好记录。"
-          },
-          "projects": {
-            "title": "项目",
-            "description": "重点项目及其链接和简介。",
-            "empty": "暂时没有项目。"
-          }
-        }
-      }
-    }
   }
 }

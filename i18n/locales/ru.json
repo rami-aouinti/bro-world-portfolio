@@ -271,7 +271,230 @@
         "education": "Данных об образовании нет.",
         "contact": "Способы связи не настроены."
       }
+    },
+    "settings": {
+      "themeCustomizer": {
+        "title": "Настроить",
+        "theme": "Тема",
+        "light": "Светлая",
+        "dark": "Тёмная",
+        "system": "Система",
+        "color": "Цвет",
+        "radius": "Радиус"
+      },
+      "fields": {
+        "themePrimary": "Основной цвет"
+      },
+      "actions": {
+        "reset": "Отменить изменения"
+      },
+      "siteSettings": "Настройки сайта",
+      "quickAccess": "Быстрый доступ",
+      "integrations": {
+        "title": "Подключённые сервисы",
+        "subtitle": "Свяжите аккаунты GitHub и LinkedIn, чтобы автоматически обновлять портфолио.",
+        "disconnect": "Отключить",
+        "lastSynced": "Последняя синхронизация",
+        "connectedAt": "Подключено",
+        "neverSynced": "Никогда",
+        "status": {
+          "connected": "Подключено",
+          "disconnected": "Не подключено"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "Импортируйте репозитории и данные профиля напрямую из GitHub.",
+          "username": "Имя пользователя",
+          "token": "Персональный токен доступа",
+          "tokenHint": "Хранится надёжно и никогда не показывается публично.",
+          "connect": "Сохранить подключение",
+          "refresh": "Обновить данные",
+          "connectedMessage": "Подключение GitHub сохранено.",
+          "repos": "Репозитории",
+          "followers": "Подписчики",
+          "following": "Подписки",
+          "projectsTitle": "Недавние репозитории"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "Синхронизируйте опыт и образование из LinkedIn с портфолио.",
+          "token": "Токен доступа",
+          "tokenHint": "Требуется действительный токен участника с правами профиля и опыта.",
+          "locale": "Целевой язык",
+          "connect": "Сохранить подключение",
+          "sync": "Синхронизировать контент",
+          "refresh": "Обновить статус",
+          "connectedMessage": "Подключение LinkedIn сохранено.",
+          "syncedMessage": "Данные LinkedIn синхронизированы.",
+          "experienceCount": "Опыт",
+          "educationCount": "Образование",
+          "unknown": "Участник LinkedIn"
+        }
+      }
+    },
+    "heroScene": {
+      "title": "Hero-сцена",
+      "subtitle": "Настройте интерактивный 3D-фон без изменений в коде.",
+      "localeLabel": "Язык",
+      "loading": "Загрузка настроек сцены...",
+      "error": "Не удалось загрузить настройки сцены сейчас.",
+      "sections": {
+        "sceneTitle": "Анимированный фон",
+        "sceneHint": "Подберите цвета, движение и свечение под свой бренд. Изменения сохраняются для каждого языка отдельно."
+      },
+      "fields": {
+        "enabled": "Включить анимированную сцену",
+        "primaryColor": "Основной цвет",
+        "secondaryColor": "Вторичный цвет",
+        "accentColor": "Акцентный цвет",
+        "particleDensity": "Плотность частиц",
+        "bloomIntensity": "Интенсивность свечения",
+        "rotationSpeed": "Скорость орбиты",
+        "noiseStrength": "Вариация движения"
+      },
+      "actions": {
+        "backToDashboard": "Назад в панель",
+        "reset": "Сбросить значения",
+        "save": "Сохранить изменения"
+      },
+      "feedback": {
+        "success": "Настройки сцены сохранены.",
+        "failure": "Не удалось сохранить настройки сцены.",
+        "missingContent": "Контент hero для этого языка пока недоступен."
+      }
+    },
+    "analytics": {
+      "eyebrow": "Онлайн-аналитика",
+      "title": "Аналитика и влияние",
+      "subtitle": "Следите за Vercel Analytics и Speed Insights, чтобы держать команду в курсе трафика и производительности.",
+      "rangeLabel": "Период",
+      "range24h": "24 ч",
+      "range7d": "7 дней",
+      "range30d": "30 дней",
+      "updated": "Обновлено {value}",
+      "loadingChart": "Загружаем аналитику…",
+      "topPagesTitle": "Популярные страницы",
+      "pageViews": "{value} просмотров",
+      "visitors": "{value} посетителей",
+      "noPages": "Данные отсутствуют",
+      "performanceTitle": "Web vitals (p75)",
+      "metricP75": "{value} с",
+      "noPerformance": "Нет метрик производительности",
+      "formTitle": "Контент раздела Impact",
+      "formSubtitle": "Измените заголовок, описание, метрики и персональные сообщения, отображаемые на публичной странице.",
+      "validationTitle": "Проверьте следующие поля:",
+      "metricsHeading": "Определение метрик",
+      "metricsDescription": "Опишите расчёт каждой метрики, чтобы данные совпадали с аналитикой.",
+      "addMetric": "Добавить метрику",
+      "metricPlaceholder": "Метрика {index}",
+      "removeMetric": "Удалить метрику",
+      "noMetrics": "Метрики ещё не добавлены.",
+      "messagesHeading": "Персональные сообщения",
+      "messagesDescription": "Создавайте сообщения для конкретных аудиторий, рефереров или кампаний.",
+      "addMessage": "Добавить сообщение",
+      "messagePlaceholder": "Сообщение {index}",
+      "removeMessage": "Удалить сообщение",
+      "noMessages": "Персональные сообщения отсутствуют.",
+      "saveCta": "Сохранить контент Impact",
+      "saveSuccess": "Контент Impact успешно обновлён.",
+      "saveFailure": "Не удалось сохранить контент Impact.",
+      "metricKeys": {
+        "visitors": "Уникальные посетители",
+        "pageViews": "Просмотры страниц",
+        "averageDuration": "Средняя сессия (с)"
+      },
+      "fields": {
+        "headline": "Заголовок",
+        "subline": "Описание",
+        "metricKey": "Ключ метрики",
+        "metricLabel": "Название",
+        "metricPlaceholder": "Значение по умолчанию",
+        "metricUnit": "Единица",
+        "metricDescription": "Описание",
+        "audience": "Ключ аудитории",
+        "messageHeadline": "Заголовок сообщения",
+        "messageBody": "Текст сообщения"
+      },
+      "noChange": "—"
+    },
+    "navigation": {
+      "home": "Главная",
+      "dashboard": "Панель",
+      "settings": "Настройки",
+      "design": "Дизайн",
+      "heroScene": "Hero-сцена",
+      "analytics": "Аналитика",
+      "content": "Контент",
+      "resume": "Генератор резюме"
+    },
+    "resume": {
+      "badge": "Новая возможность",
+      "title": "Создайте профессиональное резюме за несколько минут",
+      "subtitle": "Заполните сохранённые данные, настройте шаблон и экспортируйте PDF прямо из админки.",
+      "privateLabel": "Только для админа",
+      "platform": {
+        "eyebrow": "Данные платформы",
+        "title": "Синхронизированные записи резюме",
+        "subtitle": "Просматривайте и редактируйте данные, сохранённые в Résumé API Bro World. Изменения применяются мгновенно.",
+        "resumeId": "ID резюме",
+        "reload": "Обновить данные",
+        "loading": "Загрузка данных резюме…",
+        "actions": {
+          "add": "Добавить запись",
+          "untitled": "Запись без названия"
+        },
+        "editor": {
+          "cancel": "Отмена",
+          "create": "Создать запись",
+          "update": "Обновить запись",
+          "createTitle": "Создать {resource}",
+          "editTitle": "Редактировать {resource}",
+          "helper": "Измените JSON перед отправкой на платформу. Сохраняйте обязательные идентификаторы, например resumeId.",
+          "parseError": "Не удалось сохранить запись. Убедитесь, что JSON корректен."
+        },
+        "resourceNames": {
+          "experience": "опыт",
+          "education": "образование",
+          "skill": "навык",
+          "language": "язык",
+          "hobby": "хобби",
+          "project": "проект"
+        },
+        "sections": {
+          "experiences": {
+            "title": "Опыт",
+            "description": "Должности и достижения, отображающиеся в публичном резюме.",
+            "empty": "Пока нет записей об опыте."
+          },
+          "education": {
+            "title": "Образование",
+            "description": "Учебные заведения и сертификаты из Résumé API.",
+            "empty": "Пока нет записей об образовании."
+          },
+          "skills": {
+            "title": "Навыки",
+            "description": "Навыки и уровень владения, отображаемые в резюме.",
+            "empty": "Навыки ещё не добавлены."
+          },
+          "languages": {
+            "title": "Языки",
+            "description": "Используемые языки и уровень владения.",
+            "empty": "Языки ещё не указаны."
+          },
+          "hobbies": {
+            "title": "Хобби",
+            "description": "Личные интересы, дополняющие резюме.",
+            "empty": "Хобби ещё не добавлены."
+          },
+          "projects": {
+            "title": "Проекты",
+            "description": "Ключевые проекты с описаниями и ссылками.",
+            "empty": "Проекты ещё не сохранены."
+          }
+        }
+      }
     }
+  
   },
   "portfolio": {
     "contact": {
@@ -505,229 +728,5 @@
     "openMenu": "Открыть меню навигации",
     "closeMenu": "Закрыть меню навигации",
     "title": "Навигация"
-  },
-  "admin": {
-    "settings": {
-      "themeCustomizer": {
-        "title": "Настроить",
-        "theme": "Тема",
-        "light": "Светлая",
-        "dark": "Тёмная",
-        "system": "Система",
-        "color": "Цвет",
-        "radius": "Радиус"
-      },
-      "fields": {
-        "themePrimary": "Основной цвет"
-      },
-      "actions": {
-        "reset": "Отменить изменения"
-      },
-      "siteSettings": "Настройки сайта",
-      "quickAccess": "Быстрый доступ",
-      "integrations": {
-        "title": "Подключённые сервисы",
-        "subtitle": "Свяжите аккаунты GitHub и LinkedIn, чтобы автоматически обновлять портфолио.",
-        "disconnect": "Отключить",
-        "lastSynced": "Последняя синхронизация",
-        "connectedAt": "Подключено",
-        "neverSynced": "Никогда",
-        "status": {
-          "connected": "Подключено",
-          "disconnected": "Не подключено"
-        },
-        "github": {
-          "title": "GitHub",
-          "description": "Импортируйте репозитории и данные профиля напрямую из GitHub.",
-          "username": "Имя пользователя",
-          "token": "Персональный токен доступа",
-          "tokenHint": "Хранится надёжно и никогда не показывается публично.",
-          "connect": "Сохранить подключение",
-          "refresh": "Обновить данные",
-          "connectedMessage": "Подключение GitHub сохранено.",
-          "repos": "Репозитории",
-          "followers": "Подписчики",
-          "following": "Подписки",
-          "projectsTitle": "Недавние репозитории"
-        },
-        "linkedin": {
-          "title": "LinkedIn",
-          "description": "Синхронизируйте опыт и образование из LinkedIn с портфолио.",
-          "token": "Токен доступа",
-          "tokenHint": "Требуется действительный токен участника с правами профиля и опыта.",
-          "locale": "Целевой язык",
-          "connect": "Сохранить подключение",
-          "sync": "Синхронизировать контент",
-          "refresh": "Обновить статус",
-          "connectedMessage": "Подключение LinkedIn сохранено.",
-          "syncedMessage": "Данные LinkedIn синхронизированы.",
-          "experienceCount": "Опыт",
-          "educationCount": "Образование",
-          "unknown": "Участник LinkedIn"
-        }
-      }
-    },
-    "heroScene": {
-      "title": "Hero-сцена",
-      "subtitle": "Настройте интерактивный 3D-фон без изменений в коде.",
-      "localeLabel": "Язык",
-      "loading": "Загрузка настроек сцены...",
-      "error": "Не удалось загрузить настройки сцены сейчас.",
-      "sections": {
-        "sceneTitle": "Анимированный фон",
-        "sceneHint": "Подберите цвета, движение и свечение под свой бренд. Изменения сохраняются для каждого языка отдельно."
-      },
-      "fields": {
-        "enabled": "Включить анимированную сцену",
-        "primaryColor": "Основной цвет",
-        "secondaryColor": "Вторичный цвет",
-        "accentColor": "Акцентный цвет",
-        "particleDensity": "Плотность частиц",
-        "bloomIntensity": "Интенсивность свечения",
-        "rotationSpeed": "Скорость орбиты",
-        "noiseStrength": "Вариация движения"
-      },
-      "actions": {
-        "backToDashboard": "Назад в панель",
-        "reset": "Сбросить значения",
-        "save": "Сохранить изменения"
-      },
-      "feedback": {
-        "success": "Настройки сцены сохранены.",
-        "failure": "Не удалось сохранить настройки сцены.",
-        "missingContent": "Контент hero для этого языка пока недоступен."
-      }
-    },
-    "analytics": {
-      "eyebrow": "Онлайн-аналитика",
-      "title": "Аналитика и влияние",
-      "subtitle": "Следите за Vercel Analytics и Speed Insights, чтобы держать команду в курсе трафика и производительности.",
-      "rangeLabel": "Период",
-      "range24h": "24 ч",
-      "range7d": "7 дней",
-      "range30d": "30 дней",
-      "updated": "Обновлено {value}",
-      "loadingChart": "Загружаем аналитику…",
-      "topPagesTitle": "Популярные страницы",
-      "pageViews": "{value} просмотров",
-      "visitors": "{value} посетителей",
-      "noPages": "Данные отсутствуют",
-      "performanceTitle": "Web vitals (p75)",
-      "metricP75": "{value} с",
-      "noPerformance": "Нет метрик производительности",
-      "formTitle": "Контент раздела Impact",
-      "formSubtitle": "Измените заголовок, описание, метрики и персональные сообщения, отображаемые на публичной странице.",
-      "validationTitle": "Проверьте следующие поля:",
-      "metricsHeading": "Определение метрик",
-      "metricsDescription": "Опишите расчёт каждой метрики, чтобы данные совпадали с аналитикой.",
-      "addMetric": "Добавить метрику",
-      "metricPlaceholder": "Метрика {index}",
-      "removeMetric": "Удалить метрику",
-      "noMetrics": "Метрики ещё не добавлены.",
-      "messagesHeading": "Персональные сообщения",
-      "messagesDescription": "Создавайте сообщения для конкретных аудиторий, рефереров или кампаний.",
-      "addMessage": "Добавить сообщение",
-      "messagePlaceholder": "Сообщение {index}",
-      "removeMessage": "Удалить сообщение",
-      "noMessages": "Персональные сообщения отсутствуют.",
-      "saveCta": "Сохранить контент Impact",
-      "saveSuccess": "Контент Impact успешно обновлён.",
-      "saveFailure": "Не удалось сохранить контент Impact.",
-      "metricKeys": {
-        "visitors": "Уникальные посетители",
-        "pageViews": "Просмотры страниц",
-        "averageDuration": "Средняя сессия (с)"
-      },
-      "fields": {
-        "headline": "Заголовок",
-        "subline": "Описание",
-        "metricKey": "Ключ метрики",
-        "metricLabel": "Название",
-        "metricPlaceholder": "Значение по умолчанию",
-        "metricUnit": "Единица",
-        "metricDescription": "Описание",
-        "audience": "Ключ аудитории",
-        "messageHeadline": "Заголовок сообщения",
-        "messageBody": "Текст сообщения"
-      },
-      "noChange": "—"
-    },
-    "navigation": {
-      "home": "Главная",
-      "dashboard": "Панель",
-      "settings": "Настройки",
-      "design": "Дизайн",
-      "heroScene": "Hero-сцена",
-      "analytics": "Аналитика",
-      "content": "Контент",
-      "resume": "Генератор резюме"
-    },
-    "resume": {
-      "badge": "Новая возможность",
-      "title": "Создайте профессиональное резюме за несколько минут",
-      "subtitle": "Заполните сохранённые данные, настройте шаблон и экспортируйте PDF прямо из админки.",
-      "privateLabel": "Только для админа",
-      "platform": {
-        "eyebrow": "Данные платформы",
-        "title": "Синхронизированные записи резюме",
-        "subtitle": "Просматривайте и редактируйте данные, сохранённые в Résumé API Bro World. Изменения применяются мгновенно.",
-        "resumeId": "ID резюме",
-        "reload": "Обновить данные",
-        "loading": "Загрузка данных резюме…",
-        "actions": {
-          "add": "Добавить запись",
-          "untitled": "Запись без названия"
-        },
-        "editor": {
-          "cancel": "Отмена",
-          "create": "Создать запись",
-          "update": "Обновить запись",
-          "createTitle": "Создать {resource}",
-          "editTitle": "Редактировать {resource}",
-          "helper": "Измените JSON перед отправкой на платформу. Сохраняйте обязательные идентификаторы, например resumeId.",
-          "parseError": "Не удалось сохранить запись. Убедитесь, что JSON корректен."
-        },
-        "resourceNames": {
-          "experience": "опыт",
-          "education": "образование",
-          "skill": "навык",
-          "language": "язык",
-          "hobby": "хобби",
-          "project": "проект"
-        },
-        "sections": {
-          "experiences": {
-            "title": "Опыт",
-            "description": "Должности и достижения, отображающиеся в публичном резюме.",
-            "empty": "Пока нет записей об опыте."
-          },
-          "education": {
-            "title": "Образование",
-            "description": "Учебные заведения и сертификаты из Résumé API.",
-            "empty": "Пока нет записей об образовании."
-          },
-          "skills": {
-            "title": "Навыки",
-            "description": "Навыки и уровень владения, отображаемые в резюме.",
-            "empty": "Навыки ещё не добавлены."
-          },
-          "languages": {
-            "title": "Языки",
-            "description": "Используемые языки и уровень владения.",
-            "empty": "Языки ещё не указаны."
-          },
-          "hobbies": {
-            "title": "Хобби",
-            "description": "Личные интересы, дополняющие резюме.",
-            "empty": "Хобби ещё не добавлены."
-          },
-          "projects": {
-            "title": "Проекты",
-            "description": "Ключевые проекты с описаниями и ссылками.",
-            "empty": "Проекты ещё не сохранены."
-          }
-        }
-      }
-    }
   }
 }

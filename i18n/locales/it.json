@@ -271,7 +271,230 @@
         "education": "Nessuna formazione.",
         "contact": "Nessun metodo di contatto configurato."
       }
+    },
+    "settings": {
+      "themeCustomizer": {
+        "title": "Personalizza",
+        "theme": "Tema",
+        "light": "Chiaro",
+        "dark": "Scuro",
+        "system": "Sistema",
+        "color": "Colore",
+        "radius": "Raggio"
+      },
+      "fields": {
+        "themePrimary": "Colore primario"
+      },
+      "actions": {
+        "reset": "Annulla modifiche"
+      },
+      "siteSettings": "Impostazioni del sito",
+      "quickAccess": "Accesso rapido",
+      "integrations": {
+        "title": "Servizi connessi",
+        "subtitle": "Collega i tuoi account GitHub e LinkedIn per mantenere aggiornato il portfolio.",
+        "disconnect": "Disconnetti",
+        "lastSynced": "Ultima sincronizzazione",
+        "connectedAt": "Connesso il",
+        "neverSynced": "Mai",
+        "status": {
+          "connected": "Connesso",
+          "disconnected": "Non connesso"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "Importa repository e informazioni del profilo direttamente da GitHub.",
+          "username": "Nome utente",
+          "token": "Token di accesso personale",
+          "tokenHint": "Archiviato in modo sicuro e mai esposto pubblicamente.",
+          "connect": "Salva connessione",
+          "refresh": "Aggiorna dati",
+          "connectedMessage": "Connessione GitHub salvata.",
+          "repos": "Repository",
+          "followers": "Follower",
+          "following": "Seguiti",
+          "projectsTitle": "Repository recenti"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "Sincronizza esperienze e formazione di LinkedIn con il portfolio.",
+          "token": "Token di accesso",
+          "tokenHint": "Richiede un token membro valido con permessi su profilo ed esperienza.",
+          "locale": "Lingua di destinazione",
+          "connect": "Salva connessione",
+          "sync": "Sincronizza contenuti",
+          "refresh": "Ricarica stato",
+          "connectedMessage": "Connessione LinkedIn salvata.",
+          "syncedMessage": "Dati LinkedIn sincronizzati.",
+          "experienceCount": "Esperienze",
+          "educationCount": "Formazioni",
+          "unknown": "Membro LinkedIn"
+        }
+      }
+    },
+    "heroScene": {
+      "title": "Scena hero",
+      "subtitle": "Affina lo sfondo 3D interattivo senza toccare il codice.",
+      "localeLabel": "Lingua",
+      "loading": "Caricamento delle impostazioni della scena...",
+      "error": "Impossibile caricare le impostazioni della scena al momento.",
+      "sections": {
+        "sceneTitle": "Sfondo animato",
+        "sceneHint": "Regola colori, movimento e bagliore per allinearli al tuo brand. Le modifiche sono specifiche per lingua."
+      },
+      "fields": {
+        "enabled": "Attiva scena animata",
+        "primaryColor": "Colore primario",
+        "secondaryColor": "Colore secondario",
+        "accentColor": "Colore di accento",
+        "particleDensity": "Densità delle particelle",
+        "bloomIntensity": "Intensità bloom",
+        "rotationSpeed": "Velocità di orbita",
+        "noiseStrength": "Variazione del movimento"
+      },
+      "actions": {
+        "backToDashboard": "Torna al dashboard",
+        "reset": "Ripristina valori",
+        "save": "Salva modifiche"
+      },
+      "feedback": {
+        "success": "Impostazioni della scena salvate.",
+        "failure": "Impossibile salvare le impostazioni della scena.",
+        "missingContent": "Il contenuto hero non è ancora disponibile per questa lingua."
+      }
+    },
+    "analytics": {
+      "eyebrow": "Dati in tempo reale",
+      "title": "Analytics e impatto",
+      "subtitle": "Monitora Vercel Analytics e Speed Insights per tenere tutti allineati su traffico e prestazioni.",
+      "rangeLabel": "Periodo",
+      "range24h": "24 h",
+      "range7d": "7 giorni",
+      "range30d": "30 giorni",
+      "updated": "Aggiornato {value}",
+      "loadingChart": "Caricamento analitiche…",
+      "topPagesTitle": "Pagine principali",
+      "pageViews": "{value} visualizzazioni",
+      "visitors": "{value} visitatori",
+      "noPages": "Nessun dato al momento",
+      "performanceTitle": "Web vitals (p75)",
+      "metricP75": "{value}s",
+      "noPerformance": "Nessuna metrica di performance",
+      "formTitle": "Contenuti di impatto",
+      "formSubtitle": "Modifica titolo, descrizione, metriche e messaggi personalizzati mostrati nella sezione pubblica.",
+      "validationTitle": "Controlla i campi seguenti:",
+      "metricsHeading": "Definizione delle metriche",
+      "metricsDescription": "Descrivi il calcolo di ogni metrica per restare coerente con i dati analytics.",
+      "addMetric": "Aggiungi metrica",
+      "metricPlaceholder": "Metrica {index}",
+      "removeMetric": "Rimuovi metrica",
+      "noMetrics": "Nessuna metrica configurata.",
+      "messagesHeading": "Messaggi personalizzati",
+      "messagesDescription": "Scrivi messaggi mirati per audience, referrer o campagne specifiche.",
+      "addMessage": "Aggiungi messaggio",
+      "messagePlaceholder": "Messaggio {index}",
+      "removeMessage": "Rimuovi messaggio",
+      "noMessages": "Nessun messaggio personalizzato.",
+      "saveCta": "Salva contenuti di impatto",
+      "saveSuccess": "Contenuti di impatto aggiornati con successo.",
+      "saveFailure": "Impossibile salvare i contenuti di impatto.",
+      "metricKeys": {
+        "visitors": "Visitatori unici",
+        "pageViews": "Pagine viste",
+        "averageDuration": "Durata media (s)"
+      },
+      "fields": {
+        "headline": "Titolo",
+        "subline": "Descrizione",
+        "metricKey": "Chiave metrica",
+        "metricLabel": "Etichetta",
+        "metricPlaceholder": "Valore predefinito",
+        "metricUnit": "Unità",
+        "metricDescription": "Descrizione",
+        "audience": "Chiave audience",
+        "messageHeadline": "Titolo del messaggio",
+        "messageBody": "Testo del messaggio"
+      },
+      "noChange": "—"
+    },
+    "navigation": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "settings": "Impostazioni",
+      "design": "Design",
+      "heroScene": "Scena hero",
+      "analytics": "Analitiche",
+      "content": "Contenuti",
+      "resume": "Generatore CV"
+    },
+    "resume": {
+      "badge": "Nuova funzionalità",
+      "title": "Crea un curriculum professionale in pochi minuti",
+      "subtitle": "Compila i dati salvati, personalizza il modello ed esporta il PDF direttamente dall’area admin.",
+      "privateLabel": "Solo amministratore",
+      "platform": {
+        "eyebrow": "Dati della piattaforma",
+        "title": "Voci del CV sincronizzate",
+        "subtitle": "Rivedi e modifica i dati salvati sull’API CV di Bro World. Le modifiche vengono applicate all’istante.",
+        "resumeId": "ID CV",
+        "reload": "Aggiorna dati",
+        "loading": "Recupero dei dati del CV…",
+        "actions": {
+          "add": "Aggiungi voce",
+          "untitled": "Voce senza titolo"
+        },
+        "editor": {
+          "cancel": "Annulla",
+          "create": "Crea voce",
+          "update": "Aggiorna voce",
+          "createTitle": "Crea {resource}",
+          "editTitle": "Modifica {resource}",
+          "helper": "Modifica il payload JSON prima di inviarlo alla piattaforma. Mantieni gli identificatori obbligatori come resumeId.",
+          "parseError": "Impossibile salvare la voce. Assicurati che il JSON sia valido."
+        },
+        "resourceNames": {
+          "experience": "esperienza",
+          "education": "formazione",
+          "skill": "competenza",
+          "language": "lingua",
+          "hobby": "hobby",
+          "project": "progetto"
+        },
+        "sections": {
+          "experiences": {
+            "title": "Esperienze",
+            "description": "Ruoli e risultati mostrati nel CV pubblico.",
+            "empty": "Nessuna esperienza per ora."
+          },
+          "education": {
+            "title": "Formazione",
+            "description": "Scuole, titoli e certificazioni provenienti dall’API CV.",
+            "empty": "Nessuna formazione registrata."
+          },
+          "skills": {
+            "title": "Competenze",
+            "description": "Competenze e livelli di padronanza visibili nel CV.",
+            "empty": "Nessuna competenza aggiunta."
+          },
+          "languages": {
+            "title": "Lingue",
+            "description": "Lingue parlate e livello di padronanza.",
+            "empty": "Nessuna lingua registrata."
+          },
+          "hobbies": {
+            "title": "Hobby",
+            "description": "Interessi personali che arricchiscono il CV.",
+            "empty": "Nessun hobby registrato."
+          },
+          "projects": {
+            "title": "Progetti",
+            "description": "Progetti in evidenza con descrizioni e link.",
+            "empty": "Nessun progetto registrato."
+          }
+        }
+      }
     }
+  
   },
   "portfolio": {
     "contact": {
@@ -505,229 +728,5 @@
     "openMenu": "Apri il menu di navigazione",
     "closeMenu": "Chiudi il menu di navigazione",
     "title": "Navigazione"
-  },
-  "admin": {
-    "settings": {
-      "themeCustomizer": {
-        "title": "Personalizza",
-        "theme": "Tema",
-        "light": "Chiaro",
-        "dark": "Scuro",
-        "system": "Sistema",
-        "color": "Colore",
-        "radius": "Raggio"
-      },
-      "fields": {
-        "themePrimary": "Colore primario"
-      },
-      "actions": {
-        "reset": "Annulla modifiche"
-      },
-      "siteSettings": "Impostazioni del sito",
-      "quickAccess": "Accesso rapido",
-      "integrations": {
-        "title": "Servizi connessi",
-        "subtitle": "Collega i tuoi account GitHub e LinkedIn per mantenere aggiornato il portfolio.",
-        "disconnect": "Disconnetti",
-        "lastSynced": "Ultima sincronizzazione",
-        "connectedAt": "Connesso il",
-        "neverSynced": "Mai",
-        "status": {
-          "connected": "Connesso",
-          "disconnected": "Non connesso"
-        },
-        "github": {
-          "title": "GitHub",
-          "description": "Importa repository e informazioni del profilo direttamente da GitHub.",
-          "username": "Nome utente",
-          "token": "Token di accesso personale",
-          "tokenHint": "Archiviato in modo sicuro e mai esposto pubblicamente.",
-          "connect": "Salva connessione",
-          "refresh": "Aggiorna dati",
-          "connectedMessage": "Connessione GitHub salvata.",
-          "repos": "Repository",
-          "followers": "Follower",
-          "following": "Seguiti",
-          "projectsTitle": "Repository recenti"
-        },
-        "linkedin": {
-          "title": "LinkedIn",
-          "description": "Sincronizza esperienze e formazione di LinkedIn con il portfolio.",
-          "token": "Token di accesso",
-          "tokenHint": "Richiede un token membro valido con permessi su profilo ed esperienza.",
-          "locale": "Lingua di destinazione",
-          "connect": "Salva connessione",
-          "sync": "Sincronizza contenuti",
-          "refresh": "Ricarica stato",
-          "connectedMessage": "Connessione LinkedIn salvata.",
-          "syncedMessage": "Dati LinkedIn sincronizzati.",
-          "experienceCount": "Esperienze",
-          "educationCount": "Formazioni",
-          "unknown": "Membro LinkedIn"
-        }
-      }
-    },
-    "heroScene": {
-      "title": "Scena hero",
-      "subtitle": "Affina lo sfondo 3D interattivo senza toccare il codice.",
-      "localeLabel": "Lingua",
-      "loading": "Caricamento delle impostazioni della scena...",
-      "error": "Impossibile caricare le impostazioni della scena al momento.",
-      "sections": {
-        "sceneTitle": "Sfondo animato",
-        "sceneHint": "Regola colori, movimento e bagliore per allinearli al tuo brand. Le modifiche sono specifiche per lingua."
-      },
-      "fields": {
-        "enabled": "Attiva scena animata",
-        "primaryColor": "Colore primario",
-        "secondaryColor": "Colore secondario",
-        "accentColor": "Colore di accento",
-        "particleDensity": "Densità delle particelle",
-        "bloomIntensity": "Intensità bloom",
-        "rotationSpeed": "Velocità di orbita",
-        "noiseStrength": "Variazione del movimento"
-      },
-      "actions": {
-        "backToDashboard": "Torna al dashboard",
-        "reset": "Ripristina valori",
-        "save": "Salva modifiche"
-      },
-      "feedback": {
-        "success": "Impostazioni della scena salvate.",
-        "failure": "Impossibile salvare le impostazioni della scena.",
-        "missingContent": "Il contenuto hero non è ancora disponibile per questa lingua."
-      }
-    },
-    "analytics": {
-      "eyebrow": "Dati in tempo reale",
-      "title": "Analytics e impatto",
-      "subtitle": "Monitora Vercel Analytics e Speed Insights per tenere tutti allineati su traffico e prestazioni.",
-      "rangeLabel": "Periodo",
-      "range24h": "24 h",
-      "range7d": "7 giorni",
-      "range30d": "30 giorni",
-      "updated": "Aggiornato {value}",
-      "loadingChart": "Caricamento analitiche…",
-      "topPagesTitle": "Pagine principali",
-      "pageViews": "{value} visualizzazioni",
-      "visitors": "{value} visitatori",
-      "noPages": "Nessun dato al momento",
-      "performanceTitle": "Web vitals (p75)",
-      "metricP75": "{value}s",
-      "noPerformance": "Nessuna metrica di performance",
-      "formTitle": "Contenuti di impatto",
-      "formSubtitle": "Modifica titolo, descrizione, metriche e messaggi personalizzati mostrati nella sezione pubblica.",
-      "validationTitle": "Controlla i campi seguenti:",
-      "metricsHeading": "Definizione delle metriche",
-      "metricsDescription": "Descrivi il calcolo di ogni metrica per restare coerente con i dati analytics.",
-      "addMetric": "Aggiungi metrica",
-      "metricPlaceholder": "Metrica {index}",
-      "removeMetric": "Rimuovi metrica",
-      "noMetrics": "Nessuna metrica configurata.",
-      "messagesHeading": "Messaggi personalizzati",
-      "messagesDescription": "Scrivi messaggi mirati per audience, referrer o campagne specifiche.",
-      "addMessage": "Aggiungi messaggio",
-      "messagePlaceholder": "Messaggio {index}",
-      "removeMessage": "Rimuovi messaggio",
-      "noMessages": "Nessun messaggio personalizzato.",
-      "saveCta": "Salva contenuti di impatto",
-      "saveSuccess": "Contenuti di impatto aggiornati con successo.",
-      "saveFailure": "Impossibile salvare i contenuti di impatto.",
-      "metricKeys": {
-        "visitors": "Visitatori unici",
-        "pageViews": "Pagine viste",
-        "averageDuration": "Durata media (s)"
-      },
-      "fields": {
-        "headline": "Titolo",
-        "subline": "Descrizione",
-        "metricKey": "Chiave metrica",
-        "metricLabel": "Etichetta",
-        "metricPlaceholder": "Valore predefinito",
-        "metricUnit": "Unità",
-        "metricDescription": "Descrizione",
-        "audience": "Chiave audience",
-        "messageHeadline": "Titolo del messaggio",
-        "messageBody": "Testo del messaggio"
-      },
-      "noChange": "—"
-    },
-    "navigation": {
-      "home": "Home",
-      "dashboard": "Dashboard",
-      "settings": "Impostazioni",
-      "design": "Design",
-      "heroScene": "Scena hero",
-      "analytics": "Analitiche",
-      "content": "Contenuti",
-      "resume": "Generatore CV"
-    },
-    "resume": {
-      "badge": "Nuova funzionalità",
-      "title": "Crea un curriculum professionale in pochi minuti",
-      "subtitle": "Compila i dati salvati, personalizza il modello ed esporta il PDF direttamente dall’area admin.",
-      "privateLabel": "Solo amministratore",
-      "platform": {
-        "eyebrow": "Dati della piattaforma",
-        "title": "Voci del CV sincronizzate",
-        "subtitle": "Rivedi e modifica i dati salvati sull’API CV di Bro World. Le modifiche vengono applicate all’istante.",
-        "resumeId": "ID CV",
-        "reload": "Aggiorna dati",
-        "loading": "Recupero dei dati del CV…",
-        "actions": {
-          "add": "Aggiungi voce",
-          "untitled": "Voce senza titolo"
-        },
-        "editor": {
-          "cancel": "Annulla",
-          "create": "Crea voce",
-          "update": "Aggiorna voce",
-          "createTitle": "Crea {resource}",
-          "editTitle": "Modifica {resource}",
-          "helper": "Modifica il payload JSON prima di inviarlo alla piattaforma. Mantieni gli identificatori obbligatori come resumeId.",
-          "parseError": "Impossibile salvare la voce. Assicurati che il JSON sia valido."
-        },
-        "resourceNames": {
-          "experience": "esperienza",
-          "education": "formazione",
-          "skill": "competenza",
-          "language": "lingua",
-          "hobby": "hobby",
-          "project": "progetto"
-        },
-        "sections": {
-          "experiences": {
-            "title": "Esperienze",
-            "description": "Ruoli e risultati mostrati nel CV pubblico.",
-            "empty": "Nessuna esperienza per ora."
-          },
-          "education": {
-            "title": "Formazione",
-            "description": "Scuole, titoli e certificazioni provenienti dall’API CV.",
-            "empty": "Nessuna formazione registrata."
-          },
-          "skills": {
-            "title": "Competenze",
-            "description": "Competenze e livelli di padronanza visibili nel CV.",
-            "empty": "Nessuna competenza aggiunta."
-          },
-          "languages": {
-            "title": "Lingue",
-            "description": "Lingue parlate e livello di padronanza.",
-            "empty": "Nessuna lingua registrata."
-          },
-          "hobbies": {
-            "title": "Hobby",
-            "description": "Interessi personali che arricchiscono il CV.",
-            "empty": "Nessun hobby registrato."
-          },
-          "projects": {
-            "title": "Progetti",
-            "description": "Progetti in evidenza con descrizioni e link.",
-            "empty": "Nessun progetto registrato."
-          }
-        }
-      }
-    }
   }
 }

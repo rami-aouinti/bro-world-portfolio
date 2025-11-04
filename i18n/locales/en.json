@@ -302,7 +302,230 @@
         "education": "No education entries yet.",
         "contact": "No contact methods configured yet."
       }
+    },
+    "settings": {
+      "themeCustomizer": {
+        "title": "Customize",
+        "theme": "Theme",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System",
+        "color": "Color",
+        "radius": "Radius"
+      },
+      "fields": {
+        "themePrimary": "Primary color"
+      },
+      "actions": {
+        "reset": "Discard changes"
+      },
+      "siteSettings": "Site settings",
+      "quickAccess": "Quick access",
+      "integrations": {
+        "title": "Connected services",
+        "subtitle": "Link your GitHub and LinkedIn accounts to keep your portfolio content in sync.",
+        "disconnect": "Disconnect",
+        "lastSynced": "Last synced",
+        "connectedAt": "Connected on",
+        "neverSynced": "Never",
+        "status": {
+          "connected": "Connected",
+          "disconnected": "Not connected"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "Import repositories and profile information directly from GitHub.",
+          "username": "Username",
+          "token": "Personal access token",
+          "tokenHint": "Stored securely and never exposed on the public site.",
+          "connect": "Save connection",
+          "refresh": "Refresh data",
+          "connectedMessage": "GitHub connection saved.",
+          "repos": "Repositories",
+          "followers": "Followers",
+          "following": "Following",
+          "projectsTitle": "Recent repositories"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "Synchronise your LinkedIn experience and education with the portfolio.",
+          "token": "Access token",
+          "tokenHint": "Requires a valid member access token with profile and experience permissions.",
+          "locale": "Target locale",
+          "connect": "Save connection",
+          "sync": "Sync content",
+          "refresh": "Reload status",
+          "connectedMessage": "LinkedIn connection saved.",
+          "syncedMessage": "LinkedIn data synchronised.",
+          "experienceCount": "Experiences",
+          "educationCount": "Education entries",
+          "unknown": "LinkedIn member"
+        }
+      }
+    },
+    "heroScene": {
+      "title": "Hero scene",
+      "subtitle": "Fine-tune the interactive 3D hero background without touching the code.",
+      "localeLabel": "Locale",
+      "loading": "Loading hero scene settings...",
+      "error": "Unable to load the hero scene settings right now.",
+      "sections": {
+        "sceneTitle": "Animated background",
+        "sceneHint": "Adjust colours, motion and glow to match your brand. Changes are saved per locale."
+      },
+      "fields": {
+        "enabled": "Enable animated scene",
+        "primaryColor": "Primary colour",
+        "secondaryColor": "Secondary colour",
+        "accentColor": "Accent colour",
+        "particleDensity": "Particle density",
+        "bloomIntensity": "Bloom intensity",
+        "rotationSpeed": "Orbit speed",
+        "noiseStrength": "Motion variance"
+      },
+      "actions": {
+        "backToDashboard": "Back to dashboard",
+        "reset": "Reset defaults",
+        "save": "Save changes"
+      },
+      "feedback": {
+        "success": "Hero scene settings saved.",
+        "failure": "Unable to save hero scene settings.",
+        "missingContent": "Hero content is not available for this locale yet."
+      }
+    },
+    "analytics": {
+      "eyebrow": "Live insights",
+      "title": "Analytics & impact",
+      "subtitle": "Monitor Vercel Analytics and Speed Insights to keep stakeholders aligned on traffic and performance.",
+      "rangeLabel": "Range",
+      "range24h": "24h",
+      "range7d": "7 days",
+      "range30d": "30 days",
+      "updated": "Refreshed {value}",
+      "loadingChart": "Loading analytics…",
+      "topPagesTitle": "Top pages",
+      "pageViews": "{value} page views",
+      "visitors": "{value} visitors",
+      "noPages": "No page data yet",
+      "performanceTitle": "Web vitals (p75)",
+      "metricP75": "{value}s",
+      "noPerformance": "No performance metrics",
+      "formTitle": "Impact copy",
+      "formSubtitle": "Edit the headline, description, metrics, and tailored messages shown on the public impact section.",
+      "validationTitle": "Please review the fields below:",
+      "metricsHeading": "Metric definitions",
+      "metricsDescription": "Explain how each metric is calculated so the public section stays aligned with analytics.",
+      "addMetric": "Add metric",
+      "metricPlaceholder": "Metric {index}",
+      "removeMetric": "Remove metric",
+      "noMetrics": "No metrics configured yet.",
+      "messagesHeading": "Personalised messages",
+      "messagesDescription": "Craft tailored callouts for specific audiences, referrers, or campaigns.",
+      "addMessage": "Add message",
+      "messagePlaceholder": "Message {index}",
+      "removeMessage": "Remove message",
+      "noMessages": "No personalised messages yet.",
+      "saveCta": "Save impact content",
+      "saveSuccess": "Impact content updated successfully.",
+      "saveFailure": "Unable to save impact content.",
+      "metricKeys": {
+        "visitors": "Unique visitors",
+        "pageViews": "Page views",
+        "averageDuration": "Avg. session (s)"
+      },
+      "fields": {
+        "headline": "Headline",
+        "subline": "Subline",
+        "metricKey": "Metric key",
+        "metricLabel": "Metric label",
+        "metricPlaceholder": "Fallback value",
+        "metricUnit": "Unit",
+        "metricDescription": "Description",
+        "audience": "Audience key",
+        "messageHeadline": "Message headline",
+        "messageBody": "Message body"
+      },
+      "noChange": "—"
+    },
+    "navigation": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "settings": "Settings",
+      "design": "Design",
+      "heroScene": "Hero scene",
+      "analytics": "Analytics",
+      "content": "Content",
+      "resume": "Résumé builder"
+    },
+    "resume": {
+      "badge": "New feature",
+      "title": "Generate a polished résumé in minutes",
+      "subtitle": "Populate your stored data, fine-tune the template and export a PDF without leaving the admin.",
+      "privateLabel": "Admin only",
+      "platform": {
+        "eyebrow": "Platform data",
+        "title": "Synchronised résumé entries",
+        "subtitle": "Review and edit the entries stored on Bro World's résumé API. Changes are applied instantly.",
+        "resumeId": "Résumé ID",
+        "reload": "Refresh data",
+        "loading": "Fetching résumé data…",
+        "actions": {
+          "add": "Add entry",
+          "untitled": "Untitled entry"
+        },
+        "editor": {
+          "cancel": "Cancel",
+          "create": "Create entry",
+          "update": "Update entry",
+          "createTitle": "Create {resource}",
+          "editTitle": "Edit {resource}",
+          "helper": "Edit the JSON payload before sending it to the platform. Keep required identifiers such as resumeId.",
+          "parseError": "Unable to save the entry. Please ensure the JSON is valid."
+        },
+        "resourceNames": {
+          "experience": "experience",
+          "education": "education",
+          "skill": "skill",
+          "language": "language",
+          "hobby": "hobby",
+          "project": "project"
+        },
+        "sections": {
+          "experiences": {
+            "title": "Experiences",
+            "description": "Company roles and accomplishments displayed on the public résumé.",
+            "empty": "No experience entries yet."
+          },
+          "education": {
+            "title": "Education",
+            "description": "Schools, degrees and certifications pulled from the résumé API.",
+            "empty": "No education entries yet."
+          },
+          "skills": {
+            "title": "Skills",
+            "description": "Capabilities and proficiency levels surfaced on the résumé.",
+            "empty": "No skills added yet."
+          },
+          "languages": {
+            "title": "Languages",
+            "description": "Spoken languages and proficiency ratings.",
+            "empty": "No languages recorded yet."
+          },
+          "hobbies": {
+            "title": "Hobbies",
+            "description": "Personal interests and activities that enrich the résumé.",
+            "empty": "No hobbies stored yet."
+          },
+          "projects": {
+            "title": "Projects",
+            "description": "Highlighted projects with links and descriptions.",
+            "empty": "No projects saved yet."
+          }
+        }
+      }
     }
+  
   },
   "portfolio": {
     "contact": {
@@ -536,229 +759,5 @@
     "openMenu": "Open navigation menu",
     "closeMenu": "Close navigation menu",
     "title": "Navigation"
-  },
-  "admin": {
-    "settings": {
-      "themeCustomizer": {
-        "title": "Customize",
-        "theme": "Theme",
-        "light": "Light",
-        "dark": "Dark",
-        "system": "System",
-        "color": "Color",
-        "radius": "Radius"
-      },
-      "fields": {
-        "themePrimary": "Primary color"
-      },
-      "actions": {
-        "reset": "Discard changes"
-      },
-      "siteSettings": "Site settings",
-      "quickAccess": "Quick access",
-      "integrations": {
-        "title": "Connected services",
-        "subtitle": "Link your GitHub and LinkedIn accounts to keep your portfolio content in sync.",
-        "disconnect": "Disconnect",
-        "lastSynced": "Last synced",
-        "connectedAt": "Connected on",
-        "neverSynced": "Never",
-        "status": {
-          "connected": "Connected",
-          "disconnected": "Not connected"
-        },
-        "github": {
-          "title": "GitHub",
-          "description": "Import repositories and profile information directly from GitHub.",
-          "username": "Username",
-          "token": "Personal access token",
-          "tokenHint": "Stored securely and never exposed on the public site.",
-          "connect": "Save connection",
-          "refresh": "Refresh data",
-          "connectedMessage": "GitHub connection saved.",
-          "repos": "Repositories",
-          "followers": "Followers",
-          "following": "Following",
-          "projectsTitle": "Recent repositories"
-        },
-        "linkedin": {
-          "title": "LinkedIn",
-          "description": "Synchronise your LinkedIn experience and education with the portfolio.",
-          "token": "Access token",
-          "tokenHint": "Requires a valid member access token with profile and experience permissions.",
-          "locale": "Target locale",
-          "connect": "Save connection",
-          "sync": "Sync content",
-          "refresh": "Reload status",
-          "connectedMessage": "LinkedIn connection saved.",
-          "syncedMessage": "LinkedIn data synchronised.",
-          "experienceCount": "Experiences",
-          "educationCount": "Education entries",
-          "unknown": "LinkedIn member"
-        }
-      }
-    },
-    "heroScene": {
-      "title": "Hero scene",
-      "subtitle": "Fine-tune the interactive 3D hero background without touching the code.",
-      "localeLabel": "Locale",
-      "loading": "Loading hero scene settings...",
-      "error": "Unable to load the hero scene settings right now.",
-      "sections": {
-        "sceneTitle": "Animated background",
-        "sceneHint": "Adjust colours, motion and glow to match your brand. Changes are saved per locale."
-      },
-      "fields": {
-        "enabled": "Enable animated scene",
-        "primaryColor": "Primary colour",
-        "secondaryColor": "Secondary colour",
-        "accentColor": "Accent colour",
-        "particleDensity": "Particle density",
-        "bloomIntensity": "Bloom intensity",
-        "rotationSpeed": "Orbit speed",
-        "noiseStrength": "Motion variance"
-      },
-      "actions": {
-        "backToDashboard": "Back to dashboard",
-        "reset": "Reset defaults",
-        "save": "Save changes"
-      },
-      "feedback": {
-        "success": "Hero scene settings saved.",
-        "failure": "Unable to save hero scene settings.",
-        "missingContent": "Hero content is not available for this locale yet."
-      }
-    },
-    "analytics": {
-      "eyebrow": "Live insights",
-      "title": "Analytics & impact",
-      "subtitle": "Monitor Vercel Analytics and Speed Insights to keep stakeholders aligned on traffic and performance.",
-      "rangeLabel": "Range",
-      "range24h": "24h",
-      "range7d": "7 days",
-      "range30d": "30 days",
-      "updated": "Refreshed {value}",
-      "loadingChart": "Loading analytics…",
-      "topPagesTitle": "Top pages",
-      "pageViews": "{value} page views",
-      "visitors": "{value} visitors",
-      "noPages": "No page data yet",
-      "performanceTitle": "Web vitals (p75)",
-      "metricP75": "{value}s",
-      "noPerformance": "No performance metrics",
-      "formTitle": "Impact copy",
-      "formSubtitle": "Edit the headline, description, metrics, and tailored messages shown on the public impact section.",
-      "validationTitle": "Please review the fields below:",
-      "metricsHeading": "Metric definitions",
-      "metricsDescription": "Explain how each metric is calculated so the public section stays aligned with analytics.",
-      "addMetric": "Add metric",
-      "metricPlaceholder": "Metric {index}",
-      "removeMetric": "Remove metric",
-      "noMetrics": "No metrics configured yet.",
-      "messagesHeading": "Personalised messages",
-      "messagesDescription": "Craft tailored callouts for specific audiences, referrers, or campaigns.",
-      "addMessage": "Add message",
-      "messagePlaceholder": "Message {index}",
-      "removeMessage": "Remove message",
-      "noMessages": "No personalised messages yet.",
-      "saveCta": "Save impact content",
-      "saveSuccess": "Impact content updated successfully.",
-      "saveFailure": "Unable to save impact content.",
-      "metricKeys": {
-        "visitors": "Unique visitors",
-        "pageViews": "Page views",
-        "averageDuration": "Avg. session (s)"
-      },
-      "fields": {
-        "headline": "Headline",
-        "subline": "Subline",
-        "metricKey": "Metric key",
-        "metricLabel": "Metric label",
-        "metricPlaceholder": "Fallback value",
-        "metricUnit": "Unit",
-        "metricDescription": "Description",
-        "audience": "Audience key",
-        "messageHeadline": "Message headline",
-        "messageBody": "Message body"
-      },
-      "noChange": "—"
-    },
-    "navigation": {
-      "home": "Home",
-      "dashboard": "Dashboard",
-      "settings": "Settings",
-      "design": "Design",
-      "heroScene": "Hero scene",
-      "analytics": "Analytics",
-      "content": "Content",
-      "resume": "Résumé builder"
-    },
-    "resume": {
-      "badge": "New feature",
-      "title": "Generate a polished résumé in minutes",
-      "subtitle": "Populate your stored data, fine-tune the template and export a PDF without leaving the admin.",
-      "privateLabel": "Admin only",
-      "platform": {
-        "eyebrow": "Platform data",
-        "title": "Synchronised résumé entries",
-        "subtitle": "Review and edit the entries stored on Bro World's résumé API. Changes are applied instantly.",
-        "resumeId": "Résumé ID",
-        "reload": "Refresh data",
-        "loading": "Fetching résumé data…",
-        "actions": {
-          "add": "Add entry",
-          "untitled": "Untitled entry"
-        },
-        "editor": {
-          "cancel": "Cancel",
-          "create": "Create entry",
-          "update": "Update entry",
-          "createTitle": "Create {resource}",
-          "editTitle": "Edit {resource}",
-          "helper": "Edit the JSON payload before sending it to the platform. Keep required identifiers such as resumeId.",
-          "parseError": "Unable to save the entry. Please ensure the JSON is valid."
-        },
-        "resourceNames": {
-          "experience": "experience",
-          "education": "education",
-          "skill": "skill",
-          "language": "language",
-          "hobby": "hobby",
-          "project": "project"
-        },
-        "sections": {
-          "experiences": {
-            "title": "Experiences",
-            "description": "Company roles and accomplishments displayed on the public résumé.",
-            "empty": "No experience entries yet."
-          },
-          "education": {
-            "title": "Education",
-            "description": "Schools, degrees and certifications pulled from the résumé API.",
-            "empty": "No education entries yet."
-          },
-          "skills": {
-            "title": "Skills",
-            "description": "Capabilities and proficiency levels surfaced on the résumé.",
-            "empty": "No skills added yet."
-          },
-          "languages": {
-            "title": "Languages",
-            "description": "Spoken languages and proficiency ratings.",
-            "empty": "No languages recorded yet."
-          },
-          "hobbies": {
-            "title": "Hobbies",
-            "description": "Personal interests and activities that enrich the résumé.",
-            "empty": "No hobbies stored yet."
-          },
-          "projects": {
-            "title": "Projects",
-            "description": "Highlighted projects with links and descriptions.",
-            "empty": "No projects saved yet."
-          }
-        }
-      }
-    }
   }
 }
