@@ -271,7 +271,230 @@
         "education": "لا توجد بيانات تعليمية.",
         "contact": "لا توجد وسائل تواصل معدّة بعد."
       }
+    },
+    "settings": {
+      "themeCustomizer": {
+        "title": "تخصيص",
+        "theme": "السمة",
+        "light": "فاتح",
+        "dark": "داكن",
+        "system": "النظام",
+        "color": "اللون",
+        "radius": "نصف القطر"
+      },
+      "fields": {
+        "themePrimary": "اللون الأساسي"
+      },
+      "actions": {
+        "reset": "تجاهل التغييرات"
+      },
+      "siteSettings": "إعدادات الموقع",
+      "quickAccess": "وصول سريع",
+      "integrations": {
+        "title": "الخدمات المتصلة",
+        "subtitle": "اربط حسابات GitHub وLinkedIn للحفاظ على تزامن محتوى ملفك الشخصي.",
+        "disconnect": "قطع الاتصال",
+        "lastSynced": "آخر مزامنة",
+        "connectedAt": "تاريخ الاتصال",
+        "neverSynced": "أبدًا",
+        "status": {
+          "connected": "متصل",
+          "disconnected": "غير متصل"
+        },
+        "github": {
+          "title": "GitHub",
+          "description": "استورد المستودعات ومعلومات الملف الشخصي مباشرة من GitHub.",
+          "username": "اسم المستخدم",
+          "token": "رمز وصول شخصي",
+          "tokenHint": "يُخزّن بأمان ولا يظهر للعامة.",
+          "connect": "حفظ الاتصال",
+          "refresh": "تحديث البيانات",
+          "connectedMessage": "تم حفظ اتصال GitHub.",
+          "repos": "المستودعات",
+          "followers": "المتابعون",
+          "following": "يتابع",
+          "projectsTitle": "أحدث المستودعات"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "description": "زامن الخبرات والتعليم من LinkedIn مع ملفك.",
+          "token": "رمز الوصول",
+          "tokenHint": "يتطلب رمز عضو صالح مع صلاحيات الملف والخبرة.",
+          "locale": "اللغة المستهدفة",
+          "connect": "حفظ الاتصال",
+          "sync": "مزامنة المحتوى",
+          "refresh": "تحديث الحالة",
+          "connectedMessage": "تم حفظ اتصال LinkedIn.",
+          "syncedMessage": "تمت مزامنة بيانات LinkedIn.",
+          "experienceCount": "الخبرات",
+          "educationCount": "التعليم",
+          "unknown": "عضو LinkedIn"
+        }
+      }
+    },
+    "heroScene": {
+      "title": "مشهد البطل",
+      "subtitle": "اضبط الخلفية ثلاثية الأبعاد التفاعلية دون لمس الكود.",
+      "localeLabel": "اللغة",
+      "loading": "جاري تحميل إعدادات المشهد...",
+      "error": "تعذر تحميل إعدادات المشهد في الوقت الحالي.",
+      "sections": {
+        "sceneTitle": "خلفية متحركة",
+        "sceneHint": "اضبط الألوان والحركة والتوهج لتلائم هويتك. يتم حفظ التغييرات لكل لغة على حدة."
+      },
+      "fields": {
+        "enabled": "تفعيل المشهد المتحرك",
+        "primaryColor": "اللون الأساسي",
+        "secondaryColor": "اللون الثانوي",
+        "accentColor": "لون التمييز",
+        "particleDensity": "كثافة الجزيئات",
+        "bloomIntensity": "شدة التوهج",
+        "rotationSpeed": "سرعة الدوران",
+        "noiseStrength": "تذبذب الحركة"
+      },
+      "actions": {
+        "backToDashboard": "العودة إلى لوحة التحكم",
+        "reset": "إعادة القيم الافتراضية",
+        "save": "حفظ التغييرات"
+      },
+      "feedback": {
+        "success": "تم حفظ إعدادات المشهد.",
+        "failure": "تعذر حفظ إعدادات المشهد.",
+        "missingContent": "محتوى منطقة البطل غير متوفر بعد لهذه اللغة."
+      }
+    },
+    "analytics": {
+      "eyebrow": "تحليلات مباشرة",
+      "title": "التحليلات والأثر",
+      "subtitle": "تابع Vercel Analytics وSpeed Insights لإبقاء جميع الأطراف على اطلاع بحركة المرور والأداء.",
+      "rangeLabel": "الفترة",
+      "range24h": "٢٤ ساعة",
+      "range7d": "٧ أيام",
+      "range30d": "٣٠ يومًا",
+      "updated": "تم التحديث {value}",
+      "loadingChart": "جاري تحميل التحليلات…",
+      "topPagesTitle": "أكثر الصفحات زيارة",
+      "pageViews": "{value} مشاهدة",
+      "visitors": "{value} زائر",
+      "noPages": "لا توجد بيانات بعد",
+      "performanceTitle": "مؤشرات الأداء (p75)",
+      "metricP75": "{value}ث",
+      "noPerformance": "لا توجد بيانات أداء",
+      "formTitle": "محتوى قسم الأثر",
+      "formSubtitle": "حرّر العنوان والوصف والمؤشرات والرسائل المخصصة المعروضة في الواجهة العامة.",
+      "validationTitle": "يرجى مراجعة الحقول التالية:",
+      "metricsHeading": "تعريف المؤشرات",
+      "metricsDescription": "اشرح كيفية احتساب كل مؤشر لضمان اتساقه مع بيانات التحليلات.",
+      "addMetric": "إضافة مؤشر",
+      "metricPlaceholder": "مؤشر {index}",
+      "removeMetric": "حذف المؤشر",
+      "noMetrics": "لم يتم إعداد مؤشرات بعد.",
+      "messagesHeading": "رسائل مخصصة",
+      "messagesDescription": "أنشئ رسائل موجهة لجماهير أو حملات أو مصادر إحالة محددة.",
+      "addMessage": "إضافة رسالة",
+      "messagePlaceholder": "رسالة {index}",
+      "removeMessage": "حذف الرسالة",
+      "noMessages": "لا توجد رسائل مخصصة بعد.",
+      "saveCta": "حفظ محتوى الأثر",
+      "saveSuccess": "تم تحديث محتوى الأثر بنجاح.",
+      "saveFailure": "تعذر حفظ محتوى الأثر.",
+      "metricKeys": {
+        "visitors": "الزوار الفريدون",
+        "pageViews": "مشاهدات الصفحات",
+        "averageDuration": "متوسط الجلسة (ث)"
+      },
+      "fields": {
+        "headline": "العنوان",
+        "subline": "الوصف",
+        "metricKey": "مفتاح المؤشر",
+        "metricLabel": "اسم المؤشر",
+        "metricPlaceholder": "القيمة الافتراضية",
+        "metricUnit": "الوحدة",
+        "metricDescription": "الوصف",
+        "audience": "مفتاح الجمهور",
+        "messageHeadline": "عنوان الرسالة",
+        "messageBody": "نص الرسالة"
+      },
+      "noChange": "—"
+    },
+    "navigation": {
+      "home": "الرئيسية",
+      "dashboard": "لوحة التحكم",
+      "settings": "الإعدادات",
+      "design": "التصميم",
+      "heroScene": "مشهد البطل",
+      "analytics": "التحليلات",
+      "content": "المحتوى",
+      "resume": "منشئ السيرة الذاتية"
+    },
+    "resume": {
+      "badge": "ميزة جديدة",
+      "title": "أنشئ سيرة ذاتية احترافية خلال دقائق",
+      "subtitle": "أدخل بياناتك المحفوظة، عدّل القالب وصدّر ملف PDF مباشرة من لوحة الإدارة.",
+      "privateLabel": "خاص بالمشرف",
+      "platform": {
+        "eyebrow": "بيانات المنصة",
+        "title": "مدخلات السيرة الذاتية المتزامنة",
+        "subtitle": "راجع وحرر البيانات المخزنة في واجهة Bro World للسير الذاتية. يتم تطبيق التغييرات فورًا.",
+        "resumeId": "معرّف السيرة",
+        "reload": "تحديث البيانات",
+        "loading": "جاري جلب بيانات السيرة الذاتية…",
+        "actions": {
+          "add": "إضافة مدخل",
+          "untitled": "مدخل بدون عنوان"
+        },
+        "editor": {
+          "cancel": "إلغاء",
+          "create": "إنشاء مدخل",
+          "update": "تحديث المدخل",
+          "createTitle": "إنشاء {resource}",
+          "editTitle": "تعديل {resource}",
+          "helper": "حرّر حمولة JSON قبل إرسالها إلى المنصة. احتفظ بالمعرّفات المطلوبة مثل resumeId.",
+          "parseError": "تعذّر حفظ المدخل. يرجى التأكد من أن صيغة JSON صحيحة."
+        },
+        "resourceNames": {
+          "experience": "خبرة",
+          "education": "تعليم",
+          "skill": "مهارة",
+          "language": "لغة",
+          "hobby": "هواية",
+          "project": "مشروع"
+        },
+        "sections": {
+          "experiences": {
+            "title": "الخبرات",
+            "description": "الأدوار والإنجازات المعروضة في السيرة العامة.",
+            "empty": "لا توجد خبرات بعد."
+          },
+          "education": {
+            "title": "التعليم",
+            "description": "المدارس والشهادات المستوردة من واجهة السيرة.",
+            "empty": "لا توجد سجلات تعليمية بعد."
+          },
+          "skills": {
+            "title": "المهارات",
+            "description": "المهارات ومستويات الإتقان المعروضة في السيرة.",
+            "empty": "لا توجد مهارات مضافة بعد."
+          },
+          "languages": {
+            "title": "اللغات",
+            "description": "اللغات المنطوقة ومستوى الإجادة.",
+            "empty": "لا توجد لغات مسجلة بعد."
+          },
+          "hobbies": {
+            "title": "الهوايات",
+            "description": "الاهتمامات الشخصية التي تثري السيرة.",
+            "empty": "لا توجد هوايات محفوظة بعد."
+          },
+          "projects": {
+            "title": "المشاريع",
+            "description": "المشاريع البارزة مع الروابط والوصف.",
+            "empty": "لا توجد مشاريع بعد."
+          }
+        }
+      }
     }
+  
   },
   "portfolio": {
     "contact": {
@@ -505,229 +728,5 @@
     "openMenu": "فتح قائمة التنقل",
     "closeMenu": "إغلاق قائمة التنقل",
     "title": "التنقل"
-  },
-  "admin": {
-    "settings": {
-      "themeCustomizer": {
-        "title": "تخصيص",
-        "theme": "السمة",
-        "light": "فاتح",
-        "dark": "داكن",
-        "system": "النظام",
-        "color": "اللون",
-        "radius": "نصف القطر"
-      },
-      "fields": {
-        "themePrimary": "اللون الأساسي"
-      },
-      "actions": {
-        "reset": "تجاهل التغييرات"
-      },
-      "siteSettings": "إعدادات الموقع",
-      "quickAccess": "وصول سريع",
-      "integrations": {
-        "title": "الخدمات المتصلة",
-        "subtitle": "اربط حسابات GitHub وLinkedIn للحفاظ على تزامن محتوى ملفك الشخصي.",
-        "disconnect": "قطع الاتصال",
-        "lastSynced": "آخر مزامنة",
-        "connectedAt": "تاريخ الاتصال",
-        "neverSynced": "أبدًا",
-        "status": {
-          "connected": "متصل",
-          "disconnected": "غير متصل"
-        },
-        "github": {
-          "title": "GitHub",
-          "description": "استورد المستودعات ومعلومات الملف الشخصي مباشرة من GitHub.",
-          "username": "اسم المستخدم",
-          "token": "رمز وصول شخصي",
-          "tokenHint": "يُخزّن بأمان ولا يظهر للعامة.",
-          "connect": "حفظ الاتصال",
-          "refresh": "تحديث البيانات",
-          "connectedMessage": "تم حفظ اتصال GitHub.",
-          "repos": "المستودعات",
-          "followers": "المتابعون",
-          "following": "يتابع",
-          "projectsTitle": "أحدث المستودعات"
-        },
-        "linkedin": {
-          "title": "LinkedIn",
-          "description": "زامن الخبرات والتعليم من LinkedIn مع ملفك.",
-          "token": "رمز الوصول",
-          "tokenHint": "يتطلب رمز عضو صالح مع صلاحيات الملف والخبرة.",
-          "locale": "اللغة المستهدفة",
-          "connect": "حفظ الاتصال",
-          "sync": "مزامنة المحتوى",
-          "refresh": "تحديث الحالة",
-          "connectedMessage": "تم حفظ اتصال LinkedIn.",
-          "syncedMessage": "تمت مزامنة بيانات LinkedIn.",
-          "experienceCount": "الخبرات",
-          "educationCount": "التعليم",
-          "unknown": "عضو LinkedIn"
-        }
-      }
-    },
-    "heroScene": {
-      "title": "مشهد البطل",
-      "subtitle": "اضبط الخلفية ثلاثية الأبعاد التفاعلية دون لمس الكود.",
-      "localeLabel": "اللغة",
-      "loading": "جاري تحميل إعدادات المشهد...",
-      "error": "تعذر تحميل إعدادات المشهد في الوقت الحالي.",
-      "sections": {
-        "sceneTitle": "خلفية متحركة",
-        "sceneHint": "اضبط الألوان والحركة والتوهج لتلائم هويتك. يتم حفظ التغييرات لكل لغة على حدة."
-      },
-      "fields": {
-        "enabled": "تفعيل المشهد المتحرك",
-        "primaryColor": "اللون الأساسي",
-        "secondaryColor": "اللون الثانوي",
-        "accentColor": "لون التمييز",
-        "particleDensity": "كثافة الجزيئات",
-        "bloomIntensity": "شدة التوهج",
-        "rotationSpeed": "سرعة الدوران",
-        "noiseStrength": "تذبذب الحركة"
-      },
-      "actions": {
-        "backToDashboard": "العودة إلى لوحة التحكم",
-        "reset": "إعادة القيم الافتراضية",
-        "save": "حفظ التغييرات"
-      },
-      "feedback": {
-        "success": "تم حفظ إعدادات المشهد.",
-        "failure": "تعذر حفظ إعدادات المشهد.",
-        "missingContent": "محتوى منطقة البطل غير متوفر بعد لهذه اللغة."
-      }
-    },
-    "analytics": {
-      "eyebrow": "تحليلات مباشرة",
-      "title": "التحليلات والأثر",
-      "subtitle": "تابع Vercel Analytics وSpeed Insights لإبقاء جميع الأطراف على اطلاع بحركة المرور والأداء.",
-      "rangeLabel": "الفترة",
-      "range24h": "٢٤ ساعة",
-      "range7d": "٧ أيام",
-      "range30d": "٣٠ يومًا",
-      "updated": "تم التحديث {value}",
-      "loadingChart": "جاري تحميل التحليلات…",
-      "topPagesTitle": "أكثر الصفحات زيارة",
-      "pageViews": "{value} مشاهدة",
-      "visitors": "{value} زائر",
-      "noPages": "لا توجد بيانات بعد",
-      "performanceTitle": "مؤشرات الأداء (p75)",
-      "metricP75": "{value}ث",
-      "noPerformance": "لا توجد بيانات أداء",
-      "formTitle": "محتوى قسم الأثر",
-      "formSubtitle": "حرّر العنوان والوصف والمؤشرات والرسائل المخصصة المعروضة في الواجهة العامة.",
-      "validationTitle": "يرجى مراجعة الحقول التالية:",
-      "metricsHeading": "تعريف المؤشرات",
-      "metricsDescription": "اشرح كيفية احتساب كل مؤشر لضمان اتساقه مع بيانات التحليلات.",
-      "addMetric": "إضافة مؤشر",
-      "metricPlaceholder": "مؤشر {index}",
-      "removeMetric": "حذف المؤشر",
-      "noMetrics": "لم يتم إعداد مؤشرات بعد.",
-      "messagesHeading": "رسائل مخصصة",
-      "messagesDescription": "أنشئ رسائل موجهة لجماهير أو حملات أو مصادر إحالة محددة.",
-      "addMessage": "إضافة رسالة",
-      "messagePlaceholder": "رسالة {index}",
-      "removeMessage": "حذف الرسالة",
-      "noMessages": "لا توجد رسائل مخصصة بعد.",
-      "saveCta": "حفظ محتوى الأثر",
-      "saveSuccess": "تم تحديث محتوى الأثر بنجاح.",
-      "saveFailure": "تعذر حفظ محتوى الأثر.",
-      "metricKeys": {
-        "visitors": "الزوار الفريدون",
-        "pageViews": "مشاهدات الصفحات",
-        "averageDuration": "متوسط الجلسة (ث)"
-      },
-      "fields": {
-        "headline": "العنوان",
-        "subline": "الوصف",
-        "metricKey": "مفتاح المؤشر",
-        "metricLabel": "اسم المؤشر",
-        "metricPlaceholder": "القيمة الافتراضية",
-        "metricUnit": "الوحدة",
-        "metricDescription": "الوصف",
-        "audience": "مفتاح الجمهور",
-        "messageHeadline": "عنوان الرسالة",
-        "messageBody": "نص الرسالة"
-      },
-      "noChange": "—"
-    },
-    "navigation": {
-      "home": "الرئيسية",
-      "dashboard": "لوحة التحكم",
-      "settings": "الإعدادات",
-      "design": "التصميم",
-      "heroScene": "مشهد البطل",
-      "analytics": "التحليلات",
-      "content": "المحتوى",
-      "resume": "منشئ السيرة الذاتية"
-    },
-    "resume": {
-      "badge": "ميزة جديدة",
-      "title": "أنشئ سيرة ذاتية احترافية خلال دقائق",
-      "subtitle": "أدخل بياناتك المحفوظة، عدّل القالب وصدّر ملف PDF مباشرة من لوحة الإدارة.",
-      "privateLabel": "خاص بالمشرف",
-      "platform": {
-        "eyebrow": "بيانات المنصة",
-        "title": "مدخلات السيرة الذاتية المتزامنة",
-        "subtitle": "راجع وحرر البيانات المخزنة في واجهة Bro World للسير الذاتية. يتم تطبيق التغييرات فورًا.",
-        "resumeId": "معرّف السيرة",
-        "reload": "تحديث البيانات",
-        "loading": "جاري جلب بيانات السيرة الذاتية…",
-        "actions": {
-          "add": "إضافة مدخل",
-          "untitled": "مدخل بدون عنوان"
-        },
-        "editor": {
-          "cancel": "إلغاء",
-          "create": "إنشاء مدخل",
-          "update": "تحديث المدخل",
-          "createTitle": "إنشاء {resource}",
-          "editTitle": "تعديل {resource}",
-          "helper": "حرّر حمولة JSON قبل إرسالها إلى المنصة. احتفظ بالمعرّفات المطلوبة مثل resumeId.",
-          "parseError": "تعذّر حفظ المدخل. يرجى التأكد من أن صيغة JSON صحيحة."
-        },
-        "resourceNames": {
-          "experience": "خبرة",
-          "education": "تعليم",
-          "skill": "مهارة",
-          "language": "لغة",
-          "hobby": "هواية",
-          "project": "مشروع"
-        },
-        "sections": {
-          "experiences": {
-            "title": "الخبرات",
-            "description": "الأدوار والإنجازات المعروضة في السيرة العامة.",
-            "empty": "لا توجد خبرات بعد."
-          },
-          "education": {
-            "title": "التعليم",
-            "description": "المدارس والشهادات المستوردة من واجهة السيرة.",
-            "empty": "لا توجد سجلات تعليمية بعد."
-          },
-          "skills": {
-            "title": "المهارات",
-            "description": "المهارات ومستويات الإتقان المعروضة في السيرة.",
-            "empty": "لا توجد مهارات مضافة بعد."
-          },
-          "languages": {
-            "title": "اللغات",
-            "description": "اللغات المنطوقة ومستوى الإجادة.",
-            "empty": "لا توجد لغات مسجلة بعد."
-          },
-          "hobbies": {
-            "title": "الهوايات",
-            "description": "الاهتمامات الشخصية التي تثري السيرة.",
-            "empty": "لا توجد هوايات محفوظة بعد."
-          },
-          "projects": {
-            "title": "المشاريع",
-            "description": "المشاريع البارزة مع الروابط والوصف.",
-            "empty": "لا توجد مشاريع بعد."
-          }
-        }
-      }
-    }
   }
 }
