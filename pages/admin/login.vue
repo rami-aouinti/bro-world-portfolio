@@ -15,10 +15,7 @@
             <span class="login-card__badge-dot" />
             <span class="login-card__badge-text">{{ t("admin.login.badge") }}</span>
           </div>
-          <h1 class="login-card__title">{{ t("admin.login.title") }}</h1>
-          <p class="login-card__subtitle">
-            {{ t("admin.login.subtitle") }}
-          </p>
+          <h3 class="login-card__title">{{ t("admin.login.title") }}</h3>
         </div>
 
         <v-form
@@ -219,7 +216,7 @@ async function handleSubmit() {
 
 .login-card__title {
   margin: 20px 0 12px;
-  font-size: clamp(1.75rem, 3vw, 2.125rem);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
   font-weight: 700;
   color: #e2e8f0;
 }
