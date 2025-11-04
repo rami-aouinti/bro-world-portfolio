@@ -1,109 +1,81 @@
 <template>
-  <div class="admin-login">
-    <div class="admin-login__overlay" />
-    <v-container class="py-16">
-      <v-row justify="center">
-        <v-col
-          cols="12"
-          md="6"
-          lg="5"
+  <v-row justify="center">
+    <v-col
+        cols="12"
+        md="6"
+        lg="5"
+    >
+      <v-card
+          class="login-card"
+          elevation="0"
+          rounded="xl"
+      >
+        <div class="login-card__header">
+          <div class="login-card__badge">
+            <span class="login-card__badge-dot" />
+            <span class="login-card__badge-text">{{ t("admin.login.badge") }}</span>
+          </div>
+          <h1 class="login-card__title">{{ t("admin.login.title") }}</h1>
+          <p class="login-card__subtitle">
+            {{ t("admin.login.subtitle") }}
+          </p>
+        </div>
+
+        <v-form
+            class="login-form"
+            @submit.prevent="handleSubmit"
         >
-          <v-card
-            class="login-card"
-            elevation="0"
-            rounded="xl"
+          <div class="login-form__fields">
+            <v-text-field
+                v-model="identifier"
+                :label="t('admin.login.form.email')"
+                type="text"
+                required
+                autocomplete="username"
+                variant="outlined"
+                density="comfortable"
+            />
+            <v-text-field
+                v-model="password"
+                :label="t('admin.login.form.password')"
+                type="password"
+                required
+                autocomplete="current-password"
+                variant="outlined"
+                density="comfortable"
+            />
+          </div>
+
+          <v-alert
+              v-if="sessionNotice"
+              type="info"
+              variant="tonal"
+              class="login-form__alert"
           >
-            <div class="login-card__header">
-              <div class="login-card__badge">
-                <span class="login-card__badge-dot" />
-                <span class="login-card__badge-text">{{ t("admin.login.badge") }}</span>
-              </div>
-              <h1 class="login-card__title">{{ t("admin.login.title") }}</h1>
-              <p class="login-card__subtitle">
-                {{ t("admin.login.subtitle") }}
-              </p>
-            </div>
+            {{ sessionNotice }}
+          </v-alert>
 
-            <v-form
-              class="login-form"
-              @submit.prevent="handleSubmit"
-            >
-              <div class="login-form__fields">
-                <v-text-field
-                  v-model="identifier"
-                  :label="t('admin.login.form.email')"
-                  type="text"
-                  required
-                  autocomplete="username"
-                  variant="outlined"
-                  density="comfortable"
-                />
-                <v-text-field
-                  v-model="password"
-                  :label="t('admin.login.form.password')"
-                  type="password"
-                  required
-                  autocomplete="current-password"
-                  variant="outlined"
-                  density="comfortable"
-                />
-              </div>
+          <v-alert
+              v-if="errorMessage"
+              type="error"
+              variant="tonal"
+              class="login-form__alert"
+          >
+            {{ errorMessage }}
+          </v-alert>
 
-              <v-alert
-                v-if="sessionNotice"
-                type="info"
-                variant="tonal"
-                class="login-form__alert"
-              >
-                {{ sessionNotice }}
-              </v-alert>
-
-              <v-alert
-                v-if="errorMessage"
-                type="error"
-                variant="tonal"
-                class="login-form__alert"
-              >
-                {{ errorMessage }}
-              </v-alert>
-
-              <v-btn
-                type="submit"
-                color="primary"
-                class="text-none login-form__submit"
-                :loading="isSubmitting"
-              >
-                {{ t("admin.login.form.submit") }}
-              </v-btn>
-            </v-form>
-
-            <div class="login-card__footer">
-              <v-alert
-                type="info"
-                variant="tonal"
-                density="compact"
-                border="start"
-                border-color="primary"
-              >
-                <p class="font-weight-medium mb-1">{{ t("admin.login.defaultCredentials.title") }}</p>
-                <p>
-                  {{ t("admin.login.defaultCredentials.email") }}
-                  <code>john-root</code>
-                </p>
-                <p>
-                  {{ t("admin.login.defaultCredentials.password") }}
-                  <code>password-root</code>
-                </p>
-              </v-alert>
-              <p class="login-card__help text-medium-emphasis">
-                {{ t("admin.login.help") }}
-              </p>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+          <v-btn
+              type="submit"
+              color="primary"
+              class="text-none login-form__submit"
+              :loading="isSubmitting"
+          >
+            {{ t("admin.login.form.submit") }}
+          </v-btn>
+        </v-form>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup lang="ts">
