@@ -565,6 +565,37 @@
         "footerCta": "Restons en contact"
       }
     },
+    "help": {
+      "eyebrow": "Centre d’aide",
+      "fallbackTitle": "Centre d’aide",
+      "fallbackSubtitle": "Guides et ressources pour maîtriser la boîte à outils de BroWorld.",
+      "fallbackBody": "Parcourez des liens rapides, des tutoriels et une FAQ pour obtenir des réponses en quelques minutes.",
+      "faqTitle": "Questions fréquentes",
+      "faqDescription": "Comprenez la structure du site et découvrez comment tirer parti de chaque rubrique.",
+      "faqs": {
+        "overview": {
+          "question": "Que trouve-t-on sur ce portfolio ?",
+          "answer": "Le site présente les projets phares, les services proposés ainsi que l’expérience et le parcours de BroWorld pour vous offrir une vue d’ensemble rapide."
+        },
+        "customization": {
+          "question": "Puis-je personnaliser ma visite ?",
+          "answer": "Utilisez le menu pour accéder directement aux sections, changez la langue depuis le pied de page et explorez les variations de thème via l’espace d’administration si vous y avez accès."
+        },
+        "content": {
+          "question": "Où consulter des études de cas détaillées ?",
+          "answer": "Rendez-vous dans les sections Projets et GitHub pour découvrir des pages détaillées, des démonstrations en ligne et des dépôts techniques."
+        },
+        "support": {
+          "question": "Comment contacter l’équipe pour en savoir plus ?",
+          "answer": "Dirigez-vous vers la page contact pour envoyer un message direct ou planifier un échange avec l’équipe BroWorld."
+        }
+      },
+      "contact": {
+        "title": "Besoin d’un échange personnalisé ?",
+        "description": "Écrivez-nous et nous vous guiderons à travers le portfolio ou discuterons de votre prochain projet.",
+        "cta": "Nous contacter"
+      }
+    },
     "blog": {
       "badge": "Blog",
       "title": "Analyses, notes et plongées techniques.",

@@ -11,7 +11,8 @@ type RouteKey =
   | "service"
   | "skills"
   | "work"
-  | "projects";
+  | "projects"
+  | "help";
 
 const LOCALIZED_ROUTE_PATHS: Record<RouteKey, LocalizedPaths> = {
   blog: {
@@ -94,6 +95,15 @@ const LOCALIZED_ROUTE_PATHS: Record<RouteKey, LocalizedPaths> = {
     it: "/progetti-github",
     ru: "/github-proekty",
     ar: "/masharie-github",
+  },
+  help: {
+    en: "/help",
+    fr: "/aide",
+    de: "/hilfe",
+    es: "/ayuda",
+    it: "/aiuto",
+    ru: "/pomoshch",
+    ar: "/musaaeda",
   },
 };
 

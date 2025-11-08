@@ -565,6 +565,37 @@
         "footerCta": "Stay in touch"
       }
     },
+    "help": {
+      "eyebrow": "Help centre",
+      "fallbackTitle": "Help centre",
+      "fallbackSubtitle": "Guides and resources to master BroWorld’s toolkit.",
+      "fallbackBody": "Browse quick links, tutorials, and FAQs to get answers in minutes.",
+      "faqTitle": "Frequently asked questions",
+      "faqDescription": "Discover how BroWorld Portfolio is organized and how to explore each section.",
+      "faqs": {
+        "overview": {
+          "question": "What can I find on this portfolio?",
+          "answer": "The site showcases highlighted projects, services, experience, and educational background to help you quickly understand BroWorld’s expertise."
+        },
+        "customization": {
+          "question": "Can I personalise the experience?",
+          "answer": "Use the navigation menu to jump to each section, switch the interface language from the footer, and explore theme variations from the admin area when available."
+        },
+        "content": {
+          "question": "Where can I dive deeper into case studies?",
+          "answer": "Visit the Projects and GitHub sections to open detailed pages, live demos, and repositories for more technical insights."
+        },
+        "support": {
+          "question": "How do I get in touch for more information?",
+          "answer": "Head to the contact page to send a direct message or schedule a call with the BroWorld team."
+        }
+      },
+      "contact": {
+        "title": "Need a personal answer?",
+        "description": "Send us a note and we’ll guide you through the portfolio or discuss your next project.",
+        "cta": "Contact us"
+      }
+    },
     "blog": {
       "badge": "Blog",
       "title": "Insights, notes, and technical deep-dives.",
